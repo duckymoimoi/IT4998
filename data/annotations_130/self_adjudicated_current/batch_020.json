@@ -1,0 +1,697 @@
+{
+  "metadata": {
+    "batch": 20,
+    "case_range": "381-400",
+    "total_cases_in_batch": 20,
+    "method": "codex_self_adjudication_current_dataset_no_external_api_no_regex_scoring",
+    "source_pairs_file": "data/evaluation_pairs_1300_v2.json",
+    "source_annotations_dir": "data/annotations_130",
+    "high_disagreement_threshold": "max-min > 4 on any dimension",
+    "total_high_disagreement_cases": 431
+  },
+  "cases": [
+    {
+      "case_index": 381,
+      "pair_key": "Telesales_L1_ts_L1_10",
+      "high_disagreement_dims": [
+        "experience_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 5,
+          "skills_match": 4,
+          "experience_match": 10,
+          "education_match": 7
+        },
+        "gptoss": {
+          "relevance_score": 5,
+          "skills_match": 5,
+          "experience_match": 4,
+          "education_match": 8
+        },
+        "llama": {
+          "relevance_score": 5,
+          "skills_match": 6,
+          "experience_match": 2,
+          "education_match": 7
+        }
+      },
+      "final_scores": {
+        "relevance_score": 2,
+        "skills_match": 2,
+        "experience_match": 0,
+        "education_match": 7
+      },
+      "adjudication_note": "Manual adjudication: weak domain/title fit; final scores cap skill and experience despite isolated overlap."
+    },
+    {
+      "case_index": 382,
+      "pair_key": "Telesales_L1_ts_L1_12",
+      "high_disagreement_dims": [
+        "education_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 2,
+          "skills_match": 1,
+          "experience_match": 0,
+          "education_match": 1
+        },
+        "gptoss": {
+          "relevance_score": 3,
+          "skills_match": 4,
+          "experience_match": 1,
+          "education_match": 9
+        },
+        "llama": {
+          "relevance_score": 2,
+          "skills_match": 2,
+          "experience_match": 0,
+          "education_match": 7
+        }
+      },
+      "final_scores": {
+        "relevance_score": 2,
+        "skills_match": 3,
+        "experience_match": 1,
+        "education_match": 8
+      },
+      "adjudication_note": "Manual adjudication: weak domain/title fit; final scores cap skill and experience despite isolated overlap."
+    },
+    {
+      "case_index": 383,
+      "pair_key": "Telesales_L1_ts_L1_14",
+      "high_disagreement_dims": [
+        "education_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 2,
+          "skills_match": 1,
+          "experience_match": 0,
+          "education_match": 3
+        },
+        "gptoss": {
+          "relevance_score": 3,
+          "skills_match": 3,
+          "experience_match": 1,
+          "education_match": 8
+        },
+        "llama": {
+          "relevance_score": 2,
+          "skills_match": 2,
+          "experience_match": 0,
+          "education_match": 7
+        }
+      },
+      "final_scores": {
+        "relevance_score": 7,
+        "skills_match": 8,
+        "experience_match": 4,
+        "education_match": 10
+      },
+      "adjudication_note": "Manual adjudication: role/domain is related, but experience seniority or required years do not match well."
+    },
+    {
+      "case_index": 384,
+      "pair_key": "Telesales_L1_ts_L1_15",
+      "high_disagreement_dims": [
+        "education_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 2,
+          "skills_match": 1,
+          "experience_match": 0,
+          "education_match": 3
+        },
+        "gptoss": {
+          "relevance_score": 3,
+          "skills_match": 2,
+          "experience_match": 2,
+          "education_match": 8
+        },
+        "llama": {
+          "relevance_score": 2,
+          "skills_match": 2,
+          "experience_match": 0,
+          "education_match": 7
+        }
+      },
+      "final_scores": {
+        "relevance_score": 7,
+        "skills_match": 9,
+        "experience_match": 3,
+        "education_match": 10
+      },
+      "adjudication_note": "Manual adjudication: role/domain is related, but experience seniority or required years do not match well."
+    },
+    {
+      "case_index": 385,
+      "pair_key": "Telesales_L2_ts_L2_3",
+      "high_disagreement_dims": [
+        "education_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 2,
+          "skills_match": 2,
+          "experience_match": 2,
+          "education_match": 2
+        },
+        "gptoss": {
+          "relevance_score": 5,
+          "skills_match": 5,
+          "experience_match": 3,
+          "education_match": 9
+        },
+        "llama": {
+          "relevance_score": 2,
+          "skills_match": 4,
+          "experience_match": 2,
+          "education_match": 7
+        }
+      },
+      "final_scores": {
+        "relevance_score": 8,
+        "skills_match": 8,
+        "experience_match": 8,
+        "education_match": 10
+      },
+      "adjudication_note": "Manual adjudication: overall fit judged from JD title, required skills, experience level, and education."
+    },
+    {
+      "case_index": 386,
+      "pair_key": "Telesales_L3_ts_L3_14",
+      "high_disagreement_dims": [
+        "experience_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 7,
+          "skills_match": 7,
+          "experience_match": 9,
+          "education_match": 8
+        },
+        "gptoss": {
+          "relevance_score": 7,
+          "skills_match": 6,
+          "experience_match": 4,
+          "education_match": 9
+        },
+        "llama": {
+          "relevance_score": 6,
+          "skills_match": 7,
+          "experience_match": 5,
+          "education_match": 8
+        }
+      },
+      "final_scores": {
+        "relevance_score": 7,
+        "skills_match": 8,
+        "experience_match": 4,
+        "education_match": 8
+      },
+      "adjudication_note": "Manual adjudication: role/domain is related, but experience seniority or required years do not match well."
+    },
+    {
+      "case_index": 387,
+      "pair_key": "Telesales_L4_ts_L4_2",
+      "high_disagreement_dims": [
+        "relevance_score",
+        "skills_match",
+        "experience_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 7,
+          "skills_match": 7,
+          "experience_match": 7,
+          "education_match": 7
+        },
+        "gptoss": {
+          "relevance_score": 7,
+          "skills_match": 9,
+          "experience_match": 5,
+          "education_match": 10
+        },
+        "llama": {
+          "relevance_score": 2,
+          "skills_match": 4,
+          "experience_match": 2,
+          "education_match": 7
+        }
+      },
+      "final_scores": {
+        "relevance_score": 3,
+        "skills_match": 2,
+        "experience_match": 8,
+        "education_match": 8
+      },
+      "adjudication_note": "Manual adjudication: weak domain/title fit; final scores cap skill and experience despite isolated overlap."
+    },
+    {
+      "case_index": 388,
+      "pair_key": "Telesales_L4_ts_L4_8",
+      "high_disagreement_dims": [
+        "experience_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 4,
+          "skills_match": 5,
+          "experience_match": 3,
+          "education_match": 7
+        },
+        "gptoss": {
+          "relevance_score": 8,
+          "skills_match": 9,
+          "experience_match": 8,
+          "education_match": 10
+        },
+        "llama": {
+          "relevance_score": 6,
+          "skills_match": 7,
+          "experience_match": 8,
+          "education_match": 8
+        }
+      },
+      "final_scores": {
+        "relevance_score": 5,
+        "skills_match": 4,
+        "experience_match": 5,
+        "education_match": 9
+      },
+      "adjudication_note": "Manual adjudication: partial title/domain fit, but core technical or role-specific skills are missing."
+    },
+    {
+      "case_index": 389,
+      "pair_key": "Telesales_L4_ts_L4_11",
+      "high_disagreement_dims": [
+        "experience_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 7,
+          "skills_match": 7,
+          "experience_match": 10,
+          "education_match": 7
+        },
+        "gptoss": {
+          "relevance_score": 7,
+          "skills_match": 8,
+          "experience_match": 3,
+          "education_match": 9
+        },
+        "llama": {
+          "relevance_score": 6,
+          "skills_match": 7,
+          "experience_match": 10,
+          "education_match": 8
+        }
+      },
+      "final_scores": {
+        "relevance_score": 1,
+        "skills_match": 1,
+        "experience_match": 1,
+        "education_match": 8
+      },
+      "adjudication_note": "Manual adjudication: weak domain/title fit; final scores cap skill and experience despite isolated overlap."
+    },
+    {
+      "case_index": 390,
+      "pair_key": "Telesales_P_ts_P_4",
+      "high_disagreement_dims": [
+        "skills_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 5,
+          "skills_match": 6,
+          "experience_match": 10,
+          "education_match": 7
+        },
+        "gptoss": {
+          "relevance_score": 4,
+          "skills_match": 4,
+          "experience_match": 9,
+          "education_match": 8
+        },
+        "llama": {
+          "relevance_score": 2,
+          "skills_match": 1,
+          "experience_match": 10,
+          "education_match": 7
+        }
+      },
+      "final_scores": {
+        "relevance_score": 6,
+        "skills_match": 4,
+        "experience_match": 9,
+        "education_match": 10
+      },
+      "adjudication_note": "Manual adjudication: partial title/domain fit, but core technical or role-specific skills are missing."
+    },
+    {
+      "case_index": 391,
+      "pair_key": "Telesales_P_ts_P_6",
+      "high_disagreement_dims": [
+        "skills_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 4,
+          "skills_match": 4,
+          "experience_match": 5,
+          "education_match": 7
+        },
+        "gptoss": {
+          "relevance_score": 4,
+          "skills_match": 2,
+          "experience_match": 8,
+          "education_match": 10
+        },
+        "llama": {
+          "relevance_score": 6,
+          "skills_match": 7,
+          "experience_match": 5,
+          "education_match": 8
+        }
+      },
+      "final_scores": {
+        "relevance_score": 3,
+        "skills_match": 2,
+        "experience_match": 4,
+        "education_match": 7
+      },
+      "adjudication_note": "Manual adjudication: weak domain/title fit; final scores cap skill and experience despite isolated overlap."
+    },
+    {
+      "case_index": 392,
+      "pair_key": "Telesales_P_ts_P_7",
+      "high_disagreement_dims": [
+        "education_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 1,
+          "skills_match": 1,
+          "experience_match": 1,
+          "education_match": 1
+        },
+        "gptoss": {
+          "relevance_score": 1,
+          "skills_match": 2,
+          "experience_match": 1,
+          "education_match": 9
+        },
+        "llama": {
+          "relevance_score": 2,
+          "skills_match": 1,
+          "experience_match": 2,
+          "education_match": 7
+        }
+      },
+      "final_scores": {
+        "relevance_score": 3,
+        "skills_match": 3,
+        "experience_match": 2,
+        "education_match": 8
+      },
+      "adjudication_note": "Manual adjudication: weak domain/title fit; final scores cap skill and experience despite isolated overlap."
+    },
+    {
+      "case_index": 393,
+      "pair_key": "Telesales_P_ts_P_8",
+      "high_disagreement_dims": [
+        "skills_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 5,
+          "skills_match": 5,
+          "experience_match": 7,
+          "education_match": 10
+        },
+        "gptoss": {
+          "relevance_score": 4,
+          "skills_match": 2,
+          "experience_match": 10,
+          "education_match": 10
+        },
+        "llama": {
+          "relevance_score": 7,
+          "skills_match": 7,
+          "experience_match": 9,
+          "education_match": 10
+        }
+      },
+      "final_scores": {
+        "relevance_score": 2,
+        "skills_match": 2,
+        "experience_match": 1,
+        "education_match": 8
+      },
+      "adjudication_note": "Manual adjudication: weak domain/title fit; final scores cap skill and experience despite isolated overlap."
+    },
+    {
+      "case_index": 394,
+      "pair_key": "Telesales_P_ts_P_11",
+      "high_disagreement_dims": [
+        "experience_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 5,
+          "skills_match": 4,
+          "experience_match": 10,
+          "education_match": 7
+        },
+        "gptoss": {
+          "relevance_score": 5,
+          "skills_match": 3,
+          "experience_match": 9,
+          "education_match": 8
+        },
+        "llama": {
+          "relevance_score": 2,
+          "skills_match": 1,
+          "experience_match": 2,
+          "education_match": 5
+        }
+      },
+      "final_scores": {
+        "relevance_score": 2,
+        "skills_match": 2,
+        "experience_match": 1,
+        "education_match": 8
+      },
+      "adjudication_note": "Manual adjudication: weak domain/title fit; final scores cap skill and experience despite isolated overlap."
+    },
+    {
+      "case_index": 395,
+      "pair_key": "Telesales_L1b_ts_L1b_2",
+      "high_disagreement_dims": [
+        "education_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 3,
+          "skills_match": 2,
+          "experience_match": 3,
+          "education_match": 7
+        },
+        "gptoss": {
+          "relevance_score": 4,
+          "skills_match": 4,
+          "experience_match": 4,
+          "education_match": 10
+        },
+        "llama": {
+          "relevance_score": 2,
+          "skills_match": 2,
+          "experience_match": 2,
+          "education_match": 5
+        }
+      },
+      "final_scores": {
+        "relevance_score": 4,
+        "skills_match": 3,
+        "experience_match": 8,
+        "education_match": 7
+      },
+      "adjudication_note": "Manual adjudication: partial title/domain fit, but core technical or role-specific skills are missing."
+    },
+    {
+      "case_index": 396,
+      "pair_key": "Telesales_L1b_ts_L1b_3",
+      "high_disagreement_dims": [
+        "education_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 2,
+          "skills_match": 2,
+          "experience_match": 2,
+          "education_match": 2
+        },
+        "gptoss": {
+          "relevance_score": 4,
+          "skills_match": 4,
+          "experience_match": 3,
+          "education_match": 10
+        },
+        "llama": {
+          "relevance_score": 2,
+          "skills_match": 2,
+          "experience_match": 1,
+          "education_match": 7
+        }
+      },
+      "final_scores": {
+        "relevance_score": 1,
+        "skills_match": 1,
+        "experience_match": 1,
+        "education_match": 8
+      },
+      "adjudication_note": "Manual adjudication: weak domain/title fit; final scores cap skill and experience despite isolated overlap."
+    },
+    {
+      "case_index": 397,
+      "pair_key": "Telesales_L1b_ts_L1b_4",
+      "high_disagreement_dims": [
+        "education_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 1,
+          "skills_match": 1,
+          "experience_match": 0,
+          "education_match": 1
+        },
+        "gptoss": {
+          "relevance_score": 4,
+          "skills_match": 3,
+          "experience_match": 2,
+          "education_match": 10
+        },
+        "llama": {
+          "relevance_score": 2,
+          "skills_match": 2,
+          "experience_match": 2,
+          "education_match": 7
+        }
+      },
+      "final_scores": {
+        "relevance_score": 6,
+        "skills_match": 5,
+        "experience_match": 8,
+        "education_match": 10
+      },
+      "adjudication_note": "Manual adjudication: overall fit judged from JD title, required skills, experience level, and education."
+    },
+    {
+      "case_index": 398,
+      "pair_key": "Telesales_L1b_ts_L1b_9",
+      "high_disagreement_dims": [
+        "skills_match",
+        "experience_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 5,
+          "skills_match": 3,
+          "experience_match": 10,
+          "education_match": 7
+        },
+        "gptoss": {
+          "relevance_score": 6,
+          "skills_match": 6,
+          "experience_match": 9,
+          "education_match": 7
+        },
+        "llama": {
+          "relevance_score": 2,
+          "skills_match": 1,
+          "experience_match": 5,
+          "education_match": 7
+        }
+      },
+      "final_scores": {
+        "relevance_score": 5,
+        "skills_match": 5,
+        "experience_match": 4,
+        "education_match": 8
+      },
+      "adjudication_note": "Manual adjudication: role/domain is related, but experience seniority or required years do not match well."
+    },
+    {
+      "case_index": 399,
+      "pair_key": "Telesales_L1b_ts_L1b_12",
+      "high_disagreement_dims": [
+        "education_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 1,
+          "skills_match": 1,
+          "experience_match": 0,
+          "education_match": 1
+        },
+        "gptoss": {
+          "relevance_score": 3,
+          "skills_match": 4,
+          "experience_match": 2,
+          "education_match": 10
+        },
+        "llama": {
+          "relevance_score": 2,
+          "skills_match": 4,
+          "experience_match": 2,
+          "education_match": 7
+        }
+      },
+      "final_scores": {
+        "relevance_score": 7,
+        "skills_match": 8,
+        "experience_match": 3,
+        "education_match": 10
+      },
+      "adjudication_note": "Manual adjudication: role/domain is related, but experience seniority or required years do not match well."
+    },
+    {
+      "case_index": 400,
+      "pair_key": "Telesales_L1b_ts_L1b_14",
+      "high_disagreement_dims": [
+        "skills_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 7,
+          "skills_match": 7,
+          "experience_match": 9,
+          "education_match": 10
+        },
+        "gptoss": {
+          "relevance_score": 5,
+          "skills_match": 2,
+          "experience_match": 8,
+          "education_match": 9
+        },
+        "llama": {
+          "relevance_score": 6,
+          "skills_match": 6,
+          "experience_match": 8,
+          "education_match": 8
+        }
+      },
+      "final_scores": {
+        "relevance_score": 5,
+        "skills_match": 6,
+        "experience_match": 5,
+        "education_match": 5
+      },
+      "adjudication_note": "Manual adjudication: overall fit judged from JD title, required skills, experience level, and education."
+    }
+  ]
+}

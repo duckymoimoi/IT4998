@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ trợ giúp tìm việc làm</title>
+    <meta name="description" content="Tìm công việc phù hợp với kỹ năng và kinh nghiệm của bạn bằng AI">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<div class="app">
+    <div class="header">
+        <h1>Hệ trợ giúp tìm việc làm</h1>
+        <span class="badge" id="searchModeBadge">Hybrid + ESCO + LLM</span>
+    </div>
+    <div class="layout">
+        <!-- LEFT: CV Info + Skills -->
+        <div class="sidebar">
+            <h2>Hồ sơ ứng viên</h2>
+
+            <!-- CV Upload -->
+            <div class="upload-zone" id="uploadZone" onclick="document.getElementById('cvFile').click()">
+                <h3>📄 Tải CV lên để quét tự động</h3>
+                <p>PDF hoặc ảnh • Tối đa 16MB</p>
+                <input type="file" id="cvFile" accept=".pdf,.png,.jpg,.jpeg,.bmp,.tiff" style="display:none">
+            </div>
+            <div class="file-info" id="fileInfo">
+                <span id="fileName"></span>
+                <span class="remove" onclick="clearFile()">✕</span>
+            </div>
+            <button class="btn btn-sm btn-outline" id="parseBtn" onclick="parseCV()" disabled style="width:100%;margin-bottom:12px">
+                Quét &amp; Trích xuất
+            </button>
+
+            <!-- Extracted Data -->
+            <div class="extracted" id="extractedSection">
+                <h3>✨ Dữ liệu trích xuất</h3>
+                <div class="extracted-grid" id="extractedGrid"></div>
+                <div class="extracted-actions">
+                    <button class="btn btn-sm btn-primary" onclick="applyAllExtracted()" style="flex:1">Áp dụng tất cả</button>
+                    <button class="btn btn-sm btn-outline" onclick="clearExtracted()">Xóa</button>
+                </div>
+            </div>
+
+            <!-- Skills (tách 4 ô) -->
+            <div class="form-group">
+                <label for="techSkills"> Kỹ năng chuyên môn *</label>
+                <textarea id="techSkills" placeholder="VD: Python, JavaScript, SQL, React, Django, Docker"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="softSkills"> Kỹ năng mềm</label>
+                <input type="text" id="softSkills" placeholder="VD: Giao tiếp, teamwork, quản lý thời gian">
+            </div>
+            <div class="form-group">
+                <label for="languages"> Ngoại ngữ</label>
+                <input type="text" id="languages" placeholder="VD: Tiếng Anh B2, Tiếng Nhật N3">
+            </div>
+            <div class="form-group">
+                <label for="certificates"> Chứng chỉ</label>
+                <input type="text" id="certificates" placeholder="VD: AWS Solutions Architect, TOEIC 800">
+            </div>
+
+            <!-- Experience & Education -->
+            <div class="form-group">
+                <label for="experience">Kinh nghiệm *</label>
+                <select id="experience">
+                    <option value="">-- Chọn --</option>
+                    <option value="all">Tất cả</option>
+                    <option value="no_requirement">Chưa có</option>
+                    <option value="under_1">Dưới 1 năm</option>
+                    <option value="1">1 năm</option>
+                    <option value="2">2 năm</option>
+                    <option value="3">3 năm</option>
+                    <option value="4">4 năm</option>
+                    <option value="5">5 năm</option>
+                    <option value="over_5">Trên 5 năm</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="education">Học vấn *</label>
+                <select id="education">
+                    <option value="">-- Chọn --</option>
+                    <option value="trung_hoc">THPT trở lên</option>
+                    <option value="trung_cap">Trung cấp trở lên</option>
+                    <option value="cao_dang">Cao đẳng trở lên</option>
+                    <option value="dai_hoc">Đại học trở lên</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- MIDDLE: Results -->
+        <div class="results" id="resultsPanel">
+            <div class="empty-state" id="emptyState">
+                <h3>Chào mừng bạn!</h3>
+                <p>Nhập hồ sơ bên trái, cấu hình bộ lọc bên phải và nhấn "Tìm việc phù hợp".</p>
+                <p style="margin-top:8px;font-size:12px">Hybrid Search + ESCO + LLM Scoring</p>
+            </div>
+            <div id="resultsContent" style="display:none">
+                <div class="results-header">
+                    <div>
+                        <h2>Kết quả</h2>
+                        <span class="results-count" id="resultsCount"></span>
+                    </div>
+                    <span class="search-mode" id="modeLabel"></span>
+                </div>
+                <div id="jobsList"></div>
+                <div id="loadMore" style="display:none;text-align:center;margin-top:12px">
+                    <button class="btn btn-outline" onclick="loadMore()">Xem thêm</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT: Filters + Weights -->
+        <div class="right-panel">
+            <div class="weight-section">
+                <h3>⚖️ Trọng số đánh giá</h3>
+                <div class="w-row"><span class="w-name">Phù hợp</span><input type="range" id="wRel" min="0" max="50" value="25"><span class="w-val" id="vRel">25</span></div>
+                <div class="w-row"><span class="w-name">Kỹ năng</span><input type="range" id="wSkill" min="0" max="50" value="30"><span class="w-val" id="vSkill">30</span></div>
+                <div class="w-row"><span class="w-name">Kinh nghiệm</span><input type="range" id="wExp" min="0" max="50" value="15"><span class="w-val" id="vExp">15</span></div>
+                <div class="w-row"><span class="w-name">Học vấn</span><input type="range" id="wEdu" min="0" max="50" value="10"><span class="w-val" id="vEdu">10</span></div>
+                <div class="w-row"><span class="w-name">Địa điểm</span><input type="range" id="wLoc" min="0" max="50" value="10"><span class="w-val" id="vLoc">10</span></div>
+                <div class="w-row"><span class="w-name">Lương</span><input type="range" id="wSal" min="0" max="50" value="10"><span class="w-val" id="vSal">10</span></div>
+                <div class="w-total ok" id="wTotal">Tổng: 100%</div>
+            </div>
+
+            <div class="filter-section">
+                <h3>📋 Lọc ngành nghề</h3>
+                <div class="cat-grid" id="catGrid">
+                    {% for category in categories %}
+                    <span class="cat-chip" data-value="{{ category }}">{{ category }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3>📍 Địa điểm</h3>
+                <select id="location" style="margin-bottom:8px">
+                    <option value="">-- Tỉnh/thành --</option>
+                    <option value="An Giang">An Giang</option><option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option><option value="Bắc Giang">Bắc Giang</option><option value="Bắc Ninh">Bắc Ninh</option><option value="Bình Dương">Bình Dương</option><option value="Bình Định">Bình Định</option><option value="Cần Thơ">Cần Thơ</option><option value="Đà Nẵng">Đà Nẵng</option><option value="Đắk Lắk">Đắk Lắk</option><option value="Đồng Nai">Đồng Nai</option><option value="Hà Nội">Hà Nội</option><option value="Hà Tĩnh">Hà Tĩnh</option><option value="Hải Dương">Hải Dương</option><option value="Hải Phòng">Hải Phòng</option><option value="Hồ Chí Minh">Hồ Chí Minh</option><option value="Huế">Thừa Thiên Huế</option><option value="Khánh Hòa">Khánh Hòa</option><option value="Lâm Đồng">Lâm Đồng</option><option value="Long An">Long An</option><option value="Nam Định">Nam Định</option><option value="Nghệ An">Nghệ An</option><option value="Quảng Nam">Quảng Nam</option><option value="Quảng Ninh">Quảng Ninh</option><option value="Thanh Hóa">Thanh Hóa</option><option value="Thái Nguyên">Thái Nguyên</option><option value="Tiền Giang">Tiền Giang</option><option value="Vĩnh Phúc">Vĩnh Phúc</option>
+                </select>
+                <input type="text" id="address" placeholder="Địa chỉ cụ thể (để tính km đến công ty)">
+                <div class="hint">Goong Maps tính khoảng cách lái xe thực tế</div>
+            </div>
+
+            <div class="filter-section">
+                <h3> Lương &amp; Giới tính</h3>
+                <input type="number" id="salary" placeholder="Lương mong muốn (triệu/tháng)" min="0" step="0.5" style="margin-bottom:8px">
+                <div class="radio-group">
+                    <label><input type="radio" name="gender" value="Nam"> Nam</label>
+                    <label><input type="radio" name="gender" value="Nữ"> Nữ</label>
+                    <label><input type="radio" name="gender" value="both" checked> Tất cả</label>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" onclick="searchJobs()" id="searchBtn">
+                Tìm việc phù hợp
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Processing Overlay -->
+<div class="overlay" id="overlay">
+    <div class="overlay-modal">
+        <div class="spinner"></div>
+        <div style="font-size:16px;font-weight:600" id="overlayText">Đang xử lý...</div>
+        <div style="font-size:13px;color:var(--text2);margin-top:4px" id="overlaySubtext"></div>
+    </div>
+</div>
+
+<script>
+// ===== STATE =====
+let allJobs = [], displayCount = 5, extractedData = null, lastCvData = null;
+const DIMS = ['relevance','skills','experience','education','location','salary'];
+const DIM_LABELS = {relevance:'Phù hợp',skills:'Kỹ năng',experience:'Kinh nghiệm',education:'Học vấn',location:'Địa điểm',salary:'Lương'};
+
+// ===== CATEGORY CHIPS (event delegation — reliable) =====
+document.getElementById('catGrid').addEventListener('click', function(e) {
+    const chip = e.target.closest('.cat-chip');
+    if (!chip) return;
+    chip.classList.toggle('active');
+});
+function getSelectedCategories() {
+    return Array.from(document.querySelectorAll('.cat-chip.active')).map(c => c.dataset.value);
+}
+
+// ===== WEIGHTS =====
+const wSliders = {rel:'wRel',skill:'wSkill',exp:'wExp',edu:'wEdu',loc:'wLoc',sal:'wSal'};
+const wVals = {rel:'vRel',skill:'vSkill',exp:'vExp',edu:'vEdu',loc:'vLoc',sal:'vSal'};
+Object.keys(wSliders).forEach(k => {
+    const sl = document.getElementById(wSliders[k]);
+    const vl = document.getElementById(wVals[k]);
+    sl.addEventListener('input', () => {
+        vl.textContent = sl.value;
+        autoNormalizeWeights(wSliders[k]);
+    });
+});
+
+function autoNormalizeWeights(changedId) {
+    const ids = Object.values(wSliders);
+    const total = ids.reduce((s, id) => s + parseInt(document.getElementById(id).value), 0);
+    const diff = total - 100;
+    if (diff === 0) { updateWeightTotal(); return; }
+    const others = ids.filter(id => id !== changedId);
+    const otherTotal = others.reduce((s, id) => s + parseInt(document.getElementById(id).value), 0);
+    if (otherTotal > 0) {
+        let remaining = diff;
+        others.forEach(id => {
+            const sl = document.getElementById(id);
+            const cur = parseInt(sl.value);
+            const share = Math.round((cur / otherTotal) * diff);
+            const newVal = Math.max(0, Math.min(50, cur - share));
+            remaining -= (cur - newVal);
+            sl.value = newVal;
+            document.getElementById(wVals[Object.keys(wSliders).find(k => wSliders[k] === id)]).textContent = newVal;
+        });
+        if (remaining !== 0) {
+            for (const id of others) {
+                const sl = document.getElementById(id);
+                const cur = parseInt(sl.value);
+                const newVal = Math.max(0, Math.min(50, cur - remaining));
+                sl.value = newVal;
+                document.getElementById(wVals[Object.keys(wSliders).find(k => wSliders[k] === id)]).textContent = newVal;
+                break;
+            }
+        }
+    }
+    updateWeightTotal();
+}
+function updateWeightTotal() {
+    const total = Object.values(wSliders).reduce((s,id) => s + parseInt(document.getElementById(id).value), 0);
+    const el = document.getElementById('wTotal');
+    el.textContent = 'Tổng: ' + total + '%';
+    el.className = 'w-total ' + (total === 100 ? 'ok' : 'err');
+}
+function getWeights() {
+    return {
+        relevance: parseInt(document.getElementById('wRel').value) / 100,
+        skills: parseInt(document.getElementById('wSkill').value) / 100,
+        experience: parseInt(document.getElementById('wExp').value) / 100,
+        education: parseInt(document.getElementById('wEdu').value) / 100,
+        location: parseInt(document.getElementById('wLoc').value) / 100,
+        salary: parseInt(document.getElementById('wSal').value) / 100,
+    };
+}
+
+// ===== FILE UPLOAD =====
+const uploadZone = document.getElementById('uploadZone');
+const cvFile = document.getElementById('cvFile');
+cvFile.addEventListener('change', e => { if (e.target.files[0]) showFile(e.target.files[0]); });
+uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('dragover'); });
+uploadZone.addEventListener('dragleave', e => { e.preventDefault(); uploadZone.classList.remove('dragover'); });
+uploadZone.addEventListener('drop', e => {
+    e.preventDefault(); uploadZone.classList.remove('dragover');
+    if (e.dataTransfer.files[0]) {
+        const dt = new DataTransfer(); dt.items.add(e.dataTransfer.files[0]);
+        cvFile.files = dt.files; showFile(e.dataTransfer.files[0]);
+    }
+});
+function showFile(f) {
+    document.getElementById('fileName').textContent = f.name + ' (' + (f.size/1024).toFixed(0) + 'KB)';
+    document.getElementById('fileInfo').classList.add('show');
+    uploadZone.classList.add('has-file');
+    document.getElementById('parseBtn').disabled = false;
+}
+function clearFile() {
+    cvFile.value = '';
+    document.getElementById('fileInfo').classList.remove('show');
+    uploadZone.classList.remove('has-file');
+    document.getElementById('parseBtn').disabled = true;
+    clearExtracted();
+}
+
+// ===== CV PARSING =====
+async function parseCV() {
+    const file = cvFile.files[0];
+    if (!file) return;
+    showOverlay('Đang quét CV bằng AI...', 'Trích xuất kỹ năng, kinh nghiệm, học vấn');
+    try {
+        const fd = new FormData(); fd.append('cv_file', file);
+        const res = await fetch('/api/parse-cv', { method: 'POST', body: fd });
+        const data = await res.json();
+        if (!res.ok || data.error) { alert('Lỗi: ' + (data.error || 'Unknown')); return; }
+        extractedData = data;
+        showExtracted(data);
+    } catch (e) { alert('Lỗi kết nối: ' + e.message); }
+    finally { hideOverlay(); }
+}
+function showExtracted(data) {
+    const fields = [
+        {k:'technical_skills',l:'Kỹ năng chuyên môn'},{k:'soft_skills',l:'Kỹ năng mềm'},
+        {k:'languages',l:'Ngoại ngữ'},{k:'certificates',l:'Chứng chỉ'},
+        {k:'experience',l:'Kinh nghiệm',fmt:fmtExp},
+        {k:'education',l:'Học vấn',fmt:fmtEdu},{k:'gender',l:'Giới tính'},
+        {k:'location',l:'Địa điểm'},{k:'suggested_categories',l:'Ngành nghề',fmt:fmtCats}
+    ];
+    const grid = document.getElementById('extractedGrid');
+    grid.innerHTML = fields.map(f => {
+        const v = data[f.k]; const dv = f.fmt ? f.fmt(v) : (v || 'N/A');
+        return `<div class="extracted-item"><div class="label">${f.l}</div><div class="value">${dv}</div></div>`;
+    }).join('');
+    document.getElementById('extractedSection').classList.add('show');
+}
+function applyAllExtracted() {
+    if (!extractedData) return;
+    if (extractedData.technical_skills) document.getElementById('techSkills').value = extractedData.technical_skills;
+    if (extractedData.soft_skills) document.getElementById('softSkills').value = extractedData.soft_skills;
+    if (extractedData.languages) document.getElementById('languages').value = extractedData.languages;
+    if (extractedData.certificates) document.getElementById('certificates').value = extractedData.certificates;
+    if (extractedData.experience) document.getElementById('experience').value = extractedData.experience;
+    if (extractedData.education) document.getElementById('education').value = extractedData.education;
+    if (extractedData.location) document.getElementById('location').value = extractedData.location;
+    if (extractedData.gender && extractedData.gender !== 'both') {
+        const r = document.querySelector(`input[name="gender"][value="${extractedData.gender}"]`);
+        if (r) r.checked = true;
+    }
+    if (extractedData.suggested_categories) {
+        document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+        extractedData.suggested_categories.forEach(cat => {
+            const chip = document.querySelector(`.cat-chip[data-value="${cat}"]`);
+            if (chip) chip.classList.add('active');
+        });
+    }
+}
+function clearExtracted() {
+    extractedData = null;
+    document.getElementById('extractedSection').classList.remove('show');
+}
+function fmtExp(v) { return {no_requirement:'Chưa có',under_1:'< 1 năm','1':'1 năm','2':'2 năm','3':'3 năm','4':'4 năm','5':'5 năm',over_5:'5+ năm',all:'Tất cả'}[v] || v || 'N/A'; }
+function fmtEdu(v) { return {dai_hoc:'Đại học',cao_dang:'Cao đẳng',trung_cap:'Trung cấp',trung_hoc:'THPT'}[v] || v || 'N/A'; }
+function fmtCats(v) { return Array.isArray(v) && v.length ? v.join(', ') : 'N/A'; }
+
+// ===== SEARCH =====
+async function searchJobs() {
+    const techSkills = document.getElementById('techSkills').value.trim();
+    const experience = document.getElementById('experience').value;
+    const education = document.getElementById('education').value;
+    if (!techSkills) { alert('Vui lòng nhập kỹ năng chuyên môn!'); return; }
+
+    const wt = getWeights();
+    const total = Object.values(wt).reduce((a,b) => a+b, 0);
+    if (Math.abs(total - 1) > 0.01) { alert('Tổng trọng số phải = 100%!'); return; }
+
+    const cats = getSelectedCategories();
+    const cvData = {
+        skills: techSkills,
+        soft_skills: document.getElementById('softSkills').value.trim(),
+        languages: document.getElementById('languages').value.trim(),
+        certificates: document.getElementById('certificates').value.trim(),
+        experience, education,
+        gender: document.querySelector('input[name="gender"]:checked').value,
+        location: document.getElementById('location').value,
+        address: document.getElementById('address').value.trim(),
+        salary: document.getElementById('salary').value ? parseFloat(document.getElementById('salary').value) : null,
+        weights: wt
+    };
+    lastCvData = cvData;
+
+    document.getElementById('emptyState').style.display = 'none';
+    const rc = document.getElementById('resultsContent');
+    rc.style.display = 'block';
+    document.getElementById('jobsList').innerHTML = '<div class="loading"><div class="spinner"></div>Đang tìm kiếm & đánh giá bằng AI...</div>';
+
+    try {
+        const res = await fetch('/api/search', {
+            method: 'POST', headers: {'Content-Type':'application/json'},
+            body: JSON.stringify({cv_data: cvData, categories: cats})
+        });
+        const data = await res.json();
+        if (data.error) {
+            document.getElementById('jobsList').innerHTML = `<div class="empty-state"><h3>Lỗi</h3><p>${data.error}</p></div>`;
+            return;
+        }
+        allJobs = data.jobs || [];
+        displayCount = 5;
+        document.getElementById('modeLabel').textContent = data.search_mode || '';
+        const timeInfo = [];
+        if (data.pipeline_time) timeInfo.push(`Total: ${data.pipeline_time}s`);
+        if (data.llm_time) timeInfo.push(`LLM: ${data.llm_time}s`);
+        document.getElementById('resultsCount').innerHTML = allJobs.length + ' công việc' + 
+            (timeInfo.length ? ' <span style="color:var(--text2);font-size:11px">(' + timeInfo.join(' | ') + ')</span>' : '');
+        renderJobs();
+    } catch(e) {
+        document.getElementById('jobsList').innerHTML = `<div class="empty-state"><h3>Lỗi kết nối</h3><p>${e.message}</p></div>`;
+    }
+}
+
+function renderJobs() {
+    const list = document.getElementById('jobsList');
+    if (!allJobs.length) {
+        list.innerHTML = '<div class="empty-state"><h3>Không tìm thấy kết quả</h3><p>Thử điều chỉnh kỹ năng hoặc bỏ filter ngành nghề</p></div>';
+        document.getElementById('loadMore').style.display = 'none';
+        return;
+    }
+    list.innerHTML = allJobs.slice(0, displayCount).map((j,i) => jobCard(j,i)).join('');
+    document.getElementById('loadMore').style.display = displayCount < allJobs.length ? 'block' : 'none';
+}
+function loadMore() { displayCount += 5; renderJobs(); }
+
+async function fetchDistance(idx) {
+    const job = allJobs[idx];
+    if (!job || !lastCvData) return;
+    try {
+        const res = await fetch('/api/job-distance', {
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify({cv_data: lastCvData, job})
+        });
+        const data = await res.json();
+        if (!res.ok || data.error) {
+            alert(data.error || 'Không tính được khoảng cách');
+            return;
+        }
+        allJobs[idx].distance_km = data.distance_km;
+        if (allJobs[idx].score_breakdown && data.location_score !== undefined) {
+            allJobs[idx].score_breakdown.location = data.location_score;
+        }
+        renderJobs();
+    } catch (e) {
+        alert('Lỗi tính khoảng cách: ' + e.message);
+    }
+}
+
+function jobCard(job, idx) {
+    const score = job.match_score || 0;
+    const scoreClass = score >= 7 ? 'score-high' : score >= 4 ? 'score-mid' : 'score-low';
+    const scoreDisplay = typeof score === 'number' ? score.toFixed(1) : score;
+    const tags = parseTags(job.requirements_tags);
+    const bd = job.score_breakdown || {};
+    const llm = job.llm_scored ? '<span class="llm-badge scored">AI scored</span>' : '<span class="llm-badge pending">basic</span>';
+    const comment = job.comment ? `<div style="font-size:12px;color:var(--text2);margin-top:6px;font-style:italic;border-left:2px solid var(--primary);padding-left:8px">💬 ${esc(job.comment)}</div>` : '';
+    const canCalcDistance = lastCvData && (lastCvData.address || lastCvData.location);
+    const distInfo = job.distance_km ? `<span>🚗 ${job.distance_km} km</span>` :
+        (canCalcDistance ? `<button class="meta-action" onclick="fetchDistance(${idx})">Xem km</button>` : '');
+    const addrInfo = job.company_address ? `<span title="${esc(job.company_address)}">🏢 ${esc(job.company_address.substring(0,40))}${job.company_address.length>40?'...':''}</span>` : '';
+
+    let barsHtml = '';
+    DIMS.forEach(d => {
+        const v = bd[d] || 0;
+        const pct = (v / 10) * 100;
+        const color = v >= 7 ? 'var(--accent)' : v >= 4 ? '#f9ab00' : 'var(--warn)';
+        barsHtml += `<div class="dim-row"><span class="dim-name">${DIM_LABELS[d]||d}</span><div class="dim-bar"><div class="dim-fill" style="width:${pct}%;background:${color}"></div></div><span class="dim-val">${v}</span></div>`;
+    });
+
+    return `<div class="job-card">
+        <div class="job-top">
+            <div>
+                <h3 onclick="window.open('${esc(job.url||'')}','_blank')">${esc(job.title||'N/A')}</h3>
+                <div class="job-company">${esc(job.category||'')} ${llm}</div>
+            </div>
+            <div class="score-badge ${scoreClass}">${scoreDisplay}</div>
+        </div>
+        <div class="job-meta">
+            <span> ${esc((job.job_salary||'Thỏa thuận').substring(0,60))}</span>
+            <span> ${esc((job.job_location||'N/A').substring(0,50))}</span>
+            ${distInfo}
+            ${addrInfo}
+            <span> ${esc(job.deadline||'')}</span>
+        </div>
+        ${comment}
+        ${tags.length ? '<div class="job-tags">' + tags.slice(0,6).map(t=>'<span class="tag">'+esc(t)+'</span>').join('') + '</div>' : ''}
+        <span class="toggle-link" onclick="document.getElementById('bd-${idx}').classList.toggle('show')">Chi tiết điểm ▾</span>
+        <div class="breakdown" id="bd-${idx}">
+            ${barsHtml}
+            <div class="dim-row" style="font-weight:600;border-top:1px solid var(--border);padding-top:6px;margin-top:6px">
+                <span class="dim-name">Tổng</span><div class="dim-bar"><div class="dim-fill" style="width:${(score/10)*100}%;background:var(--primary)"></div></div><span class="dim-val">${scoreDisplay}</span>
+            </div>
+        </div>
+    </div>`;
+}
+function parseTags(t) { if (!t) return []; if (Array.isArray(t)) return t; return t.split(/[,;•\n]/).map(s=>s.trim()).filter(Boolean); }
+function esc(s) { const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+
+// ===== OVERLAY =====
+function showOverlay(t,s) { document.getElementById('overlayText').textContent=t; document.getElementById('overlaySubtext').textContent=s||''; document.getElementById('overlay').classList.add('show'); }
+function hideOverlay() { document.getElementById('overlay').classList.remove('show'); }
+</script>
+</body>
+</html>

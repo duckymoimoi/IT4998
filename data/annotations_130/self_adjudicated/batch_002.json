@@ -1,0 +1,134 @@
+{
+  "metadata": {
+    "batch": 2,
+    "method": "self_adjudication_by_codex_no_external_api_no_regex_scoring",
+    "source_pairs_file": "data/evaluation_pairs_1300_v2.json",
+    "source_annotations_dir": "data/annotations_130",
+    "high_disagreement_threshold": "max-min > 4 on any dimension",
+    "case_range": "21-40",
+    "total_cases_in_batch": 20,
+    "notes": "Scores are manually adjudicated from CV/JD content and the three model annotations. Original annotation files are not modified."
+  },
+  "cases": [
+    {
+      "pair_key": "bds_P2_f6238a52435180210acdd42e0ec67300_14",
+      "high_disagreement_dims": ["education_match"],
+      "final_scores": {"relevance_score": 4, "skills_match": 3, "experience_match": 3, "education_match": 3},
+      "adjudication_note": "CV có chút dịch vụ/kho nhưng thiếu sales logistics 4 năm, tiếng Anh/Trung và học vấn Cao đẳng."
+    },
+    {
+      "pair_key": "bds_P_393569e29b4b58bc0f81851017ed3cd8_5",
+      "high_disagreement_dims": ["experience_match"],
+      "final_scores": {"relevance_score": 3, "skills_match": 2, "experience_match": 5, "education_match": 5},
+      "adjudication_note": "Job không yêu cầu kinh nghiệm nhưng CV IT không liên quan ngân hàng/tư vấn tài chính; học vấn sai nhóm ngành yêu cầu."
+    },
+    {
+      "pair_key": "bds_P_3d70186b1b7186e76993b29dca7ae421_2",
+      "high_disagreement_dims": ["skills_match"],
+      "final_scores": {"relevance_score": 6, "skills_match": 5, "experience_match": 10, "education_match": 10},
+      "adjudication_note": "CV đúng ngành IT, có Python/JavaScript và 2 năm kinh nghiệm, nhưng thiếu Vue/FastAPI/database/cloud/Docker nên skills chỉ mức trung bình."
+    },
+    {
+      "pair_key": "bds_P_3ef4c70e843c8b027eb6f49cf3f4257e_1",
+      "high_disagreement_dims": ["education_match"],
+      "final_scores": {"relevance_score": 2, "skills_match": 1, "experience_match": 1, "education_match": 7},
+      "adjudication_note": "Bằng Đại học đạt bậc học chung, nhưng kỹ năng và kinh nghiệm IT không liên quan vận hành F&B 5+ năm."
+    },
+    {
+      "pair_key": "bds_P_b56466a49185c5e7ac3a46dce4c4f9c2_9",
+      "high_disagreement_dims": ["experience_match", "education_match"],
+      "final_scores": {"relevance_score": 2, "skills_match": 0, "experience_match": 2, "education_match": 7},
+      "adjudication_note": "JD gần như thiếu nội dung ngoài title HR; CV IT không có kỹ năng/kinh nghiệm HR, học vấn mặc định không phạt mạnh khi không nêu yêu cầu."
+    },
+    {
+      "pair_key": "bds_P_d040b13ab80f50ff495b8afd443c0f52_12",
+      "high_disagreement_dims": ["skills_match", "experience_match"],
+      "final_scores": {"relevance_score": 4, "skills_match": 3, "experience_match": 5, "education_match": 10},
+      "adjudication_note": "Có JavaScript và nền phần mềm nhưng thiếu React/Vue/Next/Nuxt và kinh nghiệm frontend 3+ năm."
+    },
+    {
+      "pair_key": "bds_P_d12916f218d2f899ccf9ed77e6566cec_15",
+      "high_disagreement_dims": ["education_match"],
+      "final_scores": {"relevance_score": 2, "skills_match": 1, "experience_match": 1, "education_match": 5},
+      "adjudication_note": "CV IT không phù hợp quản lý phòng khám/thẩm mỹ 5 năm; học vấn vượt bậc nhưng sai lĩnh vực chuyên môn."
+    },
+    {
+      "pair_key": "cskh_L1_21e374ac9c4191dfb45bdc896cc76ac5_12",
+      "high_disagreement_dims": ["experience_match"],
+      "final_scores": {"relevance_score": 5, "skills_match": 4, "experience_match": 3, "education_match": 7},
+      "adjudication_note": "CV có nền CSKH cơ bản, Excel/tiếng Anh, nhưng không có 1 năm telesales/tư vấn bán hàng như JD yêu cầu."
+    },
+    {
+      "pair_key": "cskh_L1_fadbf9fddd686b0aba832143a92a3355_9",
+      "high_disagreement_dims": ["experience_match"],
+      "final_scores": {"relevance_score": 6, "skills_match": 6, "experience_match": 4, "education_match": 8},
+      "adjudication_note": "Kỹ năng giao tiếp/Excel/nhóm khá phù hợp CSKH bệnh viện, nhưng thiếu tối thiểu 1 năm kinh nghiệm chuyên nghiệp."
+    },
+    {
+      "pair_key": "cskh_L3_124f4256f0d6a862038089b366463a3e_1",
+      "high_disagreement_dims": ["experience_match"],
+      "final_scores": {"relevance_score": 6, "skills_match": 6, "experience_match": 5, "education_match": 8},
+      "adjudication_note": "Có CSKH và tiếng Anh nhưng thiếu kiến thức phần mềm; 3 năm trưởng nhóm hơi overqualified cho job dưới 1 năm."
+    },
+    {
+      "pair_key": "cskh_L3_12dc6cb1ab0030d1747743ac523bbcce_6",
+      "high_disagreement_dims": ["experience_match"],
+      "final_scores": {"relevance_score": 5, "skills_match": 5, "experience_match": 5, "education_match": 8},
+      "adjudication_note": "Có CSKH/Excel/giao tiếp nhưng thiếu CRM/Salesforce/marketing automation; 3 năm vượt mức job dưới 1 năm."
+    },
+    {
+      "pair_key": "cskh_L3_af60ceb0acad1b2c513fc664c6dfadc9_2",
+      "high_disagreement_dims": ["experience_match"],
+      "final_scores": {"relevance_score": 6, "skills_match": 6, "experience_match": 5, "education_match": 8},
+      "adjudication_note": "Khớp CSKH, Excel và giao tiếp; field kỹ thuật có nhiễu, nhưng 3 năm vẫn hơi cao so với dưới 1 năm."
+    },
+    {
+      "pair_key": "cskh_L4_4161488f5c40c84bf2e9f82b1e698e49_9",
+      "high_disagreement_dims": ["experience_match"],
+      "final_scores": {"relevance_score": 6, "skills_match": 7, "experience_match": 4, "education_match": 8},
+      "adjudication_note": "Kỹ năng CSKH/Excel/tiếng Anh/logistics liên quan vận hành đơn hàng, nhưng 6 năm giám đốc là overqualified cho job không yêu cầu kinh nghiệm."
+    },
+    {
+      "pair_key": "cskh_L4_4f15c0759a7c8958a3d20e01ea0c6215_13",
+      "high_disagreement_dims": ["experience_match"],
+      "final_scores": {"relevance_score": 6, "skills_match": 6, "experience_match": 4, "education_match": 8},
+      "adjudication_note": "Có CSKH, Excel và tiếng Anh phù hợp học vụ/trung tâm, nhưng 6 năm giám đốc quá cao cho job không yêu cầu kinh nghiệm."
+    },
+    {
+      "pair_key": "cskh_L4_90c81ec8e7e2d0fde869ddf09b995492_8",
+      "high_disagreement_dims": ["experience_match"],
+      "final_scores": {"relevance_score": 7, "skills_match": 8, "experience_match": 4, "education_match": 7},
+      "adjudication_note": "Skills tiếng Anh/Excel/Call Center rất phù hợp, nhưng 6 năm giám đốc CSKH vẫn phải phạt overqualified cho job không yêu cầu kinh nghiệm."
+    },
+    {
+      "pair_key": "cskh_L4_af60ceb0acad1b2c513fc664c6dfadc9_3",
+      "high_disagreement_dims": ["experience_match"],
+      "final_scores": {"relevance_score": 6, "skills_match": 6, "experience_match": 4, "education_match": 8},
+      "adjudication_note": "Khớp giao tiếp, Excel và CSKH nhưng thiếu một số công cụ/office chi tiết; 6 năm vượt xa job dưới 1 năm."
+    },
+    {
+      "pair_key": "cskh_L4_d9477e1b11710b99d38f8afffebd047d_4",
+      "high_disagreement_dims": ["experience_match"],
+      "final_scores": {"relevance_score": 7, "skills_match": 7, "experience_match": 5, "education_match": 8},
+      "adjudication_note": "Kỹ năng CSKH/tiếng Anh/call center phù hợp, nhưng CV 6 năm quản lý vượt xa yêu cầu 1 năm nhân viên."
+    },
+    {
+      "pair_key": "cskh_L4b_124f4256f0d6a862038089b366463a3e_6",
+      "high_disagreement_dims": ["experience_match"],
+      "final_scores": {"relevance_score": 6, "skills_match": 7, "experience_match": 4, "education_match": 8},
+      "adjudication_note": "Có CSKH, tiếng Anh và kiến thức phần mềm liên quan, nhưng 7 năm giám đốc quá senior cho job hỗ trợ dưới 1 năm."
+    },
+    {
+      "pair_key": "cskh_L4b_526b6a5c136210bb26159bc9b387ce7c_12",
+      "high_disagreement_dims": ["experience_match"],
+      "final_scores": {"relevance_score": 5, "skills_match": 4, "experience_match": 4, "education_match": 8},
+      "adjudication_note": "Có CSKH/Excel/tiếng Anh nhưng thiếu tiếng Trung HSK4+ là yêu cầu lõi; 7 năm kinh nghiệm cũng overqualified."
+    },
+    {
+      "pair_key": "cskh_L4b_b41cb15e31e07b9c20c9f18fce0c36bf_13",
+      "high_disagreement_dims": ["experience_match"],
+      "final_scores": {"relevance_score": 6, "skills_match": 5, "experience_match": 4, "education_match": 8},
+      "adjudication_note": "Khớp CSKH/Excel/tiếng Anh một phần nhưng thiếu tiếng Trung HSK; 7 năm giám đốc bị phạt overqualified cho job không yêu cầu kinh nghiệm."
+    }
+  ]
+}

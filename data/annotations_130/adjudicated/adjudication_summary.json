@@ -1,0 +1,47 @@
+{
+  "metadata": {
+    "pairs_file": "data\\evaluation_pairs_1300_v2.json",
+    "annotation_dir": "data\\annotations_130",
+    "annotators": [
+      "cohere",
+      "gptoss",
+      "llama"
+    ],
+    "total_pairs": 1950,
+    "common_all_annotators": 1512,
+    "high_disagreement_threshold": "max-min > 4 on any dimension",
+    "high_disagreement_cases": 357,
+    "note": "Original annotation files are not modified. Use final_scores from this file as adjudicated labels."
+  },
+  "dimension_high_counts": {
+    "skills_match": 99,
+    "experience_match": 228,
+    "relevance_score": 16,
+    "education_match": 81
+  },
+  "category_high_counts": {
+    "Bất động sản": 27,
+    "Chăm sóc khách hàng": 23,
+    "Giáo dục": 27,
+    "Hành chính nhân sự": 24,
+    "IT": 53,
+    "Kỹ sư xây dựng": 44,
+    "Kế toán": 22,
+    "Lao động phổ thông": 61,
+    "Marketing": 36,
+    "Ngân hàng": 36,
+    "Nhân viên kinh doanh": 4
+  },
+  "level_high_counts": {
+    "L1": 67,
+    "L2": 8,
+    "L2b": 25,
+    "L3": 30,
+    "L3b": 28,
+    "L4": 45,
+    "L4b": 34,
+    "P2": 49,
+    "P": 59,
+    "L1b": 12
+  }
+}

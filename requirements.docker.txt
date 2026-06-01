@@ -1,0 +1,31 @@
+# PyTorch CUDA 12.8 (extra-index để không chặn PyPI)
+--extra-index-url https://download.pytorch.org/whl/cu128
+torch==2.11.0+cu128
+torchaudio==2.11.0+cu128
+torchvision==0.26.0+cu128
+
+# ML / NLP
+sentence-transformers>=5.0.0
+transformers>=4.40.0
+peft>=0.11.0
+scipy>=1.10.0
+
+# Data
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Elasticsearch
+elasticsearch>=8.0.0
+
+# Web App
+flask>=3.0.0
+groq>=0.4.0
+geopy>=2.4.0
+markitdown[all]
+
+# Utilities
+tqdm
+requests
+beautifulsoup4
+python-dotenv
+

@@ -1,0 +1,6083 @@
+{
+  "metadata": {
+    "source": "data/topcv_balanced_1300.csv",
+    "n_categories": 13,
+    "n_jobs": 1300,
+    "description": "Skill profiles extracted from 1300 balanced jobs using TF-IDF ranking"
+  },
+  "profiles": {
+    "Bất động sản": {
+      "category": "Bất động sản",
+      "category_key": "bat-dong-san",
+      "n_jobs": 100,
+      "tech_skills_tfidf": [
+        {
+          "skill": "Sales bất động sản/Môi giới bất động sản",
+          "tfidf": 0.0721
+        },
+        {
+          "skill": "B2C",
+          "tfidf": 0.0222
+        },
+        {
+          "skill": "Direct Sales",
+          "tfidf": 0.02
+        },
+        {
+          "skill": "B2B",
+          "tfidf": 0.0183
+        },
+        {
+          "skill": "Quản lý dự án bất động sản",
+          "tfidf": 0.0159
+        },
+        {
+          "skill": "Telesales",
+          "tfidf": 0.015
+        },
+        {
+          "skill": "Bảo hiểm",
+          "tfidf": 0.0131
+        },
+        {
+          "skill": "Giám đốc dự án bất động sản",
+          "tfidf": 0.0124
+        },
+        {
+          "skill": "Quản lý vận hành bất động sản khác",
+          "tfidf": 0.0119
+        },
+        {
+          "skill": "Digital Marketing",
+          "tfidf": 0.01
+        },
+        {
+          "skill": "After Effects",
+          "tfidf": 0.0093
+        },
+        {
+          "skill": "Online Sales",
+          "tfidf": 0.0088
+        },
+        {
+          "skill": "Ngân hàng",
+          "tfidf": 0.0067
+        },
+        {
+          "skill": "Sales Manager/Trưởng phòng kinh doanh",
+          "tfidf": 0.0062
+        },
+        {
+          "skill": "Adobe Premiere",
+          "tfidf": 0.0062
+        },
+        {
+          "skill": "Xây dựng",
+          "tfidf": 0.0061
+        },
+        {
+          "skill": "Bán hàng tại cửa hàng/showroom",
+          "tfidf": 0.0051
+        },
+        {
+          "skill": "Illustrator",
+          "tfidf": 0.005
+        },
+        {
+          "skill": "Adobe Photoshop",
+          "tfidf": 0.005
+        },
+        {
+          "skill": "CapCut",
+          "tfidf": 0.004
+        },
+        {
+          "skill": "Adobe (Premiere",
+          "tfidf": 0.004
+        },
+        {
+          "skill": "Capcut)",
+          "tfidf": 0.004
+        },
+        {
+          "skill": "Sales bất động sản",
+          "tfidf": 0.004
+        },
+        {
+          "skill": "Môi giới bất động sản",
+          "tfidf": 0.004
+        },
+        {
+          "skill": "Pocket",
+          "tfidf": 0.004
+        },
+        {
+          "skill": "Máy quay KTS",
+          "tfidf": 0.004
+        },
+        {
+          "skill": "Gimbal",
+          "tfidf": 0.004
+        },
+        {
+          "skill": "Bay Flycam",
+          "tfidf": 0.004
+        },
+        {
+          "skill": "CapCut (hoặc tương đương)",
+          "tfidf": 0.004
+        },
+        {
+          "skill": "Photoshop (PTS)",
+          "tfidf": 0.004
+        }
+      ],
+      "tech_skills_freq": [
+        {
+          "skill": "Bất động sản",
+          "count": 57
+        },
+        {
+          "skill": "Sales bất động sản/Môi giới bất động sản",
+          "count": 44
+        },
+        {
+          "skill": "B2C",
+          "count": 40
+        },
+        {
+          "skill": "Direct Sales",
+          "count": 36
+        },
+        {
+          "skill": "B2B",
+          "count": 33
+        },
+        {
+          "skill": "Telesales",
+          "count": 27
+        },
+        {
+          "skill": "Online Sales",
+          "count": 25
+        },
+        {
+          "skill": "Excel",
+          "count": 16
+        },
+        {
+          "skill": "Tài chính",
+          "count": 13
+        },
+        {
+          "skill": "Ngân hàng",
+          "count": 12
+        },
+        {
+          "skill": "AutoCAD",
+          "count": 12
+        },
+        {
+          "skill": "Python",
+          "count": 12
+        },
+        {
+          "skill": "SAP",
+          "count": 12
+        },
+        {
+          "skill": "Xây dựng",
+          "count": 11
+        },
+        {
+          "skill": "Bảo hiểm",
+          "count": 8
+        },
+        {
+          "skill": "Marketing / Quảng cáo",
+          "count": 7
+        },
+        {
+          "skill": "B2G",
+          "count": 5
+        },
+        {
+          "skill": "Bán hàng tại cửa hàng/showroom",
+          "count": 5
+        },
+        {
+          "skill": "Digital Marketing",
+          "count": 4
+        },
+        {
+          "skill": "Quản lý dự án bất động sản",
+          "count": 4
+        },
+        {
+          "skill": "Giám đốc dự án bất động sản",
+          "count": 4
+        },
+        {
+          "skill": "After Effects",
+          "count": 3
+        },
+        {
+          "skill": "Quản lý vận hành bất động sản khác",
+          "count": 3
+        },
+        {
+          "skill": "Illustrator",
+          "count": 2
+        },
+        {
+          "skill": "Thương mại điện tử",
+          "count": 2
+        },
+        {
+          "skill": "CapCut",
+          "count": 2
+        },
+        {
+          "skill": "Sales Manager/Trưởng phòng kinh doanh",
+          "count": 2
+        },
+        {
+          "skill": "Adobe Premiere",
+          "count": 2
+        },
+        {
+          "skill": "Adobe Photoshop",
+          "count": 2
+        },
+        {
+          "skill": "Luật / Pháp chế",
+          "count": 2
+        }
+      ],
+      "soft_skills_tfidf": [
+        {
+          "skill": "Thành thạo tư duy logic",
+          "tfidf": 0.0506
+        },
+        {
+          "skill": "chi tiết",
+          "tfidf": 0.0506
+        },
+        {
+          "skill": "Hỗ trợ team sale chủ động",
+          "tfidf": 0.0506
+        },
+        {
+          "skill": "Xử lý công việc đa nhiệm và chịu áp lực cao",
+          "tfidf": 0.0506
+        },
+        {
+          "skill": "đàm phán tốt",
+          "tfidf": 0.0506
+        },
+        {
+          "skill": "có tinh thần cầu tiến",
+          "tfidf": 0.0506
+        },
+        {
+          "skill": "Giao tiếp và thương lượng tốt",
+          "tfidf": 0.0506
+        },
+        {
+          "skill": "Kỹ năng xử lý từ chối",
+          "tfidf": 0.0506
+        },
+        {
+          "skill": "Chính chắn",
+          "tfidf": 0.0506
+        },
+        {
+          "skill": "Khéo léo",
+          "tfidf": 0.0506
+        },
+        {
+          "skill": "Thích nghi nhanh",
+          "tfidf": 0.0506
+        },
+        {
+          "skill": "Cầu thị",
+          "tfidf": 0.0506
+        },
+        {
+          "skill": "Kỹ năng chăm sóc khách hàng",
+          "tfidf": 0.0506
+        },
+        {
+          "skill": "Khả năng thiết lập mục tiêu",
+          "tfidf": 0.0506
+        },
+        {
+          "skill": "Khả năng đàm phán",
+          "tfidf": 0.0506
+        }
+      ],
+      "soft_skills_freq": [
+        {
+          "skill": "Chủ động",
+          "count": 3
+        },
+        {
+          "skill": "Kỹ năng giao tiếp",
+          "count": 2
+        },
+        {
+          "skill": "Thành thạo tư duy logic",
+          "count": 1
+        },
+        {
+          "skill": "cẩn thận",
+          "count": 1
+        },
+        {
+          "skill": "chi tiết",
+          "count": 1
+        },
+        {
+          "skill": "Giao tiếp tốt",
+          "count": 1
+        },
+        {
+          "skill": "Hỗ trợ team sale chủ động",
+          "count": 1
+        },
+        {
+          "skill": "Xử lý công việc đa nhiệm và chịu áp lực cao",
+          "count": 1
+        },
+        {
+          "skill": "đàm phán tốt",
+          "count": 1
+        },
+        {
+          "skill": "nhiệt huyết",
+          "count": 1
+        },
+        {
+          "skill": "có tinh thần cầu tiến",
+          "count": 1
+        },
+        {
+          "skill": "Kỹ năng giao tiếp tốt",
+          "count": 1
+        },
+        {
+          "skill": "nhanh nhẹn",
+          "count": 1
+        },
+        {
+          "skill": "cầu tiến",
+          "count": 1
+        },
+        {
+          "skill": "Kỹ năng bán hàng",
+          "count": 1
+        }
+      ],
+      "requirements_tags": [
+        {
+          "tag": "sales bất động sản/môi giới bất động sản",
+          "tfidf": 0.0805
+        },
+        {
+          "tag": "chuyên môn bất động sản khác",
+          "tfidf": 0.0347
+        },
+        {
+          "tag": "quản lý vận hành bất động sản khác",
+          "tfidf": 0.026
+        },
+        {
+          "tag": "quản lý dự án bất động sản",
+          "tfidf": 0.0217
+        },
+        {
+          "tag": "giám đốc dự án bất động sản",
+          "tfidf": 0.017
+        },
+        {
+          "tag": "b2c",
+          "tfidf": 0.0166
+        },
+        {
+          "tag": "telesales",
+          "tfidf": 0.0164
+        },
+        {
+          "tag": "direct sales",
+          "tfidf": 0.0139
+        },
+        {
+          "tag": "b2b",
+          "tfidf": 0.0135
+        },
+        {
+          "tag": "bảo hiểm",
+          "tfidf": 0.0115
+        },
+        {
+          "tag": "online sales",
+          "tfidf": 0.0097
+        },
+        {
+          "tag": "digital marketing",
+          "tfidf": 0.0082
+        },
+        {
+          "tag": "ngân hàng",
+          "tfidf": 0.0073
+        },
+        {
+          "tag": "bán hàng tại cửa hàng/showroom",
+          "tfidf": 0.0068
+        },
+        {
+          "tag": "sales manager/trưởng phòng kinh doanh",
+          "tfidf": 0.0068
+        },
+        {
+          "tag": "sales admin/sales support/sales associate",
+          "tfidf": 0.0055
+        },
+        {
+          "tag": "thiết kế đồ họa (graphic design)",
+          "tfidf": 0.0055
+        },
+        {
+          "tag": "xây dựng",
+          "tfidf": 0.005
+        },
+        {
+          "tag": "sales bất động sản khác",
+          "tfidf": 0.0043
+        },
+        {
+          "tag": "biên tập viên",
+          "tfidf": 0.0043
+        }
+      ],
+      "experience_distribution": {
+        "1 năm": 19,
+        "Dưới 1 năm": 18,
+        "Không yêu cầu": 18,
+        "3 năm": 16,
+        "5 năm": 14,
+        "Trên 5 năm": 12,
+        "4 năm": 3
+      },
+      "education_levels": {
+        "Đại học": 38,
+        "Cao đẳng": 29,
+        "Trung học": 16,
+        "Trung cấp": 14,
+        "Không yêu cầu": 2
+      }
+    },
+    "Chăm sóc khách hàng": {
+      "category": "Chăm sóc khách hàng",
+      "category_key": "cham-soc-khach-hang",
+      "n_jobs": 100,
+      "tech_skills_tfidf": [
+        {
+          "skill": "Chăm sóc khách hàng",
+          "tfidf": 0.1416
+        },
+        {
+          "skill": "Call Center/Trực tổng đài",
+          "tfidf": 0.0167
+        },
+        {
+          "skill": "teamwork",
+          "tfidf": 0.0155
+        },
+        {
+          "skill": "Logistic / Vận tải",
+          "tfidf": 0.0153
+        },
+        {
+          "skill": "Tiếng Trung HSK 4",
+          "tfidf": 0.0104
+        },
+        {
+          "skill": "giao tiếp",
+          "tfidf": 0.0101
+        },
+        {
+          "skill": "Xuất nhập khẩu / Hải quan",
+          "tfidf": 0.0101
+        },
+        {
+          "skill": "Quan hệ công chúng",
+          "tfidf": 0.0083
+        },
+        {
+          "skill": "Chăm sóc sức khỏe / Làm đẹp",
+          "tfidf": 0.0069
+        },
+        {
+          "skill": "Nhà hàng / Khách sạn",
+          "tfidf": 0.0068
+        },
+        {
+          "skill": "Customer Experience (Trải nghiệm khách hàng)",
+          "tfidf": 0.0066
+        },
+        {
+          "skill": "Tiếng Anh IELTS 6.5",
+          "tfidf": 0.0066
+        },
+        {
+          "skill": "Kiến thức về phần mềm",
+          "tfidf": 0.0066
+        },
+        {
+          "skill": "Tiếng anh giao tiếp tốt",
+          "tfidf": 0.0066
+        },
+        {
+          "skill": "Kỹ năng cơ bản Excel",
+          "tfidf": 0.0066
+        },
+        {
+          "skill": "Tiếng Trung HSK 5",
+          "tfidf": 0.0066
+        },
+        {
+          "skill": "Tiếng Trung HSK 6",
+          "tfidf": 0.0066
+        },
+        {
+          "skill": "tiếng Trung",
+          "tfidf": 0.0066
+        },
+        {
+          "skill": "Google Docs / Excel",
+          "tfidf": 0.0066
+        },
+        {
+          "skill": "Facebook",
+          "tfidf": 0.0066
+        },
+        {
+          "skill": "các nền tảng chat và mạng xã hội",
+          "tfidf": 0.0066
+        },
+        {
+          "skill": "Chứng từ xuất nhập khẩu",
+          "tfidf": 0.0066
+        },
+        {
+          "skill": "Sales Nhà hàng/Khách sạn/Du lịch khác",
+          "tfidf": 0.0066
+        },
+        {
+          "skill": "Airbridge",
+          "tfidf": 0.0066
+        },
+        {
+          "skill": "quản lý web",
+          "tfidf": 0.0066
+        },
+        {
+          "skill": "Lắng nghe và giải quyết vấn đề",
+          "tfidf": 0.0066
+        },
+        {
+          "skill": "Kỹ năng sử dụng máy tính và phần mềm văn phòng",
+          "tfidf": 0.0066
+        },
+        {
+          "skill": "Quy hoạch bất động sản",
+          "tfidf": 0.0066
+        },
+        {
+          "skill": "Kỹ sư hóa học",
+          "tfidf": 0.0066
+        },
+        {
+          "skill": "Ms Word",
+          "tfidf": 0.0066
+        }
+      ],
+      "tech_skills_freq": [
+        {
+          "skill": "Chăm sóc khách hàng",
+          "count": 34
+        },
+        {
+          "skill": "Excel",
+          "count": 33
+        },
+        {
+          "skill": "AutoCAD",
+          "count": 26
+        },
+        {
+          "skill": "Python",
+          "count": 25
+        },
+        {
+          "skill": "SAP",
+          "count": 25
+        },
+        {
+          "skill": "Logistic / Vận tải",
+          "count": 7
+        },
+        {
+          "skill": "Tài chính",
+          "count": 6
+        },
+        {
+          "skill": "Ngân hàng",
+          "count": 5
+        },
+        {
+          "skill": "Bán lẻ - Hàng tiêu dùng - FMCG",
+          "count": 4
+        },
+        {
+          "skill": "Y tế / Dược phẩm",
+          "count": 4
+        },
+        {
+          "skill": "Chăm sóc sức khỏe / Làm đẹp",
+          "count": 4
+        },
+        {
+          "skill": "Call Center/Trực tổng đài",
+          "count": 4
+        },
+        {
+          "skill": "giao tiếp",
+          "count": 3
+        },
+        {
+          "skill": "teamwork",
+          "count": 3
+        },
+        {
+          "skill": "Bất động sản",
+          "count": 3
+        },
+        {
+          "skill": "Xây dựng",
+          "count": 3
+        },
+        {
+          "skill": "Thương mại điện tử",
+          "count": 3
+        },
+        {
+          "skill": "Xuất nhập khẩu / Hải quan",
+          "count": 3
+        },
+        {
+          "skill": "Marketing / Quảng cáo",
+          "count": 3
+        },
+        {
+          "skill": "Thực phẩm / Đồ uống",
+          "count": 2
+        },
+        {
+          "skill": "Cơ khí / Tự động hóa",
+          "count": 2
+        },
+        {
+          "skill": "Tiếng Trung HSK 4",
+          "count": 2
+        },
+        {
+          "skill": "Bảo hiểm",
+          "count": 2
+        },
+        {
+          "skill": "Du lịch",
+          "count": 2
+        },
+        {
+          "skill": "Nhà hàng / Khách sạn",
+          "count": 2
+        },
+        {
+          "skill": "Quan hệ công chúng",
+          "count": 2
+        },
+        {
+          "skill": "B2B",
+          "count": 2
+        },
+        {
+          "skill": "B2C",
+          "count": 2
+        },
+        {
+          "skill": "Kế toán",
+          "count": 2
+        },
+        {
+          "skill": "Kiểm toán",
+          "count": 2
+        }
+      ],
+      "soft_skills_tfidf": [
+        {
+          "skill": "lắng nghe",
+          "tfidf": 0.0337
+        },
+        {
+          "skill": "Tinh thần hợp tác tốt",
+          "tfidf": 0.0337
+        },
+        {
+          "skill": "Nhiệt tình",
+          "tfidf": 0.0279
+        },
+        {
+          "skill": "Kỹ năng giao tiếp",
+          "tfidf": 0.0219
+        },
+        {
+          "skill": "Chịu được áp lực công việc",
+          "tfidf": 0.0212
+        },
+        {
+          "skill": "Có trách nhiệm",
+          "tfidf": 0.0212
+        },
+        {
+          "skill": "Nhanh nhẹn",
+          "tfidf": 0.0209
+        },
+        {
+          "skill": "giao tiếp tốt",
+          "tfidf": 0.0199
+        },
+        {
+          "skill": "tự tin",
+          "tfidf": 0.0172
+        },
+        {
+          "skill": "chủ động trong công việc",
+          "tfidf": 0.0169
+        },
+        {
+          "skill": "Lắng nghe và xử lý tình huống nhanh nhạy",
+          "tfidf": 0.0169
+        },
+        {
+          "skill": "Tính chủ động",
+          "tfidf": 0.0169
+        },
+        {
+          "skill": "Khả năng giao tiếp tốt: dễ hiểu",
+          "tfidf": 0.0169
+        },
+        {
+          "skill": "lưu loát",
+          "tfidf": 0.0169
+        },
+        {
+          "skill": "trôi chảy",
+          "tfidf": 0.0169
+        }
+      ],
+      "soft_skills_freq": [
+        {
+          "skill": "giao tiếp",
+          "count": 8
+        },
+        {
+          "skill": "teamwork",
+          "count": 8
+        },
+        {
+          "skill": "giao tiếp tốt",
+          "count": 6
+        },
+        {
+          "skill": "Kỹ năng giao tiếp",
+          "count": 5
+        },
+        {
+          "skill": "Nhiệt tình",
+          "count": 4
+        },
+        {
+          "skill": "Nhanh nhẹn",
+          "count": 3
+        },
+        {
+          "skill": "Kỹ năng giao tiếp tốt",
+          "count": 3
+        },
+        {
+          "skill": "tự tin",
+          "count": 2
+        },
+        {
+          "skill": "Chịu được áp lực công việc",
+          "count": 2
+        },
+        {
+          "skill": "lắng nghe",
+          "count": 2
+        },
+        {
+          "skill": "Có trách nhiệm",
+          "count": 2
+        },
+        {
+          "skill": "Tinh thần hợp tác tốt",
+          "count": 2
+        },
+        {
+          "skill": "trung thực",
+          "count": 2
+        },
+        {
+          "skill": "chủ động trong công việc",
+          "count": 1
+        },
+        {
+          "skill": "Lắng nghe và xử lý tình huống nhanh nhạy",
+          "count": 1
+        }
+      ],
+      "requirements_tags": [
+        {
+          "tag": "chăm sóc khách hàng",
+          "tfidf": 0.3582
+        },
+        {
+          "tag": "dịch vụ khách hàng/chăm sóc khách hàng khác",
+          "tfidf": 0.0289
+        },
+        {
+          "tag": "call center/trực tổng đài",
+          "tfidf": 0.0289
+        },
+        {
+          "tag": "logistic / vận tải",
+          "tfidf": 0.0273
+        },
+        {
+          "tag": "quan hệ công chúng",
+          "tfidf": 0.0231
+        },
+        {
+          "tag": "xuất nhập khẩu / hải quan",
+          "tfidf": 0.0187
+        },
+        {
+          "tag": "chăm sóc sức khỏe / làm đẹp",
+          "tfidf": 0.0144
+        },
+        {
+          "tag": "nhà hàng / khách sạn",
+          "tfidf": 0.0095
+        },
+        {
+          "tag": "customer experience (trải nghiệm khách hàng)",
+          "tfidf": 0.0092
+        },
+        {
+          "tag": "chứng từ xuất nhập khẩu",
+          "tfidf": 0.0092
+        },
+        {
+          "tag": "sales nhà hàng/khách sạn/du lịch khác",
+          "tfidf": 0.0092
+        },
+        {
+          "tag": "quy hoạch bất động sản",
+          "tfidf": 0.0092
+        },
+        {
+          "tag": "kỹ sư hóa học",
+          "tfidf": 0.0092
+        },
+        {
+          "tag": "y tế / dược phẩm",
+          "tfidf": 0.0082
+        },
+        {
+          "tag": "du lịch",
+          "tfidf": 0.0076
+        },
+        {
+          "tag": "nông lâm ngư nghiệp",
+          "tfidf": 0.0072
+        },
+        {
+          "tag": "chuyên môn dịch vụ khách hàng/vận hành khác",
+          "tfidf": 0.0072
+        },
+        {
+          "tag": "chăm sóc/hỗ trợ học viên",
+          "tfidf": 0.0072
+        },
+        {
+          "tag": "tư vấn nha khoa",
+          "tfidf": 0.0072
+        },
+        {
+          "tag": "giám đốc dự án bất động sản",
+          "tfidf": 0.0072
+        }
+      ],
+      "experience_distribution": {
+        "1 năm": 31,
+        "Dưới 1 năm": 26,
+        "Không yêu cầu": 24,
+        "2 năm": 10,
+        "5 năm": 3,
+        "Trên 5 năm": 3,
+        "3 năm": 2,
+        "4 năm": 1
+      },
+      "education_levels": {
+        "Cao đẳng": 38,
+        "Đại học": 23,
+        "Trung học": 20,
+        "Trung cấp": 17
+      }
+    },
+    "Giáo dục": {
+      "category": "Giáo dục",
+      "category_key": "giao-duc",
+      "n_jobs": 100,
+      "tech_skills_tfidf": [
+        {
+          "skill": "Sales Giáo dục/Khoá học khác",
+          "tfidf": 0.0226
+        },
+        {
+          "skill": "Giáo dục / Đào tạo",
+          "tfidf": 0.0161
+        },
+        {
+          "skill": "Tư vấn tuyển sinh/khoá học",
+          "tfidf": 0.015
+        },
+        {
+          "skill": "IELTS",
+          "tfidf": 0.0144
+        },
+        {
+          "skill": "Nhân sự",
+          "tfidf": 0.0123
+        },
+        {
+          "skill": "tháng",
+          "tfidf": 0.0096
+        },
+        {
+          "skill": "quý",
+          "tfidf": 0.0096
+        },
+        {
+          "skill": "năm",
+          "tfidf": 0.0096
+        },
+        {
+          "skill": "đột xuất)",
+          "tfidf": 0.0096
+        },
+        {
+          "skill": "Direct Sales",
+          "tfidf": 0.0081
+        },
+        {
+          "skill": "PowerPoint",
+          "tfidf": 0.0079
+        },
+        {
+          "skill": "Excel)",
+          "tfidf": 0.0075
+        },
+        {
+          "skill": "Tiếng Anh đọc hiểu",
+          "tfidf": 0.0075
+        },
+        {
+          "skill": "B2B",
+          "tfidf": 0.0067
+        },
+        {
+          "skill": "B2C",
+          "tfidf": 0.0061
+        },
+        {
+          "skill": "Tư vấn du học/định cư",
+          "tfidf": 0.006
+        },
+        {
+          "skill": "Digital Marketing",
+          "tfidf": 0.006
+        },
+        {
+          "skill": "Kỹ thuật viên lắp đặt",
+          "tfidf": 0.0048
+        },
+        {
+          "skill": "Google Classroom",
+          "tfidf": 0.0048
+        },
+        {
+          "skill": "Sửa chữa/Bảo trì điện tử/viễn thông",
+          "tfidf": 0.0048
+        },
+        {
+          "skill": "thể hiện trong mô tả công việc",
+          "tfidf": 0.0048
+        },
+        {
+          "skill": "Huấn luyện viên Yoga",
+          "tfidf": 0.0048
+        },
+        {
+          "skill": "các phần mềm kỹ thuật",
+          "tfidf": 0.0048
+        },
+        {
+          "skill": "ứng dụng",
+          "tfidf": 0.0048
+        },
+        {
+          "skill": "Tiếng Trung Giao tiếp cơ bản",
+          "tfidf": 0.0048
+        },
+        {
+          "skill": "Cyber Security",
+          "tfidf": 0.0048
+        },
+        {
+          "skill": "e-learning tools",
+          "tfidf": 0.0048
+        },
+        {
+          "skill": "data literacy (MAPS/LMS)",
+          "tfidf": 0.0048
+        },
+        {
+          "skill": "storytelling bằng dữ liệu",
+          "tfidf": 0.0048
+        },
+        {
+          "skill": "workshop facilitation",
+          "tfidf": 0.0048
+        }
+      ],
+      "tech_skills_freq": [
+        {
+          "skill": "Excel",
+          "count": 31
+        },
+        {
+          "skill": "AutoCAD",
+          "count": 24
+        },
+        {
+          "skill": "Giáo dục / Đào tạo",
+          "count": 24
+        },
+        {
+          "skill": "Python",
+          "count": 23
+        },
+        {
+          "skill": "SAP",
+          "count": 22
+        },
+        {
+          "skill": "Direct Sales",
+          "count": 12
+        },
+        {
+          "skill": "B2B",
+          "count": 10
+        },
+        {
+          "skill": "B2C",
+          "count": 9
+        },
+        {
+          "skill": "Marketing / Quảng cáo",
+          "count": 8
+        },
+        {
+          "skill": "Sales Giáo dục/Khoá học khác",
+          "count": 6
+        },
+        {
+          "skill": "Online Sales",
+          "count": 6
+        },
+        {
+          "skill": "Telesales",
+          "count": 6
+        },
+        {
+          "skill": "PowerPoint",
+          "count": 5
+        },
+        {
+          "skill": "Nhân sự",
+          "count": 5
+        },
+        {
+          "skill": "Tư vấn tuyển sinh/khoá học",
+          "count": 4
+        },
+        {
+          "skill": "Word",
+          "count": 3
+        },
+        {
+          "skill": "Microsoft Office",
+          "count": 3
+        },
+        {
+          "skill": "IELTS",
+          "count": 3
+        },
+        {
+          "skill": "IT - Phần mềm",
+          "count": 3
+        },
+        {
+          "skill": "Xây dựng",
+          "count": 3
+        },
+        {
+          "skill": "B2G",
+          "count": 3
+        },
+        {
+          "skill": "Điện / Điện tử / Điện lạnh",
+          "count": 2
+        },
+        {
+          "skill": "Cơ khí / Tự động hóa",
+          "count": 2
+        },
+        {
+          "skill": "Sales bất động sản/Môi giới bất động sản",
+          "count": 2
+        },
+        {
+          "skill": "Bất động sản",
+          "count": 2
+        },
+        {
+          "skill": "Bán hàng tại cửa hàng/showroom",
+          "count": 2
+        },
+        {
+          "skill": "Kiểm toán",
+          "count": 2
+        },
+        {
+          "skill": "Excel)",
+          "count": 2
+        },
+        {
+          "skill": "Tư vấn du học/định cư",
+          "count": 2
+        },
+        {
+          "skill": "Tiếng Anh đọc hiểu",
+          "count": 2
+        }
+      ],
+      "soft_skills_tfidf": [
+        {
+          "skill": "Chăm chỉ",
+          "tfidf": 0.0327
+        },
+        {
+          "skill": "Hiểu biết về tạo tin nhắn hấp dẫn người đọc",
+          "tfidf": 0.026
+        },
+        {
+          "skill": "Nghệ thuật giao tiếp",
+          "tfidf": 0.026
+        },
+        {
+          "skill": "growth mindset",
+          "tfidf": 0.026
+        },
+        {
+          "skill": "responsibility",
+          "tfidf": 0.026
+        },
+        {
+          "skill": "patience",
+          "tfidf": 0.026
+        },
+        {
+          "skill": "respect for data",
+          "tfidf": 0.026
+        },
+        {
+          "skill": "willingness to update technology",
+          "tfidf": 0.026
+        },
+        {
+          "skill": "Trách nhiệm",
+          "tfidf": 0.026
+        },
+        {
+          "skill": "Giao tiếp & Kết nối tốt",
+          "tfidf": 0.026
+        },
+        {
+          "skill": "Lập kế hoạch & Triển khai công việc hiệu quả",
+          "tfidf": 0.026
+        },
+        {
+          "skill": "MC cơ bản và dẫn dắt sự kiện",
+          "tfidf": 0.026
+        },
+        {
+          "skill": "Tâm thế Tích cực - Chủ động",
+          "tfidf": 0.026
+        },
+        {
+          "skill": "tư duy Cởi mở & Sáng tạo",
+          "tfidf": 0.026
+        },
+        {
+          "skill": "Tỉ mỉ",
+          "tfidf": 0.026
+        }
+      ],
+      "soft_skills_freq": [
+        {
+          "skill": "teamwork",
+          "count": 7
+        },
+        {
+          "skill": "giao tiếp",
+          "count": 6
+        },
+        {
+          "skill": "Giao tiếp tốt",
+          "count": 3
+        },
+        {
+          "skill": "Trung thực",
+          "count": 2
+        },
+        {
+          "skill": "Chăm chỉ",
+          "count": 2
+        },
+        {
+          "skill": "Ưu tiên các bạn sinh viên đi làm hè",
+          "count": 1
+        },
+        {
+          "skill": "ĐAM MÊ NHIỆT TÌNH NHẮN TIN",
+          "count": 1
+        },
+        {
+          "skill": "CHAT",
+          "count": 1
+        },
+        {
+          "skill": "TRÒ CHUYỆNG",
+          "count": 1
+        },
+        {
+          "skill": "Thành thạo Facebook",
+          "count": 1
+        },
+        {
+          "skill": "Zalo",
+          "count": 1
+        },
+        {
+          "skill": "Có khiếu tương tác",
+          "count": 1
+        },
+        {
+          "skill": "Hiểu biết về tạo tin nhắn hấp dẫn người đọc",
+          "count": 1
+        },
+        {
+          "skill": "Nghệ thuật giao tiếp",
+          "count": 1
+        },
+        {
+          "skill": "growth mindset",
+          "count": 1
+        }
+      ],
+      "requirements_tags": [
+        {
+          "tag": "giáo viên tiếng anh",
+          "tfidf": 0.0838
+        },
+        {
+          "tag": "giáo dục / đào tạo",
+          "tfidf": 0.045
+        },
+        {
+          "tag": "đào tạo",
+          "tfidf": 0.044
+        },
+        {
+          "tag": "tư vấn tuyển sinh/khoá học",
+          "tfidf": 0.0357
+        },
+        {
+          "tag": "sales giáo dục/khoá học khác",
+          "tfidf": 0.0328
+        },
+        {
+          "tag": "tư vấn du học/định cư",
+          "tfidf": 0.0176
+        },
+        {
+          "tag": "giáo viên tiếng nhật",
+          "tfidf": 0.014
+        },
+        {
+          "tag": "quản lý chất lượng giáo dục",
+          "tfidf": 0.014
+        },
+        {
+          "tag": "phát triển học liệu/thiết kế khóa học",
+          "tfidf": 0.014
+        },
+        {
+          "tag": "giáo viên toán",
+          "tfidf": 0.014
+        },
+        {
+          "tag": "nhân sự",
+          "tfidf": 0.0139
+        },
+        {
+          "tag": "b2c",
+          "tfidf": 0.0112
+        },
+        {
+          "tag": "chăm sóc/hỗ trợ học viên",
+          "tfidf": 0.0109
+        },
+        {
+          "tag": "direct sales",
+          "tfidf": 0.0106
+        },
+        {
+          "tag": "telesales",
+          "tfidf": 0.0098
+        },
+        {
+          "tag": "digital marketing",
+          "tfidf": 0.0088
+        },
+        {
+          "tag": "b2b",
+          "tfidf": 0.0075
+        },
+        {
+          "tag": "tuyển dụng",
+          "tfidf": 0.0071
+        },
+        {
+          "tag": "thuế",
+          "tfidf": 0.0071
+        },
+        {
+          "tag": "kỹ thuật viên lắp đặt",
+          "tfidf": 0.007
+        }
+      ],
+      "experience_distribution": {
+        "Dưới 1 năm": 19,
+        "Không yêu cầu": 17,
+        "2 năm": 17,
+        "3 năm": 16,
+        "5 năm": 11,
+        "Trên 5 năm": 11,
+        "4 năm": 9
+      },
+      "education_levels": {
+        "Đại học": 51,
+        "Cao đẳng": 30,
+        "Trung cấp": 12,
+        "Trung học": 6
+      }
+    },
+    "Hành chính nhân sự": {
+      "category": "Hành chính nhân sự",
+      "category_key": "hanh-chinh-nhan-su",
+      "n_jobs": 100,
+      "tech_skills_tfidf": [
+        {
+          "skill": "Nhân sự",
+          "tfidf": 0.052
+        },
+        {
+          "skill": "Hành chính nhân sự",
+          "tfidf": 0.0283
+        },
+        {
+          "skill": "Trưởng phòng nhân sự",
+          "tfidf": 0.0226
+        },
+        {
+          "skill": "Powerpoint",
+          "tfidf": 0.0224
+        },
+        {
+          "skill": "Payroll/C&B (Lương/Thưởng/Phúc lợi)",
+          "tfidf": 0.017
+        },
+        {
+          "skill": "Hành chính tổng hợp",
+          "tfidf": 0.017
+        },
+        {
+          "skill": "Luật / Pháp chế",
+          "tfidf": 0.0117
+        },
+        {
+          "skill": "Quản trị nhân sự",
+          "tfidf": 0.0113
+        },
+        {
+          "skill": "Marketing Admin",
+          "tfidf": 0.0089
+        },
+        {
+          "skill": "Giám đốc nhân sự",
+          "tfidf": 0.0089
+        },
+        {
+          "skill": "Quan hệ công chúng",
+          "tfidf": 0.0071
+        },
+        {
+          "skill": "Tuyển dụng",
+          "tfidf": 0.0071
+        },
+        {
+          "skill": "MS Office",
+          "tfidf": 0.0058
+        },
+        {
+          "skill": "warehouse management systems",
+          "tfidf": 0.0057
+        },
+        {
+          "skill": "office applications",
+          "tfidf": 0.0057
+        },
+        {
+          "skill": "Quản trị nhân lực",
+          "tfidf": 0.0057
+        },
+        {
+          "skill": "tin học văn phòng cơ bản",
+          "tfidf": 0.0057
+        },
+        {
+          "skill": "Office 365",
+          "tfidf": 0.0057
+        },
+        {
+          "skill": "Vận hành Livestream",
+          "tfidf": 0.0057
+        },
+        {
+          "skill": "Gmail",
+          "tfidf": 0.0057
+        },
+        {
+          "skill": "Datamyne",
+          "tfidf": 0.0057
+        },
+        {
+          "skill": "Pivot tables",
+          "tfidf": 0.0057
+        },
+        {
+          "skill": "Data handling",
+          "tfidf": 0.0057
+        },
+        {
+          "skill": "data reporting and analysis",
+          "tfidf": 0.0057
+        },
+        {
+          "skill": "proficient in MS Office (Excel",
+          "tfidf": 0.0057
+        },
+        {
+          "skill": "Outlook)",
+          "tfidf": 0.0057
+        },
+        {
+          "skill": "fluent in English communication",
+          "tfidf": 0.0057
+        },
+        {
+          "skill": "Forwarders/Brands management",
+          "tfidf": 0.0057
+        },
+        {
+          "skill": "Complaints handling",
+          "tfidf": 0.0057
+        },
+        {
+          "skill": "Stock in – stock out procedures",
+          "tfidf": 0.0057
+        }
+      ],
+      "tech_skills_freq": [
+        {
+          "skill": "Excel",
+          "count": 46
+        },
+        {
+          "skill": "Nhân sự",
+          "count": 18
+        },
+        {
+          "skill": "Python",
+          "count": 18
+        },
+        {
+          "skill": "AutoCAD",
+          "count": 17
+        },
+        {
+          "skill": "SAP",
+          "count": 17
+        },
+        {
+          "skill": "Word",
+          "count": 16
+        },
+        {
+          "skill": "Powerpoint",
+          "count": 12
+        },
+        {
+          "skill": "Luật / Pháp chế",
+          "count": 5
+        },
+        {
+          "skill": "Hành chính nhân sự",
+          "count": 5
+        },
+        {
+          "skill": "Trưởng phòng nhân sự",
+          "count": 4
+        },
+        {
+          "skill": "Payroll/C&B (Lương/Thưởng/Phúc lợi)",
+          "count": 3
+        },
+        {
+          "skill": "Marketing / Quảng cáo",
+          "count": 3
+        },
+        {
+          "skill": "Hành chính tổng hợp",
+          "count": 3
+        },
+        {
+          "skill": "Kế toán",
+          "count": 3
+        },
+        {
+          "skill": "Bán lẻ - Hàng tiêu dùng - FMCG",
+          "count": 3
+        },
+        {
+          "skill": "Telesales",
+          "count": 2
+        },
+        {
+          "skill": "Online Sales",
+          "count": 2
+        },
+        {
+          "skill": "Quan hệ công chúng",
+          "count": 2
+        },
+        {
+          "skill": "Canva",
+          "count": 2
+        },
+        {
+          "skill": "B2C",
+          "count": 2
+        },
+        {
+          "skill": "Marketing Admin",
+          "count": 2
+        },
+        {
+          "skill": "Bất động sản",
+          "count": 2
+        },
+        {
+          "skill": "Tài chính",
+          "count": 2
+        },
+        {
+          "skill": "Điện / Điện tử / Điện lạnh",
+          "count": 2
+        },
+        {
+          "skill": "MS Office",
+          "count": 2
+        },
+        {
+          "skill": "Microsoft Office",
+          "count": 2
+        },
+        {
+          "skill": "Giám đốc nhân sự",
+          "count": 2
+        },
+        {
+          "skill": "May mặc / Thời trang",
+          "count": 2
+        },
+        {
+          "skill": "Giáo dục / Đào tạo",
+          "count": 2
+        },
+        {
+          "skill": "Tuyển dụng",
+          "count": 2
+        }
+      ],
+      "soft_skills_tfidf": [
+        {
+          "skill": "Lập kế hoạch",
+          "tfidf": 0.048
+        },
+        {
+          "skill": "Detail-oriented",
+          "tfidf": 0.048
+        },
+        {
+          "skill": "Kỹ năng truyền thông",
+          "tfidf": 0.024
+        },
+        {
+          "skill": "Khả năng chịu được áp lực",
+          "tfidf": 0.024
+        },
+        {
+          "skill": "Ngoại hình tốt",
+          "tfidf": 0.024
+        },
+        {
+          "skill": "Khả năng chu đáo",
+          "tfidf": 0.024
+        },
+        {
+          "skill": "xử lý linh hoạt các tình huống",
+          "tfidf": 0.024
+        },
+        {
+          "skill": "chịu khó di chuyển",
+          "tfidf": 0.024
+        },
+        {
+          "skill": "Organizational skills",
+          "tfidf": 0.024
+        },
+        {
+          "skill": "Multitasking abilities",
+          "tfidf": 0.024
+        },
+        {
+          "skill": "Communication and coordination",
+          "tfidf": 0.024
+        },
+        {
+          "skill": "Highly responsible",
+          "tfidf": 0.024
+        },
+        {
+          "skill": "strong communication and interpersonal skills",
+          "tfidf": 0.024
+        },
+        {
+          "skill": "team player with a collaborative mindset",
+          "tfidf": 0.024
+        },
+        {
+          "skill": "careful",
+          "tfidf": 0.024
+        }
+      ],
+      "soft_skills_freq": [
+        {
+          "skill": "giao tiếp",
+          "count": 9
+        },
+        {
+          "skill": "teamwork",
+          "count": 8
+        },
+        {
+          "skill": "Cẩn thận",
+          "count": 3
+        },
+        {
+          "skill": "Lập kế hoạch",
+          "count": 2
+        },
+        {
+          "skill": "giao tiếp tốt",
+          "count": 2
+        },
+        {
+          "skill": "Detail-oriented",
+          "count": 2
+        },
+        {
+          "skill": "Kỹ năng truyền thông",
+          "count": 1
+        },
+        {
+          "skill": "Thuyết trình",
+          "count": 1
+        },
+        {
+          "skill": "Chăm chỉ",
+          "count": 1
+        },
+        {
+          "skill": "Khả năng chịu được áp lực",
+          "count": 1
+        },
+        {
+          "skill": "Ham học hỏi",
+          "count": 1
+        },
+        {
+          "skill": "Ngoại hình tốt",
+          "count": 1
+        },
+        {
+          "skill": "Kỹ năng giao tiếp tốt",
+          "count": 1
+        },
+        {
+          "skill": "Khả năng chu đáo",
+          "count": 1
+        },
+        {
+          "skill": "nhiệt tình",
+          "count": 1
+        }
+      ],
+      "requirements_tags": [
+        {
+          "tag": "hành chính nhân sự",
+          "tfidf": 0.1359
+        },
+        {
+          "tag": "nhân sự",
+          "tfidf": 0.1298
+        },
+        {
+          "tag": "nhân sự tổng hợp",
+          "tfidf": 0.0828
+        },
+        {
+          "tag": "trưởng phòng nhân sự",
+          "tfidf": 0.0679
+        },
+        {
+          "tag": "hành chính tổng hợp",
+          "tfidf": 0.0604
+        },
+        {
+          "tag": "luật / pháp chế",
+          "tfidf": 0.0399
+        },
+        {
+          "tag": "chuyên môn nhân sự/hành chính/pháp chế khác",
+          "tfidf": 0.0355
+        },
+        {
+          "tag": "tuyển dụng",
+          "tfidf": 0.0231
+        },
+        {
+          "tag": "payroll/c&b (lương/thưởng/phúc lợi)",
+          "tfidf": 0.0226
+        },
+        {
+          "tag": "trưởng phòng hành chính",
+          "tfidf": 0.0226
+        },
+        {
+          "tag": "hành chính kho",
+          "tfidf": 0.0151
+        },
+        {
+          "tag": "chuyên môn hành chính khác",
+          "tfidf": 0.0151
+        },
+        {
+          "tag": "đối tác nhân sự (hrbp)",
+          "tfidf": 0.0151
+        },
+        {
+          "tag": "logistic / vận tải",
+          "tfidf": 0.015
+        },
+        {
+          "tag": "marketing admin",
+          "tfidf": 0.0118
+        },
+        {
+          "tag": "giám đốc nhân sự",
+          "tfidf": 0.0118
+        },
+        {
+          "tag": "quan hệ công chúng",
+          "tfidf": 0.0095
+        },
+        {
+          "tag": "vận hành livestream",
+          "tfidf": 0.0075
+        },
+        {
+          "tag": "quản lý dự án xây dựng khác",
+          "tfidf": 0.0075
+        },
+        {
+          "tag": "phát triển tổ chức",
+          "tfidf": 0.0075
+        }
+      ],
+      "experience_distribution": {
+        "Dưới 1 năm": 17,
+        "Không yêu cầu": 17,
+        "1 năm": 11,
+        "2 năm": 11,
+        "3 năm": 11,
+        "4 năm": 11,
+        "5 năm": 11,
+        "Trên 5 năm": 11
+      },
+      "education_levels": {
+        "Đại học": 52,
+        "Cao đẳng": 34,
+        "Trung cấp": 9,
+        "Trung học": 5
+      }
+    },
+    "IT": {
+      "category": "IT",
+      "category_key": "it",
+      "n_jobs": 100,
+      "tech_skills_tfidf": [
+        {
+          "skill": "IT - Phần mềm",
+          "tfidf": 0.0467
+        },
+        {
+          "skill": "Business Analyst (Phân tích nghiệp vụ)",
+          "tfidf": 0.0377
+        },
+        {
+          "skill": "IT Project Manager",
+          "tfidf": 0.0251
+        },
+        {
+          "skill": "Draw.io",
+          "tfidf": 0.0197
+        },
+        {
+          "skill": "Jira",
+          "tfidf": 0.0197
+        },
+        {
+          "skill": "Embedded Engineer",
+          "tfidf": 0.0167
+        },
+        {
+          "skill": "Lập trình nhúng",
+          "tfidf": 0.0167
+        },
+        {
+          "skill": "C / C++ Programming Experience",
+          "tfidf": 0.0167
+        },
+        {
+          "skill": "Knowledge of Development & Debugger Environment",
+          "tfidf": 0.0167
+        },
+        {
+          "skill": "Google Test (GTest) Framework",
+          "tfidf": 0.0167
+        },
+        {
+          "skill": "Unit Testing Tools (RTRT",
+          "tfidf": 0.0167
+        },
+        {
+          "skill": "Cantata)",
+          "tfidf": 0.0167
+        },
+        {
+          "skill": "MISRA C/C++",
+          "tfidf": 0.0167
+        },
+        {
+          "skill": "Version Control tools (GitHub",
+          "tfidf": 0.0167
+        },
+        {
+          "skill": "SoCo)",
+          "tfidf": 0.0167
+        },
+        {
+          "skill": "CATIA",
+          "tfidf": 0.0167
+        },
+        {
+          "skill": "LIN",
+          "tfidf": 0.0167
+        },
+        {
+          "skill": "CAN",
+          "tfidf": 0.0167
+        },
+        {
+          "skill": "MATLAB",
+          "tfidf": 0.0167
+        },
+        {
+          "skill": "Flutter",
+          "tfidf": 0.0167
+        },
+        {
+          "skill": "ReactJS",
+          "tfidf": 0.0167
+        },
+        {
+          "skill": "Redux",
+          "tfidf": 0.0167
+        },
+        {
+          "skill": "Angular",
+          "tfidf": 0.0167
+        },
+        {
+          "skill": "Product Owner/Product Manager",
+          "tfidf": 0.0167
+        },
+        {
+          "skill": "SolidWorks",
+          "tfidf": 0.0164
+        },
+        {
+          "skill": "IT - Phần cứng và máy tính",
+          "tfidf": 0.015
+        },
+        {
+          "skill": "Software Tester (Automation & Manual)",
+          "tfidf": 0.0131
+        },
+        {
+          "skill": "Điện toán đám mây (Cloud)",
+          "tfidf": 0.0131
+        },
+        {
+          "skill": "JavaScript",
+          "tfidf": 0.0131
+        },
+        {
+          "skill": "Lark",
+          "tfidf": 0.0126
+        }
+      ],
+      "tech_skills_freq": [
+        {
+          "skill": "IT - Phần mềm",
+          "count": 43
+        },
+        {
+          "skill": "Business Analyst (Phân tích nghiệp vụ)",
+          "count": 9
+        },
+        {
+          "skill": "Bất động sản",
+          "count": 8
+        },
+        {
+          "skill": "IT - Phần cứng và máy tính",
+          "count": 7
+        },
+        {
+          "skill": "Draw.io",
+          "count": 6
+        },
+        {
+          "skill": "Jira",
+          "count": 6
+        },
+        {
+          "skill": "Excel",
+          "count": 6
+        },
+        {
+          "skill": "Tài chính",
+          "count": 6
+        },
+        {
+          "skill": "IT Project Manager",
+          "count": 6
+        },
+        {
+          "skill": "Photoshop",
+          "count": 5
+        },
+        {
+          "skill": "SolidWorks",
+          "count": 5
+        },
+        {
+          "skill": "Nhân sự",
+          "count": 4
+        },
+        {
+          "skill": "Embedded Engineer",
+          "count": 4
+        },
+        {
+          "skill": "Lập trình nhúng",
+          "count": 4
+        },
+        {
+          "skill": "C / C++ Programming Experience",
+          "count": 4
+        },
+        {
+          "skill": "Knowledge of Development & Debugger Environment",
+          "count": 4
+        },
+        {
+          "skill": "Google Test (GTest) Framework",
+          "count": 4
+        },
+        {
+          "skill": "Unit Testing Tools (RTRT",
+          "count": 4
+        },
+        {
+          "skill": "Cantata)",
+          "count": 4
+        },
+        {
+          "skill": "MISRA C/C++",
+          "count": 4
+        },
+        {
+          "skill": "Version Control tools (GitHub",
+          "count": 4
+        },
+        {
+          "skill": "SoCo)",
+          "count": 4
+        },
+        {
+          "skill": "CATIA",
+          "count": 4
+        },
+        {
+          "skill": "PowerPoint",
+          "count": 4
+        },
+        {
+          "skill": "LIN",
+          "count": 4
+        },
+        {
+          "skill": "CAN",
+          "count": 4
+        },
+        {
+          "skill": "MATLAB",
+          "count": 4
+        },
+        {
+          "skill": "Software Tester (Automation & Manual)",
+          "count": 4
+        },
+        {
+          "skill": "Flutter",
+          "count": 4
+        },
+        {
+          "skill": "B2B",
+          "count": 4
+        }
+      ],
+      "soft_skills_tfidf": [
+        {
+          "skill": "Kỹ năng giao tiếp và làm việc nhóm tốt",
+          "tfidf": 0.0802
+        },
+        {
+          "skill": "Data-driven mindset",
+          "tfidf": 0.0802
+        },
+        {
+          "skill": "AI-assisted development tools",
+          "tfidf": 0.0802
+        },
+        {
+          "skill": "Mắt thẩm mỹ tốt",
+          "tfidf": 0.0628
+        },
+        {
+          "skill": "Chủ động giao tiếp và đặt câu hỏi mỗi khi có thắc mắc",
+          "tfidf": 0.0628
+        },
+        {
+          "skill": "Áp lực tốt",
+          "tfidf": 0.0535
+        },
+        {
+          "skill": "Trách nhiệm công việc",
+          "tfidf": 0.0535
+        },
+        {
+          "skill": "Phản biện",
+          "tfidf": 0.0535
+        },
+        {
+          "skill": "problem-solving",
+          "tfidf": 0.0535
+        },
+        {
+          "skill": "analytical thinking",
+          "tfidf": 0.0535
+        },
+        {
+          "skill": "giao tiếp thành thạo",
+          "tfidf": 0.0419
+        },
+        {
+          "skill": "Kỹ năng phân tích nghiệp vụ và tư duy logic tốt",
+          "tfidf": 0.0267
+        },
+        {
+          "skill": "Kỹ năng viết tài liệu BRD/SRS/User Story",
+          "tfidf": 0.0267
+        },
+        {
+          "skill": "Kỹ năng sử dụng AI để hỗ trợ công việc",
+          "tfidf": 0.0267
+        },
+        {
+          "skill": "Đào tạo người dùng cuối",
+          "tfidf": 0.0267
+        }
+      ],
+      "soft_skills_freq": [
+        {
+          "skill": "Teamwork",
+          "count": 6
+        },
+        {
+          "skill": "Giao tiếp",
+          "count": 5
+        },
+        {
+          "skill": "Mắt thẩm mỹ tốt",
+          "count": 3
+        },
+        {
+          "skill": "Chủ động giao tiếp và đặt câu hỏi mỗi khi có thắc mắc",
+          "count": 3
+        },
+        {
+          "skill": "Kỹ năng giao tiếp và làm việc nhóm tốt",
+          "count": 3
+        },
+        {
+          "skill": "Data-driven mindset",
+          "count": 3
+        },
+        {
+          "skill": "AI-assisted development tools",
+          "count": 3
+        },
+        {
+          "skill": "Áp lực tốt",
+          "count": 2
+        },
+        {
+          "skill": "Trách nhiệm công việc",
+          "count": 2
+        },
+        {
+          "skill": "Phản biện",
+          "count": 2
+        },
+        {
+          "skill": "giao tiếp thành thạo",
+          "count": 2
+        },
+        {
+          "skill": "problem-solving",
+          "count": 2
+        },
+        {
+          "skill": "analytical thinking",
+          "count": 2
+        },
+        {
+          "skill": "Kỹ năng phân tích nghiệp vụ và tư duy logic tốt",
+          "count": 1
+        },
+        {
+          "skill": "Kỹ năng viết tài liệu BRD/SRS/User Story",
+          "count": 1
+        }
+      ],
+      "requirements_tags": [
+        {
+          "tag": "business analyst (phân tích nghiệp vụ)",
+          "tfidf": 0.071
+        },
+        {
+          "tag": "it - phần mềm",
+          "tfidf": 0.0674
+        },
+        {
+          "tag": "software tester (automation & manual)",
+          "tfidf": 0.0471
+        },
+        {
+          "tag": "it project manager",
+          "tfidf": 0.0451
+        },
+        {
+          "tag": "it - phần cứng và máy tính",
+          "tfidf": 0.0384
+        },
+        {
+          "tag": "chuyên môn công nghệ thông tin khác",
+          "tfidf": 0.0376
+        },
+        {
+          "tag": "mobile developer",
+          "tfidf": 0.0376
+        },
+        {
+          "tag": "backend developer",
+          "tfidf": 0.0353
+        },
+        {
+          "tag": "thiết kế đồ họa (graphic design)",
+          "tfidf": 0.0331
+        },
+        {
+          "tag": "embedded engineer/lập trình nhúng",
+          "tfidf": 0.0301
+        },
+        {
+          "tag": "kỹ sư thiết kế điện",
+          "tfidf": 0.0301
+        },
+        {
+          "tag": "fullstack developer",
+          "tfidf": 0.0301
+        },
+        {
+          "tag": "product owner/product manager",
+          "tfidf": 0.0294
+        },
+        {
+          "tag": "điện toán đám mây (cloud)",
+          "tfidf": 0.0236
+        },
+        {
+          "tag": "frontend developer",
+          "tfidf": 0.0236
+        },
+        {
+          "tag": "network engineer",
+          "tfidf": 0.0226
+        },
+        {
+          "tag": "kỹ sư cơ khí",
+          "tfidf": 0.0189
+        },
+        {
+          "tag": "ai engineer",
+          "tfidf": 0.0177
+        },
+        {
+          "tag": "software engineer",
+          "tfidf": 0.015
+        },
+        {
+          "tag": "data analyst",
+          "tfidf": 0.015
+        }
+      ],
+      "experience_distribution": {
+        "Không yêu cầu": 18,
+        "Dưới 1 năm": 17,
+        "5 năm": 13,
+        "1 năm": 12,
+        "2 năm": 11,
+        "3 năm": 11,
+        "4 năm": 11,
+        "Trên 5 năm": 7
+      },
+      "education_levels": {
+        "Đại học": 71,
+        "Cao đẳng": 19,
+        "Trung cấp": 10
+      }
+    },
+    "Kế toán": {
+      "category": "Kế toán",
+      "category_key": "ke-toan",
+      "n_jobs": 100,
+      "tech_skills_tfidf": [
+        {
+          "skill": "Kế toán tổng hợp",
+          "tfidf": 0.0698
+        },
+        {
+          "skill": "Kế toán nội bộ",
+          "tfidf": 0.0497
+        },
+        {
+          "skill": "Kế toán trưởng",
+          "tfidf": 0.047
+        },
+        {
+          "skill": "Kế toán",
+          "tfidf": 0.0453
+        },
+        {
+          "skill": "Kế toán thuế",
+          "tfidf": 0.0286
+        },
+        {
+          "skill": "Thuế",
+          "tfidf": 0.0283
+        },
+        {
+          "skill": "Kiểm toán",
+          "tfidf": 0.0267
+        },
+        {
+          "skill": "Fast",
+          "tfidf": 0.0235
+        },
+        {
+          "skill": "Phần mềm kế toán",
+          "tfidf": 0.0195
+        },
+        {
+          "skill": "Kế toán bán hàng",
+          "tfidf": 0.0195
+        },
+        {
+          "skill": "Misa",
+          "tfidf": 0.0185
+        },
+        {
+          "skill": "Kế toán kho/nguyên vật liệu",
+          "tfidf": 0.0124
+        },
+        {
+          "skill": "Kế toán sản xuất",
+          "tfidf": 0.0124
+        },
+        {
+          "skill": "Nhanh.vn",
+          "tfidf": 0.0124
+        },
+        {
+          "skill": "Kế toán doanh thu",
+          "tfidf": 0.0124
+        },
+        {
+          "skill": "Bravo",
+          "tfidf": 0.0097
+        },
+        {
+          "skill": "Logistic / Vận tải",
+          "tfidf": 0.0082
+        },
+        {
+          "skill": "Xero / MYOB / QuickBooks",
+          "tfidf": 0.0062
+        },
+        {
+          "skill": "Data analytics",
+          "tfidf": 0.0062
+        },
+        {
+          "skill": "Kiểm tra chứng từ thanh toán",
+          "tfidf": 0.0062
+        },
+        {
+          "skill": "Lập phiếu gửi tiền",
+          "tfidf": 0.0062
+        },
+        {
+          "skill": "Phát hành hóa đơn VAT",
+          "tfidf": 0.0062
+        },
+        {
+          "skill": "Nhập sổ sách kế toán vào phần mềm kế toán",
+          "tfidf": 0.0062
+        },
+        {
+          "skill": "Lưu trữ chứng từ kế toán",
+          "tfidf": 0.0062
+        },
+        {
+          "skill": "Lập báo cáo thuế hàng quý",
+          "tfidf": 0.0062
+        },
+        {
+          "skill": "Lập báo cáo tài chính hàng tháng",
+          "tfidf": 0.0062
+        },
+        {
+          "skill": "Hỗ trợ các nhiệm vụ khác của Trưởng phòng Kế toán",
+          "tfidf": 0.0062
+        },
+        {
+          "skill": "Kế toán chi phí/giá thành",
+          "tfidf": 0.0062
+        },
+        {
+          "skill": "IVAN",
+          "tfidf": 0.0062
+        },
+        {
+          "skill": "Kế toán công nợ",
+          "tfidf": 0.0062
+        }
+      ],
+      "tech_skills_freq": [
+        {
+          "skill": "Kế toán",
+          "count": 52
+        },
+        {
+          "skill": "Excel",
+          "count": 34
+        },
+        {
+          "skill": "Kế toán tổng hợp",
+          "count": 22
+        },
+        {
+          "skill": "Tài chính",
+          "count": 14
+        },
+        {
+          "skill": "Kiểm toán",
+          "count": 13
+        },
+        {
+          "skill": "Kế toán trưởng",
+          "count": 12
+        },
+        {
+          "skill": "Thuế",
+          "count": 11
+        },
+        {
+          "skill": "SAP",
+          "count": 10
+        },
+        {
+          "skill": "Kế toán thuế",
+          "count": 9
+        },
+        {
+          "skill": "Misa",
+          "count": 9
+        },
+        {
+          "skill": "Kế toán nội bộ",
+          "count": 8
+        },
+        {
+          "skill": "AutoCAD",
+          "count": 7
+        },
+        {
+          "skill": "Python",
+          "count": 7
+        },
+        {
+          "skill": "Word",
+          "count": 6
+        },
+        {
+          "skill": "Fast",
+          "count": 6
+        },
+        {
+          "skill": "Phần mềm kế toán",
+          "count": 4
+        },
+        {
+          "skill": "Kế toán bán hàng",
+          "count": 4
+        },
+        {
+          "skill": "Logistic / Vận tải",
+          "count": 4
+        },
+        {
+          "skill": "Bán lẻ - Hàng tiêu dùng - FMCG",
+          "count": 4
+        },
+        {
+          "skill": "Kế toán kho/nguyên vật liệu",
+          "count": 2
+        },
+        {
+          "skill": "Bravo",
+          "count": 2
+        },
+        {
+          "skill": "Kế toán sản xuất",
+          "count": 2
+        },
+        {
+          "skill": "Sản xuất",
+          "count": 2
+        },
+        {
+          "skill": "Ngân hàng",
+          "count": 2
+        },
+        {
+          "skill": "Nhanh.vn",
+          "count": 2
+        },
+        {
+          "skill": "Kế toán doanh thu",
+          "count": 2
+        },
+        {
+          "skill": "Thực phẩm / Đồ uống",
+          "count": 2
+        },
+        {
+          "skill": "Bất động sản",
+          "count": 2
+        },
+        {
+          "skill": "Xây dựng",
+          "count": 2
+        },
+        {
+          "skill": "Chứng khoán",
+          "count": 2
+        }
+      ],
+      "soft_skills_tfidf": [
+        {
+          "skill": "Trách nhiệm trong công việc",
+          "tfidf": 0.208
+        },
+        {
+          "skill": "Giải quyết vấn đề tốt",
+          "tfidf": 0.1629
+        },
+        {
+          "skill": "Kỹ năng giao tiếp và đàm phán",
+          "tfidf": 0.1062
+        },
+        {
+          "skill": "Tinh thần 'máu lửa'",
+          "tfidf": 0.1062
+        },
+        {
+          "skill": "Chủ động và có trách nhiệm cao",
+          "tfidf": 0.1062
+        },
+        {
+          "skill": "Lãnh đạo",
+          "tfidf": 0.1062
+        },
+        {
+          "skill": "Cẩn thận",
+          "tfidf": 0.0539
+        },
+        {
+          "skill": "Trung thực",
+          "tfidf": 0.0539
+        },
+        {
+          "skill": "Giao tiếp",
+          "tfidf": 0.0089
+        }
+      ],
+      "soft_skills_freq": [
+        {
+          "skill": "Kỹ năng giao tiếp và đàm phán",
+          "count": 1
+        },
+        {
+          "skill": "Tinh thần 'máu lửa'",
+          "count": 1
+        },
+        {
+          "skill": "Chủ động và có trách nhiệm cao",
+          "count": 1
+        },
+        {
+          "skill": "Cẩn thận",
+          "count": 1
+        },
+        {
+          "skill": "Trung thực",
+          "count": 1
+        },
+        {
+          "skill": "Trách nhiệm trong công việc",
+          "count": 1
+        },
+        {
+          "skill": "Lãnh đạo",
+          "count": 1
+        },
+        {
+          "skill": "Giao tiếp",
+          "count": 1
+        },
+        {
+          "skill": "Giải quyết vấn đề tốt",
+          "count": 1
+        }
+      ],
+      "requirements_tags": [
+        {
+          "tag": "kế toán tổng hợp",
+          "tfidf": 0.0853
+        },
+        {
+          "tag": "kế toán nội bộ",
+          "tfidf": 0.0725
+        },
+        {
+          "tag": "thuế",
+          "tfidf": 0.0618
+        },
+        {
+          "tag": "kế toán trưởng",
+          "tfidf": 0.0509
+        },
+        {
+          "tag": "kế toán",
+          "tfidf": 0.0495
+        },
+        {
+          "tag": "kế toán thuế",
+          "tfidf": 0.0472
+        },
+        {
+          "tag": "kiểm toán",
+          "tfidf": 0.0377
+        },
+        {
+          "tag": "kế toán kho/nguyên vật liệu",
+          "tfidf": 0.0356
+        },
+        {
+          "tag": "kế toán bán hàng",
+          "tfidf": 0.0335
+        },
+        {
+          "tag": "kế toán khác",
+          "tfidf": 0.0285
+        },
+        {
+          "tag": "kế toán doanh thu",
+          "tfidf": 0.0214
+        },
+        {
+          "tag": "logistic / vận tải",
+          "tfidf": 0.0141
+        },
+        {
+          "tag": "chuyên môn kế toán/kiểm toán/thuế khác",
+          "tfidf": 0.0134
+        },
+        {
+          "tag": "kế toán chi phí/giá thành",
+          "tfidf": 0.0071
+        },
+        {
+          "tag": "kế toán sản xuất",
+          "tfidf": 0.0071
+        },
+        {
+          "tag": "kế toán công nợ",
+          "tfidf": 0.0071
+        },
+        {
+          "tag": "kế toán thanh toán",
+          "tfidf": 0.0071
+        },
+        {
+          "tag": "kế toán quản trị",
+          "tfidf": 0.0071
+        },
+        {
+          "tag": "kế toán tài sản cố định",
+          "tfidf": 0.0071
+        },
+        {
+          "tag": "trợ lý/thư ký",
+          "tfidf": 0.0056
+        }
+      ],
+      "experience_distribution": {
+        "Không yêu cầu": 34,
+        "1 năm": 11,
+        "2 năm": 11,
+        "3 năm": 11,
+        "4 năm": 11,
+        "5 năm": 11,
+        "Trên 5 năm": 11
+      },
+      "education_levels": {
+        "Đại học": 55,
+        "Cao đẳng": 36,
+        "Trung cấp": 7,
+        "Trung học": 2
+      }
+    },
+    "Kỹ sư xây dựng": {
+      "category": "Kỹ sư xây dựng",
+      "category_key": "ky-su-xay-dung",
+      "n_jobs": 100,
+      "tech_skills_tfidf": [
+        {
+          "skill": "Kỹ sư điện",
+          "tfidf": 0.0616
+        },
+        {
+          "skill": "Kỹ sư cơ điện",
+          "tfidf": 0.0543
+        },
+        {
+          "skill": "kỹ sư xây dựng",
+          "tfidf": 0.0482
+        },
+        {
+          "skill": "Sap2000",
+          "tfidf": 0.0369
+        },
+        {
+          "skill": "ETABS",
+          "tfidf": 0.0369
+        },
+        {
+          "skill": "Kỹ sư hiện trường",
+          "tfidf": 0.0308
+        },
+        {
+          "skill": "Revit",
+          "tfidf": 0.0308
+        },
+        {
+          "skill": "Năng lượng / Môi trường",
+          "tfidf": 0.0308
+        },
+        {
+          "skill": "Thiết kế / Kiến trúc",
+          "tfidf": 0.0285
+        },
+        {
+          "skill": "Điện / Điện tử / Điện lạnh",
+          "tfidf": 0.0278
+        },
+        {
+          "skill": "xây dựng",
+          "tfidf": 0.025
+        },
+        {
+          "skill": "Kỹ sư kết cấu công trình",
+          "tfidf": 0.0246
+        },
+        {
+          "skill": "Kỹ sư điện tử",
+          "tfidf": 0.0123
+        },
+        {
+          "skill": "Tekla",
+          "tfidf": 0.0123
+        },
+        {
+          "skill": "Office",
+          "tfidf": 0.0123
+        },
+        {
+          "skill": "BIM Engineer",
+          "tfidf": 0.0123
+        },
+        {
+          "skill": "Kỹ sư hạ tầng đô thị",
+          "tfidf": 0.0123
+        },
+        {
+          "skill": "MS Project",
+          "tfidf": 0.0123
+        },
+        {
+          "skill": "Giám sát dự án/công trình/thi công",
+          "tfidf": 0.0123
+        },
+        {
+          "skill": "Revit MEP",
+          "tfidf": 0.0123
+        },
+        {
+          "skill": "Cơ khí / Tự động hóa",
+          "tfidf": 0.0122
+        },
+        {
+          "skill": "Biến tần",
+          "tfidf": 0.0096
+        },
+        {
+          "skill": "Kỹ sư cấp thoát nước",
+          "tfidf": 0.0096
+        },
+        {
+          "skill": "Kỹ sư PCCC",
+          "tfidf": 0.0096
+        },
+        {
+          "skill": "Công nghệ kỹ thuật",
+          "tfidf": 0.0081
+        },
+        {
+          "skill": "MS Office",
+          "tfidf": 0.0063
+        },
+        {
+          "skill": "AutoCAD 2D",
+          "tfidf": 0.0062
+        },
+        {
+          "skill": "Solidwork",
+          "tfidf": 0.0062
+        },
+        {
+          "skill": "IJCad",
+          "tfidf": 0.0062
+        },
+        {
+          "skill": "tư vấn giám sát",
+          "tfidf": 0.0062
+        }
+      ],
+      "tech_skills_freq": [
+        {
+          "skill": "Autocad",
+          "count": 34
+        },
+        {
+          "skill": "xây dựng",
+          "count": 29
+        },
+        {
+          "skill": "Điện / Điện tử / Điện lạnh",
+          "count": 23
+        },
+        {
+          "skill": "Excel",
+          "count": 15
+        },
+        {
+          "skill": "Kỹ sư cơ điện",
+          "count": 14
+        },
+        {
+          "skill": "Thiết kế / Kiến trúc",
+          "count": 14
+        },
+        {
+          "skill": "Kỹ sư điện",
+          "count": 10
+        },
+        {
+          "skill": "kỹ sư xây dựng",
+          "count": 10
+        },
+        {
+          "skill": "Sap2000",
+          "count": 6
+        },
+        {
+          "skill": "Cơ khí / Tự động hóa",
+          "count": 6
+        },
+        {
+          "skill": "ETABS",
+          "count": 6
+        },
+        {
+          "skill": "Kỹ sư hiện trường",
+          "count": 5
+        },
+        {
+          "skill": "Revit",
+          "count": 5
+        },
+        {
+          "skill": "Năng lượng / Môi trường",
+          "count": 5
+        },
+        {
+          "skill": "Công nghệ kỹ thuật",
+          "count": 4
+        },
+        {
+          "skill": "Word",
+          "count": 4
+        },
+        {
+          "skill": "Bất động sản",
+          "count": 4
+        },
+        {
+          "skill": "Kỹ sư kết cấu công trình",
+          "count": 4
+        },
+        {
+          "skill": "SAP",
+          "count": 3
+        },
+        {
+          "skill": "Kỹ sư điện tử",
+          "count": 2
+        },
+        {
+          "skill": "Biến tần",
+          "count": 2
+        },
+        {
+          "skill": "Tekla",
+          "count": 2
+        },
+        {
+          "skill": "Office",
+          "count": 2
+        },
+        {
+          "skill": "MS Office",
+          "count": 2
+        },
+        {
+          "skill": "Kỹ sư cấp thoát nước",
+          "count": 2
+        },
+        {
+          "skill": "Python",
+          "count": 2
+        },
+        {
+          "skill": "BIM Engineer",
+          "count": 2
+        },
+        {
+          "skill": "Kỹ sư hạ tầng đô thị",
+          "count": 2
+        },
+        {
+          "skill": "MS Project",
+          "count": 2
+        },
+        {
+          "skill": "Giám sát dự án/công trình/thi công",
+          "count": 2
+        }
+      ],
+      "soft_skills_tfidf": [
+        {
+          "skill": "Kỹ năng làm việc độc lập và theo nhóm",
+          "tfidf": 0.0814
+        },
+        {
+          "skill": "Trách nhiệm với công việc",
+          "tfidf": 0.0814
+        },
+        {
+          "skill": "Mức độ sẵn sàng đi công tác xa",
+          "tfidf": 0.0814
+        },
+        {
+          "skill": "Chịu được cường độ làm việc cao",
+          "tfidf": 0.0814
+        },
+        {
+          "skill": "có trách nhiệm trong công việc và có tinh thần cầu tiến",
+          "tfidf": 0.0814
+        },
+        {
+          "skill": "kỹ năng làm việc độc lập hoặc làm việc nhóm",
+          "tfidf": 0.0814
+        },
+        {
+          "skill": "tổ chức công việc tốt",
+          "tfidf": 0.0814
+        },
+        {
+          "skill": "Kỹ năng làm việc độc lập và làm việc nhóm",
+          "tfidf": 0.0814
+        },
+        {
+          "skill": "Tư duy kỹ thuật tốt",
+          "tfidf": 0.0814
+        },
+        {
+          "skill": "Chịu được áp lực tiến độ dự án",
+          "tfidf": 0.0814
+        },
+        {
+          "skill": "Chịu được áp lực",
+          "tfidf": 0.0814
+        },
+        {
+          "skill": "Điềm đạm",
+          "tfidf": 0.0814
+        },
+        {
+          "skill": "Sử dụng thành thạo AutoCAD và Microsoft Excel",
+          "tfidf": 0.0814
+        },
+        {
+          "skill": "khả năng quản lý công trường tốt",
+          "tfidf": 0.0814
+        },
+        {
+          "skill": "Tinh thần trách nhiệm cao",
+          "tfidf": 0.0638
+        }
+      ],
+      "soft_skills_freq": [
+        {
+          "skill": "Kỹ năng giao tiếp tốt",
+          "count": 2
+        },
+        {
+          "skill": "kỹ năng giao tiếp",
+          "count": 2
+        },
+        {
+          "skill": "Kỹ năng làm việc độc lập và theo nhóm",
+          "count": 1
+        },
+        {
+          "skill": "Trách nhiệm với công việc",
+          "count": 1
+        },
+        {
+          "skill": "Mức độ sẵn sàng đi công tác xa",
+          "count": 1
+        },
+        {
+          "skill": "Chịu được cường độ làm việc cao",
+          "count": 1
+        },
+        {
+          "skill": "cẩn thận",
+          "count": 1
+        },
+        {
+          "skill": "trung thực",
+          "count": 1
+        },
+        {
+          "skill": "có trách nhiệm trong công việc và có tinh thần cầu tiến",
+          "count": 1
+        },
+        {
+          "skill": "kỹ năng làm việc độc lập hoặc làm việc nhóm",
+          "count": 1
+        },
+        {
+          "skill": "làm việc nhóm",
+          "count": 1
+        },
+        {
+          "skill": "tổ chức công việc tốt",
+          "count": 1
+        },
+        {
+          "skill": "Kỹ năng làm việc độc lập và làm việc nhóm",
+          "count": 1
+        },
+        {
+          "skill": "Tư duy kỹ thuật tốt",
+          "count": 1
+        },
+        {
+          "skill": "Chịu được áp lực tiến độ dự án",
+          "count": 1
+        }
+      ],
+      "requirements_tags": [
+        {
+          "tag": "kỹ sư kết cấu công trình",
+          "tfidf": 0.0993
+        },
+        {
+          "tag": "kỹ sư điện",
+          "tfidf": 0.0917
+        },
+        {
+          "tag": "kỹ sư cơ điện",
+          "tfidf": 0.0914
+        },
+        {
+          "tag": "kỹ sư hiện trường",
+          "tfidf": 0.084
+        },
+        {
+          "tag": "kỹ sư xây dựng",
+          "tfidf": 0.0838
+        },
+        {
+          "tag": "xây dựng",
+          "tfidf": 0.0402
+        },
+        {
+          "tag": "năng lượng / môi trường",
+          "tfidf": 0.0385
+        },
+        {
+          "tag": "kỹ sư hvac",
+          "tfidf": 0.0306
+        },
+        {
+          "tag": "kỹ sư cấp thoát nước",
+          "tfidf": 0.0299
+        },
+        {
+          "tag": "thiết kế / kiến trúc",
+          "tfidf": 0.0268
+        },
+        {
+          "tag": "kỹ sư hạ tầng đô thị",
+          "tfidf": 0.0229
+        },
+        {
+          "tag": "điện / điện tử / điện lạnh",
+          "tfidf": 0.0184
+        },
+        {
+          "tag": "giám sát dự án/công trình/thi công",
+          "tfidf": 0.018
+        },
+        {
+          "tag": "kỹ sư điện tử",
+          "tfidf": 0.0153
+        },
+        {
+          "tag": "kỹ sư tự động hóa",
+          "tfidf": 0.0153
+        },
+        {
+          "tag": "bim engineer",
+          "tfidf": 0.0153
+        },
+        {
+          "tag": "kỹ sư cầu đường",
+          "tfidf": 0.0153
+        },
+        {
+          "tag": "dự toán công trình",
+          "tfidf": 0.0144
+        },
+        {
+          "tag": "kỹ sư pccc",
+          "tfidf": 0.012
+        },
+        {
+          "tag": "cơ khí / tự động hóa",
+          "tfidf": 0.0118
+        }
+      ],
+      "experience_distribution": {
+        "Dưới 1 năm": 17,
+        "Không yêu cầu": 17,
+        "1 năm": 11,
+        "2 năm": 11,
+        "3 năm": 11,
+        "4 năm": 11,
+        "5 năm": 11,
+        "Trên 5 năm": 11
+      },
+      "education_levels": {
+        "Đại học": 62,
+        "Cao đẳng": 32,
+        "Trung cấp": 4,
+        "Trung học": 2
+      }
+    },
+    "Lao động phổ thông": {
+      "category": "Lao động phổ thông",
+      "category_key": "lao-dong-pho-thong",
+      "n_jobs": 100,
+      "tech_skills_tfidf": [
+        {
+          "skill": "Lao động phổ thông",
+          "tfidf": 0.0576
+        },
+        {
+          "skill": "Đầu bếp",
+          "tfidf": 0.0432
+        },
+        {
+          "skill": "Pha chế (Barista)",
+          "tfidf": 0.036
+        },
+        {
+          "skill": "Bán hàng siêu thị/cửa hàng tiện ích/tiện lợi",
+          "tfidf": 0.0338
+        },
+        {
+          "skill": "Nhà hàng / Khách sạn",
+          "tfidf": 0.0331
+        },
+        {
+          "skill": "Thu ngân",
+          "tfidf": 0.0288
+        },
+        {
+          "skill": "Phục vụ",
+          "tfidf": 0.0288
+        },
+        {
+          "skill": "Tài xế lái xe văn phòng",
+          "tfidf": 0.0282
+        },
+        {
+          "skill": "Trực page",
+          "tfidf": 0.0216
+        },
+        {
+          "skill": "Sửa chữa/Bảo trì điện nước",
+          "tfidf": 0.0216
+        },
+        {
+          "skill": "Nhân viên kho",
+          "tfidf": 0.0216
+        },
+        {
+          "skill": "Thợ điện lạnh",
+          "tfidf": 0.0216
+        },
+        {
+          "skill": "Sản xuất",
+          "tfidf": 0.0167
+        },
+        {
+          "skill": "Công nghệ kỹ thuật",
+          "tfidf": 0.0167
+        },
+        {
+          "skill": "Kỹ thuật viên Spa",
+          "tfidf": 0.0144
+        },
+        {
+          "skill": "Công nhân vận hành máy",
+          "tfidf": 0.0144
+        },
+        {
+          "skill": "Lễ tân/Đón tiếp",
+          "tfidf": 0.0144
+        },
+        {
+          "skill": "Đóng gói hàng hóa",
+          "tfidf": 0.0144
+        },
+        {
+          "skill": "Thợ phay",
+          "tfidf": 0.0144
+        },
+        {
+          "skill": "Thợ sửa xe",
+          "tfidf": 0.0144
+        },
+        {
+          "skill": "Lái xe",
+          "tfidf": 0.0144
+        },
+        {
+          "skill": "Thợ cơ khí",
+          "tfidf": 0.0144
+        },
+        {
+          "skill": "Quản lý vận hành",
+          "tfidf": 0.0144
+        },
+        {
+          "skill": "Giám sát quá trình pha chế",
+          "tfidf": 0.0144
+        },
+        {
+          "skill": "Bảo vệ",
+          "tfidf": 0.0144
+        },
+        {
+          "skill": "Lái xe cho sếp",
+          "tfidf": 0.0144
+        },
+        {
+          "skill": "Cơ khí / Tự động hóa",
+          "tfidf": 0.0119
+        },
+        {
+          "skill": "Thực phẩm / Đồ uống",
+          "tfidf": 0.0119
+        },
+        {
+          "skill": "Điện / Điện tử / Điện lạnh",
+          "tfidf": 0.0099
+        },
+        {
+          "skill": "Bán hàng điện thoại",
+          "tfidf": 0.0091
+        }
+      ],
+      "tech_skills_freq": [
+        {
+          "skill": "Excel",
+          "count": 15
+        },
+        {
+          "skill": "AutoCAD",
+          "count": 11
+        },
+        {
+          "skill": "Python",
+          "count": 11
+        },
+        {
+          "skill": "SAP",
+          "count": 11
+        },
+        {
+          "skill": "Nhà hàng / Khách sạn",
+          "count": 9
+        },
+        {
+          "skill": "Bán lẻ - Hàng tiêu dùng - FMCG",
+          "count": 8
+        },
+        {
+          "skill": "Lao động phổ thông",
+          "count": 8
+        },
+        {
+          "skill": "Sản xuất",
+          "count": 7
+        },
+        {
+          "skill": "Công nghệ kỹ thuật",
+          "count": 7
+        },
+        {
+          "skill": "Điện / Điện tử / Điện lạnh",
+          "count": 7
+        },
+        {
+          "skill": "Bán hàng siêu thị/cửa hàng tiện ích/tiện lợi",
+          "count": 6
+        },
+        {
+          "skill": "B2C",
+          "count": 6
+        },
+        {
+          "skill": "Đầu bếp",
+          "count": 6
+        },
+        {
+          "skill": "Cơ khí / Tự động hóa",
+          "count": 5
+        },
+        {
+          "skill": "Tài xế lái xe văn phòng",
+          "count": 5
+        },
+        {
+          "skill": "Thực phẩm / Đồ uống",
+          "count": 5
+        },
+        {
+          "skill": "Direct Sales",
+          "count": 5
+        },
+        {
+          "skill": "Pha chế (Barista)",
+          "count": 5
+        },
+        {
+          "skill": "Thu ngân",
+          "count": 4
+        },
+        {
+          "skill": "Bán hàng tại cửa hàng/showroom",
+          "count": 4
+        },
+        {
+          "skill": "Phục vụ",
+          "count": 4
+        },
+        {
+          "skill": "Chăm sóc sức khỏe / Làm đẹp",
+          "count": 3
+        },
+        {
+          "skill": "Trực page",
+          "count": 3
+        },
+        {
+          "skill": "Sửa chữa/Bảo trì điện nước",
+          "count": 3
+        },
+        {
+          "skill": "B2B",
+          "count": 3
+        },
+        {
+          "skill": "Nhân viên kho",
+          "count": 3
+        },
+        {
+          "skill": "Thợ điện lạnh",
+          "count": 3
+        },
+        {
+          "skill": "Kỹ thuật viên Spa",
+          "count": 2
+        },
+        {
+          "skill": "Thương mại điện tử",
+          "count": 2
+        },
+        {
+          "skill": "Công nhân vận hành máy",
+          "count": 2
+        }
+      ],
+      "soft_skills_tfidf": [
+        {
+          "skill": "Kỹ năng quản lý ca",
+          "tfidf": 0.0645
+        },
+        {
+          "skill": "Hiểu về đặc thù công việc ngành F&B",
+          "tfidf": 0.0645
+        },
+        {
+          "skill": "Kỹ năng xử lý tình huống và khiếu nại khách hàng hiệu quả",
+          "tfidf": 0.0645
+        },
+        {
+          "skill": "Chịu được áp lực công việc",
+          "tfidf": 0.061
+        },
+        {
+          "skill": "có trách nhiệm",
+          "tfidf": 0.0406
+        },
+        {
+          "skill": "Trung thực",
+          "tfidf": 0.0335
+        },
+        {
+          "skill": "Biết lắng nghe",
+          "tfidf": 0.0323
+        },
+        {
+          "skill": "xử lí tình huống",
+          "tfidf": 0.0323
+        },
+        {
+          "skill": "giải quyết vấn đề",
+          "tfidf": 0.0323
+        },
+        {
+          "skill": "Giao tiếp chủ động",
+          "tfidf": 0.0323
+        },
+        {
+          "skill": "Liên tục học hỏi",
+          "tfidf": 0.0323
+        },
+        {
+          "skill": "nâng cao chuyên môn để đáp ứng mục tiêu công việc",
+          "tfidf": 0.0323
+        },
+        {
+          "skill": "cầu thị trong công việc",
+          "tfidf": 0.0323
+        },
+        {
+          "skill": "trách nhiệm cao trong công việc",
+          "tfidf": 0.0323
+        },
+        {
+          "skill": "biết cách sắp xếp công việc",
+          "tfidf": 0.0323
+        }
+      ],
+      "soft_skills_freq": [
+        {
+          "skill": "Trung thực",
+          "count": 4
+        },
+        {
+          "skill": "Kỹ năng giao tiếp tốt",
+          "count": 3
+        },
+        {
+          "skill": "Chịu được áp lực công việc",
+          "count": 3
+        },
+        {
+          "skill": "teamwork",
+          "count": 3
+        },
+        {
+          "skill": "giao tiếp tốt",
+          "count": 2
+        },
+        {
+          "skill": "nhanh nhẹn",
+          "count": 2
+        },
+        {
+          "skill": "chủ động",
+          "count": 2
+        },
+        {
+          "skill": "Kỹ năng quản lý ca",
+          "count": 2
+        },
+        {
+          "skill": "Hiểu về đặc thù công việc ngành F&B",
+          "count": 2
+        },
+        {
+          "skill": "Kỹ năng xử lý tình huống và khiếu nại khách hàng hiệu quả",
+          "count": 2
+        },
+        {
+          "skill": "có trách nhiệm",
+          "count": 2
+        },
+        {
+          "skill": "giao tiếp",
+          "count": 2
+        },
+        {
+          "skill": "Siêng năng",
+          "count": 1
+        },
+        {
+          "skill": "Ham học hỏi",
+          "count": 1
+        },
+        {
+          "skill": "Biết lắng nghe",
+          "count": 1
+        }
+      ],
+      "requirements_tags": [
+        {
+          "tag": "lao động phổ thông",
+          "tfidf": 0.1294
+        },
+        {
+          "tag": "nhân viên kho",
+          "tfidf": 0.0685
+        },
+        {
+          "tag": "chuyên môn nhà hàng/dịch vụ ăn uống khác",
+          "tfidf": 0.0609
+        },
+        {
+          "tag": "bán hàng siêu thị/cửa hàng tiện ích/tiện lợi",
+          "tfidf": 0.0575
+        },
+        {
+          "tag": "đầu bếp",
+          "tfidf": 0.0457
+        },
+        {
+          "tag": "pha chế (barista)",
+          "tfidf": 0.038
+        },
+        {
+          "tag": "tài xế lái xe văn phòng",
+          "tfidf": 0.0358
+        },
+        {
+          "tag": "nhà hàng / khách sạn",
+          "tfidf": 0.0336
+        },
+        {
+          "tag": "lái xe cho sếp",
+          "tfidf": 0.0304
+        },
+        {
+          "tag": "lễ tân/đón tiếp",
+          "tfidf": 0.0238
+        },
+        {
+          "tag": "trực page",
+          "tfidf": 0.0228
+        },
+        {
+          "tag": "sửa chữa/bảo trì điện nước",
+          "tfidf": 0.0228
+        },
+        {
+          "tag": "phục vụ",
+          "tfidf": 0.0228
+        },
+        {
+          "tag": "thợ điện lạnh",
+          "tfidf": 0.0228
+        },
+        {
+          "tag": "thực phẩm / đồ uống",
+          "tfidf": 0.0164
+        },
+        {
+          "tag": "kỹ thuật viên spa",
+          "tfidf": 0.0152
+        },
+        {
+          "tag": "công nhân vận hành máy",
+          "tfidf": 0.0152
+        },
+        {
+          "tag": "đóng gói hàng hóa",
+          "tfidf": 0.0152
+        },
+        {
+          "tag": "thợ phay",
+          "tfidf": 0.0152
+        },
+        {
+          "tag": "thu ngân",
+          "tfidf": 0.0152
+        }
+      ],
+      "experience_distribution": {
+        "Dưới 1 năm": 19,
+        "Không yêu cầu": 18,
+        "5 năm": 13,
+        "1 năm": 11,
+        "2 năm": 11,
+        "3 năm": 11,
+        "4 năm": 11,
+        "Trên 5 năm": 6
+      },
+      "education_levels": {
+        "Trung cấp": 35,
+        "Trung học": 28,
+        "Cao đẳng": 21,
+        "Đại học": 9
+      }
+    },
+    "Marketing": {
+      "category": "Marketing",
+      "category_key": "marketing",
+      "n_jobs": 100,
+      "tech_skills_tfidf": [
+        {
+          "skill": "Digital Marketing",
+          "tfidf": 0.0685
+        },
+        {
+          "skill": "Content Marketing",
+          "tfidf": 0.0583
+        },
+        {
+          "skill": "Marketing Manager",
+          "tfidf": 0.0359
+        },
+        {
+          "skill": "Google Ads",
+          "tfidf": 0.0229
+        },
+        {
+          "skill": "SEO",
+          "tfidf": 0.0224
+        },
+        {
+          "skill": "Marketing / Quảng cáo",
+          "tfidf": 0.0215
+        },
+        {
+          "skill": "Capcut",
+          "tfidf": 0.0205
+        },
+        {
+          "skill": "Báo chí",
+          "tfidf": 0.018
+        },
+        {
+          "skill": "Brand Marketing",
+          "tfidf": 0.018
+        },
+        {
+          "skill": "Marketing",
+          "tfidf": 0.0179
+        },
+        {
+          "skill": "Facebook Ads",
+          "tfidf": 0.0179
+        },
+        {
+          "skill": "Quan hệ công chúng",
+          "tfidf": 0.0144
+        },
+        {
+          "skill": "Phát thanh / Truyền hình",
+          "tfidf": 0.0135
+        },
+        {
+          "skill": "YouTube",
+          "tfidf": 0.0114
+        },
+        {
+          "skill": "TikTok Ads",
+          "tfidf": 0.0114
+        },
+        {
+          "skill": "Trade Marketing",
+          "tfidf": 0.0114
+        },
+        {
+          "skill": "TikTok Ads Manager",
+          "tfidf": 0.0114
+        },
+        {
+          "skill": "Canva",
+          "tfidf": 0.0114
+        },
+        {
+          "skill": "Thực phẩm / Đồ uống",
+          "tfidf": 0.0095
+        },
+        {
+          "skill": "Google Analytics",
+          "tfidf": 0.009
+        },
+        {
+          "skill": "AI",
+          "tfidf": 0.0088
+        },
+        {
+          "skill": "tiktok",
+          "tfidf": 0.0072
+        },
+        {
+          "skill": "IT - Phần mềm",
+          "tfidf": 0.0059
+        },
+        {
+          "skill": "Nhà hàng / Khách sạn",
+          "tfidf": 0.0058
+        },
+        {
+          "skill": "Quảng cáo",
+          "tfidf": 0.0057
+        },
+        {
+          "skill": "Ladipage",
+          "tfidf": 0.0057
+        },
+        {
+          "skill": "Event Marketing",
+          "tfidf": 0.0057
+        },
+        {
+          "skill": "GEO",
+          "tfidf": 0.0057
+        },
+        {
+          "skill": "Edit capcut",
+          "tfidf": 0.0057
+        },
+        {
+          "skill": "Thiết kế basic",
+          "tfidf": 0.0057
+        }
+      ],
+      "tech_skills_freq": [
+        {
+          "skill": "Marketing / Quảng cáo",
+          "count": 42
+        },
+        {
+          "skill": "Digital Marketing",
+          "count": 19
+        },
+        {
+          "skill": "Excel",
+          "count": 17
+        },
+        {
+          "skill": "Content Marketing",
+          "count": 13
+        },
+        {
+          "skill": "AutoCAD",
+          "count": 13
+        },
+        {
+          "skill": "Python",
+          "count": 13
+        },
+        {
+          "skill": "SAP",
+          "count": 13
+        },
+        {
+          "skill": "Thương mại điện tử",
+          "count": 10
+        },
+        {
+          "skill": "Marketing Manager",
+          "count": 8
+        },
+        {
+          "skill": "Capcut",
+          "count": 7
+        },
+        {
+          "skill": "Canva",
+          "count": 6
+        },
+        {
+          "skill": "Bán lẻ - Hàng tiêu dùng - FMCG",
+          "count": 6
+        },
+        {
+          "skill": "SEO",
+          "count": 5
+        },
+        {
+          "skill": "Báo chí",
+          "count": 5
+        },
+        {
+          "skill": "Thực phẩm / Đồ uống",
+          "count": 5
+        },
+        {
+          "skill": "Brand Marketing",
+          "count": 5
+        },
+        {
+          "skill": "Marketing",
+          "count": 4
+        },
+        {
+          "skill": "Google Ads",
+          "count": 4
+        },
+        {
+          "skill": "Quan hệ công chúng",
+          "count": 4
+        },
+        {
+          "skill": "IT - Phần mềm",
+          "count": 4
+        },
+        {
+          "skill": "Facebook Ads",
+          "count": 4
+        },
+        {
+          "skill": "AI",
+          "count": 3
+        },
+        {
+          "skill": "Giáo dục / Đào tạo",
+          "count": 3
+        },
+        {
+          "skill": "Phát thanh / Truyền hình",
+          "count": 3
+        },
+        {
+          "skill": "PowerPoint",
+          "count": 3
+        },
+        {
+          "skill": "Y tế / Dược phẩm",
+          "count": 3
+        },
+        {
+          "skill": "Tài chính",
+          "count": 2
+        },
+        {
+          "skill": "tiktok",
+          "count": 2
+        },
+        {
+          "skill": "Photoshop",
+          "count": 2
+        },
+        {
+          "skill": "YouTube",
+          "count": 2
+        }
+      ],
+      "soft_skills_tfidf": [
+        {
+          "skill": "Yêu thích công việc liên quan đến ý tưởng hình ảnh",
+          "tfidf": 0.048
+        },
+        {
+          "skill": "clip",
+          "tfidf": 0.048
+        },
+        {
+          "skill": "Tư duy hình ảnh tốt",
+          "tfidf": 0.048
+        },
+        {
+          "skill": "Khả năng ngôn ngữ tốt",
+          "tfidf": 0.048
+        },
+        {
+          "skill": "Thích viết lách đặc biệt là viết Social",
+          "tfidf": 0.048
+        },
+        {
+          "skill": "Kỹ năng chỉnh sửa ảnh",
+          "tfidf": 0.048
+        },
+        {
+          "skill": "video có bản ( canva hoặc photoshop",
+          "tfidf": 0.048
+        },
+        {
+          "skill": "capcut)",
+          "tfidf": 0.048
+        },
+        {
+          "skill": "thuyết phục",
+          "tfidf": 0.048
+        },
+        {
+          "skill": "Kiến thức nền tảng về social media và SEO",
+          "tfidf": 0.048
+        },
+        {
+          "skill": "Đam mê du lịch",
+          "tfidf": 0.048
+        },
+        {
+          "skill": "trải nghiệm",
+          "tfidf": 0.048
+        },
+        {
+          "skill": "thích di chuyển và làm việc thực tế",
+          "tfidf": 0.048
+        },
+        {
+          "skill": "Sẵn sàng làm việc linh hoạt giữa Hà Nội – Sapa - Đà Lạt",
+          "tfidf": 0.048
+        },
+        {
+          "skill": "có tinh thần teamwork và trách nhiệm trong công việc",
+          "tfidf": 0.048
+        }
+      ],
+      "soft_skills_freq": [
+        {
+          "skill": "giao tiếp",
+          "count": 2
+        },
+        {
+          "skill": "teamwork",
+          "count": 2
+        },
+        {
+          "skill": "Kỹ năng giao tiếp",
+          "count": 2
+        },
+        {
+          "skill": "Sáng tạo",
+          "count": 1
+        },
+        {
+          "skill": "Yêu thích công việc liên quan đến ý tưởng hình ảnh",
+          "count": 1
+        },
+        {
+          "skill": "clip",
+          "count": 1
+        },
+        {
+          "skill": "Tư duy hình ảnh tốt",
+          "count": 1
+        },
+        {
+          "skill": "Khả năng ngôn ngữ tốt",
+          "count": 1
+        },
+        {
+          "skill": "Thích viết lách đặc biệt là viết Social",
+          "count": 1
+        },
+        {
+          "skill": "Kỹ năng chỉnh sửa ảnh",
+          "count": 1
+        },
+        {
+          "skill": "video có bản ( canva hoặc photoshop",
+          "count": 1
+        },
+        {
+          "skill": "capcut)",
+          "count": 1
+        },
+        {
+          "skill": "Tinh thần trách nhiệm",
+          "count": 1
+        },
+        {
+          "skill": "Hòa đồng",
+          "count": 1
+        },
+        {
+          "skill": "Nhiệt tình",
+          "count": 1
+        }
+      ],
+      "requirements_tags": [
+        {
+          "tag": "digital marketing",
+          "tfidf": 0.1249
+        },
+        {
+          "tag": "content marketing",
+          "tfidf": 0.1118
+        },
+        {
+          "tag": "marketing manager",
+          "tfidf": 0.0746
+        },
+        {
+          "tag": "chuyên môn marketing",
+          "tfidf": 0.0714
+        },
+        {
+          "tag": "chuyên môn marketing/pr/quảng cáo khác",
+          "tfidf": 0.0435
+        },
+        {
+          "tag": "trade marketing",
+          "tfidf": 0.0317
+        },
+        {
+          "tag": "brand marketing",
+          "tfidf": 0.03
+        },
+        {
+          "tag": "báo chí",
+          "tfidf": 0.0243
+        },
+        {
+          "tag": "affiliate marketing",
+          "tfidf": 0.0238
+        },
+        {
+          "tag": "quan hệ công chúng",
+          "tfidf": 0.02
+        },
+        {
+          "tag": "marketing / quảng cáo",
+          "tfidf": 0.0197
+        },
+        {
+          "tag": "phát thanh / truyền hình",
+          "tfidf": 0.0186
+        },
+        {
+          "tag": "xây dựng và bảo vệ thương hiệu",
+          "tfidf": 0.0159
+        },
+        {
+          "tag": "chạy ads",
+          "tfidf": 0.0124
+        },
+        {
+          "tag": "social content",
+          "tfidf": 0.0124
+        },
+        {
+          "tag": "game",
+          "tfidf": 0.0098
+        },
+        {
+          "tag": "du lịch",
+          "tfidf": 0.0098
+        },
+        {
+          "tag": "thực phẩm / đồ uống",
+          "tfidf": 0.0093
+        },
+        {
+          "tag": "bán lẻ - hàng tiêu dùng - fmcg",
+          "tfidf": 0.0085
+        },
+        {
+          "tag": "event marketing",
+          "tfidf": 0.0079
+        }
+      ],
+      "experience_distribution": {
+        "Dưới 1 năm": 17,
+        "Không yêu cầu": 17,
+        "1 năm": 11,
+        "2 năm": 11,
+        "3 năm": 11,
+        "4 năm": 11,
+        "5 năm": 11,
+        "Trên 5 năm": 11
+      },
+      "education_levels": {
+        "Đại học": 62,
+        "Cao đẳng": 30,
+        "Trung cấp": 6,
+        "Trung học": 2
+      }
+    },
+    "Ngân hàng": {
+      "category": "Ngân hàng",
+      "category_key": "ngan-hang",
+      "n_jobs": 100,
+      "tech_skills_tfidf": [
+        {
+          "skill": "Tư vấn tài chính",
+          "tfidf": 0.0332
+        },
+        {
+          "skill": "Sales Tài chính/Ngân hàng/Bảo hiểm khác",
+          "tfidf": 0.0223
+        },
+        {
+          "skill": "Bancassurance",
+          "tfidf": 0.0162
+        },
+        {
+          "skill": "Ngân hàng",
+          "tfidf": 0.0154
+        },
+        {
+          "skill": "Bảo hiểm",
+          "tfidf": 0.0134
+        },
+        {
+          "skill": "B2C",
+          "tfidf": 0.0125
+        },
+        {
+          "skill": "Ngân hàng khác",
+          "tfidf": 0.0122
+        },
+        {
+          "skill": "Kế toán tài chính",
+          "tfidf": 0.0095
+        },
+        {
+          "skill": "Kiểm toán viên",
+          "tfidf": 0.0081
+        },
+        {
+          "skill": "Kiểm soát và báo cáo tài chính",
+          "tfidf": 0.0081
+        },
+        {
+          "skill": "Hoạch định tài chính",
+          "tfidf": 0.0081
+        },
+        {
+          "skill": "Oracle",
+          "tfidf": 0.0081
+        },
+        {
+          "skill": "Redis",
+          "tfidf": 0.0081
+        },
+        {
+          "skill": "microservices architecture",
+          "tfidf": 0.0081
+        },
+        {
+          "skill": "Tác nghiệp tín dụng",
+          "tfidf": 0.0081
+        },
+        {
+          "skill": "Thẩm định tín dụng",
+          "tfidf": 0.0081
+        },
+        {
+          "skill": "Kiểm toán",
+          "tfidf": 0.0081
+        },
+        {
+          "skill": "Kế toán",
+          "tfidf": 0.0074
+        },
+        {
+          "skill": "B2B",
+          "tfidf": 0.0068
+        },
+        {
+          "skill": "Powerpoint",
+          "tfidf": 0.0067
+        },
+        {
+          "skill": "Tài chính",
+          "tfidf": 0.0064
+        },
+        {
+          "skill": "CI/CD",
+          "tfidf": 0.0064
+        },
+        {
+          "skill": "Telesales",
+          "tfidf": 0.0063
+        },
+        {
+          "skill": "Direct Sales",
+          "tfidf": 0.0063
+        },
+        {
+          "skill": "Chứng khoán",
+          "tfidf": 0.0042
+        },
+        {
+          "skill": "thuyết phục và đàm phán",
+          "tfidf": 0.0041
+        },
+        {
+          "skill": "làm việc độc lập và làm việc nhóm hiệu quả",
+          "tfidf": 0.0041
+        },
+        {
+          "skill": "tinh thần trách nhiệm cao",
+          "tfidf": 0.0041
+        },
+        {
+          "skill": "trung thực và chịu được áp lực công việc",
+          "tfidf": 0.0041
+        },
+        {
+          "skill": "kỹ năng sử dụng các công cụ hỗ trợ bán hàng (CRM",
+          "tfidf": 0.0041
+        }
+      ],
+      "tech_skills_freq": [
+        {
+          "skill": "Tài chính",
+          "count": 37
+        },
+        {
+          "skill": "Ngân hàng",
+          "count": 27
+        },
+        {
+          "skill": "Excel",
+          "count": 26
+        },
+        {
+          "skill": "B2C",
+          "count": 22
+        },
+        {
+          "skill": "Python",
+          "count": 18
+        },
+        {
+          "skill": "SAP",
+          "count": 18
+        },
+        {
+          "skill": "AutoCAD",
+          "count": 17
+        },
+        {
+          "skill": "Tư vấn tài chính",
+          "count": 16
+        },
+        {
+          "skill": "Kế toán",
+          "count": 13
+        },
+        {
+          "skill": "B2B",
+          "count": 12
+        },
+        {
+          "skill": "Telesales",
+          "count": 11
+        },
+        {
+          "skill": "Direct Sales",
+          "count": 11
+        },
+        {
+          "skill": "Online Sales",
+          "count": 9
+        },
+        {
+          "skill": "Bảo hiểm",
+          "count": 8
+        },
+        {
+          "skill": "Sales Tài chính/Ngân hàng/Bảo hiểm khác",
+          "count": 7
+        },
+        {
+          "skill": "Kiểm toán",
+          "count": 6
+        },
+        {
+          "skill": "Powerpoint",
+          "count": 5
+        },
+        {
+          "skill": "Marketing / Quảng cáo",
+          "count": 4
+        },
+        {
+          "skill": "Bancassurance",
+          "count": 4
+        },
+        {
+          "skill": "Chứng khoán",
+          "count": 4
+        },
+        {
+          "skill": "Bất động sản",
+          "count": 3
+        },
+        {
+          "skill": "Bán hàng tại cửa hàng/showroom",
+          "count": 3
+        },
+        {
+          "skill": "Kế toán tài chính",
+          "count": 3
+        },
+        {
+          "skill": "Microsoft Office",
+          "count": 3
+        },
+        {
+          "skill": "Ngân hàng khác",
+          "count": 3
+        },
+        {
+          "skill": "B2G",
+          "count": 2
+        },
+        {
+          "skill": "Kiểm toán viên",
+          "count": 2
+        },
+        {
+          "skill": "Thuế",
+          "count": 2
+        },
+        {
+          "skill": "Word",
+          "count": 2
+        },
+        {
+          "skill": "Kiểm soát và báo cáo tài chính",
+          "count": 2
+        }
+      ],
+      "soft_skills_tfidf": [
+        {
+          "skill": "thái độ tích cực",
+          "tfidf": 0.0292
+        },
+        {
+          "skill": "Kỹ năng giao tiếp và mở rộng mối quan hệ tốt",
+          "tfidf": 0.0292
+        },
+        {
+          "skill": "Thần thái tự tin",
+          "tfidf": 0.0292
+        },
+        {
+          "skill": "Làm việc chăm chỉ",
+          "tfidf": 0.0292
+        },
+        {
+          "skill": "trung thực và cầu tiến",
+          "tfidf": 0.0292
+        },
+        {
+          "skill": "Đam mê công việc bán hàng",
+          "tfidf": 0.0292
+        },
+        {
+          "skill": "mở rộng mạng lưới khách hàng",
+          "tfidf": 0.0292
+        },
+        {
+          "skill": "Kỹ năng xây dựng mối quan hệ",
+          "tfidf": 0.0292
+        },
+        {
+          "skill": "Kỹ năng làm việc theo nhóm tốt",
+          "tfidf": 0.0292
+        },
+        {
+          "skill": "Cẩn thận tỷ mỉ",
+          "tfidf": 0.0292
+        },
+        {
+          "skill": "Biết lắng nghe chia sẻ với khách hàng",
+          "tfidf": 0.0292
+        },
+        {
+          "skill": "logic giải quyết vấn đề",
+          "tfidf": 0.0292
+        },
+        {
+          "skill": "kỹ năng giao tiếp tạo ảnh hưởng",
+          "tfidf": 0.0292
+        },
+        {
+          "skill": "hướng dẫn hiệu quả",
+          "tfidf": 0.0292
+        },
+        {
+          "skill": "chiến lược và phát triển doanh thu mạnh",
+          "tfidf": 0.0292
+        }
+      ],
+      "soft_skills_freq": [
+        {
+          "skill": "giao tiếp",
+          "count": 5
+        },
+        {
+          "skill": "teamwork",
+          "count": 5
+        },
+        {
+          "skill": "giao tiếp tốt",
+          "count": 1
+        },
+        {
+          "skill": "thái độ tích cực",
+          "count": 1
+        },
+        {
+          "skill": "có trách nhiệm trong công việc",
+          "count": 1
+        },
+        {
+          "skill": "ham học hỏi",
+          "count": 1
+        },
+        {
+          "skill": "Kỹ năng giao tiếp và mở rộng mối quan hệ tốt",
+          "count": 1
+        },
+        {
+          "skill": "Thần thái tự tin",
+          "count": 1
+        },
+        {
+          "skill": "Làm việc chăm chỉ",
+          "count": 1
+        },
+        {
+          "skill": "trung thực và cầu tiến",
+          "count": 1
+        },
+        {
+          "skill": "Đam mê công việc bán hàng",
+          "count": 1
+        },
+        {
+          "skill": "mở rộng mạng lưới khách hàng",
+          "count": 1
+        },
+        {
+          "skill": "Kỹ năng bán hàng",
+          "count": 1
+        },
+        {
+          "skill": "Strong sales skills",
+          "count": 1
+        },
+        {
+          "skill": "Kỹ năng thuyết phục và đàm phán khách hàng",
+          "count": 1
+        }
+      ],
+      "requirements_tags": [
+        {
+          "tag": "tư vấn tài chính",
+          "tfidf": 0.0544
+        },
+        {
+          "tag": "sales tài chính/ngân hàng/bảo hiểm khác",
+          "tfidf": 0.0365
+        },
+        {
+          "tag": "ngân hàng",
+          "tfidf": 0.0299
+        },
+        {
+          "tag": "bancassurance",
+          "tfidf": 0.0266
+        },
+        {
+          "tag": "chuyên môn tài chính",
+          "tfidf": 0.0261
+        },
+        {
+          "tag": "thẩm định tín dụng",
+          "tfidf": 0.02
+        },
+        {
+          "tag": "tác nghiệp tín dụng",
+          "tfidf": 0.02
+        },
+        {
+          "tag": "hoạch định tài chính",
+          "tfidf": 0.02
+        },
+        {
+          "tag": "chuyên môn ngân hàng khác",
+          "tfidf": 0.02
+        },
+        {
+          "tag": "bảo hiểm",
+          "tfidf": 0.0176
+        },
+        {
+          "tag": "kiểm toán",
+          "tfidf": 0.0176
+        },
+        {
+          "tag": "kế toán tài chính",
+          "tfidf": 0.0157
+        },
+        {
+          "tag": "backend developer",
+          "tfidf": 0.0157
+        },
+        {
+          "tag": "b2c",
+          "tfidf": 0.0143
+        },
+        {
+          "tag": "huy động vốn",
+          "tfidf": 0.0133
+        },
+        {
+          "tag": "kiểm toán viên",
+          "tfidf": 0.0133
+        },
+        {
+          "tag": "kiểm soát và báo cáo tài chính",
+          "tfidf": 0.0133
+        },
+        {
+          "tag": "tài chính",
+          "tfidf": 0.0122
+        },
+        {
+          "tag": "chuyên môn tài chính/ngân hàng/bảo hiểm khác",
+          "tfidf": 0.0104
+        },
+        {
+          "tag": "telesales",
+          "tfidf": 0.0103
+        }
+      ],
+      "experience_distribution": {
+        "Dưới 1 năm": 17,
+        "Không yêu cầu": 17,
+        "1 năm": 11,
+        "2 năm": 11,
+        "3 năm": 11,
+        "4 năm": 11,
+        "5 năm": 11,
+        "Trên 5 năm": 11
+      },
+      "education_levels": {
+        "Đại học": 61,
+        "Cao đẳng": 18,
+        "Trung học": 12,
+        "Trung cấp": 9
+      }
+    },
+    "Nhân viên kinh doanh": {
+      "category": "Nhân viên kinh doanh",
+      "category_key": "nhan-vien-kinh-doanh",
+      "n_jobs": 100,
+      "tech_skills_tfidf": [
+        {
+          "skill": "B2B",
+          "tfidf": 0.022
+        },
+        {
+          "skill": "Direct Sales",
+          "tfidf": 0.0203
+        },
+        {
+          "skill": "Kinh doanh/Bán hàng khác",
+          "tfidf": 0.0201
+        },
+        {
+          "skill": "Sales Marketing",
+          "tfidf": 0.0161
+        },
+        {
+          "skill": "B2C",
+          "tfidf": 0.0152
+        },
+        {
+          "skill": "Kinh doanh phần mềm",
+          "tfidf": 0.0152
+        },
+        {
+          "skill": "Sales Bán lẻ/Dịch vụ tiêu dùng khác",
+          "tfidf": 0.0126
+        },
+        {
+          "skill": "Sales Representative/Phát triển kinh doanh",
+          "tfidf": 0.0121
+        },
+        {
+          "skill": "Logistic / Vận tải",
+          "tfidf": 0.0093
+        },
+        {
+          "skill": "Host Livestream/Streamer",
+          "tfidf": 0.0081
+        },
+        {
+          "skill": "Kinh doanh dịch vụ quảng cáo",
+          "tfidf": 0.0081
+        },
+        {
+          "skill": "Bán hàng kỹ thuật IT",
+          "tfidf": 0.0081
+        },
+        {
+          "skill": "Kinh doanh kênh GT",
+          "tfidf": 0.0081
+        },
+        {
+          "skill": "Bán hàng mỹ phẩm",
+          "tfidf": 0.0063
+        },
+        {
+          "skill": "Sales Xuất nhập khẩu/Logistics khác",
+          "tfidf": 0.0063
+        },
+        {
+          "skill": "Sales Logistics",
+          "tfidf": 0.0063
+        },
+        {
+          "skill": "Quan hệ khách hàng cá nhân/doanh nghiệp",
+          "tfidf": 0.0063
+        },
+        {
+          "skill": "IT - Phần mềm",
+          "tfidf": 0.0063
+        },
+        {
+          "skill": "Nhân sự",
+          "tfidf": 0.0062
+        },
+        {
+          "skill": "Cơ khí / Tự động hóa",
+          "tfidf": 0.0053
+        },
+        {
+          "skill": "Chăm sóc sức khỏe / Làm đẹp",
+          "tfidf": 0.0052
+        },
+        {
+          "skill": "Bán hàng tại cửa hàng/showroom",
+          "tfidf": 0.0052
+        },
+        {
+          "skill": "Telesales",
+          "tfidf": 0.0051
+        },
+        {
+          "skill": "Tuyển dụng",
+          "tfidf": 0.0051
+        },
+        {
+          "skill": "Chăm sóc khách hàng",
+          "tfidf": 0.0051
+        },
+        {
+          "skill": "Sales Admin",
+          "tfidf": 0.0051
+        },
+        {
+          "skill": "Sales Support",
+          "tfidf": 0.0051
+        },
+        {
+          "skill": "Sales Associate",
+          "tfidf": 0.0051
+        },
+        {
+          "skill": "Bán lẻ - Hàng tiêu dùng - FMCG",
+          "tfidf": 0.005
+        },
+        {
+          "skill": "Online Sales",
+          "tfidf": 0.0047
+        }
+      ],
+      "tech_skills_freq": [
+        {
+          "skill": "B2B",
+          "count": 39
+        },
+        {
+          "skill": "Direct Sales",
+          "count": 36
+        },
+        {
+          "skill": "B2C",
+          "count": 27
+        },
+        {
+          "skill": "Excel",
+          "count": 21
+        },
+        {
+          "skill": "Python",
+          "count": 19
+        },
+        {
+          "skill": "AutoCAD",
+          "count": 18
+        },
+        {
+          "skill": "SAP",
+          "count": 16
+        },
+        {
+          "skill": "Bán lẻ - Hàng tiêu dùng - FMCG",
+          "count": 14
+        },
+        {
+          "skill": "Online Sales",
+          "count": 13
+        },
+        {
+          "skill": "Telesales",
+          "count": 9
+        },
+        {
+          "skill": "Marketing / Quảng cáo",
+          "count": 8
+        },
+        {
+          "skill": "Logistic / Vận tải",
+          "count": 7
+        },
+        {
+          "skill": "Kinh doanh phần mềm",
+          "count": 6
+        },
+        {
+          "skill": "IT - Phần mềm",
+          "count": 6
+        },
+        {
+          "skill": "May mặc / Thời trang",
+          "count": 5
+        },
+        {
+          "skill": "Chăm sóc sức khỏe / Làm đẹp",
+          "count": 5
+        },
+        {
+          "skill": "Bán hàng tại cửa hàng/showroom",
+          "count": 5
+        },
+        {
+          "skill": "Kinh doanh/Bán hàng khác",
+          "count": 5
+        },
+        {
+          "skill": "Thương mại điện tử",
+          "count": 4
+        },
+        {
+          "skill": "Sales Bán lẻ/Dịch vụ tiêu dùng khác",
+          "count": 4
+        },
+        {
+          "skill": "B2G",
+          "count": 4
+        },
+        {
+          "skill": "Cơ khí / Tự động hóa",
+          "count": 4
+        },
+        {
+          "skill": "Sales Marketing",
+          "count": 4
+        },
+        {
+          "skill": "Điện / Điện tử / Điện lạnh",
+          "count": 3
+        },
+        {
+          "skill": "Giáo dục / Đào tạo",
+          "count": 3
+        },
+        {
+          "skill": "Nhân sự",
+          "count": 3
+        },
+        {
+          "skill": "Tài chính",
+          "count": 3
+        },
+        {
+          "skill": "Bất động sản",
+          "count": 3
+        },
+        {
+          "skill": "Sales Representative/Phát triển kinh doanh",
+          "count": 3
+        },
+        {
+          "skill": "Y tế / Dược phẩm",
+          "count": 3
+        }
+      ],
+      "soft_skills_tfidf": [
+        {
+          "skill": "Kỹ năng thuyết phục",
+          "tfidf": 0.0275
+        },
+        {
+          "skill": "Good negotiation skills",
+          "tfidf": 0.0275
+        },
+        {
+          "skill": "Kỹ năng đàm phán",
+          "tfidf": 0.0216
+        },
+        {
+          "skill": "Nhiệt huyết",
+          "tfidf": 0.0173
+        },
+        {
+          "skill": "Tư duy hệ thống",
+          "tfidf": 0.0173
+        },
+        {
+          "skill": "Kỹ năng giao tiếp",
+          "tfidf": 0.0143
+        },
+        {
+          "skill": "Năng động",
+          "tfidf": 0.0141
+        },
+        {
+          "skill": "Kỹ năng xử lý tình huống linh hoạt",
+          "tfidf": 0.0138
+        },
+        {
+          "skill": "Kỹ năng thuyết phục và nắm bắt tâm lý Khách hàng",
+          "tfidf": 0.0138
+        },
+        {
+          "skill": "Không cần kinh nghiệm",
+          "tfidf": 0.0138
+        },
+        {
+          "skill": "Tinh thần cầu tiến",
+          "tfidf": 0.0138
+        },
+        {
+          "skill": "Kỹ năng tổ chức và lên kế hoạch",
+          "tfidf": 0.0138
+        },
+        {
+          "skill": "Tác phong lịch sự và chuyên nghiệp",
+          "tfidf": 0.0138
+        },
+        {
+          "skill": "thân thiện (luôn sẵn sàng nở nụ cười)",
+          "tfidf": 0.0138
+        },
+        {
+          "skill": "Có khả năng giao tiếp và làm việc bằng tiếng Trung",
+          "tfidf": 0.0138
+        }
+      ],
+      "soft_skills_freq": [
+        {
+          "skill": "Kỹ năng giao tiếp",
+          "count": 4
+        },
+        {
+          "skill": "teamwork",
+          "count": 4
+        },
+        {
+          "skill": "giao tiếp tốt",
+          "count": 4
+        },
+        {
+          "skill": "giao tiếp",
+          "count": 3
+        },
+        {
+          "skill": "chủ động",
+          "count": 3
+        },
+        {
+          "skill": "Kỹ năng thuyết phục",
+          "count": 2
+        },
+        {
+          "skill": "Kỹ năng đàm phán",
+          "count": 2
+        },
+        {
+          "skill": "Kỹ năng giao tiếp tốt",
+          "count": 2
+        },
+        {
+          "skill": "Nhiệt huyết",
+          "count": 2
+        },
+        {
+          "skill": "Năng động",
+          "count": 2
+        },
+        {
+          "skill": "Tư duy hệ thống",
+          "count": 2
+        },
+        {
+          "skill": "Good negotiation skills",
+          "count": 2
+        },
+        {
+          "skill": "Kỹ năng xử lý tình huống linh hoạt",
+          "count": 1
+        },
+        {
+          "skill": "Kỹ năng thuyết phục và nắm bắt tâm lý Khách hàng",
+          "count": 1
+        },
+        {
+          "skill": "nhanh nhẹn",
+          "count": 1
+        }
+      ],
+      "requirements_tags": [
+        {
+          "tag": "chuyên môn kinh doanh/bán hàng khác",
+          "tfidf": 0.0315
+        },
+        {
+          "tag": "b2b",
+          "tfidf": 0.0239
+        },
+        {
+          "tag": "kinh doanh phần mềm",
+          "tfidf": 0.0197
+        },
+        {
+          "tag": "sales marketing",
+          "tfidf": 0.0179
+        },
+        {
+          "tag": "sales representative/phát triển kinh doanh",
+          "tfidf": 0.0179
+        },
+        {
+          "tag": "b2c",
+          "tfidf": 0.0171
+        },
+        {
+          "tag": "direct sales",
+          "tfidf": 0.0163
+        },
+        {
+          "tag": "sales bán lẻ/dịch vụ tiêu dùng khác",
+          "tfidf": 0.014
+        },
+        {
+          "tag": "bán hàng tại cửa hàng/showroom",
+          "tfidf": 0.0123
+        },
+        {
+          "tag": "sales admin/sales support/sales associate",
+          "tfidf": 0.0113
+        },
+        {
+          "tag": "bán hàng kỹ thuật it",
+          "tfidf": 0.0113
+        },
+        {
+          "tag": "quan hệ khách hàng cá nhân/doanh nghiệp",
+          "tfidf": 0.0105
+        },
+        {
+          "tag": "logistic / vận tải",
+          "tfidf": 0.0103
+        },
+        {
+          "tag": "host livestream/streamer",
+          "tfidf": 0.0089
+        },
+        {
+          "tag": "kinh doanh dịch vụ quảng cáo",
+          "tfidf": 0.0089
+        },
+        {
+          "tag": "kinh doanh kênh gt",
+          "tfidf": 0.0089
+        },
+        {
+          "tag": "online sales",
+          "tfidf": 0.0076
+        },
+        {
+          "tag": "telesales",
+          "tfidf": 0.0075
+        },
+        {
+          "tag": "bán lẻ - hàng tiêu dùng - fmcg",
+          "tfidf": 0.0072
+        },
+        {
+          "tag": "bán hàng mỹ phẩm",
+          "tfidf": 0.007
+        }
+      ],
+      "experience_distribution": {
+        "Không yêu cầu": 21,
+        "Dưới 1 năm": 12,
+        "5 năm": 12,
+        "1 năm": 11,
+        "2 năm": 11,
+        "3 năm": 11,
+        "4 năm": 11,
+        "Trên 5 năm": 11
+      },
+      "education_levels": {
+        "Đại học": 41,
+        "Cao đẳng": 30,
+        "Trung cấp": 19,
+        "Trung học": 10
+      }
+    },
+    "Telesales": {
+      "category": "Telesales",
+      "category_key": "telesales",
+      "n_jobs": 100,
+      "tech_skills_tfidf": [
+        {
+          "skill": "Telesales",
+          "tfidf": 0.0301
+        },
+        {
+          "skill": "B2C",
+          "tfidf": 0.0236
+        },
+        {
+          "skill": "B2B",
+          "tfidf": 0.0228
+        },
+        {
+          "skill": "Direct Sales",
+          "tfidf": 0.0219
+        },
+        {
+          "skill": "Sales Logistics",
+          "tfidf": 0.0216
+        },
+        {
+          "skill": "Online Sales",
+          "tfidf": 0.0123
+        },
+        {
+          "skill": "Bán hàng tại cửa hàng/showroom",
+          "tfidf": 0.0119
+        },
+        {
+          "skill": "Tư vấn tuyển sinh/khoá học",
+          "tfidf": 0.0096
+        },
+        {
+          "skill": "Kinh doanh thiết bị/vật liệu xây dựng",
+          "tfidf": 0.0096
+        },
+        {
+          "skill": "Logistic / Vận tải",
+          "tfidf": 0.0081
+        },
+        {
+          "skill": "B2G",
+          "tfidf": 0.0078
+        },
+        {
+          "skill": "Sales Director/Giám đốc kinh doanh",
+          "tfidf": 0.0072
+        },
+        {
+          "skill": "Sales bất động sản/Môi giới bất động sản",
+          "tfidf": 0.0063
+        },
+        {
+          "skill": "Xuất nhập khẩu / Hải quan",
+          "tfidf": 0.0063
+        },
+        {
+          "skill": "Tư vấn tài chính",
+          "tfidf": 0.0063
+        },
+        {
+          "skill": "Trợ lý kinh doanh",
+          "tfidf": 0.0061
+        },
+        {
+          "skill": "Kinh doanh nội thất",
+          "tfidf": 0.0061
+        },
+        {
+          "skill": "Sales Tour/Kinh doanh du lịch",
+          "tfidf": 0.0061
+        },
+        {
+          "skill": "Quản lý cửa hàng/Cửa hàng trưởng",
+          "tfidf": 0.0061
+        },
+        {
+          "skill": "Kinh doanh ô tô/xe máy/xe điện",
+          "tfidf": 0.0061
+        },
+        {
+          "skill": "Account Manager",
+          "tfidf": 0.0061
+        },
+        {
+          "skill": "Hàng không",
+          "tfidf": 0.0061
+        },
+        {
+          "skill": "Công nghệ kỹ thuật",
+          "tfidf": 0.0051
+        },
+        {
+          "skill": "Du lịch",
+          "tfidf": 0.0051
+        },
+        {
+          "skill": "Sales Giáo dục/Khoá học khác",
+          "tfidf": 0.0048
+        },
+        {
+          "skill": "Bán hàng mỹ phẩm",
+          "tfidf": 0.0048
+        },
+        {
+          "skill": "Sales Tài chính/Ngân hàng/Bảo hiểm khác",
+          "tfidf": 0.0048
+        },
+        {
+          "skill": "Quan hệ khách hàng cá nhân/doanh nghiệp",
+          "tfidf": 0.0048
+        },
+        {
+          "skill": "Sales Dược/Y tế/Sức khoẻ/Làm đẹp khác",
+          "tfidf": 0.0048
+        },
+        {
+          "skill": "Bán lẻ - Hàng tiêu dùng - FMCG",
+          "tfidf": 0.0041
+        }
+      ],
+      "tech_skills_freq": [
+        {
+          "skill": "Telesales",
+          "count": 70
+        },
+        {
+          "skill": "B2C",
+          "count": 55
+        },
+        {
+          "skill": "B2B",
+          "count": 53
+        },
+        {
+          "skill": "Direct Sales",
+          "count": 51
+        },
+        {
+          "skill": "Online Sales",
+          "count": 45
+        },
+        {
+          "skill": "Excel",
+          "count": 17
+        },
+        {
+          "skill": "Python",
+          "count": 16
+        },
+        {
+          "skill": "SAP",
+          "count": 16
+        },
+        {
+          "skill": "AutoCAD",
+          "count": 15
+        },
+        {
+          "skill": "Bán lẻ - Hàng tiêu dùng - FMCG",
+          "count": 15
+        },
+        {
+          "skill": "Bán hàng tại cửa hàng/showroom",
+          "count": 15
+        },
+        {
+          "skill": "B2G",
+          "count": 13
+        },
+        {
+          "skill": "Tài chính",
+          "count": 10
+        },
+        {
+          "skill": "Marketing / Quảng cáo",
+          "count": 10
+        },
+        {
+          "skill": "Thương mại điện tử",
+          "count": 10
+        },
+        {
+          "skill": "Sales Logistics",
+          "count": 9
+        },
+        {
+          "skill": "Logistic / Vận tải",
+          "count": 8
+        },
+        {
+          "skill": "Xây dựng",
+          "count": 7
+        },
+        {
+          "skill": "Ngân hàng",
+          "count": 6
+        },
+        {
+          "skill": "Bất động sản",
+          "count": 6
+        },
+        {
+          "skill": "Giáo dục / Đào tạo",
+          "count": 5
+        },
+        {
+          "skill": "Sales bất động sản/Môi giới bất động sản",
+          "count": 5
+        },
+        {
+          "skill": "Công nghệ kỹ thuật",
+          "count": 5
+        },
+        {
+          "skill": "Tư vấn tuyển sinh/khoá học",
+          "count": 4
+        },
+        {
+          "skill": "Xuất nhập khẩu / Hải quan",
+          "count": 4
+        },
+        {
+          "skill": "Tư vấn tài chính",
+          "count": 4
+        },
+        {
+          "skill": "Du lịch",
+          "count": 4
+        },
+        {
+          "skill": "Kinh doanh thiết bị/vật liệu xây dựng",
+          "count": 4
+        },
+        {
+          "skill": "Điện / Điện tử / Điện lạnh",
+          "count": 3
+        },
+        {
+          "skill": "Thiết kế / Kiến trúc",
+          "count": 3
+        }
+      ],
+      "soft_skills_tfidf": [
+        {
+          "skill": "Diễn đạt trôi chảy",
+          "tfidf": 0.0645
+        },
+        {
+          "skill": "Phát âm chuẩn",
+          "tfidf": 0.0484
+        },
+        {
+          "skill": "Giọng miền Bắc",
+          "tfidf": 0.0323
+        },
+        {
+          "skill": "Giọng miền Trung",
+          "tfidf": 0.0323
+        },
+        {
+          "skill": "Giọng miền Nam",
+          "tfidf": 0.0323
+        },
+        {
+          "skill": "Kỹ năng bán hàng",
+          "tfidf": 0.0165
+        },
+        {
+          "skill": "tư duy doanh số",
+          "tfidf": 0.0161
+        },
+        {
+          "skill": "kiên trì trong việc bám khách",
+          "tfidf": 0.0161
+        },
+        {
+          "skill": "Hiểu biết về sản phẩm và dịch vụ của công ty",
+          "tfidf": 0.0161
+        },
+        {
+          "skill": "Tư duy dịch vụ",
+          "tfidf": 0.0161
+        },
+        {
+          "skill": "Kiên trì và trách nhiệm",
+          "tfidf": 0.0161
+        },
+        {
+          "skill": "có khả năng giao tiếp",
+          "tfidf": 0.0161
+        },
+        {
+          "skill": "xử lý tình huống tốt",
+          "tfidf": 0.0161
+        },
+        {
+          "skill": "không ngại khó",
+          "tfidf": 0.0161
+        },
+        {
+          "skill": "Kỹ năng cẩn thận trong nhập liệu",
+          "tfidf": 0.0161
+        }
+      ],
+      "soft_skills_freq": [
+        {
+          "skill": "giao tiếp",
+          "count": 6
+        },
+        {
+          "skill": "teamwork",
+          "count": 5
+        },
+        {
+          "skill": "Diễn đạt trôi chảy",
+          "count": 4
+        },
+        {
+          "skill": "Phát âm chuẩn",
+          "count": 3
+        },
+        {
+          "skill": "Kỹ năng giao tiếp",
+          "count": 2
+        },
+        {
+          "skill": "Kỹ năng bán hàng",
+          "count": 2
+        },
+        {
+          "skill": "Giọng miền Bắc",
+          "count": 2
+        },
+        {
+          "skill": "Giọng miền Trung",
+          "count": 2
+        },
+        {
+          "skill": "Giọng miền Nam",
+          "count": 2
+        },
+        {
+          "skill": "tư duy doanh số",
+          "count": 1
+        },
+        {
+          "skill": "chủ động",
+          "count": 1
+        },
+        {
+          "skill": "kiên trì trong việc bám khách",
+          "count": 1
+        },
+        {
+          "skill": "Ưu tiên các bạn sinh viên đi làm hè",
+          "count": 1
+        },
+        {
+          "skill": "ĐAM MÊ NHIỆT TÌNH NHẮN TIN",
+          "count": 1
+        },
+        {
+          "skill": "CHAT",
+          "count": 1
+        }
+      ],
+      "requirements_tags": [
+        {
+          "tag": "telesales",
+          "tfidf": 0.0359
+        },
+        {
+          "tag": "sales logistics",
+          "tfidf": 0.0208
+        },
+        {
+          "tag": "b2c",
+          "tfidf": 0.0187
+        },
+        {
+          "tag": "bán hàng tại cửa hàng/showroom",
+          "tfidf": 0.0185
+        },
+        {
+          "tag": "b2b",
+          "tfidf": 0.0168
+        },
+        {
+          "tag": "direct sales",
+          "tfidf": 0.0166
+        },
+        {
+          "tag": "online sales",
+          "tfidf": 0.0139
+        },
+        {
+          "tag": "tư vấn tuyển sinh/khoá học",
+          "tfidf": 0.0135
+        },
+        {
+          "tag": "chuyên môn kinh doanh/bán hàng khác",
+          "tfidf": 0.0115
+        },
+        {
+          "tag": "logistic / vận tải",
+          "tfidf": 0.0097
+        },
+        {
+          "tag": "kinh doanh thiết bị/vật liệu xây dựng",
+          "tfidf": 0.0092
+        },
+        {
+          "tag": "sales tour/kinh doanh du lịch",
+          "tfidf": 0.0088
+        },
+        {
+          "tag": "kinh doanh ô tô/xe máy/xe điện",
+          "tfidf": 0.0074
+        },
+        {
+          "tag": "b2g",
+          "tfidf": 0.007
+        },
+        {
+          "tag": "chuyên môn dịch vụ khách hàng/vận hành khác",
+          "tfidf": 0.0069
+        },
+        {
+          "tag": "sales dược/y tế/sức khoẻ/làm đẹp khác",
+          "tfidf": 0.0069
+        },
+        {
+          "tag": "sales director/giám đốc kinh doanh",
+          "tfidf": 0.0069
+        },
+        {
+          "tag": "sales bất động sản/môi giới bất động sản",
+          "tfidf": 0.0061
+        },
+        {
+          "tag": "xuất nhập khẩu / hải quan",
+          "tfidf": 0.006
+        },
+        {
+          "tag": "tư vấn tài chính",
+          "tfidf": 0.006
+        }
+      ],
+      "experience_distribution": {
+        "Không yêu cầu": 18,
+        "Dưới 1 năm": 17,
+        "5 năm": 13,
+        "1 năm": 11,
+        "2 năm": 11,
+        "3 năm": 11,
+        "4 năm": 10,
+        "Trên 5 năm": 9
+      },
+      "education_levels": {
+        "Cao đẳng": 43,
+        "Đại học": 25,
+        "Trung cấp": 17,
+        "Trung học": 11,
+        "Không yêu cầu": 1
+      }
+    },
+    "Thiết kế đồ họa": {
+      "category": "Thiết kế đồ họa",
+      "category_key": "thiet-ke",
+      "n_jobs": 100,
+      "tech_skills_tfidf": [
+        {
+          "skill": "Illustrator",
+          "tfidf": 0.0791
+        },
+        {
+          "skill": "thiết kế đồ họa (Graphic Design)",
+          "tfidf": 0.0628
+        },
+        {
+          "skill": "UI/UX Design",
+          "tfidf": 0.0628
+        },
+        {
+          "skill": "Photoshop",
+          "tfidf": 0.0604
+        },
+        {
+          "skill": "InDesign",
+          "tfidf": 0.0399
+        },
+        {
+          "skill": "Adobe Photoshop",
+          "tfidf": 0.0359
+        },
+        {
+          "skill": "Figma",
+          "tfidf": 0.0358
+        },
+        {
+          "skill": "Graphic Design",
+          "tfidf": 0.0285
+        },
+        {
+          "skill": "thiết kế / kiến trúc",
+          "tfidf": 0.0283
+        },
+        {
+          "skill": "Adobe Illustrator",
+          "tfidf": 0.0268
+        },
+        {
+          "skill": "Sketchup",
+          "tfidf": 0.0224
+        },
+        {
+          "skill": "Mỹ thuật / Nghệ thuật / Điện ảnh",
+          "tfidf": 0.0224
+        },
+        {
+          "skill": "Game",
+          "tfidf": 0.0189
+        },
+        {
+          "skill": "Adobe Premiere",
+          "tfidf": 0.0179
+        },
+        {
+          "skill": "Concept Artist",
+          "tfidf": 0.0179
+        },
+        {
+          "skill": "AI",
+          "tfidf": 0.0175
+        },
+        {
+          "skill": "Thiết kế đồ họa",
+          "tfidf": 0.0171
+        },
+        {
+          "skill": "Adobe Suite",
+          "tfidf": 0.0171
+        },
+        {
+          "skill": "After Effects",
+          "tfidf": 0.0134
+        },
+        {
+          "skill": "Adobe InDesign",
+          "tfidf": 0.0134
+        },
+        {
+          "skill": "Stable Diffusion",
+          "tfidf": 0.0114
+        },
+        {
+          "skill": "3Ds Max",
+          "tfidf": 0.0114
+        },
+        {
+          "skill": "After Effect",
+          "tfidf": 0.0114
+        },
+        {
+          "skill": "thiết kế nội thất",
+          "tfidf": 0.0114
+        },
+        {
+          "skill": "FigJam",
+          "tfidf": 0.0114
+        },
+        {
+          "skill": "Protopie",
+          "tfidf": 0.0114
+        },
+        {
+          "skill": "Premiere",
+          "tfidf": 0.0108
+        },
+        {
+          "skill": "ChatGPT",
+          "tfidf": 0.0089
+        },
+        {
+          "skill": "Capcut",
+          "tfidf": 0.0087
+        },
+        {
+          "skill": "IT - Phần mềm",
+          "tfidf": 0.0074
+        }
+      ],
+      "tech_skills_freq": [
+        {
+          "skill": "Photoshop",
+          "count": 32
+        },
+        {
+          "skill": "Illustrator",
+          "count": 22
+        },
+        {
+          "skill": "thiết kế / kiến trúc",
+          "count": 15
+        },
+        {
+          "skill": "thiết kế đồ họa (Graphic Design)",
+          "count": 11
+        },
+        {
+          "skill": "UI/UX Design",
+          "count": 11
+        },
+        {
+          "skill": "Adobe Photoshop",
+          "count": 10
+        },
+        {
+          "skill": "AutoCAD",
+          "count": 10
+        },
+        {
+          "skill": "Figma",
+          "count": 8
+        },
+        {
+          "skill": "Game",
+          "count": 8
+        },
+        {
+          "skill": "Marketing / Quảng cáo",
+          "count": 8
+        },
+        {
+          "skill": "InDesign",
+          "count": 7
+        },
+        {
+          "skill": "AI",
+          "count": 6
+        },
+        {
+          "skill": "Excel",
+          "count": 6
+        },
+        {
+          "skill": "Adobe Illustrator",
+          "count": 6
+        },
+        {
+          "skill": "Thương mại điện tử",
+          "count": 6
+        },
+        {
+          "skill": "Sketchup",
+          "count": 5
+        },
+        {
+          "skill": "Mỹ thuật / Nghệ thuật / Điện ảnh",
+          "count": 5
+        },
+        {
+          "skill": "Graphic Design",
+          "count": 5
+        },
+        {
+          "skill": "IT - Phần mềm",
+          "count": 5
+        },
+        {
+          "skill": "Adobe Premiere",
+          "count": 4
+        },
+        {
+          "skill": "Concept Artist",
+          "count": 4
+        },
+        {
+          "skill": "Python",
+          "count": 4
+        },
+        {
+          "skill": "SAP",
+          "count": 4
+        },
+        {
+          "skill": "Canva",
+          "count": 3
+        },
+        {
+          "skill": "Premiere",
+          "count": 3
+        },
+        {
+          "skill": "After Effects",
+          "count": 3
+        },
+        {
+          "skill": "Capcut",
+          "count": 3
+        },
+        {
+          "skill": "Thiết kế đồ họa",
+          "count": 3
+        },
+        {
+          "skill": "Adobe Suite",
+          "count": 3
+        },
+        {
+          "skill": "Adobe InDesign",
+          "count": 3
+        }
+      ],
+      "soft_skills_tfidf": [
+        {
+          "skill": "Kỹ năng làm việc nhóm tốt",
+          "tfidf": 0.0604
+        },
+        {
+          "skill": "Photoshop",
+          "tfidf": 0.0604
+        },
+        {
+          "skill": "After Effect",
+          "tfidf": 0.0604
+        },
+        {
+          "skill": "Adobe Premiere",
+          "tfidf": 0.0604
+        },
+        {
+          "skill": "Procreate",
+          "tfidf": 0.0604
+        },
+        {
+          "skill": "...",
+          "tfidf": 0.0604
+        },
+        {
+          "skill": "embroidery",
+          "tfidf": 0.0604
+        },
+        {
+          "skill": "sublimation",
+          "tfidf": 0.0604
+        },
+        {
+          "skill": "DTG",
+          "tfidf": 0.0604
+        },
+        {
+          "skill": "heat press...)",
+          "tfidf": 0.0604
+        },
+        {
+          "skill": "Có kiến thức về chất liệu vải",
+          "tfidf": 0.0604
+        },
+        {
+          "skill": "form dáng",
+          "tfidf": 0.0604
+        },
+        {
+          "skill": "tech pack",
+          "tfidf": 0.0604
+        },
+        {
+          "skill": "và các nguyên tắc thiết kế",
+          "tfidf": 0.0604
+        },
+        {
+          "skill": "bố cục",
+          "tfidf": 0.0604
+        }
+      ],
+      "soft_skills_freq": [
+        {
+          "skill": "Giao tiếp",
+          "count": 1
+        },
+        {
+          "skill": "Teamwork",
+          "count": 1
+        },
+        {
+          "skill": "Mắt thẩm mỹ tốt",
+          "count": 1
+        },
+        {
+          "skill": "Nhiệt tình",
+          "count": 1
+        },
+        {
+          "skill": "ham học hỏi",
+          "count": 1
+        },
+        {
+          "skill": "Chủ động giao tiếp và đặt câu hỏi mỗi khi có thắc mắc",
+          "count": 1
+        },
+        {
+          "skill": "Chịu áp lực tốt",
+          "count": 1
+        },
+        {
+          "skill": "Tinh thần trách nhiệm",
+          "count": 1
+        },
+        {
+          "skill": "Kỹ năng làm việc nhóm tốt",
+          "count": 1
+        },
+        {
+          "skill": "Photoshop",
+          "count": 1
+        },
+        {
+          "skill": "After Effect",
+          "count": 1
+        },
+        {
+          "skill": "Adobe Premiere",
+          "count": 1
+        },
+        {
+          "skill": "Procreate",
+          "count": 1
+        },
+        {
+          "skill": "...",
+          "count": 1
+        },
+        {
+          "skill": "embroidery",
+          "count": 1
+        }
+      ],
+      "requirements_tags": [
+        {
+          "tag": "thiết kế đồ họa (graphic design)",
+          "tfidf": 0.33
+        },
+        {
+          "tag": "ui/ux design",
+          "tfidf": 0.1165
+        },
+        {
+          "tag": "mỹ thuật / nghệ thuật / điện ảnh",
+          "tfidf": 0.0912
+        },
+        {
+          "tag": "thiết kế nội thất",
+          "tfidf": 0.0582
+        },
+        {
+          "tag": "thiết kế / kiến trúc",
+          "tfidf": 0.0501
+        },
+        {
+          "tag": "game",
+          "tfidf": 0.0378
+        },
+        {
+          "tag": "concept artist",
+          "tfidf": 0.0326
+        },
+        {
+          "tag": "chuyên môn nghệ thuật/hoạt hình/game khác",
+          "tfidf": 0.0083
+        },
+        {
+          "tag": "chuyên môn thiết kế nhà/nội thất/môi trường khác",
+          "tfidf": 0.0083
+        },
+        {
+          "tag": "chuyên môn thiết kế công nghiệp",
+          "tfidf": 0.0083
+        },
+        {
+          "tag": "thiết kế đồ trang sức",
+          "tfidf": 0.0083
+        },
+        {
+          "tag": "3d modeler",
+          "tfidf": 0.0083
+        },
+        {
+          "tag": "chuyên môn thiết kế thời trang",
+          "tfidf": 0.0083
+        },
+        {
+          "tag": "illustration",
+          "tfidf": 0.0083
+        },
+        {
+          "tag": "marketing / quảng cáo",
+          "tfidf": 0.0078
+        },
+        {
+          "tag": "it - phần mềm",
+          "tfidf": 0.007
+        },
+        {
+          "tag": "content marketing",
+          "tfidf": 0.0065
+        },
+        {
+          "tag": "photographer/video editor",
+          "tfidf": 0.0052
+        },
+        {
+          "tag": "viễn thông",
+          "tfidf": 0.0043
+        },
+        {
+          "tag": "social media",
+          "tfidf": 0.0042
+        }
+      ],
+      "experience_distribution": {
+        "Không yêu cầu": 18,
+        "Dưới 1 năm": 17,
+        "5 năm": 14,
+        "1 năm": 11,
+        "2 năm": 11,
+        "3 năm": 11,
+        "4 năm": 11,
+        "Trên 5 năm": 7
+      },
+      "education_levels": {
+        "Đại học": 48,
+        "Cao đẳng": 37,
+        "Trung cấp": 9,
+        "Trung học": 6
+      }
+    }
+  }
+}

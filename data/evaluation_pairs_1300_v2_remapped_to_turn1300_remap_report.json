@@ -1,0 +1,814 @@
+{
+  "status_counts": {
+    "legacy_url": 22,
+    "direct_id": 720,
+    "missing": 1141,
+    "pair_title_category_unique": 45,
+    "pair_title_unique": 12,
+    "legacy_title_company_unique": 4,
+    "legacy_title_category_unique": 6
+  },
+  "remaps": [
+    {
+      "cv_id": "bds_L1",
+      "rank": 1,
+      "old_job_id": "a68b0d3998bd7196984af00342c4b686",
+      "new_job_id": "aec1332725743a27f3ad83206c147a7c",
+      "status": "legacy_url",
+      "job_title": "Chuyên Viên/Cộng Tác Viên Kinh Doanh",
+      "new_title": "Chuyên Viên/Cộng Tác Viên Kinh Doanh"
+    },
+    {
+      "cv_id": "bds_L1",
+      "rank": 14,
+      "old_job_id": "f3285daaa63b2a31d61f0cbb4d9e3dd9",
+      "new_job_id": "9ffbdf538230596381367c97689f8c9c",
+      "status": "pair_title_category_unique",
+      "job_title": "Nhân Viên Kinh Doanh/Sales BĐS/Tư Vấn Bán Hàng - Phỏng Vấn Nhân Việc Ngay (Chế Độ Hấp Dẫn)",
+      "new_title": "Nhân Viên Kinh Doanh/Sales BĐS/Tư Vấn Bán Hàng - Phỏng Vấn Nhân Việc Ngay (Chế Độ Hấp Dẫn)"
+    },
+    {
+      "cv_id": "bds_L2",
+      "rank": 2,
+      "old_job_id": "a68b0d3998bd7196984af00342c4b686",
+      "new_job_id": "aec1332725743a27f3ad83206c147a7c",
+      "status": "legacy_url",
+      "job_title": "Chuyên Viên/Cộng Tác Viên Kinh Doanh",
+      "new_title": "Chuyên Viên/Cộng Tác Viên Kinh Doanh"
+    },
+    {
+      "cv_id": "bds_L2",
+      "rank": 11,
+      "old_job_id": "f3285daaa63b2a31d61f0cbb4d9e3dd9",
+      "new_job_id": "9ffbdf538230596381367c97689f8c9c",
+      "status": "pair_title_category_unique",
+      "job_title": "Nhân Viên Kinh Doanh/Sales BĐS/Tư Vấn Bán Hàng - Phỏng Vấn Nhân Việc Ngay (Chế Độ Hấp Dẫn)",
+      "new_title": "Nhân Viên Kinh Doanh/Sales BĐS/Tư Vấn Bán Hàng - Phỏng Vấn Nhân Việc Ngay (Chế Độ Hấp Dẫn)"
+    },
+    {
+      "cv_id": "bds_L3",
+      "rank": 1,
+      "old_job_id": "a68b0d3998bd7196984af00342c4b686",
+      "new_job_id": "aec1332725743a27f3ad83206c147a7c",
+      "status": "legacy_url",
+      "job_title": "Chuyên Viên/Cộng Tác Viên Kinh Doanh",
+      "new_title": "Chuyên Viên/Cộng Tác Viên Kinh Doanh"
+    },
+    {
+      "cv_id": "bds_L3",
+      "rank": 14,
+      "old_job_id": "f3285daaa63b2a31d61f0cbb4d9e3dd9",
+      "new_job_id": "9ffbdf538230596381367c97689f8c9c",
+      "status": "pair_title_category_unique",
+      "job_title": "Nhân Viên Kinh Doanh/Sales BĐS/Tư Vấn Bán Hàng - Phỏng Vấn Nhân Việc Ngay (Chế Độ Hấp Dẫn)",
+      "new_title": "Nhân Viên Kinh Doanh/Sales BĐS/Tư Vấn Bán Hàng - Phỏng Vấn Nhân Việc Ngay (Chế Độ Hấp Dẫn)"
+    },
+    {
+      "cv_id": "bds_L4",
+      "rank": 1,
+      "old_job_id": "a68b0d3998bd7196984af00342c4b686",
+      "new_job_id": "aec1332725743a27f3ad83206c147a7c",
+      "status": "legacy_url",
+      "job_title": "Chuyên Viên/Cộng Tác Viên Kinh Doanh",
+      "new_title": "Chuyên Viên/Cộng Tác Viên Kinh Doanh"
+    },
+    {
+      "cv_id": "bds_L4",
+      "rank": 15,
+      "old_job_id": "f3285daaa63b2a31d61f0cbb4d9e3dd9",
+      "new_job_id": "9ffbdf538230596381367c97689f8c9c",
+      "status": "pair_title_category_unique",
+      "job_title": "Nhân Viên Kinh Doanh/Sales BĐS/Tư Vấn Bán Hàng - Phỏng Vấn Nhân Việc Ngay (Chế Độ Hấp Dẫn)",
+      "new_title": "Nhân Viên Kinh Doanh/Sales BĐS/Tư Vấn Bán Hàng - Phỏng Vấn Nhân Việc Ngay (Chế Độ Hấp Dẫn)"
+    },
+    {
+      "cv_id": "bds_P",
+      "rank": 1,
+      "old_job_id": "3ef4c70e843c8b027eb6f49cf3f4257e",
+      "new_job_id": "1c2d591d52186db399ed44582322736c",
+      "status": "legacy_url",
+      "job_title": "Trưởng Khối Vận Hành (Head Of Operations)",
+      "new_title": "Trưởng Khối Vận Hành (Head Of Operations)"
+    },
+    {
+      "cv_id": "bds_L2b",
+      "rank": 10,
+      "old_job_id": "f3285daaa63b2a31d61f0cbb4d9e3dd9",
+      "new_job_id": "9ffbdf538230596381367c97689f8c9c",
+      "status": "pair_title_category_unique",
+      "job_title": "Nhân Viên Kinh Doanh/Sales BĐS/Tư Vấn Bán Hàng - Phỏng Vấn Nhân Việc Ngay (Chế Độ Hấp Dẫn)",
+      "new_title": "Nhân Viên Kinh Doanh/Sales BĐS/Tư Vấn Bán Hàng - Phỏng Vấn Nhân Việc Ngay (Chế Độ Hấp Dẫn)"
+    },
+    {
+      "cv_id": "bds_L2b",
+      "rank": 14,
+      "old_job_id": "a68b0d3998bd7196984af00342c4b686",
+      "new_job_id": "aec1332725743a27f3ad83206c147a7c",
+      "status": "legacy_url",
+      "job_title": "Chuyên Viên/Cộng Tác Viên Kinh Doanh",
+      "new_title": "Chuyên Viên/Cộng Tác Viên Kinh Doanh"
+    },
+    {
+      "cv_id": "cskh_L1",
+      "rank": 6,
+      "old_job_id": "90c81ec8e7e2d0fde869ddf09b995492",
+      "new_job_id": "fa6559da44c6fef3e7ad327ac49988a7",
+      "status": "pair_title_category_unique",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng Tiếng Anh - Không Yêu Cầu Kinh Nghiệm - Thu Nhập 15 - 23 Triệu - Tại HCM",
+      "new_title": "Nhân Viên Chăm Sóc Khách Hàng Tiếng Anh - Không Yêu Cầu Kinh Nghiệm - Thu Nhập 15 - 23 Triệu - Tại HCM"
+    },
+    {
+      "cv_id": "cskh_L2",
+      "rank": 7,
+      "old_job_id": "90c81ec8e7e2d0fde869ddf09b995492",
+      "new_job_id": "fa6559da44c6fef3e7ad327ac49988a7",
+      "status": "pair_title_category_unique",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng Tiếng Anh - Không Yêu Cầu Kinh Nghiệm - Thu Nhập 15 - 23 Triệu - Tại HCM",
+      "new_title": "Nhân Viên Chăm Sóc Khách Hàng Tiếng Anh - Không Yêu Cầu Kinh Nghiệm - Thu Nhập 15 - 23 Triệu - Tại HCM"
+    },
+    {
+      "cv_id": "cskh_L3",
+      "rank": 10,
+      "old_job_id": "90c81ec8e7e2d0fde869ddf09b995492",
+      "new_job_id": "fa6559da44c6fef3e7ad327ac49988a7",
+      "status": "pair_title_category_unique",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng Tiếng Anh - Không Yêu Cầu Kinh Nghiệm - Thu Nhập 15 - 23 Triệu - Tại HCM",
+      "new_title": "Nhân Viên Chăm Sóc Khách Hàng Tiếng Anh - Không Yêu Cầu Kinh Nghiệm - Thu Nhập 15 - 23 Triệu - Tại HCM"
+    },
+    {
+      "cv_id": "cskh_L4",
+      "rank": 8,
+      "old_job_id": "90c81ec8e7e2d0fde869ddf09b995492",
+      "new_job_id": "fa6559da44c6fef3e7ad327ac49988a7",
+      "status": "pair_title_category_unique",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng Tiếng Anh - Không Yêu Cầu Kinh Nghiệm - Thu Nhập 15 - 23 Triệu - Tại HCM",
+      "new_title": "Nhân Viên Chăm Sóc Khách Hàng Tiếng Anh - Không Yêu Cầu Kinh Nghiệm - Thu Nhập 15 - 23 Triệu - Tại HCM"
+    },
+    {
+      "cv_id": "cskh_P",
+      "rank": 7,
+      "old_job_id": "3ef4c70e843c8b027eb6f49cf3f4257e",
+      "new_job_id": "1c2d591d52186db399ed44582322736c",
+      "status": "legacy_url",
+      "job_title": "Trưởng Khối Vận Hành (Head Of Operations)",
+      "new_title": "Trưởng Khối Vận Hành (Head Of Operations)"
+    },
+    {
+      "cv_id": "cskh_P",
+      "rank": 13,
+      "old_job_id": "90c81ec8e7e2d0fde869ddf09b995492",
+      "new_job_id": "fa6559da44c6fef3e7ad327ac49988a7",
+      "status": "pair_title_category_unique",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng Tiếng Anh - Không Yêu Cầu Kinh Nghiệm - Thu Nhập 15 - 23 Triệu - Tại HCM",
+      "new_title": "Nhân Viên Chăm Sóc Khách Hàng Tiếng Anh - Không Yêu Cầu Kinh Nghiệm - Thu Nhập 15 - 23 Triệu - Tại HCM"
+    },
+    {
+      "cv_id": "cskh_L1b",
+      "rank": 2,
+      "old_job_id": "9f639e0dadba096dbf952d826ed0c243",
+      "new_job_id": "6f638be62e7594e2cdee54d7f1cb9712",
+      "status": "pair_title_category_unique",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng, Tư Vấn App Dịch Vụ Parttime (Hà Nội)",
+      "new_title": "Nhân Viên Chăm Sóc Khách Hàng, Tư Vấn App Dịch Vụ Parttime (Hà Nội)"
+    },
+    {
+      "cv_id": "cskh_L1b",
+      "rank": 4,
+      "old_job_id": "90c81ec8e7e2d0fde869ddf09b995492",
+      "new_job_id": "fa6559da44c6fef3e7ad327ac49988a7",
+      "status": "pair_title_category_unique",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng Tiếng Anh - Không Yêu Cầu Kinh Nghiệm - Thu Nhập 15 - 23 Triệu - Tại HCM",
+      "new_title": "Nhân Viên Chăm Sóc Khách Hàng Tiếng Anh - Không Yêu Cầu Kinh Nghiệm - Thu Nhập 15 - 23 Triệu - Tại HCM"
+    },
+    {
+      "cv_id": "cskh_L2b",
+      "rank": 2,
+      "old_job_id": "90c81ec8e7e2d0fde869ddf09b995492",
+      "new_job_id": "fa6559da44c6fef3e7ad327ac49988a7",
+      "status": "pair_title_category_unique",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng Tiếng Anh - Không Yêu Cầu Kinh Nghiệm - Thu Nhập 15 - 23 Triệu - Tại HCM",
+      "new_title": "Nhân Viên Chăm Sóc Khách Hàng Tiếng Anh - Không Yêu Cầu Kinh Nghiệm - Thu Nhập 15 - 23 Triệu - Tại HCM"
+    },
+    {
+      "cv_id": "cskh_L3b",
+      "rank": 6,
+      "old_job_id": "90c81ec8e7e2d0fde869ddf09b995492",
+      "new_job_id": "fa6559da44c6fef3e7ad327ac49988a7",
+      "status": "pair_title_category_unique",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng Tiếng Anh - Không Yêu Cầu Kinh Nghiệm - Thu Nhập 15 - 23 Triệu - Tại HCM",
+      "new_title": "Nhân Viên Chăm Sóc Khách Hàng Tiếng Anh - Không Yêu Cầu Kinh Nghiệm - Thu Nhập 15 - 23 Triệu - Tại HCM"
+    },
+    {
+      "cv_id": "cskh_P2",
+      "rank": 5,
+      "old_job_id": "3ef4c70e843c8b027eb6f49cf3f4257e",
+      "new_job_id": "1c2d591d52186db399ed44582322736c",
+      "status": "legacy_url",
+      "job_title": "Trưởng Khối Vận Hành (Head Of Operations)",
+      "new_title": "Trưởng Khối Vận Hành (Head Of Operations)"
+    },
+    {
+      "cv_id": "cskh_P2",
+      "rank": 9,
+      "old_job_id": "90c81ec8e7e2d0fde869ddf09b995492",
+      "new_job_id": "fa6559da44c6fef3e7ad327ac49988a7",
+      "status": "pair_title_category_unique",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng Tiếng Anh - Không Yêu Cầu Kinh Nghiệm - Thu Nhập 15 - 23 Triệu - Tại HCM",
+      "new_title": "Nhân Viên Chăm Sóc Khách Hàng Tiếng Anh - Không Yêu Cầu Kinh Nghiệm - Thu Nhập 15 - 23 Triệu - Tại HCM"
+    },
+    {
+      "cv_id": "gd_L2",
+      "rank": 14,
+      "old_job_id": "7fd0ed9a389ad37fdc82162577d91e42",
+      "new_job_id": "a0f0d62259ca7f411637acb328a2b3b7",
+      "status": "pair_title_unique",
+      "job_title": "Telesales / Tư Vấn Tuyển Sinh / Nhân Viên Kinh Doanh / Sales Online Giáo Dục (Thử Việc Full Lương _ Data Nóng 100% _ Lương Lên Đến 50M)",
+      "new_title": "Telesales / Tư Vấn Tuyển Sinh / Nhân Viên Kinh Doanh / Sales Online Giáo Dục (Thử Việc Full Lương _ Data Nóng 100% _ Lương Lên Đến 50M)"
+    },
+    {
+      "cv_id": "gd_L3",
+      "rank": 11,
+      "old_job_id": "7fd0ed9a389ad37fdc82162577d91e42",
+      "new_job_id": "a0f0d62259ca7f411637acb328a2b3b7",
+      "status": "pair_title_unique",
+      "job_title": "Telesales / Tư Vấn Tuyển Sinh / Nhân Viên Kinh Doanh / Sales Online Giáo Dục (Thử Việc Full Lương _ Data Nóng 100% _ Lương Lên Đến 50M)",
+      "new_title": "Telesales / Tư Vấn Tuyển Sinh / Nhân Viên Kinh Doanh / Sales Online Giáo Dục (Thử Việc Full Lương _ Data Nóng 100% _ Lương Lên Đến 50M)"
+    },
+    {
+      "cv_id": "gd_L4",
+      "rank": 5,
+      "old_job_id": "1272fb1976b592e5fa29a011dfbed0b7",
+      "new_job_id": "017758742b82a8f26675b975bd3c81b6",
+      "status": "legacy_title_company_unique",
+      "job_title": "Telesales / Tư Vấn / Nhân Viên Kinh Doanh / Sales Online Giáo Dục (Thử Việc Full Lương _ Data Cấp 100% _ Lương Lên Đến 70M)",
+      "new_title": "Telesales / Tư Vấn / Nhân Viên Kinh Doanh / Sales Online Giáo Dục (Thử Việc Full Lương _ Data Cấp 100% _ Lương Lên Đến 70M)"
+    },
+    {
+      "cv_id": "gd_L4",
+      "rank": 7,
+      "old_job_id": "51f907a1dc455f2a2970e2045e387d32",
+      "new_job_id": "7222c009019dbf5438a77e38fdcb9770",
+      "status": "legacy_url",
+      "job_title": "Nhân Viên Kinh Doanh/ Nhân Viên Tư Vấn Tuyển Sinh/ Tư Vấn Khóa Học IELTS (Không Yêu Cầu Kinh Nghiệm Giáo Dục) - Lương 12 - 25 Triệu/Tháng",
+      "new_title": "Nhân Viên Kinh Doanh/ Nhân Viên Tư Vấn Tuyển Sinh/ Tư Vấn Khóa Học IELTS (Không Yêu Cầu Kinh Nghiệm Giáo Dục) - Lương 12 - 25 Triệu/Tháng"
+    },
+    {
+      "cv_id": "gd_L4",
+      "rank": 8,
+      "old_job_id": "7fd0ed9a389ad37fdc82162577d91e42",
+      "new_job_id": "a0f0d62259ca7f411637acb328a2b3b7",
+      "status": "pair_title_unique",
+      "job_title": "Telesales / Tư Vấn Tuyển Sinh / Nhân Viên Kinh Doanh / Sales Online Giáo Dục (Thử Việc Full Lương _ Data Nóng 100% _ Lương Lên Đến 50M)",
+      "new_title": "Telesales / Tư Vấn Tuyển Sinh / Nhân Viên Kinh Doanh / Sales Online Giáo Dục (Thử Việc Full Lương _ Data Nóng 100% _ Lương Lên Đến 50M)"
+    },
+    {
+      "cv_id": "gd_L2b",
+      "rank": 14,
+      "old_job_id": "7fd0ed9a389ad37fdc82162577d91e42",
+      "new_job_id": "a0f0d62259ca7f411637acb328a2b3b7",
+      "status": "pair_title_unique",
+      "job_title": "Telesales / Tư Vấn Tuyển Sinh / Nhân Viên Kinh Doanh / Sales Online Giáo Dục (Thử Việc Full Lương _ Data Nóng 100% _ Lương Lên Đến 50M)",
+      "new_title": "Telesales / Tư Vấn Tuyển Sinh / Nhân Viên Kinh Doanh / Sales Online Giáo Dục (Thử Việc Full Lương _ Data Nóng 100% _ Lương Lên Đến 50M)"
+    },
+    {
+      "cv_id": "gd_L4b",
+      "rank": 14,
+      "old_job_id": "1272fb1976b592e5fa29a011dfbed0b7",
+      "new_job_id": "017758742b82a8f26675b975bd3c81b6",
+      "status": "legacy_title_company_unique",
+      "job_title": "Telesales / Tư Vấn / Nhân Viên Kinh Doanh / Sales Online Giáo Dục (Thử Việc Full Lương _ Data Cấp 100% _ Lương Lên Đến 70M)",
+      "new_title": "Telesales / Tư Vấn / Nhân Viên Kinh Doanh / Sales Online Giáo Dục (Thử Việc Full Lương _ Data Cấp 100% _ Lương Lên Đến 70M)"
+    },
+    {
+      "cv_id": "hcns_L1",
+      "rank": 3,
+      "old_job_id": "e46da38c4d71ba20cd48b4284ffcbe8c",
+      "new_job_id": "e912f74eb63aee94277291ae31255438",
+      "status": "pair_title_category_unique",
+      "job_title": "Nhân Viên Hành Chính Nhân Sự",
+      "new_title": "Nhân Viên Hành Chính Nhân Sự"
+    },
+    {
+      "cv_id": "hcns_L1",
+      "rank": 13,
+      "old_job_id": "d8bd685e4f5263275b1217e033a490df",
+      "new_job_id": "d86f2b2ce48e883dc93c00a2bcde320d",
+      "status": "legacy_title_category_unique",
+      "job_title": "Nhân Viên Văn Phòng",
+      "new_title": "Nhân Viên Văn Phòng"
+    },
+    {
+      "cv_id": "hcns_L3",
+      "rank": 1,
+      "old_job_id": "613c56834e75550987421ddf3f867de5",
+      "new_job_id": "ceef33355a399ac1553e73c712174b46",
+      "status": "pair_title_category_unique",
+      "job_title": "Nhân Viên Hành Chính",
+      "new_title": "Nhân Viên Hành Chính"
+    },
+    {
+      "cv_id": "hcns_L4",
+      "rank": 1,
+      "old_job_id": "87091e4dd1a1de5f59e041ac23a9b9e0",
+      "new_job_id": "12ada966cc6c022e21dd202477e5af9d",
+      "status": "pair_title_category_unique",
+      "job_title": "Hành Chính Nhân Sự",
+      "new_title": "Hành Chính Nhân Sự"
+    },
+    {
+      "cv_id": "hcns_L4",
+      "rank": 15,
+      "old_job_id": "613c56834e75550987421ddf3f867de5",
+      "new_job_id": "ceef33355a399ac1553e73c712174b46",
+      "status": "pair_title_category_unique",
+      "job_title": "Nhân Viên Hành Chính",
+      "new_title": "Nhân Viên Hành Chính"
+    },
+    {
+      "cv_id": "hcns_L1b",
+      "rank": 3,
+      "old_job_id": "e46da38c4d71ba20cd48b4284ffcbe8c",
+      "new_job_id": "e912f74eb63aee94277291ae31255438",
+      "status": "pair_title_category_unique",
+      "job_title": "Nhân Viên Hành Chính Nhân Sự",
+      "new_title": "Nhân Viên Hành Chính Nhân Sự"
+    },
+    {
+      "cv_id": "hcns_L1b",
+      "rank": 13,
+      "old_job_id": "d8bd685e4f5263275b1217e033a490df",
+      "new_job_id": "d86f2b2ce48e883dc93c00a2bcde320d",
+      "status": "legacy_title_category_unique",
+      "job_title": "Nhân Viên Văn Phòng",
+      "new_title": "Nhân Viên Văn Phòng"
+    },
+    {
+      "cv_id": "hcns_L2b",
+      "rank": 2,
+      "old_job_id": "613c56834e75550987421ddf3f867de5",
+      "new_job_id": "ceef33355a399ac1553e73c712174b46",
+      "status": "pair_title_category_unique",
+      "job_title": "Nhân Viên Hành Chính",
+      "new_title": "Nhân Viên Hành Chính"
+    },
+    {
+      "cv_id": "hcns_L3b",
+      "rank": 2,
+      "old_job_id": "613c56834e75550987421ddf3f867de5",
+      "new_job_id": "ceef33355a399ac1553e73c712174b46",
+      "status": "pair_title_category_unique",
+      "job_title": "Nhân Viên Hành Chính",
+      "new_title": "Nhân Viên Hành Chính"
+    },
+    {
+      "cv_id": "hcns_L4b",
+      "rank": 1,
+      "old_job_id": "87091e4dd1a1de5f59e041ac23a9b9e0",
+      "new_job_id": "12ada966cc6c022e21dd202477e5af9d",
+      "status": "pair_title_category_unique",
+      "job_title": "Hành Chính Nhân Sự",
+      "new_title": "Hành Chính Nhân Sự"
+    },
+    {
+      "cv_id": "it_L1",
+      "rank": 6,
+      "old_job_id": "674d847f3248b5023aabbc8a8a417abd",
+      "new_job_id": "b466f34050de5dcda0d9d5df29472312",
+      "status": "pair_title_unique",
+      "job_title": "Nhân Viên Designer",
+      "new_title": "Nhân Viên Designer"
+    },
+    {
+      "cv_id": "it_L1b",
+      "rank": 10,
+      "old_job_id": "674d847f3248b5023aabbc8a8a417abd",
+      "new_job_id": "b466f34050de5dcda0d9d5df29472312",
+      "status": "pair_title_unique",
+      "job_title": "Nhân Viên Designer",
+      "new_title": "Nhân Viên Designer"
+    },
+    {
+      "cv_id": "kt_L2",
+      "rank": 5,
+      "old_job_id": "ee35cf3e33aa12c4d493787a9a65d692",
+      "new_job_id": "758a90dce17ac904caf536d9b19799b1",
+      "status": "pair_title_category_unique",
+      "job_title": "Kế Toán Nội Bộ (Đi Làm Ngay) Thu Nhập Up To 20 Triệu",
+      "new_title": "Kế Toán Nội Bộ (Đi Làm Ngay) Thu Nhập Up To 20 Triệu"
+    },
+    {
+      "cv_id": "kt_L2",
+      "rank": 14,
+      "old_job_id": "af7c8249c5e4e8595116610ea0baa4e1",
+      "new_job_id": "e4ced356a8f6a5474d1f787f03fd5461",
+      "status": "legacy_title_category_unique",
+      "job_title": "Nhân Viên Kế Toán",
+      "new_title": "Nhân Viên Kế Toán"
+    },
+    {
+      "cv_id": "kt_L4",
+      "rank": 7,
+      "old_job_id": "2348464b5da9cb5a1736c53404485c9e",
+      "new_job_id": "a146e92517fb9f1a81e44bbd68c5c149",
+      "status": "pair_title_category_unique",
+      "job_title": "Trưởng Phòng Tài Chính - Kế Toán",
+      "new_title": "Trưởng Phòng Tài Chính - Kế Toán"
+    },
+    {
+      "cv_id": "kt_P",
+      "rank": 4,
+      "old_job_id": "90c81ec8e7e2d0fde869ddf09b995492",
+      "new_job_id": "fa6559da44c6fef3e7ad327ac49988a7",
+      "status": "pair_title_category_unique",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng Tiếng Anh - Không Yêu Cầu Kinh Nghiệm - Thu Nhập 15 - 23 Triệu - Tại HCM",
+      "new_title": "Nhân Viên Chăm Sóc Khách Hàng Tiếng Anh - Không Yêu Cầu Kinh Nghiệm - Thu Nhập 15 - 23 Triệu - Tại HCM"
+    },
+    {
+      "cv_id": "kt_P",
+      "rank": 5,
+      "old_job_id": "613c56834e75550987421ddf3f867de5",
+      "new_job_id": "ceef33355a399ac1553e73c712174b46",
+      "status": "pair_title_category_unique",
+      "job_title": "Nhân Viên Hành Chính",
+      "new_title": "Nhân Viên Hành Chính"
+    },
+    {
+      "cv_id": "kt_L1b",
+      "rank": 5,
+      "old_job_id": "5d18fd68f15682fe908168f81fd0eac8",
+      "new_job_id": "e4ced356a8f6a5474d1f787f03fd5461",
+      "status": "pair_title_category_unique",
+      "job_title": "Nhân Viên Kế Toán",
+      "new_title": "Nhân Viên Kế Toán"
+    },
+    {
+      "cv_id": "kt_L1b",
+      "rank": 7,
+      "old_job_id": "b89c7c686782dc27154703b57c3ad26f",
+      "new_job_id": "e4ced356a8f6a5474d1f787f03fd5461",
+      "status": "legacy_title_category_unique",
+      "job_title": "Nhân Viên Kế Toán",
+      "new_title": "Nhân Viên Kế Toán"
+    },
+    {
+      "cv_id": "kt_L3b",
+      "rank": 4,
+      "old_job_id": "2348464b5da9cb5a1736c53404485c9e",
+      "new_job_id": "a146e92517fb9f1a81e44bbd68c5c149",
+      "status": "pair_title_category_unique",
+      "job_title": "Trưởng Phòng Tài Chính - Kế Toán",
+      "new_title": "Trưởng Phòng Tài Chính - Kế Toán"
+    },
+    {
+      "cv_id": "kt_L4b",
+      "rank": 2,
+      "old_job_id": "2348464b5da9cb5a1736c53404485c9e",
+      "new_job_id": "a146e92517fb9f1a81e44bbd68c5c149",
+      "status": "pair_title_category_unique",
+      "job_title": "Trưởng Phòng Tài Chính - Kế Toán",
+      "new_title": "Trưởng Phòng Tài Chính - Kế Toán"
+    },
+    {
+      "cv_id": "ksxd_L4",
+      "rank": 6,
+      "old_job_id": "84b3a428c9c309f16e2013a41049fcca",
+      "new_job_id": "e2f3680e9fcad0f4df59ff7bd8c2ca46",
+      "status": "pair_title_category_unique",
+      "job_title": "Kỹ Sư Thiết Kế Kết Cấu",
+      "new_title": "Kỹ Sư Thiết Kế Kết Cấu"
+    },
+    {
+      "cv_id": "ksxd_L4b",
+      "rank": 15,
+      "old_job_id": "2ca0f232dfdc3137bb69b66968bc0443",
+      "new_job_id": "f8e1500c69139e3b128ed5d934a22177",
+      "status": "pair_title_category_unique",
+      "job_title": "Kỹ Sư Thiết Kế Hạ Tầng Giao Thông (Lương 15 - 25 Triệu)",
+      "new_title": "Kỹ Sư Thiết Kế Hạ Tầng Giao Thông (Lương 15 - 25 Triệu)"
+    },
+    {
+      "cv_id": "ldpt_L3",
+      "rank": 11,
+      "old_job_id": "f23aa224c238dd7fbeb42d251476c6ff",
+      "new_job_id": "14fd3f9e45a57ad60b8fde7ebec11f55",
+      "status": "legacy_url",
+      "job_title": "Đầu Bếp",
+      "new_title": "Đầu Bếp"
+    },
+    {
+      "cv_id": "ldpt_P",
+      "rank": 13,
+      "old_job_id": "674d847f3248b5023aabbc8a8a417abd",
+      "new_job_id": "b466f34050de5dcda0d9d5df29472312",
+      "status": "pair_title_unique",
+      "job_title": "Nhân Viên Designer",
+      "new_title": "Nhân Viên Designer"
+    },
+    {
+      "cv_id": "ldpt_P",
+      "rank": 14,
+      "old_job_id": "e4c4be380dbdfb79d70cc206db5434ed",
+      "new_job_id": "0385f89167fb86bd6662a91e0afb4c82",
+      "status": "legacy_url",
+      "job_title": "Thực Tập Sinh Công Nghệ Thông Tin Đào Tạo Có Lương",
+      "new_title": "Thực Tập Sinh Công Nghệ Thông Tin Đào Tạo Có Lương"
+    },
+    {
+      "cv_id": "ldpt_L2b",
+      "rank": 1,
+      "old_job_id": "f23aa224c238dd7fbeb42d251476c6ff",
+      "new_job_id": "14fd3f9e45a57ad60b8fde7ebec11f55",
+      "status": "legacy_url",
+      "job_title": "Đầu Bếp",
+      "new_title": "Đầu Bếp"
+    },
+    {
+      "cv_id": "ldpt_L2b",
+      "rank": 14,
+      "old_job_id": "3ef4c70e843c8b027eb6f49cf3f4257e",
+      "new_job_id": "1c2d591d52186db399ed44582322736c",
+      "status": "legacy_url",
+      "job_title": "Trưởng Khối Vận Hành (Head Of Operations)",
+      "new_title": "Trưởng Khối Vận Hành (Head Of Operations)"
+    },
+    {
+      "cv_id": "ldpt_L3b",
+      "rank": 13,
+      "old_job_id": "c0d76a86071e59cb23e176cb76091566",
+      "new_job_id": "bb0b9ec8a903c5413856887166286e69",
+      "status": "pair_title_category_unique",
+      "job_title": "Nhân Viên Lái Xe",
+      "new_title": "Nhân Viên Lái Xe"
+    },
+    {
+      "cv_id": "ldpt_L4b",
+      "rank": 1,
+      "old_job_id": "f23aa224c238dd7fbeb42d251476c6ff",
+      "new_job_id": "14fd3f9e45a57ad60b8fde7ebec11f55",
+      "status": "legacy_url",
+      "job_title": "Đầu Bếp",
+      "new_title": "Đầu Bếp"
+    },
+    {
+      "cv_id": "mkt_L1",
+      "rank": 11,
+      "old_job_id": "8acfff0b503be20a8a5127528d1cb003",
+      "new_job_id": "3379c926fc8b6b227f5699f62517cc06",
+      "status": "pair_title_category_unique",
+      "job_title": "Trưởng Phòng Marketing - Thu Nhập 30-40M++ |Mạnh SEO, GOOGLE, AI (Yêu Cầu Ứng Viên Nữ)",
+      "new_title": "Trưởng Phòng Marketing - Thu Nhập 30-40M++ |Mạnh SEO, GOOGLE, AI (Yêu Cầu Ứng Viên Nữ)"
+    },
+    {
+      "cv_id": "mkt_P",
+      "rank": 10,
+      "old_job_id": "211859114bf6169e2341f2aa70c26bae",
+      "new_job_id": "1de338572556ddd7097ca08cc2ee3821",
+      "status": "pair_title_category_unique",
+      "job_title": "Chuyên Viên Đào Tạo",
+      "new_title": "Chuyên Viên Đào Tạo"
+    },
+    {
+      "cv_id": "mkt_P",
+      "rank": 11,
+      "old_job_id": "3ef4c70e843c8b027eb6f49cf3f4257e",
+      "new_job_id": "1c2d591d52186db399ed44582322736c",
+      "status": "legacy_url",
+      "job_title": "Trưởng Khối Vận Hành (Head Of Operations)",
+      "new_title": "Trưởng Khối Vận Hành (Head Of Operations)"
+    },
+    {
+      "cv_id": "mkt_L1b",
+      "rank": 11,
+      "old_job_id": "8acfff0b503be20a8a5127528d1cb003",
+      "new_job_id": "3379c926fc8b6b227f5699f62517cc06",
+      "status": "pair_title_category_unique",
+      "job_title": "Trưởng Phòng Marketing - Thu Nhập 30-40M++ |Mạnh SEO, GOOGLE, AI (Yêu Cầu Ứng Viên Nữ)",
+      "new_title": "Trưởng Phòng Marketing - Thu Nhập 30-40M++ |Mạnh SEO, GOOGLE, AI (Yêu Cầu Ứng Viên Nữ)"
+    },
+    {
+      "cv_id": "nh_L1",
+      "rank": 5,
+      "old_job_id": "ab17b1184d6fd3e5e1d92715edf95a15",
+      "new_job_id": "e4ced356a8f6a5474d1f787f03fd5461",
+      "status": "pair_title_unique",
+      "job_title": "Nhân Viên Kế Toán",
+      "new_title": "Nhân Viên Kế Toán"
+    },
+    {
+      "cv_id": "nh_L1",
+      "rank": 6,
+      "old_job_id": "022371ec05bc32a502e91b76bf04eb24",
+      "new_job_id": "a146e92517fb9f1a81e44bbd68c5c149",
+      "status": "pair_title_unique",
+      "job_title": "Trưởng Phòng Tài Chính - Kế Toán",
+      "new_title": "Trưởng Phòng Tài Chính - Kế Toán"
+    },
+    {
+      "cv_id": "nh_L1",
+      "rank": 10,
+      "old_job_id": "8e2d3e971ddb716f308b68fd97f40408",
+      "new_job_id": "3a2610f78ff6080dabcdda49cebb6166",
+      "status": "pair_title_category_unique",
+      "job_title": "Nhân Viên Kế Toán Tài Chính Ngân Hàng",
+      "new_title": "Nhân Viên Kế Toán Tài Chính Ngân Hàng"
+    },
+    {
+      "cv_id": "nh_L2",
+      "rank": 7,
+      "old_job_id": "af3f19e71b539503ae85c4c106569390",
+      "new_job_id": "d2d2b3ff6b7b84bbdc2c6b1f39f362e8",
+      "status": "legacy_url",
+      "job_title": "Trưởng Bộ Phận Vận Hành Giao Dịch Vốn",
+      "new_title": "Trưởng Bộ Phận Vận Hành Giao Dịch Vốn"
+    },
+    {
+      "cv_id": "nh_L2",
+      "rank": 15,
+      "old_job_id": "4074f6055d9e950320d6c51b00eb1d7f",
+      "new_job_id": "be64e110de5a97c66aebb1ae558373ae",
+      "status": "pair_title_category_unique",
+      "job_title": "Chuyên Viên Cấp Cao/Chuyên Gia Thẩm Định Tín Dụng FI - Khối Quản Lý Tín Dụng",
+      "new_title": "Chuyên Viên Cấp Cao/Chuyên Gia Thẩm Định Tín Dụng FI - Khối Quản Lý Tín Dụng"
+    },
+    {
+      "cv_id": "nh_L4",
+      "rank": 7,
+      "old_job_id": "4074f6055d9e950320d6c51b00eb1d7f",
+      "new_job_id": "be64e110de5a97c66aebb1ae558373ae",
+      "status": "pair_title_category_unique",
+      "job_title": "Chuyên Viên Cấp Cao/Chuyên Gia Thẩm Định Tín Dụng FI - Khối Quản Lý Tín Dụng",
+      "new_title": "Chuyên Viên Cấp Cao/Chuyên Gia Thẩm Định Tín Dụng FI - Khối Quản Lý Tín Dụng"
+    },
+    {
+      "cv_id": "nh_L4",
+      "rank": 15,
+      "old_job_id": "af3f19e71b539503ae85c4c106569390",
+      "new_job_id": "d2d2b3ff6b7b84bbdc2c6b1f39f362e8",
+      "status": "legacy_url",
+      "job_title": "Trưởng Bộ Phận Vận Hành Giao Dịch Vốn",
+      "new_title": "Trưởng Bộ Phận Vận Hành Giao Dịch Vốn"
+    },
+    {
+      "cv_id": "nh_P",
+      "rank": 14,
+      "old_job_id": "674d847f3248b5023aabbc8a8a417abd",
+      "new_job_id": "b466f34050de5dcda0d9d5df29472312",
+      "status": "pair_title_unique",
+      "job_title": "Nhân Viên Designer",
+      "new_title": "Nhân Viên Designer"
+    },
+    {
+      "cv_id": "nh_L1b",
+      "rank": 2,
+      "old_job_id": "22e730d8a1bb3254fbdf0abead8a4eb9",
+      "new_job_id": "feb35d001305d867302ed1d0bd604c67",
+      "status": "legacy_title_company_unique",
+      "job_title": "Cộng Tác Viên Kinh Doanh Qua Điện Thoại",
+      "new_title": "Cộng Tác Viên Kinh Doanh Qua Điện Thoại"
+    },
+    {
+      "cv_id": "nh_L3b",
+      "rank": 11,
+      "old_job_id": "22e730d8a1bb3254fbdf0abead8a4eb9",
+      "new_job_id": "feb35d001305d867302ed1d0bd604c67",
+      "status": "legacy_title_company_unique",
+      "job_title": "Cộng Tác Viên Kinh Doanh Qua Điện Thoại",
+      "new_title": "Cộng Tác Viên Kinh Doanh Qua Điện Thoại"
+    },
+    {
+      "cv_id": "nh_L4b",
+      "rank": 4,
+      "old_job_id": "d7461a74d5a16f08f10bcfdeb5cd35a8",
+      "new_job_id": "5e0c942d7d5ba78b3c6dd9db7200620f",
+      "status": "pair_title_category_unique",
+      "job_title": "Giám Đốc Điều Hành (CEO) Lĩnh Vực Tài Chính/Đầu Tư",
+      "new_title": "Giám Đốc Điều Hành (CEO) Lĩnh Vực Tài Chính/Đầu Tư"
+    },
+    {
+      "cv_id": "nh_P2",
+      "rank": 6,
+      "old_job_id": "674d847f3248b5023aabbc8a8a417abd",
+      "new_job_id": "b466f34050de5dcda0d9d5df29472312",
+      "status": "pair_title_unique",
+      "job_title": "Nhân Viên Designer",
+      "new_title": "Nhân Viên Designer"
+    },
+    {
+      "cv_id": "nvkd_P",
+      "rank": 14,
+      "old_job_id": "674d847f3248b5023aabbc8a8a417abd",
+      "new_job_id": "b466f34050de5dcda0d9d5df29472312",
+      "status": "pair_title_unique",
+      "job_title": "Nhân Viên Designer",
+      "new_title": "Nhân Viên Designer"
+    },
+    {
+      "cv_id": "nvkd_L1b",
+      "rank": 2,
+      "old_job_id": "b87359f5f0c2eb42c44aa414a49a90fd",
+      "new_job_id": "6ec15d17e57617e6f089e6f8c2b058c0",
+      "status": "pair_title_category_unique",
+      "job_title": "Chuyên Viên Kinh Doanh",
+      "new_title": "Chuyên Viên Kinh Doanh"
+    },
+    {
+      "cv_id": "nvkd_L3b",
+      "rank": 7,
+      "old_job_id": "b87359f5f0c2eb42c44aa414a49a90fd",
+      "new_job_id": "6ec15d17e57617e6f089e6f8c2b058c0",
+      "status": "pair_title_category_unique",
+      "job_title": "Chuyên Viên Kinh Doanh",
+      "new_title": "Chuyên Viên Kinh Doanh"
+    },
+    {
+      "cv_id": "nvkd_L3b",
+      "rank": 10,
+      "old_job_id": "ca6cded997a34d6c0271c7771f7d5150",
+      "new_job_id": "5087aec7609fa5428e2d53c27882b92c",
+      "status": "pair_title_category_unique",
+      "job_title": "Nhân Viên Kinh Doanh",
+      "new_title": "Nhân Viên Kinh Doanh"
+    },
+    {
+      "cv_id": "ts_L3",
+      "rank": 5,
+      "old_job_id": "1f0649675ef89c20d885cf64220ba11f",
+      "new_job_id": "1e45147c05a68dd90ef628df803286d6",
+      "status": "legacy_url",
+      "job_title": "Trưởng Phòng Kinh Doanh Logistics",
+      "new_title": "Trưởng Phòng Kinh Doanh Logistics"
+    },
+    {
+      "cv_id": "ts_L4",
+      "rank": 4,
+      "old_job_id": "1f0649675ef89c20d885cf64220ba11f",
+      "new_job_id": "1e45147c05a68dd90ef628df803286d6",
+      "status": "legacy_url",
+      "job_title": "Trưởng Phòng Kinh Doanh Logistics",
+      "new_title": "Trưởng Phòng Kinh Doanh Logistics"
+    },
+    {
+      "cv_id": "ts_L4",
+      "rank": 7,
+      "old_job_id": "32ed8818495a1cddd948f369706848d3",
+      "new_job_id": "a73239d0d63758f66f85c2e1d3c527d2",
+      "status": "legacy_title_category_unique",
+      "job_title": "Giám Đốc Kinh Doanh",
+      "new_title": "Giám Đốc Kinh Doanh"
+    },
+    {
+      "cv_id": "ts_P",
+      "rank": 7,
+      "old_job_id": "3ef4c70e843c8b027eb6f49cf3f4257e",
+      "new_job_id": "1c2d591d52186db399ed44582322736c",
+      "status": "legacy_url",
+      "job_title": "Trưởng Khối Vận Hành (Head Of Operations)",
+      "new_title": "Trưởng Khối Vận Hành (Head Of Operations)"
+    },
+    {
+      "cv_id": "ts_P",
+      "rank": 13,
+      "old_job_id": "90c81ec8e7e2d0fde869ddf09b995492",
+      "new_job_id": "fa6559da44c6fef3e7ad327ac49988a7",
+      "status": "pair_title_category_unique",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng Tiếng Anh - Không Yêu Cầu Kinh Nghiệm - Thu Nhập 15 - 23 Triệu - Tại HCM",
+      "new_title": "Nhân Viên Chăm Sóc Khách Hàng Tiếng Anh - Không Yêu Cầu Kinh Nghiệm - Thu Nhập 15 - 23 Triệu - Tại HCM"
+    },
+    {
+      "cv_id": "ts_L3b",
+      "rank": 3,
+      "old_job_id": "1f0649675ef89c20d885cf64220ba11f",
+      "new_job_id": "1e45147c05a68dd90ef628df803286d6",
+      "status": "legacy_url",
+      "job_title": "Trưởng Phòng Kinh Doanh Logistics",
+      "new_title": "Trưởng Phòng Kinh Doanh Logistics"
+    },
+    {
+      "cv_id": "ts_L3b",
+      "rank": 8,
+      "old_job_id": "32ed8818495a1cddd948f369706848d3",
+      "new_job_id": "a73239d0d63758f66f85c2e1d3c527d2",
+      "status": "legacy_title_category_unique",
+      "job_title": "Giám Đốc Kinh Doanh",
+      "new_title": "Giám Đốc Kinh Doanh"
+    },
+    {
+      "cv_id": "ts_L4b",
+      "rank": 3,
+      "old_job_id": "1f0649675ef89c20d885cf64220ba11f",
+      "new_job_id": "1e45147c05a68dd90ef628df803286d6",
+      "status": "legacy_url",
+      "job_title": "Trưởng Phòng Kinh Doanh Logistics",
+      "new_title": "Trưởng Phòng Kinh Doanh Logistics"
+    },
+    {
+      "cv_id": "tkdh_L2b",
+      "rank": 12,
+      "old_job_id": "adbf1ce9a4931370ec53d2149e9a5950",
+      "new_job_id": "eda9771c2a7cd59f14eec79e198d78d3",
+      "status": "pair_title_category_unique",
+      "job_title": "Chuyên Viên Thiết Kế",
+      "new_title": "Chuyên Viên Thiết Kế"
+    }
+  ]
+}

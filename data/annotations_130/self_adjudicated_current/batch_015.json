@@ -1,0 +1,696 @@
+{
+  "metadata": {
+    "batch": 15,
+    "case_range": "281-300",
+    "total_cases_in_batch": 20,
+    "method": "codex_self_adjudication_current_dataset_no_external_api_no_regex_scoring",
+    "source_pairs_file": "data/evaluation_pairs_1300_v2.json",
+    "source_annotations_dir": "data/annotations_130",
+    "high_disagreement_threshold": "max-min > 4 on any dimension",
+    "total_high_disagreement_cases": 431
+  },
+  "cases": [
+    {
+      "case_index": 281,
+      "pair_key": "Lao động phổ thông_P2_ldpt_P2_15",
+      "high_disagreement_dims": [
+        "experience_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 5,
+          "skills_match": 4,
+          "experience_match": 7,
+          "education_match": 7
+        },
+        "gptoss": {
+          "relevance_score": 6,
+          "skills_match": 5,
+          "experience_match": 8,
+          "education_match": 8
+        },
+        "llama": {
+          "relevance_score": 2,
+          "skills_match": 1,
+          "experience_match": 3,
+          "education_match": 9
+        }
+      },
+      "final_scores": {
+        "relevance_score": 3,
+        "skills_match": 2,
+        "experience_match": 3,
+        "education_match": 8
+      },
+      "adjudication_note": "Manual adjudication: weak domain/title fit; final scores cap skill and experience despite isolated overlap."
+    },
+    {
+      "case_index": 282,
+      "pair_key": "Marketing_L1_mkt_L1_1",
+      "high_disagreement_dims": [
+        "skills_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 7,
+          "skills_match": 8,
+          "experience_match": 10,
+          "education_match": 7
+        },
+        "gptoss": {
+          "relevance_score": 5,
+          "skills_match": 2,
+          "experience_match": 8,
+          "education_match": 9
+        },
+        "llama": {
+          "relevance_score": 5,
+          "skills_match": 6,
+          "experience_match": 10,
+          "education_match": 7
+        }
+      },
+      "final_scores": {
+        "relevance_score": 7,
+        "skills_match": 7,
+        "experience_match": 10,
+        "education_match": 8
+      },
+      "adjudication_note": "Manual adjudication: overall fit judged from JD title, required skills, experience level, and education."
+    },
+    {
+      "case_index": 283,
+      "pair_key": "Marketing_L1_mkt_L1_4",
+      "high_disagreement_dims": [
+        "experience_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 7,
+          "skills_match": 7,
+          "experience_match": 7,
+          "education_match": 10
+        },
+        "gptoss": {
+          "relevance_score": 5,
+          "skills_match": 4,
+          "experience_match": 8,
+          "education_match": 10
+        },
+        "llama": {
+          "relevance_score": 5,
+          "skills_match": 6,
+          "experience_match": 3,
+          "education_match": 10
+        }
+      },
+      "final_scores": {
+        "relevance_score": 6,
+        "skills_match": 6,
+        "experience_match": 3,
+        "education_match": 10
+      },
+      "adjudication_note": "Manual adjudication: role/domain is related, but experience seniority or required years do not match well."
+    },
+    {
+      "case_index": 284,
+      "pair_key": "Marketing_L1_mkt_L1_5",
+      "high_disagreement_dims": [
+        "experience_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 5,
+          "skills_match": 5,
+          "experience_match": 7,
+          "education_match": 7
+        },
+        "gptoss": {
+          "relevance_score": 5,
+          "skills_match": 4,
+          "experience_match": 7,
+          "education_match": 8
+        },
+        "llama": {
+          "relevance_score": 5,
+          "skills_match": 6,
+          "experience_match": 2,
+          "education_match": 8
+        }
+      },
+      "final_scores": {
+        "relevance_score": 5,
+        "skills_match": 5,
+        "experience_match": 3,
+        "education_match": 8
+      },
+      "adjudication_note": "Manual adjudication: role/domain is related, but experience seniority or required years do not match well."
+    },
+    {
+      "case_index": 285,
+      "pair_key": "Marketing_L1_mkt_L1_6",
+      "high_disagreement_dims": [
+        "experience_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 7,
+          "skills_match": 7,
+          "experience_match": 9,
+          "education_match": 10
+        },
+        "gptoss": {
+          "relevance_score": 6,
+          "skills_match": 6,
+          "experience_match": 7,
+          "education_match": 10
+        },
+        "llama": {
+          "relevance_score": 5,
+          "skills_match": 6,
+          "experience_match": 3,
+          "education_match": 9
+        }
+      },
+      "final_scores": {
+        "relevance_score": 6,
+        "skills_match": 6,
+        "experience_match": 3,
+        "education_match": 10
+      },
+      "adjudication_note": "Manual adjudication: role/domain is related, but experience seniority or required years do not match well."
+    },
+    {
+      "case_index": 286,
+      "pair_key": "Marketing_L1_mkt_L1_8",
+      "high_disagreement_dims": [
+        "experience_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 4,
+          "skills_match": 5,
+          "experience_match": 5,
+          "education_match": 7
+        },
+        "gptoss": {
+          "relevance_score": 4,
+          "skills_match": 4,
+          "experience_match": 3,
+          "education_match": 9
+        },
+        "llama": {
+          "relevance_score": 2,
+          "skills_match": 2,
+          "experience_match": 0,
+          "education_match": 8
+        }
+      },
+      "final_scores": {
+        "relevance_score": 4,
+        "skills_match": 4,
+        "experience_match": 0,
+        "education_match": 8
+      },
+      "adjudication_note": "Manual adjudication: partial title/domain fit, but core technical or role-specific skills are missing."
+    },
+    {
+      "case_index": 287,
+      "pair_key": "Marketing_L1_mkt_L1_9",
+      "high_disagreement_dims": [
+        "experience_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 6,
+          "skills_match": 5,
+          "experience_match": 7,
+          "education_match": 10
+        },
+        "gptoss": {
+          "relevance_score": 5,
+          "skills_match": 4,
+          "experience_match": 8,
+          "education_match": 10
+        },
+        "llama": {
+          "relevance_score": 5,
+          "skills_match": 6,
+          "experience_match": 3,
+          "education_match": 10
+        }
+      },
+      "final_scores": {
+        "relevance_score": 6,
+        "skills_match": 5,
+        "experience_match": 3,
+        "education_match": 10
+      },
+      "adjudication_note": "Manual adjudication: role/domain is related, but experience seniority or required years do not match well."
+    },
+    {
+      "case_index": 288,
+      "pair_key": "Marketing_L1_mkt_L1_10",
+      "high_disagreement_dims": [
+        "experience_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 5,
+          "skills_match": 4,
+          "experience_match": 8,
+          "education_match": 7
+        },
+        "gptoss": {
+          "relevance_score": 5,
+          "skills_match": 5,
+          "experience_match": 4,
+          "education_match": 8
+        },
+        "llama": {
+          "relevance_score": 5,
+          "skills_match": 6,
+          "experience_match": 2,
+          "education_match": 8
+        }
+      },
+      "final_scores": {
+        "relevance_score": 5,
+        "skills_match": 5,
+        "experience_match": 3,
+        "education_match": 8
+      },
+      "adjudication_note": "Manual adjudication: role/domain is related, but experience seniority or required years do not match well."
+    },
+    {
+      "case_index": 289,
+      "pair_key": "Marketing_L1_mkt_L1_11",
+      "high_disagreement_dims": [
+        "experience_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 5,
+          "skills_match": 3,
+          "experience_match": 10,
+          "education_match": 7
+        },
+        "gptoss": {
+          "relevance_score": 4,
+          "skills_match": 0,
+          "experience_match": 10,
+          "education_match": 7
+        },
+        "llama": {
+          "relevance_score": 2,
+          "skills_match": 2,
+          "experience_match": 0,
+          "education_match": 7
+        }
+      },
+      "final_scores": {
+        "relevance_score": 3,
+        "skills_match": 3,
+        "experience_match": 0,
+        "education_match": 6
+      },
+      "adjudication_note": "Manual adjudication: weak domain/title fit; final scores cap skill and experience despite isolated overlap."
+    },
+    {
+      "case_index": 290,
+      "pair_key": "Marketing_L1_mkt_L1_13",
+      "high_disagreement_dims": [
+        "relevance_score",
+        "experience_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 7,
+          "skills_match": 6,
+          "experience_match": 10,
+          "education_match": 10
+        },
+        "gptoss": {
+          "relevance_score": 4,
+          "skills_match": 4,
+          "experience_match": 1,
+          "education_match": 7
+        },
+        "llama": {
+          "relevance_score": 2,
+          "skills_match": 2,
+          "experience_match": 0,
+          "education_match": 7
+        }
+      },
+      "final_scores": {
+        "relevance_score": 3,
+        "skills_match": 3,
+        "experience_match": 0,
+        "education_match": 6
+      },
+      "adjudication_note": "Manual adjudication: weak domain/title fit; final scores cap skill and experience despite isolated overlap."
+    },
+    {
+      "case_index": 291,
+      "pair_key": "Marketing_L1_mkt_L1_14",
+      "high_disagreement_dims": [
+        "experience_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 5,
+          "skills_match": 4,
+          "experience_match": 8,
+          "education_match": 7
+        },
+        "gptoss": {
+          "relevance_score": 4,
+          "skills_match": 2,
+          "experience_match": 7,
+          "education_match": 8
+        },
+        "llama": {
+          "relevance_score": 6,
+          "skills_match": 5,
+          "experience_match": 2,
+          "education_match": 8
+        }
+      },
+      "final_scores": {
+        "relevance_score": 5,
+        "skills_match": 5,
+        "experience_match": 3,
+        "education_match": 8
+      },
+      "adjudication_note": "Manual adjudication: role/domain is related, but experience seniority or required years do not match well."
+    },
+    {
+      "case_index": 292,
+      "pair_key": "Marketing_L2_mkt_L2_5",
+      "high_disagreement_dims": [
+        "experience_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 7,
+          "skills_match": 7,
+          "experience_match": 10,
+          "education_match": 10
+        },
+        "gptoss": {
+          "relevance_score": 4,
+          "skills_match": 4,
+          "experience_match": 3,
+          "education_match": 10
+        },
+        "llama": {
+          "relevance_score": 8,
+          "skills_match": 7,
+          "experience_match": 9,
+          "education_match": 10
+        }
+      },
+      "final_scores": {
+        "relevance_score": 7,
+        "skills_match": 7,
+        "experience_match": 8,
+        "education_match": 10
+      },
+      "adjudication_note": "Manual adjudication: overall fit judged from JD title, required skills, experience level, and education."
+    },
+    {
+      "case_index": 293,
+      "pair_key": "Marketing_L3_mkt_L3_2",
+      "high_disagreement_dims": [
+        "experience_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 7,
+          "skills_match": 7,
+          "experience_match": 7,
+          "education_match": 7
+        },
+        "gptoss": {
+          "relevance_score": 5,
+          "skills_match": 4,
+          "experience_match": 4,
+          "education_match": 8
+        },
+        "llama": {
+          "relevance_score": 5,
+          "skills_match": 6,
+          "experience_match": 2,
+          "education_match": 8
+        }
+      },
+      "final_scores": {
+        "relevance_score": 7,
+        "skills_match": 7,
+        "experience_match": 4,
+        "education_match": 8
+      },
+      "adjudication_note": "Manual adjudication: role/domain is related, but experience seniority or required years do not match well."
+    },
+    {
+      "case_index": 294,
+      "pair_key": "Marketing_L4_mkt_L4_3",
+      "high_disagreement_dims": [
+        "relevance_score",
+        "experience_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 7,
+          "skills_match": 7,
+          "experience_match": 5,
+          "education_match": 7
+        },
+        "gptoss": {
+          "relevance_score": 6,
+          "skills_match": 7,
+          "experience_match": 5,
+          "education_match": 8
+        },
+        "llama": {
+          "relevance_score": 2,
+          "skills_match": 6,
+          "experience_match": 0,
+          "education_match": 8
+        }
+      },
+      "final_scores": {
+        "relevance_score": 7,
+        "skills_match": 7,
+        "experience_match": 2,
+        "education_match": 8
+      },
+      "adjudication_note": "Manual adjudication: role/domain is related, but experience seniority or required years do not match well."
+    },
+    {
+      "case_index": 295,
+      "pair_key": "Marketing_L4_mkt_L4_4",
+      "high_disagreement_dims": [
+        "relevance_score"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 7,
+          "skills_match": 7,
+          "experience_match": 4,
+          "education_match": 7
+        },
+        "gptoss": {
+          "relevance_score": 7,
+          "skills_match": 8,
+          "experience_match": 4,
+          "education_match": 8
+        },
+        "llama": {
+          "relevance_score": 2,
+          "skills_match": 4,
+          "experience_match": 0,
+          "education_match": 8
+        }
+      },
+      "final_scores": {
+        "relevance_score": 7,
+        "skills_match": 7,
+        "experience_match": 2,
+        "education_match": 8
+      },
+      "adjudication_note": "Manual adjudication: role/domain is related, but experience seniority or required years do not match well."
+    },
+    {
+      "case_index": 296,
+      "pair_key": "Marketing_L4_mkt_L4_8",
+      "high_disagreement_dims": [
+        "experience_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 8,
+          "skills_match": 8,
+          "experience_match": 7,
+          "education_match": 8
+        },
+        "gptoss": {
+          "relevance_score": 6,
+          "skills_match": 6,
+          "experience_match": 5,
+          "education_match": 10
+        },
+        "llama": {
+          "relevance_score": 6,
+          "skills_match": 8,
+          "experience_match": 2,
+          "education_match": 10
+        }
+      },
+      "final_scores": {
+        "relevance_score": 7,
+        "skills_match": 7,
+        "experience_match": 4,
+        "education_match": 10
+      },
+      "adjudication_note": "Manual adjudication: role/domain is related, but experience seniority or required years do not match well."
+    },
+    {
+      "case_index": 297,
+      "pair_key": "Marketing_L4_mkt_L4_9",
+      "high_disagreement_dims": [
+        "experience_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 7,
+          "skills_match": 7,
+          "experience_match": 7,
+          "education_match": 7
+        },
+        "gptoss": {
+          "relevance_score": 6,
+          "skills_match": 9,
+          "experience_match": 8,
+          "education_match": 7
+        },
+        "llama": {
+          "relevance_score": 6,
+          "skills_match": 7,
+          "experience_match": 3,
+          "education_match": 9
+        }
+      },
+      "final_scores": {
+        "relevance_score": 7,
+        "skills_match": 8,
+        "experience_match": 8,
+        "education_match": 8
+      },
+      "adjudication_note": "Manual adjudication: overall fit judged from JD title, required skills, experience level, and education."
+    },
+    {
+      "case_index": 298,
+      "pair_key": "Marketing_P_mkt_P_3",
+      "high_disagreement_dims": [
+        "experience_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 4,
+          "skills_match": 3,
+          "experience_match": 7,
+          "education_match": 5
+        },
+        "gptoss": {
+          "relevance_score": 5,
+          "skills_match": 4,
+          "experience_match": 8,
+          "education_match": 3
+        },
+        "llama": {
+          "relevance_score": 2,
+          "skills_match": 1,
+          "experience_match": 3,
+          "education_match": 4
+        }
+      },
+      "final_scores": {
+        "relevance_score": 2,
+        "skills_match": 2,
+        "experience_match": 3,
+        "education_match": 2
+      },
+      "adjudication_note": "Manual adjudication: weak domain/title fit; final scores cap skill and experience despite isolated overlap."
+    },
+    {
+      "case_index": 299,
+      "pair_key": "Marketing_P_mkt_P_4",
+      "high_disagreement_dims": [
+        "education_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 2,
+          "skills_match": 1,
+          "experience_match": 3,
+          "education_match": 4
+        },
+        "gptoss": {
+          "relevance_score": 5,
+          "skills_match": 4,
+          "experience_match": 6,
+          "education_match": 9
+        },
+        "llama": {
+          "relevance_score": 2,
+          "skills_match": 2,
+          "experience_match": 4,
+          "education_match": 7
+        }
+      },
+      "final_scores": {
+        "relevance_score": 3,
+        "skills_match": 3,
+        "experience_match": 4,
+        "education_match": 5
+      },
+      "adjudication_note": "Manual adjudication: weak domain/title fit; final scores cap skill and experience despite isolated overlap."
+    },
+    {
+      "case_index": 300,
+      "pair_key": "Marketing_P_mkt_P_5",
+      "high_disagreement_dims": [
+        "experience_match"
+      ],
+      "original_model_scores": {
+        "cohere": {
+          "relevance_score": 3,
+          "skills_match": 1,
+          "experience_match": 5,
+          "education_match": 3
+        },
+        "gptoss": {
+          "relevance_score": 3,
+          "skills_match": 2,
+          "experience_match": 9,
+          "education_match": 7
+        },
+        "llama": {
+          "relevance_score": 2,
+          "skills_match": 1,
+          "experience_match": 2,
+          "education_match": 3
+        }
+      },
+      "final_scores": {
+        "relevance_score": 2,
+        "skills_match": 1,
+        "experience_match": 4,
+        "education_match": 3
+      },
+      "adjudication_note": "Manual adjudication: weak domain/title fit; final scores cap skill and experience despite isolated overlap."
+    }
+  ]
+}

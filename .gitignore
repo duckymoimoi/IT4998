@@ -1,0 +1,90 @@
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+src/.env
+src/.env.*
+!src/.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE / OS
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+
+# Logs and runtime state
+*.log
+logs/
+src/logs/
+*.tmp
+
+# Local scratch / generated experiments
+scratch/
+
+# Non-public annotation/evaluation code and generated experiment outputs
+docs/
+GraduationThesisTemplate-main/
+scripts/
+src/experiments/
+data/scoring_prompt_tests/
+data/search_quality_current/
+data/turn_1/
+Dockerfile.scheduler
+requirements.scheduler.txt
+src/_check_*.py
+src/crawl_*.py
+src/enrich_esco_skills.py
+src/fetch_esco_labels.py
+src/geocode_retry.py
+src/llm_cleaner.py
+src/scheduler.py
+
+# External local tooling
+andrej-karpathy-skills/
+
+# Model weights and generated ML caches
+models/
+data/cache/
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.onnx
+
+# Private input files
+data/*.pdf
+
+# LaTeX build outputs
+GraduationThesisTemplate-main/*.aux
+GraduationThesisTemplate-main/*.bbl
+GraduationThesisTemplate-main/*.blg
+GraduationThesisTemplate-main/*.fdb_latexmk
+GraduationThesisTemplate-main/*.fls
+GraduationThesisTemplate-main/*.lof
+GraduationThesisTemplate-main/*.log
+GraduationThesisTemplate-main/*.lot
+GraduationThesisTemplate-main/*.out
+GraduationThesisTemplate-main/*.synctex.gz
+GraduationThesisTemplate-main/*.toc
+GraduationThesisTemplate-main/*.pdf
+GraduationThesisTemplate-main/*.exe
+
+# Docker local overrides
+docker-compose.override.yml

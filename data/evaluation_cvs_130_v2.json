@@ -1,0 +1,3641 @@
+{
+  "metadata": {
+    "description": "130 evaluation CVs (5 levels × 2 versions × 13 categories)",
+    "categories": 13,
+    "levels": [
+      "L1",
+      "L1b",
+      "L2",
+      "L2b",
+      "L3",
+      "L3b",
+      "L4",
+      "L4b",
+      "P",
+      "P2"
+    ],
+    "total_cvs": 130,
+    "generation_model": "llama-3.3-70b-versatile",
+    "skill_source": "data/skill_profiles_1300.json"
+  },
+  "cvs": [
+    {
+      "cv_id": "bds_L1",
+      "name": "Nguyễn Văn An",
+      "category_target": "Bất động sản",
+      "level": "L1",
+      "experience_years": 0,
+      "experience_description": "Mới tốt nghiệp đại học ngành Quản trị kinh doanh, chưa có kinh nghiệm chuyên môn",
+      "education_level": "Đại học",
+      "education_field": "Kinh tế",
+      "technical_skills": [
+        "Sales bất động sản",
+        "B2C"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 0 năm. Mới tốt nghiệp đại học ngành Quản trị kinh doanh, chưa có kinh nghiệm chuyên môn. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: Sales bất động sản, B2C. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "bds_L2",
+      "name": "Trần Minh Trang",
+      "category_target": "Bất động sản",
+      "level": "L2",
+      "experience_years": 1,
+      "experience_description": "Đã làm việc 1 năm trong lĩnh vực kinh doanh bất động sản, có kinh nghiệm trong việc tư vấn và bán hàng",
+      "education_level": "Đại học",
+      "education_field": "Kinh tế",
+      "technical_skills": [
+        "Sales bất động sản",
+        "B2C",
+        "Direct Sales"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 1 năm. Đã làm việc 1 năm trong lĩnh vực kinh doanh bất động sản, có kinh nghiệm trong việc tư vấn và bán hàng. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: Sales bất động sản, B2C, Direct Sales. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "bds_L3",
+      "name": "Lê Hoàng Nam",
+      "category_target": "Bất động sản",
+      "level": "L3",
+      "experience_years": 3,
+      "experience_description": "Đã làm việc 3 năm trong lĩnh vực kinh doanh bất động sản, có kinh nghiệm trong việc quản lý dự án và tư vấn cho khách hàng",
+      "education_level": "Đại học",
+      "education_field": "Kinh tế",
+      "technical_skills": [
+        "Sales bất động sản",
+        "B2C",
+        "Direct Sales",
+        "Quản lý dự án bất động sản"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực",
+        "quản lý thời gian hiệu quả"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Pháp"
+      ],
+      "certificates": [
+        "Chứng chỉ hành nghề bất động sản"
+      ],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 3 năm. Đã làm việc 3 năm trong lĩnh vực kinh doanh bất động sản, có kinh nghiệm trong việc quản lý dự án và tư vấn cho khách hàng. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: Sales bất động sản, B2C, Direct Sales, Quản lý dự án bất động sản. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, quản lý thời gian hiệu quả. Ngoại ngữ: Tiếng Anh, Tiếng Pháp. Chứng chỉ: Chứng chỉ hành nghề bất động sản."
+    },
+    {
+      "cv_id": "bds_L4",
+      "name": "Phạm Thu Hà",
+      "category_target": "Bất động sản",
+      "level": "L4",
+      "experience_years": 6,
+      "experience_description": "Đã làm việc 6 năm trong lĩnh vực kinh doanh bất động sản, có kinh nghiệm trong việc quản lý và phát triển dự án bất động sản",
+      "education_level": "Đại học",
+      "education_field": "Kinh tế",
+      "technical_skills": [
+        "Sales bất động sản",
+        "B2C",
+        "Direct Sales",
+        "Quản lý dự án bất động sản",
+        "Giám đốc dự án bất động sản"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực",
+        "quản lý thời gian hiệu quả",
+        "lãnh đạo"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Pháp"
+      ],
+      "certificates": [
+        "Chứng chỉ hành nghề bất động sản"
+      ],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 6 năm. Đã làm việc 6 năm trong lĩnh vực kinh doanh bất động sản, có kinh nghiệm trong việc quản lý và phát triển dự án bất động sản. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: Sales bất động sản, B2C, Direct Sales, Quản lý dự án bất động sản, Giám đốc dự án bất động sản. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, quản lý thời gian hiệu quả, lãnh đạo. Ngoại ngữ: Tiếng Anh, Tiếng Pháp. Chứng chỉ: Chứng chỉ hành nghề bất động sản."
+    },
+    {
+      "cv_id": "bds_P",
+      "name": "Đỗ Minh Quân",
+      "category_target": "Bất động sản",
+      "level": "P",
+      "experience_years": 2,
+      "experience_description": "Đã làm việc 2 năm trong lĩnh vực phát triển phần mềm, có kinh nghiệm trong việc lập trình và quản lý dự án",
+      "education_level": "Đại học",
+      "education_field": "Công nghệ thông tin",
+      "technical_skills": [
+        "Python",
+        "Java",
+        "JavaScript"
+      ],
+      "soft_skills": [
+        "làm việc nhóm",
+        "chịu áp lực",
+        "quản lý thời gian hiệu quả"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 2 năm. Đã làm việc 2 năm trong lĩnh vực phát triển phần mềm, có kinh nghiệm trong việc lập trình và quản lý dự án. Học vấn: Đại học Công nghệ thông tin. Kỹ năng chuyên môn: Python, Java, JavaScript. Kỹ năng mềm: làm việc nhóm, chịu áp lực, quản lý thời gian hiệu quả. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "bds_L1b",
+      "name": "Vũ Thị Yến",
+      "category_target": "Bất động sản",
+      "level": "L1b",
+      "experience_years": 1,
+      "experience_description": "1 năm làm nhân viên tư vấn tại công ty dịch vụ, hỗ trợ khách hàng và tư vấn sản phẩm",
+      "education_level": "Đại học",
+      "education_field": "Kinh tế",
+      "technical_skills": [
+        "Sales B2C",
+        "Digital Marketing"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 1 năm. 1 năm làm nhân viên tư vấn tại công ty dịch vụ, hỗ trợ khách hàng và tư vấn sản phẩm. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: Sales B2C, Digital Marketing. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "bds_L2b",
+      "name": "Hoàng Anh Tuấn",
+      "category_target": "Bất động sản",
+      "level": "L2b",
+      "experience_years": 2,
+      "experience_description": "2 năm làm nhân viên kinh doanh tại công ty bất động sản, tư vấn và bán sản phẩm cho khách hàng",
+      "education_level": "Đại học",
+      "education_field": "Kinh tế",
+      "technical_skills": [
+        "Sales B2B",
+        "Telesales",
+        "Direct Sales",
+        "Quản lý dự án bất động sản"
+      ],
+      "soft_skills": [
+        "đàm phán tốt",
+        "làm việc nhóm",
+        "chịu áp lực cao"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [
+        "Chứng chỉ hành nghề bất động sản"
+      ],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 2 năm. 2 năm làm nhân viên kinh doanh tại công ty bất động sản, tư vấn và bán sản phẩm cho khách hàng. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: Sales B2B, Telesales, Direct Sales, Quản lý dự án bất động sản. Kỹ năng mềm: đàm phán tốt, làm việc nhóm, chịu áp lực cao. Ngoại ngữ: Tiếng Anh. Chứng chỉ: Chứng chỉ hành nghề bất động sản."
+    },
+    {
+      "cv_id": "bds_L3b",
+      "name": "Bùi Hồng Nhung",
+      "category_target": "Bất động sản",
+      "level": "L3b",
+      "experience_years": 4,
+      "experience_description": "4 năm làm trưởng phòng kinh doanh tại công ty bất động sản, quản lý và điều hành đội ngũ kinh doanh",
+      "education_level": "Đại học",
+      "education_field": "Kinh tế",
+      "technical_skills": [
+        "Quản lý dự án bất động sản",
+        "Giám đốc dự án bất động sản",
+        "Sales B2B",
+        "Telesales",
+        "Direct Sales",
+        "Quản lý vận hành bất động sản khác"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực cao",
+        "đàm phán tốt"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Pháp"
+      ],
+      "certificates": [
+        "Chứng chỉ hành nghề bất động sản",
+        "PMP"
+      ],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 4 năm. 4 năm làm trưởng phòng kinh doanh tại công ty bất động sản, quản lý và điều hành đội ngũ kinh doanh. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: Quản lý dự án bất động sản, Giám đốc dự án bất động sản, Sales B2B, Telesales, Direct Sales, Quản lý vận hành bất động sản khác. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực cao, đàm phán tốt. Ngoại ngữ: Tiếng Anh, Tiếng Pháp. Chứng chỉ: Chứng chỉ hành nghề bất động sản, PMP."
+    },
+    {
+      "cv_id": "bds_L4b",
+      "name": "Dương Thành Long",
+      "category_target": "Bất động sản",
+      "level": "L4b",
+      "experience_years": 7,
+      "experience_description": "7 năm làm giám đốc kinh doanh tại công ty bất động sản, quản lý và điều hành toàn bộ hoạt động kinh doanh",
+      "education_level": "Đại học",
+      "education_field": "Kinh tế",
+      "technical_skills": [
+        "Quản lý dự án bất động sản",
+        "Giám đốc dự án bất động sản",
+        "Sales B2B",
+        "Telesales",
+        "Direct Sales",
+        "Quản lý vận hành bất động sản khác",
+        "Bảo hiểm",
+        "Ngân hàng"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực cao",
+        "đàm phán tốt",
+        "quản lý tốt"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Pháp"
+      ],
+      "certificates": [
+        "Chứng chỉ hành nghề bất động sản",
+        "PMP",
+        "Chứng chỉ nghiệp vụ ngân hàng"
+      ],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 7 năm. 7 năm làm giám đốc kinh doanh tại công ty bất động sản, quản lý và điều hành toàn bộ hoạt động kinh doanh. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: Quản lý dự án bất động sản, Giám đốc dự án bất động sản, Sales B2B, Telesales, Direct Sales, Quản lý vận hành bất động sản khác, Bảo hiểm, Ngân hàng. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực cao, đàm phán tốt, quản lý tốt. Ngoại ngữ: Tiếng Anh, Tiếng Pháp. Chứng chỉ: Chứng chỉ hành nghề bất động sản, PMP, Chứng chỉ nghiệp vụ ngân hàng."
+    },
+    {
+      "cv_id": "bds_P2",
+      "name": "Dương Thùy Dung",
+      "category_target": "Bất động sản",
+      "level": "P2",
+      "experience_years": 2,
+      "experience_description": "2 năm làm nhân viên phục vụ tại nhà hàng, phục vụ khách hàng và quản lý hàng hóa",
+      "education_level": "Trung cấp",
+      "education_field": "Du lịch",
+      "technical_skills": [
+        "Quản lý hàng hóa",
+        "Phục vụ khách hàng"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 2 năm. 2 năm làm nhân viên phục vụ tại nhà hàng, phục vụ khách hàng và quản lý hàng hóa. Học vấn: Trung cấp Du lịch. Kỹ năng chuyên môn: Quản lý hàng hóa, Phục vụ khách hàng. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "cskh_L1",
+      "name": "Vũ Thị Yến",
+      "category_target": "Chăm sóc khách hàng",
+      "level": "L1",
+      "experience_years": 0,
+      "experience_description": "Sinh viên mới ra trường, từng tham gia các dự án nhóm về chăm sóc khách hàng",
+      "education_level": "Đại học",
+      "education_field": "Kinh doanh",
+      "technical_skills": [
+        "Excel",
+        "Tiếng Anh"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 0 năm. Sinh viên mới ra trường, từng tham gia các dự án nhóm về chăm sóc khách hàng. Học vấn: Đại học Kinh doanh. Kỹ năng chuyên môn: Excel, Tiếng Anh. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "cskh_L2",
+      "name": "Hoàng Anh Tuấn",
+      "category_target": "Chăm sóc khách hàng",
+      "level": "L2",
+      "experience_years": 1,
+      "experience_description": "Nhân viên chăm sóc khách hàng tại công ty dịch vụ, có kinh nghiệm xử lý các vấn đề của khách hàng",
+      "education_level": "Đại học",
+      "education_field": "Kinh doanh",
+      "technical_skills": [
+        "Excel",
+        "Tiếng Anh",
+        "Call Center"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 1 năm. Nhân viên chăm sóc khách hàng tại công ty dịch vụ, có kinh nghiệm xử lý các vấn đề của khách hàng. Học vấn: Đại học Kinh doanh. Kỹ năng chuyên môn: Excel, Tiếng Anh, Call Center. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "cskh_L3",
+      "name": "Bùi Hồng Nhung",
+      "category_target": "Chăm sóc khách hàng",
+      "level": "L3",
+      "experience_years": 3,
+      "experience_description": "Trưởng nhóm chăm sóc khách hàng tại công ty dịch vụ, có kinh nghiệm quản lý và đào tạo nhân viên",
+      "education_level": "Đại học",
+      "education_field": "Kinh doanh",
+      "technical_skills": [
+        "Excel",
+        "Tiếng Anh",
+        "Call Center",
+        "Customer Experience"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực",
+        "quản lý"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Trung"
+      ],
+      "certificates": [
+        "IELTS 6.5"
+      ],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 3 năm. Trưởng nhóm chăm sóc khách hàng tại công ty dịch vụ, có kinh nghiệm quản lý và đào tạo nhân viên. Học vấn: Đại học Kinh doanh. Kỹ năng chuyên môn: Excel, Tiếng Anh, Call Center, Customer Experience. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, quản lý. Ngoại ngữ: Tiếng Anh, Tiếng Trung. Chứng chỉ: IELTS 6.5."
+    },
+    {
+      "cv_id": "cskh_L4",
+      "name": "Dương Thành Long",
+      "category_target": "Chăm sóc khách hàng",
+      "level": "L4",
+      "experience_years": 6,
+      "experience_description": "Giám đốc chăm sóc khách hàng tại công ty dịch vụ, có kinh nghiệm xây dựng và thực hiện chiến lược chăm sóc khách hàng",
+      "education_level": "Đại học",
+      "education_field": "Kinh doanh",
+      "technical_skills": [
+        "Excel",
+        "Tiếng Anh",
+        "Call Center",
+        "Customer Experience",
+        "Logistic"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực",
+        "quản lý",
+        "chiến lược"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Trung"
+      ],
+      "certificates": [
+        "MBA",
+        "PMP"
+      ],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 6 năm. Giám đốc chăm sóc khách hàng tại công ty dịch vụ, có kinh nghiệm xây dựng và thực hiện chiến lược chăm sóc khách hàng. Học vấn: Đại học Kinh doanh. Kỹ năng chuyên môn: Excel, Tiếng Anh, Call Center, Customer Experience, Logistic. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, quản lý, chiến lược. Ngoại ngữ: Tiếng Anh, Tiếng Trung. Chứng chỉ: MBA, PMP."
+    },
+    {
+      "cv_id": "cskh_P",
+      "name": "Dương Thùy Dung",
+      "category_target": "Chăm sóc khách hàng",
+      "level": "P",
+      "experience_years": 2,
+      "experience_description": "Nhân viên lập trình tại công ty công nghệ, có kinh nghiệm phát triển ứng dụng di động",
+      "education_level": "Đại học",
+      "education_field": "Công nghệ thông tin",
+      "technical_skills": [
+        "Java",
+        "Python"
+      ],
+      "soft_skills": [
+        "làm việc nhóm",
+        "chịu áp lực"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 2 năm. Nhân viên lập trình tại công ty công nghệ, có kinh nghiệm phát triển ứng dụng di động. Học vấn: Đại học Công nghệ thông tin. Kỹ năng chuyên môn: Java, Python. Kỹ năng mềm: làm việc nhóm, chịu áp lực. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "cskh_L1b",
+      "name": "Phan Minh Hiếu",
+      "category_target": "Chăm sóc khách hàng",
+      "level": "L1b",
+      "experience_years": 1,
+      "experience_description": "1 năm làm nhân viên hỗ trợ tại công ty dịch vụ, hỗ trợ khách hàng qua điện thoại và email",
+      "education_level": "Đại học",
+      "education_field": "Quản trị kinh doanh",
+      "technical_skills": [
+        "Excel",
+        "Tiếng Anh IELTS 6.5"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 1 năm. 1 năm làm nhân viên hỗ trợ tại công ty dịch vụ, hỗ trợ khách hàng qua điện thoại và email. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: Excel, Tiếng Anh IELTS 6.5. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "cskh_L2b",
+      "name": "Đặng Kim Chi",
+      "category_target": "Chăm sóc khách hàng",
+      "level": "L2b",
+      "experience_years": 2,
+      "experience_description": "2 năm làm nhân viên chăm sóc khách hàng tại công ty dịch vụ, hỗ trợ khách hàng qua điện thoại và email",
+      "education_level": "Đại học",
+      "education_field": "Quản trị kinh doanh",
+      "technical_skills": [
+        "Excel",
+        "Tiếng Anh IELTS 6.5",
+        "Call Center/Trực tổng đài",
+        "Customer Experience"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [
+        "IELTS 6.5"
+      ],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 2 năm. 2 năm làm nhân viên chăm sóc khách hàng tại công ty dịch vụ, hỗ trợ khách hàng qua điện thoại và email. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: Excel, Tiếng Anh IELTS 6.5, Call Center/Trực tổng đài, Customer Experience. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực. Ngoại ngữ: Tiếng Anh. Chứng chỉ: IELTS 6.5."
+    },
+    {
+      "cv_id": "cskh_L3b",
+      "name": "Đặng Quốc Thắng",
+      "category_target": "Chăm sóc khách hàng",
+      "level": "L3b",
+      "experience_years": 4,
+      "experience_description": "4 năm làm trưởng phòng chăm sóc khách hàng tại công ty dịch vụ, quản lý đội ngũ nhân viên chăm sóc khách hàng",
+      "education_level": "Đại học",
+      "education_field": "Quản trị kinh doanh",
+      "technical_skills": [
+        "Excel",
+        "Tiếng Anh IELTS 6.5",
+        "Call Center/Trực tổng đài",
+        "Customer Experience",
+        "Logistic / Vận tải",
+        "Xuất nhập khẩu / Hải quan"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực",
+        "quản lý"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Trung"
+      ],
+      "certificates": [
+        "IELTS 6.5"
+      ],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 4 năm. 4 năm làm trưởng phòng chăm sóc khách hàng tại công ty dịch vụ, quản lý đội ngũ nhân viên chăm sóc khách hàng. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: Excel, Tiếng Anh IELTS 6.5, Call Center/Trực tổng đài, Customer Experience, Logistic / Vận tải, Xuất nhập khẩu / Hải quan. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, quản lý. Ngoại ngữ: Tiếng Anh, Tiếng Trung. Chứng chỉ: IELTS 6.5."
+    },
+    {
+      "cv_id": "cskh_L4b",
+      "name": "Nguyễn Minh Châu",
+      "category_target": "Chăm sóc khách hàng",
+      "level": "L4b",
+      "experience_years": 7,
+      "experience_description": "7 năm làm giám đốc chăm sóc khách hàng tại công ty dịch vụ, quản lý toàn bộ hoạt động chăm sóc khách hàng",
+      "education_level": "Đại học",
+      "education_field": "Quản trị kinh doanh",
+      "technical_skills": [
+        "Excel",
+        "Tiếng Anh IELTS 6.5",
+        "Call Center/Trực tổng đài",
+        "Customer Experience",
+        "Logistic / Vận tải",
+        "Xuất nhập khẩu / Hải quan",
+        "Kiến thức về phần mềm"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực",
+        "quản lý",
+        "hoạch định chiến lược"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Trung"
+      ],
+      "certificates": [
+        "IELTS 6.5",
+        "PMP"
+      ],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 7 năm. 7 năm làm giám đốc chăm sóc khách hàng tại công ty dịch vụ, quản lý toàn bộ hoạt động chăm sóc khách hàng. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: Excel, Tiếng Anh IELTS 6.5, Call Center/Trực tổng đài, Customer Experience, Logistic / Vận tải, Xuất nhập khẩu / Hải quan, Kiến thức về phần mềm. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, quản lý, hoạch định chiến lược. Ngoại ngữ: Tiếng Anh, Tiếng Trung. Chứng chỉ: IELTS 6.5, PMP."
+    },
+    {
+      "cv_id": "cskh_P2",
+      "name": "Trần Đức Huy",
+      "category_target": "Chăm sóc khách hàng",
+      "level": "P2",
+      "experience_years": 2,
+      "experience_description": "2 năm làm nhân viên kho tại công ty logistics, quản lý xuất nhập hàng hóa",
+      "education_level": "Trung cấp",
+      "education_field": "Kế toán",
+      "technical_skills": [
+        "SAP",
+        "AutoCAD"
+      ],
+      "soft_skills": [
+        "làm việc nhóm",
+        "chịu áp lực"
+      ],
+      "languages": [],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 2 năm. 2 năm làm nhân viên kho tại công ty logistics, quản lý xuất nhập hàng hóa. Học vấn: Trung cấp Kế toán. Kỹ năng chuyên môn: SAP, AutoCAD. Kỹ năng mềm: làm việc nhóm, chịu áp lực."
+    },
+    {
+      "cv_id": "gd_L1",
+      "name": "Phan Minh Hiếu",
+      "category_target": "Giáo dục",
+      "level": "L1",
+      "experience_years": 0,
+      "experience_description": "Tốt nghiệp đại học, chưa có kinh nghiệm làm việc",
+      "education_level": "Đại học",
+      "education_field": "Giáo dục",
+      "technical_skills": [
+        "PowerPoint",
+        "Excel"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 0 năm. Tốt nghiệp đại học, chưa có kinh nghiệm làm việc. Học vấn: Đại học Giáo dục. Kỹ năng chuyên môn: PowerPoint, Excel. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "gd_L2",
+      "name": "Đặng Kim Chi",
+      "category_target": "Giáo dục",
+      "level": "L2",
+      "experience_years": 1,
+      "experience_description": "1 năm giảng dạy tiếng Anh cho học sinh cấp 3 tại trung tâm ngoại ngữ, soạn giáo án và đánh giá kết quả học tập",
+      "education_level": "Đại học",
+      "education_field": "Giáo dục",
+      "technical_skills": [
+        "PowerPoint",
+        "Excel",
+        "IELTS"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 1 năm. 1 năm giảng dạy tiếng Anh cho học sinh cấp 3 tại trung tâm ngoại ngữ, soạn giáo án và đánh giá kết quả học tập. Học vấn: Đại học Giáo dục. Kỹ năng chuyên môn: PowerPoint, Excel, IELTS. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "gd_L3",
+      "name": "Đặng Quốc Thắng",
+      "category_target": "Giáo dục",
+      "level": "L3",
+      "experience_years": 3,
+      "experience_description": "3 năm làm trưởng phòng đào tạo tại trung tâm ngoại ngữ, quản lý 10 giáo viên và phát triển chương trình giảng dạy",
+      "education_level": "Đại học",
+      "education_field": "Giáo dục",
+      "technical_skills": [
+        "PowerPoint",
+        "Excel",
+        "IELTS",
+        "Sales Giáo dục/Khoá học khác"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực",
+        "quản lý"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 3 năm. 3 năm làm trưởng phòng đào tạo tại trung tâm ngoại ngữ, quản lý 10 giáo viên và phát triển chương trình giảng dạy. Học vấn: Đại học Giáo dục. Kỹ năng chuyên môn: PowerPoint, Excel, IELTS, Sales Giáo dục/Khoá học khác. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, quản lý. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "gd_L4",
+      "name": "Nguyễn Minh Châu",
+      "category_target": "Giáo dục",
+      "level": "L4",
+      "experience_years": 6,
+      "experience_description": "6 năm quản lý điều hành tại trường quốc tế, phụ trách chiến lược phát triển chương trình và đội ngũ 20 giảng viên",
+      "education_level": "Đại học",
+      "education_field": "Giáo dục",
+      "technical_skills": [
+        "PowerPoint",
+        "Excel",
+        "IELTS",
+        "Sales Giáo dục/Khoá học khác",
+        "Tư vấn tuyển sinh/khoá học"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực",
+        "quản lý",
+        "lãnh đạo"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [
+        "IELTS 7.0"
+      ],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 6 năm. 6 năm quản lý điều hành tại trường quốc tế, phụ trách chiến lược phát triển chương trình và đội ngũ 20 giảng viên. Học vấn: Đại học Giáo dục. Kỹ năng chuyên môn: PowerPoint, Excel, IELTS, Sales Giáo dục/Khoá học khác, Tư vấn tuyển sinh/khoá học. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, quản lý, lãnh đạo. Ngoại ngữ: Tiếng Anh. Chứng chỉ: IELTS 7.0."
+    },
+    {
+      "cv_id": "gd_P",
+      "name": "Trần Đức Huy",
+      "category_target": "Giáo dục",
+      "level": "P",
+      "experience_years": 2,
+      "experience_description": "2 năm làm lập trình viên tại công ty phần mềm, phát triển ứng dụng web và di động",
+      "education_level": "Đại học",
+      "education_field": "Công nghệ thông tin",
+      "technical_skills": [
+        "Python",
+        "Java",
+        "JavaScript"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 2 năm. 2 năm làm lập trình viên tại công ty phần mềm, phát triển ứng dụng web và di động. Học vấn: Đại học Công nghệ thông tin. Kỹ năng chuyên môn: Python, Java, JavaScript. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "gd_L1b",
+      "name": "Trần Thanh Huyền",
+      "category_target": "Giáo dục",
+      "level": "L1b",
+      "experience_years": 1,
+      "experience_description": "Hỗ trợ giảng dạy cho các lớp học tiếng Anh tại trung tâm ngoại ngữ",
+      "education_level": "Đại học",
+      "education_field": "Ngôn ngữ Anh",
+      "technical_skills": [
+        "Excel",
+        "PowerPoint"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 1 năm. Hỗ trợ giảng dạy cho các lớp học tiếng Anh tại trung tâm ngoại ngữ. Học vấn: Đại học Ngôn ngữ Anh. Kỹ năng chuyên môn: Excel, PowerPoint. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "gd_L2b",
+      "name": "Nguyễn Văn An",
+      "category_target": "Giáo dục",
+      "level": "L2b",
+      "experience_years": 2,
+      "experience_description": "Giảng dạy tiếng Anh cho các lớp học tại trường trung học",
+      "education_level": "Đại học",
+      "education_field": "Ngôn ngữ Anh",
+      "technical_skills": [
+        "Excel",
+        "PowerPoint",
+        "Sales B2B",
+        "IELTS"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [
+        "IELTS 7.0"
+      ],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 2 năm. Giảng dạy tiếng Anh cho các lớp học tại trường trung học. Học vấn: Đại học Ngôn ngữ Anh. Kỹ năng chuyên môn: Excel, PowerPoint, Sales B2B, IELTS. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực. Ngoại ngữ: Tiếng Anh. Chứng chỉ: IELTS 7.0."
+    },
+    {
+      "cv_id": "gd_L3b",
+      "name": "Trần Minh Trang",
+      "category_target": "Giáo dục",
+      "level": "L3b",
+      "experience_years": 4,
+      "experience_description": "Quản lý chương trình đào tạo tại trung tâm ngoại ngữ",
+      "education_level": "Đại học",
+      "education_field": "Ngôn ngữ Anh",
+      "technical_skills": [
+        "Excel",
+        "PowerPoint",
+        "Sales B2B",
+        "IELTS",
+        "B2C"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực",
+        "quản lý"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Nhật"
+      ],
+      "certificates": [
+        "IELTS 7.0",
+        "TOEIC 750"
+      ],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 4 năm. Quản lý chương trình đào tạo tại trung tâm ngoại ngữ. Học vấn: Đại học Ngôn ngữ Anh. Kỹ năng chuyên môn: Excel, PowerPoint, Sales B2B, IELTS, B2C. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, quản lý. Ngoại ngữ: Tiếng Anh, Tiếng Nhật. Chứng chỉ: IELTS 7.0, TOEIC 750."
+    },
+    {
+      "cv_id": "gd_L4b",
+      "name": "Lê Hoàng Nam",
+      "category_target": "Giáo dục",
+      "level": "L4b",
+      "experience_years": 7,
+      "experience_description": "Giám đốc trung tâm đào tạo tại công ty giáo dục",
+      "education_level": "Đại học",
+      "education_field": "Quản lý giáo dục",
+      "technical_skills": [
+        "Excel",
+        "PowerPoint",
+        "Sales B2B",
+        "IELTS",
+        "B2C",
+        "Direct Sales"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực",
+        "quản lý",
+        "lãnh đạo"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Nhật"
+      ],
+      "certificates": [
+        "IELTS 7.0",
+        "TOEIC 750",
+        "PMP"
+      ],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 7 năm. Giám đốc trung tâm đào tạo tại công ty giáo dục. Học vấn: Đại học Quản lý giáo dục. Kỹ năng chuyên môn: Excel, PowerPoint, Sales B2B, IELTS, B2C, Direct Sales. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, quản lý, lãnh đạo. Ngoại ngữ: Tiếng Anh, Tiếng Nhật. Chứng chỉ: IELTS 7.0, TOEIC 750, PMP."
+    },
+    {
+      "cv_id": "gd_P2",
+      "name": "Phạm Thu Hà",
+      "category_target": "Giáo dục",
+      "level": "P2",
+      "experience_years": 2,
+      "experience_description": "Làm việc tại nhà hàng, quản lý nhân viên phục vụ",
+      "education_level": "Đại học",
+      "education_field": "Quản trị kinh doanh",
+      "technical_skills": [
+        "Excel",
+        "Quản lý nhân sự"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm"
+      ],
+      "languages": [],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 2 năm. Làm việc tại nhà hàng, quản lý nhân viên phục vụ. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: Excel, Quản lý nhân sự. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm."
+    },
+    {
+      "cv_id": "hcns_L1",
+      "name": "Trần Thanh Huyền",
+      "category_target": "Hành chính nhân sự",
+      "level": "L1",
+      "experience_years": 0,
+      "experience_description": "Sinh viên mới ra trường, thực tập tại công ty nhân sự",
+      "education_level": "Đại học",
+      "education_field": "Quản trị nhân sự",
+      "technical_skills": [
+        "MS Office",
+        "Powerpoint"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm"
+      ],
+      "languages": [],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 0 năm. Sinh viên mới ra trường, thực tập tại công ty nhân sự. Học vấn: Đại học Quản trị nhân sự. Kỹ năng chuyên môn: MS Office, Powerpoint. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm."
+    },
+    {
+      "cv_id": "hcns_L2",
+      "name": "Nguyễn Văn An",
+      "category_target": "Hành chính nhân sự",
+      "level": "L2",
+      "experience_years": 1,
+      "experience_description": "Nhân viên hành chính tại công ty thương mại, hỗ trợ công tác nhân sự",
+      "education_level": "Đại học",
+      "education_field": "Quản trị nhân sự",
+      "technical_skills": [
+        "MS Office",
+        "Powerpoint",
+        "Payroll/C&B"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 1 năm. Nhân viên hành chính tại công ty thương mại, hỗ trợ công tác nhân sự. Học vấn: Đại học Quản trị nhân sự. Kỹ năng chuyên môn: MS Office, Powerpoint, Payroll/C&B. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "hcns_L3",
+      "name": "Trần Minh Trang",
+      "category_target": "Hành chính nhân sự",
+      "level": "L3",
+      "experience_years": 3,
+      "experience_description": "Chuyên viên nhân sự tại công ty sản xuất, phụ trách tuyển dụng và đào tạo",
+      "education_level": "Đại học",
+      "education_field": "Quản trị nhân sự",
+      "technical_skills": [
+        "MS Office",
+        "Powerpoint",
+        "Payroll/C&B",
+        "Hành chính tổng hợp"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực",
+        "quản lý thời gian"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [
+        "SHRM-CP"
+      ],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 3 năm. Chuyên viên nhân sự tại công ty sản xuất, phụ trách tuyển dụng và đào tạo. Học vấn: Đại học Quản trị nhân sự. Kỹ năng chuyên môn: MS Office, Powerpoint, Payroll/C&B, Hành chính tổng hợp. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, quản lý thời gian. Ngoại ngữ: Tiếng Anh. Chứng chỉ: SHRM-CP."
+    },
+    {
+      "cv_id": "hcns_L4",
+      "name": "Lê Hoàng Nam",
+      "category_target": "Hành chính nhân sự",
+      "level": "L4",
+      "experience_years": 6,
+      "experience_description": "Trưởng phòng nhân sự tại công ty dịch vụ, phụ trách chiến lược nhân sự",
+      "education_level": "Đại học",
+      "education_field": "Quản trị nhân sự",
+      "technical_skills": [
+        "MS Office",
+        "Powerpoint",
+        "Payroll/C&B",
+        "Hành chính tổng hợp",
+        "Quản trị nhân sự"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực",
+        "quản lý thời gian",
+        "lãnh đạo"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [
+        "SHRM-CP",
+        "PMP"
+      ],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 6 năm. Trưởng phòng nhân sự tại công ty dịch vụ, phụ trách chiến lược nhân sự. Học vấn: Đại học Quản trị nhân sự. Kỹ năng chuyên môn: MS Office, Powerpoint, Payroll/C&B, Hành chính tổng hợp, Quản trị nhân sự. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, quản lý thời gian, lãnh đạo. Ngoại ngữ: Tiếng Anh. Chứng chỉ: SHRM-CP, PMP."
+    },
+    {
+      "cv_id": "hcns_P",
+      "name": "Phạm Thu Hà",
+      "category_target": "Hành chính nhân sự",
+      "level": "P",
+      "experience_years": 2,
+      "experience_description": "Nhân viên kho tại công ty logistics, quản lý xuất nhập hàng hóa",
+      "education_level": "Đại học",
+      "education_field": "Quản trị kinh doanh",
+      "technical_skills": [
+        "warehouse management systems",
+        "office applications"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm"
+      ],
+      "languages": [],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 2 năm. Nhân viên kho tại công ty logistics, quản lý xuất nhập hàng hóa. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: warehouse management systems, office applications. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm."
+    },
+    {
+      "cv_id": "hcns_L1b",
+      "name": "Đỗ Minh Quân",
+      "category_target": "Hành chính nhân sự",
+      "level": "L1b",
+      "experience_years": 1,
+      "experience_description": "1 năm làm trợ lý hành chính tại một công ty tư nhân, hỗ trợ công việc văn phòng và quản lý hồ sơ",
+      "education_level": "Đại học",
+      "education_field": "Quản trị kinh doanh",
+      "technical_skills": [
+        "Powerpoint",
+        "MS Office"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm"
+      ],
+      "languages": [],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 1 năm. 1 năm làm trợ lý hành chính tại một công ty tư nhân, hỗ trợ công việc văn phòng và quản lý hồ sơ. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: Powerpoint, MS Office. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm."
+    },
+    {
+      "cv_id": "hcns_L2b",
+      "name": "Vũ Thị Yến",
+      "category_target": "Hành chính nhân sự",
+      "level": "L2b",
+      "experience_years": 2,
+      "experience_description": "2 năm làm nhân viên nhân sự tại một công ty sản xuất, phụ trách tuyển dụng và quản lý nhân viên",
+      "education_level": "Đại học",
+      "education_field": "Quản trị nhân sự",
+      "technical_skills": [
+        "Powerpoint",
+        "MS Office",
+        "Payroll/C&B"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "quản lý thời gian hiệu quả"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [
+        "SHRM-CP"
+      ],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 2 năm. 2 năm làm nhân viên nhân sự tại một công ty sản xuất, phụ trách tuyển dụng và quản lý nhân viên. Học vấn: Đại học Quản trị nhân sự. Kỹ năng chuyên môn: Powerpoint, MS Office, Payroll/C&B. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, quản lý thời gian hiệu quả. Ngoại ngữ: Tiếng Anh. Chứng chỉ: SHRM-CP."
+    },
+    {
+      "cv_id": "hcns_L3b",
+      "name": "Hoàng Anh Tuấn",
+      "category_target": "Hành chính nhân sự",
+      "level": "L3b",
+      "experience_years": 4,
+      "experience_description": "4 năm làm trưởng phòng nhân sự tại một công ty đa quốc gia, phụ trách quản lý nhân viên và phát triển chiến lược nhân sự",
+      "education_level": "Đại học",
+      "education_field": "Quản trị kinh doanh",
+      "technical_skills": [
+        "Powerpoint",
+        "MS Office",
+        "Payroll/C&B",
+        "Hành chính tổng hợp"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "quản lý thời gian hiệu quả",
+        "lãnh đạo"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Nhật"
+      ],
+      "certificates": [
+        "SHRM-CP"
+      ],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 4 năm. 4 năm làm trưởng phòng nhân sự tại một công ty đa quốc gia, phụ trách quản lý nhân viên và phát triển chiến lược nhân sự. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: Powerpoint, MS Office, Payroll/C&B, Hành chính tổng hợp. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, quản lý thời gian hiệu quả, lãnh đạo. Ngoại ngữ: Tiếng Anh, Tiếng Nhật. Chứng chỉ: SHRM-CP."
+    },
+    {
+      "cv_id": "hcns_L4b",
+      "name": "Bùi Hồng Nhung",
+      "category_target": "Hành chính nhân sự",
+      "level": "L4b",
+      "experience_years": 7,
+      "experience_description": "7 năm làm giám đốc nhân sự tại một công ty hàng đầu, phụ trách quản lý toàn bộ bộ phận nhân sự và phát triển chiến lược nhân sự",
+      "education_level": "Đại học",
+      "education_field": "Quản trị kinh doanh",
+      "technical_skills": [
+        "Powerpoint",
+        "MS Office",
+        "Payroll/C&B",
+        "Hành chính tổng hợp",
+        "Quản trị nhân sự"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "quản lý thời gian hiệu quả",
+        "lãnh đạo",
+        "quản lý chiến lược"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Nhật",
+        "Tiếng Pháp"
+      ],
+      "certificates": [
+        "SHRM-CP"
+      ],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 7 năm. 7 năm làm giám đốc nhân sự tại một công ty hàng đầu, phụ trách quản lý toàn bộ bộ phận nhân sự và phát triển chiến lược nhân sự. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: Powerpoint, MS Office, Payroll/C&B, Hành chính tổng hợp, Quản trị nhân sự. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, quản lý thời gian hiệu quả, lãnh đạo, quản lý chiến lược. Ngoại ngữ: Tiếng Anh, Tiếng Nhật, Tiếng Pháp. Chứng chỉ: SHRM-CP."
+    },
+    {
+      "cv_id": "hcns_P2",
+      "name": "Dương Thành Long",
+      "category_target": "Hành chính nhân sự",
+      "level": "P2",
+      "experience_years": 2,
+      "experience_description": "2 năm làm nhân viên kho tại một công ty logistics, quản lý xuất nhập hàng hóa",
+      "education_level": "Trung cấp",
+      "education_field": "Quản lý kho",
+      "technical_skills": [
+        "Warehouse management systems",
+        "Office applications"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm"
+      ],
+      "languages": [],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 2 năm. 2 năm làm nhân viên kho tại một công ty logistics, quản lý xuất nhập hàng hóa. Học vấn: Trung cấp Quản lý kho. Kỹ năng chuyên môn: Warehouse management systems, Office applications. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm."
+    },
+    {
+      "cv_id": "it_L1",
+      "name": "Đỗ Minh Quân",
+      "category_target": "IT",
+      "level": "L1",
+      "experience_years": 0,
+      "experience_description": "Sinh viên mới ra trường, có kiến thức cơ bản về lập trình và phát triển phần mềm",
+      "education_level": "Đại học",
+      "education_field": "Công nghệ thông tin",
+      "technical_skills": [
+        "C / C++ Programming Experience",
+        "Draw.io"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm"
+      ],
+      "languages": [],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 0 năm. Sinh viên mới ra trường, có kiến thức cơ bản về lập trình và phát triển phần mềm. Học vấn: Đại học Công nghệ thông tin. Kỹ năng chuyên môn: C / C++ Programming Experience, Draw.io. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm."
+    },
+    {
+      "cv_id": "it_L2",
+      "name": "Vũ Thị Yến",
+      "category_target": "IT",
+      "level": "L2",
+      "experience_years": 1,
+      "experience_description": "Làm việc tại công ty phần mềm, tham gia phát triển dự án và kiểm tra chất lượng sản phẩm",
+      "education_level": "Đại học",
+      "education_field": "Công nghệ thông tin",
+      "technical_skills": [
+        "Jira",
+        "Embedded Engineer",
+        "Version Control tools"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 1 năm. Làm việc tại công ty phần mềm, tham gia phát triển dự án và kiểm tra chất lượng sản phẩm. Học vấn: Đại học Công nghệ thông tin. Kỹ năng chuyên môn: Jira, Embedded Engineer, Version Control tools. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "it_L3",
+      "name": "Hoàng Anh Tuấn",
+      "category_target": "IT",
+      "level": "L3",
+      "experience_years": 3,
+      "experience_description": "Làm việc tại công ty công nghệ, tham gia phát triển dự án và quản lý nhóm phát triển",
+      "education_level": "Đại học",
+      "education_field": "Công nghệ thông tin",
+      "technical_skills": [
+        "IT Project Manager",
+        "Business Analyst",
+        "Google Test (GTest) Framework"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực",
+        "quản lý"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [
+        "PMP"
+      ],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 3 năm. Làm việc tại công ty công nghệ, tham gia phát triển dự án và quản lý nhóm phát triển. Học vấn: Đại học Công nghệ thông tin. Kỹ năng chuyên môn: IT Project Manager, Business Analyst, Google Test (GTest) Framework. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, quản lý. Ngoại ngữ: Tiếng Anh. Chứng chỉ: PMP."
+    },
+    {
+      "cv_id": "it_L4",
+      "name": "Bùi Hồng Nhung",
+      "category_target": "IT",
+      "level": "L4",
+      "experience_years": 6,
+      "experience_description": "Làm việc tại công ty công nghệ, tham gia phát triển dự án và quản lý nhóm phát triển, cũng như tư vấn chiến lược cho công ty",
+      "education_level": "Đại học",
+      "education_field": "Công nghệ thông tin",
+      "technical_skills": [
+        "IT - Phần mềm",
+        "Embedded Engineer",
+        "Version Control tools",
+        "MISRA C/C++"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực",
+        "quản lý",
+        "tư vấn"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [
+        "PMP",
+        "CCNA"
+      ],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 6 năm. Làm việc tại công ty công nghệ, tham gia phát triển dự án và quản lý nhóm phát triển, cũng như tư vấn chiến lược cho công ty. Học vấn: Đại học Công nghệ thông tin. Kỹ năng chuyên môn: IT - Phần mềm, Embedded Engineer, Version Control tools, MISRA C/C++. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, quản lý, tư vấn. Ngoại ngữ: Tiếng Anh. Chứng chỉ: PMP, CCNA."
+    },
+    {
+      "cv_id": "it_P",
+      "name": "Dương Thành Long",
+      "category_target": "IT",
+      "level": "P",
+      "experience_years": 2,
+      "experience_description": "Làm việc tại công ty sản xuất, tham gia quản lý kho hàng và xuất nhập hàng hóa",
+      "education_level": "Đại học",
+      "education_field": "Quản trị kinh doanh",
+      "technical_skills": [
+        "SAP",
+        "Excel"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm"
+      ],
+      "languages": [],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 2 năm. Làm việc tại công ty sản xuất, tham gia quản lý kho hàng và xuất nhập hàng hóa. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: SAP, Excel. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm."
+    },
+    {
+      "cv_id": "it_L1b",
+      "name": "Dương Thùy Dung",
+      "category_target": "IT",
+      "level": "L1b",
+      "experience_years": 1,
+      "experience_description": "1 năm làm nhân viên hỗ trợ tại công ty phần mềm, hỗ trợ khách hàng về các vấn đề kỹ thuật",
+      "education_level": "Đại học",
+      "education_field": "Công nghệ thông tin",
+      "technical_skills": [
+        "Jira",
+        "Draw.io"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm"
+      ],
+      "languages": [],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 1 năm. 1 năm làm nhân viên hỗ trợ tại công ty phần mềm, hỗ trợ khách hàng về các vấn đề kỹ thuật. Học vấn: Đại học Công nghệ thông tin. Kỹ năng chuyên môn: Jira, Draw.io. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm."
+    },
+    {
+      "cv_id": "it_L2b",
+      "name": "Phan Minh Hiếu",
+      "category_target": "IT",
+      "level": "L2b",
+      "experience_years": 2,
+      "experience_description": "2 năm làm lập trình viên tại công ty phát triển phần mềm, phát triển các ứng dụng di động",
+      "education_level": "Đại học",
+      "education_field": "Công nghệ thông tin",
+      "technical_skills": [
+        "C / C++ Programming Experience",
+        "Google Test (GTest) Framework",
+        "Unit Testing Tools (RTRT)",
+        "MISRA C/C++"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [
+        "PMP"
+      ],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 2 năm. 2 năm làm lập trình viên tại công ty phát triển phần mềm, phát triển các ứng dụng di động. Học vấn: Đại học Công nghệ thông tin. Kỹ năng chuyên môn: C / C++ Programming Experience, Google Test (GTest) Framework, Unit Testing Tools (RTRT), MISRA C/C++. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực. Ngoại ngữ: Tiếng Anh. Chứng chỉ: PMP."
+    },
+    {
+      "cv_id": "it_L3b",
+      "name": "Đặng Kim Chi",
+      "category_target": "IT",
+      "level": "L3b",
+      "experience_years": 4,
+      "experience_description": "4 năm làm quản lý dự án tại công ty công nghệ, quản lý các dự án phát triển phần mềm",
+      "education_level": "Đại học",
+      "education_field": "Công nghệ thông tin",
+      "technical_skills": [
+        "IT - Phần mềm",
+        "Business Analyst (Phân tích nghiệp vụ)",
+        "IT Project Manager",
+        "Embedded Engineer",
+        "Lập trình nhúng",
+        "Version Control tools (GitHub, SoCo)"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực",
+        "trách nhiệm công việc"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Nhật"
+      ],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 4 năm. 4 năm làm quản lý dự án tại công ty công nghệ, quản lý các dự án phát triển phần mềm. Học vấn: Đại học Công nghệ thông tin. Kỹ năng chuyên môn: IT - Phần mềm, Business Analyst (Phân tích nghiệp vụ), IT Project Manager, Embedded Engineer, Lập trình nhúng, Version Control tools (GitHub, SoCo). Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, trách nhiệm công việc. Ngoại ngữ: Tiếng Anh, Tiếng Nhật."
+    },
+    {
+      "cv_id": "it_L4b",
+      "name": "Đặng Quốc Thắng",
+      "category_target": "IT",
+      "level": "L4b",
+      "experience_years": 7,
+      "experience_description": "7 năm làm giám đốc công nghệ tại công ty công nghệ, quản lý các dự án phát triển phần mềm và dẫn dắt đội ngũ kỹ sư",
+      "education_level": "Đại học",
+      "education_field": "Công nghệ thông tin",
+      "technical_skills": [
+        "IT - Phần mềm",
+        "Business Analyst (Phân tích nghiệp vụ)",
+        "IT Project Manager",
+        "Embedded Engineer",
+        "Lập trình nhúng",
+        "Version Control tools (GitHub, SoCo)",
+        "C / C++ Programming Experience",
+        "Google Test (GTest) Framework"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực",
+        "trách nhiệm công việc",
+        "quản lý"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Nhật"
+      ],
+      "certificates": [
+        "PMP",
+        "CCNA"
+      ],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 7 năm. 7 năm làm giám đốc công nghệ tại công ty công nghệ, quản lý các dự án phát triển phần mềm và dẫn dắt đội ngũ kỹ sư. Học vấn: Đại học Công nghệ thông tin. Kỹ năng chuyên môn: IT - Phần mềm, Business Analyst (Phân tích nghiệp vụ), IT Project Manager, Embedded Engineer, Lập trình nhúng, Version Control tools (GitHub, SoCo), C / C++ Programming Experience, Google Test (GTest) Framework. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, trách nhiệm công việc, quản lý. Ngoại ngữ: Tiếng Anh, Tiếng Nhật. Chứng chỉ: PMP, CCNA."
+    },
+    {
+      "cv_id": "it_P2",
+      "name": "Nguyễn Minh Châu",
+      "category_target": "IT",
+      "level": "P2",
+      "experience_years": 2,
+      "experience_description": "2 năm làm nhân viên bán hàng tại cửa hàng thời trang, tư vấn và bán hàng cho khách hàng",
+      "education_level": "Đại học",
+      "education_field": "Quản trị kinh doanh",
+      "technical_skills": [
+        "Excel",
+        "SAP"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 2 năm. 2 năm làm nhân viên bán hàng tại cửa hàng thời trang, tư vấn và bán hàng cho khách hàng. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: Excel, SAP. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "kt_L1",
+      "name": "Dương Thùy Dung",
+      "category_target": "Kế toán",
+      "level": "L1",
+      "experience_years": 0,
+      "experience_description": "Sinh viên mới ra trường với kiến thức cơ bản về kế toán",
+      "education_level": "Đại học",
+      "education_field": "Kế toán",
+      "technical_skills": [
+        "Kế toán tổng hợp",
+        "Phần mềm kế toán"
+      ],
+      "soft_skills": [
+        "Trách nhiệm trong công việc",
+        "Giao tiếp tốt"
+      ],
+      "languages": [],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 0 năm. Sinh viên mới ra trường với kiến thức cơ bản về kế toán. Học vấn: Đại học Kế toán. Kỹ năng chuyên môn: Kế toán tổng hợp, Phần mềm kế toán. Kỹ năng mềm: Trách nhiệm trong công việc, Giao tiếp tốt."
+    },
+    {
+      "cv_id": "kt_L2",
+      "name": "Phan Minh Hiếu",
+      "category_target": "Kế toán",
+      "level": "L2",
+      "experience_years": 1,
+      "experience_description": "Nhân viên kế toán nội bộ tại công ty thương mại, thực hiện các công việc kế toán hàng ngày",
+      "education_level": "Đại học",
+      "education_field": "Kế toán",
+      "technical_skills": [
+        "Kế toán nội bộ",
+        "Kế toán thuế",
+        "Fast"
+      ],
+      "soft_skills": [
+        "Trách nhiệm trong công việc",
+        "Giao tiếp tốt",
+        "Làm việc nhóm"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 1 năm. Nhân viên kế toán nội bộ tại công ty thương mại, thực hiện các công việc kế toán hàng ngày. Học vấn: Đại học Kế toán. Kỹ năng chuyên môn: Kế toán nội bộ, Kế toán thuế, Fast. Kỹ năng mềm: Trách nhiệm trong công việc, Giao tiếp tốt, Làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "kt_L3",
+      "name": "Đặng Kim Chi",
+      "category_target": "Kế toán",
+      "level": "L3",
+      "experience_years": 3,
+      "experience_description": "Kế toán trưởng tại công ty sản xuất, quản lý và thực hiện các công việc kế toán phức tạp",
+      "education_level": "Đại học",
+      "education_field": "Kế toán",
+      "technical_skills": [
+        "Kế toán tổng hợp",
+        "Kế toán trưởng",
+        "Kế toán thuế",
+        "Phần mềm kế toán",
+        "Misa"
+      ],
+      "soft_skills": [
+        "Trách nhiệm trong công việc",
+        "Giao tiếp tốt",
+        "Làm việc nhóm",
+        "Lãnh đạo"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Nhật"
+      ],
+      "certificates": [
+        "Chứng chỉ hành nghề kế toán"
+      ],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 3 năm. Kế toán trưởng tại công ty sản xuất, quản lý và thực hiện các công việc kế toán phức tạp. Học vấn: Đại học Kế toán. Kỹ năng chuyên môn: Kế toán tổng hợp, Kế toán trưởng, Kế toán thuế, Phần mềm kế toán, Misa. Kỹ năng mềm: Trách nhiệm trong công việc, Giao tiếp tốt, Làm việc nhóm, Lãnh đạo. Ngoại ngữ: Tiếng Anh, Tiếng Nhật. Chứng chỉ: Chứng chỉ hành nghề kế toán."
+    },
+    {
+      "cv_id": "kt_L4",
+      "name": "Đặng Quốc Thắng",
+      "category_target": "Kế toán",
+      "level": "L4",
+      "experience_years": 6,
+      "experience_description": "Giám đốc tài chính tại công ty đa quốc gia, quản lý và thực hiện các chiến lược tài chính",
+      "education_level": "Đại học",
+      "education_field": "Kế toán",
+      "technical_skills": [
+        "Kế toán tổng hợp",
+        "Kế toán trưởng",
+        "Kế toán thuế",
+        "Phần mềm kế toán",
+        "Misa",
+        "Kế toán doanh thu"
+      ],
+      "soft_skills": [
+        "Trách nhiệm trong công việc",
+        "Giao tiếp tốt",
+        "Làm việc nhóm",
+        "Lãnh đạo",
+        "Chịu áp lực"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Nhật",
+        "Tiếng Trung"
+      ],
+      "certificates": [
+        "Chứng chỉ hành nghề kế toán",
+        "CPA Việt Nam"
+      ],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 6 năm. Giám đốc tài chính tại công ty đa quốc gia, quản lý và thực hiện các chiến lược tài chính. Học vấn: Đại học Kế toán. Kỹ năng chuyên môn: Kế toán tổng hợp, Kế toán trưởng, Kế toán thuế, Phần mềm kế toán, Misa, Kế toán doanh thu. Kỹ năng mềm: Trách nhiệm trong công việc, Giao tiếp tốt, Làm việc nhóm, Lãnh đạo, Chịu áp lực. Ngoại ngữ: Tiếng Anh, Tiếng Nhật, Tiếng Trung. Chứng chỉ: Chứng chỉ hành nghề kế toán, CPA Việt Nam."
+    },
+    {
+      "cv_id": "kt_P",
+      "name": "Nguyễn Minh Châu",
+      "category_target": "Kế toán",
+      "level": "P",
+      "experience_years": 2,
+      "experience_description": "Nhân viên kho tại công ty logistics, quản lý xuất nhập hàng hóa",
+      "education_level": "Cao đẳng",
+      "education_field": "Quản lý kho",
+      "technical_skills": [
+        "Quản lý hàng hóa",
+        "Sử dụng máy tính"
+      ],
+      "soft_skills": [
+        "Trách nhiệm trong công việc",
+        "Giao tiếp tốt"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 2 năm. Nhân viên kho tại công ty logistics, quản lý xuất nhập hàng hóa. Học vấn: Cao đẳng Quản lý kho. Kỹ năng chuyên môn: Quản lý hàng hóa, Sử dụng máy tính. Kỹ năng mềm: Trách nhiệm trong công việc, Giao tiếp tốt. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "kt_L1b",
+      "name": "Trần Đức Huy",
+      "category_target": "Kế toán",
+      "level": "L1b",
+      "experience_years": 1,
+      "experience_description": "1 năm làm trợ lý hành chính tại công ty dịch vụ, hỗ trợ công việc văn phòng",
+      "education_level": "Đại học",
+      "education_field": "Quản trị kinh doanh",
+      "technical_skills": [
+        "Excel",
+        "Phần mềm kế toán"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 1 năm. 1 năm làm trợ lý hành chính tại công ty dịch vụ, hỗ trợ công việc văn phòng. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: Excel, Phần mềm kế toán. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "kt_L2b",
+      "name": "Trần Thanh Huyền",
+      "category_target": "Kế toán",
+      "level": "L2b",
+      "experience_years": 2,
+      "experience_description": "2 năm làm kế toán tại công ty thương mại, quản lý tài chính và báo cáo",
+      "education_level": "Đại học",
+      "education_field": "Kế toán",
+      "technical_skills": [
+        "Fast",
+        "Misa",
+        "Kế toán thuế",
+        "Kế toán tổng hợp"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [
+        "Chứng chỉ hành nghề kế toán"
+      ],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 2 năm. 2 năm làm kế toán tại công ty thương mại, quản lý tài chính và báo cáo. Học vấn: Đại học Kế toán. Kỹ năng chuyên môn: Fast, Misa, Kế toán thuế, Kế toán tổng hợp. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực. Ngoại ngữ: Tiếng Anh. Chứng chỉ: Chứng chỉ hành nghề kế toán."
+    },
+    {
+      "cv_id": "kt_L3b",
+      "name": "Nguyễn Văn An",
+      "category_target": "Kế toán",
+      "level": "L3b",
+      "experience_years": 4,
+      "experience_description": "4 năm làm kế toán trưởng tại công ty sản xuất, quản lý tài chính và kế toán",
+      "education_level": "Đại học",
+      "education_field": "Kế toán",
+      "technical_skills": [
+        "Kế toán tổng hợp",
+        "Kế toán nội bộ",
+        "Thuế",
+        "Kế toán trưởng",
+        "Fast",
+        "Misa"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực",
+        "lãnh đạo"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Nhật"
+      ],
+      "certificates": [
+        "Chứng chỉ hành nghề kế toán",
+        "ACCA"
+      ],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 4 năm. 4 năm làm kế toán trưởng tại công ty sản xuất, quản lý tài chính và kế toán. Học vấn: Đại học Kế toán. Kỹ năng chuyên môn: Kế toán tổng hợp, Kế toán nội bộ, Thuế, Kế toán trưởng, Fast, Misa. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, lãnh đạo. Ngoại ngữ: Tiếng Anh, Tiếng Nhật. Chứng chỉ: Chứng chỉ hành nghề kế toán, ACCA."
+    },
+    {
+      "cv_id": "kt_L4b",
+      "name": "Trần Minh Trang",
+      "category_target": "Kế toán",
+      "level": "L4b",
+      "experience_years": 7,
+      "experience_description": "7 năm làm giám đốc tài chính tại công ty đa quốc gia, quản lý tài chính và kế toán",
+      "education_level": "Đại học",
+      "education_field": "Kế toán",
+      "technical_skills": [
+        "Kế toán tổng hợp",
+        "Kế toán nội bộ",
+        "Thuế",
+        "Kế toán trưởng",
+        "Fast",
+        "Misa",
+        "Kế toán sản xuất",
+        "Kế toán doanh thu"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực",
+        "lãnh đạo",
+        "quản lý"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Nhật",
+        "Tiếng Trung"
+      ],
+      "certificates": [
+        "Chứng chỉ hành nghề kế toán",
+        "ACCA",
+        "CPA Việt Nam"
+      ],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 7 năm. 7 năm làm giám đốc tài chính tại công ty đa quốc gia, quản lý tài chính và kế toán. Học vấn: Đại học Kế toán. Kỹ năng chuyên môn: Kế toán tổng hợp, Kế toán nội bộ, Thuế, Kế toán trưởng, Fast, Misa, Kế toán sản xuất, Kế toán doanh thu. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, lãnh đạo, quản lý. Ngoại ngữ: Tiếng Anh, Tiếng Nhật, Tiếng Trung. Chứng chỉ: Chứng chỉ hành nghề kế toán, ACCA, CPA Việt Nam."
+    },
+    {
+      "cv_id": "kt_P2",
+      "name": "Lê Hoàng Nam",
+      "category_target": "Kế toán",
+      "level": "P2",
+      "experience_years": 2,
+      "experience_description": "2 năm làm nhân viên bán hàng tại công ty thương mại, hỗ trợ khách hàng và quản lý đơn hàng",
+      "education_level": "Đại học",
+      "education_field": "Quản trị kinh doanh",
+      "technical_skills": [
+        "Excel",
+        "Phần mềm quản lý bán hàng"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 2 năm. 2 năm làm nhân viên bán hàng tại công ty thương mại, hỗ trợ khách hàng và quản lý đơn hàng. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: Excel, Phần mềm quản lý bán hàng. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "ksxd_L1",
+      "name": "Trần Đức Huy",
+      "category_target": "Kỹ sư xây dựng",
+      "level": "L1",
+      "experience_years": 0,
+      "experience_description": "Sinh viên mới ra trường, tham gia các dự án xây dựng tại trường đại học",
+      "education_level": "Đại học",
+      "education_field": "Xây dựng",
+      "technical_skills": [
+        "Revit",
+        "Sap2000"
+      ],
+      "soft_skills": [
+        "làm việc độc lập",
+        "làm việc nhóm"
+      ],
+      "languages": [],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 0 năm. Sinh viên mới ra trường, tham gia các dự án xây dựng tại trường đại học. Học vấn: Đại học Xây dựng. Kỹ năng chuyên môn: Revit, Sap2000. Kỹ năng mềm: làm việc độc lập, làm việc nhóm."
+    },
+    {
+      "cv_id": "ksxd_L2",
+      "name": "Trần Thanh Huyền",
+      "category_target": "Kỹ sư xây dựng",
+      "level": "L2",
+      "experience_years": 1,
+      "experience_description": "1 năm làm kỹ sư hiện trường tại công ty xây dựng, tham gia các dự án xây dựng dân dụng",
+      "education_level": "Đại học",
+      "education_field": "Xây dựng",
+      "technical_skills": [
+        "Revit",
+        "Sap2000",
+        "ETABS"
+      ],
+      "soft_skills": [
+        "làm việc độc lập",
+        "làm việc nhóm",
+        "chịu áp lực"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 1 năm. 1 năm làm kỹ sư hiện trường tại công ty xây dựng, tham gia các dự án xây dựng dân dụng. Học vấn: Đại học Xây dựng. Kỹ năng chuyên môn: Revit, Sap2000, ETABS. Kỹ năng mềm: làm việc độc lập, làm việc nhóm, chịu áp lực. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "ksxd_L3",
+      "name": "Nguyễn Văn An",
+      "category_target": "Kỹ sư xây dựng",
+      "level": "L3",
+      "experience_years": 3,
+      "experience_description": "3 năm làm kỹ sư kết cấu công trình tại công ty xây dựng, tham gia các dự án xây dựng công nghiệp",
+      "education_level": "Đại học",
+      "education_field": "Xây dựng",
+      "technical_skills": [
+        "Revit",
+        "Sap2000",
+        "ETABS",
+        "Tekla"
+      ],
+      "soft_skills": [
+        "làm việc độc lập",
+        "làm việc nhóm",
+        "chịu áp lực",
+        "tư duy kỹ thuật tốt"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [
+        "Chứng chỉ hành nghề xây dựng hạng II"
+      ],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 3 năm. 3 năm làm kỹ sư kết cấu công trình tại công ty xây dựng, tham gia các dự án xây dựng công nghiệp. Học vấn: Đại học Xây dựng. Kỹ năng chuyên môn: Revit, Sap2000, ETABS, Tekla. Kỹ năng mềm: làm việc độc lập, làm việc nhóm, chịu áp lực, tư duy kỹ thuật tốt. Ngoại ngữ: Tiếng Anh. Chứng chỉ: Chứng chỉ hành nghề xây dựng hạng II."
+    },
+    {
+      "cv_id": "ksxd_L4",
+      "name": "Trần Minh Trang",
+      "category_target": "Kỹ sư xây dựng",
+      "level": "L4",
+      "experience_years": 6,
+      "experience_description": "6 năm làm kỹ sư xây dựng tại công ty xây dựng, tham gia các dự án xây dựng dân dụng và công nghiệp",
+      "education_level": "Đại học",
+      "education_field": "Xây dựng",
+      "technical_skills": [
+        "Revit",
+        "Sap2000",
+        "ETABS",
+        "Tekla",
+        "Office"
+      ],
+      "soft_skills": [
+        "làm việc độc lập",
+        "làm việc nhóm",
+        "chịu áp lực",
+        "tư duy kỹ thuật tốt",
+        "quản lý dự án"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [
+        "Chứng chỉ hành nghề xây dựng hạng I",
+        "PMP"
+      ],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 6 năm. 6 năm làm kỹ sư xây dựng tại công ty xây dựng, tham gia các dự án xây dựng dân dụng và công nghiệp. Học vấn: Đại học Xây dựng. Kỹ năng chuyên môn: Revit, Sap2000, ETABS, Tekla, Office. Kỹ năng mềm: làm việc độc lập, làm việc nhóm, chịu áp lực, tư duy kỹ thuật tốt, quản lý dự án. Ngoại ngữ: Tiếng Anh. Chứng chỉ: Chứng chỉ hành nghề xây dựng hạng I, PMP."
+    },
+    {
+      "cv_id": "ksxd_P",
+      "name": "Lê Hoàng Nam",
+      "category_target": "Kỹ sư xây dựng",
+      "level": "P",
+      "experience_years": 2,
+      "experience_description": "2 năm làm nhân viên kho tại công ty logistics, quản lý xuất nhập hàng hóa",
+      "education_level": "Đại học",
+      "education_field": "Quản trị kinh doanh",
+      "technical_skills": [
+        "Excel",
+        "SAP"
+      ],
+      "soft_skills": [
+        "làm việc độc lập",
+        "làm việc nhóm"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 2 năm. 2 năm làm nhân viên kho tại công ty logistics, quản lý xuất nhập hàng hóa. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: Excel, SAP. Kỹ năng mềm: làm việc độc lập, làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "ksxd_L1b",
+      "name": "Phạm Thu Hà",
+      "category_target": "Kỹ sư xây dựng",
+      "level": "L1b",
+      "experience_years": 1,
+      "experience_description": "Làm việc tại công ty tư vấn thiết kế, hỗ trợ việc thiết kế và xây dựng các công trình dân dụng",
+      "education_level": "Đại học",
+      "education_field": "Kỹ thuật xây dựng",
+      "technical_skills": [
+        "Sap2000",
+        "Revit"
+      ],
+      "soft_skills": [
+        "làm việc nhóm",
+        "chịu áp lực"
+      ],
+      "languages": [],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 1 năm. Làm việc tại công ty tư vấn thiết kế, hỗ trợ việc thiết kế và xây dựng các công trình dân dụng. Học vấn: Đại học Kỹ thuật xây dựng. Kỹ năng chuyên môn: Sap2000, Revit. Kỹ năng mềm: làm việc nhóm, chịu áp lực."
+    },
+    {
+      "cv_id": "ksxd_L2b",
+      "name": "Đỗ Minh Quân",
+      "category_target": "Kỹ sư xây dựng",
+      "level": "L2b",
+      "experience_years": 2,
+      "experience_description": "Làm việc tại công ty xây dựng, tham gia vào quá trình thiết kế và xây dựng các công trình công nghiệp",
+      "education_level": "Đại học",
+      "education_field": "Kỹ thuật xây dựng",
+      "technical_skills": [
+        "Sap2000",
+        "ETABS",
+        "Tekla",
+        "Office"
+      ],
+      "soft_skills": [
+        "làm việc độc lập",
+        "làm việc nhóm",
+        "chịu áp lực"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [
+        "Chứng chỉ hành nghề xây dựng hạng III"
+      ],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 2 năm. Làm việc tại công ty xây dựng, tham gia vào quá trình thiết kế và xây dựng các công trình công nghiệp. Học vấn: Đại học Kỹ thuật xây dựng. Kỹ năng chuyên môn: Sap2000, ETABS, Tekla, Office. Kỹ năng mềm: làm việc độc lập, làm việc nhóm, chịu áp lực. Ngoại ngữ: Tiếng Anh. Chứng chỉ: Chứng chỉ hành nghề xây dựng hạng III."
+    },
+    {
+      "cv_id": "ksxd_L3b",
+      "name": "Vũ Thị Yến",
+      "category_target": "Kỹ sư xây dựng",
+      "level": "L3b",
+      "experience_years": 4,
+      "experience_description": "Làm việc tại công ty tư vấn thiết kế, phụ trách việc thiết kế và xây dựng các công trình dân dụng và công nghiệp",
+      "education_level": "Đại học",
+      "education_field": "Kỹ thuật xây dựng",
+      "technical_skills": [
+        "Sap2000",
+        "ETABS",
+        "Tekla",
+        "Revit",
+        "Năng lượng / Môi trường"
+      ],
+      "soft_skills": [
+        "làm việc độc lập",
+        "làm việc nhóm",
+        "chịu áp lực",
+        "tư duy kỹ thuật tốt"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Pháp"
+      ],
+      "certificates": [
+        "Chứng chỉ hành nghề xây dựng hạng II"
+      ],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 4 năm. Làm việc tại công ty tư vấn thiết kế, phụ trách việc thiết kế và xây dựng các công trình dân dụng và công nghiệp. Học vấn: Đại học Kỹ thuật xây dựng. Kỹ năng chuyên môn: Sap2000, ETABS, Tekla, Revit, Năng lượng / Môi trường. Kỹ năng mềm: làm việc độc lập, làm việc nhóm, chịu áp lực, tư duy kỹ thuật tốt. Ngoại ngữ: Tiếng Anh, Tiếng Pháp. Chứng chỉ: Chứng chỉ hành nghề xây dựng hạng II."
+    },
+    {
+      "cv_id": "ksxd_L4b",
+      "name": "Hoàng Anh Tuấn",
+      "category_target": "Kỹ sư xây dựng",
+      "level": "L4b",
+      "experience_years": 7,
+      "experience_description": "Làm việc tại công ty xây dựng, phụ trách việc quản lý và điều hành các dự án xây dựng dân dụng và công nghiệp",
+      "education_level": "Đại học",
+      "education_field": "Kỹ thuật xây dựng",
+      "technical_skills": [
+        "Sap2000",
+        "ETABS",
+        "Tekla",
+        "Revit",
+        "Năng lượng / Môi trường",
+        "Thiết kế / Kiến trúc"
+      ],
+      "soft_skills": [
+        "làm việc độc lập",
+        "làm việc nhóm",
+        "chịu áp lực",
+        "tư duy kỹ thuật tốt",
+        "quản lý dự án"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Pháp"
+      ],
+      "certificates": [
+        "Chứng chỉ hành nghề xây dựng hạng I",
+        "PMP"
+      ],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 7 năm. Làm việc tại công ty xây dựng, phụ trách việc quản lý và điều hành các dự án xây dựng dân dụng và công nghiệp. Học vấn: Đại học Kỹ thuật xây dựng. Kỹ năng chuyên môn: Sap2000, ETABS, Tekla, Revit, Năng lượng / Môi trường, Thiết kế / Kiến trúc. Kỹ năng mềm: làm việc độc lập, làm việc nhóm, chịu áp lực, tư duy kỹ thuật tốt, quản lý dự án. Ngoại ngữ: Tiếng Anh, Tiếng Pháp. Chứng chỉ: Chứng chỉ hành nghề xây dựng hạng I, PMP."
+    },
+    {
+      "cv_id": "ksxd_P2",
+      "name": "Bùi Hồng Nhung",
+      "category_target": "Kỹ sư xây dựng",
+      "level": "P2",
+      "experience_years": 2,
+      "experience_description": "Làm việc tại công ty kinh doanh thực phẩm, phụ trách việc quản lý và điều hành các hoạt động kinh doanh",
+      "education_level": "Đại học",
+      "education_field": "Kinh tế",
+      "technical_skills": [
+        "Excel",
+        "Word"
+      ],
+      "soft_skills": [
+        "làm việc độc lập",
+        "làm việc nhóm"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 2 năm. Làm việc tại công ty kinh doanh thực phẩm, phụ trách việc quản lý và điều hành các hoạt động kinh doanh. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: Excel, Word. Kỹ năng mềm: làm việc độc lập, làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "ldpt_L1",
+      "name": "Phạm Thu Hà",
+      "category_target": "Lao động phổ thông",
+      "level": "L1",
+      "experience_years": 0,
+      "experience_description": "Sinh viên mới ra trường, chưa có kinh nghiệm",
+      "education_level": "Đại học",
+      "education_field": "Quản trị kinh doanh",
+      "technical_skills": [
+        "Lao động phổ thông",
+        "Phục vụ"
+      ],
+      "soft_skills": [
+        "Biết lắng nghe",
+        "Giao tiếp chủ động"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 0 năm. Sinh viên mới ra trường, chưa có kinh nghiệm. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: Lao động phổ thông, Phục vụ. Kỹ năng mềm: Biết lắng nghe, Giao tiếp chủ động. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "ldpt_L2",
+      "name": "Đỗ Minh Quân",
+      "category_target": "Lao động phổ thông",
+      "level": "L2",
+      "experience_years": 1,
+      "experience_description": "1 năm làm nhân viên bán hàng tại siêu thị",
+      "education_level": "Cao đẳng",
+      "education_field": "Kinh doanh",
+      "technical_skills": [
+        "Lao động phổ thông",
+        "Bán hàng siêu thị",
+        "Pha chế"
+      ],
+      "soft_skills": [
+        "Kỹ năng quản lý ca",
+        "Hiểu về đặc thù công việc ngành F&B"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 1 năm. 1 năm làm nhân viên bán hàng tại siêu thị. Học vấn: Cao đẳng Kinh doanh. Kỹ năng chuyên môn: Lao động phổ thông, Bán hàng siêu thị, Pha chế. Kỹ năng mềm: Kỹ năng quản lý ca, Hiểu về đặc thù công việc ngành F&B. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "ldpt_L3",
+      "name": "Vũ Thị Yến",
+      "category_target": "Lao động phổ thông",
+      "level": "L3",
+      "experience_years": 3,
+      "experience_description": "3 năm làm đầu bếp tại nhà hàng",
+      "education_level": "Đại học",
+      "education_field": "Đầu bếp",
+      "technical_skills": [
+        "Lao động phổ thông",
+        "Đầu bếp",
+        "Phục vụ",
+        "Nhân viên kho"
+      ],
+      "soft_skills": [
+        "Kỹ năng xử lý tình huống và khiếu nại khách hàng hiệu quả",
+        "Chịu được áp lực công việc",
+        "Trung thực"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Pháp"
+      ],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 3 năm. 3 năm làm đầu bếp tại nhà hàng. Học vấn: Đại học Đầu bếp. Kỹ năng chuyên môn: Lao động phổ thông, Đầu bếp, Phục vụ, Nhân viên kho. Kỹ năng mềm: Kỹ năng xử lý tình huống và khiếu nại khách hàng hiệu quả, Chịu được áp lực công việc, Trung thực. Ngoại ngữ: Tiếng Anh, Tiếng Pháp."
+    },
+    {
+      "cv_id": "ldpt_L4",
+      "name": "Hoàng Anh Tuấn",
+      "category_target": "Lao động phổ thông",
+      "level": "L4",
+      "experience_years": 6,
+      "experience_description": "6 năm làm quản lý tại khách sạn",
+      "education_level": "Đại học",
+      "education_field": "Quản trị kinh doanh",
+      "technical_skills": [
+        "Lao động phổ thông",
+        "Nhà hàng / Khách sạn",
+        "Tài xế lái xe văn phòng",
+        "Sửa chữa/Bảo trì điện nước"
+      ],
+      "soft_skills": [
+        "Kỹ năng quản lý ca",
+        "Hiểu về đặc thù công việc ngành F&B",
+        "Kỹ năng xử lý tình huống và khiếu nại khách hàng hiệu quả"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Pháp"
+      ],
+      "certificates": [
+        "Chứng chỉ nghiệp vụ lưu trú du lịch"
+      ],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 6 năm. 6 năm làm quản lý tại khách sạn. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: Lao động phổ thông, Nhà hàng / Khách sạn, Tài xế lái xe văn phòng, Sửa chữa/Bảo trì điện nước. Kỹ năng mềm: Kỹ năng quản lý ca, Hiểu về đặc thù công việc ngành F&B, Kỹ năng xử lý tình huống và khiếu nại khách hàng hiệu quả. Ngoại ngữ: Tiếng Anh, Tiếng Pháp. Chứng chỉ: Chứng chỉ nghiệp vụ lưu trú du lịch."
+    },
+    {
+      "cv_id": "ldpt_P",
+      "name": "Bùi Hồng Nhung",
+      "category_target": "Lao động phổ thông",
+      "level": "P",
+      "experience_years": 2,
+      "experience_description": "2 năm làm lập trình viên tại công ty công nghệ",
+      "education_level": "Đại học",
+      "education_field": "Công nghệ thông tin",
+      "technical_skills": [
+        "Python",
+        "Java",
+        "C++"
+      ],
+      "soft_skills": [
+        "Giao tiếp chủ động",
+        "Làm việc nhóm"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 2 năm. 2 năm làm lập trình viên tại công ty công nghệ. Học vấn: Đại học Công nghệ thông tin. Kỹ năng chuyên môn: Python, Java, C++. Kỹ năng mềm: Giao tiếp chủ động, Làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "ldpt_L1b",
+      "name": "Dương Thành Long",
+      "category_target": "Lao động phổ thông",
+      "level": "L1b",
+      "experience_years": 1,
+      "experience_description": "1 năm làm nhân viên bán hàng tại siêu thị, hỗ trợ khách hàng và quản lý hàng hóa",
+      "education_level": "Trung cấp",
+      "education_field": "Kinh doanh",
+      "technical_skills": [
+        "Pha chế",
+        "Bán hàng"
+      ],
+      "soft_skills": [
+        "Giao tiếp tốt",
+        "Làm việc nhóm"
+      ],
+      "languages": [],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 1 năm. 1 năm làm nhân viên bán hàng tại siêu thị, hỗ trợ khách hàng và quản lý hàng hóa. Học vấn: Trung cấp Kinh doanh. Kỹ năng chuyên môn: Pha chế, Bán hàng. Kỹ năng mềm: Giao tiếp tốt, Làm việc nhóm."
+    },
+    {
+      "cv_id": "ldpt_L2b",
+      "name": "Dương Thùy Dung",
+      "category_target": "Lao động phổ thông",
+      "level": "L2b",
+      "experience_years": 2,
+      "experience_description": "2 năm làm đầu bếp tại nhà hàng, chuẩn bị món ăn và quản lý nguyên liệu",
+      "education_level": "Cao đẳng",
+      "education_field": "Đầu bếp",
+      "technical_skills": [
+        "Đầu bếp",
+        "Pha chế",
+        "Sản xuất"
+      ],
+      "soft_skills": [
+        "Quản lý thời gian",
+        "Làm việc độc lập"
+      ],
+      "languages": [],
+      "certificates": [
+        "Chứng chỉ nghề bếp trưởng"
+      ],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 2 năm. 2 năm làm đầu bếp tại nhà hàng, chuẩn bị món ăn và quản lý nguyên liệu. Học vấn: Cao đẳng Đầu bếp. Kỹ năng chuyên môn: Đầu bếp, Pha chế, Sản xuất. Kỹ năng mềm: Quản lý thời gian, Làm việc độc lập. Chứng chỉ: Chứng chỉ nghề bếp trưởng."
+    },
+    {
+      "cv_id": "ldpt_L3b",
+      "name": "Phan Minh Hiếu",
+      "category_target": "Lao động phổ thông",
+      "level": "L3b",
+      "experience_years": 4,
+      "experience_description": "4 năm làm nhân viên kho tại công ty logistics, quản lý xuất nhập hàng hóa và vận chuyển",
+      "education_level": "Đại học",
+      "education_field": "Quản lý kinh doanh",
+      "technical_skills": [
+        "Nhân viên kho",
+        "Sửa chữa/Bảo trì điện nước",
+        "Tài xế lái xe văn phòng"
+      ],
+      "soft_skills": [
+        "Quản lý nhóm",
+        "Làm việc độc lập",
+        "Giao tiếp tốt"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 4 năm. 4 năm làm nhân viên kho tại công ty logistics, quản lý xuất nhập hàng hóa và vận chuyển. Học vấn: Đại học Quản lý kinh doanh. Kỹ năng chuyên môn: Nhân viên kho, Sửa chữa/Bảo trì điện nước, Tài xế lái xe văn phòng. Kỹ năng mềm: Quản lý nhóm, Làm việc độc lập, Giao tiếp tốt. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "ldpt_L4b",
+      "name": "Đặng Kim Chi",
+      "category_target": "Lao động phổ thông",
+      "level": "L4b",
+      "experience_years": 7,
+      "experience_description": "7 năm làm quản lý nhà hàng, quản lý nhân viên và vận hành kinh doanh",
+      "education_level": "Đại học",
+      "education_field": "Quản trị kinh doanh",
+      "technical_skills": [
+        "Nhà hàng / Khách sạn",
+        "Đầu bếp",
+        "Pha chế",
+        "Tài xế lái xe văn phòng"
+      ],
+      "soft_skills": [
+        "Quản lý nhóm",
+        "Làm việc độc lập",
+        "Giao tiếp tốt",
+        "Quản lý thời gian"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Pháp"
+      ],
+      "certificates": [
+        "Chứng chỉ nghề bếp trưởng"
+      ],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 7 năm. 7 năm làm quản lý nhà hàng, quản lý nhân viên và vận hành kinh doanh. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: Nhà hàng / Khách sạn, Đầu bếp, Pha chế, Tài xế lái xe văn phòng. Kỹ năng mềm: Quản lý nhóm, Làm việc độc lập, Giao tiếp tốt, Quản lý thời gian. Ngoại ngữ: Tiếng Anh, Tiếng Pháp. Chứng chỉ: Chứng chỉ nghề bếp trưởng."
+    },
+    {
+      "cv_id": "ldpt_P2",
+      "name": "Đặng Quốc Thắng",
+      "category_target": "Lao động phổ thông",
+      "level": "P2",
+      "experience_years": 2,
+      "experience_description": "2 năm làm lập trình viên tại công ty phần mềm, phát triển ứng dụng và quản lý dự án",
+      "education_level": "Đại học",
+      "education_field": "Công nghệ thông tin",
+      "technical_skills": [
+        "Lập trình Python",
+        "Lập trình Java"
+      ],
+      "soft_skills": [
+        "Làm việc độc lập",
+        "Giao tiếp tốt"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 2 năm. 2 năm làm lập trình viên tại công ty phần mềm, phát triển ứng dụng và quản lý dự án. Học vấn: Đại học Công nghệ thông tin. Kỹ năng chuyên môn: Lập trình Python, Lập trình Java. Kỹ năng mềm: Làm việc độc lập, Giao tiếp tốt. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "mkt_L1",
+      "name": "Dương Thành Long",
+      "category_target": "Marketing",
+      "level": "L1",
+      "experience_years": 0,
+      "experience_description": "Thực tập sinh tại một công ty truyền thông, hỗ trợ các dự án truyền thông và quảng cáo",
+      "education_level": "Đại học",
+      "education_field": "Truyền thông",
+      "technical_skills": [
+        "Google Ads",
+        "SEO"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 0 năm. Thực tập sinh tại một công ty truyền thông, hỗ trợ các dự án truyền thông và quảng cáo. Học vấn: Đại học Truyền thông. Kỹ năng chuyên môn: Google Ads, SEO. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "mkt_L2",
+      "name": "Dương Thùy Dung",
+      "category_target": "Marketing",
+      "level": "L2",
+      "experience_years": 1,
+      "experience_description": "Nhân viên tiếp thị tại một công ty thương mại điện tử, phụ trách quảng cáo và truyền thông trên các nền tảng xã hội",
+      "education_level": "Đại học",
+      "education_field": "Tiếp thị",
+      "technical_skills": [
+        "Digital Marketing",
+        "Content Marketing",
+        "Facebook Ads"
+      ],
+      "soft_skills": [
+        "làm việc độc lập",
+        "quản lý thời gian hiệu quả"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 1 năm. Nhân viên tiếp thị tại một công ty thương mại điện tử, phụ trách quảng cáo và truyền thông trên các nền tảng xã hội. Học vấn: Đại học Tiếp thị. Kỹ năng chuyên môn: Digital Marketing, Content Marketing, Facebook Ads. Kỹ năng mềm: làm việc độc lập, quản lý thời gian hiệu quả. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "mkt_L3",
+      "name": "Phan Minh Hiếu",
+      "category_target": "Marketing",
+      "level": "L3",
+      "experience_years": 3,
+      "experience_description": "Trưởng phòng tiếp thị tại một công ty sản xuất, phụ trách phát triển chiến lược tiếp thị và quảng cáo",
+      "education_level": "Đại học",
+      "education_field": "Quản trị kinh doanh",
+      "technical_skills": [
+        "Marketing Manager",
+        "Brand Marketing",
+        "TikTok Ads",
+        "Capcut"
+      ],
+      "soft_skills": [
+        "lãnh đạo",
+        "quản lý đội ngũ",
+        "thuyết phục"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Pháp"
+      ],
+      "certificates": [
+        "Google Ads Certification"
+      ],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 3 năm. Trưởng phòng tiếp thị tại một công ty sản xuất, phụ trách phát triển chiến lược tiếp thị và quảng cáo. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: Marketing Manager, Brand Marketing, TikTok Ads, Capcut. Kỹ năng mềm: lãnh đạo, quản lý đội ngũ, thuyết phục. Ngoại ngữ: Tiếng Anh, Tiếng Pháp. Chứng chỉ: Google Ads Certification."
+    },
+    {
+      "cv_id": "mkt_L4",
+      "name": "Đặng Kim Chi",
+      "category_target": "Marketing",
+      "level": "L4",
+      "experience_years": 6,
+      "experience_description": "Giám đốc tiếp thị tại một công ty đa quốc gia, phụ trách phát triển chiến lược tiếp thị và quảng cáo toàn cầu",
+      "education_level": "Đại học",
+      "education_field": "Quản trị kinh doanh",
+      "technical_skills": [
+        "Digital Marketing",
+        "Content Marketing",
+        "SEO",
+        "Facebook Ads",
+        "TikTok Ads",
+        "YouTube"
+      ],
+      "soft_skills": [
+        "lãnh đạo",
+        "quản lý đội ngũ",
+        "thuyết phục",
+        "giao tiếp hiệu quả"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Pháp",
+        "Tiếng Trung"
+      ],
+      "certificates": [
+        "Google Ads Certification",
+        "Facebook Blueprint Certification"
+      ],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 6 năm. Giám đốc tiếp thị tại một công ty đa quốc gia, phụ trách phát triển chiến lược tiếp thị và quảng cáo toàn cầu. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: Digital Marketing, Content Marketing, SEO, Facebook Ads, TikTok Ads, YouTube. Kỹ năng mềm: lãnh đạo, quản lý đội ngũ, thuyết phục, giao tiếp hiệu quả. Ngoại ngữ: Tiếng Anh, Tiếng Pháp, Tiếng Trung. Chứng chỉ: Google Ads Certification, Facebook Blueprint Certification."
+    },
+    {
+      "cv_id": "mkt_P",
+      "name": "Đặng Quốc Thắng",
+      "category_target": "Marketing",
+      "level": "P",
+      "experience_years": 2,
+      "experience_description": "Nhân viên bảo trì tại một công ty sản xuất, phụ trách bảo trì và sửa chữa thiết bị",
+      "education_level": "Trung cấp",
+      "education_field": "Điện tự động",
+      "technical_skills": [
+        "AutoCAD",
+        "SAP"
+      ],
+      "soft_skills": [
+        "làm việc độc lập",
+        "quản lý thời gian hiệu quả"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 2 năm. Nhân viên bảo trì tại một công ty sản xuất, phụ trách bảo trì và sửa chữa thiết bị. Học vấn: Trung cấp Điện tự động. Kỹ năng chuyên môn: AutoCAD, SAP. Kỹ năng mềm: làm việc độc lập, quản lý thời gian hiệu quả. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "mkt_L1b",
+      "name": "Nguyễn Minh Châu",
+      "category_target": "Marketing",
+      "level": "L1b",
+      "experience_years": 1,
+      "experience_description": "1 năm làm nhân viên hành chính tại công ty thương mại điện tử, hỗ trợ quản lý dữ liệu và cập nhật thông tin sản phẩm",
+      "education_level": "Đại học",
+      "education_field": "Kinh tế",
+      "technical_skills": [
+        "Google Ads",
+        "SEO"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 1 năm. 1 năm làm nhân viên hành chính tại công ty thương mại điện tử, hỗ trợ quản lý dữ liệu và cập nhật thông tin sản phẩm. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: Google Ads, SEO. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "mkt_L2b",
+      "name": "Trần Đức Huy",
+      "category_target": "Marketing",
+      "level": "L2b",
+      "experience_years": 2,
+      "experience_description": "2 năm làm nhân viên tiếp thị tại công ty sản xuất hàng tiêu dùng, phát triển và thực hiện chiến lược tiếp thị sản phẩm mới",
+      "education_level": "Đại học",
+      "education_field": "Marketing",
+      "technical_skills": [
+        "Digital Marketing",
+        "Content Marketing",
+        "Facebook Ads",
+        "TikTok Ads"
+      ],
+      "soft_skills": [
+        "làm việc độc lập",
+        "quản lý thời gian hiệu quả",
+        "giao tiếp tốt"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [
+        "Google Ads Certification"
+      ],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 2 năm. 2 năm làm nhân viên tiếp thị tại công ty sản xuất hàng tiêu dùng, phát triển và thực hiện chiến lược tiếp thị sản phẩm mới. Học vấn: Đại học Marketing. Kỹ năng chuyên môn: Digital Marketing, Content Marketing, Facebook Ads, TikTok Ads. Kỹ năng mềm: làm việc độc lập, quản lý thời gian hiệu quả, giao tiếp tốt. Ngoại ngữ: Tiếng Anh. Chứng chỉ: Google Ads Certification."
+    },
+    {
+      "cv_id": "mkt_L3b",
+      "name": "Trần Thanh Huyền",
+      "category_target": "Marketing",
+      "level": "L3b",
+      "experience_years": 4,
+      "experience_description": "4 năm làm trưởng phòng tiếp thị tại công ty công nghệ, lãnh đạo đội ngũ tiếp thị và phát triển chiến lược tiếp thị toàn diện",
+      "education_level": "Đại học",
+      "education_field": "Marketing",
+      "technical_skills": [
+        "Digital Marketing",
+        "Content Marketing",
+        "SEO",
+        "Google Ads",
+        "Facebook Ads",
+        "TikTok Ads",
+        "Capcut"
+      ],
+      "soft_skills": [
+        "lãnh đạo đội ngũ",
+        "quản lý dự án",
+        "giao tiếp tốt",
+        "làm việc độc lập"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Nhật"
+      ],
+      "certificates": [
+        "Google Ads Certification",
+        "HubSpot Inbound Marketing"
+      ],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 4 năm. 4 năm làm trưởng phòng tiếp thị tại công ty công nghệ, lãnh đạo đội ngũ tiếp thị và phát triển chiến lược tiếp thị toàn diện. Học vấn: Đại học Marketing. Kỹ năng chuyên môn: Digital Marketing, Content Marketing, SEO, Google Ads, Facebook Ads, TikTok Ads, Capcut. Kỹ năng mềm: lãnh đạo đội ngũ, quản lý dự án, giao tiếp tốt, làm việc độc lập. Ngoại ngữ: Tiếng Anh, Tiếng Nhật. Chứng chỉ: Google Ads Certification, HubSpot Inbound Marketing."
+    },
+    {
+      "cv_id": "mkt_L4b",
+      "name": "Nguyễn Văn An",
+      "category_target": "Marketing",
+      "level": "L4b",
+      "experience_years": 7,
+      "experience_description": "7 năm làm giám đốc tiếp thị tại công ty đa quốc gia, lãnh đạo đội ngũ tiếp thị và phát triển chiến lược tiếp thị toàn cầu",
+      "education_level": "Đại học",
+      "education_field": "Marketing",
+      "technical_skills": [
+        "Digital Marketing",
+        "Content Marketing",
+        "SEO",
+        "Google Ads",
+        "Facebook Ads",
+        "TikTok Ads",
+        "Capcut",
+        "Brand Marketing",
+        "Trade Marketing"
+      ],
+      "soft_skills": [
+        "lãnh đạo đội ngũ",
+        "quản lý dự án",
+        "giao tiếp tốt",
+        "làm việc độc lập",
+        "quản lý thời gian hiệu quả"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Nhật",
+        "Tiếng Trung"
+      ],
+      "certificates": [
+        "Google Ads Certification",
+        "HubSpot Inbound Marketing",
+        "AWS Solutions Architect"
+      ],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 7 năm. 7 năm làm giám đốc tiếp thị tại công ty đa quốc gia, lãnh đạo đội ngũ tiếp thị và phát triển chiến lược tiếp thị toàn cầu. Học vấn: Đại học Marketing. Kỹ năng chuyên môn: Digital Marketing, Content Marketing, SEO, Google Ads, Facebook Ads, TikTok Ads, Capcut, Brand Marketing, Trade Marketing. Kỹ năng mềm: lãnh đạo đội ngũ, quản lý dự án, giao tiếp tốt, làm việc độc lập, quản lý thời gian hiệu quả. Ngoại ngữ: Tiếng Anh, Tiếng Nhật, Tiếng Trung. Chứng chỉ: Google Ads Certification, HubSpot Inbound Marketing, AWS Solutions Architect."
+    },
+    {
+      "cv_id": "mkt_P2",
+      "name": "Trần Minh Trang",
+      "category_target": "Marketing",
+      "level": "P2",
+      "experience_years": 2,
+      "experience_description": "2 năm làm nhân viên phục vụ tại nhà hàng, phục vụ khách hàng và quản lý đơn hàng",
+      "education_level": "Trung cấp",
+      "education_field": "Du lịch",
+      "technical_skills": [
+        "Microsoft Office",
+        "Zalo"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 2 năm. 2 năm làm nhân viên phục vụ tại nhà hàng, phục vụ khách hàng và quản lý đơn hàng. Học vấn: Trung cấp Du lịch. Kỹ năng chuyên môn: Microsoft Office, Zalo. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "nh_L1",
+      "name": "Nguyễn Minh Châu",
+      "category_target": "Ngân hàng",
+      "level": "L1",
+      "experience_years": 0,
+      "experience_description": "Sinh viên mới ra trường, chưa có kinh nghiệm làm việc chính thức",
+      "education_level": "Đại học",
+      "education_field": "Tài chính",
+      "technical_skills": [
+        "Oracle",
+        "Kế toán tài chính"
+      ],
+      "soft_skills": [
+        "thái độ tích cực",
+        "giao tiếp tốt"
+      ],
+      "languages": [],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 0 năm. Sinh viên mới ra trường, chưa có kinh nghiệm làm việc chính thức. Học vấn: Đại học Tài chính. Kỹ năng chuyên môn: Oracle, Kế toán tài chính. Kỹ năng mềm: thái độ tích cực, giao tiếp tốt."
+    },
+    {
+      "cv_id": "nh_L2",
+      "name": "Trần Đức Huy",
+      "category_target": "Ngân hàng",
+      "level": "L2",
+      "experience_years": 1,
+      "experience_description": "Làm việc tại ngân hàng với vị trí nhân viên tín dụng, hỗ trợ khách hàng về các vấn đề tài chính",
+      "education_level": "Đại học",
+      "education_field": "Tài chính",
+      "technical_skills": [
+        "Tác nghiệp tín dụng",
+        "Hoạch định tài chính",
+        "Sales Tài chính"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "thần thái tự tin"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 1 năm. Làm việc tại ngân hàng với vị trí nhân viên tín dụng, hỗ trợ khách hàng về các vấn đề tài chính. Học vấn: Đại học Tài chính. Kỹ năng chuyên môn: Tác nghiệp tín dụng, Hoạch định tài chính, Sales Tài chính. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, thần thái tự tin. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "nh_L3",
+      "name": "Trần Thanh Huyền",
+      "category_target": "Ngân hàng",
+      "level": "L3",
+      "experience_years": 3,
+      "experience_description": "Làm việc tại ngân hàng với vị trí chuyên viên tư vấn tài chính, hỗ trợ khách hàng về các vấn đề tài chính và đầu tư",
+      "education_level": "Đại học",
+      "education_field": "Tài chính",
+      "technical_skills": [
+        "Tư vấn tài chính",
+        "Bancassurance",
+        "Ngân hàng",
+        "Kế toán tài chính",
+        "Kiểm toán viên"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "thần thái tự tin",
+        "cẩn thận tỷ mỉ"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [
+        "CPA Việt Nam"
+      ],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 3 năm. Làm việc tại ngân hàng với vị trí chuyên viên tư vấn tài chính, hỗ trợ khách hàng về các vấn đề tài chính và đầu tư. Học vấn: Đại học Tài chính. Kỹ năng chuyên môn: Tư vấn tài chính, Bancassurance, Ngân hàng, Kế toán tài chính, Kiểm toán viên. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, thần thái tự tin, cẩn thận tỷ mỉ. Ngoại ngữ: Tiếng Anh. Chứng chỉ: CPA Việt Nam."
+    },
+    {
+      "cv_id": "nh_L4",
+      "name": "Nguyễn Văn An",
+      "category_target": "Ngân hàng",
+      "level": "L4",
+      "experience_years": 6,
+      "experience_description": "Làm việc tại ngân hàng với vị trí trưởng phòng tín dụng, quản lý và hỗ trợ đội ngũ nhân viên tín dụng",
+      "education_level": "Đại học",
+      "education_field": "Tài chính",
+      "technical_skills": [
+        "Tác nghiệp tín dụng",
+        "Hoạch định tài chính",
+        "Sales Tài chính",
+        "Bancassurance",
+        "Ngân hàng",
+        "Kế toán tài chính",
+        "Kiểm toán viên",
+        "Oracle"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "thần thái tự tin",
+        "cẩn thận tỷ mỉ",
+        "trung thực và cầu tiến"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [
+        "PMP",
+        "CPA Việt Nam"
+      ],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 6 năm. Làm việc tại ngân hàng với vị trí trưởng phòng tín dụng, quản lý và hỗ trợ đội ngũ nhân viên tín dụng. Học vấn: Đại học Tài chính. Kỹ năng chuyên môn: Tác nghiệp tín dụng, Hoạch định tài chính, Sales Tài chính, Bancassurance, Ngân hàng, Kế toán tài chính, Kiểm toán viên, Oracle. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, thần thái tự tin, cẩn thận tỷ mỉ, trung thực và cầu tiến. Ngoại ngữ: Tiếng Anh. Chứng chỉ: PMP, CPA Việt Nam."
+    },
+    {
+      "cv_id": "nh_P",
+      "name": "Trần Minh Trang",
+      "category_target": "Ngân hàng",
+      "level": "P",
+      "experience_years": 2,
+      "experience_description": "Làm việc tại công ty logistics với vị trí nhân viên kho, quản lý xuất nhập hàng hóa",
+      "education_level": "Đại học",
+      "education_field": "Quản trị kinh doanh",
+      "technical_skills": [
+        "SAP",
+        "AutoCAD"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm"
+      ],
+      "languages": [],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 2 năm. Làm việc tại công ty logistics với vị trí nhân viên kho, quản lý xuất nhập hàng hóa. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: SAP, AutoCAD. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm."
+    },
+    {
+      "cv_id": "nh_L1b",
+      "name": "Lê Hoàng Nam",
+      "category_target": "Ngân hàng",
+      "level": "L1b",
+      "experience_years": 1,
+      "experience_description": "Đã làm việc 1 năm trong lĩnh vực tư vấn, hỗ trợ khách hàng về các vấn đề tài chính",
+      "education_level": "Đại học",
+      "education_field": "Tài chính",
+      "technical_skills": [
+        "Tư vấn tài chính",
+        "Bancassurance"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc chăm chỉ"
+      ],
+      "languages": [],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 1 năm. Đã làm việc 1 năm trong lĩnh vực tư vấn, hỗ trợ khách hàng về các vấn đề tài chính. Học vấn: Đại học Tài chính. Kỹ năng chuyên môn: Tư vấn tài chính, Bancassurance. Kỹ năng mềm: giao tiếp tốt, làm việc chăm chỉ."
+    },
+    {
+      "cv_id": "nh_L2b",
+      "name": "Phạm Thu Hà",
+      "category_target": "Ngân hàng",
+      "level": "L2b",
+      "experience_years": 2,
+      "experience_description": "2 năm kinh nghiệm làm việc tại ngân hàng, hỗ trợ khách hàng về các dịch vụ tài chính",
+      "education_level": "Đại học",
+      "education_field": "Tài chính",
+      "technical_skills": [
+        "Tư vấn tài chính",
+        "Bancassurance",
+        "Oracle",
+        "Redis"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "thần thái tự tin"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [
+        "CPA Việt Nam"
+      ],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 2 năm. 2 năm kinh nghiệm làm việc tại ngân hàng, hỗ trợ khách hàng về các dịch vụ tài chính. Học vấn: Đại học Tài chính. Kỹ năng chuyên môn: Tư vấn tài chính, Bancassurance, Oracle, Redis. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, thần thái tự tin. Ngoại ngữ: Tiếng Anh. Chứng chỉ: CPA Việt Nam."
+    },
+    {
+      "cv_id": "nh_L3b",
+      "name": "Đỗ Minh Quân",
+      "category_target": "Ngân hàng",
+      "level": "L3b",
+      "experience_years": 4,
+      "experience_description": "4 năm kinh nghiệm làm việc tại ngân hàng, quản lý và hỗ trợ khách hàng về các dịch vụ tài chính",
+      "education_level": "Đại học",
+      "education_field": "Tài chính",
+      "technical_skills": [
+        "Tư vấn tài chính",
+        "Bancassurance",
+        "Oracle",
+        "Redis",
+        "microservices architecture"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "thần thái tự tin",
+        "làm việc chăm chỉ"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Pháp"
+      ],
+      "certificates": [
+        "CPA Việt Nam",
+        "AWS Solutions Architect"
+      ],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 4 năm. 4 năm kinh nghiệm làm việc tại ngân hàng, quản lý và hỗ trợ khách hàng về các dịch vụ tài chính. Học vấn: Đại học Tài chính. Kỹ năng chuyên môn: Tư vấn tài chính, Bancassurance, Oracle, Redis, microservices architecture. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, thần thái tự tin, làm việc chăm chỉ. Ngoại ngữ: Tiếng Anh, Tiếng Pháp. Chứng chỉ: CPA Việt Nam, AWS Solutions Architect."
+    },
+    {
+      "cv_id": "nh_L4b",
+      "name": "Vũ Thị Yến",
+      "category_target": "Ngân hàng",
+      "level": "L4b",
+      "experience_years": 7,
+      "experience_description": "7 năm kinh nghiệm làm việc tại ngân hàng, quản lý và hỗ trợ khách hàng về các dịch vụ tài chính, cũng như quản lý và lãnh đạo đội ngũ",
+      "education_level": "Đại học",
+      "education_field": "Tài chính",
+      "technical_skills": [
+        "Tư vấn tài chính",
+        "Bancassurance",
+        "Oracle",
+        "Redis",
+        "microservices architecture",
+        "Tác nghiệp tín dụng",
+        "Hoạch định tài chính"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "thần thái tự tin",
+        "làm việc chăm chỉ",
+        "quản lý và lãnh đạo"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Pháp"
+      ],
+      "certificates": [
+        "CPA Việt Nam",
+        "AWS Solutions Architect",
+        "PMP"
+      ],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 7 năm. 7 năm kinh nghiệm làm việc tại ngân hàng, quản lý và hỗ trợ khách hàng về các dịch vụ tài chính, cũng như quản lý và lãnh đạo đội ngũ. Học vấn: Đại học Tài chính. Kỹ năng chuyên môn: Tư vấn tài chính, Bancassurance, Oracle, Redis, microservices architecture, Tác nghiệp tín dụng, Hoạch định tài chính. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, thần thái tự tin, làm việc chăm chỉ, quản lý và lãnh đạo. Ngoại ngữ: Tiếng Anh, Tiếng Pháp. Chứng chỉ: CPA Việt Nam, AWS Solutions Architect, PMP."
+    },
+    {
+      "cv_id": "nh_P2",
+      "name": "Hoàng Anh Tuấn",
+      "category_target": "Ngân hàng",
+      "level": "P2",
+      "experience_years": 2,
+      "experience_description": "2 năm làm nhân viên kho tại công ty logistics, quản lý xuất nhập hàng hóa",
+      "education_level": "Đại học",
+      "education_field": "Quản lý",
+      "technical_skills": [
+        "SAP",
+        "AutoCAD"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc chăm chỉ"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 2 năm. 2 năm làm nhân viên kho tại công ty logistics, quản lý xuất nhập hàng hóa. Học vấn: Đại học Quản lý. Kỹ năng chuyên môn: SAP, AutoCAD. Kỹ năng mềm: giao tiếp tốt, làm việc chăm chỉ. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "nvkd_L1",
+      "name": "Lê Hoàng Nam",
+      "category_target": "Nhân viên kinh doanh",
+      "level": "L1",
+      "experience_years": 0,
+      "experience_description": "Sinh viên mới ra trường, chưa có kinh nghiệm làm việc",
+      "education_level": "Đại học",
+      "education_field": "Kinh tế",
+      "technical_skills": [
+        "B2B",
+        "Direct Sales"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 0 năm. Sinh viên mới ra trường, chưa có kinh nghiệm làm việc. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: B2B, Direct Sales. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "nvkd_L2",
+      "name": "Phạm Thu Hà",
+      "category_target": "Nhân viên kinh doanh",
+      "level": "L2",
+      "experience_years": 1,
+      "experience_description": "Làm việc tại công ty kinh doanh, phụ trách bán hàng và chăm sóc khách hàng",
+      "education_level": "Đại học",
+      "education_field": "Kinh tế",
+      "technical_skills": [
+        "B2B",
+        "Direct Sales",
+        "Sales Marketing"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 1 năm. Làm việc tại công ty kinh doanh, phụ trách bán hàng và chăm sóc khách hàng. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: B2B, Direct Sales, Sales Marketing. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "nvkd_L3",
+      "name": "Đỗ Minh Quân",
+      "category_target": "Nhân viên kinh doanh",
+      "level": "L3",
+      "experience_years": 3,
+      "experience_description": "Làm việc tại công ty kinh doanh, phụ trách phát triển kinh doanh và quản lý đội ngũ bán hàng",
+      "education_level": "Đại học",
+      "education_field": "Kinh tế",
+      "technical_skills": [
+        "B2B",
+        "Direct Sales",
+        "Sales Marketing",
+        "Kinh doanh phần mềm"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực",
+        "lãnh đạo"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Nhật"
+      ],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 3 năm. Làm việc tại công ty kinh doanh, phụ trách phát triển kinh doanh và quản lý đội ngũ bán hàng. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: B2B, Direct Sales, Sales Marketing, Kinh doanh phần mềm. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, lãnh đạo. Ngoại ngữ: Tiếng Anh, Tiếng Nhật."
+    },
+    {
+      "cv_id": "nvkd_L4",
+      "name": "Vũ Thị Yến",
+      "category_target": "Nhân viên kinh doanh",
+      "level": "L4",
+      "experience_years": 6,
+      "experience_description": "Làm việc tại công ty kinh doanh, phụ trách chiến lược kinh doanh và quản lý đội ngũ bán hàng",
+      "education_level": "Đại học",
+      "education_field": "Kinh tế",
+      "technical_skills": [
+        "B2B",
+        "Direct Sales",
+        "Sales Marketing",
+        "Kinh doanh phần mềm",
+        "Logistic"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực",
+        "lãnh đạo",
+        "chiến lược"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Nhật",
+        "Tiếng Trung"
+      ],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 6 năm. Làm việc tại công ty kinh doanh, phụ trách chiến lược kinh doanh và quản lý đội ngũ bán hàng. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: B2B, Direct Sales, Sales Marketing, Kinh doanh phần mềm, Logistic. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, lãnh đạo, chiến lược. Ngoại ngữ: Tiếng Anh, Tiếng Nhật, Tiếng Trung."
+    },
+    {
+      "cv_id": "nvkd_P",
+      "name": "Hoàng Anh Tuấn",
+      "category_target": "Nhân viên kinh doanh",
+      "level": "P",
+      "experience_years": 2,
+      "experience_description": "Làm việc tại công ty logistics, phụ trách quản lý xuất nhập hàng hóa",
+      "education_level": "Đại học",
+      "education_field": "Kỹ thuật",
+      "technical_skills": [
+        "AutoCAD",
+        "SAP"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 2 năm. Làm việc tại công ty logistics, phụ trách quản lý xuất nhập hàng hóa. Học vấn: Đại học Kỹ thuật. Kỹ năng chuyên môn: AutoCAD, SAP. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "nvkd_L1b",
+      "name": "Bùi Hồng Nhung",
+      "category_target": "Nhân viên kinh doanh",
+      "level": "L1b",
+      "experience_years": 1,
+      "experience_description": "Làm nhân viên hành chính tại công ty dịch vụ, hỗ trợ công việc văn phòng và quản lý hồ sơ",
+      "education_level": "Đại học",
+      "education_field": "Quản trị kinh doanh",
+      "technical_skills": [
+        "B2B",
+        "Sales Marketing"
+      ],
+      "soft_skills": [
+        "Kỹ năng giao tiếp",
+        "Làm việc nhóm"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 1 năm. Làm nhân viên hành chính tại công ty dịch vụ, hỗ trợ công việc văn phòng và quản lý hồ sơ. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: B2B, Sales Marketing. Kỹ năng mềm: Kỹ năng giao tiếp, Làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "nvkd_L2b",
+      "name": "Dương Thành Long",
+      "category_target": "Nhân viên kinh doanh",
+      "level": "L2b",
+      "experience_years": 2,
+      "experience_description": "Làm nhân viên kinh doanh tại công ty phần mềm, bán sản phẩm và dịch vụ cho khách hàng",
+      "education_level": "Đại học",
+      "education_field": "Kinh doanh",
+      "technical_skills": [
+        "B2B",
+        "Direct Sales",
+        "Kinh doanh phần mềm"
+      ],
+      "soft_skills": [
+        "Kỹ năng thuyết phục",
+        "Đàm phán"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [
+        "Google Ads Certification"
+      ],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 2 năm. Làm nhân viên kinh doanh tại công ty phần mềm, bán sản phẩm và dịch vụ cho khách hàng. Học vấn: Đại học Kinh doanh. Kỹ năng chuyên môn: B2B, Direct Sales, Kinh doanh phần mềm. Kỹ năng mềm: Kỹ năng thuyết phục, Đàm phán. Ngoại ngữ: Tiếng Anh. Chứng chỉ: Google Ads Certification."
+    },
+    {
+      "cv_id": "nvkd_L3b",
+      "name": "Dương Thùy Dung",
+      "category_target": "Nhân viên kinh doanh",
+      "level": "L3b",
+      "experience_years": 4,
+      "experience_description": "Làm trưởng phòng kinh doanh tại công ty thương mại, quản lý đội ngũ bán hàng và phát triển chiến lược kinh doanh",
+      "education_level": "Đại học",
+      "education_field": "Quản trị kinh doanh",
+      "technical_skills": [
+        "B2B",
+        "Sales Marketing",
+        "Kinh doanh phần mềm",
+        "Logistic / Vận tải"
+      ],
+      "soft_skills": [
+        "Kỹ năng lãnh đạo",
+        "Quản lý",
+        "Kỹ năng giao tiếp"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Pháp"
+      ],
+      "certificates": [
+        "ACCA"
+      ],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 4 năm. Làm trưởng phòng kinh doanh tại công ty thương mại, quản lý đội ngũ bán hàng và phát triển chiến lược kinh doanh. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: B2B, Sales Marketing, Kinh doanh phần mềm, Logistic / Vận tải. Kỹ năng mềm: Kỹ năng lãnh đạo, Quản lý, Kỹ năng giao tiếp. Ngoại ngữ: Tiếng Anh, Tiếng Pháp. Chứng chỉ: ACCA."
+    },
+    {
+      "cv_id": "nvkd_L4b",
+      "name": "Phan Minh Hiếu",
+      "category_target": "Nhân viên kinh doanh",
+      "level": "L4b",
+      "experience_years": 7,
+      "experience_description": "Làm giám đốc kinh doanh tại công ty đa quốc gia, quản lý đội ngũ bán hàng và phát triển chiến lược kinh doanh toàn cầu",
+      "education_level": "Đại học",
+      "education_field": "Kinh doanh",
+      "technical_skills": [
+        "B2B",
+        "Direct Sales",
+        "Kinh doanh phần mềm",
+        "Logistic / Vận tải",
+        "Sales Representative/Phát triển kinh doanh"
+      ],
+      "soft_skills": [
+        "Kỹ năng lãnh đạo",
+        "Quản lý",
+        "Kỹ năng giao tiếp",
+        "Kỹ năng thuyết phục"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Pháp",
+        "Tiếng Trung"
+      ],
+      "certificates": [
+        "PMP",
+        "AWS Solutions Architect"
+      ],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 7 năm. Làm giám đốc kinh doanh tại công ty đa quốc gia, quản lý đội ngũ bán hàng và phát triển chiến lược kinh doanh toàn cầu. Học vấn: Đại học Kinh doanh. Kỹ năng chuyên môn: B2B, Direct Sales, Kinh doanh phần mềm, Logistic / Vận tải, Sales Representative/Phát triển kinh doanh. Kỹ năng mềm: Kỹ năng lãnh đạo, Quản lý, Kỹ năng giao tiếp, Kỹ năng thuyết phục. Ngoại ngữ: Tiếng Anh, Tiếng Pháp, Tiếng Trung. Chứng chỉ: PMP, AWS Solutions Architect."
+    },
+    {
+      "cv_id": "nvkd_P2",
+      "name": "Đặng Kim Chi",
+      "category_target": "Nhân viên kinh doanh",
+      "level": "P2",
+      "experience_years": 2,
+      "experience_description": "Làm nhân viên phục vụ tại nhà hàng, phục vụ khách hàng và quản lý đơn hàng",
+      "education_level": "Trung cấp",
+      "education_field": "Dịch vụ khách hàng",
+      "technical_skills": [
+        "Quản lý đơn hàng",
+        "Phục vụ khách hàng"
+      ],
+      "soft_skills": [
+        "Kỹ năng giao tiếp",
+        "Làm việc nhóm"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 2 năm. Làm nhân viên phục vụ tại nhà hàng, phục vụ khách hàng và quản lý đơn hàng. Học vấn: Trung cấp Dịch vụ khách hàng. Kỹ năng chuyên môn: Quản lý đơn hàng, Phục vụ khách hàng. Kỹ năng mềm: Kỹ năng giao tiếp, Làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "ts_L1",
+      "name": "Bùi Hồng Nhung",
+      "category_target": "Telesales",
+      "level": "L1",
+      "experience_years": 0,
+      "experience_description": "Tốt nghiệp đại học, chưa có kinh nghiệm làm việc",
+      "education_level": "Đại học",
+      "education_field": "Kinh tế",
+      "technical_skills": [
+        "B2C"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm"
+      ],
+      "languages": [],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 0 năm. Tốt nghiệp đại học, chưa có kinh nghiệm làm việc. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: B2C. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm."
+    },
+    {
+      "cv_id": "ts_L2",
+      "name": "Dương Thành Long",
+      "category_target": "Telesales",
+      "level": "L2",
+      "experience_years": 1,
+      "experience_description": "1 năm kinh nghiệm làm nhân viên bán hàng tại cửa hàng",
+      "education_level": "Đại học",
+      "education_field": "Kinh tế",
+      "technical_skills": [
+        "B2C",
+        "B2B",
+        "Direct Sales"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 1 năm. 1 năm kinh nghiệm làm nhân viên bán hàng tại cửa hàng. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: B2C, B2B, Direct Sales. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "ts_L3",
+      "name": "Dương Thùy Dung",
+      "category_target": "Telesales",
+      "level": "L3",
+      "experience_years": 3,
+      "experience_description": "3 năm kinh nghiệm làm nhân viên telesales tại công ty kinh doanh thiết bị",
+      "education_level": "Đại học",
+      "education_field": "Kinh tế",
+      "technical_skills": [
+        "Telesales",
+        "B2C",
+        "B2B",
+        "Direct Sales",
+        "Sales Logistics"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực",
+        "tư duy doanh số"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Pháp"
+      ],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 3 năm. 3 năm kinh nghiệm làm nhân viên telesales tại công ty kinh doanh thiết bị. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: Telesales, B2C, B2B, Direct Sales, Sales Logistics. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, tư duy doanh số. Ngoại ngữ: Tiếng Anh, Tiếng Pháp."
+    },
+    {
+      "cv_id": "ts_L4",
+      "name": "Phan Minh Hiếu",
+      "category_target": "Telesales",
+      "level": "L4",
+      "experience_years": 6,
+      "experience_description": "6 năm kinh nghiệm làm trưởng phòng kinh doanh tại công ty xuất nhập khẩu",
+      "education_level": "Đại học",
+      "education_field": "Kinh tế",
+      "technical_skills": [
+        "Telesales",
+        "B2C",
+        "B2B",
+        "Direct Sales",
+        "Sales Logistics",
+        "Logistic / Vận tải",
+        "Xuất nhập khẩu / Hải quan"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực",
+        "tư duy doanh số",
+        "quản lý"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Pháp",
+        "Tiếng Trung"
+      ],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 6 năm. 6 năm kinh nghiệm làm trưởng phòng kinh doanh tại công ty xuất nhập khẩu. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: Telesales, B2C, B2B, Direct Sales, Sales Logistics, Logistic / Vận tải, Xuất nhập khẩu / Hải quan. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, tư duy doanh số, quản lý. Ngoại ngữ: Tiếng Anh, Tiếng Pháp, Tiếng Trung."
+    },
+    {
+      "cv_id": "ts_P",
+      "name": "Đặng Kim Chi",
+      "category_target": "Telesales",
+      "level": "P",
+      "experience_years": 2,
+      "experience_description": "2 năm kinh nghiệm làm nhân viên lập trình tại công ty phần mềm",
+      "education_level": "Đại học",
+      "education_field": "Công nghệ thông tin",
+      "technical_skills": [
+        "Python",
+        "Java"
+      ],
+      "soft_skills": [
+        "làm việc nhóm",
+        "chịu áp lực"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 2 năm. 2 năm kinh nghiệm làm nhân viên lập trình tại công ty phần mềm. Học vấn: Đại học Công nghệ thông tin. Kỹ năng chuyên môn: Python, Java. Kỹ năng mềm: làm việc nhóm, chịu áp lực. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "ts_L1b",
+      "name": "Đặng Quốc Thắng",
+      "category_target": "Telesales",
+      "level": "L1b",
+      "experience_years": 1,
+      "experience_description": "Làm việc tại công ty thương mại điện tử, hỗ trợ bán hàng và tư vấn khách hàng",
+      "education_level": "Đại học",
+      "education_field": "Kinh tế",
+      "technical_skills": [
+        "B2C",
+        "Direct Sales"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 1 năm. Làm việc tại công ty thương mại điện tử, hỗ trợ bán hàng và tư vấn khách hàng. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: B2C, Direct Sales. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "ts_L2b",
+      "name": "Nguyễn Minh Châu",
+      "category_target": "Telesales",
+      "level": "L2b",
+      "experience_years": 2,
+      "experience_description": "Làm việc tại công ty bán lẻ, tư vấn và bán sản phẩm cho khách hàng",
+      "education_level": "Đại học",
+      "education_field": "Marketing",
+      "technical_skills": [
+        "B2B",
+        "Sales Logistics",
+        "Online Sales"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [
+        "Google Ads Certification"
+      ],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 2 năm. Làm việc tại công ty bán lẻ, tư vấn và bán sản phẩm cho khách hàng. Học vấn: Đại học Marketing. Kỹ năng chuyên môn: B2B, Sales Logistics, Online Sales. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực. Ngoại ngữ: Tiếng Anh. Chứng chỉ: Google Ads Certification."
+    },
+    {
+      "cv_id": "ts_L3b",
+      "name": "Trần Đức Huy",
+      "category_target": "Telesales",
+      "level": "L3b",
+      "experience_years": 4,
+      "experience_description": "Làm việc tại công ty kinh doanh thiết bị, quản lý và tư vấn bán hàng cho khách hàng",
+      "education_level": "Đại học",
+      "education_field": "Kinh doanh",
+      "technical_skills": [
+        "B2B",
+        "Sales Logistics",
+        "Direct Sales",
+        "Logistic / Vận tải"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực",
+        "quản lý thời gian"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Trung"
+      ],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 4 năm. Làm việc tại công ty kinh doanh thiết bị, quản lý và tư vấn bán hàng cho khách hàng. Học vấn: Đại học Kinh doanh. Kỹ năng chuyên môn: B2B, Sales Logistics, Direct Sales, Logistic / Vận tải. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, quản lý thời gian. Ngoại ngữ: Tiếng Anh, Tiếng Trung."
+    },
+    {
+      "cv_id": "ts_L4b",
+      "name": "Trần Thanh Huyền",
+      "category_target": "Telesales",
+      "level": "L4b",
+      "experience_years": 7,
+      "experience_description": "Làm việc tại công ty đa quốc gia, quản lý và lãnh đạo đội ngũ bán hàng",
+      "education_level": "Thạc sĩ",
+      "education_field": "Kinh doanh quốc tế",
+      "technical_skills": [
+        "B2B",
+        "Sales Logistics",
+        "Direct Sales",
+        "Logistic / Vận tải",
+        "Tư vấn tài chính"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực",
+        "quản lý thời gian",
+        "lãnh đạo"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Pháp"
+      ],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 7 năm. Làm việc tại công ty đa quốc gia, quản lý và lãnh đạo đội ngũ bán hàng. Học vấn: Thạc sĩ Kinh doanh quốc tế. Kỹ năng chuyên môn: B2B, Sales Logistics, Direct Sales, Logistic / Vận tải, Tư vấn tài chính. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, quản lý thời gian, lãnh đạo. Ngoại ngữ: Tiếng Anh, Tiếng Pháp."
+    },
+    {
+      "cv_id": "ts_P2",
+      "name": "Nguyễn Văn An",
+      "category_target": "Telesales",
+      "level": "P2",
+      "experience_years": 2,
+      "experience_description": "Làm việc tại nhà hàng, phục vụ và tư vấn thực đơn cho khách hàng",
+      "education_level": "Trung cấp",
+      "education_field": "Đầu bếp",
+      "technical_skills": [
+        "Quản lý kho",
+        "Quản lý nhân sự"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 2 năm. Làm việc tại nhà hàng, phục vụ và tư vấn thực đơn cho khách hàng. Học vấn: Trung cấp Đầu bếp. Kỹ năng chuyên môn: Quản lý kho, Quản lý nhân sự. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "tkdh_L1",
+      "name": "Đặng Quốc Thắng",
+      "category_target": "Thiết kế đồ họa",
+      "level": "L1",
+      "experience_years": 0,
+      "experience_description": "Sinh viên mới ra trường, tham gia các dự án đồ họa nhỏ",
+      "education_level": "Đại học",
+      "education_field": "Thiết kế đồ họa",
+      "technical_skills": [
+        "Illustrator",
+        "Photoshop"
+      ],
+      "soft_skills": [
+        "làm việc nhóm",
+        "giao tiếp tốt"
+      ],
+      "languages": [],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 0 năm. Sinh viên mới ra trường, tham gia các dự án đồ họa nhỏ. Học vấn: Đại học Thiết kế đồ họa. Kỹ năng chuyên môn: Illustrator, Photoshop. Kỹ năng mềm: làm việc nhóm, giao tiếp tốt."
+    },
+    {
+      "cv_id": "tkdh_L2",
+      "name": "Nguyễn Minh Châu",
+      "category_target": "Thiết kế đồ họa",
+      "level": "L2",
+      "experience_years": 1,
+      "experience_description": "Làm việc tại công ty thiết kế, tạo ra các tài liệu đồ họa cho khách hàng",
+      "education_level": "Đại học",
+      "education_field": "Thiết kế đồ họa",
+      "technical_skills": [
+        "Illustrator",
+        "Photoshop",
+        "InDesign"
+      ],
+      "soft_skills": [
+        "làm việc nhóm",
+        "giao tiếp tốt",
+        "chịu áp lực"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 1 năm. Làm việc tại công ty thiết kế, tạo ra các tài liệu đồ họa cho khách hàng. Học vấn: Đại học Thiết kế đồ họa. Kỹ năng chuyên môn: Illustrator, Photoshop, InDesign. Kỹ năng mềm: làm việc nhóm, giao tiếp tốt, chịu áp lực. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "tkdh_L3",
+      "name": "Trần Đức Huy",
+      "category_target": "Thiết kế đồ họa",
+      "level": "L3",
+      "experience_years": 3,
+      "experience_description": "Làm việc tại công ty thiết kế, phụ trách các dự án đồ họa lớn",
+      "education_level": "Đại học",
+      "education_field": "Thiết kế đồ họa",
+      "technical_skills": [
+        "Illustrator",
+        "Photoshop",
+        "InDesign",
+        "Figma",
+        "UI/UX Design"
+      ],
+      "soft_skills": [
+        "làm việc nhóm",
+        "giao tiếp tốt",
+        "chịu áp lực",
+        "quản lý dự án"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 3 năm. Làm việc tại công ty thiết kế, phụ trách các dự án đồ họa lớn. Học vấn: Đại học Thiết kế đồ họa. Kỹ năng chuyên môn: Illustrator, Photoshop, InDesign, Figma, UI/UX Design. Kỹ năng mềm: làm việc nhóm, giao tiếp tốt, chịu áp lực, quản lý dự án. Ngoại ngữ: Tiếng Anh."
+    },
+    {
+      "cv_id": "tkdh_L4",
+      "name": "Trần Thanh Huyền",
+      "category_target": "Thiết kế đồ họa",
+      "level": "L4",
+      "experience_years": 6,
+      "experience_description": "Làm việc tại công ty thiết kế, phụ trách các dự án đồ họa lớn và quản lý đội ngũ thiết kế",
+      "education_level": "Đại học",
+      "education_field": "Thiết kế đồ họa",
+      "technical_skills": [
+        "Illustrator",
+        "Photoshop",
+        "InDesign",
+        "Figma",
+        "UI/UX Design",
+        "Adobe Premiere"
+      ],
+      "soft_skills": [
+        "làm việc nhóm",
+        "giao tiếp tốt",
+        "chịu áp lực",
+        "quản lý dự án",
+        "quản lý đội ngũ"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [
+        "Adobe Certified Expert"
+      ],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 6 năm. Làm việc tại công ty thiết kế, phụ trách các dự án đồ họa lớn và quản lý đội ngũ thiết kế. Học vấn: Đại học Thiết kế đồ họa. Kỹ năng chuyên môn: Illustrator, Photoshop, InDesign, Figma, UI/UX Design, Adobe Premiere. Kỹ năng mềm: làm việc nhóm, giao tiếp tốt, chịu áp lực, quản lý dự án, quản lý đội ngũ. Ngoại ngữ: Tiếng Anh. Chứng chỉ: Adobe Certified Expert."
+    },
+    {
+      "cv_id": "tkdh_P",
+      "name": "Nguyễn Văn An",
+      "category_target": "Thiết kế đồ họa",
+      "level": "P",
+      "experience_years": 2,
+      "experience_description": "Làm việc tại công ty sản xuất, phụ trách việc quản lý hàng hóa",
+      "education_level": "Đại học",
+      "education_field": "Quản trị kinh doanh",
+      "technical_skills": [
+        "Excel",
+        "SAP"
+      ],
+      "soft_skills": [
+        "làm việc nhóm",
+        "giao tiếp tốt"
+      ],
+      "languages": [],
+      "certificates": [],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 2 năm. Làm việc tại công ty sản xuất, phụ trách việc quản lý hàng hóa. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: Excel, SAP. Kỹ năng mềm: làm việc nhóm, giao tiếp tốt."
+    },
+    {
+      "cv_id": "tkdh_L1b",
+      "name": "Trần Minh Trang",
+      "category_target": "Thiết kế đồ họa",
+      "level": "L1b",
+      "experience_years": 1,
+      "experience_description": "1 năm làm nhân viên thiết kế tại công ty quảng cáo, tạo ra các mẫu thiết kế đồ họa cho các chiến dịch quảng cáo",
+      "education_level": "Đại học",
+      "education_field": "Mỹ thuật",
+      "technical_skills": [
+        "Illustrator",
+        "Photoshop"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm"
+      ],
+      "languages": [],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 1 năm. 1 năm làm nhân viên thiết kế tại công ty quảng cáo, tạo ra các mẫu thiết kế đồ họa cho các chiến dịch quảng cáo. Học vấn: Đại học Mỹ thuật. Kỹ năng chuyên môn: Illustrator, Photoshop. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm."
+    },
+    {
+      "cv_id": "tkdh_L2b",
+      "name": "Lê Hoàng Nam",
+      "category_target": "Thiết kế đồ họa",
+      "level": "L2b",
+      "experience_years": 2,
+      "experience_description": "2 năm làm nhân viên thiết kế đồ họa tại công ty thiết kế, tạo ra các mẫu thiết kế cho các khách hàng",
+      "education_level": "Đại học",
+      "education_field": "Thiết kế đồ họa",
+      "technical_skills": [
+        "Illustrator",
+        "Photoshop",
+        "InDesign",
+        "Figma"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [
+        "Adobe Certified Expert"
+      ],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 2 năm. 2 năm làm nhân viên thiết kế đồ họa tại công ty thiết kế, tạo ra các mẫu thiết kế cho các khách hàng. Học vấn: Đại học Thiết kế đồ họa. Kỹ năng chuyên môn: Illustrator, Photoshop, InDesign, Figma. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực. Ngoại ngữ: Tiếng Anh. Chứng chỉ: Adobe Certified Expert."
+    },
+    {
+      "cv_id": "tkdh_L3b",
+      "name": "Phạm Thu Hà",
+      "category_target": "Thiết kế đồ họa",
+      "level": "L3b",
+      "experience_years": 4,
+      "experience_description": "4 năm làm trưởng nhóm thiết kế tại công ty thiết kế, quản lý và tạo ra các mẫu thiết kế cho các khách hàng",
+      "education_level": "Đại học",
+      "education_field": "Thiết kế đồ họa",
+      "technical_skills": [
+        "Illustrator",
+        "Photoshop",
+        "InDesign",
+        "Figma",
+        "Adobe Premiere",
+        "Sketchup"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực",
+        "quản lý"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Pháp"
+      ],
+      "certificates": [
+        "Adobe Certified Expert",
+        "Google Ads Certification"
+      ],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 4 năm. 4 năm làm trưởng nhóm thiết kế tại công ty thiết kế, quản lý và tạo ra các mẫu thiết kế cho các khách hàng. Học vấn: Đại học Thiết kế đồ họa. Kỹ năng chuyên môn: Illustrator, Photoshop, InDesign, Figma, Adobe Premiere, Sketchup. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, quản lý. Ngoại ngữ: Tiếng Anh, Tiếng Pháp. Chứng chỉ: Adobe Certified Expert, Google Ads Certification."
+    },
+    {
+      "cv_id": "tkdh_L4b",
+      "name": "Đỗ Minh Quân",
+      "category_target": "Thiết kế đồ họa",
+      "level": "L4b",
+      "experience_years": 7,
+      "experience_description": "7 năm làm giám đốc sáng tạo tại công ty thiết kế, quản lý và tạo ra các mẫu thiết kế cho các khách hàng",
+      "education_level": "Đại học",
+      "education_field": "Thiết kế đồ họa",
+      "technical_skills": [
+        "Illustrator",
+        "Photoshop",
+        "InDesign",
+        "Figma",
+        "Adobe Premiere",
+        "Sketchup",
+        "UI/UX Design"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm",
+        "chịu áp lực",
+        "quản lý",
+        "lãnh đạo"
+      ],
+      "languages": [
+        "Tiếng Anh",
+        "Tiếng Pháp",
+        "Tiếng Nhật"
+      ],
+      "certificates": [
+        "Adobe Certified Expert",
+        "Google Ads Certification",
+        "PMP"
+      ],
+      "gender": "Nam",
+      "search_text": "Kinh nghiệm: 7 năm. 7 năm làm giám đốc sáng tạo tại công ty thiết kế, quản lý và tạo ra các mẫu thiết kế cho các khách hàng. Học vấn: Đại học Thiết kế đồ họa. Kỹ năng chuyên môn: Illustrator, Photoshop, InDesign, Figma, Adobe Premiere, Sketchup, UI/UX Design. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, quản lý, lãnh đạo. Ngoại ngữ: Tiếng Anh, Tiếng Pháp, Tiếng Nhật. Chứng chỉ: Adobe Certified Expert, Google Ads Certification, PMP."
+    },
+    {
+      "cv_id": "tkdh_P2",
+      "name": "Vũ Thị Yến",
+      "category_target": "Thiết kế đồ họa",
+      "level": "P2",
+      "experience_years": 2,
+      "experience_description": "2 năm làm nhân viên bán hàng tại công ty bán lẻ, tư vấn và bán sản phẩm cho khách hàng",
+      "education_level": "Đại học",
+      "education_field": "Quản trị kinh doanh",
+      "technical_skills": [
+        "Excel",
+        "Word"
+      ],
+      "soft_skills": [
+        "giao tiếp tốt",
+        "làm việc nhóm"
+      ],
+      "languages": [
+        "Tiếng Anh"
+      ],
+      "certificates": [],
+      "gender": "Nữ",
+      "search_text": "Kinh nghiệm: 2 năm. 2 năm làm nhân viên bán hàng tại công ty bán lẻ, tư vấn và bán sản phẩm cho khách hàng. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: Excel, Word. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+    }
+  ]
+}

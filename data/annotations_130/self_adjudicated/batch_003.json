@@ -1,0 +1,134 @@
+{
+  "metadata": {
+    "batch": 3,
+    "method": "self_adjudication_by_codex_no_external_api_no_regex_scoring",
+    "source_pairs_file": "data/evaluation_pairs_1300_v2.json",
+    "source_annotations_dir": "data/annotations_130",
+    "high_disagreement_threshold": "max-min > 4 on any dimension",
+    "case_range": "41-60",
+    "total_cases_in_batch": 20,
+    "notes": "Scores are manually adjudicated from CV/JD content and the three model annotations. Original annotation files are not modified."
+  },
+  "cases": [
+    {
+      "pair_key": "cskh_P2_31f94b71b9ece5490c0d975496a785f7_10",
+      "high_disagreement_dims": ["skills_match", "experience_match"],
+      "final_scores": {"relevance_score": 1, "skills_match": 1, "experience_match": 2, "education_match": 1},
+      "adjudication_note": "Title là giáo viên tiếng Anh; CV kho/logistics, Trung cấp kế toán và không có English/teaching signal."
+    },
+    {
+      "pair_key": "cskh_P2_bc10e325808bd3a8936168eea7938483_6",
+      "high_disagreement_dims": ["experience_match", "education_match"],
+      "final_scores": {"relevance_score": 2, "skills_match": 2, "experience_match": 2, "education_match": 4},
+      "adjudication_note": "Có AutoCAD/SAP rất phụ, nhưng thiếu thiết kế/diễn họa/mỹ thuật/portfolio và kinh nghiệm thiết kế 3 năm."
+    },
+    {
+      "pair_key": "cskh_P2_e92fe0f25fadb955d7462df748dbfb0b_4",
+      "high_disagreement_dims": ["education_match"],
+      "final_scores": {"relevance_score": 1, "skills_match": 0, "experience_match": 0, "education_match": 1},
+      "adjudication_note": "Graphic Designer lead yêu cầu Đại học thiết kế và >5 năm; CV logistics/kế toán không đáp ứng kỹ năng, kinh nghiệm, học vấn."
+    },
+    {
+      "pair_key": "cskh_P_25c96711e7ff20a97e4199f4474cfb90_10",
+      "high_disagreement_dims": ["skills_match"],
+      "final_scores": {"relevance_score": 5, "skills_match": 4, "experience_match": 7, "education_match": 8},
+      "adjudication_note": "Có Python và nền lập trình phù hợp một phần AI Engineer, nhưng thiếu API/data flow/AI tools/prompt/embedding."
+    },
+    {
+      "pair_key": "cskh_P_393569e29b4b58bc0f81851017ed3cd8_11",
+      "high_disagreement_dims": ["experience_match"],
+      "final_scores": {"relevance_score": 3, "skills_match": 2, "experience_match": 5, "education_match": 5},
+      "adjudication_note": "No-experience finance sales job, but CV developer lacks sales/banking/CRM/office skills and degree is wrong field."
+    },
+    {
+      "pair_key": "cskh_P_3d70186b1b7186e76993b29dca7ae421_8",
+      "high_disagreement_dims": ["skills_match"],
+      "final_scores": {"relevance_score": 6, "skills_match": 5, "experience_match": 10, "education_match": 10},
+      "adjudication_note": "Python and 2-year software experience match minimum, but missing most web stack: VueJS, DB, AWS/Linux, Git/Docker."
+    },
+    {
+      "pair_key": "cskh_P_3ef4c70e843c8b027eb6f49cf3f4257e_7",
+      "high_disagreement_dims": ["education_match"],
+      "final_scores": {"relevance_score": 2, "skills_match": 1, "experience_match": 1, "education_match": 7},
+      "adjudication_note": "Đại học đạt bậc học chung, nhưng IT/mobile background không liên quan quản lý vận hành F&B 5+ năm."
+    },
+    {
+      "pair_key": "cskh_P_6ab62df42ffa0205400bb950ba3b7ab6_6",
+      "high_disagreement_dims": ["skills_match"],
+      "final_scores": {"relevance_score": 5, "skills_match": 4, "experience_match": 5, "education_match": 10},
+      "adjudication_note": "Có Java và bằng CNTT, nhưng thiếu Java web 3 năm, Oracle, Spring/Hibernate, PrimeFaces, Docker/K8S."
+    },
+    {
+      "pair_key": "cskh_P_90c81ec8e7e2d0fde869ddf09b995492_13",
+      "high_disagreement_dims": ["skills_match"],
+      "final_scores": {"relevance_score": 3, "skills_match": 2, "experience_match": 5, "education_match": 7},
+      "adjudication_note": "Job CSKH tiếng Anh cần English/Excel/shift; CV developer không có English/Excel evidence, kinh nghiệm không liên quan."
+    },
+    {
+      "pair_key": "cskh_P_fadbf9fddd686b0aba832143a92a3355_15",
+      "high_disagreement_dims": ["skills_match"],
+      "final_scores": {"relevance_score": 3, "skills_match": 2, "experience_match": 3, "education_match": 8},
+      "adjudication_note": "CSKH bệnh viện yêu cầu giao tiếp/xử lý tình huống/1 năm CSKH; CV developer chỉ có teamwork/áp lực, không đúng nghề."
+    },
+    {
+      "pair_key": "gd_L1_46b90624d63dfb96beb964fc7353948f_13",
+      "high_disagreement_dims": ["experience_match"],
+      "final_scores": {"relevance_score": 3, "skills_match": 2, "experience_match": 2, "education_match": 7},
+      "adjudication_note": "Pilates requires anatomy/Pilates/PT and 1 year; CV giáo dục fresher only has PowerPoint/Excel."
+    },
+    {
+      "pair_key": "gd_L1_6c8d2cb86d40fdbf26901c625dcd08ca_4",
+      "high_disagreement_dims": ["experience_match"],
+      "final_scores": {"relevance_score": 4, "skills_match": 3, "experience_match": 0, "education_match": 10},
+      "adjudication_note": "Đúng bậc và ngành giáo dục, nhưng thiếu 3 năm giảng dạy liên quan và thiếu môn/kỹ năng khoa học cụ thể."
+    },
+    {
+      "pair_key": "gd_L1_d8513f4d81b4553be6d704e58e7e0bbc_8",
+      "high_disagreement_dims": ["experience_match"],
+      "final_scores": {"relevance_score": 5, "skills_match": 5, "experience_match": 2, "education_match": 10},
+      "adjudication_note": "Có nền giáo dục và Office, nhưng fresher thiếu ít nhất 2 năm phát triển chương trình/học liệu tương đương."
+    },
+    {
+      "pair_key": "gd_L1_dce521390d3e06af94978332ba4636a1_5",
+      "high_disagreement_dims": ["skills_match"],
+      "final_scores": {"relevance_score": 5, "skills_match": 4, "experience_match": 10, "education_match": 7},
+      "adjudication_note": "Fresher phù hợp yêu cầu dưới 1 năm, nhưng thiếu sales/B2B/direct sales/IT training và ngành học kinh doanh."
+    },
+    {
+      "pair_key": "gd_L1_eeca4abe7e03fd2ec6a45bf6f3671cc2_15",
+      "high_disagreement_dims": ["skills_match"],
+      "final_scores": {"relevance_score": 5, "skills_match": 2, "experience_match": 10, "education_match": 7},
+      "adjudication_note": "Title là giáo viên tiếng Anh nhưng JD thiếu chi tiết; CV giáo dục fresher có Office nhưng không có English/teaching-English evidence."
+    },
+    {
+      "pair_key": "gd_L1b_46b90624d63dfb96beb964fc7353948f_13",
+      "high_disagreement_dims": ["experience_match", "education_match"],
+      "final_scores": {"relevance_score": 4, "skills_match": 3, "experience_match": 5, "education_match": 7},
+      "adjudication_note": "Có kinh nghiệm hỗ trợ giảng dạy và giao tiếp, nhưng không có Pilates/anatomy/STOTT; học vấn vượt bậc nhưng sai chuyên môn nghề."
+    },
+    {
+      "pair_key": "gd_L1b_eeca4abe7e03fd2ec6a45bf6f3671cc2_15",
+      "high_disagreement_dims": ["skills_match"],
+      "final_scores": {"relevance_score": 7, "skills_match": 6, "experience_match": 9, "education_match": 10},
+      "adjudication_note": "Title English teacher, CV có Đại học Ngôn ngữ Anh và 1 năm hỗ trợ giảng dạy; thiếu JD chi tiết nên không thể cho skills tuyệt đối."
+    },
+    {
+      "pair_key": "gd_L2_46b90624d63dfb96beb964fc7353948f_12",
+      "high_disagreement_dims": ["education_match"],
+      "final_scores": {"relevance_score": 4, "skills_match": 3, "experience_match": 5, "education_match": 7},
+      "adjudication_note": "Có kinh nghiệm giảng dạy và giao tiếp nhưng không phải Pilates/anatomy; học vấn vượt yêu cầu phổ thông nhưng không đúng chuyên môn thể chất."
+    },
+    {
+      "pair_key": "gd_L2b_f224329725039dacca80697c36a5b0fe_12",
+      "high_disagreement_dims": ["education_match"],
+      "final_scores": {"relevance_score": 1, "skills_match": 1, "experience_match": 1, "education_match": 5},
+      "adjudication_note": "AI/ML Lead requires CS/AI/data degree and 5+ years; CV English teaching has no AI/programming skills."
+    },
+    {
+      "pair_key": "gd_L3_4cd7d72832462d7bd257a9039a0014f3_7",
+      "high_disagreement_dims": ["experience_match"],
+      "final_scores": {"relevance_score": 6, "skills_match": 7, "experience_match": 5, "education_match": 10},
+      "adjudication_note": "Education sales/IELTS background fits, but 3-year training manager is overqualified for under-1-year part-time online consulting."
+    }
+  ]
+}

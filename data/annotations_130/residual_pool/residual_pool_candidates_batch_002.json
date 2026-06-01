@@ -1,0 +1,2022 @@
+{
+  "metadata": {
+    "source_unjudged_file": "data\\search_quality_current\\ablation_turn1300_remapped_residual_batch001_no_partial_tuned_kg_variants_unjudged.json",
+    "cvs_file": "data\\evaluation_cvs_130_v2.json",
+    "es_index": "topcv_jobs_turn1300",
+    "jobs_csv": "data\\topcv_balanced_1300.csv",
+    "limit": 30,
+    "max_rank": 10,
+    "priority_methods": {
+      "E3: Hybrid + ESCO": 3.0,
+      "E3t: Hybrid + ESCO tuned": 4.0,
+      "E3g-basic: Hybrid + ESCO + KG tuned": 3.5
+    },
+    "selection_note": "Top unjudged residual pairs from ESCO/ESCO-tuned/KG-basic methods, diversified by CV."
+  },
+  "cases": [
+    {
+      "case_id": "residual_001",
+      "pair_key": "bds_L3b_9ffbdf538230596381367c97689f8c9c",
+      "cv_id": "bds_L3b",
+      "job_id": "9ffbdf538230596381367c97689f8c9c",
+      "selection": {
+        "score": 77.0,
+        "min_rank": 3,
+        "methods": [
+          {
+            "method": "E3: Hybrid + ESCO",
+            "rank": 4
+          },
+          {
+            "method": "E3t: Hybrid + ESCO tuned",
+            "rank": 4
+          },
+          {
+            "method": "E3g-basic: Hybrid + ESCO + KG tuned",
+            "rank": 3
+          }
+        ]
+      },
+      "cv": {
+        "category_target": "Bất động sản",
+        "level": "L3b",
+        "experience_years": 4,
+        "experience_description": "4 năm làm trưởng phòng kinh doanh tại công ty bất động sản, quản lý và điều hành đội ngũ kinh doanh",
+        "education_level": "Đại học",
+        "education_field": "Kinh tế",
+        "technical_skills": [
+          "Quản lý dự án bất động sản",
+          "Giám đốc dự án bất động sản",
+          "Sales B2B",
+          "Telesales",
+          "Direct Sales",
+          "Quản lý vận hành bất động sản khác"
+        ],
+        "soft_skills": [
+          "giao tiếp tốt",
+          "làm việc nhóm",
+          "chịu áp lực cao",
+          "đàm phán tốt"
+        ],
+        "languages": [
+          "Tiếng Anh",
+          "Tiếng Pháp"
+        ],
+        "certificates": [
+          "Chứng chỉ hành nghề bất động sản",
+          "PMP"
+        ],
+        "search_text": "Kinh nghiệm: 4 năm. 4 năm làm trưởng phòng kinh doanh tại công ty bất động sản, quản lý và điều hành đội ngũ kinh doanh. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: Quản lý dự án bất động sản, Giám đốc dự án bất động sản, Sales B2B, Telesales, Direct Sales, Quản lý vận hành bất động sản khác. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực cao, đàm phán tốt. Ngoại ngữ: Tiếng Anh, Tiếng Pháp. Chứng chỉ: Chứng chỉ hành nghề bất động sản, PMP."
+      },
+      "job": {
+        "title": "Nhân Viên Kinh Doanh/Sales BĐS/Tư Vấn Bán Hàng - Phỏng Vấn Nhân Việc Ngay (Chế Độ Hấp Dẫn)",
+        "company": "CÔNG TY TNHH THƯƠNG MẠI DỊCH VỤ BẤT ĐỘNG SẢN T - HOLDINGS",
+        "category": "Bất động sản",
+        "experience": "Không yêu cầu",
+        "education_level": "Trung học",
+        "education_field": "",
+        "technical_skills": "Sales bất động sản/Môi giới bất động sản, Bất động sản, B2B, B2C, Direct Sales, Online Sales",
+        "soft_skills": "Kỹ năng giao tiếp, đàm phán tốt, Chủ động, nhiệt huyết, có tinh thần cầu tiến",
+        "languages": "",
+        "certificates": "",
+        "requirements_tags": "Sales bất động sản/Môi giới bất động sản, Bất động sản, B2B, B2C, Direct Sales, Online Sales",
+        "specializations": "Không cần kinh nghiệm, Trung học phổ thông (Cấp 3) trở lên, Có máy tính, phương tiện di chuyển",
+        "job_description": "Tìm kiếm, tư vấn khách hàng về sản phẩm/dịch vụ của công ty\nChăm sóc khách hàng tiềm năng và khách hàng hiện tại\nHỗ trợ khách hàng trong quá trình giao dịch\nPhối hợp với team để đạt chỉ tiêu kinh doanh",
+        "job_requirements": "Không yêu cầu kinh nghiệm (được đào tạo)\nCó kỹ năng giao tiếp, đàm phán tốt\nChủ động, nhiệt huyết, có tinh thần cầu tiến\nCó laptop và phương tiện đi lại"
+      },
+      "final_scores": {},
+      "rationale": ""
+    },
+    {
+      "case_id": "residual_002",
+      "pair_key": "cskh_L3b_591088f37f2ec398caf4ab2d8c94c03f",
+      "cv_id": "cskh_L3b",
+      "job_id": "591088f37f2ec398caf4ab2d8c94c03f",
+      "selection": {
+        "score": 63.0,
+        "min_rank": 5,
+        "methods": [
+          {
+            "method": "E3: Hybrid + ESCO",
+            "rank": 5
+          },
+          {
+            "method": "E3t: Hybrid + ESCO tuned",
+            "rank": 5
+          },
+          {
+            "method": "E3g-basic: Hybrid + ESCO + KG tuned",
+            "rank": 5
+          }
+        ]
+      },
+      "cv": {
+        "category_target": "Chăm sóc khách hàng",
+        "level": "L3b",
+        "experience_years": 4,
+        "experience_description": "4 năm làm trưởng phòng chăm sóc khách hàng tại công ty dịch vụ, quản lý đội ngũ nhân viên chăm sóc khách hàng",
+        "education_level": "Đại học",
+        "education_field": "Quản trị kinh doanh",
+        "technical_skills": [
+          "Excel",
+          "Tiếng Anh IELTS 6.5",
+          "Call Center/Trực tổng đài",
+          "Customer Experience",
+          "Logistic / Vận tải",
+          "Xuất nhập khẩu / Hải quan"
+        ],
+        "soft_skills": [
+          "giao tiếp tốt",
+          "làm việc nhóm",
+          "chịu áp lực",
+          "quản lý"
+        ],
+        "languages": [
+          "Tiếng Anh",
+          "Tiếng Trung"
+        ],
+        "certificates": [
+          "IELTS 6.5"
+        ],
+        "search_text": "Kinh nghiệm: 4 năm. 4 năm làm trưởng phòng chăm sóc khách hàng tại công ty dịch vụ, quản lý đội ngũ nhân viên chăm sóc khách hàng. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: Excel, Tiếng Anh IELTS 6.5, Call Center/Trực tổng đài, Customer Experience, Logistic / Vận tải, Xuất nhập khẩu / Hải quan. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, quản lý. Ngoại ngữ: Tiếng Anh, Tiếng Trung. Chứng chỉ: IELTS 6.5."
+      },
+      "job": {
+        "title": "Nhân Viên Chăm Sóc Khách Hàng",
+        "company": "Công ty Cổ phần tập đoàn cơ điện Phương Linh",
+        "category": "Chăm sóc khách hàng",
+        "experience": "2 năm",
+        "education_level": "Đại học",
+        "education_field": "",
+        "technical_skills": "Excel, PPT",
+        "soft_skills": "Giao tiếp tốt, Giọng nói hay, truyền cảm, Khả năng giải quyết vấn đề, Nhiệt tình, Chịu được áp lực công việc, Khả năng làm việc độc lập hoặc theo nhóm, Tinh thần hợp tác tốt",
+        "languages": "",
+        "certificates": "",
+        "requirements_tags": "Chăm sóc khách hàng",
+        "specializations": "2 năm kinh nghiệm, Đại Học trở lên, Nữ",
+        "job_description": "Thực hiện quy trình tiếp nhận và xử lý yêu cầu của khách hàng\nPhân loại khách hàng dựa trên Data khách hàng tiếp cận, chuyển thành khách hàng tiềm năng, hỗ trợ chuyển giao thông tin cho nhân viên kinh doanh.\nĐảm bảo đầu vào của thông tin khiếu nại, các vấn đề cần giải quyết của khách hàng và cung cấp thông tin cho các bộ phận phù hợp cho khiếu nại đó\nPhối hợp quảng bá các khuyến mãi, các gói dịch vụ ưu đãi của doanh nghiệp tới khách hàng\nTheo dõi các chính sách về sản phẩm và dịch vụ của doanh nghiệp, liên tục cập nhật chính sách sản phẩm và dịch vụ của doanh nghiệp\nChủ động liên hệ với khách hàng nhân các dịp lễ Tết, quà tặng hoặc ưu đãi trong các dịp đặc biệt và trực tiếp gửi ưu đãi cho họ\nThực hiện khảo sát khách hàng về chất lượng sản phẩm và dịch vụ, ghi nhận phản hồi giúp cải thiện sản phẩm, dịch vụ\nLập báo cáo trình cấp trên về khảo sát khách hàng, độ thỏa mãn với sản phẩm dịch vụ\nDự trù ngân sách cho việc chăm sóc khách hàng\nChuẩn hóa các quy trình chăm sóc khách hàng cho doanh nghiệp",
+        "job_requirements": "- Tốt nghiệp Đại học chuyên ngành Báo chí, Truyền thông, Kinh tế, QTKD, MKT,...\n- Sử dụng thành thạo các phần mềm Word, Exel, PPT\n- 02 năm vị trí tương đương.\n- Giao tiếp tốt;\n- Giọng nói hay, truyền cảm\n- Khả năng giải quyết vấn đề, nhiệt tình, chịu khó, chịu được áp lực công việc\n- Có khả năng nói chuyện điện thoại > 50 cuộc/ ngày\n- Khả năng thích ứng và linh hoạt với công việc áp lực cao;\n- Khả năng làm việc độc lập hoặc theo nhóm, tinh thần hợp tác tốt"
+      },
+      "final_scores": {},
+      "rationale": ""
+    },
+    {
+      "case_id": "residual_003",
+      "pair_key": "cskh_L2_ffc745895e2d0e273c1baed978985d23",
+      "cv_id": "cskh_L2",
+      "job_id": "ffc745895e2d0e273c1baed978985d23",
+      "selection": {
+        "score": 52.5,
+        "min_rank": 6,
+        "methods": [
+          {
+            "method": "E3: Hybrid + ESCO",
+            "rank": 6
+          },
+          {
+            "method": "E3t: Hybrid + ESCO tuned",
+            "rank": 6
+          },
+          {
+            "method": "E3g-basic: Hybrid + ESCO + KG tuned",
+            "rank": 6
+          }
+        ]
+      },
+      "cv": {
+        "category_target": "Chăm sóc khách hàng",
+        "level": "L2",
+        "experience_years": 1,
+        "experience_description": "Nhân viên chăm sóc khách hàng tại công ty dịch vụ, có kinh nghiệm xử lý các vấn đề của khách hàng",
+        "education_level": "Đại học",
+        "education_field": "Kinh doanh",
+        "technical_skills": [
+          "Excel",
+          "Tiếng Anh",
+          "Call Center"
+        ],
+        "soft_skills": [
+          "giao tiếp tốt",
+          "làm việc nhóm",
+          "chịu áp lực"
+        ],
+        "languages": [
+          "Tiếng Anh"
+        ],
+        "certificates": [],
+        "search_text": "Kinh nghiệm: 1 năm. Nhân viên chăm sóc khách hàng tại công ty dịch vụ, có kinh nghiệm xử lý các vấn đề của khách hàng. Học vấn: Đại học Kinh doanh. Kỹ năng chuyên môn: Excel, Tiếng Anh, Call Center. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực. Ngoại ngữ: Tiếng Anh."
+      },
+      "job": {
+        "title": "Nhân Viên Chăm Sóc Khách Hàng/Customer Service/Telesales/Tư Vấn/Hỗ Trợ Học Viên - (Admission Officer) - ILA Dương Quảng Hàm",
+        "company": "Trung Tâm Anh Ngữ ILA",
+        "category": "Chăm sóc khách hàng",
+        "experience": "Dưới 1 năm",
+        "education_level": "Cao đẳng",
+        "education_field": "",
+        "technical_skills": "Excel, AutoCAD, Python, SAP",
+        "soft_skills": "",
+        "languages": "",
+        "certificates": "",
+        "requirements_tags": "",
+        "specializations": "",
+        "job_description": "Theo sát kế hoạch mở lớp học và chỉ tiêu tái đăng ký gói học (hàng tuần).\nTư vấn khóa học tiếp theo cho các phụ huynh và học sinh hiện tại.\nThao tác các bước thanh toán trên hệ thống.\nTheo dõi lớp học đã hoàn thành hàng tháng.\nXử lý các vấn đề phát sinh để đạt được mục tiêu tái đăng ký của khách hàng.\nPhụ trách các hoạt động chăm sóc khách hàng tại trung tâm, xử lý phản hồi và khiếu nại của khách hàng.\nXử lý cuộc gọi chăm sóc khách hàng dựa trên quy trình chăm sóc khách hàng.\nChuẩn bị tài liệu, trang thiết bị giảng dạy cho giáo viên và trợ giảng.\nChuẩn bị cho việc mở lớp học và quản lý thông tin lớp học.\nChuẩn bị chứng chỉ cho các lớp học đã hoàn thành.\nSắp xếp phòng học, thay đổi hoặc đặt phòng theo yêu cầu.\nTheo dõi việc bảo trì và vệ sinh hàng ngày tại trung tâm để đảm bảo hoạt động suôn sẻ và an toàn.\nDự báo và đặt hàng số lượng tài liệu.\nQuản lý và đảm bảo kho hàng trong tình trạng tốt và được sắp xếp đúng cách.\nKiểm kê hàng tồn kho, chuẩn bị báo cáo hàng tháng và nhập vào cơ sở dữ liệu.\nTiến hành các nhiệm vụ khác được giao bởi cấp trên.",
+        "job_requirements": "Tốt nghiệp Cao Đẳng trở lên.\nChấp nhận sinh viên năm 4 đang chờ bằng tốt nghiệp.\nTiếng Anh giao tiếp khá.\nCó kinh nghiệm Telesale, CSKH là một lợi thế.\nGiờ làm việc: Ca xoay, nghỉ 1 ngày linh động trong tuần."
+      },
+      "final_scores": {},
+      "rationale": ""
+    },
+    {
+      "case_id": "residual_004",
+      "pair_key": "cskh_L4b_21e374ac9c4191dfb45bdc896cc76ac5",
+      "cv_id": "cskh_L4b",
+      "job_id": "21e374ac9c4191dfb45bdc896cc76ac5",
+      "selection": {
+        "score": 49.0,
+        "min_rank": 4,
+        "methods": [
+          {
+            "method": "E3t: Hybrid + ESCO tuned",
+            "rank": 4
+          },
+          {
+            "method": "E3g-basic: Hybrid + ESCO + KG tuned",
+            "rank": 5
+          }
+        ]
+      },
+      "cv": {
+        "category_target": "Chăm sóc khách hàng",
+        "level": "L4b",
+        "experience_years": 7,
+        "experience_description": "7 năm làm giám đốc chăm sóc khách hàng tại công ty dịch vụ, quản lý toàn bộ hoạt động chăm sóc khách hàng",
+        "education_level": "Đại học",
+        "education_field": "Quản trị kinh doanh",
+        "technical_skills": [
+          "Excel",
+          "Tiếng Anh IELTS 6.5",
+          "Call Center/Trực tổng đài",
+          "Customer Experience",
+          "Logistic / Vận tải",
+          "Xuất nhập khẩu / Hải quan",
+          "Kiến thức về phần mềm"
+        ],
+        "soft_skills": [
+          "giao tiếp tốt",
+          "làm việc nhóm",
+          "chịu áp lực",
+          "quản lý",
+          "hoạch định chiến lược"
+        ],
+        "languages": [
+          "Tiếng Anh",
+          "Tiếng Trung"
+        ],
+        "certificates": [
+          "IELTS 6.5",
+          "PMP"
+        ],
+        "search_text": "Kinh nghiệm: 7 năm. 7 năm làm giám đốc chăm sóc khách hàng tại công ty dịch vụ, quản lý toàn bộ hoạt động chăm sóc khách hàng. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: Excel, Tiếng Anh IELTS 6.5, Call Center/Trực tổng đài, Customer Experience, Logistic / Vận tải, Xuất nhập khẩu / Hải quan, Kiến thức về phần mềm. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, quản lý, hoạch định chiến lược. Ngoại ngữ: Tiếng Anh, Tiếng Trung. Chứng chỉ: IELTS 6.5, PMP."
+      },
+      "job": {
+        "title": "Nhân Viên Chăm Sóc Khách Hàng| Telesales",
+        "company": "CÔNG TY CỔ PHẦN TÂN THÀNH LONG GROUP",
+        "category": "Chăm sóc khách hàng",
+        "experience": "1 năm",
+        "education_level": "",
+        "education_field": "",
+        "technical_skills": "Excel, AutoCAD, Python, SAP",
+        "soft_skills": "",
+        "languages": "",
+        "certificates": "",
+        "requirements_tags": "Chăm sóc khách hàng",
+        "specializations": "1 năm kinh nghiệm, Trung cấp trở lên",
+        "job_description": "Gọi điện, Nhắn tin, tư vấn bán hàng cho khách hàng cũ của công ty\nHướng dẫn sử dụng và hỗ trợ các thông tin khác theo yêu cầu của khách hàng\nBán chéo các sản phẩm khác trong hệ sinh thái công ty\nBáo cáo công việc trực tiếp cho quản lý",
+        "job_requirements": "Có kinh nghiệm tư vấn bán hàng hoặc telesales\nCó máy tính cá nhân\nCó kiến thức về sức khỏe, nấu ăn, dinh dưỡng là lợi thế\nCó mục tiêu lớn trong phát triển công việc, thăng tiến và chịu áp lực tốt\nMáu chiến để đạt được kết quả cao"
+      },
+      "final_scores": {},
+      "rationale": ""
+    },
+    {
+      "case_id": "residual_005",
+      "pair_key": "bds_L1b_55591337aefd1e1c6e0bcee3ae480024",
+      "cv_id": "bds_L1b",
+      "job_id": "55591337aefd1e1c6e0bcee3ae480024",
+      "selection": {
+        "score": 46.5,
+        "min_rank": 3,
+        "methods": [
+          {
+            "method": "E3: Hybrid + ESCO",
+            "rank": 3
+          },
+          {
+            "method": "E3t: Hybrid + ESCO tuned",
+            "rank": 8
+          },
+          {
+            "method": "E3g-basic: Hybrid + ESCO + KG tuned",
+            "rank": 8
+          }
+        ]
+      },
+      "cv": {
+        "category_target": "Bất động sản",
+        "level": "L1b",
+        "experience_years": 1,
+        "experience_description": "1 năm làm nhân viên tư vấn tại công ty dịch vụ, hỗ trợ khách hàng và tư vấn sản phẩm",
+        "education_level": "Đại học",
+        "education_field": "Kinh tế",
+        "technical_skills": [
+          "Sales B2C",
+          "Digital Marketing"
+        ],
+        "soft_skills": [
+          "giao tiếp tốt",
+          "làm việc nhóm"
+        ],
+        "languages": [
+          "Tiếng Anh"
+        ],
+        "certificates": [],
+        "search_text": "Kinh nghiệm: 1 năm. 1 năm làm nhân viên tư vấn tại công ty dịch vụ, hỗ trợ khách hàng và tư vấn sản phẩm. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: Sales B2C, Digital Marketing. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+      },
+      "job": {
+        "title": "Nhân Viên Kinh Doanh/Sales/ Tư Vấn Bất Động Sản| Được Hỗ Trợ Data Nóng| Đào Tạo Từ A - Z| Thu Nhập Từ 30 Triệu Đến 120 Triệu ++ Làm Việc Tại TP.HCM",
+        "company": "NAM VIET GROUP REAL ESTATE CO.LTD",
+        "category": "Bất động sản",
+        "experience": "Không yêu cầu",
+        "education_level": "Trung học",
+        "education_field": "",
+        "technical_skills": "Sales bất động sản/Môi giới bất động sản, Bất động sản, Ngân hàng, Tài chính, B2B, B2C, Direct Sales, Telesales, Online Sales",
+        "soft_skills": "",
+        "languages": "",
+        "certificates": "",
+        "requirements_tags": "Sales bất động sản/Môi giới bất động sản, Bất động sản, Ngân hàng, Tài chính, B2B, B2C, Direct Sales, Telesales, Online Sales, Bán hàng tại cửa hàng/showroom",
+        "specializations": "Không cần kinh nghiệm, Trung học phổ thông (Cấp 3) trở lên, Tuổi 20 - 35, Có phương tiện di chuyển",
+        "job_description": "Kinh doanh và phân phối các dự án căn hộ chung cư đa dạng phân khúc tại TP.HCM và các khu vực lân cận: TThe Emerald Boulevard, Emerald Golf View, The Emerald Garden View, Lusso Sai Gon, Picity Sky Park, Vinhome Grand Park,... Sản phẩm pháp lý hoàn thiện, rõ ràng, nguồn hàng phong phú, phù hợp với nhiều nhóm khách hàng.\nTiếp nhận điện thoại, tư vấn và giới thiệu các sản phẩm công ty phân phối (Căn hộ cao cấp khu vực HCM và các tỉnh lân cận).\nTiếp nhận data nóng khách hàng có nhu cầu liên hệ từ hotline, marketing, ...\nTư vấn sản phẩm và dịch vụ công ty.\nGiới thiệu khách hàng tham quan nhà mẫu.\nTheo dõi tiến độ thanh toán của khách hàng.\nCập nhật thông tin thị trường, chăm sóc khách hàng.",
+        "job_requirements": "Độ tuổi: từ 21-35 tuổi, tốt nghiệp tối thiểu THPT, chấp nhận sinh viên chờ bằng.\nGiao tiếp tự tin, nhanh nhẹn, năng động, ham học hỏi, tác phong lịch sự, chuyên nghiệp.\nCó kinh nghiệm Bán hàng, Kinh doanh, Bất động sản ... là một lợi thế.\nYêu thích kinh doanh, nhiệt huyết và muốn bứt phá trong tài chính."
+      },
+      "final_scores": {},
+      "rationale": ""
+    },
+    {
+      "case_id": "residual_006",
+      "pair_key": "bds_L3b_6598dd7de67b79a37cfb1fda152fdc8b",
+      "cv_id": "bds_L3b",
+      "job_id": "6598dd7de67b79a37cfb1fda152fdc8b",
+      "selection": {
+        "score": 46.0,
+        "min_rank": 2,
+        "methods": [
+          {
+            "method": "E3: Hybrid + ESCO",
+            "rank": 2
+          },
+          {
+            "method": "E3t: Hybrid + ESCO tuned",
+            "rank": 8
+          },
+          {
+            "method": "E3g-basic: Hybrid + ESCO + KG tuned",
+            "rank": 9
+          }
+        ]
+      },
+      "cv": {
+        "category_target": "Bất động sản",
+        "level": "L3b",
+        "experience_years": 4,
+        "experience_description": "4 năm làm trưởng phòng kinh doanh tại công ty bất động sản, quản lý và điều hành đội ngũ kinh doanh",
+        "education_level": "Đại học",
+        "education_field": "Kinh tế",
+        "technical_skills": [
+          "Quản lý dự án bất động sản",
+          "Giám đốc dự án bất động sản",
+          "Sales B2B",
+          "Telesales",
+          "Direct Sales",
+          "Quản lý vận hành bất động sản khác"
+        ],
+        "soft_skills": [
+          "giao tiếp tốt",
+          "làm việc nhóm",
+          "chịu áp lực cao",
+          "đàm phán tốt"
+        ],
+        "languages": [
+          "Tiếng Anh",
+          "Tiếng Pháp"
+        ],
+        "certificates": [
+          "Chứng chỉ hành nghề bất động sản",
+          "PMP"
+        ],
+        "search_text": "Kinh nghiệm: 4 năm. 4 năm làm trưởng phòng kinh doanh tại công ty bất động sản, quản lý và điều hành đội ngũ kinh doanh. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: Quản lý dự án bất động sản, Giám đốc dự án bất động sản, Sales B2B, Telesales, Direct Sales, Quản lý vận hành bất động sản khác. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực cao, đàm phán tốt. Ngoại ngữ: Tiếng Anh, Tiếng Pháp. Chứng chỉ: Chứng chỉ hành nghề bất động sản, PMP."
+      },
+      "job": {
+        "title": "Chuyên Viên Dịch Vụ Khách Hàng",
+        "company": "NOVALAND GROUP CORP Pro Company",
+        "category": "Bất động sản",
+        "experience": "5 năm",
+        "education_level": "Cao đẳng",
+        "education_field": "",
+        "technical_skills": "Excel, AutoCAD, Python, SAP",
+        "soft_skills": "",
+        "languages": "",
+        "certificates": "",
+        "requirements_tags": "Quản lý vận hành bất động sản khác, Bất động sản",
+        "specializations": "5 năm kinh nghiệm, Cao Đẳng trở lên, Từ 27 tuổi trở lên",
+        "job_description": "Mô tả công việc 1: Thực hiện các nghiệp vụ liên quan đến Hợp đồng\n1.1 . Soạn thảo và phát hành bộ hợp đồng theo quy trình hợp đồng\n1.2. Soạn thảo phụ lục hợp đồng/ phụ lục quyết toán theo quy trình/ Xác nhận công nợ/ xác nhận tình trạng BDS đối với KH đi chuyển nhượng\n1.3. Giải thích điều khoản hợp đồng/phụ lục cho KH\n1.4. Soạn thảo văn bản/email phản hồi KH\n1.5. Lập Bảng tính Lãi/ công nợ phải thanh toán\nMô tả công việc 2.: Cập nhật thông tin Hợp đồng lên hệ thống (SAP)\n2.1. Nhập liệu lên hệ thống\n2.2. Trích xuất dữ liệu\nMô tả công việc 3: Theo dõi công nợ và xử lý công nợ khách hàng\n3.1. Kiểm tra, theo dõi công nợ khách hàng để TB/nhắc KH thanh toán\n3.3. Xử lý công nợ khách hàng\nMô tả công việc 4: Giải quyết các đề nghị của khách hàng\n4.1.Thực hiện và theo dõi việc giải quyết đề nghị liên quan đến công nợ/thanh lý/chuyển nhượng của khách hàng theo quy trình\n4.2.Thương thảo với khách hàng về các giải pháp phù hợp để giải quyết các đề nghị/khiếu nại của khách hàng\n4.3. Trình hồ sơ sau khi đã chốt phương án với khách hàng\n4.4. Phát hành Phụ lục/ hồ sơ/ văn bản phản hồi theo đề nghị KH",
+        "job_requirements": "- Cao Đẳng, Đại học trở lên chuyên ngành Quản trị kinh doanh, Kế toán, Kinh tế, Luật, Ngữ văn….\n- Kiến thức cơ bản về kế toán, luật, thị trường bất động sản\n- Kiến thức chuyên môn về chăm sóc khách hàng\n- Kinh nghiệm về chuyên môn, quản lý\n- có kinh nghiệm ở vị trí quản lý Công nợ khách hàng, Chăm sóc khách hàng, Tư vấn tài chính, Soạn thảo hợp\nđồng / Văn bản pháp lý\n- Kỹ năng soạn thảo văn bản/Hợp đồng\n- Kỹ năng đọc hiểu nhanh tài liệu, văn bản pháp luật\n- Có trách nhiệm trong công việc\n- Nhiệt tình, năng động, sáng tạo.\n- Khả năng làm việc độc lập với áp lực cao\n- Nhiệt tình, năng động, sáng tạo.\n- Khả năng phối hợp làm việc theo nhóm\n- Hiệu quả, Chính trực, Chuyên nghiệp"
+      },
+      "final_scores": {},
+      "rationale": ""
+    },
+    {
+      "case_id": "residual_007",
+      "pair_key": "cskh_L3b_d67111eb08651ad8a3a982cde26c2fd6",
+      "cv_id": "cskh_L3b",
+      "job_id": "d67111eb08651ad8a3a982cde26c2fd6",
+      "selection": {
+        "score": 44.5,
+        "min_rank": 4,
+        "methods": [
+          {
+            "method": "E3: Hybrid + ESCO",
+            "rank": 4
+          },
+          {
+            "method": "E3t: Hybrid + ESCO tuned",
+            "rank": 6
+          },
+          {
+            "method": "E3g-basic: Hybrid + ESCO + KG tuned",
+            "rank": 10
+          }
+        ]
+      },
+      "cv": {
+        "category_target": "Chăm sóc khách hàng",
+        "level": "L3b",
+        "experience_years": 4,
+        "experience_description": "4 năm làm trưởng phòng chăm sóc khách hàng tại công ty dịch vụ, quản lý đội ngũ nhân viên chăm sóc khách hàng",
+        "education_level": "Đại học",
+        "education_field": "Quản trị kinh doanh",
+        "technical_skills": [
+          "Excel",
+          "Tiếng Anh IELTS 6.5",
+          "Call Center/Trực tổng đài",
+          "Customer Experience",
+          "Logistic / Vận tải",
+          "Xuất nhập khẩu / Hải quan"
+        ],
+        "soft_skills": [
+          "giao tiếp tốt",
+          "làm việc nhóm",
+          "chịu áp lực",
+          "quản lý"
+        ],
+        "languages": [
+          "Tiếng Anh",
+          "Tiếng Trung"
+        ],
+        "certificates": [
+          "IELTS 6.5"
+        ],
+        "search_text": "Kinh nghiệm: 4 năm. 4 năm làm trưởng phòng chăm sóc khách hàng tại công ty dịch vụ, quản lý đội ngũ nhân viên chăm sóc khách hàng. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: Excel, Tiếng Anh IELTS 6.5, Call Center/Trực tổng đài, Customer Experience, Logistic / Vận tải, Xuất nhập khẩu / Hải quan. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, quản lý. Ngoại ngữ: Tiếng Anh, Tiếng Trung. Chứng chỉ: IELTS 6.5."
+      },
+      "job": {
+        "title": "Nhân Viên Chăm Sóc Khách Hàng",
+        "company": "Công ty Cổ Phần Dịch Vụ Giao Hàng Nhanh Pro Company",
+        "category": "Chăm sóc khách hàng",
+        "experience": "1 năm",
+        "education_level": "Trung học",
+        "education_field": "",
+        "technical_skills": "Chăm sóc khách hàng, Logistic / Vận tải",
+        "soft_skills": "",
+        "languages": "",
+        "certificates": "",
+        "requirements_tags": "Chăm sóc khách hàng, Logistic / Vận tải",
+        "specializations": "1 năm kinh nghiệm, Trung học phổ thông (Cấp 3) trở lên",
+        "job_description": "Chăm sóc khách hàng, tham gia đề xuất ý tưởng trong công tác hỗ trợ chăm sóc và xử lý yêu cầu khiếu nại từ khách hàng;\nTiếp nhận các yêu cầu của khách hàng về đơn hàng và tình trạng giao nhận qua kênh xử lý riêng (Line chat riêng của công ty, Telegram, Zalo);\nXác định nguyên nhân, sự cố, lý do, hướng xử lý và biện pháp khắc phục sự việc trước khi kết thúc một yêu cầu/ khiếu nại sau khi khách hàng hài lòng;\nTìm hiểu, phân tích nguyên nhân và đưa ra hướng xử lý nhằm nâng cao chất lượng dịch vụ;\nNắm bắt và liên tục cập nhật các chính sách, dịch vụ của công ty;\nXử lý tình huống hiệu quả, đảm bảo thời gian và chất lượng.",
+        "job_requirements": "1. KIẾN THỨC\nTốt nghiệp THPT trở lên;\nCó kiến thức về dịch vụ khách hàng và chăm sóc khách;\nVi tính: thông thạo Microsoft Word, Excel.\n2. THÁI ĐỘ\nLuôn hướng đến “khách hàng” và đặt văn hoá “khách hàng” là trung tâm;\nThái độ tích cực, thân thiện, luôn sẵn sằng lắng nghe, chia sẻ và hỗ trợ khách hàng cũng như đồng nghiệp;\nCầu tiến, tin cậy, kiên nhẫn, lịch sự;\nGiữ cam kết, tôn trọng và hợp tác, đổi mới và sáng tạo.\n3. KỸ NĂNG\nKỹ năng giao tiếp qua điện thoại, thư điện tử ( biết lắng nghe, nắm bắt được vấn đề của khách hàng, trình bày ngắn gọn nhưng đủ ý, không ngắt lời khách hàng, thể hiện sự thân thiện…)\nKỹ năng viết và trả lời bằng văn bản, thư điện tử.\nKỹ năng tổng hợp thông tin\nKỹ năng làm việc đội nhóm\nKỹ năng đàm phán, thương lượng\nThuyết phục\nGiữ cam kết\nKỹ năng quản lý công việc theo kế hoạch về thời gian một cách hiệu quả.\n4. KINH NGHIỆM LÀM VIỆC\nƯu tiên có kinh nghiệm tương tác, giải quyết vấn đề  và chăm sóc khách hàng\nƯu tiên có kinh nghiệm trong lĩnh vực dịch vụ khách hàng/ chăm sóc khách hàng\n5. KHÁC\nGiao tiếp rõ ràng, hiệu quả, không nói ngọng, nói lắp, không nói tiếng, giọng địa phương\nCó laptop cá nhân để làm việc\nThời gian làm việc: 6 ngày/tuần"
+      },
+      "final_scores": {},
+      "rationale": ""
+    },
+    {
+      "case_id": "residual_008",
+      "pair_key": "bds_L4b_faf8f909b4ff1fde872a6c1ce52f446b",
+      "cv_id": "bds_L4b",
+      "job_id": "faf8f909b4ff1fde872a6c1ce52f446b",
+      "selection": {
+        "score": 43.5,
+        "min_rank": 4,
+        "methods": [
+          {
+            "method": "E3: Hybrid + ESCO",
+            "rank": 4
+          },
+          {
+            "method": "E3t: Hybrid + ESCO tuned",
+            "rank": 8
+          },
+          {
+            "method": "E3g-basic: Hybrid + ESCO + KG tuned",
+            "rank": 8
+          }
+        ]
+      },
+      "cv": {
+        "category_target": "Bất động sản",
+        "level": "L4b",
+        "experience_years": 7,
+        "experience_description": "7 năm làm giám đốc kinh doanh tại công ty bất động sản, quản lý và điều hành toàn bộ hoạt động kinh doanh",
+        "education_level": "Đại học",
+        "education_field": "Kinh tế",
+        "technical_skills": [
+          "Quản lý dự án bất động sản",
+          "Giám đốc dự án bất động sản",
+          "Sales B2B",
+          "Telesales",
+          "Direct Sales",
+          "Quản lý vận hành bất động sản khác",
+          "Bảo hiểm",
+          "Ngân hàng"
+        ],
+        "soft_skills": [
+          "giao tiếp tốt",
+          "làm việc nhóm",
+          "chịu áp lực cao",
+          "đàm phán tốt",
+          "quản lý tốt"
+        ],
+        "languages": [
+          "Tiếng Anh",
+          "Tiếng Pháp"
+        ],
+        "certificates": [
+          "Chứng chỉ hành nghề bất động sản",
+          "PMP",
+          "Chứng chỉ nghiệp vụ ngân hàng"
+        ],
+        "search_text": "Kinh nghiệm: 7 năm. 7 năm làm giám đốc kinh doanh tại công ty bất động sản, quản lý và điều hành toàn bộ hoạt động kinh doanh. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: Quản lý dự án bất động sản, Giám đốc dự án bất động sản, Sales B2B, Telesales, Direct Sales, Quản lý vận hành bất động sản khác, Bảo hiểm, Ngân hàng. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực cao, đàm phán tốt, quản lý tốt. Ngoại ngữ: Tiếng Anh, Tiếng Pháp. Chứng chỉ: Chứng chỉ hành nghề bất động sản, PMP, Chứng chỉ nghiệp vụ ngân hàng."
+      },
+      "job": {
+        "title": "Giám Đốc Sàn Kinh Doanh",
+        "company": "CÔNG TY CỔ PHẦN DỊCH VỤ BẤT ĐỘNG SẢN ESY HOUSE",
+        "category": "Bất động sản",
+        "experience": "5 năm",
+        "education_level": "Đại học",
+        "education_field": "",
+        "technical_skills": "Sales bất động sản/Môi giới bất động sản, Bất động sản, Ngân hàng, Bảo hiểm, B2B, B2C, Direct Sales, Online Sales, Telesales, Bán hàng tại cửa hàng/showroom",
+        "soft_skills": "Khả năng thiết lập mục tiêu, Khả năng tổ chức, lãnh đạo, Khả năng phân tích, Khả năng đàm phán, thương lượng, Khả năng giao tiếp tốt, Xây dựng mối quan hệ/mạng lưới quan hệ tốt",
+        "languages": "",
+        "certificates": "",
+        "requirements_tags": "Sales bất động sản/Môi giới bất động sản, Bất động sản, Ngân hàng, Bảo hiểm, B2B, B2C, Direct Sales, Online Sales, Telesales, Bán hàng tại cửa hàng/showroom",
+        "specializations": "5 năm kinh nghiệm, Đại Học trở lên, Tuổi 30 - 50",
+        "job_description": "Điều hành hoạt động bán hàng của sàn thuộc quyền quản lý.\nLàm việc trực tiếp với Giám đốc kinh doanh khối, Ban Tổng giám đốc  để đảm bảo hoạt động bán hàng được xuyên suốt.\nXây dựng, tuyển dụng đội ngũ bán hàng. Luôn đảm bảo duy trì số lượng nhân sự phục vụ cho công tác bán hàng.\nĐào tạo đội ngũ, đánh giá năng lực nhân viên định kỳ tháng, quý, năm.\nXây dựng kế hoạch, ngân sách, triển khai các công tác tiếp thị dự án phục vụ bán hàng.\nTổ chức, triển khai các hoạt động phát triển nguồn khách hàng, chăm sóc khách hàng (trong quá trình triển khai bán hàng, bao gồm công nợ khách hàng cho đến lúc bàn giao căn hộ).\nChịu trách nhiệm về kế hoạch kinh doanh đã được phê duyệt.\nBáo cáo tình hình hoạt động kinh doanh tuần, tháng, quý.\nBáo cáo trực tiếp cho Giám đốc kinh doanh khối, Tổng Giám đốc khi cần.",
+        "job_requirements": "Tốt nghiệp Cao đẳng, Đại học các chuyên ngành marketing, thương mại, quản trị kinh doanh, quản lý đất đai,….\nCó 05 năm kinh nghiệm trong ngành bất động sản (03 năm kinh nghiệm quản lý).\nAm hiểu các chính sách/quy định pháp luật liên quan đến lĩnh vực kinh doanh bất động sản.\nKhả năng thiết lập mục tiêu, tổ chức, lãnh đạo, kiểm soát\nKhả năng phân tích, đưa ra quyết định\nKhả năng đàm phán, thương lượng, giao tiếp tốt.\nXây dựng mối quan hệ /mạng lưới quan hệ tốt."
+      },
+      "final_scores": {},
+      "rationale": ""
+    },
+    {
+      "case_id": "residual_009",
+      "pair_key": "bds_L1b_4f09db46f0b55cc470a4be7f25a71a3d",
+      "cv_id": "bds_L1b",
+      "job_id": "4f09db46f0b55cc470a4be7f25a71a3d",
+      "selection": {
+        "score": 40.5,
+        "min_rank": 6,
+        "methods": [
+          {
+            "method": "E3: Hybrid + ESCO",
+            "rank": 10
+          },
+          {
+            "method": "E3t: Hybrid + ESCO tuned",
+            "rank": 6
+          },
+          {
+            "method": "E3g-basic: Hybrid + ESCO + KG tuned",
+            "rank": 6
+          }
+        ]
+      },
+      "cv": {
+        "category_target": "Bất động sản",
+        "level": "L1b",
+        "experience_years": 1,
+        "experience_description": "1 năm làm nhân viên tư vấn tại công ty dịch vụ, hỗ trợ khách hàng và tư vấn sản phẩm",
+        "education_level": "Đại học",
+        "education_field": "Kinh tế",
+        "technical_skills": [
+          "Sales B2C",
+          "Digital Marketing"
+        ],
+        "soft_skills": [
+          "giao tiếp tốt",
+          "làm việc nhóm"
+        ],
+        "languages": [
+          "Tiếng Anh"
+        ],
+        "certificates": [],
+        "search_text": "Kinh nghiệm: 1 năm. 1 năm làm nhân viên tư vấn tại công ty dịch vụ, hỗ trợ khách hàng và tư vấn sản phẩm. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: Sales B2C, Digital Marketing. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+      },
+      "job": {
+        "title": "Nhân Viên Kinh Doanh | Thu Nhập Đến 150 Triệu/Tháng, Hoa Hồng Đến 4.8% - Đà Nẵng, Huế",
+        "company": "CÔNG TY CP BẤT ĐỘNG SẢN NAM MIỀN TRUNG",
+        "category": "Bất động sản",
+        "experience": "1 năm",
+        "education_level": "Cao đẳng",
+        "education_field": "",
+        "technical_skills": "Sales bất động sản/Môi giới bất động sản, Bất động sản, Tài chính, Marketing / Quảng cáo, B2B, B2C, B2G, Direct Sales, Online Sales, Telesales, Bán hàng tại cửa hàng/showroom",
+        "soft_skills": "",
+        "languages": "",
+        "certificates": "",
+        "requirements_tags": "Sales bất động sản/Môi giới bất động sản, Bất động sản, Tài chính, Marketing / Quảng cáo, B2B, B2C, B2G, Direct Sales, Online Sales, Telesales, Bán hàng tại cửa hàng/showroom",
+        "specializations": "1 năm kinh nghiệm, Cao Đẳng trở lên, Tuổi 22 - 40, Diễn đạt trôi chảy, Có máy tính, phương tiện di chuyển",
+        "job_description": "Đất Xanh Miền Trung - Nam Miền Trung là đơn vị phân phối trực tiếp các sản phẩm của đơn vị Đất Xanh Miền Trung với quỹ hàng VIP độc quyền, Là đối tác chiến lược của các Chủ đầu tư top đầu Việt Nam.\nDanh mục dự án nổi bật 2026\nPHÂN PHỐI ĐỘC QUYỀN: Peninsula Grand, Peninsula Platinum, Peninsula Private, Grand Marina Đà Nẵng, Hue Heritage, Solera Quy Nhơn, Phúc Gia Tân, An Điền Phát,...\nF1 CHIẾN LƯỢC: Regal Complex, Vin Làng Vân, Danang Downtown, Capital Square, Newtown Daimond, Time Square, Peninsula Da Nang,...\nMÔ TẢ CÔNG VIỆC\nTiếp xúc, tư vấn và giới thiệu các sản phẩm bất động sản của công ty đến khách hàng.\nTìm kiếm và khai thác nguồn khách hàng tiềm năng, xây dựng và duy trì mối quan hệ với khách hàng.\nNghiên cứu thị trường, đối thủ cạnh tranh để đưa ra các chiến lược bán hàng hiệu quả.\nTham gia các sự kiện bán hàng, hội thảo, triển lãm.\nChăm sóc khách hàng sau bán hàng, giải quyết các vấn đề phát sinh.\nBáo cáo và cập nhật thông tin về tình hình bán hàng cho cấp quản lý.",
+        "job_requirements": "Có ít nhất 1 năm kinh nghiệm trong lĩnh vực bán hàng, ưu tiên ứng viên có kinh nghiệm trong lĩnh vực bất động sản.\nKỹ năng giao tiếp, thuyết phục, đàm phán tốt.\nKhả năng làm việc độc lập và làm việc nhóm.\nCó khả năng chịu áp lực cao trong công việc.\nNgoại hình ưa nhìn, nhanh nhẹn, hoạt bát.\nCó khả năng sử dụng các công cụ hỗ trợ bán hàng.\nCó tinh thần trách nhiệm cao, trung thực và nhiệt tình trong công việc."
+      },
+      "final_scores": {},
+      "rationale": ""
+    },
+    {
+      "case_id": "residual_010",
+      "pair_key": "cskh_L4b_6f638be62e7594e2cdee54d7f1cb9712",
+      "cv_id": "cskh_L4b",
+      "job_id": "6f638be62e7594e2cdee54d7f1cb9712",
+      "selection": {
+        "score": 39.5,
+        "min_rank": 2,
+        "methods": [
+          {
+            "method": "E3t: Hybrid + ESCO tuned",
+            "rank": 9
+          },
+          {
+            "method": "E3g-basic: Hybrid + ESCO + KG tuned",
+            "rank": 2
+          }
+        ]
+      },
+      "cv": {
+        "category_target": "Chăm sóc khách hàng",
+        "level": "L4b",
+        "experience_years": 7,
+        "experience_description": "7 năm làm giám đốc chăm sóc khách hàng tại công ty dịch vụ, quản lý toàn bộ hoạt động chăm sóc khách hàng",
+        "education_level": "Đại học",
+        "education_field": "Quản trị kinh doanh",
+        "technical_skills": [
+          "Excel",
+          "Tiếng Anh IELTS 6.5",
+          "Call Center/Trực tổng đài",
+          "Customer Experience",
+          "Logistic / Vận tải",
+          "Xuất nhập khẩu / Hải quan",
+          "Kiến thức về phần mềm"
+        ],
+        "soft_skills": [
+          "giao tiếp tốt",
+          "làm việc nhóm",
+          "chịu áp lực",
+          "quản lý",
+          "hoạch định chiến lược"
+        ],
+        "languages": [
+          "Tiếng Anh",
+          "Tiếng Trung"
+        ],
+        "certificates": [
+          "IELTS 6.5",
+          "PMP"
+        ],
+        "search_text": "Kinh nghiệm: 7 năm. 7 năm làm giám đốc chăm sóc khách hàng tại công ty dịch vụ, quản lý toàn bộ hoạt động chăm sóc khách hàng. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: Excel, Tiếng Anh IELTS 6.5, Call Center/Trực tổng đài, Customer Experience, Logistic / Vận tải, Xuất nhập khẩu / Hải quan, Kiến thức về phần mềm. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, quản lý, hoạch định chiến lược. Ngoại ngữ: Tiếng Anh, Tiếng Trung. Chứng chỉ: IELTS 6.5, PMP."
+      },
+      "job": {
+        "title": "Nhân Viên Chăm Sóc Khách Hàng, Tư Vấn App Dịch Vụ Parttime (Hà Nội)",
+        "company": "CÔNG TY TNHH LEAP STEAM",
+        "category": "Chăm sóc khách hàng",
+        "experience": "Dưới 1 năm",
+        "education_level": "Đại học",
+        "education_field": "",
+        "technical_skills": "Tiếng Anh IELTS 6.5",
+        "soft_skills": "",
+        "languages": "",
+        "certificates": "",
+        "requirements_tags": "Dịch vụ khách hàng/Chăm sóc khách hàng khác, Marketing / Quảng cáo, Quan hệ công chúng",
+        "specializations": "Dưới 1 năm kinh nghiệm, Đại Học trở lên, Tiếng Anh IELTS 6.5",
+        "job_description": "Working hours:\nCa 1: 0h - 6h\nCa 2: 6h - 12h\nCa 3: 12h - 18h\nCa 4: 18h - 0h\nMô tả công việc\nChăm sóc khách hàng sử dụng app\nVận hành các tài khoản đã có sẵn\nTìm kiếm hình ảnh, video đời sống tăng tương tác với khách hàng\nCác công việc được điều phối theo yêu cầu của Quản lí\nThời gian: 24/7",
+        "job_requirements": "Có kinh nghiệm trong lĩnh vực hỗ trợ khách hàng\nTiếng Anh cơ bản, biết sử dụng các công cụ hỗ trợ thành thạo (Chat GPT, gg,......)\nSẵn sàng làm việc vào các ngày lễ (lương gấp 2-3 lần lương bình thường)\nKỷ luật, trung thực, tư duy phản biện và tinh thần chủ động cao."
+      },
+      "final_scores": {},
+      "rationale": ""
+    },
+    {
+      "case_id": "residual_011",
+      "pair_key": "bds_L4b_2fd949bbe71fca29d40aafc6ed090946",
+      "cv_id": "bds_L4b",
+      "job_id": "2fd949bbe71fca29d40aafc6ed090946",
+      "selection": {
+        "score": 39.0,
+        "min_rank": 3,
+        "methods": [
+          {
+            "method": "E3: Hybrid + ESCO",
+            "rank": 3
+          },
+          {
+            "method": "E3t: Hybrid + ESCO tuned",
+            "rank": 9
+          },
+          {
+            "method": "E3g-basic: Hybrid + ESCO + KG tuned",
+            "rank": 9
+          }
+        ]
+      },
+      "cv": {
+        "category_target": "Bất động sản",
+        "level": "L4b",
+        "experience_years": 7,
+        "experience_description": "7 năm làm giám đốc kinh doanh tại công ty bất động sản, quản lý và điều hành toàn bộ hoạt động kinh doanh",
+        "education_level": "Đại học",
+        "education_field": "Kinh tế",
+        "technical_skills": [
+          "Quản lý dự án bất động sản",
+          "Giám đốc dự án bất động sản",
+          "Sales B2B",
+          "Telesales",
+          "Direct Sales",
+          "Quản lý vận hành bất động sản khác",
+          "Bảo hiểm",
+          "Ngân hàng"
+        ],
+        "soft_skills": [
+          "giao tiếp tốt",
+          "làm việc nhóm",
+          "chịu áp lực cao",
+          "đàm phán tốt",
+          "quản lý tốt"
+        ],
+        "languages": [
+          "Tiếng Anh",
+          "Tiếng Pháp"
+        ],
+        "certificates": [
+          "Chứng chỉ hành nghề bất động sản",
+          "PMP",
+          "Chứng chỉ nghiệp vụ ngân hàng"
+        ],
+        "search_text": "Kinh nghiệm: 7 năm. 7 năm làm giám đốc kinh doanh tại công ty bất động sản, quản lý và điều hành toàn bộ hoạt động kinh doanh. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: Quản lý dự án bất động sản, Giám đốc dự án bất động sản, Sales B2B, Telesales, Direct Sales, Quản lý vận hành bất động sản khác, Bảo hiểm, Ngân hàng. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực cao, đàm phán tốt, quản lý tốt. Ngoại ngữ: Tiếng Anh, Tiếng Pháp. Chứng chỉ: Chứng chỉ hành nghề bất động sản, PMP, Chứng chỉ nghiệp vụ ngân hàng."
+      },
+      "job": {
+        "title": "Chuyên Viên Phát Triển Dự Án",
+        "company": "CÔNG TY CỔ PHẦN QUẢN LÝ BẤT ĐỘNG SẢN DKRA",
+        "category": "Bất động sản",
+        "experience": "3 năm",
+        "education_level": "Đại học",
+        "education_field": "",
+        "technical_skills": "Quản lý vận hành bất động sản khác, Bất động sản, Marketing / Quảng cáo",
+        "soft_skills": "",
+        "languages": "",
+        "certificates": "",
+        "requirements_tags": "Quản lý vận hành bất động sản khác, Bất động sản, Marketing / Quảng cáo",
+        "specializations": "3 năm kinh nghiệm, Đại Học trở lên, Tuổi 23 - 32",
+        "job_description": "Tìm kiếm và phát triển dự án mới, làm báo giá và phương án dự thầu, đấu thầu.\nGặp gỡ trực tiếp khách hàng, khảo sát thực tế thị trường, nắm bắt tình hình thực tế tại dự án.\nNghiên cứu, cập nhật, phân tích thị trường.\nSoạn thảo, thực hiện ký kết và theo dõi các hợp đồng quản lý vận hành.\nThực hiện các công việc quản lý thông tin dự án và chăm sóc khách hàng.\nThuyết trình phương án.\nCác công việc khác theo yêu cầu của quản lý trực tiếp.",
+        "job_requirements": "Tốt nghiệp Đại học trở lên chuyên ngành Bất động sản, Quản trị kinh doanh, Marketing hoặc các chuyên ngành khác tương đương.\nTối thiểu 3 năm kinh nghiệm về kiến thức về Bất động sản, kinh nghiệm về lĩnh vực Quản lý vận hành toà nhà/chung cư (Kinh doanh BĐS B2B).\nCó khả năng bóc tách số liệu, lên phương án và kế hoạch.\nGiao tiếp, xử lý tình huống, đàm phán, khả năng thuyết trình.\nCó ngoại ngữ là một lợi thế.\nNgoại hình: Khá.\nNam/Nữ: 23-32 tuổi."
+      },
+      "final_scores": {},
+      "rationale": ""
+    },
+    {
+      "case_id": "residual_012",
+      "pair_key": "cskh_L4_289b97f4e91334ac90cc2cce346762ab",
+      "cv_id": "cskh_L4",
+      "job_id": "289b97f4e91334ac90cc2cce346762ab",
+      "selection": {
+        "score": 37.5,
+        "min_rank": 6,
+        "methods": [
+          {
+            "method": "E3t: Hybrid + ESCO tuned",
+            "rank": 6
+          },
+          {
+            "method": "E3g-basic: Hybrid + ESCO + KG tuned",
+            "rank": 6
+          }
+        ]
+      },
+      "cv": {
+        "category_target": "Chăm sóc khách hàng",
+        "level": "L4",
+        "experience_years": 6,
+        "experience_description": "Giám đốc chăm sóc khách hàng tại công ty dịch vụ, có kinh nghiệm xây dựng và thực hiện chiến lược chăm sóc khách hàng",
+        "education_level": "Đại học",
+        "education_field": "Kinh doanh",
+        "technical_skills": [
+          "Excel",
+          "Tiếng Anh",
+          "Call Center",
+          "Customer Experience",
+          "Logistic"
+        ],
+        "soft_skills": [
+          "giao tiếp tốt",
+          "làm việc nhóm",
+          "chịu áp lực",
+          "quản lý",
+          "chiến lược"
+        ],
+        "languages": [
+          "Tiếng Anh",
+          "Tiếng Trung"
+        ],
+        "certificates": [
+          "MBA",
+          "PMP"
+        ],
+        "search_text": "Kinh nghiệm: 6 năm. Giám đốc chăm sóc khách hàng tại công ty dịch vụ, có kinh nghiệm xây dựng và thực hiện chiến lược chăm sóc khách hàng. Học vấn: Đại học Kinh doanh. Kỹ năng chuyên môn: Excel, Tiếng Anh, Call Center, Customer Experience, Logistic. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, quản lý, chiến lược. Ngoại ngữ: Tiếng Anh, Tiếng Trung. Chứng chỉ: MBA, PMP."
+      },
+      "job": {
+        "title": "Nhân Viên Chăm Sóc Khách Hàng",
+        "company": "Công ty chuyển phát nhanh Thuận Phong chi nhánh Hồ Chí Minh (J&T Express)",
+        "category": "Chăm sóc khách hàng",
+        "experience": "Dưới 1 năm",
+        "education_level": "Cao đẳng",
+        "education_field": "",
+        "technical_skills": "Excel, AutoCAD, Python, SAP",
+        "soft_skills": "",
+        "languages": "",
+        "certificates": "",
+        "requirements_tags": "Chuyên môn Dịch vụ khách hàng/Vận hành khác, Logistic / Vận tải, Kho vận",
+        "specializations": "Dưới 1 năm kinh nghiệm, Cao Đẳng trở lên",
+        "job_description": "Tiếp nhận và xử lý các khiếu nại về hàng hóa, dịch vụ.\nTruy xuất và xử lý dữ liệu, số liệu từ hệ thống Công ty, sau đó thống kê, phân tích, giám sát và gửi báo cáo hàng ngày.\nKiểm tra, theo dõi, chất lượng đơn hàng của từng khâu nhận kiện, trung chuyển, phát hàng, chuyển hoàn nhằm kịp thời ngăn chặn, xử lí vấn đề có thể xảy ra.\nLên kế hoạch, đề xuất phương án giải quyết, nâng cao chất lượng dịch vụ.\nThu thập và xử lí kịp thời các vấn đề của bưu cục.\nĐảm bảo xử lí công việc theo đúng quy trình và đúng KPIs.\nCác công việc khác theo sự phân công của Quản lý",
+        "job_requirements": "Có kinh nghiệm chăm sóc khách hàng từ 6 tháng - 1 năm\nTốt nghiệp Cao Đẳng trở lên\nTính cẩn thận, điềm đạm, thận trọng, trung thực và có trách nhiệm trong công việc\nChịu được áp lực công việc\nCó thể đáp ứng về thời gian làm việc nghỉ không cố định vào cuối tuần"
+      },
+      "final_scores": {},
+      "rationale": ""
+    },
+    {
+      "case_id": "residual_013",
+      "pair_key": "cskh_L2_591088f37f2ec398caf4ab2d8c94c03f",
+      "cv_id": "cskh_L2",
+      "job_id": "591088f37f2ec398caf4ab2d8c94c03f",
+      "selection": {
+        "score": 31.5,
+        "min_rank": 3,
+        "methods": [
+          {
+            "method": "E3: Hybrid + ESCO",
+            "rank": 3
+          },
+          {
+            "method": "E3t: Hybrid + ESCO tuned",
+            "rank": 10
+          },
+          {
+            "method": "E3g-basic: Hybrid + ESCO + KG tuned",
+            "rank": 10
+          }
+        ]
+      },
+      "cv": {
+        "category_target": "Chăm sóc khách hàng",
+        "level": "L2",
+        "experience_years": 1,
+        "experience_description": "Nhân viên chăm sóc khách hàng tại công ty dịch vụ, có kinh nghiệm xử lý các vấn đề của khách hàng",
+        "education_level": "Đại học",
+        "education_field": "Kinh doanh",
+        "technical_skills": [
+          "Excel",
+          "Tiếng Anh",
+          "Call Center"
+        ],
+        "soft_skills": [
+          "giao tiếp tốt",
+          "làm việc nhóm",
+          "chịu áp lực"
+        ],
+        "languages": [
+          "Tiếng Anh"
+        ],
+        "certificates": [],
+        "search_text": "Kinh nghiệm: 1 năm. Nhân viên chăm sóc khách hàng tại công ty dịch vụ, có kinh nghiệm xử lý các vấn đề của khách hàng. Học vấn: Đại học Kinh doanh. Kỹ năng chuyên môn: Excel, Tiếng Anh, Call Center. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực. Ngoại ngữ: Tiếng Anh."
+      },
+      "job": {
+        "title": "Nhân Viên Chăm Sóc Khách Hàng",
+        "company": "Công ty Cổ phần tập đoàn cơ điện Phương Linh",
+        "category": "Chăm sóc khách hàng",
+        "experience": "2 năm",
+        "education_level": "Đại học",
+        "education_field": "",
+        "technical_skills": "Excel, PPT",
+        "soft_skills": "Giao tiếp tốt, Giọng nói hay, truyền cảm, Khả năng giải quyết vấn đề, Nhiệt tình, Chịu được áp lực công việc, Khả năng làm việc độc lập hoặc theo nhóm, Tinh thần hợp tác tốt",
+        "languages": "",
+        "certificates": "",
+        "requirements_tags": "Chăm sóc khách hàng",
+        "specializations": "2 năm kinh nghiệm, Đại Học trở lên, Nữ",
+        "job_description": "Thực hiện quy trình tiếp nhận và xử lý yêu cầu của khách hàng\nPhân loại khách hàng dựa trên Data khách hàng tiếp cận, chuyển thành khách hàng tiềm năng, hỗ trợ chuyển giao thông tin cho nhân viên kinh doanh.\nĐảm bảo đầu vào của thông tin khiếu nại, các vấn đề cần giải quyết của khách hàng và cung cấp thông tin cho các bộ phận phù hợp cho khiếu nại đó\nPhối hợp quảng bá các khuyến mãi, các gói dịch vụ ưu đãi của doanh nghiệp tới khách hàng\nTheo dõi các chính sách về sản phẩm và dịch vụ của doanh nghiệp, liên tục cập nhật chính sách sản phẩm và dịch vụ của doanh nghiệp\nChủ động liên hệ với khách hàng nhân các dịp lễ Tết, quà tặng hoặc ưu đãi trong các dịp đặc biệt và trực tiếp gửi ưu đãi cho họ\nThực hiện khảo sát khách hàng về chất lượng sản phẩm và dịch vụ, ghi nhận phản hồi giúp cải thiện sản phẩm, dịch vụ\nLập báo cáo trình cấp trên về khảo sát khách hàng, độ thỏa mãn với sản phẩm dịch vụ\nDự trù ngân sách cho việc chăm sóc khách hàng\nChuẩn hóa các quy trình chăm sóc khách hàng cho doanh nghiệp",
+        "job_requirements": "- Tốt nghiệp Đại học chuyên ngành Báo chí, Truyền thông, Kinh tế, QTKD, MKT,...\n- Sử dụng thành thạo các phần mềm Word, Exel, PPT\n- 02 năm vị trí tương đương.\n- Giao tiếp tốt;\n- Giọng nói hay, truyền cảm\n- Khả năng giải quyết vấn đề, nhiệt tình, chịu khó, chịu được áp lực công việc\n- Có khả năng nói chuyện điện thoại > 50 cuộc/ ngày\n- Khả năng thích ứng và linh hoạt với công việc áp lực cao;\n- Khả năng làm việc độc lập hoặc theo nhóm, tinh thần hợp tác tốt"
+      },
+      "final_scores": {},
+      "rationale": ""
+    },
+    {
+      "case_id": "residual_014",
+      "pair_key": "cskh_L1_3006e0f5298bde0c4e16a99ec0f96872",
+      "cv_id": "cskh_L1",
+      "job_id": "3006e0f5298bde0c4e16a99ec0f96872",
+      "selection": {
+        "score": 30.0,
+        "min_rank": 7,
+        "methods": [
+          {
+            "method": "E3t: Hybrid + ESCO tuned",
+            "rank": 7
+          },
+          {
+            "method": "E3g-basic: Hybrid + ESCO + KG tuned",
+            "rank": 7
+          }
+        ]
+      },
+      "cv": {
+        "category_target": "Chăm sóc khách hàng",
+        "level": "L1",
+        "experience_years": 0,
+        "experience_description": "Sinh viên mới ra trường, từng tham gia các dự án nhóm về chăm sóc khách hàng",
+        "education_level": "Đại học",
+        "education_field": "Kinh doanh",
+        "technical_skills": [
+          "Excel",
+          "Tiếng Anh"
+        ],
+        "soft_skills": [
+          "giao tiếp tốt",
+          "làm việc nhóm"
+        ],
+        "languages": [
+          "Tiếng Anh"
+        ],
+        "certificates": [],
+        "search_text": "Kinh nghiệm: 0 năm. Sinh viên mới ra trường, từng tham gia các dự án nhóm về chăm sóc khách hàng. Học vấn: Đại học Kinh doanh. Kỹ năng chuyên môn: Excel, Tiếng Anh. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+      },
+      "job": {
+        "title": "Nhân Viên Chăm Sóc Khách Hàng - Telesales",
+        "company": "Viện nghiên cứu Năng lượng và Y học Tái Tạo",
+        "category": "Chăm sóc khách hàng",
+        "experience": "1 năm",
+        "education_level": "Đại học",
+        "education_field": "",
+        "technical_skills": "Excel, AutoCAD, Python, SAP",
+        "soft_skills": "",
+        "languages": "",
+        "certificates": "",
+        "requirements_tags": "Chăm sóc khách hàng, Chăm sóc sức khỏe / Làm đẹp",
+        "specializations": "1 năm kinh nghiệm, Đại Học trở lên, Từ 22 tuổi trở lên, Nữ",
+        "job_description": "Viện thực hiện chương trình cho mượn dùng thử sản phẩm ( là trang thiết bị y tế) 30 ngày để chứng minh tác dụng chữa bệnh và trẻ hóa cho 2 nhóm đối tượng là bệnh nhân và phụ nữ có sở thích làm đẹp.\nNếu sản phẩm tốt thì khách hàng có thể thuê hoặc mua trả góp sau đó.\nNguồn khách hàng đến từ quảng cáo ads nên không cần tìm kiếm",
+        "job_requirements": "Có 1 năm kinh nghiệm trở lên\nGiao tiếp tốt qua điện thoại\nGiao tiếp tốt , khéo léo xử lý tình huống\nYêu thích công việc thu nhập cao"
+      },
+      "final_scores": {},
+      "rationale": ""
+    },
+    {
+      "case_id": "residual_015",
+      "pair_key": "cskh_L1b_8e8a17b399ccc441b7f1a15e86507f91",
+      "cv_id": "cskh_L1b",
+      "job_id": "8e8a17b399ccc441b7f1a15e86507f91",
+      "selection": {
+        "score": 30.0,
+        "min_rank": 7,
+        "methods": [
+          {
+            "method": "E3t: Hybrid + ESCO tuned",
+            "rank": 7
+          },
+          {
+            "method": "E3g-basic: Hybrid + ESCO + KG tuned",
+            "rank": 7
+          }
+        ]
+      },
+      "cv": {
+        "category_target": "Chăm sóc khách hàng",
+        "level": "L1b",
+        "experience_years": 1,
+        "experience_description": "1 năm làm nhân viên hỗ trợ tại công ty dịch vụ, hỗ trợ khách hàng qua điện thoại và email",
+        "education_level": "Đại học",
+        "education_field": "Quản trị kinh doanh",
+        "technical_skills": [
+          "Excel",
+          "Tiếng Anh IELTS 6.5"
+        ],
+        "soft_skills": [
+          "giao tiếp tốt",
+          "làm việc nhóm"
+        ],
+        "languages": [
+          "Tiếng Anh"
+        ],
+        "certificates": [],
+        "search_text": "Kinh nghiệm: 1 năm. 1 năm làm nhân viên hỗ trợ tại công ty dịch vụ, hỗ trợ khách hàng qua điện thoại và email. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: Excel, Tiếng Anh IELTS 6.5. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+      },
+      "job": {
+        "title": "Nhân Viên Chăm Sóc Khách Hàng Biết Tiếng Trung - Không Yêu Cầu Kinh Nghiệm - Tuyển Nữ - Tháng Nghỉ 8 Ngày Linh Hoạt (Thu Nhập 20 - 22 Triệu)",
+        "company": "CÔNG TY TNHH INSIGHTVIET CS",
+        "category": "Chăm sóc khách hàng",
+        "experience": "Không yêu cầu",
+        "education_level": "Cao đẳng",
+        "education_field": "",
+        "technical_skills": "Tiếng Trung HSK 4, Tiếng Trung HSK 5, Tiếng Trung HSK 6, Tiếng Trung Giao tiếp thành thạo",
+        "soft_skills": "",
+        "languages": "Tiếng Trung",
+        "certificates": "",
+        "requirements_tags": "Chăm sóc khách hàng",
+        "specializations": "Không cần kinh nghiệm, Cao Đẳng trở lên, Tuổi 18 - 26, Nữ, Tiếng Trung HSK 4, Tiếng Trung HSK 5, Tiếng Trung HSK 6, Tiếng Trung Giao tiếp thành thạo",
+        "job_description": "- Tiếp nhận đơn hàng, hỗ trợ khách đặt hàng\n- Theo dõi, cập nhật và xử lý các vấn đề phát sinh đối với đơn hàng của khách hàng,...\n- Job không yêu cầu gọi điện, không sale",
+        "job_requirements": "- Tiếng Trung nghe, nói, đọc tốt (Tương đương HSK5 hoặc HSK4 cứng trở lên)\n- Không yêu cầu kinh nghiệm, được đào tạo từ đầu\n- Có thể xoay ca: ca sáng và ca đêm (1 tháng xoay ca 1 lần)\n- CHỈ TUYỂN NỮ"
+      },
+      "final_scores": {},
+      "rationale": ""
+    },
+    {
+      "case_id": "residual_016",
+      "pair_key": "cskh_L2b_6f638be62e7594e2cdee54d7f1cb9712",
+      "cv_id": "cskh_L2b",
+      "job_id": "6f638be62e7594e2cdee54d7f1cb9712",
+      "selection": {
+        "score": 30.0,
+        "min_rank": 7,
+        "methods": [
+          {
+            "method": "E3t: Hybrid + ESCO tuned",
+            "rank": 7
+          },
+          {
+            "method": "E3g-basic: Hybrid + ESCO + KG tuned",
+            "rank": 7
+          }
+        ]
+      },
+      "cv": {
+        "category_target": "Chăm sóc khách hàng",
+        "level": "L2b",
+        "experience_years": 2,
+        "experience_description": "2 năm làm nhân viên chăm sóc khách hàng tại công ty dịch vụ, hỗ trợ khách hàng qua điện thoại và email",
+        "education_level": "Đại học",
+        "education_field": "Quản trị kinh doanh",
+        "technical_skills": [
+          "Excel",
+          "Tiếng Anh IELTS 6.5",
+          "Call Center/Trực tổng đài",
+          "Customer Experience"
+        ],
+        "soft_skills": [
+          "giao tiếp tốt",
+          "làm việc nhóm",
+          "chịu áp lực"
+        ],
+        "languages": [
+          "Tiếng Anh"
+        ],
+        "certificates": [
+          "IELTS 6.5"
+        ],
+        "search_text": "Kinh nghiệm: 2 năm. 2 năm làm nhân viên chăm sóc khách hàng tại công ty dịch vụ, hỗ trợ khách hàng qua điện thoại và email. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: Excel, Tiếng Anh IELTS 6.5, Call Center/Trực tổng đài, Customer Experience. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực. Ngoại ngữ: Tiếng Anh. Chứng chỉ: IELTS 6.5."
+      },
+      "job": {
+        "title": "Nhân Viên Chăm Sóc Khách Hàng, Tư Vấn App Dịch Vụ Parttime (Hà Nội)",
+        "company": "CÔNG TY TNHH LEAP STEAM",
+        "category": "Chăm sóc khách hàng",
+        "experience": "Dưới 1 năm",
+        "education_level": "Đại học",
+        "education_field": "",
+        "technical_skills": "Tiếng Anh IELTS 6.5",
+        "soft_skills": "",
+        "languages": "",
+        "certificates": "",
+        "requirements_tags": "Dịch vụ khách hàng/Chăm sóc khách hàng khác, Marketing / Quảng cáo, Quan hệ công chúng",
+        "specializations": "Dưới 1 năm kinh nghiệm, Đại Học trở lên, Tiếng Anh IELTS 6.5",
+        "job_description": "Working hours:\nCa 1: 0h - 6h\nCa 2: 6h - 12h\nCa 3: 12h - 18h\nCa 4: 18h - 0h\nMô tả công việc\nChăm sóc khách hàng sử dụng app\nVận hành các tài khoản đã có sẵn\nTìm kiếm hình ảnh, video đời sống tăng tương tác với khách hàng\nCác công việc được điều phối theo yêu cầu của Quản lí\nThời gian: 24/7",
+        "job_requirements": "Có kinh nghiệm trong lĩnh vực hỗ trợ khách hàng\nTiếng Anh cơ bản, biết sử dụng các công cụ hỗ trợ thành thạo (Chat GPT, gg,......)\nSẵn sàng làm việc vào các ngày lễ (lương gấp 2-3 lần lương bình thường)\nKỷ luật, trung thực, tư duy phản biện và tinh thần chủ động cao."
+      },
+      "final_scores": {},
+      "rationale": ""
+    },
+    {
+      "case_id": "residual_017",
+      "pair_key": "cskh_L3_289b97f4e91334ac90cc2cce346762ab",
+      "cv_id": "cskh_L3",
+      "job_id": "289b97f4e91334ac90cc2cce346762ab",
+      "selection": {
+        "score": 30.0,
+        "min_rank": 7,
+        "methods": [
+          {
+            "method": "E3t: Hybrid + ESCO tuned",
+            "rank": 7
+          },
+          {
+            "method": "E3g-basic: Hybrid + ESCO + KG tuned",
+            "rank": 7
+          }
+        ]
+      },
+      "cv": {
+        "category_target": "Chăm sóc khách hàng",
+        "level": "L3",
+        "experience_years": 3,
+        "experience_description": "Trưởng nhóm chăm sóc khách hàng tại công ty dịch vụ, có kinh nghiệm quản lý và đào tạo nhân viên",
+        "education_level": "Đại học",
+        "education_field": "Kinh doanh",
+        "technical_skills": [
+          "Excel",
+          "Tiếng Anh",
+          "Call Center",
+          "Customer Experience"
+        ],
+        "soft_skills": [
+          "giao tiếp tốt",
+          "làm việc nhóm",
+          "chịu áp lực",
+          "quản lý"
+        ],
+        "languages": [
+          "Tiếng Anh",
+          "Tiếng Trung"
+        ],
+        "certificates": [
+          "IELTS 6.5"
+        ],
+        "search_text": "Kinh nghiệm: 3 năm. Trưởng nhóm chăm sóc khách hàng tại công ty dịch vụ, có kinh nghiệm quản lý và đào tạo nhân viên. Học vấn: Đại học Kinh doanh. Kỹ năng chuyên môn: Excel, Tiếng Anh, Call Center, Customer Experience. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, quản lý. Ngoại ngữ: Tiếng Anh, Tiếng Trung. Chứng chỉ: IELTS 6.5."
+      },
+      "job": {
+        "title": "Nhân Viên Chăm Sóc Khách Hàng",
+        "company": "Công ty chuyển phát nhanh Thuận Phong chi nhánh Hồ Chí Minh (J&T Express)",
+        "category": "Chăm sóc khách hàng",
+        "experience": "Dưới 1 năm",
+        "education_level": "Cao đẳng",
+        "education_field": "",
+        "technical_skills": "Excel, AutoCAD, Python, SAP",
+        "soft_skills": "",
+        "languages": "",
+        "certificates": "",
+        "requirements_tags": "Chuyên môn Dịch vụ khách hàng/Vận hành khác, Logistic / Vận tải, Kho vận",
+        "specializations": "Dưới 1 năm kinh nghiệm, Cao Đẳng trở lên",
+        "job_description": "Tiếp nhận và xử lý các khiếu nại về hàng hóa, dịch vụ.\nTruy xuất và xử lý dữ liệu, số liệu từ hệ thống Công ty, sau đó thống kê, phân tích, giám sát và gửi báo cáo hàng ngày.\nKiểm tra, theo dõi, chất lượng đơn hàng của từng khâu nhận kiện, trung chuyển, phát hàng, chuyển hoàn nhằm kịp thời ngăn chặn, xử lí vấn đề có thể xảy ra.\nLên kế hoạch, đề xuất phương án giải quyết, nâng cao chất lượng dịch vụ.\nThu thập và xử lí kịp thời các vấn đề của bưu cục.\nĐảm bảo xử lí công việc theo đúng quy trình và đúng KPIs.\nCác công việc khác theo sự phân công của Quản lý",
+        "job_requirements": "Có kinh nghiệm chăm sóc khách hàng từ 6 tháng - 1 năm\nTốt nghiệp Cao Đẳng trở lên\nTính cẩn thận, điềm đạm, thận trọng, trung thực và có trách nhiệm trong công việc\nChịu được áp lực công việc\nCó thể đáp ứng về thời gian làm việc nghỉ không cố định vào cuối tuần"
+      },
+      "final_scores": {},
+      "rationale": ""
+    },
+    {
+      "case_id": "residual_018",
+      "pair_key": "cskh_L4_650e7291beecf5ee57806dd4e4524d4f",
+      "cv_id": "cskh_L4",
+      "job_id": "650e7291beecf5ee57806dd4e4524d4f",
+      "selection": {
+        "score": 28.5,
+        "min_rank": 4,
+        "methods": [
+          {
+            "method": "E3: Hybrid + ESCO",
+            "rank": 4
+          },
+          {
+            "method": "E3t: Hybrid + ESCO tuned",
+            "rank": 10
+          },
+          {
+            "method": "E3g-basic: Hybrid + ESCO + KG tuned",
+            "rank": 10
+          }
+        ]
+      },
+      "cv": {
+        "category_target": "Chăm sóc khách hàng",
+        "level": "L4",
+        "experience_years": 6,
+        "experience_description": "Giám đốc chăm sóc khách hàng tại công ty dịch vụ, có kinh nghiệm xây dựng và thực hiện chiến lược chăm sóc khách hàng",
+        "education_level": "Đại học",
+        "education_field": "Kinh doanh",
+        "technical_skills": [
+          "Excel",
+          "Tiếng Anh",
+          "Call Center",
+          "Customer Experience",
+          "Logistic"
+        ],
+        "soft_skills": [
+          "giao tiếp tốt",
+          "làm việc nhóm",
+          "chịu áp lực",
+          "quản lý",
+          "chiến lược"
+        ],
+        "languages": [
+          "Tiếng Anh",
+          "Tiếng Trung"
+        ],
+        "certificates": [
+          "MBA",
+          "PMP"
+        ],
+        "search_text": "Kinh nghiệm: 6 năm. Giám đốc chăm sóc khách hàng tại công ty dịch vụ, có kinh nghiệm xây dựng và thực hiện chiến lược chăm sóc khách hàng. Học vấn: Đại học Kinh doanh. Kỹ năng chuyên môn: Excel, Tiếng Anh, Call Center, Customer Experience, Logistic. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, quản lý, chiến lược. Ngoại ngữ: Tiếng Anh, Tiếng Trung. Chứng chỉ: MBA, PMP."
+      },
+      "job": {
+        "title": "Nhân Viên Chăm Sóc Khách Hàng Ca Đêm (4 Tiếng/Đêm - Làm Việc Remote - Yêu Cầu Tiếng Anh)",
+        "company": "CÔNG TY CỔ PHẦN ADON VIỆT NAM",
+        "category": "Chăm sóc khách hàng",
+        "experience": "1 năm",
+        "education_level": "Cao đẳng",
+        "education_field": "",
+        "technical_skills": "Chăm sóc khách hàng, Thương mại điện tử, Marketing / Quảng cáo",
+        "soft_skills": "",
+        "languages": "",
+        "certificates": "",
+        "requirements_tags": "Chăm sóc khách hàng, Thương mại điện tử, Marketing / Quảng cáo",
+        "specializations": "1 năm kinh nghiệm, Cao Đẳng trở lên",
+        "job_description": "Chăm sóc khách hàng Ca đêm (4 tiếng/đêm), từ Thứ 2 đến Thứ 7. Làm việc remote. Cụ thể:\n·        Trả lời email của khách hàng (bằng Tiếng Anh).\n·        Video call (bằng Tiếng Anh) để hỗ trợ khách hàng nếu cần/khách hàng yêu cầu.\n·        Phối hợp với các team nội bộ (vận hành, kỹ thuật,...) để xử lý các vấn đề phát sinh của khách hàng.\n·        Ghi nhận các lỗi hệ thống/giao diện/vận hành và làm việc với team kỹ thuật để cải thiện.\n·        Tiếp nhận ý kiến khách hàng để đề xuất với Nhóm kỹ thuật nghiên cứu và phát triển các phần mềm, sản phẩm, module mới.\n·        Chủ động cập nhật kiến thức về sản phẩm/dịch vụ để tư vấn tốt hơn cho khách hàng.",
+        "job_requirements": "·        Tốt nghiệp Đại học/Cao đẳng.\n·        Yêu cầu tiếng Anh (viết, đọc hiểu tài liệu hướng dẫn bằng tiếng Anh). Có thể giao tiếp tốt bằng tiếng Anh là lợi thế.\n·        Có khả năng giao tiếp tốt, ham học hỏi.\n·        Có kỹ năng xử lý tình huống và quản lý thời gian, công việc hiệu quả.\n·        Có hiểu biết và kinh nghiệm về Thương mại điện tử; các nền tảng quảng cáo như Google, Facebook, Shopify,.. là lợi thế.\n·        Có khả năng làm việc độc lập và làm việc nhóm.\n·        Chủ động, trách nhiệm, chịu được áp lực công việc cao."
+      },
+      "final_scores": {},
+      "rationale": ""
+    },
+    {
+      "case_id": "residual_019",
+      "pair_key": "bds_L4_f4c2423944f7c3eccae86bdbd4a23b76",
+      "cv_id": "bds_L4",
+      "job_id": "f4c2423944f7c3eccae86bdbd4a23b76",
+      "selection": {
+        "score": 26.5,
+        "min_rank": 7,
+        "methods": [
+          {
+            "method": "E3t: Hybrid + ESCO tuned",
+            "rank": 7
+          },
+          {
+            "method": "E3g-basic: Hybrid + ESCO + KG tuned",
+            "rank": 8
+          }
+        ]
+      },
+      "cv": {
+        "category_target": "Bất động sản",
+        "level": "L4",
+        "experience_years": 6,
+        "experience_description": "Đã làm việc 6 năm trong lĩnh vực kinh doanh bất động sản, có kinh nghiệm trong việc quản lý và phát triển dự án bất động sản",
+        "education_level": "Đại học",
+        "education_field": "Kinh tế",
+        "technical_skills": [
+          "Sales bất động sản",
+          "B2C",
+          "Direct Sales",
+          "Quản lý dự án bất động sản",
+          "Giám đốc dự án bất động sản"
+        ],
+        "soft_skills": [
+          "giao tiếp tốt",
+          "làm việc nhóm",
+          "chịu áp lực",
+          "quản lý thời gian hiệu quả",
+          "lãnh đạo"
+        ],
+        "languages": [
+          "Tiếng Anh",
+          "Tiếng Pháp"
+        ],
+        "certificates": [
+          "Chứng chỉ hành nghề bất động sản"
+        ],
+        "search_text": "Kinh nghiệm: 6 năm. Đã làm việc 6 năm trong lĩnh vực kinh doanh bất động sản, có kinh nghiệm trong việc quản lý và phát triển dự án bất động sản. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: Sales bất động sản, B2C, Direct Sales, Quản lý dự án bất động sản, Giám đốc dự án bất động sản. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, quản lý thời gian hiệu quả, lãnh đạo. Ngoại ngữ: Tiếng Anh, Tiếng Pháp. Chứng chỉ: Chứng chỉ hành nghề bất động sản."
+      },
+      "job": {
+        "title": "Phó Giám Đốc Pháp Lý Dự Án - Kinh Nghiệm Từ 5 Năm - Cần Thơ",
+        "company": "CÔNG TY CỔ PHẦN CARA GROUP",
+        "category": "Bất động sản",
+        "experience": "5 năm",
+        "education_level": "Đại học",
+        "education_field": "",
+        "technical_skills": "Quản lý dự án bất động sản, Luật / Pháp chế, Xây dựng",
+        "soft_skills": "",
+        "languages": "",
+        "certificates": "",
+        "requirements_tags": "Quản lý dự án bất động sản, Luật / Pháp chế, Xây dựng",
+        "specializations": "5 năm kinh nghiệm, Đại Học trở lên, Tuổi 28 - 35",
+        "job_description": "1. Thực hiện các thủ tục pháp lý dự án từ bước xin dự án đến khi hoàn thành và đưa vào sử dụng:\nXin chấp thuận chủ trương đầu tư, chấp thuận chủ trương đầu tư đồng thời chấp thuận nhà đầu tư;\nLập, điều chỉnh nhiệm vụ/quy hoạch chi tiết tỷ lệ 1/500\nLập hồ sơ giao đất, cấp giấy chứng nhận QSDĐ\nTrình duyệt hồ sơ hoàn công công trình ,...\n2. Xây dựng và kiểm soát quy trình thực hiện và trình duyệt dự án từ bước xin chủ trương đầu tư dự án đến khi dự án hoàn thanh đưa vào sử dụng.\n3. Cập nhật thông tin chính sách, quy định của chính phủ về quản lý đất đai, xây dựng và báo cáo GĐ Dự án và Tổng Giám Đốc.\n4. Duy trì và phát triển tốt các mối quan hệ với các cơ quan, tổ chức nhà nước theo sự chỉ đạo của TGĐ.\n5. Các công việc khác theo sự chỉ đạo của cấp trên trực tiếp.",
+        "job_requirements": "Về chuyên môn\nTốt nghiệp Đại học chính quy một trong các chuyên nghành nghề sau: Quy hoạch đô thị, Xây dựng, Quản lý đất đai, Luật.\nCó 05 năm kinh nghiệm ở vị trí tương đương.\nAm hiểu pháp luật về đầu tư, xây dựng, luật đất đai, luạt nhà ở, đọc, hiểu bản đồ về quy hoạch chi tiết, bản vẽ thiết kế xây dựng, chuyên thực hiện các quy trình liên quan đến pháp lý dự án.\nĐã từng tham gia công tác pháp lý dự án bất động sản ít nhất 1 dự án.\nKỹ năng\nCó khả năng quản lý, điều phối công việc và giải quyết vấn đề hiệu quả.\nKỹ năng giao tiếp tốt, xây dựng và duy trì mối quan hệ.\nCó khả năng tư vấn pháp lý, nắm vững quy định pháp luật hiện hành.\nCó kinh nghiệm quản lý nhân sự là một lợi thế.\nYêu cầu khác\nNam, độ tuổi 28-35\nTiếng Anh: đọc hiểu tài liệu chuyên ngành\nSử dụng thành thạo các phần mềm xem, chỉnh sửa bản vẽ như Autocad, Microtation V8i.\nTrung thực, trách nhiệm, chịu được áp lực công việc cao"
+      },
+      "final_scores": {},
+      "rationale": ""
+    },
+    {
+      "case_id": "residual_020",
+      "pair_key": "cskh_L3_809a9ba3497d5059ae1137b50f16a251",
+      "cv_id": "cskh_L3",
+      "job_id": "809a9ba3497d5059ae1137b50f16a251",
+      "selection": {
+        "score": 25.5,
+        "min_rank": 5,
+        "methods": [
+          {
+            "method": "E3: Hybrid + ESCO",
+            "rank": 5
+          },
+          {
+            "method": "E3t: Hybrid + ESCO tuned",
+            "rank": 10
+          },
+          {
+            "method": "E3g-basic: Hybrid + ESCO + KG tuned",
+            "rank": 10
+          }
+        ]
+      },
+      "cv": {
+        "category_target": "Chăm sóc khách hàng",
+        "level": "L3",
+        "experience_years": 3,
+        "experience_description": "Trưởng nhóm chăm sóc khách hàng tại công ty dịch vụ, có kinh nghiệm quản lý và đào tạo nhân viên",
+        "education_level": "Đại học",
+        "education_field": "Kinh doanh",
+        "technical_skills": [
+          "Excel",
+          "Tiếng Anh",
+          "Call Center",
+          "Customer Experience"
+        ],
+        "soft_skills": [
+          "giao tiếp tốt",
+          "làm việc nhóm",
+          "chịu áp lực",
+          "quản lý"
+        ],
+        "languages": [
+          "Tiếng Anh",
+          "Tiếng Trung"
+        ],
+        "certificates": [
+          "IELTS 6.5"
+        ],
+        "search_text": "Kinh nghiệm: 3 năm. Trưởng nhóm chăm sóc khách hàng tại công ty dịch vụ, có kinh nghiệm quản lý và đào tạo nhân viên. Học vấn: Đại học Kinh doanh. Kỹ năng chuyên môn: Excel, Tiếng Anh, Call Center, Customer Experience. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, quản lý. Ngoại ngữ: Tiếng Anh, Tiếng Trung. Chứng chỉ: IELTS 6.5."
+      },
+      "job": {
+        "title": "Nhân Viên Chăm Sóc Khách Hàng",
+        "company": "CÔNG TY TNHH MTV DU LỊCH VÀ VẬN CHUYỂN VIỆT NHẬT MP",
+        "category": "Chăm sóc khách hàng",
+        "experience": "1 năm",
+        "education_level": "Cao đẳng",
+        "education_field": "",
+        "technical_skills": "Chăm sóc khách hàng, Marketing / Quảng cáo, Logistic / Vận tải, Quan hệ công chúng",
+        "soft_skills": "Kỹ năng giao tiếp và thuyết phục, Kỹ năng đàm phán và thương lượng, Khả năng làm việc độc lập và nhóm",
+        "languages": "",
+        "certificates": "",
+        "requirements_tags": "Chăm sóc khách hàng, Marketing / Quảng cáo, Logistic / Vận tải, Quan hệ công chúng",
+        "specializations": "1 năm kinh nghiệm, Cao Đẳng trở lên",
+        "job_description": "- Chăm sóc khách hàng tiềm năng: Xây dựng và duy trì mối quan hệ với khách hàng mới và khách hàng hiện tại. Giới thiệu các chương trình ưu đãi và hỗ trợ khách hàng trong việc ra quyết định.\n- Phân tích nhu cầu khách hàng: Hiểu rõ nhu cầu của khách hàng, phù hợp với dịch vụ của công ty, để đưa ra giải pháp và sản phẩm phù hợp.\n- Hoàn thành chỉ tiêu kinh doanh: Đảm bảo đạt được các mục tiêu doanh thu và KPI về số lượng sản phẩm bán ra.\n- Báo cáo và cập nhật: Theo dõi và báo cáo tiến trình kinh doanh, cập nhật thông tin khách hàng, và đề xuất các giải pháp để nâng cao hiệu quả bán hàng.",
+        "job_requirements": "- Kinh nghiệm: Có kinh nghiệm ở vị trí kinh doanh, nhân sự.\n- Kỹ năng giao tiếp và thuyết phục: Khả năng giao tiếp tốt, tư vấn thuyết phục khách hàng hiệu quả, và xử lý tình huống khéo léo.\n- Kỹ năng đàm phán và thương lượng: Có khả năng xây dựng niềm tin và tạo sự cam kết từ phía khách hàng trong việc lựa chọn sản phẩm.\n- Khả năng làm việc độc lập và nhóm: Chủ động trong công việc, có khả năng làm việc dưới áp lực để đạt doanh số cao.\n- Hiểu biết về các dịch vụ của công ty"
+      },
+      "final_scores": {},
+      "rationale": ""
+    },
+    {
+      "case_id": "residual_021",
+      "pair_key": "bds_L4_148e6c3719902859048b7c7284cba29d",
+      "cv_id": "bds_L4",
+      "job_id": "148e6c3719902859048b7c7284cba29d",
+      "selection": {
+        "score": 24.0,
+        "min_rank": 3,
+        "methods": [
+          {
+            "method": "E3: Hybrid + ESCO",
+            "rank": 3
+          }
+        ]
+      },
+      "cv": {
+        "category_target": "Bất động sản",
+        "level": "L4",
+        "experience_years": 6,
+        "experience_description": "Đã làm việc 6 năm trong lĩnh vực kinh doanh bất động sản, có kinh nghiệm trong việc quản lý và phát triển dự án bất động sản",
+        "education_level": "Đại học",
+        "education_field": "Kinh tế",
+        "technical_skills": [
+          "Sales bất động sản",
+          "B2C",
+          "Direct Sales",
+          "Quản lý dự án bất động sản",
+          "Giám đốc dự án bất động sản"
+        ],
+        "soft_skills": [
+          "giao tiếp tốt",
+          "làm việc nhóm",
+          "chịu áp lực",
+          "quản lý thời gian hiệu quả",
+          "lãnh đạo"
+        ],
+        "languages": [
+          "Tiếng Anh",
+          "Tiếng Pháp"
+        ],
+        "certificates": [
+          "Chứng chỉ hành nghề bất động sản"
+        ],
+        "search_text": "Kinh nghiệm: 6 năm. Đã làm việc 6 năm trong lĩnh vực kinh doanh bất động sản, có kinh nghiệm trong việc quản lý và phát triển dự án bất động sản. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: Sales bất động sản, B2C, Direct Sales, Quản lý dự án bất động sản, Giám đốc dự án bất động sản. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, quản lý thời gian hiệu quả, lãnh đạo. Ngoại ngữ: Tiếng Anh, Tiếng Pháp. Chứng chỉ: Chứng chỉ hành nghề bất động sản."
+      },
+      "job": {
+        "title": "Thủ Tục Và Chăm Sóc Khách Hàng",
+        "company": "CÔNG TY CỔ PHẦN HIRUNDO REALTY",
+        "category": "Bất động sản",
+        "experience": "3 năm",
+        "education_level": "Cao đẳng",
+        "education_field": "",
+        "technical_skills": "Excel, AutoCAD, Python, SAP",
+        "soft_skills": "",
+        "languages": "",
+        "certificates": "",
+        "requirements_tags": "Quản lý vận hành bất động sản khác, Bất động sản",
+        "specializations": "3 năm kinh nghiệm, Cao Đẳng trở lên",
+        "job_description": "1. Thủ tục ký kết hợp đồng\n− Chuẩn bị, rà soát hồ sơ pháp lý của khách hàng và dự án trước khi ký hợp đồng (đặt cọc, mua bán, thuê, chuyển nhượng, v.v.).\n− Soạn thảo các tài liệu: Văn bản giao dịch, phụ lục, biên bản, ....\n− Phối hợp với bộ phận Pháp chế và phòng Kinh doanh để rà soát lại nội dung các văn bản chuẩn pháp lý. Đồng thời kiểm tra, in ấn và trình ký hợp đồng, phụ lục, biên bản,...\n− Tổ chức và hướng dẫn khách hàng thực hiện thủ tục ký kết hợp đồng: hẹn lịch ký, tiếp đón, giải thích nội dung, hướng dẫn quy trình thanh toán, nộp hồ sơ, công chứng, v.v.\n− Quản lý và lưu trữ bộ hồ sơ hợp đồng gốc và bản điện tử, đảm bảo tính đầy đủ, chính xác và bảo mật.\n− Theo dõi tiến độ ký kết và bàn giao hợp đồng, phối hợp với kế toán để kiểm tra tình trạng thanh toán.\n− Hỗ trợ các đơn vị đối tác, đại lý thực hiện các giao dịch.\n2. Hỗ trợ & chăm sóc khách hàng\n− Là đầu mối thông tin giữa khách hàng và các bộ phận nội bộ trong quá trình thực hiện hợp đồng.\n− Tiếp nhận, xử lý và phản hồi thắc mắc, yêu cầu, khiếu nại của khách hàng liên quan đến hợp đồng, thanh toán, tiến độ dự án, bàn giao căn hộ,...\n− Xây dựng và triển khai chính sách hậu mãi, chăm sóc khách hàng cũ và chương trình tri ân.\n− Cập nhật và quản lý dữ liệu khách hàng tại bảng theo dõi nội bộ. Hoặc trên hệ thống CRM (nếu có)\n− Tham gia tổ chức sự kiện ký kết, tri ân khách hàng, bàn giao nhà, nhận sổ hồng. 3. Hỗ trợ công tác pháp lý & quản lý dự án\n− Phối hợp với bộ phận Pháp chế, Kế toán, Dự án để đảm bảo hồ sơ hợp đồng tuân thủ pháp luật và chính sách công ty.\n− Chuẩn bị báo cáo định kỳ về tình trạng ký hợp đồng, thanh toán, bàn giao cho Ban lãnh đạo.\n- Đề xuất giải pháp cải thiện quy trình ký hợp đồng, chăm sóc khách hàng nhằm nâng cao hiệu quả và trải nghiệm dịch vụ.",
+        "job_requirements": "1. Tốt nghiệp Đại học chuyên ngành Luật, Quản trị kinh doanh, Kinh tế, Bất động sản hoặc các ngành liên quan.\n2. Kinh nghiệm 5 năm, tối thiểu 3 năm trong lĩnh vực bất động sản, tư vấn khách hàng, chăm sóc khách hàng hoặc hành chính hợp đồng.  (Ưu tiên ứng viên từng làm việc tại chủ đầu tư, sàn giao dịch hoặc đơn vị phát triển dự án BĐS.)\n3. Hiểu biết về pháp luật hợp đồng, quy trình giao dịch bất động sản, thủ tục công chứng và thuế phí chuyển nhượng.\n4.  Kiến thức cơ bản về pháp lý bất động sản.\n5. Kỹ năng giao tiếp, CSKH tốt, có tác phong chuyên nghiệp.\n6. Kỹ năng soạn thảo, kiểm tra, lưu trữ hồ sơ hợp đồng chính xác, cẩn thận."
+      },
+      "final_scores": {},
+      "rationale": ""
+    },
+    {
+      "case_id": "residual_022",
+      "pair_key": "bds_L3_5cd4690b04617a8a0cd0305a66853807",
+      "cv_id": "bds_L3",
+      "job_id": "5cd4690b04617a8a0cd0305a66853807",
+      "selection": {
+        "score": 24.0,
+        "min_rank": 8,
+        "methods": [
+          {
+            "method": "E3: Hybrid + ESCO",
+            "rank": 8
+          },
+          {
+            "method": "E3t: Hybrid + ESCO tuned",
+            "rank": 9
+          },
+          {
+            "method": "E3g-basic: Hybrid + ESCO + KG tuned",
+            "rank": 9
+          }
+        ]
+      },
+      "cv": {
+        "category_target": "Bất động sản",
+        "level": "L3",
+        "experience_years": 3,
+        "experience_description": "Đã làm việc 3 năm trong lĩnh vực kinh doanh bất động sản, có kinh nghiệm trong việc quản lý dự án và tư vấn cho khách hàng",
+        "education_level": "Đại học",
+        "education_field": "Kinh tế",
+        "technical_skills": [
+          "Sales bất động sản",
+          "B2C",
+          "Direct Sales",
+          "Quản lý dự án bất động sản"
+        ],
+        "soft_skills": [
+          "giao tiếp tốt",
+          "làm việc nhóm",
+          "chịu áp lực",
+          "quản lý thời gian hiệu quả"
+        ],
+        "languages": [
+          "Tiếng Anh",
+          "Tiếng Pháp"
+        ],
+        "certificates": [
+          "Chứng chỉ hành nghề bất động sản"
+        ],
+        "search_text": "Kinh nghiệm: 3 năm. Đã làm việc 3 năm trong lĩnh vực kinh doanh bất động sản, có kinh nghiệm trong việc quản lý dự án và tư vấn cho khách hàng. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: Sales bất động sản, B2C, Direct Sales, Quản lý dự án bất động sản. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, quản lý thời gian hiệu quả. Ngoại ngữ: Tiếng Anh, Tiếng Pháp. Chứng chỉ: Chứng chỉ hành nghề bất động sản."
+      },
+      "job": {
+        "title": "Chuyên Viên Bàn Giao",
+        "company": "CÔNG TY CỔ PHẦN SAVISTA",
+        "category": "Bất động sản",
+        "experience": "Dưới 1 năm",
+        "education_level": "Trung cấp",
+        "education_field": "",
+        "technical_skills": "Quản lý vận hành bất động sản khác, Bất động sản",
+        "soft_skills": "",
+        "languages": "",
+        "certificates": "",
+        "requirements_tags": "Quản lý vận hành bất động sản khác, Bất động sản",
+        "specializations": "Dưới 1 năm kinh nghiệm, Trung cấp trở lên, Tuổi 20 - 40",
+        "job_description": "Đón khách/ kiểm tra hồ sơ, đưa khách lên xem căn hộ.\nLập biên bản bàn giao căn hộ.\nGiám sát, thực hiện công tác nghiệm thu, bàn giao theo đúng Quy trình:\n+ Đảm bảo nghiệm thu theo đúng tiêu chuẩn quy định và theo tiến độ phê duyệt. Kiểm soát việc đánh giá lỗi nghiệm thu, chất lượng nghiệm thu;\n+ Thực kiện kiểm tra Căn hộ trước lịch bàn giao cho Khách hàng. Chủ động phối hợp với các bên liên quan để sửa chữa các lỗi/sự cố phát sinh đảm bảo Căn hộ luôn đạt tiêu chuẩn để sẵn sàng bàn giao cho Khách hàng;\nThực hiện công việc bàn giao Căn hộ cho Khách hàng, đảm bảo bàn giao đúng đối tượng, đúng tiêu chuẩn theo Hợp đồng, Khách hàng hài lòng với Căn hộ.\nTiếp nhận và hỗ trợ giải quyết các yêu cầu của Khách hàng về các vấn đề liên quan trước và sau bàn giao Căn hộ. Thực hiện công tác chăm sóc khách hàng và báo cáo đột xuất ngay khi có phát sinh sự việc.\nCập nhật thông tin Căn hộ trước và sau bàn giao lên hệ thống quản lý đầy đủ, chính xác đến Bộ phận liên quan phối hợp xử lý.\nPhối hợp với Chủ đầu tư/ Ban quản trị giải quyết các sự vụ diễn ra liên quan trong công tác bàn giao.",
+        "job_requirements": "Nam/nữ tuổi từ 20-40;\nNhanh nhẹn, chịu khó, trung thực;\nTốt nghiệp TC trở lên chuyên ngành kinh tế, bất động sản, kế toán , kiểm toán hoặc ngành liên quan;\nTin học văn phòng;\nCẩn thận, tỉ mỉ, khả năng sắp xếp công việc hợp lý;\nKhả năng thích ứng công việc nhanh, biết chủ động tổ chức và kiểm soát công việc."
+      },
+      "final_scores": {},
+      "rationale": ""
+    },
+    {
+      "case_id": "residual_023",
+      "pair_key": "cskh_L1b_47b1ee455e89e0d1fe75fc3e999484f7",
+      "cv_id": "cskh_L1b",
+      "job_id": "47b1ee455e89e0d1fe75fc3e999484f7",
+      "selection": {
+        "score": 24.0,
+        "min_rank": 8,
+        "methods": [
+          {
+            "method": "E3: Hybrid + ESCO",
+            "rank": 8
+          },
+          {
+            "method": "E3t: Hybrid + ESCO tuned",
+            "rank": 9
+          },
+          {
+            "method": "E3g-basic: Hybrid + ESCO + KG tuned",
+            "rank": 9
+          }
+        ]
+      },
+      "cv": {
+        "category_target": "Chăm sóc khách hàng",
+        "level": "L1b",
+        "experience_years": 1,
+        "experience_description": "1 năm làm nhân viên hỗ trợ tại công ty dịch vụ, hỗ trợ khách hàng qua điện thoại và email",
+        "education_level": "Đại học",
+        "education_field": "Quản trị kinh doanh",
+        "technical_skills": [
+          "Excel",
+          "Tiếng Anh IELTS 6.5"
+        ],
+        "soft_skills": [
+          "giao tiếp tốt",
+          "làm việc nhóm"
+        ],
+        "languages": [
+          "Tiếng Anh"
+        ],
+        "certificates": [],
+        "search_text": "Kinh nghiệm: 1 năm. 1 năm làm nhân viên hỗ trợ tại công ty dịch vụ, hỗ trợ khách hàng qua điện thoại và email. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: Excel, Tiếng Anh IELTS 6.5. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+      },
+      "job": {
+        "title": "Nhân Viên Chăm Sóc Khách Hàng (Customer Service Representative)",
+        "company": "HSBC Pro Company",
+        "category": "Chăm sóc khách hàng",
+        "experience": "1 năm",
+        "education_level": "Cao đẳng",
+        "education_field": "",
+        "technical_skills": "Chăm sóc khách hàng, Ngân hàng, Tài chính",
+        "soft_skills": "",
+        "languages": "",
+        "certificates": "",
+        "requirements_tags": "Chăm sóc khách hàng, Ngân hàng, Tài chính",
+        "specializations": "1 năm kinh nghiệm, Cao Đẳng trở lên, Tiếng Anh Giao tiếp thành thạo",
+        "job_description": "If you’re looking for a career that will unlock new opportunities, join HSBC and experience the possibilities. Whether you want a career that could take you to the top, or simply take you in an exciting new direction, HSBC offers opportunities, support and rewards that will take you further.\nInternational Wealth and Premier Banking (IWPB) helps deliver on HSBC’s purpose of opening up a world of opportunity by providing our customers with borderless banking and world-class wealth management through best-in-class, mobile-first capabilities, and exceptional people. Our international network and breadth of expertise enable us to support individuals, families, business owners, investors, and entrepreneurs. International Wealth and Premier Banking provides a leading premium proposition through Premier Banking and, together with our Private Bank, are present across the world’s most important markets, booking centres, and corridors most valued by our clients. Our wealth offering is further enhanced through our best-in-class manufacturing capabilities in Asset Management and Insurance.\nPrincipal Accountabilities:\nImpact on the Business\n- Handles contacts with HSBC customers in a polite and friendly way, instilling customer confidence and resolving customer’s issues at first contact where possible.\n- Delivers what is promised in line with customer expectations\n- Offers value added products and services based on customer needs analysis and ensures customer understanding of those products\nCustomers / Stakeholders\n- Provides excellent customer service to basic customer contacts by keeping up to date on training and internal communications\n- Generating customer loyalty through strong knowledge of key products and services\n- Owns and resolves issues and understands how and when to escalate\nLeadership & Teamwork\n- Acts as a role model for our Group Values and Behaviors (Open, Connected, Dependable), supporting colleagues and customers to deliver superior customer service through these values\n- Values diversity amongst team.\nOperational Effectiveness & Control\n- Knowledge of Group compliance, Operational Risk and SOX (Sarbanes- Oxley Requirements) for WPB Centers\n- Maintains HSBC internal control standards\n- Awareness of all elements of Operational Risk associated with the role in compliance to SOX for Contact Centers",
+        "job_requirements": "Knowledge & Experience / Qualifications\n- Must have education standard to at least High school diploma and be of a legal working age\n- Must be proficient in English and Vietnamese\n- Open to working flexible shifting schedules\n- Must be flexible, customer centric and have the ability to thrive in a team environment seeking feedback and open to development\n- Takes pride in delivering what is promised in line with the customer and service expectations\n- Wants to do a good job, is concerned about getting it right for the customer and checks everything is in order\n- Ability to work in a high-volume, fast paced environment is required\n- Proficiency with personal computers and basic software packages and specialized applications\n- Excellent communication skills and is polite and friendly at all times\n- Displays patience and empathy"
+      },
+      "final_scores": {},
+      "rationale": ""
+    },
+    {
+      "case_id": "residual_024",
+      "pair_key": "bds_L2b_580b0df34954e5d343727d450686f91f",
+      "cv_id": "bds_L2b",
+      "job_id": "580b0df34954e5d343727d450686f91f",
+      "selection": {
+        "score": 22.5,
+        "min_rank": 6,
+        "methods": [
+          {
+            "method": "E3: Hybrid + ESCO",
+            "rank": 6
+          },
+          {
+            "method": "E3t: Hybrid + ESCO tuned",
+            "rank": 10
+          },
+          {
+            "method": "E3g-basic: Hybrid + ESCO + KG tuned",
+            "rank": 10
+          }
+        ]
+      },
+      "cv": {
+        "category_target": "Bất động sản",
+        "level": "L2b",
+        "experience_years": 2,
+        "experience_description": "2 năm làm nhân viên kinh doanh tại công ty bất động sản, tư vấn và bán sản phẩm cho khách hàng",
+        "education_level": "Đại học",
+        "education_field": "Kinh tế",
+        "technical_skills": [
+          "Sales B2B",
+          "Telesales",
+          "Direct Sales",
+          "Quản lý dự án bất động sản"
+        ],
+        "soft_skills": [
+          "đàm phán tốt",
+          "làm việc nhóm",
+          "chịu áp lực cao"
+        ],
+        "languages": [
+          "Tiếng Anh"
+        ],
+        "certificates": [
+          "Chứng chỉ hành nghề bất động sản"
+        ],
+        "search_text": "Kinh nghiệm: 2 năm. 2 năm làm nhân viên kinh doanh tại công ty bất động sản, tư vấn và bán sản phẩm cho khách hàng. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: Sales B2B, Telesales, Direct Sales, Quản lý dự án bất động sản. Kỹ năng mềm: đàm phán tốt, làm việc nhóm, chịu áp lực cao. Ngoại ngữ: Tiếng Anh. Chứng chỉ: Chứng chỉ hành nghề bất động sản."
+      },
+      "job": {
+        "title": "Nhân Viên Kinh Doanh Bất Động Sản",
+        "company": "Công ty cổ phần thương mại Cầu Giấy",
+        "category": "Bất động sản",
+        "experience": "Dưới 1 năm",
+        "education_level": "Cao đẳng",
+        "education_field": "",
+        "technical_skills": "Sales bất động sản/Môi giới bất động sản, Bất động sản, Ngân hàng, Tài chính, B2C, Direct Sales, Telesales, Online Sales",
+        "soft_skills": "",
+        "languages": "",
+        "certificates": "",
+        "requirements_tags": "Sales bất động sản/Môi giới bất động sản, Bất động sản, Ngân hàng, Tài chính, B2C, Direct Sales, Telesales, Online Sales",
+        "specializations": "Dưới 1 năm kinh nghiệm, Cao Đẳng trở lên",
+        "job_description": "Tìm kiếm khách hàng đến thuê mặt bằng, văn phòng, căn hộ dịch vụ cho toàn bộ các điểm đất cho thuê trên toàn công ty\nThực hiện gặp gỡ với các khách hàng, các nhà môi giới hàng ngày trực tiếp hoặc qua điện thoại. Báo cáo lại công việc trong ngày, các phát sinh, vấn đề từ khách hàng.\nCập nhật danh sách khách hàng cũ và tìm kiếm khách hàng mới theo khu vực; Update thông tin khách hàng, tạo database về khách hàng.\nChăm sóc khách hàng (gọi điện thoại, email, gặp gỡ,...); am hiểu về khách, nguồn khách, các booker, người liên hệ.\nChuẩn bị hợp đồng, thư báo giá, dịch vụ cho khách hàng.\nXây dựng và trình các chương trình khuyến mại cho từng đối tượng khách hàng\nCác công việc khác theo yêu cầu của Giám đốc Trung tâm.",
+        "job_requirements": "Tốt nghiệp cao đẳng trở lên, có kỹ năng giao tiếp tốt, khả năng thuyết phục tốt.\nTối thiểu 6 tháng kinh nghiệm\nƯu tiên có kinh nghiệm sales & marketing trong mảng cho thuê văn phòng, thương mại.\nNhiệt tình, năng nổ, có trách nhiệm trong công việc."
+      },
+      "final_scores": {},
+      "rationale": ""
+    },
+    {
+      "case_id": "residual_025",
+      "pair_key": "bds_L2b_c196d43314af0340359c4d8d9d15dbb1",
+      "cv_id": "bds_L2b",
+      "job_id": "c196d43314af0340359c4d8d9d15dbb1",
+      "selection": {
+        "score": 22.5,
+        "min_rank": 8,
+        "methods": [
+          {
+            "method": "E3t: Hybrid + ESCO tuned",
+            "rank": 8
+          },
+          {
+            "method": "E3g-basic: Hybrid + ESCO + KG tuned",
+            "rank": 8
+          }
+        ]
+      },
+      "cv": {
+        "category_target": "Bất động sản",
+        "level": "L2b",
+        "experience_years": 2,
+        "experience_description": "2 năm làm nhân viên kinh doanh tại công ty bất động sản, tư vấn và bán sản phẩm cho khách hàng",
+        "education_level": "Đại học",
+        "education_field": "Kinh tế",
+        "technical_skills": [
+          "Sales B2B",
+          "Telesales",
+          "Direct Sales",
+          "Quản lý dự án bất động sản"
+        ],
+        "soft_skills": [
+          "đàm phán tốt",
+          "làm việc nhóm",
+          "chịu áp lực cao"
+        ],
+        "languages": [
+          "Tiếng Anh"
+        ],
+        "certificates": [
+          "Chứng chỉ hành nghề bất động sản"
+        ],
+        "search_text": "Kinh nghiệm: 2 năm. 2 năm làm nhân viên kinh doanh tại công ty bất động sản, tư vấn và bán sản phẩm cho khách hàng. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: Sales B2B, Telesales, Direct Sales, Quản lý dự án bất động sản. Kỹ năng mềm: đàm phán tốt, làm việc nhóm, chịu áp lực cao. Ngoại ngữ: Tiếng Anh. Chứng chỉ: Chứng chỉ hành nghề bất động sản."
+      },
+      "job": {
+        "title": "Chuyên Viên Quản Lý Thiết Kế Quy Hoạch",
+        "company": "Công ty cổ phần Tập đoàn Everland Pro Company",
+        "category": "Bất động sản",
+        "experience": "Trên 5 năm",
+        "education_level": "Đại học",
+        "education_field": "",
+        "technical_skills": "Quản lý dự án bất động sản, Xây dựng, Thiết kế / Kiến trúc",
+        "soft_skills": "",
+        "languages": "",
+        "certificates": "",
+        "requirements_tags": "Quản lý dự án bất động sản, Xây dựng, Thiết kế / Kiến trúc",
+        "specializations": "Trên 5 năm kinh nghiệm, Đại Học trở lên, Tuổi 27 - 45",
+        "job_description": "Quản lý, điều phối công tác thiết kế quy hoạch (QHCT, QHPK, quy hoạch chi tiết…) của các dự án đầu tư.\nLàm việc với đơn vị tư vấn quy hoạch, thiết kế; kiểm soát tiến độ, chất lượng và tính đồng bộ của hồ sơ.\nThẩm tra phương án quy hoạch đảm bảo phù hợp định hướng phát triển dự án, pháp lý và hiệu quả đầu tư.\nPhối hợp các phòng ban (Đầu tư, Pháp lý, Kỹ thuật, Kinh doanh) trong quá trình lập và điều chỉnh quy hoạch.\nHỗ trợ làm việc với cơ quan quản lý Nhà nước trong công tác thẩm định, phê duyệt quy hoạch.\nThực hiện các công tác khác theo yêu cầu của trưởng ban và BLĐ",
+        "job_requirements": "Tốt nghiệp Đại học trở lên chuyên ngành quy hoạch\nTối thiểu 10 năm kinh nghiệm quản lý thiết kế quy hoạch cho chủ đầu tư hoặc tư vấn quy hoạch.\nNắm vững quy trình thực hiện dự án, các bước triển khai quy hoạch thiết kế từ giai đoạn chuẩn bị đầu tư đến giai đoạn thi công xây dựng;\nNắm vững các quy định pháp luật về xây dựng và những quy định tại các văn bản pháp luật khác có liên quan đến hoạt động đầu tư xây dựng;\nHiểu rõ quy định pháp luật về quy hoạch – xây dựng; tư duy tổng thể, định hướng phát triển dự án tốt.\nKỹ năng quản lý, phối hợp và làm việc với nhiều bên liên quan.\nCó thể triển khai khi có yêu cầu"
+      },
+      "final_scores": {},
+      "rationale": ""
+    },
+    {
+      "case_id": "residual_026",
+      "pair_key": "bds_L3_c196d43314af0340359c4d8d9d15dbb1",
+      "cv_id": "bds_L3",
+      "job_id": "c196d43314af0340359c4d8d9d15dbb1",
+      "selection": {
+        "score": 22.5,
+        "min_rank": 8,
+        "methods": [
+          {
+            "method": "E3t: Hybrid + ESCO tuned",
+            "rank": 8
+          },
+          {
+            "method": "E3g-basic: Hybrid + ESCO + KG tuned",
+            "rank": 8
+          }
+        ]
+      },
+      "cv": {
+        "category_target": "Bất động sản",
+        "level": "L3",
+        "experience_years": 3,
+        "experience_description": "Đã làm việc 3 năm trong lĩnh vực kinh doanh bất động sản, có kinh nghiệm trong việc quản lý dự án và tư vấn cho khách hàng",
+        "education_level": "Đại học",
+        "education_field": "Kinh tế",
+        "technical_skills": [
+          "Sales bất động sản",
+          "B2C",
+          "Direct Sales",
+          "Quản lý dự án bất động sản"
+        ],
+        "soft_skills": [
+          "giao tiếp tốt",
+          "làm việc nhóm",
+          "chịu áp lực",
+          "quản lý thời gian hiệu quả"
+        ],
+        "languages": [
+          "Tiếng Anh",
+          "Tiếng Pháp"
+        ],
+        "certificates": [
+          "Chứng chỉ hành nghề bất động sản"
+        ],
+        "search_text": "Kinh nghiệm: 3 năm. Đã làm việc 3 năm trong lĩnh vực kinh doanh bất động sản, có kinh nghiệm trong việc quản lý dự án và tư vấn cho khách hàng. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: Sales bất động sản, B2C, Direct Sales, Quản lý dự án bất động sản. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực, quản lý thời gian hiệu quả. Ngoại ngữ: Tiếng Anh, Tiếng Pháp. Chứng chỉ: Chứng chỉ hành nghề bất động sản."
+      },
+      "job": {
+        "title": "Chuyên Viên Quản Lý Thiết Kế Quy Hoạch",
+        "company": "Công ty cổ phần Tập đoàn Everland Pro Company",
+        "category": "Bất động sản",
+        "experience": "Trên 5 năm",
+        "education_level": "Đại học",
+        "education_field": "",
+        "technical_skills": "Quản lý dự án bất động sản, Xây dựng, Thiết kế / Kiến trúc",
+        "soft_skills": "",
+        "languages": "",
+        "certificates": "",
+        "requirements_tags": "Quản lý dự án bất động sản, Xây dựng, Thiết kế / Kiến trúc",
+        "specializations": "Trên 5 năm kinh nghiệm, Đại Học trở lên, Tuổi 27 - 45",
+        "job_description": "Quản lý, điều phối công tác thiết kế quy hoạch (QHCT, QHPK, quy hoạch chi tiết…) của các dự án đầu tư.\nLàm việc với đơn vị tư vấn quy hoạch, thiết kế; kiểm soát tiến độ, chất lượng và tính đồng bộ của hồ sơ.\nThẩm tra phương án quy hoạch đảm bảo phù hợp định hướng phát triển dự án, pháp lý và hiệu quả đầu tư.\nPhối hợp các phòng ban (Đầu tư, Pháp lý, Kỹ thuật, Kinh doanh) trong quá trình lập và điều chỉnh quy hoạch.\nHỗ trợ làm việc với cơ quan quản lý Nhà nước trong công tác thẩm định, phê duyệt quy hoạch.\nThực hiện các công tác khác theo yêu cầu của trưởng ban và BLĐ",
+        "job_requirements": "Tốt nghiệp Đại học trở lên chuyên ngành quy hoạch\nTối thiểu 10 năm kinh nghiệm quản lý thiết kế quy hoạch cho chủ đầu tư hoặc tư vấn quy hoạch.\nNắm vững quy trình thực hiện dự án, các bước triển khai quy hoạch thiết kế từ giai đoạn chuẩn bị đầu tư đến giai đoạn thi công xây dựng;\nNắm vững các quy định pháp luật về xây dựng và những quy định tại các văn bản pháp luật khác có liên quan đến hoạt động đầu tư xây dựng;\nHiểu rõ quy định pháp luật về quy hoạch – xây dựng; tư duy tổng thể, định hướng phát triển dự án tốt.\nKỹ năng quản lý, phối hợp và làm việc với nhiều bên liên quan.\nCó thể triển khai khi có yêu cầu"
+      },
+      "final_scores": {},
+      "rationale": ""
+    },
+    {
+      "case_id": "residual_027",
+      "pair_key": "cskh_L1_8e8a17b399ccc441b7f1a15e86507f91",
+      "cv_id": "cskh_L1",
+      "job_id": "8e8a17b399ccc441b7f1a15e86507f91",
+      "selection": {
+        "score": 22.5,
+        "min_rank": 8,
+        "methods": [
+          {
+            "method": "E3t: Hybrid + ESCO tuned",
+            "rank": 8
+          },
+          {
+            "method": "E3g-basic: Hybrid + ESCO + KG tuned",
+            "rank": 8
+          }
+        ]
+      },
+      "cv": {
+        "category_target": "Chăm sóc khách hàng",
+        "level": "L1",
+        "experience_years": 0,
+        "experience_description": "Sinh viên mới ra trường, từng tham gia các dự án nhóm về chăm sóc khách hàng",
+        "education_level": "Đại học",
+        "education_field": "Kinh doanh",
+        "technical_skills": [
+          "Excel",
+          "Tiếng Anh"
+        ],
+        "soft_skills": [
+          "giao tiếp tốt",
+          "làm việc nhóm"
+        ],
+        "languages": [
+          "Tiếng Anh"
+        ],
+        "certificates": [],
+        "search_text": "Kinh nghiệm: 0 năm. Sinh viên mới ra trường, từng tham gia các dự án nhóm về chăm sóc khách hàng. Học vấn: Đại học Kinh doanh. Kỹ năng chuyên môn: Excel, Tiếng Anh. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+      },
+      "job": {
+        "title": "Nhân Viên Chăm Sóc Khách Hàng Biết Tiếng Trung - Không Yêu Cầu Kinh Nghiệm - Tuyển Nữ - Tháng Nghỉ 8 Ngày Linh Hoạt (Thu Nhập 20 - 22 Triệu)",
+        "company": "CÔNG TY TNHH INSIGHTVIET CS",
+        "category": "Chăm sóc khách hàng",
+        "experience": "Không yêu cầu",
+        "education_level": "Cao đẳng",
+        "education_field": "",
+        "technical_skills": "Tiếng Trung HSK 4, Tiếng Trung HSK 5, Tiếng Trung HSK 6, Tiếng Trung Giao tiếp thành thạo",
+        "soft_skills": "",
+        "languages": "Tiếng Trung",
+        "certificates": "",
+        "requirements_tags": "Chăm sóc khách hàng",
+        "specializations": "Không cần kinh nghiệm, Cao Đẳng trở lên, Tuổi 18 - 26, Nữ, Tiếng Trung HSK 4, Tiếng Trung HSK 5, Tiếng Trung HSK 6, Tiếng Trung Giao tiếp thành thạo",
+        "job_description": "- Tiếp nhận đơn hàng, hỗ trợ khách đặt hàng\n- Theo dõi, cập nhật và xử lý các vấn đề phát sinh đối với đơn hàng của khách hàng,...\n- Job không yêu cầu gọi điện, không sale",
+        "job_requirements": "- Tiếng Trung nghe, nói, đọc tốt (Tương đương HSK5 hoặc HSK4 cứng trở lên)\n- Không yêu cầu kinh nghiệm, được đào tạo từ đầu\n- Có thể xoay ca: ca sáng và ca đêm (1 tháng xoay ca 1 lần)\n- CHỈ TUYỂN NỮ"
+      },
+      "final_scores": {},
+      "rationale": ""
+    },
+    {
+      "case_id": "residual_028",
+      "pair_key": "cskh_L2b_e6975306ca72773f34cab870d59a72cd",
+      "cv_id": "cskh_L2b",
+      "job_id": "e6975306ca72773f34cab870d59a72cd",
+      "selection": {
+        "score": 22.5,
+        "min_rank": 8,
+        "methods": [
+          {
+            "method": "E3t: Hybrid + ESCO tuned",
+            "rank": 8
+          },
+          {
+            "method": "E3g-basic: Hybrid + ESCO + KG tuned",
+            "rank": 8
+          }
+        ]
+      },
+      "cv": {
+        "category_target": "Chăm sóc khách hàng",
+        "level": "L2b",
+        "experience_years": 2,
+        "experience_description": "2 năm làm nhân viên chăm sóc khách hàng tại công ty dịch vụ, hỗ trợ khách hàng qua điện thoại và email",
+        "education_level": "Đại học",
+        "education_field": "Quản trị kinh doanh",
+        "technical_skills": [
+          "Excel",
+          "Tiếng Anh IELTS 6.5",
+          "Call Center/Trực tổng đài",
+          "Customer Experience"
+        ],
+        "soft_skills": [
+          "giao tiếp tốt",
+          "làm việc nhóm",
+          "chịu áp lực"
+        ],
+        "languages": [
+          "Tiếng Anh"
+        ],
+        "certificates": [
+          "IELTS 6.5"
+        ],
+        "search_text": "Kinh nghiệm: 2 năm. 2 năm làm nhân viên chăm sóc khách hàng tại công ty dịch vụ, hỗ trợ khách hàng qua điện thoại và email. Học vấn: Đại học Quản trị kinh doanh. Kỹ năng chuyên môn: Excel, Tiếng Anh IELTS 6.5, Call Center/Trực tổng đài, Customer Experience. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực. Ngoại ngữ: Tiếng Anh. Chứng chỉ: IELTS 6.5."
+      },
+      "job": {
+        "title": "Nhân Viên Chăm Sóc Khách Hàng",
+        "company": "Công ty CP Dược Phẩm Thái Minh Pro Company",
+        "category": "Chăm sóc khách hàng",
+        "experience": "1 năm",
+        "education_level": "Cao đẳng",
+        "education_field": "",
+        "technical_skills": "Chăm sóc khách hàng, Y tế / Dược phẩm",
+        "soft_skills": "",
+        "languages": "",
+        "certificates": "",
+        "requirements_tags": "Chăm sóc khách hàng, Y tế / Dược phẩm",
+        "specializations": "1 năm kinh nghiệm, Cao Đẳng trở lên, Tuổi 22 - 32",
+        "job_description": "Chuyển nhu cầu khách hàng thành doanh thu\n- Tiếp nhận và phản hồi khách hàng qua các kênh Online: tổng đài, website, zalo, facebook,...\n- Tư vấn, thuyết phục khách hàng dựa trên tình trạng sức khỏe, đưa ra giải pháp phù hợp và thúc đẩy khách hàng quyết định mua hàng.\nGia tăng giá trị trên từng khách hàng và xây dựng mối quan hệ lâu dài\n- Đồng hành cùng khách hàng trong thời gian sử dụng sản phẩm và theo hiệu quả sử dụng sản phẩm. Giải đáp thắc mắc, lo lắng, phản hồi tiêu cực một cách thỏa đáng.\n- Dựa trên những hiệu quả, cải thiện trong quá trình sử dụng tư vấn khách hàng duy trì theo liệu trình kèm theo chương trình ưu đãi, tích điểm hấp dẫn. Từ đó tạo dựng lòng tin và xây dựng mối quan hệ lâu dài với khách hàng.\nĐảm bảo hiệu suất và chất lượng xử lý trong quá trình phục vụ khách hàng\n- Tiếp nhận và xử lý hiệu quả lượng data khách hàng đổ về và đảm bảo trải nghiệm khách hàng.\n- Đảm bảo tốc độ phản hồi kịp thời, không bỏ sót khách .",
+        "job_requirements": "Phẩm chất:\n- Tinh thần ham học hỏi, chính trực, cẩn thận.\nNăng lực chuyên môn & kỹ năng:\n- Có từ  1 năm kinh nghiệm làm nhân viên kinh doanh, Tổng đài viên,Telesales CSKH...\n- Tốt nghiệp từ Cao đẳng trở lên (ưu tiên ngành dược,..)\n- Ưu tiên ứng viên gần khu vực Cầu Giấy, bán kính 5-6km\n- Kỹ năng giao tiếp, kỹ năng giải quyết khiếu nại.\n- Kỹ năng làm việc nhóm.\n- Kỹ sử dụng máy tính văn phòng, tổng hợp số liệu, báo cáo.\n- Giọng nói không bị ngọng, không nói giọng địa phương."
+      },
+      "final_scores": {},
+      "rationale": ""
+    },
+    {
+      "case_id": "residual_029",
+      "pair_key": "bds_L1_75cf06301c2e8c9b972c8b78f587c7c4",
+      "cv_id": "bds_L1",
+      "job_id": "75cf06301c2e8c9b972c8b78f587c7c4",
+      "selection": {
+        "score": 15.0,
+        "min_rank": 9,
+        "methods": [
+          {
+            "method": "E3t: Hybrid + ESCO tuned",
+            "rank": 9
+          },
+          {
+            "method": "E3g-basic: Hybrid + ESCO + KG tuned",
+            "rank": 9
+          }
+        ]
+      },
+      "cv": {
+        "category_target": "Bất động sản",
+        "level": "L1",
+        "experience_years": 0,
+        "experience_description": "Mới tốt nghiệp đại học ngành Quản trị kinh doanh, chưa có kinh nghiệm chuyên môn",
+        "education_level": "Đại học",
+        "education_field": "Kinh tế",
+        "technical_skills": [
+          "Sales bất động sản",
+          "B2C"
+        ],
+        "soft_skills": [
+          "giao tiếp tốt",
+          "làm việc nhóm"
+        ],
+        "languages": [
+          "Tiếng Anh"
+        ],
+        "certificates": [],
+        "search_text": "Kinh nghiệm: 0 năm. Mới tốt nghiệp đại học ngành Quản trị kinh doanh, chưa có kinh nghiệm chuyên môn. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: Sales bất động sản, B2C. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm. Ngoại ngữ: Tiếng Anh."
+      },
+      "job": {
+        "title": "Thư Ký Kinh Doanh - Sale Admin Bất Động Sản",
+        "company": "CÔNG TY CỔ PHẦN DỊCH VỤ BẤT ĐỘNG SẢN DMH GROUP",
+        "category": "Bất động sản",
+        "experience": "Dưới 1 năm",
+        "education_level": "Cao đẳng",
+        "education_field": "",
+        "technical_skills": "Sales Admin/Sales Support/Sales Associate, Bất động sản, B2B, B2C, Direct Sales, Telesales",
+        "soft_skills": "",
+        "languages": "",
+        "certificates": "",
+        "requirements_tags": "Sales Admin/Sales Support/Sales Associate, Bất động sản, B2B, B2C, Direct Sales, Telesales",
+        "specializations": "Dưới 1 năm kinh nghiệm, Cao Đẳng trở lên, Tuổi 24 - 35",
+        "job_description": "• Quản lý tài liệu bán hàng (đặt chỗ, hợp đồng, phụ lục, hoàn tiền, v.v.) theo quy định công ty.\n• Cập nhật dữ liệu khách hàng, quy trình bán hàng và bảng hàng.\n• Tổng hợp danh sách nhân sự và nhiệm vụ phòng Kinh doanh, báo cáo định kỳ hoặc theo yêu cầu.\n• Hỗ trợ sự kiện bán hàng (tài liệu, phối hợp với Marketing, Chăm sóc khách hàng).\n• Theo dõi hoạt động bán hàng, lập báo cáo KPI và doanh thu hàng tuần/tháng.\n• Phối hợp xác minh và tính toán hoa hồng cho đội ngũ bán hàng nội bộ, đại lý; theo dõi thanh toán hoa hồng.\n• Soạn thảo, quản lý hợp đồng đại lý; kiểm tra phí hoa hồng theo chính sách.\n• Duy trì liên lạc với đại lý, xử lý khiếu nại và quản lý thanh toán.",
+        "job_requirements": "• Tối thiểu 6 tháng kinh nghiệm Sale Admin Bất động sản.\n• Thành thạo Microsoft Office, quản lý tài liệu.\n• Kỹ năng hành chính bán hàng, giao tiếp, xử lý vấn đề.\n• Hiểu quy trình bán hàng và chính sách hoa hồng."
+      },
+      "final_scores": {},
+      "rationale": ""
+    },
+    {
+      "case_id": "residual_030",
+      "pair_key": "bds_L2_33418716f65b3a78166c28af89e8ec51",
+      "cv_id": "bds_L2",
+      "job_id": "33418716f65b3a78166c28af89e8ec51",
+      "selection": {
+        "score": 9.0,
+        "min_rank": 8,
+        "methods": [
+          {
+            "method": "E3: Hybrid + ESCO",
+            "rank": 8
+          }
+        ]
+      },
+      "cv": {
+        "category_target": "Bất động sản",
+        "level": "L2",
+        "experience_years": 1,
+        "experience_description": "Đã làm việc 1 năm trong lĩnh vực kinh doanh bất động sản, có kinh nghiệm trong việc tư vấn và bán hàng",
+        "education_level": "Đại học",
+        "education_field": "Kinh tế",
+        "technical_skills": [
+          "Sales bất động sản",
+          "B2C",
+          "Direct Sales"
+        ],
+        "soft_skills": [
+          "giao tiếp tốt",
+          "làm việc nhóm",
+          "chịu áp lực"
+        ],
+        "languages": [
+          "Tiếng Anh"
+        ],
+        "certificates": [],
+        "search_text": "Kinh nghiệm: 1 năm. Đã làm việc 1 năm trong lĩnh vực kinh doanh bất động sản, có kinh nghiệm trong việc tư vấn và bán hàng. Học vấn: Đại học Kinh tế. Kỹ năng chuyên môn: Sales bất động sản, B2C, Direct Sales. Kỹ năng mềm: giao tiếp tốt, làm việc nhóm, chịu áp lực. Ngoại ngữ: Tiếng Anh."
+      },
+      "job": {
+        "title": "Chuyên Viên Kinh Doanh",
+        "company": "Công ty Cổ Phần Rich Nguyen Academy",
+        "category": "Bất động sản",
+        "experience": "1 năm",
+        "education_level": "Cao đẳng",
+        "education_field": "",
+        "technical_skills": "Sales bất động sản/Môi giới bất động sản, Bảo hiểm, Bất động sản, Tài chính, B2B, B2C, Direct Sales",
+        "soft_skills": "",
+        "languages": "",
+        "certificates": "",
+        "requirements_tags": "Sales bất động sản/Môi giới bất động sản, Bảo hiểm, Bất động sản, Tài chính, B2B, B2C, Direct Sales",
+        "specializations": "1 năm kinh nghiệm, Cao Đẳng trở lên, Tuổi 23 - 35",
+        "job_description": "Tiếp nhận, tư vấn và chăm sóc khách hàng từ nguồn MKT của Công ty, các khách hàng tiềm năng.\nThực hiện đăng tin dự án để tiếp cận đa dạng nguồn khách hàng tiềm năng: Website, Facebook & Fanpage, Trang BĐS, Forum, Gửi Email cá nhân ...\nThực hiện tìm kiếm và phát triển khách hàng mới\nPhối hợp với đội nhóm thiết lập các cuộc hẹn đưa khách hàng đi xem dự án và tư vấn trực tiếp.\nCập nhật thông tin dự án về sản phẩm, chính sách, dự án mới và tìm kiếm khách hàng tiềm năng thông qua các sự kiện, event, hội thảo.\nBáo cáo theo tuần, tháng kết quả công việc",
+        "job_requirements": "Độ tuổi từ 23 - 35 tuổi\nCó kinh nghiệm bán hàng, tư vấn, chăm sóc khách hàng (ưu tiên bất động sản, tài chính, bảo hiểm, khoá học, ô tô, ngân hàng...)\nYêu thích lĩnh vực bất động sản, mong muốn phát triển thành vị trí sale bất động sản chuyên nghiệp.\nSẵn sàng học hỏi, có tinh thần tự chủ – trách nhiệm – không ngại thử thách\nCó tư duy cầu tiến, muốn phát triển sự nghiệp song song với quá trình học tập và đầu tư."
+      },
+      "final_scores": {},
+      "rationale": ""
+    }
+  ]
+}

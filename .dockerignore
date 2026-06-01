@@ -1,0 +1,68 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Secrets and local environment
+.env
+.env.*
+src/.env
+src/.env.*
+!src/.env.example
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs and runtime state
+*.log
+logs/
+src/logs/
+scratch/
+andrej-karpathy-skills/
+docs/
+GraduationThesisTemplate-main/
+scripts/
+src/experiments/
+data/scoring_prompt_tests/
+data/search_quality_current/
+data/turn_1/
+Dockerfile.scheduler
+requirements.scheduler.txt
+src/_check_*.py
+src/crawl_*.py
+src/enrich_esco_skills.py
+src/fetch_esco_labels.py
+src/geocode_retry.py
+src/llm_cleaner.py
+src/scheduler.py
+
+# Large/generated data artifacts
+data/raw/
+data/cache/
+data/*.pdf
+*.zip
+
+# Model weights are mounted locally, not copied into the app image.
+models/
+
+# Git
+.git/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Docker
+docker-compose.override.yml

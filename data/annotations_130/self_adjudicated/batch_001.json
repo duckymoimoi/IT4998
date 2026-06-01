@@ -1,0 +1,134 @@
+{
+  "metadata": {
+    "batch": 1,
+    "method": "self_adjudication_by_codex_no_external_api_no_regex_scoring",
+    "source_pairs_file": "data/evaluation_pairs_1300_v2.json",
+    "source_annotations_dir": "data/annotations_130",
+    "high_disagreement_threshold": "max-min > 4 on any dimension",
+    "case_range": "1-20",
+    "total_cases_in_batch": 20,
+    "notes": "Scores are manually adjudicated from CV/JD content and the three model annotations. Original annotation files are not modified."
+  },
+  "cases": [
+    {
+      "pair_key": "bds_L1_0feeda23a58657fb3da9dd93842f8249_3",
+      "high_disagreement_dims": ["skills_match", "experience_match"],
+      "final_scores": {"relevance_score": 6, "skills_match": 7, "experience_match": 6, "education_match": 8},
+      "adjudication_note": "CV khớp core Sales BĐS/B2C nhưng thiếu telesales/online sales và chưa có 6 tháng kinh nghiệm như JD yêu cầu."
+    },
+    {
+      "pair_key": "bds_L1_649e49a7851237ec04913b846e2760dd_15",
+      "high_disagreement_dims": ["skills_match"],
+      "final_scores": {"relevance_score": 8, "skills_match": 8, "experience_match": 10, "education_match": 8},
+      "adjudication_note": "Job sales BĐS không yêu cầu kinh nghiệm, CV có đúng Sales BĐS/B2C và học vấn vượt yêu cầu."
+    },
+    {
+      "pair_key": "bds_L1_6f45f047db1ac4041f38e7f48d5764e4_13",
+      "high_disagreement_dims": ["experience_match"],
+      "final_scores": {"relevance_score": 5, "skills_match": 5, "experience_match": 4, "education_match": 8},
+      "adjudication_note": "Có nền BĐS nhưng thiếu Sales Admin, Excel/Sheet và thiếu tối thiểu 1 năm kinh nghiệm vận hành/sales admin."
+    },
+    {
+      "pair_key": "bds_L1_e43ade755d9156bda5212d5e23303442_11",
+      "high_disagreement_dims": ["skills_match"],
+      "final_scores": {"relevance_score": 7, "skills_match": 7, "experience_match": 10, "education_match": 8},
+      "adjudication_note": "CV khớp Sales BĐS/B2C khá tốt, job không yêu cầu kinh nghiệm, nhưng còn thiếu B2B/Direct Sales/môi giới chuyên sâu."
+    },
+    {
+      "pair_key": "bds_L2_24470b97617841c1f85862f4c04ce539_13",
+      "high_disagreement_dims": ["experience_match"],
+      "final_scores": {"relevance_score": 5, "skills_match": 4, "experience_match": 4, "education_match": 8},
+      "adjudication_note": "CV 1 năm sales BĐS phù hợp ngành nhưng thiếu kinh nghiệm quản lý đội nhóm/lãnh đạo cho vị trí trưởng phòng."
+    },
+    {
+      "pair_key": "bds_L2b_6bfd53767bb4463720b123ebc03a27c2_4",
+      "high_disagreement_dims": ["experience_match"],
+      "final_scores": {"relevance_score": 7, "skills_match": 7, "experience_match": 6, "education_match": 8},
+      "adjudication_note": "Có kinh nghiệm BĐS và quản lý dự án liên quan, nhưng 2 năm hơi cao so với job dưới 1 năm/sinh viên mới tốt nghiệp."
+    },
+    {
+      "pair_key": "bds_L2b_70615d0a6923e30854ea35dba94c7202_8",
+      "high_disagreement_dims": ["skills_match"],
+      "final_scores": {"relevance_score": 4, "skills_match": 4, "experience_match": 3, "education_match": 8},
+      "adjudication_note": "Job đầu tư phát triển dự án cần 5 năm, đầu tư/xây dựng/pháp lý/phần mềm; CV mới 2 năm sales BĐS và thiếu phần lớn kỹ năng lõi."
+    },
+    {
+      "pair_key": "bds_L3_6bfd53767bb4463720b123ebc03a27c2_5",
+      "high_disagreement_dims": ["experience_match"],
+      "final_scores": {"relevance_score": 6, "skills_match": 7, "experience_match": 5, "education_match": 8},
+      "adjudication_note": "Kỹ năng BĐS/quản lý dự án phù hợp, nhưng 3 năm kinh nghiệm là overqualified cho job dưới 1 năm/hướng junior."
+    },
+    {
+      "pair_key": "bds_L3b_4ccda888dc185e53c6595de192044610_5",
+      "high_disagreement_dims": ["experience_match"],
+      "final_scores": {"relevance_score": 6, "skills_match": 5, "experience_match": 5, "education_match": 8},
+      "adjudication_note": "Kinh nghiệm BĐS liên quan nhưng không trực tiếp thủ tục/hồ sơ, thiếu Excel/AutoCAD/SAP; 4 năm hơi vượt yêu cầu 1-3 năm."
+    },
+    {
+      "pair_key": "bds_L3b_6bfd53767bb4463720b123ebc03a27c2_3",
+      "high_disagreement_dims": ["skills_match", "experience_match"],
+      "final_scores": {"relevance_score": 6, "skills_match": 7, "experience_match": 4, "education_match": 8},
+      "adjudication_note": "Có kỹ năng BĐS/quản lý dự án mạnh nhưng 4 năm trưởng phòng quá cao so với job admin dự án dưới 1 năm."
+    },
+    {
+      "pair_key": "bds_L4_6bfd53767bb4463720b123ebc03a27c2_5",
+      "high_disagreement_dims": ["experience_match"],
+      "final_scores": {"relevance_score": 6, "skills_match": 7, "experience_match": 4, "education_match": 8},
+      "adjudication_note": "Năng lực BĐS phù hợp nhưng 6 năm quản lý/phát triển dự án overqualified nặng cho job admin junior dưới 1 năm."
+    },
+    {
+      "pair_key": "bds_L4_7d079b4b1f713fe7edd7cfb413cd3aef_4",
+      "high_disagreement_dims": ["experience_match"],
+      "final_scores": {"relevance_score": 6, "skills_match": 8, "experience_match": 4, "education_match": 8},
+      "adjudication_note": "Kỹ năng sales BĐS rất phù hợp, nhưng 6 năm kinh nghiệm cho job không yêu cầu kinh nghiệm phải bị phạt overqualified."
+    },
+    {
+      "pair_key": "bds_L4_921b61b86e73bd5c2a0fa22475f0d82e_10",
+      "high_disagreement_dims": ["experience_match"],
+      "final_scores": {"relevance_score": 6, "skills_match": 7, "experience_match": 4, "education_match": 8},
+      "adjudication_note": "Đọc JD thực tế là sales BĐS không yêu cầu kinh nghiệm; CV hợp ngành nhưng 6 năm là overqualified nặng."
+    },
+    {
+      "pair_key": "bds_L4_f3285daaa63b2a31d61f0cbb4d9e3dd9_15",
+      "high_disagreement_dims": ["experience_match"],
+      "final_scores": {"relevance_score": 7, "skills_match": 8, "experience_match": 4, "education_match": 8},
+      "adjudication_note": "Core sales BĐS/B2C/Direct Sales khớp tốt, nhưng job không yêu cầu kinh nghiệm nên CV 6 năm bị overqualified."
+    },
+    {
+      "pair_key": "bds_L4b_6bfd53767bb4463720b123ebc03a27c2_6",
+      "high_disagreement_dims": ["relevance_score", "skills_match", "experience_match"],
+      "final_scores": {"relevance_score": 5, "skills_match": 7, "experience_match": 3, "education_match": 8},
+      "adjudication_note": "Kỹ năng BĐS/quản lý dự án liên quan nhưng vị trí admin dự án junior dưới 1 năm; CV 7 năm giám đốc kinh doanh quá overqualified."
+    },
+    {
+      "pair_key": "bds_L4b_70615d0a6923e30854ea35dba94c7202_10",
+      "high_disagreement_dims": ["skills_match"],
+      "final_scores": {"relevance_score": 6, "skills_match": 5, "experience_match": 7, "education_match": 9},
+      "adjudication_note": "Kinh nghiệm BĐS cao và học vấn kinh tế tương đối phù hợp, nhưng thiếu kỹ năng đầu tư/xây dựng/pháp lý/phần mềm dự toán/AutoCAD."
+    },
+    {
+      "pair_key": "bds_L4b_7d079b4b1f713fe7edd7cfb413cd3aef_5",
+      "high_disagreement_dims": ["experience_match"],
+      "final_scores": {"relevance_score": 6, "skills_match": 7, "experience_match": 4, "education_match": 8},
+      "adjudication_note": "CV khớp sales BĐS nhưng 7 năm quản lý là overqualified nặng cho job nhân viên không yêu cầu kinh nghiệm."
+    },
+    {
+      "pair_key": "bds_L4b_921b61b86e73bd5c2a0fa22475f0d82e_7",
+      "high_disagreement_dims": ["experience_match"],
+      "final_scores": {"relevance_score": 5, "skills_match": 6, "experience_match": 4, "education_match": 8},
+      "adjudication_note": "JD thực tế là sales/tư vấn BĐS nhưng field kỹ năng bị nhiễu Excel/AutoCAD/Python/SAP; CV hợp ngành nhưng 7 năm vẫn overqualified."
+    },
+    {
+      "pair_key": "bds_P2_d3baab157fe54f4c6135b0ef11d38b42_10",
+      "high_disagreement_dims": ["education_match"],
+      "final_scores": {"relevance_score": 5, "skills_match": 5, "experience_match": 9, "education_match": 4},
+      "adjudication_note": "Kinh nghiệm phục vụ khách hàng chuyển đổi được cho lễ tân, nhưng học vấn Trung cấp thấp hơn yêu cầu Cao đẳng/Đại học."
+    },
+    {
+      "pair_key": "bds_P2_e64a793e79b507d7cfba0808d84d5117_3",
+      "high_disagreement_dims": ["experience_match"],
+      "final_scores": {"relevance_score": 4, "skills_match": 3, "experience_match": 5, "education_match": 3},
+      "adjudication_note": "Có chút kinh nghiệm quản lý hàng hóa nhưng không phải warehouse/logistics admin, thiếu WMS/SAP/Excel và học vấn thấp hơn yêu cầu."
+    }
+  ]
+}
