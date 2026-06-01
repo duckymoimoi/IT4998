@@ -145,8 +145,4 @@ docker compose --profile crawl run --rm scheduler python src/scheduler.py --upse
 
 Lưu ý: crawler phụ thuộc vào giao diện TopCV và cơ chế chống bot của trình duyệt, nên có thể cần điều chỉnh Chrome/driver hoặc giảm số luồng nếu website thay đổi hoặc chặn request.
 
-## Lưu ý trước khi public
 
-- Không commit `src/.env`.
-- Không commit model weight, embedding cache, log, file PDF CV cá nhân hoặc output build LaTeX.
-- Nếu API key từng nằm trong file local hoặc từng bị chia sẻ, nên rotate key trước khi public repo.
