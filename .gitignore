@@ -46,15 +46,9 @@ src/experiments/
 data/scoring_prompt_tests/
 data/search_quality_current/
 data/turn_1/
-Dockerfile.scheduler
-requirements.scheduler.txt
 src/_check_*.py
-src/crawl_*.py
 src/enrich_esco_skills.py
 src/fetch_esco_labels.py
-src/geocode_retry.py
-src/llm_cleaner.py
-src/scheduler.py
 
 # External local tooling
 andrej-karpathy-skills/

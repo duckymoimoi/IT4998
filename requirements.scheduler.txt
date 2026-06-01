@@ -1,0 +1,8 @@
+# Scheduler dependencies (lightweight — no GPU/PyTorch)
+pandas>=2.0.0
+requests
+beautifulsoup4
+elasticsearch>=8.0.0
+undetected-chromedriver>=3.5.0
+selenium>=4.15.0
+lxml

@@ -43,8 +43,43 @@ services:
     tty: true
     init: true
 
+  ollama:
+    image: ollama/ollama:latest
+    container_name: do_an_ollama
+    profiles:
+      - crawl
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+
+  scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile.scheduler
+    container_name: do_an_scheduler
+    profiles:
+      - crawl
+    volumes:
+      - ./src:/app/src
+      - ./data:/app/data
+      - ./logs:/app/logs
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+    environment:
+      - ES_HOST=http://elasticsearch:9200
+      - ES_INDEX=topcv_jobs_1300
+      - OLLAMA_URL=http://ollama:11434/api/generate
+      - PYTHONIOENCODING=utf-8
+    env_file:
+      - ./src/.env
+    command: python src/scheduler.py --once --pages 3 --threads 3 --no-embedding
+
 volumes:
   bge_m3_cache:
     driver: local
   es_data:
+    driver: local
+  ollama_data:
     driver: local
