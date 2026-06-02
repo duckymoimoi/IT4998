@@ -1,0 +1,4263 @@
+{
+  "metadata": {
+    "annotator": "llama",
+    "total_annotations": 167,
+    "new_in_this_run": 32,
+    "errors": 0,
+    "elapsed_seconds": 898.2,
+    "timestamp": "2026-06-02 16:31:32"
+  },
+  "annotations": [
+    {
+      "cv_id": "bds_L1",
+      "cv_level": "L1",
+      "cv_category": "Bất động sản",
+      "job_id": "24470b97617841c1f85862f4c04ce539",
+      "job_title": "Trưởng Phòng Kinh Doanh Bất Động Sản",
+      "rank": 10,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t"
+      ],
+      "best_pool_rank": 10,
+      "method_ranks": {
+        "E3t": 10
+      },
+      "relevance_score": 2,
+      "skills_match": 2,
+      "experience_match": 0,
+      "education_match": 6,
+      "justification": "CV ứng viên mới tốt nghiệp, chưa có kinh nghiệm chuyên môn, kỹ năng sales bất động sản chưa rõ ràng, không phù hợp với yêu cầu kinh nghiệm 1 năm và kỹ năng lãnh đạo, đào tạo của vị trí Trưởng Phòng Kinh Doanh Bất Động Sản.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:26:51"
+    },
+    {
+      "cv_id": "bds_L1",
+      "cv_level": "L1",
+      "cv_category": "Bất động sản",
+      "job_id": "8ba40fb8a2477af3f82c61cf31fc52a5",
+      "job_title": "Chuyên Viên Tư Vấn Kinh Doanh Căn Hộ (Tại Văn Phòng) - Lương Cứng Upto 20 Triệu - Thu Nhập 50 - 100 Triệu, Hỗ Trợ Data - Quận Tân Bình (TPHCM)",
+      "rank": 10,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 10,
+      "method_ranks": {
+        "E1": 10
+      },
+      "relevance_score": 5,
+      "skills_match": 6,
+      "experience_match": 2,
+      "education_match": 7,
+      "justification": "CV có kỹ năng sales bất động sản và B2C phù hợp với yêu cầu của JD, nhưng thiếu kinh nghiệm chuyên môn và không đạt yêu cầu 1 năm kinh nghiệm. Học vấn đạt bậc nhưng chưa đủ để nâng relevance.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:27:03"
+    },
+    {
+      "cv_id": "bds_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Bất động sản",
+      "job_id": "1743a2dcca98410d0a7aaaf56dddb865",
+      "job_title": "Nhân Viên Kinh Doanh Sale Môi Giới Bất Động Sản",
+      "rank": 2,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3",
+        "E2t"
+      ],
+      "best_pool_rank": 2,
+      "method_ranks": {
+        "E2": 2,
+        "E3": 5,
+        "E2t": 6
+      },
+      "relevance_score": 6,
+      "skills_match": 6,
+      "experience_match": 8,
+      "education_match": 7,
+      "justification": "Ứng viên có kỹ năng sales B2C và digital marketing, gần khớp với yêu cầu sales bất động sản. Kinh nghiệm 1 năm gần yêu cầu dưới 1 năm, học vấn đại học kinh tế vượt yêu cầu trung học.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:27:16"
+    },
+    {
+      "cv_id": "bds_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Bất động sản",
+      "job_id": "24470b97617841c1f85862f4c04ce539",
+      "job_title": "Trưởng Phòng Kinh Doanh Bất Động Sản",
+      "rank": 2,
+      "es_score": 0,
+      "pool_methods": [
+        "E2t"
+      ],
+      "best_pool_rank": 2,
+      "method_ranks": {
+        "E2t": 2
+      },
+      "relevance_score": 5,
+      "skills_match": 6,
+      "experience_match": 5,
+      "education_match": 7,
+      "justification": "Ứng viên có kỹ năng Sales B2C và Digital Marketing nhưng thiếu kỹ năng lãnh đạo và quản lý đội nhóm, kinh nghiệm chỉ 1 năm không đủ để đáp ứng yêu cầu của vị trí Trưởng Phòng Kinh Doanh Bất Động Sản, học vấn đạt bậc nhưng chưa đủ để nâng relevance.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:27:29"
+    },
+    {
+      "cv_id": "bds_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Bất động sản",
+      "job_id": "78c10740add5bc94b3d608e5e979156c",
+      "job_title": "Chuyên Viên Kinh Doanh/ Sales/ Tư Vấn BĐS Nghỉ Dưỡng Có Kinh Nghiệm Tại Hà Nội, Có Lương Cứng, Thu Nhập 100tr ++",
+      "rank": 2,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 2,
+      "method_ranks": {
+        "E1": 2,
+        "E2": 5,
+        "E2t": 3,
+        "E3t": 3
+      },
+      "relevance_score": 7,
+      "skills_match": 6,
+      "experience_match": 8,
+      "education_match": 6,
+      "justification": "CV có kỹ năng Sales B2C và Digital Marketing phù hợp với yêu cầu của JD, kinh nghiệm 1 năm gần khớp với yêu cầu, học vấn đạt bậc nhưng không đúng chuyên ngành. Tuy nhiên, ứng viên có mục tiêu và khát khao thành công, có thể phù hợp với vị trí này.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:28:47"
+    },
+    {
+      "cv_id": "bds_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Bất động sản",
+      "job_id": "e4af39928f83ab4fc2dbb5601bc0557a",
+      "job_title": "Senior Digital Marketing (Bất Động Sản) - 4N014",
+      "rank": 6,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3",
+        "E3t"
+      ],
+      "best_pool_rank": 2,
+      "method_ranks": {
+        "E2": 6,
+        "E3": 2,
+        "E3t": 7
+      },
+      "relevance_score": 2,
+      "skills_match": 4,
+      "experience_match": 0,
+      "education_match": 7,
+      "justification": "Kỹ năng Digital Marketing và Sales B2C có liên quan nhưng thiếu kinh nghiệm lớn so với yêu cầu 5 năm, học vấn đúng bậc nhưng chưa đủ để nâng relevance. Ứng viên không có kinh nghiệm trong lĩnh vực bất động sản và thiếu kỹ năng chuyên môn cụ thể như Thương mại điện tử.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:29:00"
+    },
+    {
+      "cv_id": "bds_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Bất động sản",
+      "job_id": "4f09db46f0b55cc470a4be7f25a71a3d",
+      "job_title": "Nhân Viên Kinh Doanh | Thu Nhập Đến 150 Triệu/Tháng, Hoa Hồng Đến 4.8% - Đà Nẵng, Huế",
+      "rank": 3,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2",
+        "E3",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 3,
+      "method_ranks": {
+        "E1": 3,
+        "E2": 10,
+        "E3": 8,
+        "E2t": 7,
+        "E3t": 6
+      },
+      "relevance_score": 7,
+      "skills_match": 6,
+      "experience_match": 8,
+      "education_match": 6,
+      "justification": "Ứng viên có kinh nghiệm 1 năm trong lĩnh vực tư vấn và kỹ năng giao tiếp tốt, phù hợp với yêu cầu của công việc. Tuy nhiên, học vấn của ứng viên là Đại học chuyên ngành Kinh tế, không hoàn toàn phù hợp với yêu cầu Cao đẳng của công ty. Kỹ năng chuyên môn của ứng viên như Sales B2C và Digital Marketing cũng có liên quan đến công việc, nhưng không phải là kỹ năng chính yêu cầu của công ty.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:29:13"
+    },
+    {
+      "cv_id": "bds_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Bất động sản",
+      "job_id": "5bcd68d6f7eabe1e69f755a4d1b29b0a",
+      "job_title": "Nhân Viên Kinh Doanh/Tư Vấn/ Sales Bất Động Sản Hỗ Trợ 100% Data Marketing (Có Lương Cứng + Thưởng Nóng + Hoa Hồng Hấp Dẫn)",
+      "rank": 3,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3"
+      ],
+      "best_pool_rank": 3,
+      "method_ranks": {
+        "E2": 3,
+        "E3": 7
+      },
+      "relevance_score": 6,
+      "skills_match": 5,
+      "experience_match": 8,
+      "education_match": 6,
+      "justification": "Ứng viên có kỹ năng sales B2C và digital marketing, kinh nghiệm 1 năm làm nhân viên tư vấn, nhưng học vấn cao hơn yêu cầu trung cấp. Tuy nhiên, kỹ năng chuyên môn và kinh nghiệm chưa hoàn toàn khớp với yêu cầu của job bất động sản.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:29:26"
+    },
+    {
+      "cv_id": "bds_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Bất động sản",
+      "job_id": "819c5742733cac05d94ad605843c09bb",
+      "job_title": "Giám Đốc Marketing Bất Động Sản",
+      "rank": 5,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E3",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E1": 5,
+        "E3": 10,
+        "E2t": 8,
+        "E3t": 9
+      },
+      "relevance_score": 2,
+      "skills_match": 2,
+      "experience_match": 0,
+      "education_match": 7,
+      "justification": "Kỹ năng và kinh nghiệm của ứng viên không phù hợp với yêu cầu của vị trí Giám Đốc Marketing Bất Động Sản, thiếu kinh nghiệm quản lý cấp cao và kiến thức chuyên sâu về Digital Marketing, Branding, CRM, Event, PR.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:29:39"
+    },
+    {
+      "cv_id": "bds_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Bất động sản",
+      "job_id": "1db9bf2d6a3b671ffed2f2c63a7a688f",
+      "job_title": "Chuyên Viên Cao Cấp Truyền Thông Marketing Bất Động Sản (Upto 30tr)",
+      "rank": 6,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E3",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 6,
+      "method_ranks": {
+        "E1": 6,
+        "E3": 6,
+        "E2t": 10,
+        "E3t": 10
+      },
+      "relevance_score": 4,
+      "skills_match": 4,
+      "experience_match": 3,
+      "education_match": 7,
+      "justification": "Ứng viên có một số kỹ năng marketing nhưng thiếu kinh nghiệm và kỹ năng chuyên môn cụ thể như Excel, AutoCAD, Python, SAP; học vấn liên quan nhưng chưa đủ để nâng relevance. Kinh nghiệm 1 năm làm nhân viên tư vấn không đủ để đáp ứng yêu cầu 5 năm kinh nghiệm của vị trí.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:29:52"
+    },
+    {
+      "cv_id": "bds_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Bất động sản",
+      "job_id": "9709af8ff8e3462b769c71dcc9cde317",
+      "job_title": "Chuyên Viên Kinh Doanh",
+      "rank": 8,
+      "es_score": 0,
+      "pool_methods": [
+        "E2"
+      ],
+      "best_pool_rank": 8,
+      "method_ranks": {
+        "E2": 8
+      },
+      "relevance_score": 5,
+      "skills_match": 6,
+      "experience_match": 5,
+      "education_match": 7,
+      "justification": "Ứng viên có kỹ năng sales B2C và digital marketing liên quan đến ngành bất động sản, nhưng thiếu kinh nghiệm 2 năm so với yêu cầu 3 năm. Học vấn đạt bậc đại học nhưng chuyên ngành kinh tế không hoàn toàn khớp với yêu cầu ngành bất động sản.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:30:07"
+    },
+    {
+      "cv_id": "bds_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Bất động sản",
+      "job_id": "9ffbdf538230596381367c97689f8c9c",
+      "job_title": "Nhân Viên Kinh Doanh/Sales BĐS/Tư Vấn Bán Hàng - Phỏng Vấn Nhân Việc Ngay (Chế Độ Hấp Dẫn)",
+      "rank": 8,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t"
+      ],
+      "best_pool_rank": 8,
+      "method_ranks": {
+        "E3t": 8
+      },
+      "relevance_score": 7,
+      "skills_match": 6,
+      "experience_match": 10,
+      "education_match": 7,
+      "justification": "Ứng viên có kỹ năng Sales B2C và giao tiếp tốt, phù hợp với yêu cầu của công việc. Kinh nghiệm 1 năm làm nhân viên tư vấn cũng có thể chuyển đổi sang kinh doanh bất động sản. Học vấn đại học kinh tế cũng liên quan đến ngành bất động sản. Tuy nhiên, ứng viên thiếu kinh nghiệm trực tiếp trong lĩnh vực bất động sản và học vấn không hoàn toàn phù hợp với yêu cầu trung học của công ty.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:30:20"
+    },
+    {
+      "cv_id": "bds_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Bất động sản",
+      "job_id": "ccb43b4c51ee7b36b27fbe1a6b4099be",
+      "job_title": "Trưởng Phòng Kinh Doanh Bất Động Sản",
+      "rank": 8,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 8,
+      "method_ranks": {
+        "E1": 8
+      },
+      "relevance_score": 4,
+      "skills_match": 5,
+      "experience_match": 3,
+      "education_match": 7,
+      "justification": "Ứng viên có một số kỹ năng liên quan như Sales B2C và Digital Marketing, nhưng thiếu kinh nghiệm quản lý và kỹ năng chuyên môn sâu về bất động sản. Kinh nghiệm 1 năm làm nhân viên tư vấn không đủ để đáp ứng yêu cầu 3 năm kinh nghiệm tại vị trí Trưởng phòng.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:30:33"
+    },
+    {
+      "cv_id": "bds_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Bất động sản",
+      "job_id": "164c9b6b18e5e2fcde9efe9df36e89ce",
+      "job_title": "Nhân Viên Kinh Doanh (Không Yêu Cầu Kinh Nghiệm, Lương Cơ Bản 8 - 15 Triệu, Hoa Hồng 45%, Được Đào Tạo, Chấp Nhận Sinh Viên Đang Chờ Bằng)",
+      "rank": 9,
+      "es_score": 0,
+      "pool_methods": [
+        "E2"
+      ],
+      "best_pool_rank": 9,
+      "method_ranks": {
+        "E2": 9
+      },
+      "relevance_score": 6,
+      "skills_match": 5,
+      "experience_match": 10,
+      "education_match": 7,
+      "justification": "Ứng viên có một số kỹ năng liên quan như Sales B2C và Digital Marketing, nhưng thiếu kỹ năng chuyên môn về bất động sản. Kinh nghiệm 1 năm làm nhân viên tư vấn có thể chuyển đổi được, và học vấn đại học kinh tế cũng liên quan. Tuy nhiên, ứng viên cần được đào tạo thêm về kỹ năng bán hàng bất động sản và kiến thức về thị trường bất động sản.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:30:46"
+    },
+    {
+      "cv_id": "bds_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Bất động sản",
+      "job_id": "aec1332725743a27f3ad83206c147a7c",
+      "job_title": "Chuyên Viên/Cộng Tác Viên Kinh Doanh",
+      "rank": 9,
+      "es_score": 0,
+      "pool_methods": [
+        "E2t"
+      ],
+      "best_pool_rank": 9,
+      "method_ranks": {
+        "E2t": 9
+      },
+      "relevance_score": 6,
+      "skills_match": 7,
+      "experience_match": 5,
+      "education_match": 6,
+      "justification": "CV có kỹ năng Sales B2C và Digital Marketing phù hợp với yêu cầu của JD, nhưng thiếu kinh nghiệm trong lĩnh vực bất động sản. Kinh nghiệm 1 năm của ứng viên không đạt yêu cầu 4 năm của JD, nhưng học vấn đại học kinh tế của ứng viên gần đạt yêu cầu cao đẳng của JD.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:31:00"
+    },
+    {
+      "cv_id": "bds_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Bất động sản",
+      "job_id": "db166cff858f94c89b79db31ac65cc36",
+      "job_title": "Chuyên Viên Chạy Ads (Google/TikTok/Facebook) Từ 5 Năm Kinh Nghiệm Bất Động Sản",
+      "rank": 9,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E3"
+      ],
+      "best_pool_rank": 9,
+      "method_ranks": {
+        "E1": 9,
+        "E3": 9
+      },
+      "relevance_score": 2,
+      "skills_match": 4,
+      "experience_match": 2,
+      "education_match": 7,
+      "justification": "CV có một số kỹ năng liên quan như Sales B2C và Digital Marketing, nhưng thiếu kinh nghiệm chạy Ads và không có kinh nghiệm trong lĩnh vực Bất động sản. Học vấn đạt bậc nhưng chưa đủ để nâng relevance.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:31:12"
+    },
+    {
+      "cv_id": "bds_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Bất động sản",
+      "job_id": "588eb4d939238cc5ac8916f0159a221a",
+      "job_title": "Trưởng Phòng Kinh Doanh Bất Động Sản",
+      "rank": 10,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 10,
+      "method_ranks": {
+        "E1": 10
+      },
+      "relevance_score": 2,
+      "skills_match": 2,
+      "experience_match": 3,
+      "education_match": 7,
+      "justification": "Kỹ năng chuyên môn của ứng viên không khớp với yêu cầu của công việc, kinh nghiệm làm việc cũng không đủ để đáp ứng yêu cầu của vị trí Trưởng Phòng Kinh Doanh Bất Động Sản, nhưng học vấn đạt yêu cầu.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:33:25"
+    },
+    {
+      "cv_id": "bds_L2",
+      "cv_level": "L2",
+      "cv_category": "Bất động sản",
+      "job_id": "977fab175ddb8388f706eeb3c008f647",
+      "job_title": "Nhân Viên Kinh Doanh Bất Động Sản - Up To 20 Triệu - Làm Việc Tại TP.HCM Và Tây Ninh",
+      "rank": 1,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 1,
+      "method_ranks": {
+        "E1": 1,
+        "E2": 10,
+        "E2t": 1,
+        "E3t": 2
+      },
+      "relevance_score": 7,
+      "skills_match": 8,
+      "experience_match": 9,
+      "education_match": 6,
+      "justification": "Ứng viên có kỹ năng sales bất động sản và B2C phù hợp với yêu cầu của JD, kinh nghiệm 1 năm gần khớp với yêu cầu dưới 1 năm, nhưng học vấn chỉ đạt đại học chuyên ngành kinh tế, không phải cao đẳng bất động sản như yêu cầu.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:33:39"
+    },
+    {
+      "cv_id": "bds_L2",
+      "cv_level": "L2",
+      "cv_category": "Bất động sản",
+      "job_id": "2f34f3671773434fd9769f17d49bee32",
+      "job_title": "Nhân Viên Kinh Doanh Biết Tiếng Trung Làm Việc Tại Nga",
+      "rank": 2,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 2,
+      "method_ranks": {
+        "E1": 2,
+        "E2t": 5,
+        "E3t": 4
+      },
+      "relevance_score": 6,
+      "skills_match": 7,
+      "experience_match": 8,
+      "education_match": 6,
+      "justification": "CV có kỹ năng sales bất động sản và kinh nghiệm 1 năm trong lĩnh vực kinh doanh bất động sản, tuy nhiên thiếu kỹ năng tiếng Trung và học vấn không đạt yêu cầu Cao đẳng như JD yêu cầu.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:33:52"
+    },
+    {
+      "cv_id": "bds_L2",
+      "cv_level": "L2",
+      "cv_category": "Bất động sản",
+      "job_id": "1743a2dcca98410d0a7aaaf56dddb865",
+      "job_title": "Nhân Viên Kinh Doanh Sale Môi Giới Bất Động Sản",
+      "rank": 10,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2",
+        "E3",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 3,
+      "method_ranks": {
+        "E1": 10,
+        "E2": 3,
+        "E3": 3,
+        "E2t": 7,
+        "E3t": 8
+      },
+      "relevance_score": 7,
+      "skills_match": 8,
+      "experience_match": 9,
+      "education_match": 6,
+      "justification": "Kỹ năng sales bất động sản và giao tiếp tốt của ứng viên khớp với yêu cầu của Job Description, kinh nghiệm 1 năm gần đúng với yêu cầu dưới 1 năm, nhưng học vấn đại học vượt yêu cầu trung học.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:34:05"
+    },
+    {
+      "cv_id": "bds_L2",
+      "cv_level": "L2",
+      "cv_category": "Bất động sản",
+      "job_id": "997e0cf32c912fc23d3e42ba162b31a8",
+      "job_title": "Giám Đốc Kinh Doanh Bất Động Sản",
+      "rank": 3,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2",
+        "E3",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 3,
+      "method_ranks": {
+        "E1": 3,
+        "E2": 5,
+        "E3": 6,
+        "E2t": 6,
+        "E3t": 6
+      },
+      "relevance_score": 4,
+      "skills_match": 6,
+      "experience_match": 2,
+      "education_match": 7,
+      "justification": "Kỹ năng sales bất động sản và B2C của ứng viên phù hợp với yêu cầu của công việc, nhưng kinh nghiệm 1 năm không đáp ứng yêu cầu 5 năm của vị trí Giám Đốc Kinh Doanh Bất Động Sản, học vấn đại học kinh tế liên quan nhưng chưa đủ để nâng cao relevance score.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:34:18"
+    },
+    {
+      "cv_id": "bds_L2",
+      "cv_level": "L2",
+      "cv_category": "Bất động sản",
+      "job_id": "9709af8ff8e3462b769c71dcc9cde317",
+      "job_title": "Chuyên Viên Kinh Doanh",
+      "rank": 8,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E2": 8,
+        "E3": 4,
+        "E2t": 8,
+        "E3t": 7
+      },
+      "relevance_score": 6,
+      "skills_match": 7,
+      "experience_match": 5,
+      "education_match": 8,
+      "justification": "Ứng viên có kỹ năng sales bất động sản và kinh nghiệm 1 năm trong lĩnh vực kinh doanh bất động sản, nhưng thiếu 2 năm kinh nghiệm so với yêu cầu. Học vấn của ứng viên đạt bậc đại học, chuyên ngành kinh tế, phù hợp với yêu cầu của công việc.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:34:31"
+    },
+    {
+      "cv_id": "bds_L2",
+      "cv_level": "L2",
+      "cv_category": "Bất động sản",
+      "job_id": "d4165adb9e49d91a6aed89db6d179ff2",
+      "job_title": "Nhân Viên Kinh Doanh/ Sales/ Tư Vấn Bất Động Sản -Không Yêu Cầu Kinh Nghiệm - Thu Nhập Hấp Dẫn",
+      "rank": 9,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2",
+        "E3",
+        "E2t"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E1": 9,
+        "E2": 4,
+        "E3": 8,
+        "E2t": 10
+      },
+      "relevance_score": 7,
+      "skills_match": 8,
+      "experience_match": 10,
+      "education_match": 6,
+      "justification": "Ứng viên có kỹ năng sales bất động sản và B2C phù hợp với yêu cầu của JD, kinh nghiệm không yêu cầu nên fresher được coi là phù hợp, học vấn đạt bậc nhưng không đúng chuyên ngành yêu cầu.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:34:44"
+    },
+    {
+      "cv_id": "bds_L2",
+      "cv_level": "L2",
+      "cv_category": "Bất động sản",
+      "job_id": "3fc1864d02a250235f066afa0507d202",
+      "job_title": "Trưởng Phòng Kinh Doanh - Cho Thuê BĐS TM Và CN",
+      "rank": 6,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E3",
+        "E3t"
+      ],
+      "best_pool_rank": 6,
+      "method_ranks": {
+        "E1": 6,
+        "E3": 7,
+        "E3t": 9
+      },
+      "relevance_score": 6,
+      "skills_match": 7,
+      "experience_match": 5,
+      "education_match": 9,
+      "justification": "Ứng viên có kỹ năng sales bất động sản và kinh nghiệm trong lĩnh vực kinh doanh bất động sản, nhưng thiếu kinh nghiệm quản lý đội nhóm và chưa đạt yêu cầu 3 năm kinh nghiệm. Học vấn đạt yêu cầu với chuyên ngành Kinh tế.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:34:57"
+    },
+    {
+      "cv_id": "bds_L2",
+      "cv_level": "L2",
+      "cv_category": "Bất động sản",
+      "job_id": "325c52f237e10d0d007b6066a766897d",
+      "job_title": "Nhân Viên Admin",
+      "rank": 10,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t"
+      ],
+      "best_pool_rank": 10,
+      "method_ranks": {
+        "E3t": 10
+      },
+      "relevance_score": 5,
+      "skills_match": 4,
+      "experience_match": 8,
+      "education_match": 6,
+      "justification": "Ứng viên có kinh nghiệm trong lĩnh vực kinh doanh bất động sản, nhưng kỹ năng chuyên môn không hoàn toàn khớp với yêu cầu của vị trí Admin. Học vấn của ứng viên là Đại học chuyên ngành Kinh tế, không hoàn toàn phù hợp với yêu cầu Cao đẳng của vị trí.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:35:10"
+    },
+    {
+      "cv_id": "bds_L2b",
+      "cv_level": "L2b",
+      "cv_category": "Bất động sản",
+      "job_id": "4cf2d132dff97d8828c0a05df47cc8a6",
+      "job_title": "Chuyên Viên Phát Triển Dự Án",
+      "rank": 4,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2",
+        "E3",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 2,
+      "method_ranks": {
+        "E1": 4,
+        "E2": 5,
+        "E3": 2,
+        "E2t": 7,
+        "E3t": 7
+      },
+      "relevance_score": 6,
+      "skills_match": 7,
+      "experience_match": 3,
+      "education_match": 8,
+      "justification": "Kỹ năng chuyên môn của ứng viên như Sales B2B, Telesales, Direct Sales có liên quan đến lĩnh vực bất động sản, nhưng thiếu kỹ năng quản lý dự án bất động sản chuyên sâu. Kinh nghiệm 2 năm của ứng viên chưa đạt yêu cầu trên 5 năm của công việc, nhưng học vấn đại học chuyên ngành Kinh tế là phù hợp.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:35:23"
+    },
+    {
+      "cv_id": "bds_L2b",
+      "cv_level": "L2b",
+      "cv_category": "Bất động sản",
+      "job_id": "94f52ded04546246f02f55d4a6ab0b47",
+      "job_title": "Chuyên Viên Cao Cấp Quản Trị Giao Dịch",
+      "rank": 2,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2",
+        "E3",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 2,
+      "method_ranks": {
+        "E1": 2,
+        "E2": 2,
+        "E3": 6,
+        "E2t": 3,
+        "E3t": 3
+      },
+      "relevance_score": 6,
+      "skills_match": 7,
+      "experience_match": 5,
+      "education_match": 8,
+      "justification": "Kỹ năng quản lý dự án bất động sản và sales B2B của ứng viên phù hợp với yêu cầu của Job Description, nhưng kinh nghiệm 2 năm chưa đạt yêu cầu 5 năm, học vấn đại học kinh tế phù hợp với yêu cầu.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:35:35"
+    },
+    {
+      "cv_id": "bds_L2b",
+      "cv_level": "L2b",
+      "cv_category": "Bất động sản",
+      "job_id": "aec1332725743a27f3ad83206c147a7c",
+      "job_title": "Chuyên Viên/Cộng Tác Viên Kinh Doanh",
+      "rank": 3,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 3,
+      "method_ranks": {
+        "E2": 3,
+        "E3": 3,
+        "E2t": 8,
+        "E3t": 8
+      },
+      "relevance_score": 7,
+      "skills_match": 8,
+      "experience_match": 5,
+      "education_match": 6,
+      "justification": "Kỹ năng chuyên môn của ứng viên như Sales B2B, Telesales, Direct Sales khớp với yêu cầu của Job Description về Sales bất động sản/Môi giới bất động sản, B2C, B2B, Direct Sales. Tuy nhiên, kinh nghiệm của ứng viên chỉ có 2 năm, thấp hơn yêu cầu 4 năm của Job Description. Học vấn của ứng viên là Đại học, cao hơn yêu cầu Cao đẳng của Job Description.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:35:49"
+    },
+    {
+      "cv_id": "bds_L2b",
+      "cv_level": "L2b",
+      "cv_category": "Bất động sản",
+      "job_id": "75cf06301c2e8c9b972c8b78f587c7c4",
+      "job_title": "Thư Ký Kinh Doanh - Sale Admin Bất Động Sản",
+      "rank": 7,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E2": 7,
+        "E3": 5
+      },
+      "relevance_score": 6,
+      "skills_match": 7,
+      "experience_match": 5,
+      "education_match": 6,
+      "justification": "Kỹ năng bán hàng và quản lý dự án bất động sản của ứng viên phù hợp với yêu cầu công việc, nhưng kinh nghiệm 2 năm vượt quá yêu cầu dưới 1 năm, học vấn đại học vượt bậc yêu cầu cao đẳng.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:36:01"
+    },
+    {
+      "cv_id": "bds_L2b",
+      "cv_level": "L2b",
+      "cv_category": "Bất động sản",
+      "job_id": "9709af8ff8e3462b769c71dcc9cde317",
+      "job_title": "Chuyên Viên Kinh Doanh",
+      "rank": 8,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E2": 8,
+        "E3": 7,
+        "E2t": 5,
+        "E3t": 5
+      },
+      "relevance_score": 7,
+      "skills_match": 8,
+      "experience_match": 6,
+      "education_match": 6,
+      "justification": "Kỹ năng chuyên môn của ứng viên như Sales B2B, Telesales, Direct Sales có liên quan đến yêu cầu của vị trí Chuyên Viên Kinh Doanh bất động sản, nhưng kinh nghiệm 2 năm chưa đạt yêu cầu 3 năm và học vấn Đại học chưa phù hợp với yêu cầu Trung cấp.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:36:14"
+    },
+    {
+      "cv_id": "bds_L2b",
+      "cv_level": "L2b",
+      "cv_category": "Bất động sản",
+      "job_id": "f4c2423944f7c3eccae86bdbd4a23b76",
+      "job_title": "Phó Giám Đốc Pháp Lý Dự Án - Kinh Nghiệm Từ 5 Năm - Cần Thơ",
+      "rank": 5,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E1": 5,
+        "E2t": 10,
+        "E3t": 10
+      },
+      "relevance_score": 6,
+      "skills_match": 7,
+      "experience_match": 5,
+      "education_match": 8,
+      "justification": "Ứng viên có kỹ năng quản lý dự án bất động sản và sales B2B, nhưng thiếu kỹ năng pháp lý dự án và luật đất đai. Kinh nghiệm 2 năm chưa đạt yêu cầu 5 năm, nhưng học vấn đại học kinh tế có liên quan đến ngành bất động sản.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:36:27"
+    },
+    {
+      "cv_id": "bds_L2b",
+      "cv_level": "L2b",
+      "cv_category": "Bất động sản",
+      "job_id": "1743a2dcca98410d0a7aaaf56dddb865",
+      "job_title": "Nhân Viên Kinh Doanh Sale Môi Giới Bất Động Sản",
+      "rank": 6,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3",
+        "E2t"
+      ],
+      "best_pool_rank": 6,
+      "method_ranks": {
+        "E2": 6,
+        "E3": 8,
+        "E2t": 9
+      },
+      "relevance_score": 6,
+      "skills_match": 7,
+      "experience_match": 5,
+      "education_match": 4,
+      "justification": "Ứng viên có kỹ năng sales bất động sản và telesales phù hợp với yêu cầu công việc, nhưng kinh nghiệm 2 năm vượt quá yêu cầu dưới 1 năm, học vấn đại học vượt quá yêu cầu trung học, nhưng không có kỹ năng môi giới bất động sản chuyên sâu.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:36:40"
+    },
+    {
+      "cv_id": "bds_L2b",
+      "cv_level": "L2b",
+      "cv_category": "Bất động sản",
+      "job_id": "c196d43314af0340359c4d8d9d15dbb1",
+      "job_title": "Chuyên Viên Quản Lý Thiết Kế Quy Hoạch",
+      "rank": 6,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 6,
+      "method_ranks": {
+        "E1": 6
+      },
+      "relevance_score": 2,
+      "skills_match": 2,
+      "experience_match": 2,
+      "education_match": 5,
+      "justification": "Kỹ năng chuyên môn của ứng viên không khớp với yêu cầu của công việc, kinh nghiệm làm việc cũng không đủ để đáp ứng yêu cầu của vị trí này, học vấn đạt bậc nhưng không đúng chuyên ngành với job yêu cầu quy hoạch/thiết kế kiến trúc.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:36:53"
+    },
+    {
+      "cv_id": "bds_L2b",
+      "cv_level": "L2b",
+      "cv_category": "Bất động sản",
+      "job_id": "165c8c535cd295ac48e366a93b862e80",
+      "job_title": "Trưởng Bộ Phận Pháp Lý Dự Án",
+      "rank": 7,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 7,
+      "method_ranks": {
+        "E1": 7
+      },
+      "relevance_score": 2,
+      "skills_match": 1,
+      "experience_match": 5,
+      "education_match": 5,
+      "justification": "Kinh nghiệm và kỹ năng của ứng viên không phù hợp với yêu cầu của vị trí Trưởng Bộ Phận Pháp Lý Dự Án, đặc biệt là về mặt pháp lý và kiến trúc, thiết kế. Học vấn của ứng viên cũng không đúng chuyên ngành với yêu cầu của công việc.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:39:06"
+    },
+    {
+      "cv_id": "bds_L2b",
+      "cv_level": "L2b",
+      "cv_category": "Bất động sản",
+      "job_id": "3fcb2bb13839a37ca86a42024a53c45b",
+      "job_title": "Nhân Viên Kinh Doanh Bán Nhà Phố/Sales Bất Động Sản/Nhân Viên Tư Vấn BĐS - Không Yêu Cầu Kinh Nghiệm - Được Đào Tạo Từ Đầu - Nguồn Nhà/Nguồn Khách Có Sẵn",
+      "rank": 8,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E3"
+      ],
+      "best_pool_rank": 8,
+      "method_ranks": {
+        "E1": 8,
+        "E3": 10
+      },
+      "relevance_score": 7,
+      "skills_match": 8,
+      "experience_match": 10,
+      "education_match": 7,
+      "justification": "CV có kỹ năng sales bất động sản và telesales phù hợp với yêu cầu của JD, kinh nghiệm không yêu cầu nên fresher được tính là phù hợp, học vấn đạt bậc nhưng không đúng chuyên ngành yêu cầu.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:39:19"
+    },
+    {
+      "cv_id": "bds_L2b",
+      "cv_level": "L2b",
+      "cv_category": "Bất động sản",
+      "job_id": "0cca897da51c7eff8e384cd219ceb9b0",
+      "job_title": "Trưởng Phòng Kinh Doanh Bất Động Sản (Hỗ Trợ MKT) - LCB Từ 13 Triệu, Hoa Hồng Quản Lý 5% Từ 40 Triệu Đến 80 Triệu/Tháng",
+      "rank": 9,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 9,
+      "method_ranks": {
+        "E1": 9
+      },
+      "relevance_score": 7,
+      "skills_match": 8,
+      "experience_match": 6,
+      "education_match": 6,
+      "justification": "Ứng viên có kỹ năng chuyên môn phù hợp với yêu cầu của vị trí Trưởng Phòng Kinh Doanh Bất Động Sản, nhưng kinh nghiệm làm việc chỉ đạt 2 năm trong khi yêu cầu là 1 năm trở lên và học vấn chỉ đạt đại học chuyên ngành kinh tế, không phải là chuyên ngành liên quan trực tiếp đến kinh doanh bất động sản.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:39:32"
+    },
+    {
+      "cv_id": "bds_L2b",
+      "cv_level": "L2b",
+      "cv_category": "Bất động sản",
+      "job_id": "580b0df34954e5d343727d450686f91f",
+      "job_title": "Nhân Viên Kinh Doanh Bất Động Sản",
+      "rank": 9,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3"
+      ],
+      "best_pool_rank": 9,
+      "method_ranks": {
+        "E2": 9,
+        "E3": 9
+      },
+      "relevance_score": 6,
+      "skills_match": 7,
+      "experience_match": 5,
+      "education_match": 6,
+      "justification": "Ứng viên có kỹ năng sales bất động sản và kinh nghiệm làm việc trong lĩnh vực này, nhưng thiếu kinh nghiệm trực tiếp về cho thuê mặt bằng, văn phòng, căn hộ dịch vụ. Học vấn của ứng viên cao hơn yêu cầu của công việc.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:39:45"
+    },
+    {
+      "cv_id": "bds_L2b",
+      "cv_level": "L2b",
+      "cv_category": "Bất động sản",
+      "job_id": "8377c4c7bce316e47b1dbe51f880e103",
+      "job_title": "Nhân Viên Tư Vấn/ Sale Bất Động Sản- Hồ Chí Minh (Lương Cứng 8tr-20tr + Hoa Hồng Sản Phẩm)",
+      "rank": 10,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 10,
+      "method_ranks": {
+        "E1": 10
+      },
+      "relevance_score": 7,
+      "skills_match": 8,
+      "experience_match": 6,
+      "education_match": 6,
+      "justification": "CV có kỹ năng sales bất động sản và kinh nghiệm làm nhân viên kinh doanh bất động sản, tuy nhiên học vấn không đạt yêu cầu Cao đẳng như JD yêu cầu. Kinh nghiệm 2 năm cũng vượt yêu cầu dưới 1 năm của JD, nhưng vẫn có thể phù hợp với vị trí tư vấn/sale bất động sản.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:39:58"
+    },
+    {
+      "cv_id": "bds_L2b",
+      "cv_level": "L2b",
+      "cv_category": "Bất động sản",
+      "job_id": "d4165adb9e49d91a6aed89db6d179ff2",
+      "job_title": "Nhân Viên Kinh Doanh/ Sales/ Tư Vấn Bất Động Sản -Không Yêu Cầu Kinh Nghiệm - Thu Nhập Hấp Dẫn",
+      "rank": 10,
+      "es_score": 0,
+      "pool_methods": [
+        "E2"
+      ],
+      "best_pool_rank": 10,
+      "method_ranks": {
+        "E2": 10
+      },
+      "relevance_score": 8,
+      "skills_match": 8,
+      "experience_match": 10,
+      "education_match": 7,
+      "justification": "Ứng viên có kỹ năng sales bất động sản, telesales và quản lý dự án bất động sản phù hợp với yêu cầu của công việc. Kinh nghiệm 2 năm làm nhân viên kinh doanh tại công ty bất động sản cũng là một lợi thế. Tuy nhiên, học vấn của ứng viên là Đại học chuyên ngành Kinh tế, không hoàn toàn phù hợp với yêu cầu Trung cấp của công việc.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:40:11"
+    },
+    {
+      "cv_id": "bds_L3",
+      "cv_level": "L3",
+      "cv_category": "Bất động sản",
+      "job_id": "4cf2d132dff97d8828c0a05df47cc8a6",
+      "job_title": "Chuyên Viên Phát Triển Dự Án",
+      "rank": 4,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2",
+        "E3",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 1,
+      "method_ranks": {
+        "E1": 4,
+        "E2": 1,
+        "E3": 1,
+        "E2t": 5,
+        "E3t": 5
+      },
+      "relevance_score": 6,
+      "skills_match": 7,
+      "experience_match": 5,
+      "education_match": 8,
+      "justification": "Kỹ năng chuyên môn của ứng viên như Sales bất động sản, B2C, Direct Sales và Quản lý dự án bất động sản có liên quan đến yêu cầu của Job Description, nhưng kinh nghiệm 3 năm của ứng viên lại thiếu so với yêu cầu trên 5 năm của công việc. Học vấn của ứng viên đạt yêu cầu đại học chuyên ngành Kinh tế, nhưng không hoàn toàn phù hợp với yêu cầu chuyên ngành Bất động sản hoặc các ngành liên quan.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:40:24"
+    },
+    {
+      "cv_id": "bds_L3",
+      "cv_level": "L3",
+      "cv_category": "Bất động sản",
+      "job_id": "94f52ded04546246f02f55d4a6ab0b47",
+      "job_title": "Chuyên Viên Cao Cấp Quản Trị Giao Dịch",
+      "rank": 2,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2",
+        "E3",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 2,
+      "method_ranks": {
+        "E1": 2,
+        "E2": 3,
+        "E3": 5,
+        "E2t": 3,
+        "E3t": 3
+      },
+      "relevance_score": 7,
+      "skills_match": 8,
+      "experience_match": 6,
+      "education_match": 9,
+      "justification": "Kỹ năng chuyên môn của ứng viên như Sales bất động sản, B2C, Direct Sales và Quản lý dự án bất động sản khớp với yêu cầu của Job Description. Tuy nhiên, kinh nghiệm của ứng viên chỉ đạt 3 năm, trong khi yêu cầu là 5 năm. Học vấn của ứng viên đạt bậc Đại học, chuyên ngành Kinh tế, phù hợp với yêu cầu của Job Description.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:40:37"
+    },
+    {
+      "cv_id": "bds_L3",
+      "cv_level": "L3",
+      "cv_category": "Bất động sản",
+      "job_id": "9ffbdf538230596381367c97689f8c9c",
+      "job_title": "Nhân Viên Kinh Doanh/Sales BĐS/Tư Vấn Bán Hàng - Phỏng Vấn Nhân Việc Ngay (Chế Độ Hấp Dẫn)",
+      "rank": 4,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 2,
+      "method_ranks": {
+        "E2": 4,
+        "E3": 3,
+        "E2t": 8,
+        "E3t": 2
+      },
+      "relevance_score": 8,
+      "skills_match": 8,
+      "experience_match": 10,
+      "education_match": 7,
+      "justification": "Ứng viên có kỹ năng sales bất động sản, B2C, Direct Sales phù hợp với yêu cầu của JD, và kinh nghiệm 3 năm trong lĩnh vực kinh doanh bất động sản. Tuy nhiên, học vấn của ứng viên là Đại học chuyên ngành Kinh tế, không hoàn toàn phù hợp với yêu cầu học vấn Trung học của JD. Vì JD không yêu cầu kinh nghiệm nên fresher không phải là vấn đề, và ứng viên có nhiều kỹ năng phù hợp.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:41:55"
+    },
+    {
+      "cv_id": "bds_L3",
+      "cv_level": "L3",
+      "cv_category": "Bất động sản",
+      "job_id": "148e6c3719902859048b7c7284cba29d",
+      "job_title": "Thủ Tục Và Chăm Sóc Khách Hàng",
+      "rank": 7,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E3",
+        "E3t"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E1": 7,
+        "E3": 4,
+        "E3t": 9
+      },
+      "relevance_score": 6,
+      "skills_match": 4,
+      "experience_match": 7,
+      "education_match": 6,
+      "justification": "Kinh nghiệm và học vấn của ứng viên phù hợp với yêu cầu của công việc, tuy nhiên kỹ năng chuyên môn không hoàn toàn khớp với yêu cầu của JD, đặc biệt là thiếu kỹ năng về Excel, AutoCAD, Python, SAP.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:42:08"
+    },
+    {
+      "cv_id": "bds_L3",
+      "cv_level": "L3",
+      "cv_category": "Bất động sản",
+      "job_id": "d4165adb9e49d91a6aed89db6d179ff2",
+      "job_title": "Nhân Viên Kinh Doanh/ Sales/ Tư Vấn Bất Động Sản -Không Yêu Cầu Kinh Nghiệm - Thu Nhập Hấp Dẫn",
+      "rank": 5,
+      "es_score": 0,
+      "pool_methods": [
+        "E2"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E2": 5
+      },
+      "relevance_score": 8,
+      "skills_match": 8,
+      "experience_match": 10,
+      "education_match": 7,
+      "justification": "Ứng viên có kỹ năng sales bất động sản, B2C, Direct Sales phù hợp với yêu cầu của Job Description, kinh nghiệm không yêu cầu nên fresher được coi là phù hợp, học vấn đạt bậc nhưng không đúng chuyên ngành yêu cầu.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:42:21"
+    },
+    {
+      "cv_id": "bds_L3",
+      "cv_level": "L3",
+      "cv_category": "Bất động sản",
+      "job_id": "f4c2423944f7c3eccae86bdbd4a23b76",
+      "job_title": "Phó Giám Đốc Pháp Lý Dự Án - Kinh Nghiệm Từ 5 Năm - Cần Thơ",
+      "rank": 5,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E1": 5,
+        "E2t": 10,
+        "E3t": 10
+      },
+      "relevance_score": 7,
+      "skills_match": 8,
+      "experience_match": 6,
+      "education_match": 8,
+      "justification": "Ứng viên có kỹ năng quản lý dự án bất động sản, sales bất động sản và B2C, cũng như kinh nghiệm 3 năm trong lĩnh vực kinh doanh bất động sản, tuy nhiên thiếu 2 năm kinh nghiệm so với yêu cầu của công việc. Học vấn của ứng viên cũng phù hợp với yêu cầu của công việc.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:42:34"
+    },
+    {
+      "cv_id": "bds_L3",
+      "cv_level": "L3",
+      "cv_category": "Bất động sản",
+      "job_id": "2fd949bbe71fca29d40aafc6ed090946",
+      "job_title": "Chuyên Viên Phát Triển Dự Án",
+      "rank": 6,
+      "es_score": 0,
+      "pool_methods": [
+        "E3"
+      ],
+      "best_pool_rank": 6,
+      "method_ranks": {
+        "E3": 6
+      },
+      "relevance_score": 8,
+      "skills_match": 8,
+      "experience_match": 9,
+      "education_match": 8,
+      "justification": "Kỹ năng chuyên môn của ứng viên như Sales bất động sản, B2C, Direct Sales và Quản lý dự án bất động sản khớp với yêu cầu của vị trí Chuyên Viên Phát Triển Dự Án. Kinh nghiệm 3 năm của ứng viên cũng phù hợp với yêu cầu của công việc. Học vấn Đại học chuyên ngành Kinh tế cũng gần khớp với yêu cầu của vị trí.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:42:47"
+    },
+    {
+      "cv_id": "bds_L3",
+      "cv_level": "L3",
+      "cv_category": "Bất động sản",
+      "job_id": "60f70922dd2b896727a55c6c98eef8ce",
+      "job_title": "Giám Đốc Phát Triển Dự Án Bất Động Sản",
+      "rank": 6,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3"
+      ],
+      "best_pool_rank": 6,
+      "method_ranks": {
+        "E2": 6,
+        "E3": 9
+      },
+      "relevance_score": 6,
+      "skills_match": 7,
+      "experience_match": 5,
+      "education_match": 8,
+      "justification": "Kỹ năng chuyên môn của ứng viên như Sales bất động sản, B2C, Direct Sales và Quản lý dự án bất động sản có liên quan đến yêu cầu của vị trí Giám Đốc Phát Triển Dự Án Bất Động Sản, nhưng kinh nghiệm 3 năm của ứng viên chưa đạt yêu cầu tối thiểu 7-10 năm kinh nghiệm trong lĩnh vực bất động sản. Học vấn của ứng viên đạt yêu cầu đại học, nhưng chuyên ngành kinh tế không phải là chuyên ngành chính quy cho vị trí này.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:43:00"
+    },
+    {
+      "cv_id": "bds_L3",
+      "cv_level": "L3",
+      "cv_category": "Bất động sản",
+      "job_id": "c196d43314af0340359c4d8d9d15dbb1",
+      "job_title": "Chuyên Viên Quản Lý Thiết Kế Quy Hoạch",
+      "rank": 6,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 6,
+      "method_ranks": {
+        "E1": 6
+      },
+      "relevance_score": 2,
+      "skills_match": 2,
+      "experience_match": 2,
+      "education_match": 7,
+      "justification": "Kỹ năng chuyên môn của ứng viên không khớp với yêu cầu của công việc, kinh nghiệm quản lý dự án bất động sản không đủ để đáp ứng yêu cầu 5 năm trở lên, học vấn đạt bậc nhưng chuyên ngành không phù hợp hoàn toàn với yêu cầu của công việc.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:43:13"
+    },
+    {
+      "cv_id": "bds_L3",
+      "cv_level": "L3",
+      "cv_category": "Bất động sản",
+      "job_id": "6598dd7de67b79a37cfb1fda152fdc8b",
+      "job_title": "Chuyên Viên Dịch Vụ Khách Hàng",
+      "rank": 8,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E3"
+      ],
+      "best_pool_rank": 7,
+      "method_ranks": {
+        "E1": 8,
+        "E3": 7
+      },
+      "relevance_score": 6,
+      "skills_match": 4,
+      "experience_match": 5,
+      "education_match": 7,
+      "justification": "Kỹ năng chuyên môn của ứng viên không hoàn toàn khớp với yêu cầu của JD, nhưng kinh nghiệm 3 năm trong lĩnh vực kinh doanh bất động sản và học vấn Đại học chuyên ngành Kinh tế là điểm mạnh. Tuy nhiên, ứng viên thiếu kỹ năng chuyên môn như Excel, AutoCAD, Python, SAP và không có kinh nghiệm trực tiếp với SAP như yêu cầu.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:43:26"
+    },
+    {
+      "cv_id": "bds_L3",
+      "cv_level": "L3",
+      "cv_category": "Bất động sản",
+      "job_id": "9709af8ff8e3462b769c71dcc9cde317",
+      "job_title": "Chuyên Viên Kinh Doanh",
+      "rank": 10,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 7,
+      "method_ranks": {
+        "E2": 10,
+        "E2t": 7,
+        "E3t": 8
+      },
+      "relevance_score": 8,
+      "skills_match": 8,
+      "experience_match": 9,
+      "education_match": 6,
+      "justification": "Ứng viên có kỹ năng và kinh nghiệm phù hợp với vị trí Chuyên Viên Kinh Doanh bất động sản, tuy nhiên học vấn không hoàn toàn khớp với yêu cầu Trung cấp.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:43:38"
+    },
+    {
+      "cv_id": "bds_L3",
+      "cv_level": "L3",
+      "cv_category": "Bất động sản",
+      "job_id": "997e0cf32c912fc23d3e42ba162b31a8",
+      "job_title": "Giám Đốc Kinh Doanh Bất Động Sản",
+      "rank": 7,
+      "es_score": 0,
+      "pool_methods": [
+        "E2"
+      ],
+      "best_pool_rank": 7,
+      "method_ranks": {
+        "E2": 7
+      },
+      "relevance_score": 7,
+      "skills_match": 8,
+      "experience_match": 6,
+      "education_match": 8,
+      "justification": "Kỹ năng chuyên môn của ứng viên như Sales bất động sản, B2C, Direct Sales khớp với yêu cầu của công việc, kinh nghiệm 3 năm gần yêu cầu 5 năm, học vấn đại học kinh tế phù hợp với yêu cầu đại học.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:43:51"
+    },
+    {
+      "cv_id": "bds_L3",
+      "cv_level": "L3",
+      "cv_category": "Bất động sản",
+      "job_id": "1743a2dcca98410d0a7aaaf56dddb865",
+      "job_title": "Nhân Viên Kinh Doanh Sale Môi Giới Bất Động Sản",
+      "rank": 8,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E2t"
+      ],
+      "best_pool_rank": 8,
+      "method_ranks": {
+        "E2": 8,
+        "E2t": 9
+      },
+      "relevance_score": 6,
+      "skills_match": 7,
+      "experience_match": 3,
+      "education_match": 7,
+      "justification": "Kỹ năng sales bất động sản và quản lý dự án của ứng viên phù hợp với yêu cầu của công việc, nhưng kinh nghiệm 3 năm lại vượt quá yêu cầu dưới 1 năm của JD. Học vấn đại học kinh tế cũng phù hợp, nhưng không phải là chuyên ngành bất động sản.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:46:04"
+    },
+    {
+      "cv_id": "bds_L3",
+      "cv_level": "L3",
+      "cv_category": "Bất động sản",
+      "job_id": "051bc099fc1fd4d8e8051ad3f85f724a",
+      "job_title": "Trợ Lý Tổng Giám Đốc - (Tuyển Nữ)",
+      "rank": 9,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 9,
+      "method_ranks": {
+        "E1": 9
+      },
+      "relevance_score": 7,
+      "skills_match": 6,
+      "experience_match": 5,
+      "education_match": 8,
+      "justification": "Ứng viên có kinh nghiệm 3 năm trong lĩnh vực kinh doanh bất động sản, có kỹ năng quản lý dự án và tư vấn cho khách hàng, nhưng thiếu 2 năm kinh nghiệm so với yêu cầu. Học vấn đại học chuyên ngành Kinh tế phù hợp với yêu cầu, nhưng kỹ năng chuyên môn không hoàn toàn khớp với yêu cầu của Job Description.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:46:17"
+    },
+    {
+      "cv_id": "bds_L3",
+      "cv_level": "L3",
+      "cv_category": "Bất động sản",
+      "job_id": "e43ade755d9156bda5212d5e23303442",
+      "job_title": "Nhân Viên Kinh Doanh/Sales Bất Động Sản/ Nhân Viên Tư Vấn BĐS - Thu Nhập Trên 50 Triệu (Tự Do Thời Gian) - Nguồn Nhà/Nguồn Khách Có Sẵn",
+      "rank": 9,
+      "es_score": 0,
+      "pool_methods": [
+        "E2"
+      ],
+      "best_pool_rank": 9,
+      "method_ranks": {
+        "E2": 9
+      },
+      "relevance_score": 7,
+      "skills_match": 8,
+      "experience_match": 10,
+      "education_match": 7,
+      "justification": "Skills kinh doanh bất động sản có liên quan (Sales bất động sản, B2C, Direct Sales) và kinh nghiệm 3 năm phù hợp. Tuy nhiên, học vấn yêu cầu chỉ là trung học nhưng ứng viên có bằng đại học kinh tế, vượt yêu cầu. Kinh nghiệm không yêu cầu nhưng fresher không phải là trường hợp này, ứng viên có kinh nghiệm phù hợp.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:46:30"
+    },
+    {
+      "cv_id": "bds_L3",
+      "cv_level": "L3",
+      "cv_category": "Bất động sản",
+      "job_id": "165c8c535cd295ac48e366a93b862e80",
+      "job_title": "Trưởng Bộ Phận Pháp Lý Dự Án",
+      "rank": 10,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 10,
+      "method_ranks": {
+        "E1": 10
+      },
+      "relevance_score": 6,
+      "skills_match": 5,
+      "experience_match": 7,
+      "education_match": 6,
+      "justification": "Ứng viên có kinh nghiệm quản lý dự án bất động sản và kỹ năng chuyên môn về sales bất động sản, nhưng thiếu kỹ năng về luật và thiết kế kiến trúc. Học vấn đại học chuyên ngành kinh tế không hoàn toàn phù hợp với yêu cầu của vị trí.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:46:43"
+    },
+    {
+      "cv_id": "bds_L3",
+      "cv_level": "L3",
+      "cv_category": "Bất động sản",
+      "job_id": "580b0df34954e5d343727d450686f91f",
+      "job_title": "Nhân Viên Kinh Doanh Bất Động Sản",
+      "rank": 10,
+      "es_score": 0,
+      "pool_methods": [
+        "E3"
+      ],
+      "best_pool_rank": 10,
+      "method_ranks": {
+        "E3": 10
+      },
+      "relevance_score": 5,
+      "skills_match": 6,
+      "experience_match": 3,
+      "education_match": 7,
+      "justification": "Kỹ năng sales bất động sản và B2C của ứng viên phù hợp với yêu cầu của công việc, nhưng kinh nghiệm 3 năm vượt quá yêu cầu dưới 1 năm của công ty. Học vấn của ứng viên đạt bậc đại học, cao hơn yêu cầu cao đẳng của công ty.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:46:56"
+    },
+    {
+      "cv_id": "bds_L3b",
+      "cv_level": "L3b",
+      "cv_category": "Bất động sản",
+      "job_id": "60f70922dd2b896727a55c6c98eef8ce",
+      "job_title": "Giám Đốc Phát Triển Dự Án Bất Động Sản",
+      "rank": 5,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2",
+        "E3",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 1,
+      "method_ranks": {
+        "E1": 5,
+        "E2": 1,
+        "E3": 1,
+        "E2t": 3,
+        "E3t": 3
+      },
+      "relevance_score": 8,
+      "skills_match": 8,
+      "experience_match": 7,
+      "education_match": 7,
+      "justification": "Ứng viên có kinh nghiệm và kỹ năng phù hợp với vị trí Giám Đốc Phát Triển Dự Án Bất Động Sản, nhưng thiếu 1-2 năm kinh nghiệm so với yêu cầu và học vấn không hoàn toàn phù hợp với chuyên ngành bất động sản.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:47:09"
+    },
+    {
+      "cv_id": "bds_L3b",
+      "cv_level": "L3b",
+      "cv_category": "Bất động sản",
+      "job_id": "4cf2d132dff97d8828c0a05df47cc8a6",
+      "job_title": "Chuyên Viên Phát Triển Dự Án",
+      "rank": 2,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2",
+        "E3",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 2,
+      "method_ranks": {
+        "E1": 2,
+        "E2": 2,
+        "E3": 2,
+        "E2t": 4,
+        "E3t": 4
+      },
+      "relevance_score": 6,
+      "skills_match": 7,
+      "experience_match": 5,
+      "education_match": 8,
+      "justification": "Kỹ năng quản lý dự án bất động sản và sales B2B của ứng viên phù hợp với yêu cầu của vị trí Chuyên Viên Phát Triển Dự Án, nhưng kinh nghiệm 4 năm lại thiếu so với yêu cầu 5 năm, học vấn đại học chuyên ngành kinh tế cũng gần phù hợp nhưng không hoàn toàn chính xác với yêu cầu.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:47:22"
+    },
+    {
+      "cv_id": "bds_L3b",
+      "cv_level": "L3b",
+      "cv_category": "Bất động sản",
+      "job_id": "94f52ded04546246f02f55d4a6ab0b47",
+      "job_title": "Chuyên Viên Cao Cấp Quản Trị Giao Dịch",
+      "rank": 3,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2",
+        "E3",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 3,
+      "method_ranks": {
+        "E1": 3,
+        "E2": 4,
+        "E3": 5,
+        "E2t": 6,
+        "E3t": 5
+      },
+      "relevance_score": 7,
+      "skills_match": 8,
+      "experience_match": 7,
+      "education_match": 8,
+      "justification": "Ứng viên có kỹ năng quản lý dự án bất động sản, sales B2B, telesales và direct sales phù hợp với yêu cầu công việc, nhưng thiếu kỹ năng luật/pháp chế. Kinh nghiệm 4 năm làm trưởng phòng kinh doanh bất động sản gần khớp với yêu cầu 5 năm, học vấn đại học kinh tế phù hợp với yêu cầu.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:49:36"
+    },
+    {
+      "cv_id": "bds_L3b",
+      "cv_level": "L3b",
+      "cv_category": "Bất động sản",
+      "job_id": "d84f99da14917ae44ba5094c7b756728",
+      "job_title": "Giám Đốc Phát Triển Dự Án (Mảng Bất Động Sản)",
+      "rank": 9,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2",
+        "E3",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 3,
+      "method_ranks": {
+        "E1": 9,
+        "E2": 3,
+        "E3": 3,
+        "E2t": 5,
+        "E3t": 6
+      },
+      "relevance_score": 8,
+      "skills_match": 7,
+      "experience_match": 7,
+      "education_match": 8,
+      "justification": "Ứng viên có kinh nghiệm và kỹ năng phù hợp với vị trí Giám Đốc Phát Triển Dự Án bất động sản, nhưng thiếu một số kỹ năng chuyên môn như phân tích tài chính dự án và tư duy chiến lược. Học vấn và ngoại ngữ của ứng viên cũng phù hợp với yêu cầu của công việc.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:49:48"
+    },
+    {
+      "cv_id": "bds_L3b",
+      "cv_level": "L3b",
+      "cv_category": "Bất động sản",
+      "job_id": "1bb0b12dd4d943c2075e123d11c3e361",
+      "job_title": "Trợ Lý Dự Án/Quản Lý Dự Án Lương Cứng Từ 10 - 15 Triệu + Hoa Hồng (Thu Nhập Không Giới Hạn) Tại Hà Nội Đi Làm Ngay",
+      "rank": 4,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E1": 4,
+        "E2t": 7,
+        "E3t": 9
+      },
+      "relevance_score": 7,
+      "skills_match": 8,
+      "experience_match": 6,
+      "education_match": 6,
+      "justification": "Kỹ năng quản lý dự án bất động sản và sales B2B của ứng viên khớp với yêu cầu của JD, nhưng kinh nghiệm 4 năm vượt quá yêu cầu 1 năm và học vấn không hoàn toàn phù hợp với yêu cầu chuyên ngành bất động sản hoặc tài chính.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:50:02"
+    },
+    {
+      "cv_id": "bds_L3b",
+      "cv_level": "L3b",
+      "cv_category": "Bất động sản",
+      "job_id": "0bb8ab28df19b875a2a25afb7f5093ab",
+      "job_title": "Giám Đốc Dự Án Ngành Xây Dựng",
+      "rank": 5,
+      "es_score": 0,
+      "pool_methods": [
+        "E2"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E2": 5
+      },
+      "relevance_score": 7,
+      "skills_match": 6,
+      "experience_match": 7,
+      "education_match": 4,
+      "justification": "Kỹ năng quản lý dự án bất động sản và sales B2B của ứng viên phù hợp với yêu cầu của vị trí Giám Đốc Dự Án Ngành Xây Dựng, nhưng kinh nghiệm 4 năm của ứng viên thiếu 1 năm so với yêu cầu 5 năm, và học vấn của ứng viên là Đại học Kinh tế không hoàn toàn phù hợp với yêu cầu Cao đẳng chuyên ngành Xây dựng.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:50:15"
+    },
+    {
+      "cv_id": "bds_L3b",
+      "cv_level": "L3b",
+      "cv_category": "Bất động sản",
+      "job_id": "c2178cf0680ac8d56ddbf7443d92055a",
+      "job_title": "Giám Đốc Dự Án",
+      "rank": 6,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3"
+      ],
+      "best_pool_rank": 6,
+      "method_ranks": {
+        "E2": 6,
+        "E3": 7
+      },
+      "relevance_score": 6,
+      "skills_match": 7,
+      "experience_match": 5,
+      "education_match": 8,
+      "justification": "Kỹ năng quản lý dự án bất động sản và sales B2B của ứng viên phù hợp với yêu cầu của vị trí Giám Đốc Dự Án, nhưng kinh nghiệm 4 năm của ứng viên lại thiếu so với yêu cầu trên 5 năm của công việc. Học vấn của ứng viên đạt yêu cầu đại học, nhưng chuyên ngành kinh tế không hoàn toàn phù hợp với yêu cầu chuyên ngành xây dựng hoặc quản lý dự án.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:50:28"
+    },
+    {
+      "cv_id": "bds_L3b",
+      "cv_level": "L3b",
+      "cv_category": "Bất động sản",
+      "job_id": "6598dd7de67b79a37cfb1fda152fdc8b",
+      "job_title": "Chuyên Viên Dịch Vụ Khách Hàng",
+      "rank": 7,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 7,
+      "method_ranks": {
+        "E1": 7
+      },
+      "relevance_score": 6,
+      "skills_match": 4,
+      "experience_match": 7,
+      "education_match": 6,
+      "justification": "Kinh nghiệm 4 năm trong lĩnh vực bất động sản gần khớp với yêu cầu 5 năm, nhưng kỹ năng chuyên môn không hoàn toàn phù hợp với yêu cầu của vị trí Chuyên Viên Dịch Vụ Khách Hàng, học vấn đạt bậc nhưng không đúng chuyên ngành yêu cầu.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:50:41"
+    },
+    {
+      "cv_id": "bds_L3b",
+      "cv_level": "L3b",
+      "cv_category": "Bất động sản",
+      "job_id": "9709af8ff8e3462b769c71dcc9cde317",
+      "job_title": "Chuyên Viên Kinh Doanh",
+      "rank": 8,
+      "es_score": 0,
+      "pool_methods": [
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 7,
+      "method_ranks": {
+        "E2t": 8,
+        "E3t": 7
+      },
+      "relevance_score": 8,
+      "skills_match": 8,
+      "experience_match": 7,
+      "education_match": 6,
+      "justification": "Kỹ năng chuyên môn của ứng viên như Quản lý dự án bất động sản, Sales B2B, Telesales, Direct Sales khớp với yêu cầu của Job Description về Sales bất động sản/Môi giới bất động sản, B2B, B2G, B2C, Direct Sales. Kinh nghiệm 4 năm của ứng viên gần khớp với yêu cầu 3 năm của Job Description. Tuy nhiên, học vấn của ứng viên là Đại học chuyên ngành Kinh tế, không hoàn toàn khớp với yêu cầu Trung cấp/Cao đẳng/Đại học về Quản trị Kinh doanh, Kinh tế, Bất động sản, Xây dựng… hoặc các ngành liên quan.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:50:54"
+    },
+    {
+      "cv_id": "bds_L3b",
+      "cv_level": "L3b",
+      "cv_category": "Bất động sản",
+      "job_id": "08e12f696157c6da3f6bb10d82c722ad",
+      "job_title": "Giám Đốc Dự Án Bất Động Sản - 3 Năm Kinh Nghiệm - Thu Nhập 20 - 200 Triệu - Tại Hà Nội",
+      "rank": 8,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 8,
+      "method_ranks": {
+        "E1": 8
+      },
+      "relevance_score": 8,
+      "skills_match": 8,
+      "experience_match": 9,
+      "education_match": 7,
+      "justification": "Kỹ năng chuyên môn của ứng viên như Quản lý dự án bất động sản, Giám đốc dự án bất động sản khớp với yêu cầu của JD, kinh nghiệm 4 năm cũng vượt yêu cầu 3 năm của JD, nhưng học vấn chỉ là Đại học chuyên ngành Kinh tế, không phải là chuyên ngành bất động sản hoặc quản trị kinh doanh như JD yêu cầu.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:51:07"
+    },
+    {
+      "cv_id": "bds_L3b",
+      "cv_level": "L3b",
+      "cv_category": "Bất động sản",
+      "job_id": "4105d26f220deb76f1d6c90316036b12",
+      "job_title": "Giám Đốc Kinh Doanh Mảng Bất Động Sản Công Nghiệp",
+      "rank": 8,
+      "es_score": 0,
+      "pool_methods": [
+        "E2"
+      ],
+      "best_pool_rank": 8,
+      "method_ranks": {
+        "E2": 8
+      },
+      "relevance_score": 8,
+      "skills_match": 8,
+      "experience_match": 7,
+      "education_match": 6,
+      "justification": "Ứng viên có kinh nghiệm và kỹ năng phù hợp với vị trí Giám Đốc Kinh Doanh Mảng Bất Động Sản Công Nghiệp, nhưng học vấn không hoàn toàn đáp ứng yêu cầu Cao đẳng chuyên ngành liên quan.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:52:25"
+    },
+    {
+      "cv_id": "bds_L3b",
+      "cv_level": "L3b",
+      "cv_category": "Bất động sản",
+      "job_id": "aec1332725743a27f3ad83206c147a7c",
+      "job_title": "Chuyên Viên/Cộng Tác Viên Kinh Doanh",
+      "rank": 10,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3"
+      ],
+      "best_pool_rank": 8,
+      "method_ranks": {
+        "E2": 10,
+        "E3": 8
+      },
+      "relevance_score": 8,
+      "skills_match": 8,
+      "experience_match": 9,
+      "education_match": 6,
+      "justification": "Kỹ năng chuyên môn của ứng viên như Quản lý dự án bất động sản, Sales B2B, Telesales, Direct Sales khớp với yêu cầu của JD về Sales bất động sản/Môi giới bất động sản, Bất động sản, B2C, B2B, Direct Sales. Kinh nghiệm 4 năm của ứng viên cũng gần khớp với yêu cầu 4 năm của JD. Tuy nhiên, học vấn của ứng viên là Đại học chuyên ngành Kinh tế, không hoàn toàn khớp với yêu cầu Cao đẳng của JD.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:52:39"
+    },
+    {
+      "cv_id": "bds_L3b",
+      "cv_level": "L3b",
+      "cv_category": "Bất động sản",
+      "job_id": "2fd949bbe71fca29d40aafc6ed090946",
+      "job_title": "Chuyên Viên Phát Triển Dự Án",
+      "rank": 9,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3"
+      ],
+      "best_pool_rank": 9,
+      "method_ranks": {
+        "E2": 9,
+        "E3": 9
+      },
+      "relevance_score": 8,
+      "skills_match": 8,
+      "experience_match": 9,
+      "education_match": 7,
+      "justification": "Ứng viên có kinh nghiệm và kỹ năng phù hợp với vị trí Chuyên Viên Phát Triển Dự Án trong lĩnh vực bất động sản, với 4 năm kinh nghiệm làm trưởng phòng kinh doanh và kỹ năng quản lý dự án, sales B2B, telesales, direct sales. Tuy nhiên, học vấn của ứng viên là chuyên ngành Kinh tế, không phải là chuyên ngành Bất động sản hoặc Quản trị kinh doanh như yêu cầu của JD.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:52:51"
+    },
+    {
+      "cv_id": "bds_L3b",
+      "cv_level": "L3b",
+      "cv_category": "Bất động sản",
+      "job_id": "997e0cf32c912fc23d3e42ba162b31a8",
+      "job_title": "Giám Đốc Kinh Doanh Bất Động Sản",
+      "rank": 9,
+      "es_score": 0,
+      "pool_methods": [
+        "E2t"
+      ],
+      "best_pool_rank": 9,
+      "method_ranks": {
+        "E2t": 9
+      },
+      "relevance_score": 8,
+      "skills_match": 8,
+      "experience_match": 7,
+      "education_match": 7,
+      "justification": "Ứng viên có kinh nghiệm và kỹ năng phù hợp với vị trí Giám Đốc Kinh Doanh Bất Động Sản, nhưng thiếu 1 năm kinh nghiệm so với yêu cầu và học vấn không hoàn toàn phù hợp với chuyên ngành bất động sản.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:53:04"
+    },
+    {
+      "cv_id": "bds_L3b",
+      "cv_level": "L3b",
+      "cv_category": "Bất động sản",
+      "job_id": "051bc099fc1fd4d8e8051ad3f85f724a",
+      "job_title": "Trợ Lý Tổng Giám Đốc - (Tuyển Nữ)",
+      "rank": 10,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 10,
+      "method_ranks": {
+        "E1": 10
+      },
+      "relevance_score": 7,
+      "skills_match": 6,
+      "experience_match": 8,
+      "education_match": 8,
+      "justification": "Kỹ năng quản lý dự án bất động sản và sales B2B của ứng viên phù hợp với yêu cầu công việc, nhưng thiếu kỹ năng tổ chức và quản lý thời gian xuất sắc. Kinh nghiệm 4 năm của ứng viên gần khớp với yêu cầu 5 năm, và học vấn đại học kinh tế cũng phù hợp với yêu cầu.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:53:17"
+    },
+    {
+      "cv_id": "bds_L3b",
+      "cv_level": "L3b",
+      "cv_category": "Bất động sản",
+      "job_id": "9ffbdf538230596381367c97689f8c9c",
+      "job_title": "Nhân Viên Kinh Doanh/Sales BĐS/Tư Vấn Bán Hàng - Phỏng Vấn Nhân Việc Ngay (Chế Độ Hấp Dẫn)",
+      "rank": 10,
+      "es_score": 0,
+      "pool_methods": [
+        "E3",
+        "E3t"
+      ],
+      "best_pool_rank": 10,
+      "method_ranks": {
+        "E3": 10,
+        "E3t": 10
+      },
+      "relevance_score": 8,
+      "skills_match": 7,
+      "experience_match": 10,
+      "education_match": 7,
+      "justification": "Ứng viên có kỹ năng sales bất động sản và quản lý dự án bất động sản, tuy nhiên không phải là kỹ năng chính yêu cầu của JD. Kinh nghiệm 4 năm làm trưởng phòng kinh doanh tại công ty bất động sản là vượt yêu cầu của JD vì JD không yêu cầu kinh nghiệm. Học vấn đại học chuyên ngành kinh tế cũng gần phù hợp với yêu cầu của JD.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:53:30"
+    },
+    {
+      "cv_id": "bds_L4",
+      "cv_level": "L4",
+      "cv_category": "Bất động sản",
+      "job_id": "60f70922dd2b896727a55c6c98eef8ce",
+      "job_title": "Giám Đốc Phát Triển Dự Án Bất Động Sản",
+      "rank": 4,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2",
+        "E3",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 1,
+      "method_ranks": {
+        "E1": 4,
+        "E2": 1,
+        "E3": 1,
+        "E2t": 3,
+        "E3t": 3
+      },
+      "relevance_score": 8,
+      "skills_match": 8,
+      "experience_match": 7,
+      "education_match": 8,
+      "justification": "Ứng viên có kinh nghiệm và kỹ năng phù hợp với vị trí Giám Đốc Phát Triển Dự Án Bất Động Sản, nhưng thiếu một số kỹ năng chuyên môn như phân tích tài chính cơ bản. Học vấn và kinh nghiệm của ứng viên cũng phù hợp với yêu cầu của công việc.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:53:43"
+    },
+    {
+      "cv_id": "bds_L4",
+      "cv_level": "L4",
+      "cv_category": "Bất động sản",
+      "job_id": "4cf2d132dff97d8828c0a05df47cc8a6",
+      "job_title": "Chuyên Viên Phát Triển Dự Án",
+      "rank": 5,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2",
+        "E3",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 2,
+      "method_ranks": {
+        "E1": 5,
+        "E2": 3,
+        "E3": 2,
+        "E2t": 7,
+        "E3t": 6
+      },
+      "relevance_score": 8,
+      "skills_match": 8,
+      "experience_match": 9,
+      "education_match": 8,
+      "justification": "Ứng viên có kinh nghiệm và kỹ năng phù hợp với vị trí Chuyên Viên Phát Triển Dự Án trong lĩnh vực bất động sản, với 6 năm kinh nghiệm và chuyên ngành kinh tế. Tuy nhiên, học vấn và một số kỹ năng mềm không hoàn toàn khớp với yêu cầu của JD.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:53:56"
+    },
+    {
+      "cv_id": "bds_L4",
+      "cv_level": "L4",
+      "cv_category": "Bất động sản",
+      "job_id": "94f52ded04546246f02f55d4a6ab0b47",
+      "job_title": "Chuyên Viên Cao Cấp Quản Trị Giao Dịch",
+      "rank": 2,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2",
+        "E3",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 2,
+      "method_ranks": {
+        "E1": 2,
+        "E2": 4,
+        "E3": 5,
+        "E2t": 4,
+        "E3t": 4
+      },
+      "relevance_score": 8,
+      "skills_match": 8,
+      "experience_match": 7,
+      "education_match": 8,
+      "justification": "Ứng viên có kỹ năng chuyên môn phù hợp với yêu cầu của công việc như quản lý dự án bất động sản, sales bất động sản, và có kinh nghiệm 6 năm trong lĩnh vực kinh doanh bất động sản. Tuy nhiên, kinh nghiệm của ứng viên slightly vượt yêu cầu 5 năm của công việc.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:54:09"
+    },
+    {
+      "cv_id": "bds_L4",
+      "cv_level": "L4",
+      "cv_category": "Bất động sản",
+      "job_id": "d84f99da14917ae44ba5094c7b756728",
+      "job_title": "Giám Đốc Phát Triển Dự Án (Mảng Bất Động Sản)",
+      "rank": 7,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2",
+        "E3",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 2,
+      "method_ranks": {
+        "E1": 7,
+        "E2": 2,
+        "E3": 3,
+        "E2t": 8,
+        "E3t": 8
+      },
+      "relevance_score": 8,
+      "skills_match": 8,
+      "experience_match": 9,
+      "education_match": 9,
+      "justification": "Ứng viên có kinh nghiệm và kỹ năng phù hợp với vị trí Giám Đốc Phát Triển Dự Án bất động sản, với 6 năm kinh nghiệm trong lĩnh vực kinh doanh bất động sản và chuyên ngành kinh tế. Tuy nhiên, một số kỹ năng chuyên môn như phân tích tài chính dự án và kỹ năng đàm phán cần được đánh giá thêm.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:54:22"
+    },
+    {
+      "cv_id": "bds_L4",
+      "cv_level": "L4",
+      "cv_category": "Bất động sản",
+      "job_id": "9709af8ff8e3462b769c71dcc9cde317",
+      "job_title": "Chuyên Viên Kinh Doanh",
+      "rank": 5,
+      "es_score": 0,
+      "pool_methods": [
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E2t": 5,
+        "E3t": 10
+      },
+      "relevance_score": 8,
+      "skills_match": 8,
+      "experience_match": 7,
+      "education_match": 6,
+      "justification": "Ứng viên có kinh nghiệm và kỹ năng phù hợp với vị trí Chuyên Viên Kinh Doanh bất động sản, nhưng học vấn không hoàn toàn phù hợp vì yêu cầu Trung cấp mà ứng viên có bằng Đại học Kinh tế. Kinh nghiệm 6 năm cũng vượt yêu cầu 3 năm, nhưng vẫn phù hợp với vị trí này.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:56:36"
+    },
+    {
+      "cv_id": "bds_L4",
+      "cv_level": "L4",
+      "cv_category": "Bất động sản",
+      "job_id": "08e12f696157c6da3f6bb10d82c722ad",
+      "job_title": "Giám Đốc Dự Án Bất Động Sản - 3 Năm Kinh Nghiệm - Thu Nhập 20 - 200 Triệu - Tại Hà Nội",
+      "rank": 6,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 6,
+      "method_ranks": {
+        "E1": 6
+      },
+      "relevance_score": 8,
+      "skills_match": 8,
+      "experience_match": 7,
+      "education_match": 7,
+      "justification": "Kỹ năng và kinh nghiệm của ứng viên phù hợp với yêu cầu của vị trí Giám Đốc Dự Án Bất Động Sản, tuy nhiên học vấn không hoàn toàn khớp với yêu cầu ưu tiên các ngành như Quản trị Kinh doanh, Bất động sản, Xây dựng, Tài chính.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:56:48"
+    },
+    {
+      "cv_id": "bds_L4",
+      "cv_level": "L4",
+      "cv_category": "Bất động sản",
+      "job_id": "0bb8ab28df19b875a2a25afb7f5093ab",
+      "job_title": "Giám Đốc Dự Án Ngành Xây Dựng",
+      "rank": 9,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "best_pool_rank": 6,
+      "method_ranks": {
+        "E1": 9,
+        "E2": 6,
+        "E3": 8
+      },
+      "relevance_score": 8,
+      "skills_match": 7,
+      "experience_match": 9,
+      "education_match": 6,
+      "justification": "Ứng viên có kinh nghiệm và kỹ năng phù hợp với vị trí Giám Đốc Dự Án Ngành Xây Dựng, nhưng học vấn không hoàn toàn phù hợp vì yêu cầu Cao đẳng chuyên ngành Xây dựng DDCN hoặc liên quan, trong khi ứng viên có bằng Đại học Kinh tế.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:57:02"
+    },
+    {
+      "cv_id": "bds_L4",
+      "cv_level": "L4",
+      "cv_category": "Bất động sản",
+      "job_id": "9ffbdf538230596381367c97689f8c9c",
+      "job_title": "Nhân Viên Kinh Doanh/Sales BĐS/Tư Vấn Bán Hàng - Phỏng Vấn Nhân Việc Ngay (Chế Độ Hấp Dẫn)",
+      "rank": 7,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 6,
+      "method_ranks": {
+        "E2": 7,
+        "E3": 6,
+        "E2t": 10,
+        "E3t": 9
+      },
+      "relevance_score": 8,
+      "skills_match": 8,
+      "experience_match": 10,
+      "education_match": 7,
+      "justification": "Ứng viên có kỹ năng sales bất động sản và quản lý dự án bất động sản phù hợp với yêu cầu của job, kinh nghiệm 6 năm không phải là điểm trừ vì job không yêu cầu kinh nghiệm, học vấn đại học kinh tế cũng liên quan đến ngành bất động sản.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:57:15"
+    },
+    {
+      "cv_id": "bds_L4",
+      "cv_level": "L4",
+      "cv_category": "Bất động sản",
+      "job_id": "c2178cf0680ac8d56ddbf7443d92055a",
+      "job_title": "Giám Đốc Dự Án",
+      "rank": 8,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3"
+      ],
+      "best_pool_rank": 7,
+      "method_ranks": {
+        "E2": 8,
+        "E3": 7
+      },
+      "relevance_score": 8,
+      "skills_match": 7,
+      "experience_match": 8,
+      "education_match": 8,
+      "justification": "Ứng viên có kinh nghiệm và kỹ năng phù hợp với vị trí Giám Đốc Dự Án bất động sản, nhưng thiếu chứng chỉ Giám sát công trình hạng I, II và kinh nghiệm trong lĩnh vực xây dựng nhà xưởng công nghiệp. Học vấn và ngoại ngữ của ứng viên cũng phù hợp với yêu cầu của công việc.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:57:28"
+    },
+    {
+      "cv_id": "bds_L4",
+      "cv_level": "L4",
+      "cv_category": "Bất động sản",
+      "job_id": "f4c2423944f7c3eccae86bdbd4a23b76",
+      "job_title": "Phó Giám Đốc Pháp Lý Dự Án - Kinh Nghiệm Từ 5 Năm - Cần Thơ",
+      "rank": 8,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 8,
+      "method_ranks": {
+        "E1": 8
+      },
+      "relevance_score": 8,
+      "skills_match": 7,
+      "experience_match": 8,
+      "education_match": 7,
+      "justification": "Ứng viên có kinh nghiệm và kỹ năng phù hợp với vị trí Phó Giám Đốc Pháp Lý Dự Án, nhưng học vấn không hoàn toàn khớp với yêu cầu chuyên ngành Quy hoạch đô thị, Xây dựng, Quản lý đất đai, Luật. Tuy nhiên, kỹ năng quản lý dự án bất động sản và kiến thức pháp lý dự án bất động sản của ứng viên vẫn có thể đáp ứng yêu cầu công việc.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:57:41"
+    },
+    {
+      "cv_id": "bds_L4",
+      "cv_level": "L4",
+      "cv_category": "Bất động sản",
+      "job_id": "95a12522957e475a5e8da47d91124691",
+      "job_title": "Giám Đốc Phát Triển Dự Án Proptech",
+      "rank": 9,
+      "es_score": 0,
+      "pool_methods": [
+        "E3"
+      ],
+      "best_pool_rank": 9,
+      "method_ranks": {
+        "E3": 9
+      },
+      "relevance_score": 8,
+      "skills_match": 8,
+      "experience_match": 9,
+      "education_match": 8,
+      "justification": "Kỹ năng chuyên môn của ứng viên như Sales bất động sản, B2C, Direct Sales, Quản lý dự án bất động sản và Giám đốc dự án bất động sản khớp với yêu cầu của vị trí Giám Đốc Phát Triển Dự Án Proptech. Kinh nghiệm 6 năm của ứng viên cũng vượt yêu cầu 5 năm của vị trí. Học vấn Đại học chuyên ngành Kinh tế cũng phù hợp với yêu cầu của vị trí.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:57:54"
+    },
+    {
+      "cv_id": "bds_L4",
+      "cv_level": "L4",
+      "cv_category": "Bất động sản",
+      "job_id": "997e0cf32c912fc23d3e42ba162b31a8",
+      "job_title": "Giám Đốc Kinh Doanh Bất Động Sản",
+      "rank": 9,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E2t"
+      ],
+      "best_pool_rank": 9,
+      "method_ranks": {
+        "E2": 9,
+        "E2t": 9
+      },
+      "relevance_score": 8,
+      "skills_match": 8,
+      "experience_match": 9,
+      "education_match": 9,
+      "justification": "Ứng viên có kỹ năng và kinh nghiệm phù hợp với vị trí Giám Đốc Kinh Doanh Bất Động Sản, với 6 năm kinh nghiệm trong lĩnh vực kinh doanh bất động sản và chuyên ngành kinh tế. Tuy nhiên, ứng viên có thể thiếu một số kỹ năng mềm và chứng chỉ cụ thể yêu cầu trong JD.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:58:09"
+    },
+    {
+      "cv_id": "bds_L4",
+      "cv_level": "L4",
+      "cv_category": "Bất động sản",
+      "job_id": "2fd949bbe71fca29d40aafc6ed090946",
+      "job_title": "Chuyên Viên Phát Triển Dự Án",
+      "rank": 10,
+      "es_score": 0,
+      "pool_methods": [
+        "E3"
+      ],
+      "best_pool_rank": 10,
+      "method_ranks": {
+        "E3": 10
+      },
+      "relevance_score": 8,
+      "skills_match": 7,
+      "experience_match": 9,
+      "education_match": 8,
+      "justification": "Ứng viên có kinh nghiệm và kỹ năng phù hợp với vị trí Chuyên Viên Phát Triển Dự Án trong lĩnh vực bất động sản, nhưng học vấn không hoàn toàn khớp với yêu cầu chuyên ngành Bất động sản hoặc Quản trị kinh doanh.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:58:21"
+    },
+    {
+      "cv_id": "bds_L4",
+      "cv_level": "L4",
+      "cv_category": "Bất động sản",
+      "job_id": "4105d26f220deb76f1d6c90316036b12",
+      "job_title": "Giám Đốc Kinh Doanh Mảng Bất Động Sản Công Nghiệp",
+      "rank": 10,
+      "es_score": 0,
+      "pool_methods": [
+        "E2"
+      ],
+      "best_pool_rank": 10,
+      "method_ranks": {
+        "E2": 10
+      },
+      "relevance_score": 8,
+      "skills_match": 8,
+      "experience_match": 9,
+      "education_match": 6,
+      "justification": "Ứng viên có kinh nghiệm và kỹ năng phù hợp với vị trí Giám Đốc Kinh Doanh Mảng Bất Động Sản Công Nghiệp, nhưng học vấn không hoàn toàn đáp ứng yêu cầu của công ty.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:58:35"
+    },
+    {
+      "cv_id": "bds_L4",
+      "cv_level": "L4",
+      "cv_category": "Bất động sản",
+      "job_id": "c196d43314af0340359c4d8d9d15dbb1",
+      "job_title": "Chuyên Viên Quản Lý Thiết Kế Quy Hoạch",
+      "rank": 10,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 10,
+      "method_ranks": {
+        "E1": 10
+      },
+      "relevance_score": 4,
+      "skills_match": 2,
+      "experience_match": 5,
+      "education_match": 6,
+      "justification": "Kỹ năng chuyên môn của ứng viên không khớp hoàn toàn với yêu cầu của công việc, kinh nghiệm quản lý dự án bất động sản có nhưng không đúng lĩnh vực thiết kế quy hoạch, học vấn đạt bậc nhưng không đúng chuyên ngành quy hoạch.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 10:58:47"
+    },
+    {
+      "cv_id": "bds_L4b",
+      "cv_level": "L4b",
+      "cv_category": "Bất động sản",
+      "job_id": "4cf2d132dff97d8828c0a05df47cc8a6",
+      "job_title": "Chuyên Viên Phát Triển Dự Án",
+      "rank": 3,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2",
+        "E3",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 1,
+      "method_ranks": {
+        "E1": 3,
+        "E2": 1,
+        "E3": 1,
+        "E2t": 3,
+        "E3t": 3
+      },
+      "relevance_score": 8,
+      "skills_match": 7,
+      "experience_match": 9,
+      "education_match": 8,
+      "justification": "Ứng viên có kinh nghiệm quản lý dự án bất động sản và sales B2B, phù hợp với yêu cầu của vị trí Chuyên Viên Phát Triển Dự Án. Tuy nhiên, ứng viên thiếu kỹ năng về logistic và vận tải, nhưng có thể chuyển đổi từ kinh nghiệm quản lý dự án bất động sản.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:01:01"
+    },
+    {
+      "cv_id": "bds_L4b",
+      "cv_level": "L4b",
+      "cv_category": "Bất động sản",
+      "job_id": "60f70922dd2b896727a55c6c98eef8ce",
+      "job_title": "Giám Đốc Phát Triển Dự Án Bất Động Sản",
+      "rank": 2,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 1,
+      "method_ranks": {
+        "E2": 2,
+        "E3": 2,
+        "E2t": 4,
+        "E3t": 1
+      },
+      "relevance_score": 8,
+      "skills_match": 8,
+      "experience_match": 9,
+      "education_match": 7,
+      "justification": "Kỹ năng chuyên môn của ứng viên như Quản lý dự án bất động sản, Sales B2B, Telesales, Direct Sales khớp với yêu cầu của JD về quản lý dự án và kinh doanh bất động sản. Kinh nghiệm 7 năm của ứng viên cũng gần khớp với yêu cầu của JD về tối thiểu 7-10 năm kinh nghiệm trong lĩnh vực bất động sản. Tuy nhiên, học vấn của ứng viên chỉ là Đại học chuyên ngành Kinh tế, không phải là chuyên ngành bất động sản hoặc quản trị dự án như yêu cầu của JD.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:01:14"
+    },
+    {
+      "cv_id": "bds_L4b",
+      "cv_level": "L4b",
+      "cv_category": "Bất động sản",
+      "job_id": "d84f99da14917ae44ba5094c7b756728",
+      "job_title": "Giám Đốc Phát Triển Dự Án (Mảng Bất Động Sản)",
+      "rank": 3,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 3,
+      "method_ranks": {
+        "E2": 3,
+        "E3": 3,
+        "E2t": 6,
+        "E3t": 6
+      },
+      "relevance_score": 8,
+      "skills_match": 8,
+      "experience_match": 7,
+      "education_match": 7,
+      "justification": "Ứng viên có kinh nghiệm và kỹ năng phù hợp với vị trí Giám Đốc Phát Triển Dự Án bất động sản, nhưng học vấn không hoàn toàn phù hợp với yêu cầu chuyên ngành bất động sản.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:01:27"
+    },
+    {
+      "cv_id": "bds_L4b",
+      "cv_level": "L4b",
+      "cv_category": "Bất động sản",
+      "job_id": "94f52ded04546246f02f55d4a6ab0b47",
+      "job_title": "Chuyên Viên Cao Cấp Quản Trị Giao Dịch",
+      "rank": 4,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2",
+        "E3",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E1": 4,
+        "E2": 4,
+        "E3": 6,
+        "E2t": 7,
+        "E3t": 7
+      },
+      "relevance_score": 8,
+      "skills_match": 8,
+      "experience_match": 7,
+      "education_match": 8,
+      "justification": "Ứng viên có kinh nghiệm quản lý dự án bất động sản, kỹ năng chuyên môn phù hợp với yêu cầu của vị trí Chuyên Viên Cao Cấp Quản Trị Giao Dịch, học vấn đúng chuyên ngành kinh tế, nhưng số năm kinh nghiệm vượt yêu cầu 2 năm.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:01:40"
+    },
+    {
+      "cv_id": "bds_L4b",
+      "cv_level": "L4b",
+      "cv_category": "Bất động sản",
+      "job_id": "c2178cf0680ac8d56ddbf7443d92055a",
+      "job_title": "Giám Đốc Dự Án",
+      "rank": 9,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3",
+        "E3t"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E2": 9,
+        "E3": 5,
+        "E3t": 10
+      },
+      "relevance_score": 8,
+      "skills_match": 7,
+      "experience_match": 7,
+      "education_match": 8,
+      "justification": "Ứng viên có kinh nghiệm quản lý dự án bất động sản và kỹ năng chuyên môn phù hợp, nhưng thiếu chứng chỉ Giám sát công trình hạng I, II và kinh nghiệm trong lĩnh vực xây dựng nhà xưởng công nghiệp. Học vấn và ngoại ngữ của ứng viên cũng phù hợp với yêu cầu của công việc.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:01:53"
+    },
+    {
+      "cv_id": "bds_L4b",
+      "cv_level": "L4b",
+      "cv_category": "Bất động sản",
+      "job_id": "2fd949bbe71fca29d40aafc6ed090946",
+      "job_title": "Chuyên Viên Phát Triển Dự Án",
+      "rank": 10,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2"
+      ],
+      "best_pool_rank": 6,
+      "method_ranks": {
+        "E1": 10,
+        "E2": 6
+      },
+      "relevance_score": 6,
+      "skills_match": 7,
+      "experience_match": 4,
+      "education_match": 7,
+      "justification": "Ứng viên có kinh nghiệm quản lý dự án bất động sản và kỹ năng sales B2B, nhưng số năm kinh nghiệm vượt quá yêu cầu và học vấn không đúng chuyên ngành bất động sản. Tuy nhiên, kỹ năng quản lý và ngoại ngữ của ứng viên vẫn có thể phù hợp với vị trí Chuyên Viên Phát Triển Dự Án.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:02:06"
+    },
+    {
+      "cv_id": "bds_L4b",
+      "cv_level": "L4b",
+      "cv_category": "Bất động sản",
+      "job_id": "051bc099fc1fd4d8e8051ad3f85f724a",
+      "job_title": "Trợ Lý Tổng Giám Đốc - (Tuyển Nữ)",
+      "rank": 7,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 7,
+      "method_ranks": {
+        "E1": 7
+      },
+      "relevance_score": 7,
+      "skills_match": 6,
+      "experience_match": 8,
+      "education_match": 8,
+      "justification": "Kinh nghiệm 7 năm trong lĩnh vực bất động sản và kỹ năng quản lý dự án, sales B2B phù hợp với yêu cầu công việc, nhưng học vấn không hoàn toàn khớp với yêu cầu chuyên ngành quản trị kinh doanh hoặc kinh tế, và một số kỹ năng chuyên môn như Excel, Word, PowerPoint cần được bổ sung.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:02:19"
+    },
+    {
+      "cv_id": "bds_L4b",
+      "cv_level": "L4b",
+      "cv_category": "Bất động sản",
+      "job_id": "0bb8ab28df19b875a2a25afb7f5093ab",
+      "job_title": "Giám Đốc Dự Án Ngành Xây Dựng",
+      "rank": 7,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3"
+      ],
+      "best_pool_rank": 7,
+      "method_ranks": {
+        "E2": 7,
+        "E3": 7
+      },
+      "relevance_score": 8,
+      "skills_match": 7,
+      "experience_match": 9,
+      "education_match": 6,
+      "justification": "Ứng viên có kinh nghiệm quản lý dự án bất động sản và kỹ năng chuyên môn phù hợp, nhưng học vấn không đúng chuyên ngành xây dựng. Kinh nghiệm 7 năm vượt yêu cầu 5 năm, nhưng kỹ năng xây dựng không được đề cập rõ ràng trong CV.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:02:32"
+    },
+    {
+      "cv_id": "bds_L4b",
+      "cv_level": "L4b",
+      "cv_category": "Bất động sản",
+      "job_id": "95a12522957e475a5e8da47d91124691",
+      "job_title": "Giám Đốc Phát Triển Dự Án Proptech",
+      "rank": 8,
+      "es_score": 0,
+      "pool_methods": [
+        "E3"
+      ],
+      "best_pool_rank": 8,
+      "method_ranks": {
+        "E3": 8
+      },
+      "relevance_score": 8,
+      "skills_match": 8,
+      "experience_match": 7,
+      "education_match": 7,
+      "justification": "Ứng viên có kinh nghiệm 7 năm trong ngành bất động sản, kỹ năng quản lý dự án và sales B2B phù hợp với yêu cầu của vị trí Giám Đốc Phát Triển Dự Án Proptech, tuy nhiên học vấn chỉ là kinh tế và không có chứng chỉ liên quan đến bất động sản.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:04:45"
+    },
+    {
+      "cv_id": "bds_L4b",
+      "cv_level": "L4b",
+      "cv_category": "Bất động sản",
+      "job_id": "9709af8ff8e3462b769c71dcc9cde317",
+      "job_title": "Chuyên Viên Kinh Doanh",
+      "rank": 10,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 8,
+      "method_ranks": {
+        "E2": 10,
+        "E3": 10,
+        "E2t": 8,
+        "E3t": 9
+      },
+      "relevance_score": 6,
+      "skills_match": 7,
+      "experience_match": 4,
+      "education_match": 6,
+      "justification": "Kỹ năng chuyên môn của ứng viên như Quản lý dự án bất động sản, Sales B2B, Telesales có liên quan đến yêu cầu của Job Description về Sales bất động sản/Môi giới bất động sản, nhưng kinh nghiệm 7 năm vượt quá yêu cầu 3 năm và học vấn Đại học Kinh tế không hoàn toàn phù hợp với yêu cầu Trung cấp các ngành liên quan.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:04:59"
+    },
+    {
+      "cv_id": "bds_L4b",
+      "cv_level": "L4b",
+      "cv_category": "Bất động sản",
+      "job_id": "f4c2423944f7c3eccae86bdbd4a23b76",
+      "job_title": "Phó Giám Đốc Pháp Lý Dự Án - Kinh Nghiệm Từ 5 Năm - Cần Thơ",
+      "rank": 8,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 8,
+      "method_ranks": {
+        "E1": 8
+      },
+      "relevance_score": 8,
+      "skills_match": 7,
+      "experience_match": 9,
+      "education_match": 6,
+      "justification": "Ứng viên có kinh nghiệm quản lý dự án bất động sản và kỹ năng chuyên môn phù hợp, nhưng học vấn không hoàn toàn khớp với yêu cầu chuyên ngành Luật hoặc Quy hoạch đô thị. Tuy nhiên, kỹ năng và kinh nghiệm của ứng viên vẫn rất phù hợp với vị trí Phó Giám Đốc Pháp Lý Dự Án.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:05:12"
+    },
+    {
+      "cv_id": "bds_L4b",
+      "cv_level": "L4b",
+      "cv_category": "Bất động sản",
+      "job_id": "c196d43314af0340359c4d8d9d15dbb1",
+      "job_title": "Chuyên Viên Quản Lý Thiết Kế Quy Hoạch",
+      "rank": 9,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 9,
+      "method_ranks": {
+        "E1": 9
+      },
+      "relevance_score": 2,
+      "skills_match": 2,
+      "experience_match": 2,
+      "education_match": 4,
+      "justification": "Kỹ năng chuyên môn của ứng viên không khớp với yêu cầu của vị trí Chuyên Viên Quản Lý Thiết Kế Quy Hoạch, kinh nghiệm 7 năm trong lĩnh vực kinh doanh bất động sản không phù hợp với yêu cầu 10 năm kinh nghiệm quản lý thiết kế quy hoạch, học vấn đại học kinh tế không đúng chuyên ngành quy hoạch.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:05:25"
+    },
+    {
+      "cv_id": "bds_L4b",
+      "cv_level": "L4b",
+      "cv_category": "Bất động sản",
+      "job_id": "580b0df34954e5d343727d450686f91f",
+      "job_title": "Nhân Viên Kinh Doanh Bất Động Sản",
+      "rank": 10,
+      "es_score": 0,
+      "pool_methods": [
+        "E2t"
+      ],
+      "best_pool_rank": 10,
+      "method_ranks": {
+        "E2t": 10
+      },
+      "relevance_score": 3,
+      "skills_match": 6,
+      "experience_match": 2,
+      "education_match": 6,
+      "justification": "Kinh nghiệm 7 năm quản lý kinh doanh bất động sản không phù hợp với yêu cầu dưới 1 năm, nhưng kỹ năng sales bất động sản và quản lý dự án có liên quan. Học vấn đại học kinh tế đạt bậc nhưng không phải chuyên ngành bất động sản.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:05:37"
+    },
+    {
+      "cv_id": "bds_P",
+      "cv_level": "P",
+      "cv_category": "Bất động sản",
+      "job_id": "0541a36f20ae3bb34d5611611cdf2575",
+      "job_title": "Trưởng Nhóm Marketing",
+      "rank": 7,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2",
+        "E2t"
+      ],
+      "best_pool_rank": 1,
+      "method_ranks": {
+        "E1": 7,
+        "E2": 1,
+        "E2t": 7
+      },
+      "relevance_score": 2,
+      "skills_match": 1,
+      "experience_match": 2,
+      "education_match": 7,
+      "justification": "CV ứng viên không có kỹ năng chuyên môn về marketing, kinh nghiệm làm việc trong lĩnh vực phát triển phần mềm không liên quan đến vị trí trưởng nhóm marketing, học vấn đạt bậc nhưng chuyên ngành không phù hợp hoàn toàn với yêu cầu.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:05:50"
+    },
+    {
+      "cv_id": "bds_P",
+      "cv_level": "P",
+      "cv_category": "Bất động sản",
+      "job_id": "b838f240ce7695573dbee4b4a0f6d2b2",
+      "job_title": "Java Developer (Senior) - Phần Mềm",
+      "rank": 3,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3",
+        "E3t"
+      ],
+      "best_pool_rank": 1,
+      "method_ranks": {
+        "E2": 3,
+        "E3": 1,
+        "E3t": 2
+      },
+      "relevance_score": 6,
+      "skills_match": 7,
+      "experience_match": 5,
+      "education_match": 10,
+      "justification": "Kỹ năng Java của ứng viên khớp với yêu cầu của JD, nhưng kinh nghiệm làm việc chỉ đạt 2 năm so với yêu cầu 4 năm. Học vấn của ứng viên đạt yêu cầu về chuyên ngành Công nghệ thông tin.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:06:03"
+    },
+    {
+      "cv_id": "bds_P",
+      "cv_level": "P",
+      "cv_category": "Bất động sản",
+      "job_id": "051bc099fc1fd4d8e8051ad3f85f724a",
+      "job_title": "Trợ Lý Tổng Giám Đốc - (Tuyển Nữ)",
+      "rank": 6,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2"
+      ],
+      "best_pool_rank": 2,
+      "method_ranks": {
+        "E1": 6,
+        "E2": 2
+      },
+      "relevance_score": 2,
+      "skills_match": 1,
+      "experience_match": 2,
+      "education_match": 7,
+      "justification": "Kỹ năng chuyên môn của ứng viên không khớp với yêu cầu của công việc, kinh nghiệm làm việc trong lĩnh vực phát triển phần mềm không liên quan đến vị trí Trợ Lý Tổng Giám Đốc trong ngành bất động sản, học vấn đạt bậc nhưng chuyên ngành không hoàn toàn phù hợp.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:06:16"
+    },
+    {
+      "cv_id": "bds_P",
+      "cv_level": "P",
+      "cv_category": "Bất động sản",
+      "job_id": "91ff03c6506f69d4d824039f1d1c2e9f",
+      "job_title": "Web Frontend Team Leader",
+      "rank": 5,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E2t"
+      ],
+      "best_pool_rank": 2,
+      "method_ranks": {
+        "E2": 5,
+        "E2t": 2
+      },
+      "relevance_score": 6,
+      "skills_match": 7,
+      "experience_match": 5,
+      "education_match": 8,
+      "justification": "Kỹ năng chuyên môn của ứng viên như Python, Java, JavaScript không hoàn toàn khớp với yêu cầu của vị trí Web Frontend Team Leader, nhưng ứng viên có kinh nghiệm trong lĩnh vực phát triển phần mềm và học vấn phù hợp. Tuy nhiên, kinh nghiệm của ứng viên chỉ là 2 năm, trong khi vị trí yêu cầu 4 năm kinh nghiệm.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:06:29"
+    },
+    {
+      "cv_id": "bds_P",
+      "cv_level": "P",
+      "cv_category": "Bất động sản",
+      "job_id": "d2e063b11be6aa2abcb27bc4353f9e81",
+      "job_title": "Nhân Viên Admin Tuyển Sinh (Thu Nhập Từ 15M Trở Lên)",
+      "rank": 2,
+      "es_score": 0,
+      "pool_methods": [
+        "E3"
+      ],
+      "best_pool_rank": 2,
+      "method_ranks": {
+        "E3": 2
+      },
+      "relevance_score": 2,
+      "skills_match": 1,
+      "experience_match": 5,
+      "education_match": 7,
+      "justification": "CV ứng viên có chuyên ngành Công nghệ thông tin nhưng kỹ năng chuyên môn không khớp với yêu cầu của Job Description về hành chính nhân sự, kinh nghiệm 2 năm trong lĩnh vực phát triển phần mềm không liên quan trực tiếp đến công việc tuyển sinh, học vấn đạt yêu cầu nhưng không đủ để nâng cao độ phù hợp.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:06:42"
+    },
+    {
+      "cv_id": "bds_P",
+      "cv_level": "P",
+      "cv_category": "Bất động sản",
+      "job_id": "f16690d387dede7dad20743492e4eccf",
+      "job_title": "Developer",
+      "rank": 7,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E2t"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E2": 7,
+        "E2t": 4
+      },
+      "relevance_score": 7,
+      "skills_match": 8,
+      "experience_match": 6,
+      "education_match": 10,
+      "justification": "Ứng viên có kỹ năng chuyên môn phù hợp với yêu cầu của vị trí Developer như Python, Java, JavaScript, và có kinh nghiệm làm việc trong lĩnh vực phát triển phần mềm. Tuy nhiên, kinh nghiệm của ứng viên chỉ là 2 năm, trong khi yêu cầu của vị trí là 1 năm, nên experience_match không đạt điểm cao nhất. Học vấn của ứng viên đạt yêu cầu với chuyên ngành Công nghệ thông tin.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:08:55"
+    },
+    {
+      "cv_id": "bds_P",
+      "cv_level": "P",
+      "cv_category": "Bất động sản",
+      "job_id": "2a2d604426767b782a443a4987a42188",
+      "job_title": "Trade Marketing Manager",
+      "rank": 5,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E3",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E1": 5,
+        "E3": 10,
+        "E2t": 10,
+        "E3t": 9
+      },
+      "relevance_score": 2,
+      "skills_match": 1,
+      "experience_match": 2,
+      "education_match": 7,
+      "justification": "CV ứng viên không có kỹ năng chuyên môn phù hợp với yêu cầu của Job Description về Trade Marketing, kinh nghiệm làm việc trong lĩnh vực phát triển phần mềm không liên quan đến ngành FMCG, nhưng học vấn đạt bậc đại học.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:09:08"
+    },
+    {
+      "cv_id": "bds_P",
+      "cv_level": "P",
+      "cv_category": "Bất động sản",
+      "job_id": "e92fe0f25fadb955d7462df748dbfb0b",
+      "job_title": "Trưởng Nhóm Thiết Kế/Graphic Designer",
+      "rank": 9,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E2t"
+      ],
+      "best_pool_rank": 6,
+      "method_ranks": {
+        "E2": 9,
+        "E2t": 6
+      },
+      "relevance_score": 2,
+      "skills_match": 0,
+      "experience_match": 2,
+      "education_match": 5,
+      "justification": "CV không có kỹ năng thiết kế đồ họa, kinh nghiệm không liên quan đến thiết kế, nhưng học vấn đạt bậc đại học, không phù hợp với yêu cầu của vị trí Trưởng Nhóm Thiết Kế/Graphic Designer.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:09:21"
+    },
+    {
+      "cv_id": "bds_P",
+      "cv_level": "P",
+      "cv_category": "Bất động sản",
+      "job_id": "3a1cb946e9e411285690e2b339f16812",
+      "job_title": "Quản Lý Phòng Hành Chính Tổng Hợp (Lương Thoả Thuận Cao, Đãi Ngộ Tốt) - Làm Việc Tại Bà Rịa - Vũng Tàu (Cũ)",
+      "rank": 8,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 8,
+      "method_ranks": {
+        "E1": 8
+      },
+      "relevance_score": 2,
+      "skills_match": 1,
+      "experience_match": 2,
+      "education_match": 6,
+      "justification": "Kỹ năng chuyên môn của ứng viên không khớp với yêu cầu của công việc, kinh nghiệm làm việc trong lĩnh vực phát triển phần mềm không liên quan đến quản lý hành chính tổng hợp, học vấn đạt bậc nhưng chuyên ngành không phù hợp hoàn toàn với yêu cầu công việc.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:09:34"
+    },
+    {
+      "cv_id": "bds_P",
+      "cv_level": "P",
+      "cv_category": "Bất động sản",
+      "job_id": "acc72608a2765fac252968fb0c98db18",
+      "job_title": "Project Manager",
+      "rank": 9,
+      "es_score": 0,
+      "pool_methods": [
+        "E3",
+        "E3t"
+      ],
+      "best_pool_rank": 8,
+      "method_ranks": {
+        "E3": 9,
+        "E3t": 8
+      },
+      "relevance_score": 6,
+      "skills_match": 5,
+      "experience_match": 5,
+      "education_match": 9,
+      "justification": "Kỹ năng chuyên môn của ứng viên như Python, Java, JavaScript không hoàn toàn khớp với yêu cầu của vị trí Project Manager, nhưng kinh nghiệm 2 năm trong lĩnh vực phát triển phần mềm và học vấn Đại học chuyên ngành Công nghệ thông tin là phù hợp. Tuy nhiên, ứng viên thiếu 2 năm kinh nghiệm so với yêu cầu 4 năm của vị trí này.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:09:48"
+    },
+    {
+      "cv_id": "bds_P",
+      "cv_level": "P",
+      "cv_category": "Bất động sản",
+      "job_id": "164ef62aece4552279181e21216fb2b3",
+      "job_title": "AI Engineer / Vision AI Công Ty IT Hàn Quốc",
+      "rank": 9,
+      "es_score": 0,
+      "pool_methods": [
+        "E2t"
+      ],
+      "best_pool_rank": 9,
+      "method_ranks": {
+        "E2t": 9
+      },
+      "relevance_score": 4,
+      "skills_match": 5,
+      "experience_match": 3,
+      "education_match": 9,
+      "justification": "CV có một số kỹ năng liên quan như Python và JavaScript, nhưng thiếu các kỹ năng chuyên môn cụ thể như PyTorch, TensorFlow, YOLO, RT-DETR, DINO, Grounding-DINO, VLM. Kinh nghiệm 2 năm trong lĩnh vực phát triển phần mềm không đủ để đáp ứng yêu cầu 5 năm kinh nghiệm trong lĩnh vực AI/ML. Học vấn đại học chuyên ngành Công nghệ thông tin là phù hợp.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:10:01"
+    },
+    {
+      "cv_id": "bds_P",
+      "cv_level": "P",
+      "cv_category": "Bất động sản",
+      "job_id": "6497640d84f884af4be2713ce07c5ac8",
+      "job_title": "Nhân Viên Kinh Doanh Bán Nhà Phố/Sales Bất Động Sản/Nhân Viên Tư Vấn BĐS - Thu Nhập Trên 39 Triệu (Tự Do Thời Gian - Chủ Động Chọn Địa Điểm Làm Việc Phù Hợp - Không Yêu Cầu Kinh Nghiệm - Được Đào Tạo Từ Đầu) Nguồn Nhà/Nguồn Khách Có Sẵn",
+      "rank": 9,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 9,
+      "method_ranks": {
+        "E1": 9
+      },
+      "relevance_score": 2,
+      "skills_match": 1,
+      "experience_match": 10,
+      "education_match": 6,
+      "justification": "CV có kỹ năng lập trình nhưng không phù hợp với yêu cầu kinh doanh bất động sản, kinh nghiệm 2 năm không liên quan đến ngành bất động sản, học vấn đạt bậc nhưng không đúng chuyên ngành, tuy nhiên job không yêu cầu kinh nghiệm nên fresher hoặc người có kinh nghiệm khác ngành vẫn có thể phù hợp.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:10:15"
+    },
+    {
+      "cv_id": "bds_P",
+      "cv_level": "P",
+      "cv_category": "Bất động sản",
+      "job_id": "7c9fb473473e08e1bf2da55f5e932433",
+      "job_title": "Backend Developer - Java - Dự Án Bank - 5 Năm Kinh Nghiệm",
+      "rank": 10,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t"
+      ],
+      "best_pool_rank": 10,
+      "method_ranks": {
+        "E3t": 10
+      },
+      "relevance_score": 4,
+      "skills_match": 6,
+      "experience_match": 2,
+      "education_match": 8,
+      "justification": "CV có một số kỹ năng lập trình phù hợp như Java và JavaScript, nhưng thiếu kinh nghiệm về Microservice, Message Queue, Redis và Database Oracle/SQL. Kinh nghiệm 2 năm trong lĩnh vực phát triển phần mềm không đủ để đáp ứng yêu cầu 5 năm kinh nghiệm của vị trí Backend Developer.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:12:28"
+    },
+    {
+      "cv_id": "bds_P",
+      "cv_level": "P",
+      "cv_category": "Bất động sản",
+      "job_id": "f8efd4f2428268672be73753c4270382",
+      "job_title": "Nhân Viên Tư Vấn Khóa Học- Tiếng Trung Giao Tiếp",
+      "rank": 10,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 10,
+      "method_ranks": {
+        "E1": 10
+      },
+      "relevance_score": 2,
+      "skills_match": 1,
+      "experience_match": 5,
+      "education_match": 7,
+      "justification": "Kỹ năng chuyên môn của ứng viên không khớp với yêu cầu của công việc, kinh nghiệm làm việc trong lĩnh vực phát triển phần mềm không liên quan đến tư vấn tuyển sinh, học vấn đúng bậc nhưng chưa đủ để nâng relevance.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:12:41"
+    },
+    {
+      "cv_id": "bds_P2",
+      "cv_level": "P2",
+      "cv_category": "Bất động sản",
+      "job_id": "124f4256f0d6a862038089b366463a3e",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng Hỗ Trợ Dịch Vụ (Ca Đêm) / Customer Service - Tiếng Anh Tốt, Thu Nhập Hấp Dẫn",
+      "rank": 7,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3"
+      ],
+      "best_pool_rank": 2,
+      "method_ranks": {
+        "E2": 7,
+        "E3": 2
+      },
+      "relevance_score": 5,
+      "skills_match": 4,
+      "experience_match": 8,
+      "education_match": 7,
+      "justification": "CV có kỹ năng giao tiếp tốt và làm việc nhóm, nhưng thiếu kiến thức về phần mềm và tiếng Anh giao tiếp tốt như yêu cầu của JD. Kinh nghiệm làm nhân viên phục vụ tại nhà hàng có thể chuyển đổi sang công việc chăm sóc khách hàng, và học vấn trung cấp đạt yêu cầu.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:12:53"
+    },
+    {
+      "cv_id": "bds_P2",
+      "cv_level": "P2",
+      "cv_category": "Bất động sản",
+      "job_id": "76d2a8410752284eb02957c77fa75f6f",
+      "job_title": "Quản Lý Quan Hệ Khách Hàng BĐS",
+      "rank": 2,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3"
+      ],
+      "best_pool_rank": 2,
+      "method_ranks": {
+        "E2": 2,
+        "E3": 4
+      },
+      "relevance_score": 3,
+      "skills_match": 2,
+      "experience_match": 5,
+      "education_match": 7,
+      "justification": "Kỹ năng chuyên môn của ứng viên không khớp với yêu cầu của công việc, kinh nghiệm làm việc không phù hợp với vị trí quản lý quan hệ khách hàng bất động sản, học vấn đạt yêu cầu nhưng không đủ để nâng cao điểm phù hợp tổng thể.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:13:06"
+    },
+    {
+      "cv_id": "bds_P2",
+      "cv_level": "P2",
+      "cv_category": "Bất động sản",
+      "job_id": "285895e1e0f7af20a86453b5e2c7ed83",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng",
+      "rank": 8,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3"
+      ],
+      "best_pool_rank": 3,
+      "method_ranks": {
+        "E2": 8,
+        "E3": 3
+      },
+      "relevance_score": 5,
+      "skills_match": 6,
+      "experience_match": 8,
+      "education_match": 4,
+      "justification": "CV có kỹ năng giao tiếp và làm việc nhóm phù hợp với yêu cầu của Job, nhưng thiếu kỹ năng chuyên môn về chăm sóc khách hàng và học vấn không đạt yêu cầu Cao đẳng. Kinh nghiệm 2 năm làm nhân viên phục vụ tại nhà hàng có thể chuyển đổi được một phần cho công việc chăm sóc khách hàng.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:13:19"
+    },
+    {
+      "cv_id": "bds_P2",
+      "cv_level": "P2",
+      "cv_category": "Bất động sản",
+      "job_id": "6fd0f53ce484ee83a6aa6bdd18a6a105",
+      "job_title": "Trưởng Nhóm Bán Hàng Tại Điểm Giới Thiệu Dịch Vụ",
+      "rank": 3,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E2t"
+      ],
+      "best_pool_rank": 3,
+      "method_ranks": {
+        "E2": 3,
+        "E2t": 6
+      },
+      "relevance_score": 2,
+      "skills_match": 1,
+      "experience_match": 5,
+      "education_match": 3,
+      "justification": "Kỹ năng và kinh nghiệm của ứng viên không phù hợp với yêu cầu của vị trí Trưởng Nhóm Bán Hàng Tại Điểm Giới Thiệu Dịch Vụ trong lĩnh vực Ngân hàng, ứng viên có kinh nghiệm trong lĩnh vực phục vụ khách hàng và quản lý hàng hóa nhưng không có kinh nghiệm trong lĩnh vực bán hàng hoặc tài chính, học vấn cũng không đạt yêu cầu.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:13:32"
+    },
+    {
+      "cv_id": "bds_P2",
+      "cv_level": "P2",
+      "cv_category": "Bất động sản",
+      "job_id": "525204f7197acb81a93ebacebc564bc8",
+      "job_title": "Trưởng Nhóm Kinh Doanh | Giáo Dục/ Dịch Vụ",
+      "rank": 4,
+      "es_score": 0,
+      "pool_methods": [
+        "E2t"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E2t": 4
+      },
+      "relevance_score": 2,
+      "skills_match": 2,
+      "experience_match": 5,
+      "education_match": 4,
+      "justification": "Kỹ năng chuyên môn của ứng viên không khớp với yêu cầu của công việc, kinh nghiệm làm việc tại nhà hàng không liên quan đến lĩnh vực giáo dục, học vấn trung cấp không đạt yêu cầu đại học của công việc.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:13:45"
+    },
+    {
+      "cv_id": "bds_P2",
+      "cv_level": "P2",
+      "cv_category": "Bất động sản",
+      "job_id": "6b103be81808213b770e11514c24315d",
+      "job_title": "Nhân Viên Lễ Tân - Có 2 Năm Kinh Nghiệm - Có Tiếng Anh Tốt - Hồ Chí Minh",
+      "rank": 4,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E1": 4,
+        "E2t": 7,
+        "E3t": 8
+      },
+      "relevance_score": 6,
+      "skills_match": 5,
+      "experience_match": 8,
+      "education_match": 4,
+      "justification": "Kinh nghiệm 2 năm làm nhân viên phục vụ tại nhà hàng có liên quan đến vị trí lễ tân, kỹ năng giao tiếp và quản lý hàng hóa cũng có thể áp dụng. Tuy nhiên, học vấn trung cấp không đạt yêu cầu cao đẳng và kỹ năng chuyên môn không hoàn toàn khớp với yêu cầu lễ tân và nhà hàng.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:13:59"
+    },
+    {
+      "cv_id": "bds_P2",
+      "cv_level": "P2",
+      "cv_category": "Bất động sản",
+      "job_id": "d768176760a4009a3743ceb2ee19d16a",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng",
+      "rank": 4,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E2": 4,
+        "E3": 6
+      },
+      "relevance_score": 5,
+      "skills_match": 4,
+      "experience_match": 6,
+      "education_match": 7,
+      "justification": "Kỹ năng giao tiếp và phục vụ khách hàng của ứng viên có liên quan đến yêu cầu chăm sóc khách hàng, nhưng thiếu kinh nghiệm trực tiếp trong lĩnh vực chăm sóc khách hàng và y tế/dược phẩm. Học vấn trung cấp đạt yêu cầu, nhưng ứng viên cần phát triển thêm kỹ năng chuyên môn và kinh nghiệm trong ngành.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:14:42"
+    },
+    {
+      "cv_id": "bds_P2",
+      "cv_level": "P2",
+      "cv_category": "Bất động sản",
+      "job_id": "2654c16765c6815cbb4c23e53072cf5e",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng (Trà Nương) - Hồ Chí Minh",
+      "rank": 5,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E1": 5,
+        "E2t": 8,
+        "E3t": 9
+      },
+      "relevance_score": 5,
+      "skills_match": 6,
+      "experience_match": 6,
+      "education_match": 4,
+      "justification": "Kỹ năng phục vụ khách hàng và giao tiếp tốt của ứng viên phù hợp với yêu cầu công việc, nhưng học vấn chỉ đạt trung cấp so với yêu cầu cao đẳng, kinh nghiệm làm việc cũng không hoàn toàn liên quan đến chăm sóc khách hàng chuyên nghiệp.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:14:55"
+    },
+    {
+      "cv_id": "bds_P2",
+      "cv_level": "P2",
+      "cv_category": "Bất động sản",
+      "job_id": "289b97f4e91334ac90cc2cce346762ab",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng",
+      "rank": 5,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3",
+        "E3t"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E2": 5,
+        "E3": 5,
+        "E3t": 7
+      },
+      "relevance_score": 4,
+      "skills_match": 2,
+      "experience_match": 8,
+      "education_match": 4,
+      "justification": "CV có một số kỹ năng mềm liên quan như giao tiếp tốt, làm việc nhóm nhưng thiếu kỹ năng chuyên môn như Excel, AutoCAD, Python, SAP. Kinh nghiệm 2 năm làm nhân viên phục vụ tại nhà hàng có thể chuyển đổi một phần cho công việc chăm sóc khách hàng, và học vấn trung cấp chưa đạt yêu cầu cao đẳng.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:15:08"
+    },
+    {
+      "cv_id": "bds_P2",
+      "cv_level": "P2",
+      "cv_category": "Bất động sản",
+      "job_id": "3006e0f5298bde0c4e16a99ec0f96872",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng - Telesales",
+      "rank": 6,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3"
+      ],
+      "best_pool_rank": 6,
+      "method_ranks": {
+        "E2": 6,
+        "E3": 8
+      },
+      "relevance_score": 3,
+      "skills_match": 2,
+      "experience_match": 5,
+      "education_match": 4,
+      "justification": "Kỹ năng chuyên môn của ứng viên không khớp với yêu cầu của công việc, kinh nghiệm làm việc cũng không liên quan trực tiếp, học vấn chưa đạt yêu cầu đại học.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:15:21"
+    },
+    {
+      "cv_id": "bds_P2",
+      "cv_level": "P2",
+      "cv_category": "Bất động sản",
+      "job_id": "dbbe570cbac7540f1446442d7428cfd6",
+      "job_title": "Nhân Viên Kinh Doanh / Tư Vấn Viên ̣̣̣KḤ ̣/ KHÔNG YÊU CẦU KINH NGHIỆM",
+      "rank": 6,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2t"
+      ],
+      "best_pool_rank": 6,
+      "method_ranks": {
+        "E1": 6,
+        "E2t": 10
+      },
+      "relevance_score": 4,
+      "skills_match": 2,
+      "experience_match": 10,
+      "education_match": 4,
+      "justification": "CV có một số kỹ năng mềm phù hợp như giao tiếp và làm việc nhóm, nhưng thiếu kỹ năng chuyên môn như Excel, AutoCAD, Python, SAP. Kinh nghiệm làm nhân viên phục vụ không liên quan trực tiếp đến kinh doanh, nhưng job không yêu cầu kinh nghiệm nên fresher được coi là phù hợp. Học vấn trung cấp không đạt yêu cầu cao đẳng.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:15:34"
+    },
+    {
+      "cv_id": "bds_P2",
+      "cv_level": "P2",
+      "cv_category": "Bất động sản",
+      "job_id": "090406aad740925ec49e91835a9179a0",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng",
+      "rank": 9,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3"
+      ],
+      "best_pool_rank": 7,
+      "method_ranks": {
+        "E2": 9,
+        "E3": 7
+      },
+      "relevance_score": 4,
+      "skills_match": 2,
+      "experience_match": 8,
+      "education_match": 6,
+      "justification": "CV có một số kỹ năng mềm như giao tiếp tốt, làm việc nhóm nhưng thiếu kỹ năng chuyên môn về chăm sóc khách hàng và cơ khí. Kinh nghiệm làm nhân viên phục vụ tại nhà hàng có thể chuyển đổi một phần, học vấn trung cấp đạt yêu cầu nhưng không đúng chuyên ngành.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:15:47"
+    },
+    {
+      "cv_id": "bds_P2",
+      "cv_level": "P2",
+      "cv_category": "Bất động sản",
+      "job_id": "16617adf17ee61ed74e69e567aa545ca",
+      "job_title": "Trưởng Phòng Kinh Doanh Bất Động Sản",
+      "rank": 7,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 7,
+      "method_ranks": {
+        "E1": 7
+      },
+      "relevance_score": 2,
+      "skills_match": 1,
+      "experience_match": 2,
+      "education_match": 3,
+      "justification": "CV không có kỹ năng quản lý đội nhóm, tìm kiếm và chăm sóc khách hàng, kỹ năng giao tiếp tốt, kỹ năng xử lý tình huống cần thiết cho vị trí Trưởng Phòng Kinh Doanh Bất Động Sản, kinh nghiệm làm nhân viên phục vụ tại nhà hàng không liên quan đến kinh doanh bất động sản, học vấn trung cấp không đạt yêu cầu đại học.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:16:00"
+    },
+    {
+      "cv_id": "bds_P2",
+      "cv_level": "P2",
+      "cv_category": "Bất động sản",
+      "job_id": "4d7b6ab5bdeae63a5ec39a040e221f57",
+      "job_title": "Nhân Viên Lễ Tân Tòa Nhà (Resident Receptionist) - Tiếng Anh",
+      "rank": 8,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 8,
+      "method_ranks": {
+        "E1": 8
+      },
+      "relevance_score": 5,
+      "skills_match": 4,
+      "experience_match": 8,
+      "education_match": 7,
+      "justification": "CV có kỹ năng giao tiếp và làm việc nhóm nhưng thiếu kỹ năng chuyên môn như Excel, AutoCAD, Python, SAP; kinh nghiệm làm nhân viên phục vụ tại nhà hàng có thể chuyển đổi sang công việc lễ tân, học vấn trung cấp đạt yêu cầu.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:16:13"
+    },
+    {
+      "cv_id": "bds_P2",
+      "cv_level": "P2",
+      "cv_category": "Bất động sản",
+      "job_id": "48345355c4e24e9b62de96ed8397937f",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng",
+      "rank": 9,
+      "es_score": 0,
+      "pool_methods": [
+        "E3"
+      ],
+      "best_pool_rank": 9,
+      "method_ranks": {
+        "E3": 9
+      },
+      "relevance_score": 5,
+      "skills_match": 4,
+      "experience_match": 7,
+      "education_match": 4,
+      "justification": "Kỹ năng phục vụ khách hàng và quản lý hàng hóa có liên quan, kinh nghiệm 2 năm gần khớp yêu cầu, nhưng học vấn chỉ trung cấp so với yêu cầu đại học, và kỹ năng chuyên môn không hoàn toàn khớp với yêu cầu chăm sóc khách hàng và bán lẻ.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:16:26"
+    },
+    {
+      "cv_id": "bds_P2",
+      "cv_level": "P2",
+      "cv_category": "Bất động sản",
+      "job_id": "9dc9b7cde1b64d060eff7f73fd2a512e",
+      "job_title": "Trưởng Nhóm Kinh Doanh Thị Trường - SPX Express (Hà Nội)",
+      "rank": 9,
+      "es_score": 0,
+      "pool_methods": [
+        "E2t"
+      ],
+      "best_pool_rank": 9,
+      "method_ranks": {
+        "E2t": 9
+      },
+      "relevance_score": 2,
+      "skills_match": 2,
+      "experience_match": 3,
+      "education_match": 4,
+      "justification": "Kỹ năng và kinh nghiệm của ứng viên không phù hợp với yêu cầu của vị trí Trưởng Nhóm Kinh Doanh Thị Trường, ứng viên có kinh nghiệm phục vụ khách hàng nhưng không có kinh nghiệm bán hàng hoặc quản lý đội nhóm, học vấn trung cấp không đạt yêu cầu cao đẳng.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:18:39"
+    },
+    {
+      "cv_id": "bds_P2",
+      "cv_level": "P2",
+      "cv_category": "Bất động sản",
+      "job_id": "e15593fb1261cd8838d471ef91a0b6f1",
+      "job_title": "Nhân Viên Lễ Tân Booking Sân Golf",
+      "rank": 9,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 9,
+      "method_ranks": {
+        "E1": 9
+      },
+      "relevance_score": 5,
+      "skills_match": 4,
+      "experience_match": 8,
+      "education_match": 10,
+      "justification": "Kỹ năng giao tiếp và phục vụ khách hàng của ứng viên phù hợp với yêu cầu công việc lễ tân, nhưng thiếu kỹ năng chuyên môn về lễ tân và du lịch. Kinh nghiệm làm việc 2 năm trong lĩnh vực phục vụ khách hàng có thể chuyển đổi được, và học vấn trung cấp đạt yêu cầu.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:18:52"
+    },
+    {
+      "cv_id": "bds_P2",
+      "cv_level": "P2",
+      "cv_category": "Bất động sản",
+      "job_id": "180cb3864dc2ecf680ead994c23e90ba",
+      "job_title": "Trưởng Phòng Vận Hành - Telesales (Lĩnh Vực Enabler/Logistic)",
+      "rank": 10,
+      "es_score": 0,
+      "pool_methods": [
+        "E3"
+      ],
+      "best_pool_rank": 10,
+      "method_ranks": {
+        "E3": 10
+      },
+      "relevance_score": 2,
+      "skills_match": 2,
+      "experience_match": 5,
+      "education_match": 4,
+      "justification": "Kỹ năng chuyên môn của ứng viên không khớp với yêu cầu của công việc, kinh nghiệm làm việc không phù hợp với vị trí trưởng phòng vận hành telesales, học vấn chỉ đạt trung cấp không đáp ứng yêu cầu cao đẳng.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:19:05"
+    },
+    {
+      "cv_id": "bds_P2",
+      "cv_level": "P2",
+      "cv_category": "Bất động sản",
+      "job_id": "393569e29b4b58bc0f81851017ed3cd8",
+      "job_title": "CHUYÊN VIÊN TƯ VẤN TÀI CHÍNH -SHINHAN BANK ( Pico Plaza, Phường Bảy Hiền)",
+      "rank": 10,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 10,
+      "method_ranks": {
+        "E1": 10
+      },
+      "relevance_score": 3,
+      "skills_match": 2,
+      "experience_match": 5,
+      "education_match": 7,
+      "justification": "CV có một số kỹ năng mềm như giao tiếp và làm việc nhóm nhưng thiếu kỹ năng chuyên môn về tài chính và ngân hàng, kinh nghiệm làm việc không liên quan đến ngành ngân hàng, học vấn đạt yêu cầu về bậc học nhưng không đúng chuyên ngành.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:19:18"
+    },
+    {
+      "cv_id": "bds_P2",
+      "cv_level": "P2",
+      "cv_category": "Bất động sản",
+      "job_id": "d67111eb08651ad8a3a982cde26c2fd6",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng",
+      "rank": 10,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t"
+      ],
+      "best_pool_rank": 10,
+      "method_ranks": {
+        "E3t": 10
+      },
+      "relevance_score": 5,
+      "skills_match": 6,
+      "experience_match": 5,
+      "education_match": 7,
+      "justification": "Kỹ năng giao tiếp và phục vụ khách hàng của ứng viên phù hợp với yêu cầu chăm sóc khách hàng, nhưng kinh nghiệm làm việc không hoàn toàn liên quan đến ngành chăm sóc khách hàng. Học vấn trung cấp đạt yêu cầu trung học của JD.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:19:31"
+    },
+    {
+      "cv_id": "bds_P2",
+      "cv_level": "P2",
+      "cv_category": "Bất động sản",
+      "job_id": "eadb10f792afb06bf250cdce60363583",
+      "job_title": "Giám Sát Tuyển Sinh - Quản Lý Lớp Học - Sales Supervisor (Quảng Ngãi, Đà Nẵng, Long An) - Có Kinh Nghiệm Quản Lý Đội Nhóm",
+      "rank": 10,
+      "es_score": 0,
+      "pool_methods": [
+        "E2"
+      ],
+      "best_pool_rank": 10,
+      "method_ranks": {
+        "E2": 10
+      },
+      "relevance_score": 3,
+      "skills_match": 2,
+      "experience_match": 5,
+      "education_match": 4,
+      "justification": "Kỹ năng chuyên môn của ứng viên không khớp với yêu cầu của công việc, kinh nghiệm làm việc trong lĩnh vực phục vụ khách hàng nhưng không phải là quản lý đội nhóm, học vấn chỉ đạt trung cấp trong khi yêu cầu là cao đẳng.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 11:19:44"
+    },
+    {
+      "cv_id": "cskh_L1",
+      "cv_level": "L1",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "3006e0f5298bde0c4e16a99ec0f96872",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng - Telesales",
+      "rank": 4,
+      "es_score": 0,
+      "pool_methods": [
+        "E2t"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E2t": 4
+      },
+      "relevance_score": 5,
+      "skills_match": 2,
+      "experience_match": 2,
+      "education_match": 7,
+      "justification": "CV có một số kỹ năng mềm phù hợp với chăm sóc khách hàng nhưng thiếu kỹ năng chuyên môn như AutoCAD, Python, SAP; kinh nghiệm fresher không đáp ứng yêu cầu 1 năm, học vấn đúng bậc nhưng chưa đủ để nâng cao relevance.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:16:35"
+    },
+    {
+      "cv_id": "cskh_L1",
+      "cv_level": "L1",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "6832943eadf4d88d38290ff03ec26511",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng - Air Xuất [HCM]",
+      "rank": 4,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E1": 4,
+        "E2t": 9,
+        "E3t": 9
+      },
+      "relevance_score": 4,
+      "skills_match": 2,
+      "experience_match": 0,
+      "education_match": 7,
+      "justification": "CV có một số kỹ năng mềm liên quan như giao tiếp tốt, làm việc nhóm nhưng thiếu kỹ năng chuyên môn về chứng từ xuất nhập khẩu, logistic và xuất nhập khẩu. Kinh nghiệm của ứng viên là fresher, không đạt yêu cầu 2 năm kinh nghiệm của JD, nhưng học vấn đạt bậc đại học.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:16:48"
+    },
+    {
+      "cv_id": "cskh_L1",
+      "cv_level": "L1",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "6f638be62e7594e2cdee54d7f1cb9712",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng, Tư Vấn App Dịch Vụ Parttime (Hà Nội)",
+      "rank": 5,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2",
+        "E3",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E1": 5,
+        "E2": 4,
+        "E3": 5,
+        "E2t": 7,
+        "E3t": 6
+      },
+      "relevance_score": 7,
+      "skills_match": 6,
+      "experience_match": 10,
+      "education_match": 9,
+      "justification": "CV có kỹ năng giao tiếp tốt, làm việc nhóm và chuyên ngành kinh doanh liên quan, tuy nhiên thiếu kỹ năng chuyên môn về chăm sóc khách hàng và tiếng Anh IELTS 6.5. Kinh nghiệm làm việc nhóm và dự án về chăm sóc khách hàng là một lợi thế, và học vấn đại học chuyên ngành kinh doanh phù hợp với yêu cầu.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:17:01"
+    },
+    {
+      "cv_id": "cskh_L1",
+      "cv_level": "L1",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "76abfe7fc1356fe35430a4571c96991a",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng Sàn Thương Mại Điện Tử (Biết Tiếng Anh)",
+      "rank": 5,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E2": 5,
+        "E3": 4,
+        "E2t": 10,
+        "E3t": 8
+      },
+      "relevance_score": 5,
+      "skills_match": 2,
+      "experience_match": 2,
+      "education_match": 6,
+      "justification": "CV có kỹ năng giao tiếp tốt và tiếng Anh, nhưng thiếu kỹ năng chuyên môn như AutoCAD, Python, SAP; kinh nghiệm 0 năm không đạt yêu cầu 1 năm, học vấn đại học cao hơn yêu cầu cao đẳng.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:17:15"
+    },
+    {
+      "cv_id": "cskh_L1",
+      "cv_level": "L1",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "591088f37f2ec398caf4ab2d8c94c03f",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng",
+      "rank": 6,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E2t"
+      ],
+      "best_pool_rank": 6,
+      "method_ranks": {
+        "E2": 6,
+        "E2t": 8
+      },
+      "relevance_score": 5,
+      "skills_match": 6,
+      "experience_match": 0,
+      "education_match": 8,
+      "justification": "CV có kỹ năng giao tiếp tốt và làm việc nhóm, cũng như chuyên ngành kinh doanh liên quan, nhưng thiếu kinh nghiệm chăm sóc khách hàng và kỹ năng chuyên môn như Excel, PPT. Học vấn đạt yêu cầu đại học nhưng chưa có kinh nghiệm thực tế.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:17:28"
+    },
+    {
+      "cv_id": "cskh_L1",
+      "cv_level": "L1",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "8e8a17b399ccc441b7f1a15e86507f91",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng Biết Tiếng Trung - Không Yêu Cầu Kinh Nghiệm - Tuyển Nữ - Tháng Nghỉ 8 Ngày Linh Hoạt (Thu Nhập 20 - 22 Triệu)",
+      "rank": 6,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 6,
+      "method_ranks": {
+        "E1": 6
+      },
+      "relevance_score": 6,
+      "skills_match": 2,
+      "experience_match": 10,
+      "education_match": 6,
+      "justification": "CV không có kỹ năng tiếng Trung cần thiết cho công việc, nhưng kinh nghiệm không yêu cầu và ứng viên có thể được đào tạo từ đầu. Học vấn đạt bậc nhưng không đúng chuyên ngành yêu cầu.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:19:41"
+    },
+    {
+      "cv_id": "cskh_L1",
+      "cv_level": "L1",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "1e866941f27c4a08b9de080e35ccae0b",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng/Customer Service/Telesales/Tư Vấn/Hỗ Trợ Học Viên - (Admission Officer) - ILA Nguyễn Ảnh Thủ",
+      "rank": 10,
+      "es_score": 0,
+      "pool_methods": [
+        "E3",
+        "E3t"
+      ],
+      "best_pool_rank": 7,
+      "method_ranks": {
+        "E3": 10,
+        "E3t": 7
+      },
+      "relevance_score": 6,
+      "skills_match": 4,
+      "experience_match": 10,
+      "education_match": 7,
+      "justification": "CV có kỹ năng giao tiếp tốt, làm việc nhóm và tiếng Anh, phù hợp với yêu cầu chăm sóc khách hàng. Kinh nghiệm dưới 1 năm phù hợp với yêu cầu của job. Học vấn đại học nhưng cao hơn yêu cầu cao đẳng, vẫn phù hợp.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:19:54"
+    },
+    {
+      "cv_id": "cskh_L1",
+      "cv_level": "L1",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "898b904f94add6bd8e1f3688c54408dd",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng",
+      "rank": 7,
+      "es_score": 0,
+      "pool_methods": [
+        "E3"
+      ],
+      "best_pool_rank": 7,
+      "method_ranks": {
+        "E3": 7
+      },
+      "relevance_score": 5,
+      "skills_match": 4,
+      "experience_match": 2,
+      "education_match": 7,
+      "justification": "CV có một số kỹ năng mềm phù hợp như giao tiếp tốt, làm việc nhóm, nhưng thiếu kinh nghiệm chăm sóc khách hàng chuyên nghiệp và kỹ năng sử dụng các công cụ làm việc online như Google Drive, Facebook, Zalo. Học vấn đạt yêu cầu đại học nhưng chưa có kinh nghiệm làm việc thực tế.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:20:07"
+    },
+    {
+      "cv_id": "cskh_L1",
+      "cv_level": "L1",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "d836cad166294470d91048b6d2ed07ce",
+      "job_title": "Kế Toán Trưởng - Thu Nhập Từ 25 Triệu Đến 28 Triệu",
+      "rank": 7,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 7,
+      "method_ranks": {
+        "E1": 7
+      },
+      "relevance_score": 2,
+      "skills_match": 1,
+      "experience_match": 0,
+      "education_match": 7,
+      "justification": "CV không có kỹ năng kế toán chuyên sâu, kinh nghiệm không phù hợp với yêu cầu 4 năm của vị trí Kế Toán Trưởng, nhưng học vấn đạt bậc đại học.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:20:20"
+    },
+    {
+      "cv_id": "cskh_L1",
+      "cv_level": "L1",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "650e7291beecf5ee57806dd4e4524d4f",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng Ca Đêm (4 Tiếng/Đêm - Làm Việc Remote - Yêu Cầu Tiếng Anh)",
+      "rank": 8,
+      "es_score": 0,
+      "pool_methods": [
+        "E3"
+      ],
+      "best_pool_rank": 8,
+      "method_ranks": {
+        "E3": 8
+      },
+      "relevance_score": 6,
+      "skills_match": 5,
+      "experience_match": 2,
+      "education_match": 8,
+      "justification": "CV có kỹ năng giao tiếp tốt, làm việc nhóm và tiếng Anh, phù hợp với yêu cầu chăm sóc khách hàng. Tuy nhiên, thiếu kinh nghiệm (0 năm) so với yêu cầu 1 năm và không có kỹ năng chuyên môn về Thương mại điện tử, Marketing/Quảng cáo. Học vấn đạt yêu cầu về bậc học nhưng không rõ ràng về chuyên ngành.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:20:33"
+    },
+    {
+      "cv_id": "cskh_L1",
+      "cv_level": "L1",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "92140695d685a6d05fb5a5d3ba61bf4d",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng Mạng Viettel (Làm Việc Tại Văn Phòng, Không Áp Doanh Số)",
+      "rank": 8,
+      "es_score": 0,
+      "pool_methods": [
+        "E2"
+      ],
+      "best_pool_rank": 8,
+      "method_ranks": {
+        "E2": 8
+      },
+      "relevance_score": 6,
+      "skills_match": 2,
+      "experience_match": 10,
+      "education_match": 7,
+      "justification": "CV có kỹ năng giao tiếp tốt, làm việc nhóm và một số kỹ năng cơ bản như Excel, nhưng thiếu các kỹ năng chuyên môn như AutoCAD, Python, SAP. Kinh nghiệm của ứng viên là fresher, nhưng job không yêu cầu kinh nghiệm nên experience_match là 10. Học vấn của ứng viên là đại học, cao hơn yêu cầu trung học của job.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:20:46"
+    },
+    {
+      "cv_id": "cskh_L1",
+      "cv_level": "L1",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "e2a95ee4eb1f005599ac4cbb23651694",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng Kiêm Lễ Tân",
+      "rank": 8,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 8,
+      "method_ranks": {
+        "E1": 8
+      },
+      "relevance_score": 6,
+      "skills_match": 6,
+      "experience_match": 3,
+      "education_match": 4,
+      "justification": "CV có kỹ năng giao tiếp tốt và làm việc nhóm, phù hợp với yêu cầu chăm sóc khách hàng, nhưng thiếu kinh nghiệm và học vấn không hoàn toàn phù hợp với yêu cầu Trung cấp.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:22:59"
+    },
+    {
+      "cv_id": "cskh_L1",
+      "cv_level": "L1",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "45fcd06c63fbbd8a70e7214600bf8028",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng - Phòng Sales",
+      "rank": 9,
+      "es_score": 0,
+      "pool_methods": [
+        "E2"
+      ],
+      "best_pool_rank": 9,
+      "method_ranks": {
+        "E2": 9
+      },
+      "relevance_score": 4,
+      "skills_match": 2,
+      "experience_match": 0,
+      "education_match": 7,
+      "justification": "CV có một số kỹ năng mềm liên quan đến chăm sóc khách hàng nhưng thiếu kinh nghiệm và kỹ năng chuyên môn cần thiết như AutoCAD, Python, SAP; học vấn đúng bậc nhưng chưa đủ để nâng relevance.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:23:13"
+    },
+    {
+      "cv_id": "cskh_L1",
+      "cv_level": "L1",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "6d343b992049d2f8b2607b9fc0332caa",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng (CSKH Tiếng Trung) - Ngành Thương Mại Điện Tử",
+      "rank": 10,
+      "es_score": 0,
+      "pool_methods": [
+        "E2"
+      ],
+      "best_pool_rank": 10,
+      "method_ranks": {
+        "E2": 10
+      },
+      "relevance_score": 4,
+      "skills_match": 2,
+      "experience_match": 10,
+      "education_match": 6,
+      "justification": "CV có một số kỹ năng mềm phù hợp như giao tiếp tốt, làm việc nhóm, nhưng thiếu kỹ năng chuyên môn như tiếng Trung, Excel, AutoCAD, Python, SAP. Kinh nghiệm của ứng viên là fresher, nhưng job không yêu cầu kinh nghiệm nên experience_match là 10. Học vấn của ứng viên là đại học, nhưng chuyên ngành không hoàn toàn phù hợp với yêu cầu của job.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:23:25"
+    },
+    {
+      "cv_id": "cskh_L1",
+      "cv_level": "L1",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "dadd49246f6c21d87ce754ef103a0c92",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng - Dược Phẩm",
+      "rank": 10,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 10,
+      "method_ranks": {
+        "E1": 10
+      },
+      "relevance_score": 4,
+      "skills_match": 2,
+      "experience_match": 0,
+      "education_match": 7,
+      "justification": "CV có một số kỹ năng mềm phù hợp như giao tiếp tốt, làm việc nhóm, nhưng thiếu kỹ năng chuyên môn như AutoCAD, Python, SAP. Kinh nghiệm của ứng viên là fresher, không đạt yêu cầu 2 năm của JD. Học vấn của ứng viên đạt bậc đại học, nhưng chuyên ngành không hoàn toàn phù hợp với yêu cầu của JD.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:23:38"
+    },
+    {
+      "cv_id": "cskh_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "21e374ac9c4191dfb45bdc896cc76ac5",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng| Telesales",
+      "rank": 7,
+      "es_score": 0,
+      "pool_methods": [
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 2,
+      "method_ranks": {
+        "E2t": 7,
+        "E3t": 2
+      },
+      "relevance_score": 6,
+      "skills_match": 4,
+      "experience_match": 8,
+      "education_match": 7,
+      "justification": "CV có kinh nghiệm chăm sóc khách hàng và kỹ năng giao tiếp tốt, nhưng thiếu kỹ năng chuyên môn như AutoCAD, Python, SAP. Học vấn đúng bậc và có liên quan đến ngành quản trị kinh doanh, nhưng không phải chuyên ngành chăm sóc khách hàng.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:23:51"
+    },
+    {
+      "cv_id": "cskh_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "591088f37f2ec398caf4ab2d8c94c03f",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng",
+      "rank": 5,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3",
+        "E2t"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E2": 5,
+        "E3": 6,
+        "E2t": 6
+      },
+      "relevance_score": 6,
+      "skills_match": 6,
+      "experience_match": 5,
+      "education_match": 8,
+      "justification": "CV có kỹ năng giao tiếp tốt, làm việc nhóm và sử dụng Excel, phù hợp với yêu cầu của JD. Tuy nhiên, kinh nghiệm chỉ có 1 năm, thiếu 1 năm so với yêu cầu của JD. Học vấn đạt yêu cầu với chuyên ngành Quản trị kinh doanh.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:26:04"
+    },
+    {
+      "cv_id": "cskh_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "6832943eadf4d88d38290ff03ec26511",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng - Air Xuất [HCM]",
+      "rank": 5,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E1": 5,
+        "E2t": 8,
+        "E3t": 8
+      },
+      "relevance_score": 6,
+      "skills_match": 4,
+      "experience_match": 5,
+      "education_match": 7,
+      "justification": "Ứng viên có kinh nghiệm 1 năm trong lĩnh vực chăm sóc khách hàng, nhưng thiếu 1 năm so với yêu cầu 2 năm của công việc. Kỹ năng chuyên môn như Excel và tiếng Anh IELTS 6.5 là phù hợp, nhưng không có kỹ năng chuyên môn cụ thể về xuất nhập khẩu hoặc logistic như yêu cầu. Học vấn của ứng viên là Đại học chuyên ngành Quản trị kinh doanh, cao hơn yêu cầu Cao đẳng.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:26:17"
+    },
+    {
+      "cv_id": "cskh_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "8e8a17b399ccc441b7f1a15e86507f91",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng Biết Tiếng Trung - Không Yêu Cầu Kinh Nghiệm - Tuyển Nữ - Tháng Nghỉ 8 Ngày Linh Hoạt (Thu Nhập 20 - 22 Triệu)",
+      "rank": 6,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 6,
+      "method_ranks": {
+        "E1": 6,
+        "E2t": 9,
+        "E3t": 10
+      },
+      "relevance_score": 6,
+      "skills_match": 2,
+      "experience_match": 10,
+      "education_match": 7,
+      "justification": "CV có một số kỹ năng mềm phù hợp nhưng thiếu kỹ năng chuyên môn về tiếng Trung, kinh nghiệm làm việc 1 năm không liên quan trực tiếp nhưng job không yêu cầu kinh nghiệm nên experience_match là 10, học vấn đạt bậc nhưng không đúng chuyên ngành yêu cầu.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:26:30"
+    },
+    {
+      "cv_id": "cskh_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "ff0c632a06ba1578d84d382ed7165e01",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng - ILA Hà Nội",
+      "rank": 6,
+      "es_score": 0,
+      "pool_methods": [
+        "E2"
+      ],
+      "best_pool_rank": 6,
+      "method_ranks": {
+        "E2": 6
+      },
+      "relevance_score": 5,
+      "skills_match": 2,
+      "experience_match": 8,
+      "education_match": 6,
+      "justification": "Kinh nghiệm 1 năm làm nhân viên hỗ trợ tại công ty dịch vụ gần khớp với yêu cầu 1 năm, học vấn đại học vượt yêu cầu cao đẳng, nhưng kỹ năng chuyên môn như Excel chỉ là một phần của yêu cầu, còn thiếu nhiều kỹ năng khác như AutoCAD, Python, SAP.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:26:44"
+    },
+    {
+      "cv_id": "cskh_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "650e7291beecf5ee57806dd4e4524d4f",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng Ca Đêm (4 Tiếng/Đêm - Làm Việc Remote - Yêu Cầu Tiếng Anh)",
+      "rank": 7,
+      "es_score": 0,
+      "pool_methods": [
+        "E3"
+      ],
+      "best_pool_rank": 7,
+      "method_ranks": {
+        "E3": 7
+      },
+      "relevance_score": 7,
+      "skills_match": 6,
+      "experience_match": 8,
+      "education_match": 6,
+      "justification": "CV có kỹ năng giao tiếp tốt, làm việc nhóm và kinh nghiệm 1 năm làm nhân viên hỗ trợ, phù hợp với yêu cầu chăm sóc khách hàng. Tuy nhiên, học vấn của ứng viên là Đại học Quản trị kinh doanh, không hoàn toàn phù hợp với yêu cầu Cao đẳng của JD. Nhưng kỹ năng tiếng Anh IELTS 6.5 của ứng viên lại là một lợi thế cho vị trí này.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:26:57"
+    },
+    {
+      "cv_id": "cskh_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "d836cad166294470d91048b6d2ed07ce",
+      "job_title": "Kế Toán Trưởng - Thu Nhập Từ 25 Triệu Đến 28 Triệu",
+      "rank": 7,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2",
+        "E2t"
+      ],
+      "best_pool_rank": 7,
+      "method_ranks": {
+        "E1": 7,
+        "E2": 8,
+        "E2t": 10
+      },
+      "relevance_score": 2,
+      "skills_match": 1,
+      "experience_match": 2,
+      "education_match": 6,
+      "justification": "CV không có kỹ năng kế toán chuyên sâu, kinh nghiệm chỉ 1 năm hỗ trợ khách hàng không liên quan đến kế toán, học vấn đúng bậc nhưng sai chuyên ngành với yêu cầu kế toán.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:27:09"
+    },
+    {
+      "cv_id": "cskh_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "e2a95ee4eb1f005599ac4cbb23651694",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng Kiêm Lễ Tân",
+      "rank": 8,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 8,
+      "method_ranks": {
+        "E1": 8
+      },
+      "relevance_score": 7,
+      "skills_match": 6,
+      "experience_match": 8,
+      "education_match": 6,
+      "justification": "CV có kỹ năng giao tiếp tốt, làm việc nhóm và 1 năm kinh nghiệm hỗ trợ khách hàng, phù hợp với yêu cầu chăm sóc khách hàng của JD. Tuy nhiên, học vấn của CV là Đại học Quản trị kinh doanh, không hoàn toàn phù hợp với yêu cầu Trung cấp của JD.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:27:23"
+    },
+    {
+      "cv_id": "cskh_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "1e866941f27c4a08b9de080e35ccae0b",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng/Customer Service/Telesales/Tư Vấn/Hỗ Trợ Học Viên - (Admission Officer) - ILA Nguyễn Ảnh Thủ",
+      "rank": 9,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t"
+      ],
+      "best_pool_rank": 9,
+      "method_ranks": {
+        "E3t": 9
+      },
+      "relevance_score": 6,
+      "skills_match": 4,
+      "experience_match": 8,
+      "education_match": 6,
+      "justification": "CV có một số kỹ năng mềm phù hợp như giao tiếp tốt, làm việc nhóm, và kinh nghiệm 1 năm làm nhân viên hỗ trợ cũng liên quan đến chăm sóc khách hàng. Tuy nhiên, kỹ năng chuyên môn như Excel là phù hợp nhưng không có kỹ năng chuyên môn khác như AutoCAD, Python, SAP. Học vấn của ứng viên là Đại học nhưng yêu cầu của JD là Cao đẳng, nên không hoàn toàn phù hợp.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:27:36"
+    },
+    {
+      "cv_id": "cskh_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "6d343b992049d2f8b2607b9fc0332caa",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng (CSKH Tiếng Trung) - Ngành Thương Mại Điện Tử",
+      "rank": 9,
+      "es_score": 0,
+      "pool_methods": [
+        "E3"
+      ],
+      "best_pool_rank": 9,
+      "method_ranks": {
+        "E3": 9
+      },
+      "relevance_score": 2,
+      "skills_match": 1,
+      "experience_match": 7,
+      "education_match": 6,
+      "justification": "CV không có kỹ năng chuyên môn phù hợp với yêu cầu (Tiếng Trung, AutoCAD, Python, SAP), kinh nghiệm chăm sóc khách hàng có nhưng không liên quan đến thương mại điện tử, học vấn cao đẳng yêu cầu nhưng CV có đại học quản trị kinh doanh.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:27:49"
+    },
+    {
+      "cv_id": "cskh_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "76abfe7fc1356fe35430a4571c96991a",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng Sàn Thương Mại Điện Tử (Biết Tiếng Anh)",
+      "rank": 9,
+      "es_score": 0,
+      "pool_methods": [
+        "E2"
+      ],
+      "best_pool_rank": 9,
+      "method_ranks": {
+        "E2": 9
+      },
+      "relevance_score": 6,
+      "skills_match": 4,
+      "experience_match": 8,
+      "education_match": 6,
+      "justification": "CV có kỹ năng giao tiếp tốt, làm việc nhóm và 1 năm kinh nghiệm hỗ trợ khách hàng, phù hợp với yêu cầu chăm sóc khách hàng của JD. Tuy nhiên, kỹ năng chuyên môn yêu cầu của JD như AutoCAD, Python, SAP không khớp với kỹ năng của CV. Học vấn của CV là Đại học Quản trị kinh doanh, cao hơn yêu cầu Cao đẳng của JD.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:28:02"
+    },
+    {
+      "cv_id": "cskh_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "6a0c25cc1e41ba3e704bd495a32c3d83",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng/Customer Service/Telesales/Tư Vấn/Hỗ Trợ Học Viên - (Admission Officer) - ILA Nguyễn Trãi",
+      "rank": 10,
+      "es_score": 0,
+      "pool_methods": [
+        "E3"
+      ],
+      "best_pool_rank": 10,
+      "method_ranks": {
+        "E3": 10
+      },
+      "relevance_score": 6,
+      "skills_match": 4,
+      "experience_match": 8,
+      "education_match": 6,
+      "justification": "CV có kinh nghiệm chăm sóc khách hàng và kỹ năng giao tiếp tốt, phù hợp với yêu cầu của JD. Tuy nhiên, học vấn của ứng viên là Đại học Quản trị kinh doanh, không hoàn toàn phù hợp với yêu cầu Cao đẳng của JD. Kỹ năng chuyên môn như Excel và Tiếng Anh cũng là lợi thế.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:28:15"
+    },
+    {
+      "cv_id": "cskh_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "dadd49246f6c21d87ce754ef103a0c92",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng - Dược Phẩm",
+      "rank": 10,
+      "es_score": 0,
+      "pool_methods": [
+        "E1"
+      ],
+      "best_pool_rank": 10,
+      "method_ranks": {
+        "E1": 10
+      },
+      "relevance_score": 5,
+      "skills_match": 2,
+      "experience_match": 5,
+      "education_match": 7,
+      "justification": "Kỹ năng chuyên môn của ứng viên không khớp với yêu cầu của công việc, nhưng kinh nghiệm làm việc 1 năm và học vấn đại học quản trị kinh doanh vẫn có thể chuyển đổi được, ứng viên cần được đào tạo thêm về kỹ năng chuyên môn như Excel, AutoCAD, Python, SAP.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:28:28"
+    },
+    {
+      "cv_id": "cskh_L2",
+      "cv_level": "L2",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "3d422579adeed12c81f53cbbcbd535bf",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng/ Tư Vấn Nha Khoa - Thị Trường Nước Ngoài (Tiếng Anh Tốt)",
+      "rank": 3,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2",
+        "E3",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 1,
+      "method_ranks": {
+        "E1": 3,
+        "E2": 1,
+        "E3": 2,
+        "E2t": 3,
+        "E3t": 4
+      },
+      "relevance_score": 8,
+      "skills_match": 8,
+      "experience_match": 10,
+      "education_match": 6,
+      "justification": "CV có kỹ năng giao tiếp tốt, làm việc nhóm, chịu áp lực và kỹ năng chuyên môn như Excel, Tiếng Anh phù hợp với yêu cầu của JD. Kinh nghiệm 1 năm làm nhân viên chăm sóc khách hàng cũng là một lợi thế. Tuy nhiên, học vấn của ứng viên là Đại học chuyên ngành Kinh doanh, trong khi JD chỉ yêu cầu Trung cấp.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:28:41"
+    },
+    {
+      "cv_id": "cskh_L2",
+      "cv_level": "L2",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "591088f37f2ec398caf4ab2d8c94c03f",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng",
+      "rank": 3,
+      "es_score": 0,
+      "pool_methods": [
+        "E2",
+        "E3",
+        "E2t"
+      ],
+      "best_pool_rank": 3,
+      "method_ranks": {
+        "E2": 3,
+        "E3": 5,
+        "E2t": 5
+      },
+      "relevance_score": 7,
+      "skills_match": 8,
+      "experience_match": 5,
+      "education_match": 9,
+      "justification": "Ứng viên có kỹ năng chuyên môn và mềm phù hợp với yêu cầu của công việc, tuy nhiên kinh nghiệm làm việc chỉ đạt 1 năm so với yêu cầu 2 năm. Học vấn của ứng viên đạt yêu cầu với chuyên ngành Kinh doanh.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:28:54"
+    },
+    {
+      "cv_id": "cskh_L2",
+      "cv_level": "L2",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "650e7291beecf5ee57806dd4e4524d4f",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng Ca Đêm (4 Tiếng/Đêm - Làm Việc Remote - Yêu Cầu Tiếng Anh)",
+      "rank": 8,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E3",
+        "E3t"
+      ],
+      "best_pool_rank": 3,
+      "method_ranks": {
+        "E1": 8,
+        "E3": 3,
+        "E3t": 10
+      },
+      "relevance_score": 8,
+      "skills_match": 7,
+      "experience_match": 9,
+      "education_match": 6,
+      "justification": "Ứng viên có kỹ năng chăm sóc khách hàng, tiếng Anh và kinh nghiệm làm việc trong lĩnh vực chăm sóc khách hàng, tuy nhiên học vấn cao đẳng không hoàn toàn đáp ứng yêu cầu đại học của công việc.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:29:07"
+    },
+    {
+      "cv_id": "cskh_L2",
+      "cv_level": "L2",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "6832943eadf4d88d38290ff03ec26511",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng - Air Xuất [HCM]",
+      "rank": 4,
+      "es_score": 0,
+      "pool_methods": [
+        "E1",
+        "E2t",
+        "E3t"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E1": 4,
+        "E2t": 8,
+        "E3t": 7
+      },
+      "relevance_score": 6,
+      "skills_match": 5,
+      "experience_match": 5,
+      "education_match": 7,
+      "justification": "Ứng viên có kinh nghiệm chăm sóc khách hàng và kỹ năng giao tiếp tốt, nhưng thiếu kinh nghiệm về xuất nhập khẩu và logistic. Học vấn đạt yêu cầu, nhưng cần cải thiện kỹ năng chuyên môn về chứng từ xuất nhập khẩu và logistic.",
+      "annotator": "llama",
+      "timestamp": "2026-06-02 16:31:20"
+    }
+  ]
+}

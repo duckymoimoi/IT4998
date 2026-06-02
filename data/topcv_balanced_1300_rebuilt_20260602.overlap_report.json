@@ -1,0 +1,102 @@
+{
+  "dataset": "data/topcv_balanced_1300.csv",
+  "sources": [
+    "data/topcv_balanced_1950_20260512_133221.csv",
+    "data/topcv_it_supplement_20260601.csv",
+    "data/topcv_senior_supplement_20260602.csv"
+  ],
+  "pair_file": "data/evaluation_pairs_1300_v2_remapped_to_turn1300.json",
+  "rows": 1300,
+  "unique_content_hash": 1300,
+  "unique_canonical_url": 1300,
+  "pair_overlap": {
+    "pair_rows_total": 1950,
+    "unique_pair_jobs_total": 701,
+    "hit_pair_rows": 792,
+    "hit_unique_jobs": 264,
+    "available_unique_pair_jobs_in_sources": 272,
+    "missing_available_unique_jobs_due_to_clean_dedup": 8,
+    "missing_available_pair_rows_due_to_clean_dedup": 18
+  },
+  "category_balance": {
+    "bat-dong-san": {
+      "total": 100,
+      "senior": 33,
+      "junior": 47,
+      "mid": 20
+    },
+    "cham-soc-khach-hang": {
+      "total": 100,
+      "junior": 81,
+      "mid": 12,
+      "senior": 7
+    },
+    "giao-duc": {
+      "total": 100,
+      "senior": 33,
+      "mid": 33,
+      "junior": 34
+    },
+    "hanh-chinh-nhan-su": {
+      "total": 100,
+      "junior": 40,
+      "mid": 27,
+      "senior": 33
+    },
+    "it": {
+      "total": 100,
+      "junior": 34,
+      "senior": 33,
+      "mid": 33
+    },
+    "ke-toan": {
+      "total": 100,
+      "junior": 34,
+      "senior": 33,
+      "mid": 33
+    },
+    "ky-su-xay-dung": {
+      "total": 100,
+      "senior": 33,
+      "junior": 34,
+      "mid": 33
+    },
+    "lao-dong-pho-thong": {
+      "total": 100,
+      "senior": 31,
+      "mid": 32,
+      "junior": 37
+    },
+    "marketing": {
+      "total": 100,
+      "mid": 28,
+      "senior": 33,
+      "junior": 39
+    },
+    "ngan-hang": {
+      "total": 100,
+      "junior": 35,
+      "mid": 32,
+      "senior": 33
+    },
+    "nhan-vien-kinh-doanh": {
+      "total": 100,
+      "junior": 36,
+      "senior": 33,
+      "mid": 31
+    },
+    "telesales": {
+      "total": 100,
+      "mid": 33,
+      "junior": 34,
+      "senior": 33
+    },
+    "thiet-ke": {
+      "total": 100,
+      "senior": 33,
+      "junior": 34,
+      "mid": 33
+    }
+  },
+  "note": "cham-soc-khach-hang remains junior-heavy because the available market/source data has few mid/senior jobs."
+}

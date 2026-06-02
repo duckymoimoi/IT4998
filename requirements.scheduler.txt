@@ -1,4 +1,5 @@
 # Scheduler dependencies (lightweight — no GPU/PyTorch)
+setuptools>=69.0.0
 pandas>=2.0.0
 requests
 beautifulsoup4

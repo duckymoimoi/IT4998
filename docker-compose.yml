@@ -28,6 +28,7 @@ services:
     volumes:
       - ./src:/app/src
       - ./data:/app/data
+      - ./scripts:/app/scripts
       - ./models:/app/models
       - bge_m3_cache:/root/.cache
     depends_on:

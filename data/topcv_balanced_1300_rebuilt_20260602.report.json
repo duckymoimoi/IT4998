@@ -1,0 +1,273 @@
+{
+  "created_at": "2026-06-02T09:41:04",
+  "base": "data/topcv_balanced_1950_20260512_133221.csv",
+  "it_supplement": "data/topcv_it_supplement_20260601.csv",
+  "extra_csv": [
+    "data\\topcv_senior_supplement_20260602.csv"
+  ],
+  "prefer_pairs": "data/evaluation_pairs_1300_v2_remapped_to_turn1300.json",
+  "output": "data\\topcv_balanced_1300_rebuilt_20260602.csv",
+  "target_per_category": 100,
+  "total_rows": 1300,
+  "unique_canonical_url": 1300,
+  "unique_content_hash": 1300,
+  "categories": {
+    "bat-dong-san": {
+      "rows": 100,
+      "unique_canonical_url": 100,
+      "unique_content_hash": 100,
+      "tier_counts": {
+        "senior": 33,
+        "junior": 47,
+        "mid": 20
+      },
+      "experience_counts": {
+        "4 năm": 3,
+        "Không yêu cầu": 15,
+        "1 năm": 14,
+        "5 năm": 16,
+        "Dưới 1 năm": 18,
+        "3 năm": 20,
+        "Trên 5 năm": 14
+      }
+    },
+    "cham-soc-khach-hang": {
+      "rows": 100,
+      "unique_canonical_url": 100,
+      "unique_content_hash": 100,
+      "tier_counts": {
+        "junior": 81,
+        "mid": 12,
+        "senior": 7
+      },
+      "experience_counts": {
+        "1 năm": 31,
+        "Không yêu cầu": 24,
+        "Dưới 1 năm": 26,
+        "3 năm": 2,
+        "2 năm": 10,
+        "4 năm": 1,
+        "5 năm": 3,
+        "Trên 5 năm": 3
+      }
+    },
+    "giao-duc": {
+      "rows": 100,
+      "unique_canonical_url": 100,
+      "unique_content_hash": 100,
+      "tier_counts": {
+        "senior": 33,
+        "mid": 33,
+        "junior": 34
+      },
+      "experience_counts": {
+        "5 năm": 15,
+        "3 năm": 16,
+        "2 năm": 17,
+        "Dưới 1 năm": 18,
+        "Trên 5 năm": 11,
+        "4 năm": 7,
+        "Không yêu cầu": 16
+      }
+    },
+    "hanh-chinh-nhan-su": {
+      "rows": 100,
+      "unique_canonical_url": 100,
+      "unique_content_hash": 100,
+      "tier_counts": {
+        "junior": 40,
+        "mid": 27,
+        "senior": 33
+      },
+      "experience_counts": {
+        "1 năm": 13,
+        "2 năm": 17,
+        "Dưới 1 năm": 15,
+        "Không yêu cầu": 12,
+        "5 năm": 11,
+        "4 năm": 12,
+        "Trên 5 năm": 10,
+        "3 năm": 10
+      }
+    },
+    "it": {
+      "rows": 100,
+      "unique_canonical_url": 100,
+      "unique_content_hash": 100,
+      "tier_counts": {
+        "junior": 34,
+        "senior": 33,
+        "mid": 33
+      },
+      "experience_counts": {
+        "Dưới 1 năm": 12,
+        "Trên 5 năm": 2,
+        "Không yêu cầu": 12,
+        "3 năm": 17,
+        "4 năm": 17,
+        "2 năm": 16,
+        "1 năm": 10,
+        "5 năm": 14
+      }
+    },
+    "ke-toan": {
+      "rows": 100,
+      "unique_canonical_url": 100,
+      "unique_content_hash": 100,
+      "tier_counts": {
+        "junior": 34,
+        "senior": 33,
+        "mid": 33
+      },
+      "experience_counts": {
+        "Không yêu cầu": 23,
+        "4 năm": 12,
+        "Trên 5 năm": 11,
+        "5 năm": 10,
+        "1 năm": 11,
+        "2 năm": 18,
+        "3 năm": 15
+      }
+    },
+    "ky-su-xay-dung": {
+      "rows": 100,
+      "unique_canonical_url": 100,
+      "unique_content_hash": 100,
+      "tier_counts": {
+        "senior": 33,
+        "junior": 34,
+        "mid": 33
+      },
+      "experience_counts": {
+        "5 năm": 11,
+        "Dưới 1 năm": 13,
+        "1 năm": 12,
+        "4 năm": 12,
+        "Trên 5 năm": 10,
+        "3 năm": 20,
+        "2 năm": 13,
+        "Không yêu cầu": 9
+      }
+    },
+    "lao-dong-pho-thong": {
+      "rows": 100,
+      "unique_canonical_url": 100,
+      "unique_content_hash": 100,
+      "tier_counts": {
+        "senior": 31,
+        "mid": 32,
+        "junior": 37
+      },
+      "experience_counts": {
+        "Trên 5 năm": 6,
+        "3 năm": 13,
+        "4 năm": 7,
+        "5 năm": 18,
+        "2 năm": 19,
+        "1 năm": 11,
+        "Không yêu cầu": 14,
+        "Dưới 1 năm": 12
+      }
+    },
+    "marketing": {
+      "rows": 100,
+      "unique_canonical_url": 100,
+      "unique_content_hash": 100,
+      "tier_counts": {
+        "mid": 28,
+        "senior": 33,
+        "junior": 39
+      },
+      "experience_counts": {
+        "2 năm": 17,
+        "3 năm": 11,
+        "Trên 5 năm": 12,
+        "Dưới 1 năm": 14,
+        "1 năm": 13,
+        "Không yêu cầu": 12,
+        "4 năm": 11,
+        "5 năm": 10
+      }
+    },
+    "ngan-hang": {
+      "rows": 100,
+      "unique_canonical_url": 100,
+      "unique_content_hash": 100,
+      "tier_counts": {
+        "junior": 35,
+        "mid": 32,
+        "senior": 33
+      },
+      "experience_counts": {
+        "Dưới 1 năm": 14,
+        "3 năm": 20,
+        "5 năm": 10,
+        "Trên 5 năm": 10,
+        "4 năm": 13,
+        "2 năm": 12,
+        "Không yêu cầu": 12,
+        "1 năm": 9
+      }
+    },
+    "nhan-vien-kinh-doanh": {
+      "rows": 100,
+      "unique_canonical_url": 100,
+      "unique_content_hash": 100,
+      "tier_counts": {
+        "junior": 36,
+        "senior": 33,
+        "mid": 31
+      },
+      "experience_counts": {
+        "Dưới 1 năm": 11,
+        "Trên 5 năm": 10,
+        "3 năm": 19,
+        "4 năm": 11,
+        "5 năm": 12,
+        "1 năm": 14,
+        "2 năm": 12,
+        "Không yêu cầu": 11
+      }
+    },
+    "telesales": {
+      "rows": 100,
+      "unique_canonical_url": 100,
+      "unique_content_hash": 100,
+      "tier_counts": {
+        "mid": 33,
+        "junior": 34,
+        "senior": 33
+      },
+      "experience_counts": {
+        "2 năm": 15,
+        "Dưới 1 năm": 11,
+        "5 năm": 21,
+        "3 năm": 18,
+        "4 năm": 7,
+        "Không yêu cầu": 12,
+        "1 năm": 11,
+        "Trên 5 năm": 5
+      }
+    },
+    "thiet-ke": {
+      "rows": 100,
+      "unique_canonical_url": 100,
+      "unique_content_hash": 100,
+      "tier_counts": {
+        "senior": 33,
+        "junior": 34,
+        "mid": 33
+      },
+      "experience_counts": {
+        "Trên 5 năm": 7,
+        "Dưới 1 năm": 12,
+        "5 năm": 14,
+        "Không yêu cầu": 12,
+        "1 năm": 10,
+        "3 năm": 17,
+        "2 năm": 16,
+        "4 năm": 12
+      }
+    }
+  }
+}
