@@ -3,7 +3,7 @@ Job Matching Web Application — Production Pipeline.
 
 Pipeline:
   CV Input → ESCO Expansion → Hybrid Search (BM25 + kNN + RRF)
-  → Top-20 → LLM 6-dim Scoring → WSM Final Ranking
+  → Top-N → LLM 6-dim Scoring → WSM Final Ranking
 
 Tách biệt rõ ràng: retrieval (ES) → scoring (LLM) → presentation (Flask).
 """
@@ -16,7 +16,10 @@ import logging
 from pathlib import Path
 
 from dotenv import load_dotenv
-load_dotenv()  # Load .env (GROQ_API_KEY_*, GOONG_API_KEY)
+
+SRC_ENV_PATH = Path(__file__).resolve().parents[2] / ".env"
+load_dotenv(SRC_ENV_PATH)
+load_dotenv()  # Fallback for project-root .env if present.
 
 from flask import Flask, render_template, request, jsonify
 from werkzeug.utils import secure_filename
@@ -75,6 +78,13 @@ def _env_bool(name, default=False):
     return val.strip().lower() in {"1", "true", "yes", "on"}
 
 
+def _env_int(name, default):
+    try:
+        return int(os.environ.get(name, default))
+    except (TypeError, ValueError):
+        return default
+
+
 def _init_services():
     """Initialize embedding + ESCO + SkillGraph services (chỉ gọi 1 lần)."""
     global _embedding_service, _esco_expander, _skill_graph, _use_hybrid
@@ -125,6 +135,7 @@ _goong_api_key = os.environ.get("GOONG_API_KEY", "")
 _geocode_cache = {}
 LOCATION_SCORE_MODE = os.environ.get("LOCATION_SCORE_MODE", "city").strip().lower()
 ENABLE_CITY_PRIORITY = _env_bool("ENABLE_CITY_PRIORITY", default=True)
+SCORING_TOP_N = _env_int("SCORING_TOP_N", 30)
 
 
 def _goong_geocode(address):
@@ -293,7 +304,7 @@ def _prioritize_same_city(jobs, cv_location):
 # Search Pipeline
 # ============================================================
 
-def search_pipeline(cv_data, categories=None, top_n=20):
+def search_pipeline(cv_data, categories=None, top_n=None):
     """
     Full pipeline: ESCO → Hybrid Search → LLM Scoring.
     
@@ -306,6 +317,7 @@ def search_pipeline(cv_data, categories=None, top_n=20):
         (jobs_with_scores, search_mode, total_found)
     """
     _init_services()
+    top_n = top_n or SCORING_TOP_N
 
     profile_text = cv_data.get("skills", "").strip()
     # Gộp thêm soft_skills, languages, certificates vào search text
@@ -391,6 +403,11 @@ def search_pipeline(cv_data, categories=None, top_n=20):
 
 def _score_with_llm(cv_data, jobs):
     """Gọi LLM scorer, fallback sang heuristic nếu fail."""
+    def retrieval_fallback_score(rank):
+        # Keep fallback scores clearly below trusted LLM scores, while still
+        # preserving retrieval order when the external scorer is unavailable.
+        return round(max(3.0, 5.0 - rank * 0.12), 2)
+
     try:
         from job_matching.scoring.llm_scorer import score_batch, DEFAULT_WEIGHTS
 
@@ -400,6 +417,14 @@ def _score_with_llm(cv_data, jobs):
         for i, job in enumerate(jobs):
             if i < len(results):
                 score_data = results[i]
+                if score_data.get("fallback"):
+                    job["match_score"] = retrieval_fallback_score(i)
+                    job["score_breakdown"] = {}
+                    job["comment"] = ""
+                    job["llm_scored"] = False
+                    job["distance_km"] = None
+                    continue
+
                 scores = score_data["scores"]
 
                 # Override location outside the LLM. Default is city/province
@@ -432,8 +457,8 @@ def _score_with_llm(cv_data, jobs):
 
     except Exception as e:
         logger.error(f"LLM scoring failed: {e}, using default scores")
-        for job in jobs:
-            job["match_score"] = 5.0
+        for i, job in enumerate(jobs):
+            job["match_score"] = retrieval_fallback_score(i)
             job["score_breakdown"] = {}
             job["comment"] = ""
             job["llm_scored"] = False
@@ -514,6 +539,56 @@ def api_job_distance():
         return jsonify({"error": str(e)}), 500
 
 
+@app.route("/api/job-detail-score", methods=["POST"])
+def api_job_detail_score():
+    """Run a focused one-job LLM score on demand without reranking the list."""
+    try:
+        data = request.json or {}
+        cv_data = data.get("cv_data", {})
+        job = data.get("job")
+        job_id = data.get("job_id")
+
+        if not cv_data.get("skills", "").strip():
+            return jsonify({"error": "Thiếu thông tin CV để chấm điểm"}), 400
+        if not job and job_id:
+            job = es_helper.get_job_by_id(job_id)
+        if not job:
+            return jsonify({"error": "Không tìm thấy thông tin công việc"}), 400
+
+        from job_matching.scoring.llm_scorer import score_batch, DEFAULT_WEIGHTS
+
+        weights = cv_data.get("weights", DEFAULT_WEIGHTS)
+        result = score_batch(cv_data, [job], weights=weights)
+        if not result:
+            return jsonify({"error": "Không chấm được công việc này"}), 502
+
+        score_data = result[0]
+        scores = score_data.get("scores", {})
+
+        cv_addr = cv_data.get("address") or cv_data.get("location", "")
+        goong_score, dist_km = calculate_location_score(cv_addr, job)
+        scores["location"] = goong_score
+
+        total = sum(
+            float(scores.get(dim, 0)) * float(weights.get(dim, 0))
+            for dim in ["relevance", "skills", "experience", "education", "location", "salary"]
+        )
+
+        return jsonify({
+            "match_score": round(total, 2),
+            "score_breakdown": scores,
+            "comment": score_data.get("comment", ""),
+            "llm_scored": True,
+            "detail_scored": True,
+            "llm_time": score_data.get("llm_time", 0),
+            "distance_km": round(dist_km, 1) if dist_km is not None else job.get("distance_km"),
+        })
+
+    except Exception as e:
+        logger.error(f"Detail scoring error: {e}", exc_info=True)
+        return jsonify({"error": str(e)}), 500
+
+
 @app.route("/api/parse-cv", methods=["POST"])
 def api_parse_cv():
     """Parse CV file bằng Groq AI."""
@@ -552,6 +627,7 @@ def api_parse_cv():
                 "gender": result.get("gender", "both"),
                 "location": result.get("location", ""),
                 "suggested_categories": result.get("suggested_categories", []),
+                "cv_markdown": result.get("raw_text", ""),
                 "message": "Đã trích xuất thông tin từ CV",
             })
         finally:

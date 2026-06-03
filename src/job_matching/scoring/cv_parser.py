@@ -25,6 +25,32 @@ JOB_CATEGORIES = [
 ]
 
 
+def _env_int(name: str, default: int) -> int:
+    try:
+        return int(os.environ.get(name, default))
+    except (TypeError, ValueError):
+        return default
+
+
+DEFAULT_PARSE_MODEL = os.environ.get("GROQ_PARSE_MODEL", "llama-3.3-70b-versatile")
+DEFAULT_PARSE_MAX_COMPLETION_TOKENS = _env_int("GROQ_PARSE_MAX_COMPLETION_TOKENS", 2000)
+DEFAULT_PARSE_PROVIDER = os.environ.get("CV_PARSE_PROVIDER", "auto").strip().lower()
+DEFAULT_COHERE_PARSE_MODEL = os.environ.get("COHERE_PARSE_MODEL", "command-r-08-2024")
+DEFAULT_COHERE_PARSE_MAX_TOKENS = _env_int("COHERE_PARSE_MAX_TOKENS", 1800)
+
+
+def _load_env_keys(prefix: str, max_index: int = 9):
+    keys = []
+    for i in range(1, max_index + 1):
+        key = os.environ.get(f"{prefix}_{i}")
+        if key:
+            keys.append(key)
+    single = os.environ.get(prefix)
+    if single and single not in keys:
+        keys.append(single)
+    return keys
+
+
 class CVParser:
 
     def __init__(self, groq_api_key: str = None):
@@ -33,15 +59,14 @@ class CVParser:
             groq_api_key: Groq API key
         """
         self.api_key = groq_api_key or os.environ.get('GROQ_API_KEY') or os.environ.get('GROQ_API_KEY_1')
+        self.cohere_api_keys = _load_env_keys("COHERE_API_KEY")
 
-        if not self.api_key:
+        if not self.api_key and not self.cohere_api_keys:
             raise ValueError(
-                "GROQ_API_KEY not found. "
-                "Set environment variable or pass api_key parameter. "
-                "Get free key at: https://console.groq.com/keys"
+                "No LLM API key found. Set GROQ_API_KEY or COHERE_API_KEY."
             )
 
-        self.client = Groq(api_key=self.api_key)
+        self.client = Groq(api_key=self.api_key) if self.api_key else None
         self.job_categories = JOB_CATEGORIES
         self._md_converter = MarkItDown()
 
@@ -133,9 +158,9 @@ class CVParser:
                         "content": prompt
                     }
                 ],
-                model="llama-3.3-70b-versatile",
+                model=DEFAULT_PARSE_MODEL,
                 temperature=0.1,
-                max_tokens=2000,
+                max_completion_tokens=DEFAULT_PARSE_MAX_COMPLETION_TOKENS,
             )
 
             response_text = chat_completion.choices[0].message.content.strip()
@@ -161,6 +186,95 @@ class CVParser:
             traceback.print_exc()
             return None
 
+    def analyze_with_cohere(self, cv_text: str) -> Dict:
+        """Analyze CV with Cohere Chat v2 REST. Used when Groq quota is exhausted."""
+        if not self.cohere_api_keys:
+            return None
+
+        prompt = f"""Bạn là chuyên gia phân tích CV tiếng Việt. Trích xuất thông tin từ CV sau và chỉ trả về JSON hợp lệ, không thêm markdown.
+
+CV TEXT:
+{cv_text[:4500]}
+
+JSON schema:
+{{
+  "technical_skills": "Python, React, SQL",
+  "soft_skills": "Giao tiếp, Teamwork",
+  "languages": "Tiếng Anh B2, TOEIC 800",
+  "certificates": "AWS, PMP",
+  "experience": "under_1",
+  "education": "dai_hoc",
+  "gender": "Nam",
+  "location": "Hà Nội",
+  "suggested_categories": ["IT"]
+}}
+
+Rules:
+- technical_skills: ngôn ngữ lập trình, framework, database, tool, phần mềm chuyên ngành.
+- soft_skills/languages/certificates: nếu không có thì chuỗi rỗng.
+- experience: một trong "under_1", "1", "2", "3", "4", "5", "over_5".
+- education: một trong "dai_hoc", "cao_dang", "trung_cap", "trung_hoc".
+- gender: "Nam", "Nữ", hoặc "both" nếu không rõ.
+- location: thành phố/tỉnh ở Việt Nam nếu có.
+- suggested_categories: chọn từ danh sách {json.dumps(self.job_categories, ensure_ascii=False)}."""
+
+        for idx, api_key in enumerate(self.cohere_api_keys):
+            try:
+                import requests
+                response = requests.post(
+                    "https://api.cohere.com/v2/chat",
+                    headers={
+                        "Authorization": f"Bearer {api_key}",
+                        "Content-Type": "application/json",
+                    },
+                    json={
+                        "model": DEFAULT_COHERE_PARSE_MODEL,
+                        "messages": [
+                            {
+                                "role": "system",
+                                "content": "Bạn là chuyên gia phân tích CV. Chỉ trả về valid JSON.",
+                            },
+                            {"role": "user", "content": prompt},
+                        ],
+                        "temperature": 0.1,
+                        "max_tokens": DEFAULT_COHERE_PARSE_MAX_TOKENS,
+                    },
+                    timeout=90,
+                )
+                if response.status_code == 429:
+                    print(f" Cohere parse key {idx + 1} rate limited, trying next key...")
+                    continue
+                if response.status_code >= 400:
+                    print(f" Cohere parse error {response.status_code}: {response.text[:200]}")
+                    continue
+
+                data = response.json()
+                content = data.get("message", {}).get("content", [])
+                response_text = ""
+                if content and isinstance(content, list):
+                    response_text = content[0].get("text", "")
+                if not response_text:
+                    response_text = data.get("text", "")
+
+                response_text = response_text.strip()
+                if response_text.startswith("```json"):
+                    response_text = response_text.replace("```json", "").replace("```", "").strip()
+                elif response_text.startswith("```"):
+                    response_text = response_text.replace("```", "").strip()
+
+                start = response_text.find("{")
+                end = response_text.rfind("}")
+                if start != -1 and end > start:
+                    response_text = response_text[start:end + 1]
+                return json.loads(response_text)
+
+            except json.JSONDecodeError as e:
+                print(f" Cohere JSON parsing error: {e}")
+            except Exception as e:
+                print(f" Cohere analysis failed on key {idx + 1}: {str(e)[:200]}")
+
+        return None
+
     def parse_cv(self, file_path: str) -> Dict:
 
         raw_text = self.extract_text(file_path)
@@ -177,7 +291,11 @@ class CVParser:
                 "location": "",
                 "suggested_categories": [],
             }
-        groq_result = self.analyze_with_groq(raw_text)
+        groq_result = None
+        if DEFAULT_PARSE_PROVIDER in {"groq", "auto"}:
+            groq_result = self.analyze_with_groq(raw_text)
+        if not groq_result and DEFAULT_PARSE_PROVIDER in {"cohere", "auto"}:
+            groq_result = self.analyze_with_cohere(raw_text)
 
         if not groq_result:
             return {
@@ -203,8 +321,8 @@ class CVParser:
             "gender": groq_result.get("gender", "both"),
             "location": groq_result.get("location", ""),
             "suggested_categories": groq_result.get("suggested_categories", []),
-            "raw_text": raw_text[:3000],
-            "extraction_method": "markitdown + groq_llama_3.3"
+            "raw_text": raw_text[:8000],
+            "extraction_method": f"markitdown + {DEFAULT_PARSE_PROVIDER}"
         }
         return result
 

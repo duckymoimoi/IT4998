@@ -24,6 +24,45 @@ class ElasticHelper:
             logger.error(f"Connection error: {e}")
             raise
 
+    def _build_gender_filter(self, cv_gender):
+        """Build compatibility filter for candidate gender.
+
+        Jobs with no gender requirement are compatible with every candidate.
+        ``gender_requirement`` is mapped as ``keyword``, so term matching is
+        case-sensitive and must use the stored Vietnamese labels.
+        """
+        if not cv_gender:
+            return None
+
+        gender = str(cv_gender).strip().lower()
+        if gender in {"both", "all", "tất cả", "tat ca", "không rõ", "khong ro"}:
+            return None
+
+        neutral_values = [
+            "Không yêu cầu", "không yêu cầu", "Khong yeu cau", "khong yeu cau",
+            "Cả hai", "cả hai", "Ca hai", "ca hai",
+            "Tất cả", "tất cả", "Tat ca", "tat ca",
+            "Nam/Nữ", "Nam / Nữ", "Nam, Nữ", "Nam và Nữ",
+            "both", "all", "",
+        ]
+
+        if gender in {"nam", "male"}:
+            allowed_values = ["Nam", "nam", "Male", "male"] + neutral_values
+        elif gender in {"nữ", "nu", "female"}:
+            allowed_values = ["Nữ", "nữ", "Nu", "nu", "Female", "female"] + neutral_values
+        else:
+            allowed_values = neutral_values
+
+        return {
+            "bool": {
+                "should": [
+                    {"terms": {"gender_requirement": allowed_values}},
+                    {"bool": {"must_not": {"exists": {"field": "gender_requirement"}}}},
+                ],
+                "minimum_should_match": 1,
+            }
+        }
+
     def _build_filters(self, categories=None, cv_gender=None, exclude_expired=False):
         """
         Tao list ES filter clauses cho bool query.
@@ -44,22 +83,9 @@ class ElasticHelper:
             filters.append({"terms": {"category": categories}})
 
         # 2. Gender filter
-        if cv_gender and cv_gender.lower() != "both":
-            # Job phai match gioi tinh ung vien HOAC khong yeu cau gioi tinh
-            gender_lower = cv_gender.lower()
-            filters.append({
-                "bool": {
-                    "should": [
-                        {"term": {"gender_requirement": gender_lower}},
-                        {"term": {"gender_requirement": "cả hai"}},
-                        {"term": {"gender_requirement": "không yêu cầu"}},
-                        {"term": {"gender_requirement": ""}},
-                        # Job khong co truong gender_requirement
-                        {"bool": {"must_not": {"exists": {"field": "gender_requirement"}}}},
-                    ],
-                    "minimum_should_match": 1,
-                }
-            })
+        gender_filter = self._build_gender_filter(cv_gender)
+        if gender_filter:
+            filters.append(gender_filter)
 
         # 3. Expired filter
         # Evaluation keeps expired jobs; production callers pass exclude_expired=True explicitly.
