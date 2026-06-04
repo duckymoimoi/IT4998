@@ -36,6 +36,9 @@ services:
         condition: service_healthy
     environment:
       - ES_HOST=http://elasticsearch:9200
+      - ES_INDEX=topcv_jobs_production
+      - AUTO_IMPORT_ON_START=0
+      - ENABLE_SKILL_GRAPH=1
       - PYTHONIOENCODING=utf-8
     env_file:
       - ./src/.env
@@ -70,12 +73,14 @@ services:
         condition: service_healthy
     environment:
       - ES_HOST=http://elasticsearch:9200
-      - ES_INDEX=topcv_jobs_1300
+      - ES_INDEX=topcv_jobs_production
+      - CRAWL_SOURCE=general
+      - CRAWL_RECHECK_DAYS=7
       - OLLAMA_URL=http://ollama:11434/api/generate
       - PYTHONIOENCODING=utf-8
     env_file:
       - ./src/.env
-    command: python src/scheduler.py --once --pages 3 --threads 3 --no-embedding
+    command: python src/scheduler.py --once --source general --pages 3 --threads 3
 
 volumes:
   bge_m3_cache:

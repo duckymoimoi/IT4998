@@ -31,7 +31,7 @@ import signal
 import argparse
 import threading
 import queue
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 import pandas as pd
@@ -125,7 +125,12 @@ CSV_FIELDNAMES = [
     'crawled_date', 'category',
 ]
 
-# 13 ngành nghề — URLs listing theo category từ TopCV
+# Trang listing tổng dùng cho crawl production.
+# TopCV giữ phân trang dạng /viec-lam-tot-nhat?page=N.
+PRODUCTION_LISTING_URL = "https://www.topcv.vn/viec-lam-tot-nhat"
+
+# 13 ngành nghề — URLs listing theo category từ TopCV.
+# Chỉ dùng khi cần crawl theo ngành, ví dụ phục vụ thực nghiệm/cân bằng dữ liệu.
 CATEGORIES = {
     'nhan-vien-kinh-doanh': {'name': 'Nhân viên kinh doanh', 'base_url': 'https://www.topcv.vn/tim-viec-lam-nhan-vien-kinh-doanh'},
     'ke-toan': {'name': 'Kế toán', 'base_url': 'https://www.topcv.vn/tim-viec-lam-ke-toan'},
@@ -249,21 +254,137 @@ class CrawlScheduler:
         raw_job = self._geocode_job(raw_job)
         return raw_job
 
-    # ============= COLLECT URLS BY CATEGORY =============
-    def _collect_category_urls(self, pages=3, categories=None):
+    # ============= COLLECT LISTING URLS =============
+    def _build_listing_url(self, base_url, page_num):
+        if page_num <= 1:
+            return base_url
+        separator = "&" if "?" in base_url else "?"
+        return f"{base_url}{separator}page={page_num}"
+
+    def _extract_listing_urls(self, page_source, seen_urls):
+        """Extract valid TopCV job URLs from one listing page.
+
+        Return both new URLs and the number of valid job links found. A page can
+        contain jobs but still add zero new URLs if all of them were seen before.
         """
-        Thu thập URLs theo từng category.
-        Returns: list of (url, category_name)
-        """
-        from job_matching.crawling.crawl_topcv import setup_driver, is_valid_job_url
+        from bs4 import BeautifulSoup
+        from job_matching.crawling.crawl_topcv import is_valid_job_url
+
+        soup = BeautifulSoup(page_source, "html.parser")
+
+        # Main selector used by TopCV listing cards. The fallback catches minor
+        # DOM changes where title links are no longer wrapped by h3.
+        links = list(soup.select('h3[class*="title"] a[href]'))
+        if not links:
+            links = list(soup.select('a[href*="/viec-lam/"]'))
+
+        page_urls = []
+        valid_link_count = 0
+        for link in links:
+            href = link.get("href", "")
+            if href.startswith("/"):
+                href = "https://www.topcv.vn" + href
+            href = href.split("?")[0]
+            if not is_valid_job_url(href):
+                continue
+            valid_link_count += 1
+            if href not in seen_urls:
+                seen_urls.add(href)
+                page_urls.append(href)
+        return page_urls, valid_link_count
+
+    def _load_listing_page(self, driver, page_url, selector, wait_seconds=20, retries=2):
+        """Load one listing page with retry; return page source or None."""
         from selenium.webdriver.common.by import By
         from selenium.webdriver.support.ui import WebDriverWait
         from selenium.webdriver.support import expected_conditions as EC
-        from bs4 import BeautifulSoup
+
+        for attempt in range(1, retries + 1):
+            try:
+                driver.get(page_url)
+                time.sleep(3)
+                WebDriverWait(driver, wait_seconds).until(
+                    EC.presence_of_element_located((By.CSS_SELECTOR, selector))
+                )
+                return driver.page_source
+            except Exception as exc:
+                logger.warning(
+                    f"  Listing page load failed attempt {attempt}/{retries}: {page_url} ({exc})"
+                )
+                if attempt < retries:
+                    time.sleep(5 * attempt)
+                    try:
+                        driver.refresh()
+                    except Exception:
+                        pass
+        return None
+
+    def _collect_general_urls(self, pages=3, base_url=PRODUCTION_LISTING_URL):
+        """
+        Thu thap URLs tu trang viec lam tong cho production.
+        Returns: list of (url, category_name)
+        """
+        from job_matching.crawling.crawl_topcv import setup_driver
+
+        url_category_pairs = []
+        seen_urls = set()
+        consecutive_failed_pages = 0
+        consecutive_empty_pages = 0
+        selector = 'h3[class*="title"] a, a[href*="/viec-lam/"]'
+
+        with _driver_init_lock:
+            driver = setup_driver()
+
+        try:
+            logger.info(f"  [GENERAL] Collecting URLs from {base_url}")
+            for page_num in range(1, pages + 1):
+                page_url = self._build_listing_url(base_url, page_num)
+                page_source = self._load_listing_page(driver, page_url, selector)
+
+                if not page_source:
+                    consecutive_failed_pages += 1
+                    logger.warning(f"  [GENERAL] Page {page_num} failed; skip ({consecutive_failed_pages}/3)")
+                    if consecutive_failed_pages >= 3:
+                        logger.warning("  [GENERAL] Stop collecting after 3 consecutive failed pages.")
+                        break
+                    continue
+
+                consecutive_failed_pages = 0
+                page_urls, valid_link_count = self._extract_listing_urls(page_source, seen_urls)
+                for href in page_urls:
+                    url_category_pairs.append((href, "Tong hop"))
+
+                logger.info(
+                    f"  [GENERAL] Page {page_num}: links={valid_link_count}, "
+                    f"new={len(page_urls)} URLs (total: {len(url_category_pairs)})"
+                )
+
+                if valid_link_count == 0:
+                    consecutive_empty_pages += 1
+                    logger.warning(f"  [GENERAL] Page {page_num} has no valid job links ({consecutive_empty_pages}/3)")
+                    if consecutive_empty_pages >= 3:
+                        logger.warning("  [GENERAL] Stop collecting after 3 consecutive empty pages.")
+                        break
+                else:
+                    consecutive_empty_pages = 0
+
+                time.sleep(1)
+        finally:
+            driver.quit()
+
+        return url_category_pairs
+
+    def _collect_category_urls(self, pages=3, categories=None):
+        """
+        Thu thap URLs theo tung category.
+        Returns: list of (url, category_name)
+        """
+        from job_matching.crawling.crawl_topcv import setup_driver
 
         selected = categories or list(CATEGORIES.keys())
         url_category_pairs = []  # [(url, category_name), ...]
         seen_urls = set()
+        selector = 'h3[class*="title"] a, a[href*="/viec-lam/"]'
 
         with _driver_init_lock:
             driver = setup_driver()
@@ -278,53 +399,55 @@ class CrawlScheduler:
                 cat_name = cat['name']
                 base_url = cat['base_url']
                 logger.info(f"  [{cat_name}] Collecting URLs...")
+                consecutive_failed_pages = 0
+                consecutive_empty_pages = 0
 
                 for page_num in range(1, pages + 1):
-                    page_url = base_url if page_num == 1 else f"{base_url}?page={page_num}"
+                    page_url = self._build_listing_url(base_url, page_num)
+                    page_source = self._load_listing_page(driver, page_url, selector)
 
-                    try:
-                        driver.get(page_url)
-                        time.sleep(3)
-                        try:
-                            WebDriverWait(driver, 20).until(
-                                EC.presence_of_element_located((By.CSS_SELECTOR, 'h3[class*="title"] a'))
-                            )
-                        except:
-                            logger.warning(f"  [{cat_name}] Page {page_num} timeout")
+                    if not page_source:
+                        consecutive_failed_pages += 1
+                        logger.warning(f"  [{cat_name}] Page {page_num} failed; skip ({consecutive_failed_pages}/3)")
+                        if consecutive_failed_pages >= 3:
+                            logger.warning(f"  [{cat_name}] Stop collecting after 3 consecutive failed pages.")
                             break
+                        continue
 
-                        soup = BeautifulSoup(driver.page_source, "html.parser")
-                        links = soup.select('h3[class*="title"] a')
+                    consecutive_failed_pages = 0
+                    page_urls, valid_link_count = self._extract_listing_urls(page_source, seen_urls)
+                    page_count = len(page_urls)
+                    for href in page_urls:
+                        url_category_pairs.append((href, cat_name))
 
-                        page_count = 0
-                        for link in links:
-                            href = link.get("href", "")
-                            if href.startswith("/"):
-                                href = "https://www.topcv.vn" + href
-                            if is_valid_job_url(href) and href not in seen_urls:
-                                seen_urls.add(href)
-                                url_category_pairs.append((href, cat_name))
-                                page_count += 1
+                    logger.info(
+                        f"  [{cat_name}] Page {page_num}: links={valid_link_count}, "
+                        f"new={page_count} URLs (total: {len(url_category_pairs)})"
+                    )
 
-                        logger.info(f"  [{cat_name}] Page {page_num}: +{page_count} URLs (total: {len(url_category_pairs)})")
-
-                        if page_count == 0:
+                    if valid_link_count == 0:
+                        consecutive_empty_pages += 1
+                        logger.warning(f"  [{cat_name}] Page {page_num} has no valid job links ({consecutive_empty_pages}/3)")
+                        if consecutive_empty_pages >= 3:
+                            logger.warning(f"  [{cat_name}] Stop collecting after 3 consecutive empty pages.")
                             break
-                        time.sleep(1)
+                    else:
+                        consecutive_empty_pages = 0
 
-                    except Exception as e:
-                        logger.error(f"  [{cat_name}] Page {page_num} error: {e}")
-                        break
+                    time.sleep(1)
         finally:
             driver.quit()
 
         return url_category_pairs
 
     # ============= PRODUCER-CONSUMER PIPELINE =============
-    def run_pipeline(self, pages=5, threads=3, output_file=None, categories=None):
+    def run_pipeline(
+        self, pages=5, threads=3, output_file=None, categories=None,
+        source="general", recrawl_after_days=7, force_recrawl_existing=False,
+    ):
         """
         Full pipeline:
-          Collect URLs by category → Crawl workers → queue → Clean → geocode → CSV
+          Collect URLs → Crawl workers → queue → Clean → geocode → CSV
         """
         from job_matching.crawling.crawl_topcv import setup_driver, extract_job_simple
 
@@ -333,28 +456,49 @@ class CrawlScheduler:
             output_file = str(SRC_DIR / f'topcv_pipeline_{timestamp}.csv')
 
         logger.info("=" * 70)
-        logger.info(f"  PIPELINE START — pages={pages}/category, threads={threads}")
-        logger.info(f"  Categories: {categories or 'ALL (13)'}")
+        logger.info(f"  PIPELINE START — source={source}, pages={pages}, threads={threads}")
+        logger.info(f"  Categories: {categories or 'N/A'}")
         logger.info(f"  Output: {output_file}")
         logger.info(f"  LLM Clean: {'ON' if self.cleaner else 'OFF'}")
         logger.info("=" * 70)
 
-        # Phase 1: Collect URLs by category
-        logger.info("[PHASE 1] Collecting job URLs by category...")
-        url_pairs = self._collect_category_urls(pages=pages, categories=categories)
+        # Phase 1: Collect URLs
+        if categories and source == "general":
+            logger.info("[PHASE 1] Categories provided; switching source to category.")
+            source = "category"
+
+        if source == "category":
+            logger.info("[PHASE 1] Collecting job URLs by category...")
+            url_pairs = self._collect_category_urls(pages=pages, categories=categories)
+        else:
+            logger.info("[PHASE 1] Collecting job URLs from general listing...")
+            url_pairs = self._collect_general_urls(pages=pages)
 
         if not url_pairs:
             logger.error("[ERROR] No URLs found")
             return None, {"status": "no_urls"}
 
-        logger.info(f"[PHASE 1] Found {len(url_pairs)} URLs across categories")
+        logger.info(f"[PHASE 1] Found {len(url_pairs)} URLs")
+        url_pairs, precheck_stats = self._filter_existing_url_pairs(
+            url_pairs,
+            recrawl_after_days=recrawl_after_days,
+            force_recrawl_existing=force_recrawl_existing,
+        )
+
+        if not url_pairs:
+            logger.info("[PHASE 1] All URLs already exist and are fresh. Nothing to crawl.")
+            return None, {"status": "all_existing_fresh", **precheck_stats}
 
         # Phase 2: Crawl → Queue → Clean → CSV
         logger.info(f"[PHASE 2] Crawl + Clean pipeline ({len(url_pairs)} jobs)")
 
         raw_queue = queue.Queue(maxsize=50)
         csv_lock = threading.Lock()
-        stats = {"crawled": 0, "cleaned": 0, "failed_crawl": 0, "failed_clean": 0, "geocoded": 0}
+        stats = {
+            "crawled": 0, "cleaned": 0, "failed_crawl": 0,
+            "failed_clean": 0, "geocoded": 0,
+            **precheck_stats,
+        }
         done_crawling = threading.Event()
 
         # Init CSV
@@ -497,6 +641,72 @@ class CrawlScheduler:
     def _url_to_doc_id(self, url):
         return hashlib.md5(url.encode('utf-8')).hexdigest()
 
+    def _should_recrawl_existing(self, source, recrawl_after_days):
+        """Return True if an existing ES doc should be crawled again."""
+        if recrawl_after_days is None or recrawl_after_days < 0:
+            return False
+
+        last_crawled = source.get("last_crawled") or source.get("crawled_date")
+        if not last_crawled:
+            return True
+
+        try:
+            value = str(last_crawled).strip().replace("Z", "+00:00")
+            crawled_at = datetime.fromisoformat(value)
+            if crawled_at.tzinfo is not None:
+                crawled_at = crawled_at.replace(tzinfo=None)
+            return datetime.now() - crawled_at >= timedelta(days=recrawl_after_days)
+        except Exception:
+            return True
+
+    def _filter_existing_url_pairs(self, url_pairs, recrawl_after_days=7, force_recrawl_existing=False):
+        """
+        Skip URLs already present in ES when they were crawled recently.
+
+        Existing docs older than recrawl_after_days are kept so the pipeline can
+        detect changed content_hash and update the document.
+        """
+        stats = {"input": len(url_pairs), "skipped_existing": 0, "recrawl_existing": 0}
+        if not self.es or force_recrawl_existing or not url_pairs:
+            return url_pairs, stats
+
+        filtered = []
+        try:
+            ids = [self._url_to_doc_id(url) for url, _ in url_pairs]
+            existing_by_id = {}
+            for start in range(0, len(ids), 500):
+                chunk_ids = ids[start:start + 500]
+                response = self.es.mget(
+                    index=self.index_name,
+                    body={"ids": chunk_ids},
+                    _source=["url", "title", "content_hash", "last_crawled", "crawled_date"],
+                )
+                for doc in response.get("docs", []):
+                    if doc.get("found"):
+                        existing_by_id[doc["_id"]] = doc.get("_source", {})
+
+            for url, cat_name in url_pairs:
+                doc_id = self._url_to_doc_id(url)
+                existing = existing_by_id.get(doc_id)
+                if not existing:
+                    filtered.append((url, cat_name))
+                    continue
+
+                if self._should_recrawl_existing(existing, recrawl_after_days):
+                    filtered.append((url, cat_name))
+                    stats["recrawl_existing"] += 1
+                else:
+                    stats["skipped_existing"] += 1
+
+            logger.info(
+                "[PRECHECK] URLs: input=%s, skipped_existing=%s, recrawl_existing=%s, remaining=%s",
+                stats["input"], stats["skipped_existing"], stats["recrawl_existing"], len(filtered),
+            )
+            return filtered, stats
+        except Exception as e:
+            logger.warning(f"[PRECHECK] Cannot check existing URLs, crawl all URLs: {e}")
+            return url_pairs, stats
+
     def upsert_to_es(self, csv_file):
         """Upsert cleaned CSV vào ES"""
         if not self.es:
@@ -577,10 +787,16 @@ class CrawlScheduler:
                 if existing and existing.get('found'):
                     old_hash = existing['_source'].get('content_hash', '')
                     if old_hash == new_hash:
-                        stats["unchanged"] += 1
+                        existing_source = existing.get('_source', {})
+                        update_doc = {"last_crawled": doc["last_crawled"]}
+                        if all_embeddings is not None and not existing_source.get("embedding"):
+                            update_doc["embedding"] = doc["embedding"]
+                            stats["updated"] += 1
+                        else:
+                            stats["unchanged"] += 1
                         actions.append({
                             "_op_type": "update", "_index": self.index_name,
-                            "_id": doc_id, "doc": {"last_crawled": doc["last_crawled"]}
+                            "_id": doc_id, "doc": update_doc
                         })
                         continue
                     else:
@@ -685,24 +901,31 @@ class CrawlScheduler:
             logger.error(f"[ERROR] Ensure index: {e}")
 
     # ============= FULL CYCLE =============
-    def run_cycle(self, pages=5, threads=3, categories=None, **kwargs):
+    def run_cycle(
+        self, pages=5, threads=3, categories=None, source="general",
+        recrawl_after_days=7, force_recrawl_existing=False, **kwargs,
+    ):
         """1 chu kỳ: crawl → clean → geocode → upsert → check expired"""
         start_time = datetime.now()
         logger.info("=" * 70)
         logger.info(f"[CYCLE] START — {start_time.strftime('%Y-%m-%d %H:%M:%S')}")
         logger.info("=" * 70)
 
-        stats = {"start_time": start_time.isoformat(), "pages": pages, "threads": threads}
+        stats = {"start_time": start_time.isoformat(), "pages": pages, "threads": threads, "source": source}
 
         # 1. Ensure index
         self.ensure_index()
 
         # 2. Pipeline: crawl + clean + geocode
-        output_file, pipeline_stats = self.run_pipeline(pages, threads, categories=categories)
+        output_file, pipeline_stats = self.run_pipeline(
+            pages, threads, categories=categories, source=source,
+            recrawl_after_days=recrawl_after_days,
+            force_recrawl_existing=force_recrawl_existing,
+        )
         stats["pipeline"] = pipeline_stats
 
         if not output_file:
-            stats["status"] = "pipeline_failed"
+            stats["status"] = pipeline_stats.get("status", "pipeline_failed")
             self._log_run(stats)
             return stats
 
@@ -771,9 +994,26 @@ Ví dụ:
 
     parser.add_argument('--once', action='store_true', help='Run once')
     parser.add_argument('--interval', type=int, default=60, help='Cycle interval (minutes)')
-    parser.add_argument('--pages', type=int, default=5, help='Pages per category')
+    parser.add_argument('--pages', type=int, default=5, help='Listing pages to crawl')
     parser.add_argument('--threads', type=int, default=3, help='Crawl threads')
+    parser.add_argument(
+        '--source',
+        choices=['general', 'category'],
+        default=os.getenv("CRAWL_SOURCE", "general"),
+        help='URL source: general uses https://www.topcv.vn/viec-lam-tot-nhat?page=N; category uses predefined category pages',
+    )
     parser.add_argument('--categories', nargs='+', help='Category keys to crawl (e.g. it marketing ke-toan)')
+    parser.add_argument(
+        '--recrawl-after-days',
+        type=int,
+        default=int(os.getenv("CRAWL_RECHECK_DAYS", "7")),
+        help='Skip existing URLs crawled within this many days. Use -1 to skip all existing URLs.',
+    )
+    parser.add_argument(
+        '--force-recrawl-existing',
+        action='store_true',
+        help='Crawl existing URLs again even if they were crawled recently.',
+    )
     parser.add_argument('--check-expired-only', action='store_true')
     parser.add_argument('--upsert-file', type=str, help='Upsert existing CSV')
     parser.add_argument('--es-host', type=str, default=ES_HOST)
@@ -800,13 +1040,23 @@ Ví dụ:
         return
 
     if args.once:
-        scheduler.run_cycle(pages=args.pages, threads=args.threads, categories=args.categories)
+        scheduler.run_cycle(
+            pages=args.pages,
+            threads=args.threads,
+            categories=args.categories,
+            source=args.source,
+            recrawl_after_days=args.recrawl_after_days,
+            force_recrawl_existing=args.force_recrawl_existing,
+        )
     else:
         scheduler.run_periodic(
             interval_minutes=args.interval,
             pages=args.pages,
             threads=args.threads,
             categories=args.categories,
+            source=args.source,
+            recrawl_after_days=args.recrawl_after_days,
+            force_recrawl_existing=args.force_recrawl_existing,
         )
 
 

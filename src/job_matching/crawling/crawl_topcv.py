@@ -687,6 +687,8 @@ def get_all_job_urls(driver, start_page=1, end_page=None):
 
     all_urls = set()
     page_num = start_page
+    consecutive_failed_pages = 0
+    consecutive_empty_pages = 0
 
     while True:
         if end_page and page_num > end_page:
@@ -724,8 +726,13 @@ def get_all_job_urls(driver, start_page=1, end_page=None):
             job_links = soup.select('h3[class*="title"] a')
 
             if not job_links:
-                logger.warning(f"Trang {page_num} không có jobs")
-                break
+                logger.warning(f"Trang {page_num} khong co jobs")
+                consecutive_empty_pages += 1
+                if consecutive_empty_pages >= 3:
+                    logger.warning("Dung thu URL sau 3 trang lien tiep khong co jobs")
+                    break
+                page_num += 1
+                continue
 
             page_urls = set()
             for link_tag in job_links:
@@ -743,14 +750,27 @@ def get_all_job_urls(driver, start_page=1, end_page=None):
             logger.info(f"  Tổng: {len(all_urls)} URLs")
 
             if len(page_urls) == 0:
-                break
+                consecutive_empty_pages += 1
+                if consecutive_empty_pages >= 3:
+                    logger.warning("Dung thu URL sau 3 trang lien tiep khong co URL hop le")
+                    break
+                page_num += 1
+                continue
+
+            consecutive_failed_pages = 0
+            consecutive_empty_pages = 0
 
             page_num += 1
             time.sleep(1)
 
         except Exception as e:
-            logger.error(f"Lỗi trang {page_num}: {str(e)}")
-            break
+            logger.error(f"Loi trang {page_num}: {str(e)}")
+            consecutive_failed_pages += 1
+            if consecutive_failed_pages >= 3:
+                logger.warning("Dung thu URL sau 3 trang lien tiep bi loi")
+                break
+            page_num += 1
+            continue
 
     logger.info("\n" + "=" * 70)
     logger.info(f"Hoàn thành: {len(all_urls)} URLs")
@@ -944,3 +964,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

@@ -105,7 +105,7 @@ def _init_services():
         logger.info("Skill Knowledge Graph disabled (set ENABLE_SKILL_GRAPH=1 to enable)")
 
     try:
-        if es_helper.has_embedding_field():
+        if es_helper.has_usable_embeddings():
             from job_matching.retrieval.embedding_service import get_embedding_service
             _embedding_service = get_embedding_service()
             _use_hybrid = True
@@ -119,7 +119,7 @@ def _init_services():
             except Exception as e:
                 logger.warning(f"ESCO not available: {e}")
         else:
-            logger.info("No embeddings — BM25-only mode")
+            logger.info("No usable embeddings - BM25-only mode")
     except Exception as e:
         logger.warning(f"Cannot init embedding service: {e}")
         logger.info("Fallback to BM25-only search")
@@ -136,6 +136,10 @@ _geocode_cache = {}
 LOCATION_SCORE_MODE = os.environ.get("LOCATION_SCORE_MODE", "city").strip().lower()
 ENABLE_CITY_PRIORITY = _env_bool("ENABLE_CITY_PRIORITY", default=True)
 SCORING_TOP_N = _env_int("SCORING_TOP_N", 30)
+RETRIEVAL_SIZE = _env_int("RETRIEVAL_SIZE", 80)
+RELAXED_RETRIEVAL_MIN_RESULTS = _env_int("RELAXED_RETRIEVAL_MIN_RESULTS", 12)
+BM25_MIN_SHOULD_MATCH = os.environ.get("BM25_MIN_SHOULD_MATCH", "20%")
+BM25_RELAXED_MIN_SHOULD_MATCH = os.environ.get("BM25_RELAXED_MIN_SHOULD_MATCH", "10%")
 
 
 def _goong_geocode(address):
@@ -300,6 +304,14 @@ def _prioritize_same_city(jobs, cv_location):
     return same_city + others
 
 
+def _as_text_list(value):
+    if not value:
+        return []
+    if isinstance(value, list):
+        return [str(item).strip() for item in value if str(item).strip()]
+    return [part.strip() for part in re.split(r"[,;\n]", str(value)) if part.strip()]
+
+
 # ============================================================
 # Search Pipeline
 # ============================================================
@@ -320,12 +332,16 @@ def search_pipeline(cv_data, categories=None, top_n=None):
     top_n = top_n or SCORING_TOP_N
 
     profile_text = cv_data.get("skills", "").strip()
-    # Gộp thêm soft_skills, languages, certificates vào search text
+    # Add non-hard-filter signals to retrieval text. These terms help surface
+    # same-domain jobs without requiring the user to manually pick a category.
     extra_parts = []
-    for field in ["soft_skills", "languages", "certificates"]:
+    for field in ["soft_skills", "languages", "certificates", "education", "experience"]:
         val = cv_data.get(field, "").strip()
         if val:
             extra_parts.append(val)
+    suggested_categories = _as_text_list(cv_data.get("suggested_categories"))
+    if suggested_categories:
+        extra_parts.append(", ".join(suggested_categories))
     full_text = profile_text + (", " + ", ".join(extra_parts) if extra_parts else "")
     if not profile_text:
         return [], "error", 0
@@ -339,7 +355,7 @@ def search_pipeline(cv_data, categories=None, top_n=None):
         logger.info(f"ESCO expanded: {len(profile_text.split(','))} → "
                     f"{len(expanded_tech.split(','))} terms")
 
-    # --- Stage 1b: Knowledge Graph Expansion (kNN semantic enrichment) ---
+    # --- Stage 1b: Knowledge Graph Expansion (semantic/domain enrichment) ---
     knn_text = expanded_tech
     if extra_parts:
         knn_text += ", " + ", ".join(extra_parts)
@@ -348,6 +364,12 @@ def search_pipeline(cv_data, categories=None, top_n=None):
         logger.info(f"Graph enriched kNN: {len(expanded_tech.split(','))} → "
                     f"{len(knn_text.split(','))} terms")
 
+    retrieval_text = full_text
+    if _skill_graph:
+        # BM25 also benefits from graph terms when the production index has no
+        # vectors yet. Keep the expansion bounded so it does not drown exact CV terms.
+        retrieval_text = _skill_graph.expand_skills_text(full_text, max_terms=16)
+
     # --- Stage 2: Hybrid Retrieval ---
     if _use_hybrid and _embedding_service:
         # kNN: ESCO-enriched text; KG terms are included only when enabled.
@@ -355,9 +377,10 @@ def search_pipeline(cv_data, categories=None, top_n=None):
         query_vector = _embedding_service.encode_single(cv_text)
         # BM25: flat multi_match (best for current data structure)
         jobs, total = es_helper.search_jobs_hybrid(
-            full_text, query_vector, size=50,
+            retrieval_text, query_vector, size=RETRIEVAL_SIZE,
             categories=categories or None,
             cv_gender=cv_gender, exclude_expired=True,
+            bm25_min_should_match=BM25_MIN_SHOULD_MATCH,
         )
         search_mode = "hybrid"
         if _esco_expander:
@@ -366,11 +389,36 @@ def search_pipeline(cv_data, categories=None, top_n=None):
             search_mode += "+graph"
     else:
         jobs, total = es_helper.search_jobs_by_profile(
-            full_text, size=50,
+            retrieval_text, size=RETRIEVAL_SIZE,
             categories=categories or None,
             cv_gender=cv_gender, exclude_expired=True,
+            bm25_min_should_match=BM25_MIN_SHOULD_MATCH,
         )
         search_mode = "bm25"
+        if _skill_graph:
+            search_mode += "+graph"
+
+    if len(jobs) < RELAXED_RETRIEVAL_MIN_RESULTS:
+        logger.info(
+            "Relaxing retrieval: %s results < %s",
+            len(jobs), RELAXED_RETRIEVAL_MIN_RESULTS,
+        )
+        if _use_hybrid and _embedding_service:
+            jobs, total = es_helper.search_jobs_hybrid(
+                retrieval_text, query_vector, size=RETRIEVAL_SIZE,
+                categories=None,
+                cv_gender=cv_gender, exclude_expired=True,
+                bm25_min_should_match=BM25_RELAXED_MIN_SHOULD_MATCH,
+                num_candidates=RETRIEVAL_SIZE * 4,
+            )
+        else:
+            jobs, total = es_helper.search_jobs_by_profile(
+                retrieval_text, size=RETRIEVAL_SIZE,
+                categories=None,
+                cv_gender=cv_gender, exclude_expired=True,
+                bm25_min_should_match=BM25_RELAXED_MIN_SHOULD_MATCH,
+            )
+        search_mode += "+relaxed"
 
     if not jobs:
         return [], search_mode, 0
@@ -507,6 +555,22 @@ def api_search():
 
     except Exception as e:
         logger.error(f"Search error: {e}", exc_info=True)
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/api/jobs", methods=["GET"])
+def api_jobs():
+    """Browse jobs currently stored in the active Elasticsearch index."""
+    try:
+        page = request.args.get("page", 1, type=int)
+        size = request.args.get("size", 20, type=int)
+        query = request.args.get("q", "", type=str).strip()
+
+        data = es_helper.list_jobs(page=page, size=size, query=query)
+        data["index_name"] = es_helper.index_name
+        return jsonify(data)
+    except Exception as e:
+        logger.error(f"List jobs error: {e}", exc_info=True)
         return jsonify({"error": str(e)}), 500
 
 
@@ -649,3 +713,4 @@ if __name__ == "__main__":
     _init_services()
     logger.info("Ready!")
     app.run(debug=True, host="0.0.0.0", port=5000)
+

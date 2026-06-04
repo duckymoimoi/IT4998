@@ -11,7 +11,6 @@
 <div class="app">
     <div class="header">
         <h1>Hệ trợ giúp tìm việc làm</h1>
-        <span class="badge" id="searchModeBadge">Hybrid + ESCO + LLM</span>
     </div>
     <div class="layout">
         <!-- LEFT: CV Info + Skills -->
@@ -45,22 +44,49 @@
 
         <!-- MIDDLE: Results -->
         <div class="results" id="resultsPanel">
-            <div class="empty-state" id="emptyState">
-                <h3>Chào mừng bạn!</h3>
-                <p>Tải CV lên, bổ sung địa điểm và lương mong muốn, rồi nhấn "Tìm việc phù hợp".</p>
-                <p style="margin-top:8px;font-size:12px">Hybrid Search + ESCO + LLM Scoring</p>
+            <div class="main-tabs">
+                <button class="tab-btn active" id="tabSearch" onclick="switchMainTab('search')">Tìm việc</button>
+                <button class="tab-btn" id="tabJobs" onclick="switchMainTab('jobs')">Kho job</button>
             </div>
-            <div id="resultsContent" style="display:none">
+
+            <div id="searchView">
+                <div class="empty-state" id="emptyState">
+                    <h3>Chào mừng bạn!</h3>
+                    <p>Tải CV lên, bổ sung địa điểm và lương mong muốn, rồi nhấn "Tìm việc phù hợp".</p>
+                    <p style="margin-top:8px;font-size:12px">Hybrid Search + ESCO + LLM Scoring</p>
+                </div>
+                <div id="resultsContent" style="display:none">
+                    <div class="results-header">
+                        <div>
+                            <h2>Kết quả</h2>
+                            <span class="results-count" id="resultsCount"></span>
+                        </div>
+                        <span class="search-mode" id="modeLabel"></span>
+                    </div>
+                    <div id="jobsList"></div>
+                    <div id="loadMore" style="display:none;text-align:center;margin-top:12px">
+                        <button class="btn btn-outline" onclick="loadMore()">Xem thêm</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="jobsBrowserView" style="display:none">
                 <div class="results-header">
                     <div>
-                        <h2>Kết quả</h2>
-                        <span class="results-count" id="resultsCount"></span>
+                        <h2>Kho job hiện có</h2>
+                        <span class="results-count" id="jobBrowserCount"></span>
                     </div>
-                    <span class="search-mode" id="modeLabel"></span>
+                    <span class="search-mode" id="jobBrowserIndex"></span>
                 </div>
-                <div id="jobsList"></div>
-                <div id="loadMore" style="display:none;text-align:center;margin-top:12px">
-                    <button class="btn btn-outline" onclick="loadMore()">Xem thêm</button>
+                <div class="job-browser-tools">
+                    <input type="text" id="jobBrowserQuery" placeholder="Tìm theo tiêu đề, công ty, kỹ năng, địa điểm">
+                    <button class="btn btn-outline" onclick="loadJobBrowser(1)">Tìm</button>
+                </div>
+                <div id="jobBrowserList" class="job-browser-list"></div>
+                <div class="job-browser-pager">
+                    <button class="btn btn-outline" id="jobBrowserPrev" onclick="loadJobBrowser(jobBrowserPage - 1)">Trước</button>
+                    <span id="jobBrowserPageInfo"></span>
+                    <button class="btn btn-outline" id="jobBrowserNext" onclick="loadJobBrowser(jobBrowserPage + 1)">Sau</button>
                 </div>
             </div>
         </div>
@@ -101,6 +127,7 @@
 <script>
 // ===== STATE =====
 let allJobs = [], displayCount = 5, extractedData = null, lastCvData = null;
+let jobBrowserLoaded = false, jobBrowserPage = 1, jobBrowserTotal = 0, jobBrowserSize = 20;
 const DIMS = ['relevance','skills','experience','education','location','salary'];
 const DIM_LABELS = {relevance:'Phù hợp',skills:'Kỹ năng',experience:'Kinh nghiệm',education:'Học vấn',location:'Địa điểm',salary:'Lương'};
 
@@ -113,6 +140,82 @@ function getWeights() {
         location: 0.10,
         salary: 0.10,
     };
+}
+
+function switchMainTab(tab) {
+    const search = tab === 'search';
+    document.getElementById('searchView').style.display = search ? 'block' : 'none';
+    document.getElementById('jobsBrowserView').style.display = search ? 'none' : 'block';
+    document.getElementById('tabSearch').classList.toggle('active', search);
+    document.getElementById('tabJobs').classList.toggle('active', !search);
+    if (!search && !jobBrowserLoaded) loadJobBrowser(1);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const q = document.getElementById('jobBrowserQuery');
+    if (q) {
+        q.addEventListener('keydown', e => {
+            if (e.key === 'Enter') loadJobBrowser(1);
+        });
+    }
+});
+
+async function loadJobBrowser(page) {
+    page = Math.max(page || 1, 1);
+    const list = document.getElementById('jobBrowserList');
+    const query = document.getElementById('jobBrowserQuery').value.trim();
+    list.innerHTML = '<div class="loading"><div class="spinner"></div>Đang tải kho job...</div>';
+    try {
+        const params = new URLSearchParams({page, size: jobBrowserSize});
+        if (query) params.set('q', query);
+        const res = await fetch('/api/jobs?' + params.toString());
+        const data = await res.json();
+        if (!res.ok || data.error) {
+            list.innerHTML = `<div class="empty-state"><h3>Lỗi</h3><p>${esc(data.error || 'Không tải được kho job')}</p></div>`;
+            return;
+        }
+        jobBrowserLoaded = true;
+        jobBrowserPage = data.page || page;
+        jobBrowserTotal = data.total || 0;
+        document.getElementById('jobBrowserIndex').textContent = data.index_name || '';
+        document.getElementById('jobBrowserCount').textContent = `${jobBrowserTotal} job`;
+        renderJobBrowser(data.jobs || []);
+    } catch (e) {
+        list.innerHTML = `<div class="empty-state"><h3>Lỗi kết nối</h3><p>${esc(e.message)}</p></div>`;
+    }
+}
+
+function renderJobBrowser(jobs) {
+    const list = document.getElementById('jobBrowserList');
+    if (!jobs.length) {
+        list.innerHTML = '<div class="empty-state"><h3>Chưa có job</h3><p>Index hiện tại chưa có dữ liệu hoặc không khớp từ khóa tìm kiếm.</p></div>';
+    } else {
+        list.innerHTML = jobs.map(jobBrowserCard).join('');
+    }
+    const maxPage = Math.max(Math.ceil(jobBrowserTotal / jobBrowserSize), 1);
+    document.getElementById('jobBrowserPageInfo').textContent = `Trang ${jobBrowserPage}/${maxPage}`;
+    document.getElementById('jobBrowserPrev').disabled = jobBrowserPage <= 1;
+    document.getElementById('jobBrowserNext').disabled = jobBrowserPage >= maxPage;
+}
+
+function jobBrowserCard(job) {
+    const tags = parseTags(job.requirements_tags || job.specializations || job.technical_skills);
+    const expired = job.is_expired === true || job.is_expired === 'true';
+    const status = expired ? '<span class="job-status expired">Hết hạn</span>' : '<span class="job-status active">Còn hạn</span>';
+    return `<div class="job-card compact-job">
+        <div class="job-top">
+            <div>
+                <h3 onclick="window.open('${esc(job.url||'')}','_blank')">${esc(job.title||'N/A')}</h3>
+                <div class="job-company">${esc(job.company||'')} ${status}</div>
+            </div>
+        </div>
+        <div class="job-meta">
+            <span><b>Lương:</b> ${esc((job.job_salary||'Thỏa thuận').substring(0,70))}</span>
+            <span><b>Khu vực:</b> ${esc((job.job_location||'N/A').substring(0,50))}</span>
+            ${job.deadline ? `<span><b>Hạn nộp:</b> ${esc(job.deadline)}</span>` : ''}
+        </div>
+        ${tags.length ? '<div class="job-tags">' + tags.slice(0,8).map(t=>'<span class="tag">'+esc(t)+'</span>').join('') + '</div>' : ''}
+    </div>`;
 }
 
 // ===== FILE UPLOAD =====
@@ -203,6 +306,7 @@ function fmtCats(v) { return Array.isArray(v) && v.length ? v.join(', ') : 'N/A'
 
 // ===== SEARCH =====
 async function searchJobs() {
+    switchMainTab('search');
     if (!extractedData) {
         alert('Vui lòng tải CV lên và quét trước khi tìm việc.');
         return;

@@ -103,13 +103,17 @@ class ElasticHelper:
         return filters
 
     def search_jobs_by_profile(self, profile_text, size=100,
-                                categories=None, cv_gender=None, exclude_expired=False):
+                                categories=None, cv_gender=None, exclude_expired=False,
+                                bm25_min_should_match="20%"):
         """BM25-only search voi ES-level filters (fallback khi khong co embedding)."""
         if not profile_text or not profile_text.strip():
             return [], 0
 
         filters = self._build_filters(categories, cv_gender, exclude_expired)
-        bm25_hits = self._search_bm25(profile_text, size=size, filters=filters)
+        bm25_hits = self._search_bm25(
+            profile_text, size=size, filters=filters,
+            minimum_should_match=bm25_min_should_match,
+        )
 
         jobs = []
         for hit in bm25_hits:
@@ -120,7 +124,7 @@ class ElasticHelper:
 
         return jobs, len(jobs)
 
-    def _search_bm25(self, profile_text, size=100, filters=None):
+    def _search_bm25(self, profile_text, size=100, filters=None, minimum_should_match="20%"):
         """BM25 search, tra ve list hits (co ho tro filters)"""
         if not profile_text or not profile_text.strip():
             return []
@@ -146,7 +150,7 @@ class ElasticHelper:
                 ],
                 "type": "best_fields",
                 "operator": "or",
-                "minimum_should_match": "30%",
+                "minimum_should_match": minimum_should_match,
             }
         }
 
@@ -255,7 +259,7 @@ class ElasticHelper:
     def search_jobs_hybrid(self, profile_text, query_vector, size=100,
                             categories=None, cv_gender=None, exclude_expired=False,
                             rrf_k=60, bm25_weight=1.0, knn_weight=1.0,
-                            num_candidates=None):
+                            num_candidates=None, bm25_min_should_match="20%"):
         """
         Hybrid search: BM25 + kNN + RRF fusion voi ES-level filters.
 
@@ -276,7 +280,10 @@ class ElasticHelper:
         """
         filters = self._build_filters(categories, cv_gender, exclude_expired)
 
-        bm25_hits = self._search_bm25(profile_text, size=size, filters=filters)
+        bm25_hits = self._search_bm25(
+            profile_text, size=size, filters=filters,
+            minimum_should_match=bm25_min_should_match,
+        )
         knn_hits = self._search_knn(
             query_vector, size=size, filters=filters,
             num_candidates=num_candidates,
@@ -309,6 +316,20 @@ class ElasticHelper:
         except Exception:
             return False
 
+    def has_usable_embeddings(self):
+        """Return True only when the index mapping and at least one document have embeddings."""
+        if not self.has_embedding_field():
+            return False
+        try:
+            result = self.es.count(
+                index=self.index_name,
+                body={"query": {"exists": {"field": "embedding"}}},
+            )
+            return result.get("count", 0) > 0
+        except Exception as e:
+            logger.warning(f"Cannot check embedding data: {e}")
+            return False
+
     def get_job_by_id(self, job_id):
         try:
             result = self.es.get(index=self.index_name, id=job_id)
@@ -316,6 +337,69 @@ class ElasticHelper:
         except Exception as e:
             logger.error(f"Error getting job: {e}")
             return None
+
+    def list_jobs(self, page=1, size=20, query=None):
+        """List jobs currently stored in the active index for the web browser tab."""
+        page = max(int(page or 1), 1)
+        size = min(max(int(size or 20), 1), 100)
+        offset = (page - 1) * size
+
+        if query and str(query).strip():
+            q = str(query).strip()
+            es_query = {
+                "multi_match": {
+                    "query": q,
+                    "fields": [
+                        "title^4",
+                        "company^2",
+                        "category^2",
+                        "job_location^2",
+                        "technical_skills^2",
+                        "requirements_tags",
+                        "specializations",
+                        "job_requirements",
+                    ],
+                    "type": "best_fields",
+                    "operator": "or",
+                }
+            }
+            sort = [{"_score": {"order": "desc"}}]
+        else:
+            es_query = {"match_all": {}}
+            sort = [{"last_crawled": {"order": "desc", "unmapped_type": "date"}}, {"_doc": "asc"}]
+
+        body = {
+            "query": es_query,
+            "from": offset,
+            "size": size,
+            "sort": sort,
+            "_source": {
+                "excludes": ["embedding"],
+            },
+        }
+
+        try:
+            result = self.es.search(index=self.index_name, body=body)
+        except Exception as e:
+            if query:
+                logger.error(f"Error listing jobs: {e}")
+                return {"jobs": [], "total": 0, "page": page, "size": size}
+            logger.warning(f"List jobs sorted by last_crawled failed, fallback to _doc sort: {e}")
+            body["sort"] = [{"_doc": "asc"}]
+            result = self.es.search(index=self.index_name, body=body)
+
+        total = result.get("hits", {}).get("total", {})
+        if isinstance(total, dict):
+            total = total.get("value", 0)
+
+        jobs = []
+        for hit in result.get("hits", {}).get("hits", []):
+            job = hit.get("_source", {})
+            job["_id"] = hit.get("_id")
+            job["_score"] = hit.get("_score", 0)
+            jobs.append(job)
+
+        return {"jobs": jobs, "total": total, "page": page, "size": size}
 
     def count_jobs(self):
         try:
