@@ -41,7 +41,7 @@ else
         echo "  Index empty or not found. Importing data..."
         if [ -f "$CSV_FILE" ]; then
             cd /app
-            python src/import_to_elastic.py --csv "$CSV_FILE" --es-host "$ES_HOST" --index "$ES_INDEX"
+            python -m job_matching.ingestion.import_to_elastic --csv "$CSV_FILE" --es-host "$ES_HOST" --index "$ES_INDEX"
             echo "  Import completed."
         else
             echo "  WARNING: CSV file not found: $CSV_FILE"

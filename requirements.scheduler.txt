@@ -2,6 +2,8 @@
 setuptools>=69.0.0
 pandas>=2.0.0
 requests
+python-dotenv
+groq>=1.0.0
 beautifulsoup4
 elasticsearch>=8.0.0
 undetected-chromedriver>=3.5.0

@@ -8,6 +8,7 @@ FROM nvidia/cuda:12.8.0-runtime-ubuntu24.04
 ENV DEBIAN_FRONTEND=noninteractive
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONIOENCODING=utf-8
+ENV PYTHONPATH=/app/src
 
 # Install Python 3.12 + system deps
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -36,4 +37,4 @@ RUN chmod +x /app/docker-entrypoint.sh
 # Source code + data are mounted as volumes via docker-compose.yml
 
 ENTRYPOINT ["/app/docker-entrypoint.sh"]
-CMD ["python", "src/app.py"]
+CMD ["python", "-m", "job_matching.web.app"]

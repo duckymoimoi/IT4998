@@ -37,12 +37,33 @@ services:
     environment:
       - ES_HOST=http://elasticsearch:9200
       - ES_INDEX=topcv_jobs_production
+      - PYTHONPATH=/app/src
       - AUTO_IMPORT_ON_START=0
+      - ENABLE_JOB_TERM_TAXONOMY=1
       - ENABLE_SKILL_GRAPH=1
+      - RRF_BM25_WEIGHT=1.0
+      - RRF_KNN_WEIGHT=0.80
+      - KNN_VECTOR_FIELD=embedding
+      - BM25_CORE_SKILL_LIMIT=12
+      - KNN_SECONDARY_SKILL_LIMIT=5
+      - KNN_EXPANSION_TERM_LIMIT=12
+      - ENABLE_QUERY_EXPANSION=0
+      - ENABLE_ESCO_EXPANSION=1
+      - ENABLE_SKILL_GRAPH_EXPANSION=0
+      - ESCO_CONTROLLED_MIN_SIM=0.82
+      - ESCO_CONTROLLED_MIN_MARGIN=0.03
+      - ESCO_CONTROLLED_MAX_TERMS=6
+      - BM25_MIN_SHOULD_MATCH=2
+      - BM25_RELAXED_MIN_SHOULD_MATCH=1
+      - SCORING_TOP_N=30
+      - SCORING_BATCH_SIZE=5
+      - SCORING_BATCH_WORKERS=6
+      - SCORING_TIME_LIMIT_SECONDS=60
+      - SCORING_REQUEST_TIMEOUT_SECONDS=45
       - PYTHONIOENCODING=utf-8
     env_file:
       - ./src/.env
-    command: python src/app.py
+    command: python -m job_matching.web.app
     stdin_open: true
     tty: true
     init: true
@@ -74,13 +95,26 @@ services:
     environment:
       - ES_HOST=http://elasticsearch:9200
       - ES_INDEX=topcv_jobs_production
+      - PYTHONPATH=/app/src
       - CRAWL_SOURCE=general
       - CRAWL_RECHECK_DAYS=7
       - OLLAMA_URL=http://ollama:11434/api/generate
+      - OLLAMA_CLEANER_MODEL=qwen3.5:4b
+      - OLLAMA_CLEANER_NUM_CTX=8192
+      - OLLAMA_CLEANER_NUM_PREDICT=1500
+      - OLLAMA_CLEANER_TEMPERATURE=0.1
+      - OLLAMA_CLEANER_TOP_P=0.9
+      - OLLAMA_CLEANER_SEED=42
+      - OLLAMA_CLEANER_STRUCTURED_OUTPUT=1
+      - OLLAMA_CLEANER_THINK=0
+      - AUTO_CLASSIFY_TAXONOMY=1
+      - TAXONOMY_CLASSIFY_THRESHOLD=50
+      - TAXONOMY_BATCH_SIZE=20
+      - TAXONOMY_SLEEP_SEC=10
       - PYTHONIOENCODING=utf-8
     env_file:
       - ./src/.env
-    command: python src/scheduler.py --once --source general --pages 3 --threads 3
+    command: python -m job_matching.ingestion.scheduler --once --source general --pages 3 --threads 3
 
 volumes:
   bge_m3_cache:
