@@ -10,41 +10,11 @@ import logging
 import time
 import os
 import requests
-from pathlib import Path
 
 from job_matching.scoring.salary_normalizer import SalaryNormalizer
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
-
-# Geocoding: đọc từ cache file (chạy scripts/batch_geocode.py trước để tạo)
-import json as _json
-PROJECT_ROOT = Path(__file__).resolve().parents[3]
-_GEOCODE_CACHE_FILE = PROJECT_ROOT / 'data' / 'geocode_cache.json'
-_geocode_cache = None
-
-def _load_geocode_cache():
-    """Load geocode cache từ file JSON (tạo bởi scripts/batch_geocode.py)."""
-    global _geocode_cache
-    if _geocode_cache is not None:
-        return _geocode_cache
-    if os.path.exists(_GEOCODE_CACHE_FILE):
-        with open(_GEOCODE_CACHE_FILE, 'r', encoding='utf-8') as f:
-            _geocode_cache = _json.load(f)
-        logger.info(f"Loaded {len(_geocode_cache)} geocode entries from cache")
-    else:
-        _geocode_cache = {}
-        logger.info("No geocode cache found. Run: python scripts/batch_geocode.py")
-    return _geocode_cache
-
-def _geocode_lookup(address):
-    """Tra cứu tọa độ từ cache file. Không gọi API."""
-    if not address or len(address.strip()) < 5:
-        return None
-    cache = _load_geocode_cache()
-    result = cache.get(address)
-    return result  # {"lat": ..., "lng": ...} or None
-
 
 class ElasticImporter:
     def __init__(self, es_host="http://localhost:9200", use_embeddings=True):
@@ -94,7 +64,7 @@ class ElasticImporter:
                 "number_of_replicas": 0,
                 "analysis": {
                     "analyzer": {
-                        "vietnamese_analyzer": {
+                        "job_text_analyzer": {
                             "type": "standard",
                             "stopwords": "_none_",
                         }
@@ -104,29 +74,32 @@ class ElasticImporter:
             "mappings": {
                 "properties": {
                     # --- Text fields (BM25 search) ---
-                    "title": {"type": "text", "analyzer": "vietnamese_analyzer"},
+                    "title": {"type": "text", "analyzer": "job_text_analyzer"},
                     "url": {"type": "keyword"},
                     "company": {"type": "text"},
-                    "company_address": {"type": "text", "analyzer": "vietnamese_analyzer"},
+                    "company_address": {"type": "text", "analyzer": "job_text_analyzer"},
                     "company_size": {"type": "keyword"},
+                    # Legacy/experimental fields; production no longer populates them.
                     "company_field": {"type": "keyword"},
                     "category": {"type": "keyword"},
                     "deadline": {"type": "text"},
                     "crawled_date": {"type": "text"},
 
                     # --- BM25 search fields (voi boost) ---
-                    "requirements_tags": {"type": "text", "analyzer": "vietnamese_analyzer"},
-                    "specializations": {"type": "text", "analyzer": "vietnamese_analyzer"},
-                    "technical_skills": {"type": "text", "analyzer": "vietnamese_analyzer"},
-                    "soft_skills": {"type": "text", "analyzer": "vietnamese_analyzer"},
-                    "languages": {"type": "text", "analyzer": "vietnamese_analyzer"},
-                    "certificates": {"type": "text", "analyzer": "vietnamese_analyzer"},
+                    "requirements_tags": {"type": "text", "analyzer": "job_text_analyzer"},
+                    "specializations": {"type": "text", "analyzer": "job_text_analyzer"},
+                    "technical_skills": {"type": "text", "analyzer": "job_text_analyzer"},
+                    # Legacy compatibility only; new jobs no longer populate this field.
+                    "soft_skills": {"type": "text", "analyzer": "job_text_analyzer"},
+                    "languages": {"type": "text", "analyzer": "job_text_analyzer"},
+                    "certificates": {"type": "text", "analyzer": "job_text_analyzer"},
 
                     # --- Job detail fields ---
-                    "job_description": {"type": "text", "analyzer": "vietnamese_analyzer"},
-                    "job_requirements": {"type": "text", "analyzer": "vietnamese_analyzer"},
-                    "job_benefits": {"type": "text", "analyzer": "vietnamese_analyzer"},
-                    "job_location": {"type": "text", "analyzer": "vietnamese_analyzer"},
+                    "job_description": {"type": "text", "analyzer": "job_text_analyzer"},
+                    "job_requirements": {"type": "text", "analyzer": "job_text_analyzer"},
+                    "job_benefits": {"type": "text", "analyzer": "job_text_analyzer"},
+                    "job_location": {"type": "text", "analyzer": "job_text_analyzer"},
+                    "work_location_text": {"type": "text", "analyzer": "job_text_analyzer"},
                     "working_time": {"type": "text"},
 
                     # --- Salary ---
@@ -147,7 +120,7 @@ class ElasticImporter:
                     "content_hash": {"type": "keyword"},
                     "is_expired": {"type": "boolean"},
 
-                    # --- Geo coordinates (pre-geocoded from company_address) ---
+                    # Legacy compatibility: web can reuse coordinates on existing jobs.
                     "geo_coordinates": {
                         "type": "nested",
                         "properties": {
@@ -164,6 +137,8 @@ class ElasticImporter:
                         "index": True,
                         "similarity": "cosine",
                     },
+                    "semantic_text": {"type": "text", "analyzer": "job_text_analyzer"},
+                    "semantic_title": {"type": "text", "analyzer": "job_text_analyzer"},
                 }
             },
         }
@@ -204,12 +179,12 @@ class ElasticImporter:
 
         include_fields = [
             "title", "url", "company", "company_address",
-            "company_size", "company_field", "category",
+            "company_size",
             "deadline", "crawled_date",
             "requirements_tags", "specializations",
-            "technical_skills", "soft_skills", "languages", "certificates",
+            "technical_skills", "languages", "certificates",
             "job_description", "job_requirements", "job_benefits",
-            "job_location", "working_time", "job_salary",
+            "job_location", "work_location_text", "working_time", "job_salary",
             "gender_requirement", "experience",
             "education_level", "education_field",
             "salary_note", "content_hash",
@@ -271,34 +246,6 @@ class ElasticImporter:
         if csv_sal_type and not pd.isna(csv_sal_type):
             doc["salary_type"] = str(csv_sal_type).strip()
 
-        # Pre-geocode company_address
-        # Ưu tiên dùng lat/lng đã có sẵn trong CSV (từ pipeline trước)
-        company_addr = doc.get("company_address", "")
-        geo_coords = []
-
-        pre_lat = row.get("latitude")
-        pre_lng = row.get("longitude")
-        if pre_lat and pre_lng and not pd.isna(pre_lat) and not pd.isna(pre_lng):
-            try:
-                geo_coords.append({
-                    "lat": float(pre_lat),
-                    "lng": float(pre_lng),
-                    "address": company_addr[:100] if company_addr else "",
-                })
-            except (ValueError, TypeError):
-                pass
-
-        # Tra cứu từ geocode cache (không gọi API live)
-        if not geo_coords and company_addr:
-            coords = _geocode_lookup(company_addr)
-            if coords:
-                geo_coords.append({
-                    "lat": coords["lat"],
-                    "lng": coords["lng"],
-                    "address": company_addr[:100],
-                })
-        doc["geo_coordinates"] = geo_coords
-
         # Sanitize: ES rejects NaN in JSON - convert to None/empty
         import math
         for key, val in list(doc.items()):
@@ -321,14 +268,19 @@ class ElasticImporter:
             if self.use_embeddings and self.embedding_service:
                 logger.info("Dang tao embeddings cho tat ca jobs...")
                 embed_start = time.time()
+                from job_matching.enrichment.semantic_job_profile import SemanticJobProfileBuilder
+                semantic_builder = SemanticJobProfileBuilder()
 
-                embed_texts = []
+                semantic_profiles = []
+                semantic_texts = []
                 for _, row in df.iterrows():
-                    text = self.embedding_service.build_job_text(row.to_dict())
-                    embed_texts.append(text)
+                    job = row.to_dict()
+                    profile = semantic_builder.build(job)
+                    semantic_profiles.append(profile)
+                    semantic_texts.append(profile["semantic_text"])
 
                 all_embeddings = self.embedding_service.encode(
-                    embed_texts,
+                    semantic_texts,
                     batch_size=32,
                     show_progress=True,
                 )
@@ -337,6 +289,7 @@ class ElasticImporter:
                             f"({embed_time/len(all_embeddings):.2f}s/job)")
             else:
                 all_embeddings = None
+                semantic_profiles = None
 
             actions = []
             success_count = 0
@@ -354,6 +307,7 @@ class ElasticImporter:
                     if magnitude < 1e-8:
                         # Jobs thiếu data → embedding gần zero → thay bằng tiny uniform vector
                         emb = [1e-6] * len(emb)
+                    doc.update(semantic_profiles[i])
                     doc["embedding"] = emb
 
                 sal_type = doc.get('salary_type', 'unknown')

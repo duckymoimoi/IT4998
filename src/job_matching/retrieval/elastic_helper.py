@@ -4,6 +4,7 @@ import logging
 import os
 
 logger = logging.getLogger(__name__)
+VECTOR_SOURCE_EXCLUDES = ["embedding"]
 
 
 class ElasticHelper:
@@ -104,7 +105,8 @@ class ElasticHelper:
 
     def search_jobs_by_profile(self, profile_text, size=100,
                                 categories=None, cv_gender=None, exclude_expired=False,
-                                bm25_min_should_match="20%"):
+                                bm25_min_should_match=2, role_terms=None,
+                                evidence_terms=None):
         """BM25-only search voi ES-level filters (fallback khi khong co embedding)."""
         if not profile_text or not profile_text.strip():
             return [], 0
@@ -113,6 +115,7 @@ class ElasticHelper:
         bm25_hits = self._search_bm25(
             profile_text, size=size, filters=filters,
             minimum_should_match=bm25_min_should_match,
+            role_terms=role_terms, evidence_terms=evidence_terms,
         )
 
         jobs = []
@@ -124,51 +127,115 @@ class ElasticHelper:
 
         return jobs, len(jobs)
 
-    def _search_bm25(self, profile_text, size=100, filters=None, minimum_should_match="20%"):
-        """BM25 search, tra ve list hits (co ho tro filters)"""
+    def _search_bm25(self, profile_text, size=100, filters=None, minimum_should_match=2,
+                     role_terms=None, evidence_terms=None):
+        """BM25 search where each comma-separated CV term is one match clause."""
         if not profile_text or not profile_text.strip():
             return []
 
-        # Gioi han query text de tranh "too many clauses" loi ES
-        words = profile_text.split()
-        if len(words) > 60:
-            profile_text = " ".join(words[:60])
+        terms = []
+        seen = set()
+        for term in str(profile_text).split(","):
+            cleaned = term.strip()
+            key = cleaned.lower()
+            if cleaned and key not in seen:
+                terms.append(cleaned)
+                seen.add(key)
+            if len(terms) >= 40:
+                break
+        if not terms:
+            return []
 
-        multi_match_query = {
-            "multi_match": {
-                "query": profile_text,
-                "fields": [
-                    "requirements_tags^5.0",
-                    "specializations^4.0",
-                    "title^3.0",
-                    "technical_skills^3.0",
-                    "certificates^2.5",
-                    "languages^2.0",
-                    "soft_skills^1.0",
-                    "job_requirements^0.5",
-                    "job_description^0.3",
-                ],
-                "type": "best_fields",
-                "operator": "or",
-                "minimum_should_match": minimum_should_match,
-            }
-        }
+        fields = [
+            "semantic_title^5.0",
+            "semantic_text^2.5",
+            "title^3.0",
+            "specializations^2.0",
+            "requirements_tags^0.5",
+            "technical_skills^1.0",
+            "certificates^1.5",
+            "languages^0.75",
+            "job_requirements^0.3",
+            "job_description^0.15",
+        ]
+        role_fields = [
+            "semantic_title^5.0",
+            "title^3.0",
+        ]
 
-        if filters:
-            search_body = {
-                "query": {
-                    "bool": {
-                        "must": [multi_match_query],
-                        "filter": filters,
+        def build_term_queries(values, query_fields=fields):
+            return [
+                {
+                    "multi_match": {
+                        "query": term,
+                        "fields": query_fields,
+                        "type": "best_fields",
+                        "operator": "and",
                     }
-                },
-                "size": size,
+                }
+                for term in values
+            ]
+
+        term_queries = build_term_queries(terms)
+
+        role_terms = self._dedupe_query_terms(role_terms)
+        evidence_terms = self._dedupe_query_terms(evidence_terms)
+        if role_terms or evidence_terms:
+            route_queries = []
+            if role_terms:
+                route_queries.append({
+                    "bool": {
+                        "should": build_term_queries(role_terms, role_fields),
+                        "minimum_should_match": 1,
+                        "boost": 3.0,
+                    }
+                })
+            if evidence_terms:
+                required_evidence = self._resolve_minimum_should_match(
+                    minimum_should_match, len(evidence_terms),
+                )
+                # For the structured evidence route, an absolute threshold is a
+                # real gate. A CV with one skill must wait for the relaxed
+                # fallback instead of silently turning production 2 into 1.
+                if not (
+                    isinstance(minimum_should_match, str)
+                    and minimum_should_match.endswith("%")
+                ):
+                    try:
+                        required_evidence = max(1, int(minimum_should_match))
+                    except (TypeError, ValueError):
+                        required_evidence = 2
+                route_queries.append({
+                    "bool": {
+                        "should": build_term_queries(evidence_terms),
+                        "minimum_should_match": required_evidence,
+                    }
+                })
+            bool_query = {
+                "bool": {
+                    "should": route_queries,
+                    "minimum_should_match": 1,
+                }
             }
         else:
-            search_body = {
-                "query": multi_match_query,
-                "size": size,
+            required_terms = self._resolve_minimum_should_match(
+                minimum_should_match, len(term_queries),
+            )
+            bool_query = {
+                "bool": {
+                    "should": term_queries,
+                    "minimum_should_match": required_terms,
+                }
             }
+
+        if filters:
+            bool_query["bool"]["filter"] = filters
+
+        search_body = {
+            "query": bool_query,
+            "size": size,
+            "_source": {"excludes": VECTOR_SOURCE_EXCLUDES},
+        }
 
         try:
             result = self.es.search(index=self.index_name, body=search_body)
@@ -177,7 +244,37 @@ class ElasticHelper:
             logger.error(f"BM25 search error: {e}")
             return []
 
-    def _search_knn(self, query_vector, size=100, filters=None, num_candidates=None):
+    @staticmethod
+    def _dedupe_query_terms(values):
+        if not values:
+            return []
+        if isinstance(values, str):
+            values = values.split(",")
+        output, seen = [], set()
+        for value in values:
+            cleaned = str(value).strip()
+            key = cleaned.lower()
+            if cleaned and key not in seen:
+                output.append(cleaned)
+                seen.add(key)
+        return output[:40]
+
+    @staticmethod
+    def _resolve_minimum_should_match(value, term_count):
+        if term_count <= 0:
+            return 1
+        try:
+            if isinstance(value, str) and value.endswith("%"):
+                percentage = max(0, min(100, int(value[:-1])))
+                required = max(1, round(term_count * percentage / 100))
+            else:
+                required = int(value)
+        except (TypeError, ValueError):
+            required = 2
+        return max(1, min(required, term_count))
+
+    def _search_knn(self, query_vector, size=100, filters=None, num_candidates=None,
+                    vector_field="embedding"):
         """kNN search tren dense_vector field (co ho tro filters)"""
         try:
             if num_candidates is None:
@@ -185,7 +282,7 @@ class ElasticHelper:
             num_candidates = max(num_candidates, size)
 
             knn_body = {
-                "field": "embedding",
+                "field": vector_field,
                 "query_vector": query_vector,
                 "k": size,
                 "num_candidates": num_candidates,
@@ -199,6 +296,7 @@ class ElasticHelper:
                 index=self.index_name,
                 knn=knn_body,
                 size=size,
+                source_excludes=VECTOR_SOURCE_EXCLUDES,
             )
             return result["hits"]["hits"]
         except Exception as e:
@@ -259,7 +357,9 @@ class ElasticHelper:
     def search_jobs_hybrid(self, profile_text, query_vector, size=100,
                             categories=None, cv_gender=None, exclude_expired=False,
                             rrf_k=60, bm25_weight=1.0, knn_weight=1.0,
-                            num_candidates=None, bm25_min_should_match="20%"):
+                            num_candidates=None, bm25_min_should_match=2,
+                            vector_field="embedding", role_terms=None,
+                            evidence_terms=None):
         """
         Hybrid search: BM25 + kNN + RRF fusion voi ES-level filters.
 
@@ -283,10 +383,12 @@ class ElasticHelper:
         bm25_hits = self._search_bm25(
             profile_text, size=size, filters=filters,
             minimum_should_match=bm25_min_should_match,
+            role_terms=role_terms, evidence_terms=evidence_terms,
         )
         knn_hits = self._search_knn(
             query_vector, size=size, filters=filters,
             num_candidates=num_candidates,
+            vector_field=vector_field,
         )
 
         merged = self._rrf_fusion(
@@ -316,14 +418,19 @@ class ElasticHelper:
         except Exception:
             return False
 
-    def has_usable_embeddings(self):
+    def has_usable_embeddings(self, vector_field="embedding"):
         """Return True only when the index mapping and at least one document have embeddings."""
-        if not self.has_embedding_field():
+        try:
+            mapping = self.es.indices.get_mapping(index=self.index_name)
+            props = mapping[self.index_name]["mappings"].get("properties", {})
+            if props.get(vector_field, {}).get("type") != "dense_vector":
+                return False
+        except Exception:
             return False
         try:
             result = self.es.count(
                 index=self.index_name,
-                body={"query": {"exists": {"field": "embedding"}}},
+                body={"query": {"exists": {"field": vector_field}}},
             )
             return result.get("count", 0) > 0
         except Exception as e:
@@ -352,7 +459,6 @@ class ElasticHelper:
                     "fields": [
                         "title^4",
                         "company^2",
-                        "category^2",
                         "job_location^2",
                         "technical_skills^2",
                         "requirements_tags",
@@ -374,7 +480,7 @@ class ElasticHelper:
             "size": size,
             "sort": sort,
             "_source": {
-                "excludes": ["embedding"],
+                "excludes": VECTOR_SOURCE_EXCLUDES,
             },
         }
 

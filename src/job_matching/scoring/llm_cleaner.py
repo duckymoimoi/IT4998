@@ -1,5 +1,5 @@
 """
-LLM Data Cleaner -- Trích xuất dữ liệu tuyển dụng bằng Ollama (Qwen 2.5)
+LLM Data Cleaner -- Trích xuất dữ liệu tuyển dụng bằng Ollama (Qwen 3.5)
 
 Pipeline: CSV thô -> LLM clean (batch) -> CSV sạch -> import ES
 
@@ -16,13 +16,15 @@ Sử dụng:
 
 import pandas as pd
 import json
+import os
 import time
 import re
 import logging
 import argparse
 import requests
-from datetime import datetime
-from pathlib import Path
+from urllib.parse import urlsplit, urlunsplit
+
+from job_matching.shared.vietnam_cities_data import get_city_info
 
 logging.basicConfig(
     level=logging.INFO,
@@ -30,8 +32,83 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-OLLAMA_URL = "http://localhost:11434/api/generate"
-DEFAULT_MODEL = "qwen2.5:3b"
+def _env_int(name, default):
+    try:
+        return int(os.getenv(name, default))
+    except (TypeError, ValueError):
+        return default
+
+
+def _env_float(name, default):
+    try:
+        return float(os.getenv(name, default))
+    except (TypeError, ValueError):
+        return default
+
+
+def _env_bool(name, default):
+    value = os.getenv(name)
+    if value is None:
+        return default
+    return value.strip().lower() in {"1", "true", "yes", "on"}
+
+
+OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434/api/generate")
+DEFAULT_MODEL = os.getenv("OLLAMA_CLEANER_MODEL", "qwen3.5:4b")
+DEFAULT_NUM_CTX = _env_int("OLLAMA_CLEANER_NUM_CTX", 8192)
+DEFAULT_NUM_PREDICT = _env_int("OLLAMA_CLEANER_NUM_PREDICT", 1500)
+DEFAULT_TEMPERATURE = _env_float("OLLAMA_CLEANER_TEMPERATURE", 0.1)
+DEFAULT_TOP_P = _env_float("OLLAMA_CLEANER_TOP_P", 0.9)
+DEFAULT_SEED = _env_int("OLLAMA_CLEANER_SEED", 42)
+DEFAULT_STRUCTURED_OUTPUT = _env_bool("OLLAMA_CLEANER_STRUCTURED_OUTPUT", True)
+DEFAULT_THINK = _env_bool("OLLAMA_CLEANER_THINK", False)
+
+JOB_EXTRACTION_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "salary": {
+            "type": "object",
+            "properties": {
+                "text": {"type": "string"},
+                "min": {"type": ["number", "null"]},
+                "max": {"type": ["number", "null"]},
+                "type": {"type": "string"},
+                "note": {"type": "string"},
+                "has_commission": {"type": "boolean"},
+            },
+            "required": ["text", "min", "max", "type", "note", "has_commission"],
+            "additionalProperties": False,
+        },
+        "location": {
+            "type": "object",
+            "properties": {"city": {"type": "string"}},
+            "required": ["city"],
+            "additionalProperties": False,
+        },
+        "education": {
+            "type": "object",
+            "properties": {
+                "level": {"type": "string"},
+                "field": {"type": "string"},
+            },
+            "required": ["level", "field"],
+            "additionalProperties": False,
+        },
+        "skills": {
+            "type": "object",
+            "properties": {
+                "technical": {"type": "array", "items": {"type": "string"}},
+                "languages": {"type": "array", "items": {"type": "string"}},
+                "certificates": {"type": "array", "items": {"type": "string"}},
+            },
+            "required": ["technical", "languages", "certificates"],
+            "additionalProperties": False,
+        },
+        "gender_requirement": {"type": "string"},
+    },
+    "required": ["salary", "location", "education", "skills", "gender_requirement"],
+    "additionalProperties": False,
+}
 
 # ---------------------------------------------------------------------------
 # SYSTEM PROMPT -- tiếng Việt có dấu, không dùng emoji
@@ -63,8 +140,7 @@ EXTRACT_PROMPT = """Trích xuất thông tin từ tin tuyển dụng thành JSON
     "field": "<chuyên ngành>"
   }},
   "skills": {{
-    "technical": ["<công cụ/phần mềm/kỹ thuật>"],
-    "soft": ["<kỹ năng mềm>"],
+    "technical": ["<term chuyên môn có tên cụ thể xuất hiện trong JD/JR>"],
     "languages": ["<ngôn ngữ>"],
     "certificates": ["<chứng chỉ>"]
   }},
@@ -94,24 +170,45 @@ has_commission=true nếu có: hoa hồng, thưởng doanh số, KPI, thu nhập
 
 === QUY TẮC ĐỊA ĐIỂM ===
 
-Ưu tiên lấy từ ĐỊA CHỈ CÔNG TY (đáng tin cậy nhất).
-  Ví dụ: "171 Hai Bà Trưng, TP Hồ Chí Minh" -> city = "Hồ Chí Minh"
-  Ví dụ: "21 Lê Đức Thọ, Hà Nội" -> city = "Hà Nội"
+Chỉ lấy NƠI LÀM VIỆC của vị trí, không lấy địa chỉ trụ sở công ty.
+Ưu tiên trường "Địa điểm" trong THÔNG TIN CHÍNH hoặc phần ĐỊA ĐIỂM LÀM VIỆC.
+Nếu có nhiều nơi làm việc, lấy các tỉnh/thành được nêu trực tiếp.
 Dùng tên đầy đủ: "Hồ Chí Minh" (không phải "HCM").
 
 === QUY TẮC HỌC VẤN ===
 
 level là mức TỐI THIỂU yêu cầu: Đại học, Cao đẳng, Trung cấp, Trung học, Không yêu cầu
 Ví dụ: "Cao đẳng trở lên" -> "Cao đẳng"
+Ví dụ: "Cao đẳng/Đại học" -> "Cao đẳng", vì phải chọn mức tối thiểu.
+Chỉ lấy mức được viết trực tiếp trong THÔNG TIN CHÍNH hoặc YÊU CẦU ỨNG VIÊN,
+không suy diễn từ chức danh.
 
 === QUY TẮC KỸ NĂNG ===
 
 CHỈ trích xuất kỹ năng XUẤT HIỆN TRỰC TIẾP trong phần yêu cầu hoặc mô tả.
 KHÔNG suy đoán, KHÔNG thêm kỹ năng không có trong text.
-technical: công cụ/phần mềm cụ thể (Excel, AutoCAD, Python, SAP...)
-soft: kỹ năng mềm (giao tiếp, teamwork...)
-languages: ngôn ngữ (tiếng Anh, tiếng Trung...)
-certificates: chứng chỉ (TOEIC, CPA, PMP...)
+Đọc hết phần MÔ TẢ CÔNG VIỆC và YÊU CẦU ỨNG VIÊN trước khi kết luận.
+technical: chỉ lấy TERM NĂNG LỰC NGUYÊN TỬ có thể dùng độc lập làm từ khóa tìm
+kiếm ứng viên, gồm ngôn ngữ/framework, công cụ/phần mềm/nền tảng cụ thể, kỹ thuật,
+phương pháp hoặc nghiệp vụ chuyên môn có tên rõ ràng.
+Mỗi item phải là cụm ngắn, độc lập, thường 1-6 từ; không chép nguyên câu JD.
+KHÔNG đưa vào technical:
+- nhiệm vụ hoặc hành động chung: "theo dõi", "phối hợp với...", "thực hiện...";
+- đối tượng/kết quả công việc: "sản phẩm", "đối tác", "test reports", "key findings";
+- thiết bị/vật thể nếu không thể hiện năng lực vận hành hoặc kỹ thuật cụ thể;
+- học vấn, số năm kinh nghiệm, giới tính, phúc lợi, địa điểm;
+- tính từ hoặc khái niệm quá chung: "Basic", "Technical", "Data", "Concept";
+- chức danh, lĩnh vực rộng hoặc kỹ năng mềm.
+Không sao chép bất kỳ thuật ngữ nào từ phần hướng dẫn này vào kết quả. Chỉ trả
+về thuật ngữ có thể chỉ ra vị trí xuất hiện trực tiếp trong JD/JR của tin đang
+xử lý.
+Loại các cụm dạng câu như "Có kinh nghiệm...", "Sử dụng các công cụ", các yêu
+cầu học vấn, phúc lợi và đối tượng công việc.
+languages: chỉ lấy khi mô tả hoặc yêu cầu nêu rõ ngoại ngữ cần có.
+certificates: chỉ lấy chứng chỉ có tên cụ thể được nêu trong mô tả hoặc yêu cầu.
+Trước khi trả JSON, với từng technical term hãy hỏi: "Cụm này có thể đứng độc
+lập trong ô kỹ năng tìm kiếm ứng viên không?". Nếu không, phải loại.
+Đối chiếu từng term với JD/JR; không tìm thấy nguyên văn thì loại.
 Nếu không tìm thấy, để mảng rỗng [].
 
 === QUY TẮC GIỚI TÍNH ===
@@ -126,7 +223,7 @@ Công ty: {company}
 THÔNG TIN CHÍNH:
 {overview}
 
-CHI TIẾT:
+MÔ TẢ CÔNG VIỆC VÀ YÊU CẦU ỨNG VIÊN - ƯU TIÊN ĐỌC ĐẦY ĐỦ:
 {job_details}
 """
 
@@ -134,15 +231,35 @@ CHI TIẾT:
 class LLMCleaner:
     """Clean dữ liệu tuyển dụng bằng Ollama LLM"""
 
-    def __init__(self, model=DEFAULT_MODEL, ollama_url=OLLAMA_URL):
+    def __init__(
+        self,
+        model=DEFAULT_MODEL,
+        ollama_url=OLLAMA_URL,
+        num_ctx=DEFAULT_NUM_CTX,
+        num_predict=DEFAULT_NUM_PREDICT,
+        temperature=DEFAULT_TEMPERATURE,
+        top_p=DEFAULT_TOP_P,
+        seed=DEFAULT_SEED,
+        structured_output=DEFAULT_STRUCTURED_OUTPUT,
+        think=DEFAULT_THINK,
+    ):
         self.model = model
         self.ollama_url = ollama_url
+        self.num_ctx = num_ctx
+        self.num_predict = num_predict
+        self.temperature = temperature
+        self.top_p = top_p
+        self.seed = seed
+        self.structured_output = structured_output
+        self.think = think
         self.stats = {"thanh_cong": 0, "that_bai": 0, "tong_thoi_gian": 0}
 
     def _kiem_tra_ollama(self):
         """Kiểm tra Ollama đang chạy và model có sẵn"""
         try:
-            resp = requests.get(self.ollama_url.replace("/api/generate", "/api/tags"), timeout=5)
+            parts = urlsplit(self.ollama_url)
+            tags_url = urlunsplit((parts.scheme, parts.netloc, "/api/tags", "", ""))
+            resp = requests.get(tags_url, timeout=5)
             if resp.status_code == 200:
                 models = [m["name"] for m in resp.json().get("models", [])]
                 if any(self.model in m for m in models):
@@ -158,24 +275,50 @@ class LLMCleaner:
     def _goi_llm(self, prompt, timeout=90):
         """Gọi Ollama API, trả về (text_response, thoi_gian_giay)"""
         try:
-            resp = requests.post(self.ollama_url, json={
+            payload = {
                 "model": self.model,
                 "prompt": prompt,
                 "system": SYSTEM_PROMPT,
                 "stream": False,
+                "think": self.think,
                 "options": {
-                    "temperature": 0.1,
-                    "num_predict": 1500,
-                    "top_p": 0.9,
+                    "temperature": self.temperature,
+                    "num_predict": self.num_predict,
+                    "top_p": self.top_p,
+                    "num_ctx": self.num_ctx,
+                    "seed": self.seed,
                 }
-            }, timeout=timeout)
+            }
+            if self.structured_output:
+                payload["format"] = JOB_EXTRACTION_SCHEMA
+
+            logger.debug(
+                "Ollama request model=%s prompt_chars=%d num_ctx=%d structured=%s",
+                self.model, len(prompt), self.num_ctx, self.structured_output,
+            )
+            resp = requests.post(self.ollama_url, json=payload, timeout=timeout)
+
+            # Keep compatibility with Ollama versions that only support JSON mode.
+            if resp.status_code == 400 and self.structured_output:
+                logger.warning("Ollama rejected JSON Schema; retrying with JSON mode")
+                payload["format"] = "json"
+                resp = requests.post(self.ollama_url, json=payload, timeout=timeout)
 
             if resp.status_code != 200:
+                logger.error("Ollama HTTP %s: %s", resp.status_code, resp.text[:300])
                 return None, 0
 
             result = resp.json()
             raw = result.get("response", "")
             thoi_gian = result.get("total_duration", 0) / 1e9
+            prompt_tokens = result.get("prompt_eval_count")
+            output_tokens = result.get("eval_count")
+            logger.info(
+                "Ollama usage: prompt_tokens=%s output_tokens=%s num_ctx=%s",
+                prompt_tokens, output_tokens, self.num_ctx,
+            )
+            if prompt_tokens and prompt_tokens >= int(self.num_ctx * 0.9):
+                logger.warning("Prompt used at least 90%% of num_ctx; input may be truncated")
             return raw, thoi_gian
 
         except requests.Timeout:
@@ -211,6 +354,49 @@ class LLMCleaner:
     # -----------------------------------------------------------------------
     # Các hàm hậu xử lý (post-processing)
     # -----------------------------------------------------------------------
+
+    @staticmethod
+    def _sanitize_technical_skills(values, evidence_text):
+        """Keep short, source-grounded capability terms suitable for search."""
+        if not isinstance(values, list):
+            values = [values] if values else []
+
+        evidence = re.sub(r"\s+", " ", str(evidence_text or "")).lower()
+        reject_patterns = [
+            r"^(tốt nghiệp|cử nhân|bachelor(?:'s)? degree|master(?:'s)? degree|học chuyên ngành)",
+            r"^(có kinh nghiệm|kinh nghiệm \d|experience in|hands-on experience)",
+            r"^(sử dụng các công cụ|các phần mềm|thành thạo các kỹ năng|chuyên ngành khác)",
+            r"^(phối hợp với|thực hiện các công việc|chịu trách nhiệm|đảm bảo|hỗ trợ)",
+            r"\b(phụ cấp|chế độ thưởng|chế độ phúc lợi|thu nhập hấp dẫn)\b",
+            r"^(v\.v|etc|hoặc tương đương|nam|nữ)$",
+        ]
+        generic_terms = {
+            "basic", "technical", "concept", "data", "business", "change",
+            "system", "hệ thống", "sản phẩm", "đối tác", "chuyên ngành",
+            "kỹ năng chuyên môn", "sử dụng các công cụ",
+        }
+
+        cleaned, seen = [], set()
+        for value in values:
+            term = re.sub(r"\s+", " ", str(value or "")).strip(" .:-()[]{}")
+            key = term.lower()
+            if not term or key in seen or key in generic_terms:
+                continue
+            if len(term) > 100 or len(term.split()) > 10:
+                continue
+            if any(re.search(pattern, term, flags=re.I) for pattern in reject_patterns):
+                continue
+
+            # The cleaner is instructed to copy skill terms from JD/JR. This
+            # evidence check prevents hallucinated or normalized-away phrases
+            # from entering BM25 and the controlled vocabulary.
+            normalized_term = re.sub(r"\s+", " ", term).lower()
+            if normalized_term not in evidence:
+                continue
+
+            cleaned.append(term)
+            seen.add(key)
+        return cleaned
 
     def _sua_luong(self, result, original_row):
         """
@@ -281,35 +467,27 @@ class LLMCleaner:
                 result['salary_max'] = max(tham_chieu)
 
         # Kiểm tra cuối: nếu giá trị < 1 triệu thì nhân 10 (sai bậc đơn vị)
-        if result.get('salary_min') and result['salary_min'] < 1_000_000:
-            result['salary_min'] = result['salary_min'] * 10
-        if result.get('salary_max') and result['salary_max'] < 1_000_000:
-            result['salary_max'] = result['salary_max'] * 10
+        if not tham_chieu:
+            if result.get('salary_min') and 0 < result['salary_min'] < 1000:
+                result['salary_min'] = result['salary_min'] * 1_000_000
+            if result.get('salary_max') and 0 < result['salary_max'] < 1000:
+                result['salary_max'] = result['salary_max'] * 1_000_000
 
         return result
 
     def _sua_dia_diem(self, result, original_row):
         """
-        Ưu tiên lấy tỉnh/thành từ địa chỉ công ty.
-        LLM đôi khi lấy từ overview thay vì địa chỉ công ty, dẫn đến sai.
+        Giữ nơi làm việc đã trích xuất; địa chỉ công ty chỉ là fallback cuối.
         """
-        bang_thanh_pho = {
-            'Hà Nội': 'Hà Nội', 'Ha Noi': 'Hà Nội',
-            'Hồ Chí Minh': 'Hồ Chí Minh', 'Ho Chi Minh': 'Hồ Chí Minh',
-            'TP HCM': 'Hồ Chí Minh', 'TP.HCM': 'Hồ Chí Minh', 'HCM': 'Hồ Chí Minh',
-            'Đà Nẵng': 'Đà Nẵng', 'Da Nang': 'Đà Nẵng',
-            'Hải Phòng': 'Hải Phòng', 'Hai Phong': 'Hải Phòng',
-            'Bình Dương': 'Bình Dương', 'Binh Duong': 'Bình Dương',
-            'Đồng Nai': 'Đồng Nai', 'Dong Nai': 'Đồng Nai',
-            'Cần Thơ': 'Cần Thơ', 'Can Tho': 'Cần Thơ',
-        }
+        current = str(result.get('job_location', '') or '').strip()
+        if current:
+            return result
 
         dia_chi_cty = str(original_row.get('company_address', ''))
         if dia_chi_cty and dia_chi_cty != 'nan':
-            for tu_khoa, ten_chuan in bang_thanh_pho.items():
-                if tu_khoa in dia_chi_cty:
-                    result['job_location'] = ten_chuan
-                    break
+            cities = get_city_info(dia_chi_cty)
+            if cities:
+                result['job_location'] = cities[0]['name']
 
         return result
 
@@ -407,32 +585,42 @@ class LLMCleaner:
         exp_match = re.search(r'Kinh nghiệm[:\s]*\n?\s*(.+?)(?:\n|$)', overview)
         result['experience'] = exp_match.group(1).strip() if exp_match else ''
 
-        # --- Requirements tags (Chuyên môn) ---
-        chuyen_mon_match = re.search(
-            r'Chuyên môn[:\s]*\n(.*?)(?:\n===|\n\n===|$)',
-            overview, re.DOTALL
-        )
-        if chuyen_mon_match:
-            lines = [l.strip() for l in chuyen_mon_match.group(1).strip().split('\n') if l.strip()]
-            result['requirements_tags'] = ', '.join(lines)
-        else:
-            result['requirements_tags'] = ''
+        def trich_overview_block(heading):
+            """Lấy trọn các dòng trong một khối tổng quan chuẩn hóa của TopCV."""
+            match = re.search(
+                rf'^\s*{re.escape(heading)}\s*:\s*$'
+                rf'(.*?)'
+                rf'(?=^\s*(?:Yêu cầu|Chuyên môn|Quyền lợi)\s*:\s*$|^\s*===|\Z)',
+                overview,
+                flags=re.I | re.M | re.DOTALL,
+            )
+            if not match:
+                return ''
+            lines = [
+                line.strip().lstrip('-✓• ').strip()
+                for line in match.group(1).splitlines()
+                if line.strip().lstrip('-✓• ').strip()
+            ]
+            return ', '.join(lines)
 
-        # --- Specializations (Yêu cầu) ---
-        yeu_cau_match = re.search(
-            r'Yêu cầu[:\s]*\n(.*?)(?:\nQuyền lợi:|\nChuyên môn:|\n===|$)',
-            overview, re.DOTALL
+        # TopCV has already normalized these two overview blocks. Preserve them
+        # deterministically instead of asking the LLM to infer replacements.
+        result['requirements_tags'] = (
+            str(original_row.get('requirements_tags', '') or '').strip()
+            or trich_overview_block('Yêu cầu')
         )
-        if yeu_cau_match:
-            lines = [l.strip() for l in yeu_cau_match.group(1).strip().split('\n') if l.strip()]
-            result['specializations'] = ', '.join(lines)
-        else:
-            result['specializations'] = ''
+        result['specializations'] = (
+            str(original_row.get('specializations', '') or '').strip()
+            or trich_overview_block('Chuyên môn')
+        )
 
         # --- JD Sections: format UC (=== HEADER ===) ---
         def trich_section(text, tieu_de):
-            """Tìm section theo format === HEADER ==="""
-            pattern = r'===\s*' + re.escape(tieu_de) + r'\s*===\s*\n(.*?)(?:\n===|$)'
+            """Tìm section, chấp nhận phần giải thích thêm trong heading."""
+            pattern = (
+                r'===\s*' + re.escape(tieu_de)
+                + r'(?:\s*\([^=\n]*\)|[^=\n]*)?\s*===\s*\n(.*?)(?:\n===|$)'
+            )
             match = re.search(pattern, text, re.DOTALL)
             return match.group(1).strip() if match else ''
 
@@ -441,13 +629,63 @@ class LLMCleaner:
         result['job_benefits']     = trich_section(job_details, 'QUYỀN LỢI')
         result['working_time']     = trich_section(job_details, 'THỜI GIAN LÀM VIỆC')
 
+        # --- Work location: source of truth is overview/work-location section ---
+        location_section = trich_section(job_details, 'ĐỊA ĐIỂM LÀM VIỆC')
+        locations = []
+
+        def add_locations(text):
+            for city in get_city_info(text):
+                if city['name'] not in locations:
+                    locations.append(city['name'])
+
+        if location_section:
+            for line in location_section.splitlines():
+                cleaned = line.strip().lstrip('-✓• ').strip()
+                if not cleaned:
+                    continue
+                # TopCV commonly writes "Tỉnh/thành: địa chỉ cụ thể".
+                prefix = cleaned.split(':', 1)[0] if ':' in cleaned else cleaned
+                add_locations(prefix)
+
+        if not locations:
+            overview_location = re.search(
+                r'Địa điểm[:\s]*\n?\s*(.+?)(?:\n|$)',
+                overview,
+                flags=re.I,
+            )
+            if overview_location:
+                add_locations(overview_location.group(1))
+
+        result['job_location'] = ', '.join(locations)
+        result['work_location_text'] = location_section
+
+        # --- Education minimum: choose the lowest level explicitly required ---
+        education_source = " ".join([
+            result.get('specializations', ''),
+            result.get('job_requirements', ''),
+        ])
+        level_patterns = [
+            ('Trung học', r'\b(?:trung học phổ thông|trung học|thpt|cấp\s*3)\b'),
+            ('Trung cấp', r'\btrung cấp(?:\s*nghề)?\b'),
+            ('Cao đẳng', r'\bcao đẳng(?:\s*nghề)?\b'),
+            ('Đại học', r'\bđại học\b'),
+        ]
+        if re.search(r'\bkhông yêu cầu\s+(?:bằng cấp|học vấn|trình độ)\b', education_source, re.I):
+            result['education_level'] = 'Không yêu cầu'
+        else:
+            result['education_level'] = next(
+                (level for level, pattern in level_patterns
+                 if re.search(pattern, education_source, re.I)),
+                '',
+            )
+
         return result
 
     # -----------------------------------------------------------------------
     # Hàm chính
     # -----------------------------------------------------------------------
 
-    def _ap_phan_hoi(self, parsed, original_row):
+    def _ap_phan_hoi(self, parsed, original_row, regex_data=None):
         """
         Ghép kết quả LLM (salary, location, education, skills, gender)
         với kết quả regex (JD sections, overview tags) thành flat dict.
@@ -455,8 +693,8 @@ class LLMCleaner:
         result = {}
 
         # Giữ nguyên các trường gốc từ crawl
-        for key in ['title', 'url', 'company', 'company_address',
-                    'crawled_date', 'category', 'content_hash',
+        for key in ['title', 'url', 'company', 'company_address', 'company_size',
+                    'crawled_date', 'content_hash',
                     'deadline', 'is_expired']:
             result[key] = original_row.get(key, '')
 
@@ -470,36 +708,61 @@ class LLMCleaner:
         result['has_commission'] = salary.get('has_commission', False)
 
         location = parsed.get('location', {}) or {}
-        result['job_location'] = location.get('city', '')
 
-        # --- LLM: Học vấn ---
+        # --- LLM fallback: Học vấn ---
         education = parsed.get('education', {}) or {}
-        result['education_level'] = education.get('level', '')
         result['education_field'] = education.get('field', '')
+
+        regex_data = regex_data or self._trich_xuat_regex(original_row)
+        result['job_location'] = (
+            regex_data.get('job_location') or location.get('city', '')
+        )
+        result['education_level'] = (
+            regex_data.get('education_level') or education.get('level', '')
+        )
 
         # --- LLM: Kỹ năng ---
         skills = parsed.get('skills', {}) or {}
         if isinstance(skills, list):
             tech = skills
-            soft, langs, certs = [], [], []
+            langs, certs = [], []
         else:
             tech  = skills.get('technical', []) or []
-            soft  = skills.get('soft', [])       or []
             langs = skills.get('languages', [])  or []
             certs = skills.get('certificates', []) or []
 
         def join_list(lst):
             return ', '.join(lst) if isinstance(lst, list) else str(lst)
 
-        result['technical_skills'] = join_list(tech)
-        result['soft_skills']      = join_list(soft)
+        skill_evidence = " ".join([
+            str(original_row.get('title', '') or ''),
+            str(original_row.get('overview', '') or ''),
+            str(regex_data.get('job_description', '') or ''),
+            str(regex_data.get('job_requirements', '') or ''),
+        ])
+        if not skill_evidence.strip():
+            skill_evidence = str(original_row.get('job_details', '') or '')
+        tech = self._sanitize_technical_skills(tech, skill_evidence)
+
+        # Keep evidence-validated skills separate from TopCV's broader
+        # specialization labels. Both fields participate in retrieval, but
+        # their provenance and semantic roles are different.
+        cleaned_tech = []
+        seen_tech = set()
+        for value in tech:
+            cleaned = re.sub(r'\s+', ' ', str(value)).strip()
+            key = cleaned.lower()
+            if cleaned and key not in seen_tech:
+                cleaned_tech.append(cleaned)
+                seen_tech.add(key)
+
+        result['technical_skills'] = join_list(cleaned_tech)
         result['languages']        = join_list(langs)
         result['certificates']     = join_list(certs)
         # --- LLM: Giới tính ---
         result['gender_requirement'] = parsed.get('gender_requirement', '')
 
         # --- Regex: Overview tags + JD sections ---
-        regex_data = self._trich_xuat_regex(original_row)
         result['experience']        = regex_data['experience']
         result['requirements_tags'] = regex_data['requirements_tags']
         result['specializations']   = regex_data['specializations']
@@ -507,6 +770,7 @@ class LLMCleaner:
         result['job_requirements']  = regex_data['job_requirements']
         result['job_benefits']      = regex_data['job_benefits']
         result['working_time']      = regex_data['working_time']
+        result['work_location_text'] = regex_data.get('work_location_text', '')
 
         result = self._sua_luong(result, original_row)
         result = self._sua_dia_diem(result, original_row)
@@ -524,11 +788,24 @@ class LLMCleaner:
         overview        = str(row.get('overview', ''))
         job_details     = str(row.get('job_details', ''))
 
-        # Cắt bớt nếu quá dài (Qwen 3B context khoảng 4K tokens)
+        # Skills are mostly stated in description/requirements. Preserve both
+        # complete sections; trim overview and low-value sections first.
         if len(overview) > 1500:
             overview = overview[:1500] + "..."
-        if len(job_details) > 2500:
-            job_details = job_details[:2500] + "..."
+        regex_data = self._trich_xuat_regex(row)
+        priority_sections = []
+        for heading, field in [
+            ("MÔ TẢ CÔNG VIỆC", "job_description"),
+            ("YÊU CẦU ỨNG VIÊN", "job_requirements"),
+        ]:
+            value = str(regex_data.get(field, "") or "").strip()
+            if value:
+                priority_sections.append(f"=== {heading} ===\n{value}")
+        if priority_sections:
+            job_details = "\n\n".join(priority_sections)
+        elif len(job_details) > 6000:
+            # Fallback for pages whose section headings cannot be parsed.
+            job_details = job_details[:6000] + "..."
 
         prompt = EXTRACT_PROMPT.format(
             title=title,
@@ -551,7 +828,7 @@ class LLMCleaner:
             return None
 
         self.stats["thanh_cong"] += 1
-        return self._ap_phan_hoi(parsed, row)
+        return self._ap_phan_hoi(parsed, row, regex_data=regex_data)
 
     def clean_batch(self, input_file, output_file, limit=0):
         """Clean toàn bộ file CSV"""
@@ -622,10 +899,21 @@ def main():
     parser.add_argument('--model',      default=DEFAULT_MODEL,       help=f'Ollama model (mặc định: {DEFAULT_MODEL})')
     parser.add_argument('--limit',      type=int, default=0,         help='Giới hạn số job xử lý (0 = tất cả)')
     parser.add_argument('--ollama-url', default=OLLAMA_URL,          help='Ollama API URL')
+    parser.add_argument('--num-ctx', type=int, default=DEFAULT_NUM_CTX, help='Ollama context window')
+    parser.add_argument(
+        '--no-structured-output',
+        action='store_true',
+        help='Tat JSON Schema va dung cach parse response cu',
+    )
 
     args = parser.parse_args()
 
-    cleaner = LLMCleaner(model=args.model, ollama_url=args.ollama_url)
+    cleaner = LLMCleaner(
+        model=args.model,
+        ollama_url=args.ollama_url,
+        num_ctx=args.num_ctx,
+        structured_output=not args.no_structured_output,
+    )
     thanh_cong = cleaner.clean_batch(args.input, args.output, limit=args.limit)
 
     exit(0 if thanh_cong else 1)

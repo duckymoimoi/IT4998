@@ -1,4 +1,3 @@
-
 import undetected_chromedriver as uc
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -14,6 +13,7 @@ import subprocess
 import random
 import hashlib
 from datetime import datetime
+from pathlib import Path
 import logging
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import threading
@@ -27,14 +27,6 @@ MAX_WORKERS = 3  # Số browser song song
 PAGE_LOAD_TIMEOUT = 35
 MAX_RETRIES = 2
 DELAY_BETWEEN_REQUESTS = (3, 7)
-
-# User agents — khớp Chrome mới trong Docker/local
-USER_AGENTS = [
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:138.0) Gecko/20100101 Firefox/138.0",
-]
 
 logging.basicConfig(
     level=logging.INFO,
@@ -443,6 +435,11 @@ def extract_job_simple(driver, job_url, retry_count=0):
                                 tag_texts = [clean_text(tag.text) for tag in tags if tag.text.strip() and "Xem thêm" not in tag.text]
                                 if tag_texts:
                                     overview_parts.append(f"\n{group_name}\n" + "\n".join(tag_texts))
+                                    normalized_group = group_name.lower().strip().rstrip(":")
+                                    if normalized_group == "chuyên môn":
+                                        job_data["specializations"] = ", ".join(tag_texts)
+                                    elif normalized_group == "yêu cầu":
+                                        job_data["requirements_tags"] = ", ".join(tag_texts)
 
             # === Phần thông tin bổ sung (right side - sidebar) ===
             sidebar = soup.find("div", class_="job-detail__body-right")
@@ -513,6 +510,8 @@ def extract_job_simple(driver, job_url, retry_count=0):
 
         # Đảm bảo 3 field company info luôn tồn tại
         job_data.setdefault('company_address', '')
+        job_data.setdefault('requirements_tags', '')
+        job_data.setdefault('specializations', '')
         job_data.setdefault('company_size', '')
         job_data.setdefault('company_field', '')
 
@@ -782,8 +781,10 @@ def get_all_job_urls(driver, start_page=1, end_page=None):
 def crawl_jobs(all_job_urls, output_file=None, max_workers=MAX_WORKERS):
     """Crawl chi tiết jobs (multi-thread)"""
     if output_file is None:
+        _jobs_dir = Path(__file__).resolve().parents[3] / 'data' / 'jobs'
+        _jobs_dir.mkdir(parents=True, exist_ok=True)
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-        output_file = f'topcv_jobs_simple_{timestamp}.csv'
+        output_file = str(_jobs_dir / f'topcv_jobs_simple_{timestamp}.csv')
 
     logger.info("\n" + "=" * 70)
     logger.info(f"GIAI ĐOẠN 2: Crawl {len(all_job_urls)} jobs ({max_workers} threads)")
@@ -791,6 +792,7 @@ def crawl_jobs(all_job_urls, output_file=None, max_workers=MAX_WORKERS):
 
     fieldnames = ['title', 'url', 'company', 'company_address',
                   'company_size', 'company_field',
+                  'requirements_tags', 'specializations',
                   'overview', 'job_details', 'crawled_date',
                   'content_hash', 'deadline', 'is_expired']
 
@@ -907,7 +909,9 @@ def crawl_jobs(all_job_urls, output_file=None, max_workers=MAX_WORKERS):
 def main():
     """Main function"""
     args = sys.argv[1:]
-    output_file = 'topcv_jobs_simple.csv'
+    _jobs_dir = Path(__file__).resolve().parents[3] / 'data' / 'jobs'
+    _jobs_dir.mkdir(parents=True, exist_ok=True)
+    output_file = str(_jobs_dir / 'topcv_jobs_simple.csv')
 
     start_page = 1
     end_page = None
@@ -964,4 +968,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

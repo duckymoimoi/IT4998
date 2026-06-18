@@ -34,6 +34,13 @@ logger = logging.getLogger(__name__)
 # ============================================================
 
 BASE_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = BASE_DIR.parents[2]
+JOB_TERM_TAXONOMY_PATH = Path(
+    os.environ.get(
+        "JOB_TERM_TAXONOMY_PATH",
+        str(PROJECT_ROOT / "data" / "job_term_taxonomy.json"),
+    )
+)
 app = Flask(
     __name__,
     template_folder=str(BASE_DIR / "templates"),
@@ -45,14 +52,6 @@ UPLOAD_FOLDER = tempfile.gettempdir()
 ALLOWED_EXTENSIONS = {"pdf", "png", "jpg", "jpeg", "bmp", "tiff"}
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 app.config["MAX_CONTENT_LENGTH"] = 16 * 1024 * 1024  # 16MB
-
-CATEGORIES = [
-    "Nhân viên kinh doanh", "Kế toán", "Marketing",
-    "Hành chính nhân sự", "Chăm sóc khách hàng", "Ngân hàng",
-    "IT", "Kỹ sư xây dựng", "Thiết kế đồ họa",
-    "Bất động sản", "Giáo dục", "Telesales", "Lao động phổ thông",
-]
-
 
 def allowed_file(filename):
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -69,6 +68,9 @@ _embedding_service = None
 _esco_expander = None
 _skill_graph = None
 _use_hybrid = False
+_job_term_taxonomy = None
+_job_term_taxonomy_rows = 0
+_job_term_taxonomy_mtime_ns = None
 
 
 def _env_bool(name, default=False):
@@ -81,6 +83,13 @@ def _env_bool(name, default=False):
 def _env_int(name, default):
     try:
         return int(os.environ.get(name, default))
+    except (TypeError, ValueError):
+        return default
+
+
+def _env_float(name, default):
+    try:
+        return float(os.environ.get(name, default))
     except (TypeError, ValueError):
         return default
 
@@ -105,7 +114,7 @@ def _init_services():
         logger.info("Skill Knowledge Graph disabled (set ENABLE_SKILL_GRAPH=1 to enable)")
 
     try:
-        if es_helper.has_usable_embeddings():
+        if es_helper.has_usable_embeddings(KNN_VECTOR_FIELD):
             from job_matching.retrieval.embedding_service import get_embedding_service
             _embedding_service = get_embedding_service()
             _use_hybrid = True
@@ -114,7 +123,12 @@ def _init_services():
             # ESCO expander
             try:
                 from job_matching.enrichment.esco_expander import get_esco_expander
-                _esco_expander = get_esco_expander(embedding_service=_embedding_service)
+                _esco_expander = get_esco_expander(
+                    embedding_service=_embedding_service,
+                    controlled_min_sim=ESCO_CONTROLLED_MIN_SIM,
+                    controlled_min_margin=ESCO_CONTROLLED_MIN_MARGIN,
+                    controlled_max_terms=ESCO_CONTROLLED_MAX_TERMS,
+                )
                 logger.info("ESCO skill expansion enabled")
             except Exception as e:
                 logger.warning(f"ESCO not available: {e}")
@@ -135,11 +149,28 @@ _goong_api_key = os.environ.get("GOONG_API_KEY", "")
 _geocode_cache = {}
 LOCATION_SCORE_MODE = os.environ.get("LOCATION_SCORE_MODE", "city").strip().lower()
 ENABLE_CITY_PRIORITY = _env_bool("ENABLE_CITY_PRIORITY", default=True)
+ENABLE_JOB_TERM_TAXONOMY = _env_bool("ENABLE_JOB_TERM_TAXONOMY", default=True)
 SCORING_TOP_N = _env_int("SCORING_TOP_N", 30)
 RETRIEVAL_SIZE = _env_int("RETRIEVAL_SIZE", 80)
 RELAXED_RETRIEVAL_MIN_RESULTS = _env_int("RELAXED_RETRIEVAL_MIN_RESULTS", 12)
-BM25_MIN_SHOULD_MATCH = os.environ.get("BM25_MIN_SHOULD_MATCH", "20%")
-BM25_RELAXED_MIN_SHOULD_MATCH = os.environ.get("BM25_RELAXED_MIN_SHOULD_MATCH", "10%")
+BM25_MIN_SHOULD_MATCH = os.environ.get("BM25_MIN_SHOULD_MATCH", "2")
+BM25_RELAXED_MIN_SHOULD_MATCH = os.environ.get("BM25_RELAXED_MIN_SHOULD_MATCH", "1")
+RRF_BM25_WEIGHT = float(os.environ.get("RRF_BM25_WEIGHT", "1.0"))
+RRF_KNN_WEIGHT = float(os.environ.get("RRF_KNN_WEIGHT", "1.0"))
+KNN_VECTOR_FIELD = os.environ.get("KNN_VECTOR_FIELD", "embedding").strip()
+BM25_CORE_SKILL_LIMIT = _env_int("BM25_CORE_SKILL_LIMIT", 12)
+KNN_SECONDARY_SKILL_LIMIT = _env_int("KNN_SECONDARY_SKILL_LIMIT", 5)
+KNN_EXPANSION_TERM_LIMIT = _env_int("KNN_EXPANSION_TERM_LIMIT", 12)
+ENABLE_QUERY_EXPANSION = _env_bool("ENABLE_QUERY_EXPANSION", default=False)
+ENABLE_ESCO_EXPANSION = _env_bool(
+    "ENABLE_ESCO_EXPANSION", default=ENABLE_QUERY_EXPANSION,
+)
+ENABLE_SKILL_GRAPH_EXPANSION = _env_bool(
+    "ENABLE_SKILL_GRAPH_EXPANSION", default=ENABLE_QUERY_EXPANSION,
+)
+ESCO_CONTROLLED_MIN_SIM = _env_float("ESCO_CONTROLLED_MIN_SIM", 0.75)
+ESCO_CONTROLLED_MIN_MARGIN = _env_float("ESCO_CONTROLLED_MIN_MARGIN", 0.01)
+ESCO_CONTROLLED_MAX_TERMS = _env_int("ESCO_CONTROLLED_MAX_TERMS", 6)
 
 
 def _goong_geocode(address):
@@ -312,17 +343,280 @@ def _as_text_list(value):
     return [part.strip() for part in re.split(r"[,;\n]", str(value)) if part.strip()]
 
 
+def _load_job_term_taxonomy():
+    """Load term -> taxonomy metadata from data/job_term_taxonomy.json."""
+    global _job_term_taxonomy, _job_term_taxonomy_rows, _job_term_taxonomy_mtime_ns
+    if not ENABLE_JOB_TERM_TAXONOMY:
+        _job_term_taxonomy_rows = 0
+        return {}
+
+    current_mtime_ns = (
+        JOB_TERM_TAXONOMY_PATH.stat().st_mtime_ns
+        if JOB_TERM_TAXONOMY_PATH.exists()
+        else None
+    )
+    if (
+        _job_term_taxonomy is not None
+        and current_mtime_ns == _job_term_taxonomy_mtime_ns
+    ):
+        return _job_term_taxonomy
+
+    taxonomy = {}
+    row_count = 0
+    try:
+        import json
+
+        if JOB_TERM_TAXONOMY_PATH.exists():
+            rows = json.loads(JOB_TERM_TAXONOMY_PATH.read_text(encoding="utf-8"))
+            row_count = len(rows)
+            for row in rows:
+                term = str(row.get("term", "")).strip()
+                label = str(row.get("normalized_label", "")).strip()
+                if term:
+                    taxonomy.setdefault(term.lower(), row)
+                if label:
+                    taxonomy.setdefault(label.lower(), row)
+            logger.info("Loaded %s job term taxonomy rows", row_count)
+        else:
+            logger.warning("Job term taxonomy not found: %s", JOB_TERM_TAXONOMY_PATH)
+    except Exception as exc:
+        logger.warning("Cannot load job term taxonomy: %s", exc)
+
+    _job_term_taxonomy = taxonomy
+    _job_term_taxonomy_rows = row_count
+    _job_term_taxonomy_mtime_ns = current_mtime_ns
+    return _job_term_taxonomy
+
+
+def _taxonomy_status():
+    taxonomy = _load_job_term_taxonomy()
+    return {
+        "enabled": ENABLE_JOB_TERM_TAXONOMY,
+        "path": str(JOB_TERM_TAXONOMY_PATH),
+        "rows": _job_term_taxonomy_rows,
+        "lookup_entries": len(taxonomy),
+    }
+
+
+def _dedupe_terms(*term_groups, limit=None):
+    terms = []
+    seen = set()
+    for group in term_groups:
+        for term in group:
+            cleaned = re.sub(r"\s+", " ", str(term)).strip(" .:-")
+            if not cleaned:
+                continue
+            key = cleaned.lower()
+            if key in seen:
+                continue
+            terms.append(cleaned)
+            seen.add(key)
+            if limit and len(terms) >= limit:
+                return terms
+    return terms
+
+
+def _join_terms(terms):
+    return ", ".join([term for term in terms if term])
+
+
+def _has_primary_skills(cv_data):
+    return bool(
+        _as_text_list(cv_data.get("target_roles"))
+        or _as_text_list(cv_data.get("roles"))
+        or _as_text_list(cv_data.get("skills"))
+        or _as_text_list(cv_data.get("technical_skills"))
+    )
+
+
+def _taxonomy_surfaces(term, item):
+    surfaces = [term]
+    if item:
+        label = str(item.get("normalized_label", "")).strip()
+        if label and label.lower() != str(term).strip().lower():
+            surfaces.append(label)
+    return surfaces
+
+
+def _split_terms_by_taxonomy(terms):
+    """Return BM25/supporting terms using the offline term taxonomy."""
+    taxonomy = _load_job_term_taxonomy()
+    bm25_terms = []
+    supporting_terms = []
+    ignored_terms = []
+
+    for term in terms:
+        item = taxonomy.get(str(term).strip().lower()) if taxonomy else None
+        term_type = item.get("type") if item else "unknown"
+        surfaces = _taxonomy_surfaces(term, item)
+
+        if term_type == "noise":
+            ignored_terms.extend(surfaces)
+        elif term_type == "soft_skill":
+            ignored_terms.extend(surfaces)
+        elif term_type in {
+            "role", "domain", "technical_skill", "tool",
+            "professional_skill", "language", "certification",
+            "unknown",
+        }:
+            bm25_terms.extend(surfaces)
+        else:
+            supporting_terms.extend(surfaces)
+
+    return bm25_terms, supporting_terms, ignored_terms
+
+
+def _confirmed_expansion_terms(terms):
+    """Keep only taxonomy-confirmed semantic terms as enrichment seeds."""
+    taxonomy = _load_job_term_taxonomy()
+    accepted_types = {"domain", "technical_skill", "tool", "professional_skill"}
+    output = []
+    for term in terms:
+        item = taxonomy.get(str(term).strip().lower()) if taxonomy else None
+        if not item or item.get("type") not in accepted_types:
+            continue
+        output.extend(_taxonomy_surfaces(term, item))
+    return _dedupe_terms(output, limit=20)
+
+
+def _expansion_seed_types(terms):
+    """Return normalized seed -> controlled-vocabulary type for ESCO guards."""
+    taxonomy = _load_job_term_taxonomy()
+    output = {}
+    for term in terms:
+        item = taxonomy.get(str(term).strip().lower()) if taxonomy else None
+        if not item:
+            continue
+        term_type = item.get("type")
+        for surface in _taxonomy_surfaces(term, item):
+            output[str(surface).strip().lower()] = term_type
+    return output
+
+
+def _build_cv_semantic_profile(query_plan, expansion_terms=None):
+    """Represent a CV query in the same labeled style as job semantic profiles."""
+    lines = []
+    roles = query_plan.get("target_roles", [])
+    core = query_plan.get("core_skills", [])
+    secondary = query_plan.get("secondary_skills", [])[:KNN_SECONDARY_SKILL_LIMIT]
+    languages = query_plan.get("languages", [])
+    certificates = query_plan.get("certificates", [])
+
+    if roles:
+        lines.append(f"Vai trò: {', '.join(roles)}.")
+    if core:
+        lines.append(f"Kỹ năng cốt lõi: {', '.join(core)}.")
+    if secondary:
+        lines.append(f"Kỹ năng bổ trợ: {', '.join(secondary)}.")
+    if languages:
+        lines.append(f"Ngoại ngữ: {', '.join(languages)}.")
+    if certificates:
+        lines.append(f"Chứng chỉ: {', '.join(certificates)}.")
+    if expansion_terms:
+        lines.append(
+            f"Thuật ngữ liên quan: {', '.join(expansion_terms[:KNN_EXPANSION_TERM_LIMIT])}."
+        )
+    return " ".join(lines).strip()
+
+
+def _build_retrieval_queries(cv_data):
+    """Build focused BM25/kNN query texts from parsed CV fields.
+
+    In the current production index, TopCV chuyên môn tags are stored in
+    technical_skills. Keep BM25 focused on that field's equivalent CV signal;
+    Education and experience are handled later by scoring instead of being
+    mixed into the search text.
+    """
+    target_roles = _as_text_list(cv_data.get("target_roles")) or _as_text_list(
+        cv_data.get("roles")
+    )
+    primary_skills = _as_text_list(cv_data.get("skills")) or _as_text_list(
+        cv_data.get("technical_skills")
+    )
+    if not target_roles and not primary_skills:
+        # Generic/entry-level profiles may contain only soft skills. Keep a
+        # broad role signal when available instead of returning an empty query.
+        target_roles = _as_text_list(cv_data.get("category_target"))
+    explicit_core = _as_text_list(cv_data.get("core_skills"))
+    explicit_secondary = _as_text_list(cv_data.get("secondary_skills"))
+    certificates = _as_text_list(cv_data.get("certificates"))
+    languages = _as_text_list(cv_data.get("languages"))
+    role_bm25, role_supporting, role_ignored = _split_terms_by_taxonomy(target_roles)
+    primary_bm25, primary_supporting, ignored_terms = _split_terms_by_taxonomy(primary_skills)
+    cert_bm25, cert_supporting, cert_ignored = _split_terms_by_taxonomy(certificates)
+    lang_bm25, lang_supporting, lang_ignored = _split_terms_by_taxonomy(languages)
+    semantic_skills = _dedupe_terms(primary_bm25, primary_supporting)
+    if explicit_core:
+        explicit_core_bm25, explicit_core_supporting, explicit_core_ignored = (
+            _split_terms_by_taxonomy(explicit_core)
+        )
+        core_skills = _dedupe_terms(
+            explicit_core_bm25, explicit_core_supporting,
+            limit=BM25_CORE_SKILL_LIMIT,
+        )
+        explicit_secondary_bm25, explicit_secondary_supporting, explicit_secondary_ignored = (
+            _split_terms_by_taxonomy(explicit_secondary)
+        )
+        secondary_skills = _dedupe_terms(
+            explicit_secondary_bm25,
+            explicit_secondary_supporting,
+        )
+    else:
+        explicit_core_ignored, explicit_secondary_ignored = [], []
+        core_skills = semantic_skills[:BM25_CORE_SKILL_LIMIT]
+        secondary_skills = semantic_skills[BM25_CORE_SKILL_LIMIT:]
+    core_bm25, core_supporting, core_ignored = _split_terms_by_taxonomy(core_skills)
+
+    bm25_terms = _dedupe_terms(
+        role_bm25, core_bm25, cert_bm25, lang_bm25,
+        limit=24,
+    )
+    knn_terms = _dedupe_terms(
+        role_bm25,
+        role_supporting,
+        primary_bm25,
+        primary_supporting,
+        cert_bm25,
+        cert_supporting,
+        lang_bm25,
+        lang_supporting,
+        limit=64,
+    )
+
+    bm25_text = _join_terms(bm25_terms)
+    query_plan = {
+        "target_roles": target_roles,
+        "primary_skills": primary_skills,
+        "core_skills": core_skills,
+        "secondary_skills": secondary_skills,
+        "languages": languages,
+        "certificates": certificates,
+        "bm25_text": bm25_text,
+        "bm25_roles": _dedupe_terms(role_bm25, role_supporting),
+        "bm25_evidence_terms": _dedupe_terms(core_bm25, cert_bm25, lang_bm25),
+        "knn_terms": knn_terms,
+        "expansion_terms": _confirmed_expansion_terms(core_skills),
+        "ignored_query_terms": _dedupe_terms(
+            role_ignored, core_ignored, explicit_core_ignored, explicit_secondary_ignored,
+            ignored_terms, cert_ignored, lang_ignored,
+        ),
+        "taxonomy": _taxonomy_status(),
+    }
+    query_plan["expansion_text"] = _join_terms(query_plan["expansion_terms"])
+    query_plan["knn_text"] = _build_cv_semantic_profile(query_plan)
+    return query_plan
+
+
 # ============================================================
 # Search Pipeline
 # ============================================================
 
-def search_pipeline(cv_data, categories=None, top_n=None):
+def search_pipeline(cv_data, top_n=None):
     """
-    Full pipeline: ESCO → Hybrid Search → LLM Scoring.
+    Full pipeline: taxonomy query planning → hybrid retrieval → LLM scoring.
     
     Args:
         cv_data: dict with skills, experience, education, location, salary
-        categories: list[str] filter
         top_n: số jobs gửi cho LLM scoring
     
     Returns:
@@ -331,72 +625,80 @@ def search_pipeline(cv_data, categories=None, top_n=None):
     _init_services()
     top_n = top_n or SCORING_TOP_N
 
-    profile_text = cv_data.get("skills", "").strip()
-    # Add non-hard-filter signals to retrieval text. These terms help surface
-    # same-domain jobs without requiring the user to manually pick a category.
-    extra_parts = []
-    for field in ["soft_skills", "languages", "certificates", "education", "experience"]:
-        val = cv_data.get(field, "").strip()
-        if val:
-            extra_parts.append(val)
-    suggested_categories = _as_text_list(cv_data.get("suggested_categories"))
-    if suggested_categories:
-        extra_parts.append(", ".join(suggested_categories))
-    full_text = profile_text + (", " + ", ".join(extra_parts) if extra_parts else "")
-    if not profile_text:
+    query_plan = _build_retrieval_queries(cv_data)
+    bm25_text = query_plan["bm25_text"]
+    if not bm25_text:
         return [], "error", 0
 
     cv_gender = cv_data.get("gender", "both")
+    # BM25 remains taxonomy-clean. ESCO and SkillGraph enrich only the semantic
+    # query used to create the kNN vector.
+    expansion_seed_text = query_plan["expansion_text"]
+    esco_terms = []
+    graph_terms = []
+    if ENABLE_ESCO_EXPANSION and expansion_seed_text and _esco_expander:
+        esco_terms = _esco_expander.expand_terms_controlled(
+            query_plan["expansion_terms"],
+            term_types=_expansion_seed_types(query_plan["expansion_terms"]),
+        )
 
-    # --- Stage 1a: ESCO Expansion (technical skills only) ---
-    expanded_tech = profile_text
-    if _esco_expander:
-        expanded_tech = _esco_expander.expand_skills(profile_text)
-        logger.info(f"ESCO expanded: {len(profile_text.split(','))} → "
-                    f"{len(expanded_tech.split(','))} terms")
+    if ENABLE_SKILL_GRAPH_EXPANSION and expansion_seed_text and _skill_graph:
+        graph_text = _skill_graph.expand_skills_text(
+            expansion_seed_text, max_terms=KNN_EXPANSION_TERM_LIMIT,
+        )
+        graph_terms.extend(_as_text_list(graph_text))
 
-    # --- Stage 1b: Knowledge Graph Expansion (semantic/domain enrichment) ---
-    knn_text = expanded_tech
-    if extra_parts:
-        knn_text += ", " + ", ".join(extra_parts)
-    if _skill_graph:
-        knn_text = _skill_graph.expand_skills_text(knn_text, max_terms=20)
-        logger.info(f"Graph enriched kNN: {len(expanded_tech.split(','))} → "
-                    f"{len(knn_text.split(','))} terms")
-
-    retrieval_text = full_text
-    if _skill_graph:
-        # BM25 also benefits from graph terms when the production index has no
-        # vectors yet. Keep the expansion bounded so it does not drown exact CV terms.
-        retrieval_text = _skill_graph.expand_skills_text(full_text, max_terms=16)
+    seed_keys = {term.lower() for term in query_plan["expansion_terms"]}
+    # ESCO labels are trusted only after passing the expander's strict
+    # similarity/margin/type guards. Graph terms still need confirmation by
+    # the internal vocabulary because graph traversal is broader by design.
+    confirmed_graph_terms = [
+        term for term in _confirmed_expansion_terms(graph_terms)
+        if term.lower() not in seed_keys
+    ]
+    expansion_terms = _dedupe_terms(
+        esco_terms,
+        confirmed_graph_terms,
+        limit=KNN_EXPANSION_TERM_LIMIT,
+    )
+    semantic_query_text = _build_cv_semantic_profile(query_plan, expansion_terms)
+    logger.info(
+        "Structured kNN query: %s core, %s secondary, %s expansion terms",
+        len(query_plan["core_skills"]),
+        min(len(query_plan["secondary_skills"]), KNN_SECONDARY_SKILL_LIMIT),
+        len(expansion_terms),
+    )
 
     # --- Stage 2: Hybrid Retrieval ---
     if _use_hybrid and _embedding_service:
-        # kNN: ESCO-enriched text; KG terms are included only when enabled.
-        cv_text = _embedding_service.build_cv_text({"skills": knn_text})
+        cv_text = _embedding_service.build_cv_text({"skills": semantic_query_text})
         query_vector = _embedding_service.encode_single(cv_text)
-        # BM25: flat multi_match (best for current data structure)
         jobs, total = es_helper.search_jobs_hybrid(
-            retrieval_text, query_vector, size=RETRIEVAL_SIZE,
-            categories=categories or None,
+            bm25_text, query_vector, size=RETRIEVAL_SIZE,
+            categories=None,
             cv_gender=cv_gender, exclude_expired=True,
             bm25_min_should_match=BM25_MIN_SHOULD_MATCH,
+            bm25_weight=RRF_BM25_WEIGHT,
+            knn_weight=RRF_KNN_WEIGHT,
+            vector_field=KNN_VECTOR_FIELD,
+            role_terms=query_plan["bm25_roles"],
+            evidence_terms=query_plan["bm25_evidence_terms"],
         )
         search_mode = "hybrid"
-        if _esco_expander:
+        if ENABLE_ESCO_EXPANSION and _esco_expander:
             search_mode += "+esco"
-        if _skill_graph:
+        if ENABLE_SKILL_GRAPH_EXPANSION and _skill_graph:
             search_mode += "+graph"
     else:
         jobs, total = es_helper.search_jobs_by_profile(
-            retrieval_text, size=RETRIEVAL_SIZE,
-            categories=categories or None,
+            bm25_text, size=RETRIEVAL_SIZE,
+            categories=None,
             cv_gender=cv_gender, exclude_expired=True,
             bm25_min_should_match=BM25_MIN_SHOULD_MATCH,
+            role_terms=query_plan["bm25_roles"],
+            evidence_terms=query_plan["bm25_evidence_terms"],
         )
         search_mode = "bm25"
-        if _skill_graph:
-            search_mode += "+graph"
 
     if len(jobs) < RELAXED_RETRIEVAL_MIN_RESULTS:
         logger.info(
@@ -405,18 +707,25 @@ def search_pipeline(cv_data, categories=None, top_n=None):
         )
         if _use_hybrid and _embedding_service:
             jobs, total = es_helper.search_jobs_hybrid(
-                retrieval_text, query_vector, size=RETRIEVAL_SIZE,
+                bm25_text, query_vector, size=RETRIEVAL_SIZE,
                 categories=None,
                 cv_gender=cv_gender, exclude_expired=True,
                 bm25_min_should_match=BM25_RELAXED_MIN_SHOULD_MATCH,
                 num_candidates=RETRIEVAL_SIZE * 4,
+                bm25_weight=RRF_BM25_WEIGHT,
+                knn_weight=RRF_KNN_WEIGHT,
+                vector_field=KNN_VECTOR_FIELD,
+                role_terms=query_plan["bm25_roles"],
+                evidence_terms=query_plan["bm25_evidence_terms"],
             )
         else:
             jobs, total = es_helper.search_jobs_by_profile(
-                retrieval_text, size=RETRIEVAL_SIZE,
+                bm25_text, size=RETRIEVAL_SIZE,
                 categories=None,
                 cv_gender=cv_gender, exclude_expired=True,
                 bm25_min_should_match=BM25_RELAXED_MIN_SHOULD_MATCH,
+                role_terms=query_plan["bm25_roles"],
+                evidence_terms=query_plan["bm25_evidence_terms"],
             )
         search_mode += "+relaxed"
 
@@ -444,7 +753,12 @@ def search_pipeline(cv_data, categories=None, top_n=None):
         job["distance_km"] = None
 
     all_jobs = scored_jobs + remaining_jobs
-    all_jobs.sort(key=lambda x: x.get("match_score", 0), reverse=True)
+    # Rank the partial AI-scored set first. Jobs that missed the scoring time
+    # limit remain in retrieval order through their fallback scores.
+    all_jobs.sort(
+        key=lambda x: (bool(x.get("llm_scored")), x.get("match_score", 0)),
+        reverse=True,
+    )
 
     return all_jobs, search_mode, total
 
@@ -520,41 +834,59 @@ def _score_with_llm(cv_data, jobs):
 
 @app.route("/")
 def index():
-    return render_template("index.html", categories=CATEGORIES)
+    return render_template("index.html")
 
 
 @app.route("/api/search", methods=["POST"])
 def api_search():
     """Search API — full pipeline."""
     try:
-        data = request.json
+        data = request.get_json(silent=True) or {}
         cv_data = data.get("cv_data", {})
-        selected_categories = data.get("categories", [])
-
-        if not cv_data.get("skills", "").strip():
-            return jsonify({"error": "Vui lòng nhập kỹ năng hoặc mô tả bản thân"}), 400
+        if not isinstance(cv_data, dict) or not _has_primary_skills(cv_data):
+            return jsonify({"error": "Vui lòng nhập kỹ năng chuyên môn"}), 400
 
         import time as _time
         t0 = _time.time()
 
-        jobs, search_mode, total = search_pipeline(
-            cv_data, categories=selected_categories or None,
-        )
+        jobs, search_mode, total = search_pipeline(cv_data)
 
         pipeline_time = round(_time.time() - t0, 1)
         llm_time = jobs[0].get("llm_time", 0) if jobs else 0
+        ai_scored_count = sum(bool(job.get("llm_scored")) for job in jobs)
 
         return jsonify({
             "jobs": jobs[:50],
             "total": len(jobs),
+            "ai_scored_count": ai_scored_count,
+            "retrieval_only_count": len(jobs) - ai_scored_count,
             "search_mode": search_mode,
             "pipeline_time": pipeline_time,
             "llm_time": llm_time,
-            "message": f"Tìm thấy {len(jobs)} công việc phù hợp ({search_mode}) — {pipeline_time}s",
+            "message": (
+                f"Tìm thấy {len(jobs)} công việc phù hợp; "
+                f"AI đã chấm nhanh {ai_scored_count} job "
+                f"({search_mode}) — {pipeline_time}s"
+            ),
         })
 
     except Exception as e:
         logger.error(f"Search error: {e}", exc_info=True)
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/api/debug-query", methods=["POST"])
+def api_debug_query():
+    """Return the query plan built from parsed CV data for demos/debugging."""
+    try:
+        data = request.json or {}
+        cv_data = data.get("cv_data", data)
+        if not isinstance(cv_data, dict):
+            return jsonify({"error": "cv_data must be an object"}), 400
+        query_plan = _build_retrieval_queries(cv_data)
+        return jsonify(query_plan)
+    except Exception as e:
+        logger.error(f"Debug query error: {e}", exc_info=True)
         return jsonify({"error": str(e)}), 500
 
 
@@ -612,21 +944,20 @@ def api_job_detail_score():
         job = data.get("job")
         job_id = data.get("job_id")
 
-        if not cv_data.get("skills", "").strip():
+        if not isinstance(cv_data, dict) or not _has_primary_skills(cv_data):
             return jsonify({"error": "Thiếu thông tin CV để chấm điểm"}), 400
         if not job and job_id:
             job = es_helper.get_job_by_id(job_id)
         if not job:
             return jsonify({"error": "Không tìm thấy thông tin công việc"}), 400
 
-        from job_matching.scoring.llm_scorer import score_batch, DEFAULT_WEIGHTS
+        from job_matching.scoring.llm_scorer import score_detail_with_evidence, DEFAULT_WEIGHTS
 
         weights = cv_data.get("weights", DEFAULT_WEIGHTS)
-        result = score_batch(cv_data, [job], weights=weights)
-        if not result:
+        score_data = score_detail_with_evidence(cv_data, job, weights=weights)
+        if not score_data:
             return jsonify({"error": "Không chấm được công việc này"}), 502
 
-        score_data = result[0]
         scores = score_data.get("scores", {})
 
         cv_addr = cv_data.get("address") or cv_data.get("location", "")
@@ -642,6 +973,7 @@ def api_job_detail_score():
             "match_score": round(total, 2),
             "score_breakdown": scores,
             "comment": score_data.get("comment", ""),
+            "evidence": score_data.get("evidence", {}),
             "llm_scored": True,
             "detail_scored": True,
             "llm_time": score_data.get("llm_time", 0),
@@ -682,15 +1014,16 @@ def api_parse_cv():
 
             return jsonify({
                 "success": True,
+                "target_roles": result.get("target_roles", ""),
+                "core_skills": result.get("core_skills", ""),
+                "secondary_skills": result.get("secondary_skills", ""),
                 "technical_skills": result.get("technical_skills", ""),
-                "soft_skills": result.get("soft_skills", ""),
                 "languages": result.get("languages", ""),
                 "certificates": result.get("certificates", ""),
                 "experience": result.get("experience", ""),
                 "education": result.get("education", ""),
                 "gender": result.get("gender", "both"),
                 "location": result.get("location", ""),
-                "suggested_categories": result.get("suggested_categories", []),
                 "cv_markdown": result.get("raw_text", ""),
                 "message": "Đã trích xuất thông tin từ CV",
             })

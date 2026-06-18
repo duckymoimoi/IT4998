@@ -1,15 +1,15 @@
 """
-ESCO–O*NET Hybrid Knowledge Graph Module
-=========================================
-In-memory graph for skill hierarchy, occupation-skill relationships,
-and technology tools. Used for graph-based query expansion in the
-search pipeline.
+ESCO Skill Knowledge Graph Module
+=================================
+In-memory graph for ESCO skill hierarchy and occupation-skill relationships.
+Used for graph-based query expansion in the search pipeline.
 
 Data sources:
   - data/esco/skill_broader_relations.csv   (ESCO skill hierarchy)
   - data/esco/occupation_skills.csv          (ESCO occupation → skills)
-  - data/onet/ESCO_to_ONET-SOC.xlsx         (ESCO ↔ O*NET crosswalk)
-  - data/onet/Technology_Skills.xlsx         (O*NET technology tools)
+
+The optional O*NET technology-tool layer is experimental and disabled by
+default. It can be enabled explicitly for evaluation.
 
 Usage:
   from job_matching.enrichment.skill_graph import get_skill_graph
@@ -21,6 +21,7 @@ import csv
 import os
 import logging
 import time
+import threading
 from collections import defaultdict
 from pathlib import Path
 
@@ -30,13 +31,15 @@ PROJECT_ROOT = Path(__file__).resolve().parents[3]
 DATA_DIR = str(PROJECT_ROOT / "data")
 
 _graph_instance = None
+_graph_instance_lock = threading.Lock()
 
 
 class SkillGraph:
-    """In-memory Hybrid Knowledge Graph for ESCO skills, occupations, and O*NET tools."""
+    """In-memory graph for ESCO skills and occupations."""
 
-    def __init__(self, data_dir=None):
+    def __init__(self, data_dir=None, enable_onet_tools=False):
         self.data_dir = data_dir or DATA_DIR
+        self.enable_onet_tools = enable_onet_tools
 
         # Node storage: uri -> {title, type}
         #   type: "SKILL" | "OCCUPATION" | "TOOL"
@@ -64,7 +67,7 @@ class SkillGraph:
         self._loaded = False
 
     def load(self):
-        """Load graph data from ESCO CSVs and O*NET XLSX files."""
+        """Load ESCO graph data and optionally the experimental O*NET layer."""
         if self._loaded:
             return
 
@@ -72,8 +75,6 @@ class SkillGraph:
 
         hierarchy_file = os.path.join(self.data_dir, "esco", "skill_broader_relations.csv")
         occ_skills_file = os.path.join(self.data_dir, "esco", "occupation_skills.csv")
-        crosswalk_file = os.path.join(self.data_dir, "onet", "ESCO_to_ONET-SOC.xlsx")
-        tech_skills_file = os.path.join(self.data_dir, "onet", "Technology_Skills.xlsx")
 
         if not os.path.exists(hierarchy_file):
             logger.warning(f"Skill hierarchy not found: {hierarchy_file}")
@@ -131,8 +132,13 @@ class SkillGraph:
                     self.skill_to_occs[skill_uri].add(occ_uri)
                     o_count += 1
 
-        # ── Layer 3: O*NET Technology Tools (via crosswalk) ──
-        t_count = self._load_onet_tools(crosswalk_file, tech_skills_file)
+        # Experimental layer. Production search leaves this disabled until an
+        # evaluation demonstrates that tool expansion improves retrieval.
+        t_count = 0
+        if self.enable_onet_tools:
+            crosswalk_file = os.path.join(self.data_dir, "onet", "ESCO_to_ONET-SOC.xlsx")
+            tech_skills_file = os.path.join(self.data_dir, "onet", "Technology_Skills.xlsx")
+            t_count = self._load_onet_tools(crosswalk_file, tech_skills_file)
 
         elapsed = time.perf_counter() - t0
         skills = sum(1 for n in self.nodes.values() if n["type"] == "SKILL")
@@ -404,12 +410,16 @@ class SkillGraph:
         return ", ".join(result)
 
 
-def get_skill_graph(data_dir=None):
+def get_skill_graph(data_dir=None, enable_onet_tools=False):
     """Singleton getter — loads graph on first call."""
     global _graph_instance
-    if _graph_instance is None:
-        _graph_instance = SkillGraph(data_dir=data_dir)
-        _graph_instance.load()
+    with _graph_instance_lock:
+        if _graph_instance is None:
+            _graph_instance = SkillGraph(
+                data_dir=data_dir,
+                enable_onet_tools=enable_onet_tools,
+            )
+            _graph_instance.load()
     return _graph_instance
 
 

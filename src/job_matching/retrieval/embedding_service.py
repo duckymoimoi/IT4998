@@ -79,41 +79,6 @@ class EmbeddingService:
         )
         return embedding.tolist()
 
-    def build_job_text(self, job):
-        """
-        Ghep cac truong quan trong cua job thanh 1 doan text de embed.
-        Uu tien: title > requirements_tags > technical_skills > job_requirements
-
-        Args:
-            job: dict chua thong tin job
-
-        Returns:
-            str - text da ghep
-        """
-        parts = []
-
-        title = str(job.get("title", "")).strip()
-        if title:
-            parts.append(title)
-
-        req_tags = str(job.get("requirements_tags", "")).strip()
-        if req_tags:
-            parts.append(req_tags)
-
-        tech_skills = str(job.get("technical_skills", "")).strip()
-        if tech_skills:
-            parts.append(tech_skills)
-
-        specializations = str(job.get("specializations", "")).strip()
-        if specializations:
-            parts.append(specializations)
-
-        job_req = str(job.get("job_requirements", "")).strip()
-        if job_req:
-            parts.append(job_req[:500])
-
-        return ". ".join(parts) if parts else ""
-
     def build_cv_text(self, cv_data):
         """
         Ghep thong tin CV thanh 1 doan text de embed.
@@ -124,17 +89,8 @@ class EmbeddingService:
         Returns:
             str - text da ghep
         """
-        parts = []
-
         skills = str(cv_data.get("skills", "")).strip()
-        if skills:
-            parts.append(skills)
-
-        profile = str(cv_data.get("profile_text", "")).strip()
-        if profile:
-            parts.append(profile)
-
-        return ". ".join(parts) if parts else skills
+        return skills
 
 
 def get_embedding_service(device=None):
@@ -146,29 +102,3 @@ def get_embedding_service(device=None):
         _instance = EmbeddingService(device=device)
     return _instance
 
-
-if __name__ == "__main__":
-    service = get_embedding_service()
-
-    test_texts = [
-        "Python, React, Node.js, fullstack developer",
-        "Lap trinh vien Python 3 nam kinh nghiem",
-        "Project Management, quan ly du an",
-        "Ke toan truong, phan tich tai chinh",
-    ]
-
-    print(f"\nTest embedding {len(test_texts)} texts:")
-    embeddings = service.encode(test_texts)
-    print(f"  Shape: {embeddings.shape}")
-    print(f"  Dtype: {embeddings.dtype}")
-
-    from numpy import dot
-    from numpy.linalg import norm
-
-    print("\nCosine similarity matrix:")
-    for i in range(len(test_texts)):
-        sims = []
-        for j in range(len(test_texts)):
-            sim = dot(embeddings[i], embeddings[j])
-            sims.append(f"{sim:.3f}")
-        print(f"  [{i}] {' | '.join(sims)}  <- {test_texts[i][:40]}")

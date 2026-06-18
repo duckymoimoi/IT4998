@@ -283,11 +283,14 @@ async function parseCV() {
 }
 function showExtracted(data) {
     const fields = [
-        {k:'technical_skills',l:'Kỹ năng chuyên môn'},{k:'soft_skills',l:'Kỹ năng mềm'},
+        {k:'target_roles',l:'Vai trò mục tiêu'},
+        {k:'core_skills',l:'Kỹ năng cốt lõi'},
+        {k:'secondary_skills',l:'Kỹ năng bổ trợ'},
+        {k:'technical_skills',l:'Kỹ năng chuyên môn'},
         {k:'languages',l:'Ngoại ngữ'},{k:'certificates',l:'Chứng chỉ'},
         {k:'experience',l:'Kinh nghiệm',fmt:fmtExp},
         {k:'education',l:'Học vấn',fmt:fmtEdu},{k:'gender',l:'Giới tính'},
-        {k:'location',l:'Địa điểm'},{k:'suggested_categories',l:'Ngành nghề',fmt:fmtCats}
+        {k:'location',l:'Địa điểm'}
     ];
     const grid = document.getElementById('extractedGrid');
     grid.innerHTML = fields.map(f => {
@@ -302,7 +305,6 @@ function clearExtracted() {
 }
 function fmtExp(v) { return {no_requirement:'Chưa có',under_1:'< 1 năm','1':'1 năm','2':'2 năm','3':'3 năm','4':'4 năm','5':'5 năm',over_5:'5+ năm',all:'Tất cả'}[v] || v || 'N/A'; }
 function fmtEdu(v) { return {dai_hoc:'Đại học',cao_dang:'Cao đẳng',trung_cap:'Trung cấp',trung_hoc:'THPT'}[v] || v || 'N/A'; }
-function fmtCats(v) { return Array.isArray(v) && v.length ? v.join(', ') : 'N/A'; }
 
 // ===== SEARCH =====
 async function searchJobs() {
@@ -312,15 +314,18 @@ async function searchJobs() {
         return;
     }
     const techSkills = (extractedData.technical_skills || '').trim();
-    if (!techSkills) {
-        alert('CV chưa trích xuất được kỹ năng chuyên môn. Vui lòng thử quét lại hoặc dùng CV rõ nội dung hơn.');
+    const targetRoles = (extractedData.target_roles || '').trim();
+    if (!techSkills && !targetRoles) {
+        alert('CV chưa trích xuất được vai trò hoặc kỹ năng chuyên môn. Vui lòng thử quét lại hoặc dùng CV rõ nội dung hơn.');
         return;
     }
 
     const wt = getWeights();
     const cvData = {
         skills: techSkills,
-        soft_skills: extractedData.soft_skills || '',
+        target_roles: targetRoles,
+        core_skills: extractedData.core_skills || '',
+        secondary_skills: extractedData.secondary_skills || '',
         languages: extractedData.languages || '',
         certificates: extractedData.certificates || '',
         experience: extractedData.experience || '',
@@ -355,6 +360,7 @@ async function searchJobs() {
         const timeInfo = [];
         if (data.pipeline_time) timeInfo.push(`Total: ${data.pipeline_time}s`);
         if (data.llm_time) timeInfo.push(`LLM: ${data.llm_time}s`);
+        if (data.ai_scored_count !== undefined) timeInfo.push(`AI: ${data.ai_scored_count}/${data.total}`);
         document.getElementById('resultsCount').innerHTML = allJobs.length + ' công việc' + 
             (timeInfo.length ? ' <span style="color:var(--text2);font-size:11px">(' + timeInfo.join(' | ') + ')</span>' : '');
         renderJobs();
@@ -366,7 +372,7 @@ async function searchJobs() {
 function renderJobs() {
     const list = document.getElementById('jobsList');
     if (!allJobs.length) {
-        list.innerHTML = '<div class="empty-state"><h3>Không tìm thấy kết quả</h3><p>Thử điều chỉnh kỹ năng hoặc bỏ filter ngành nghề</p></div>';
+        list.innerHTML = '<div class="empty-state"><h3>Không tìm thấy kết quả</h3><p>Thử điều chỉnh kỹ năng hoặc địa điểm mong muốn</p></div>';
         document.getElementById('loadMore').style.display = 'none';
         return;
     }
@@ -447,7 +453,8 @@ function jobCard(job, idx) {
     const tags = parseTags(job.requirements_tags);
     const bd = job.score_breakdown || {};
     const hasBreakdown = DIMS.every(d => bd[d] !== undefined && bd[d] !== null);
-    const llm = job.llm_scored ? '<span class="llm-badge scored">Đã chấm nhanh</span>' : '<span class="llm-badge pending">Theo retrieval</span>';
+    const llm = job.detail_scored ? '<span class="llm-badge scored">Đã chấm chi tiết</span>' :
+        (job.llm_scored ? '<span class="llm-badge scored">Đã chấm nhanh</span>' : '<span class="llm-badge pending">Theo retrieval</span>');
     const comment = job.comment ? `<div class="job-comment"><span>Nhận xét:</span> ${esc(job.comment)}</div>` : '';
     const detailLabel = job.detail_loading ? 'Đang chấm...' : (job.detail_scored ? 'Chấm lại chi tiết' : 'Chấm chi tiết');
     const detailBtn = `<button class="detail-score-action" onclick="scoreJobDetail(${idx})" ${job.detail_loading ? 'disabled' : ''}>${detailLabel}</button>`;
@@ -470,7 +477,7 @@ function jobCard(job, idx) {
         <div class="job-top">
             <div>
                 <h3 onclick="window.open('${esc(job.url||'')}','_blank')">${esc(job.title||'N/A')}</h3>
-                <div class="job-company">${esc(job.category||'')} ${llm} ${distInfo} ${detailBtn}</div>
+                <div class="job-company">${llm} ${distInfo} ${detailBtn}</div>
             </div>
             <div class="score-badge ${scoreClass}">${scoreDisplay}</div>
         </div>
@@ -481,6 +488,7 @@ function jobCard(job, idx) {
             ${job.deadline ? `<span><b>Hạn:</b> ${esc(job.deadline)}</span>` : ''}
         </div>
         ${comment}
+        ${evidenceHtml(job.evidence)}
         ${tags.length ? '<div class="job-tags">' + tags.slice(0,6).map(t=>'<span class="tag">'+esc(t)+'</span>').join('') + '</div>' : ''}
         ${hasBreakdown ? `
             <span class="toggle-link" onclick="document.getElementById('bd-${idx}').classList.toggle('show')">Chi tiết điểm ▾</span>
@@ -492,6 +500,28 @@ function jobCard(job, idx) {
             </div>
         ` : '<div class="fallback-note">Đang xếp hạng theo retrieval do tầng chấm điểm AI chưa khả dụng.</div>'}
     </div>`;
+}
+function evidenceHtml(ev) {
+    if (!ev || typeof ev !== 'object') return '';
+    const list = v => Array.isArray(v) ? v.filter(Boolean).slice(0,8) : [];
+    const row = (label, values, cls='') => values.length
+        ? `<div class="evidence-row ${cls}"><span>${label}</span><div>${values.map(x=>`<em>${esc(x)}</em>`).join('')}</div></div>`
+        : '';
+    const exp = ev.experience_evidence || {};
+    const notes = [];
+    if (exp.role_match || exp.domain_match) notes.push(`Role: ${exp.role_match || 'N/A'}; domain: ${exp.domain_match || 'N/A'}`);
+    if (exp.gap_note) notes.push(exp.gap_note);
+    if (ev.education_gap) notes.push(`Học vấn: ${ev.education_gap}`);
+    if (ev.salary_note) notes.push(`Lương: ${ev.salary_note}`);
+    const notesHtml = notes.length ? `<div class="evidence-note">${notes.map(esc).join('<br>')}</div>` : '';
+    const html = [
+        row('Khớp trực tiếp', list(ev.matched_exact), 'good'),
+        row('Khớp gần', list(ev.matched_synonym_or_esco)),
+        row('Có thể chuyển giao', list(ev.transferable)),
+        row('Thiếu lõi', list(ev.missing_core), 'bad'),
+        notesHtml
+    ].join('');
+    return html ? `<div class="evidence-box"><div class="evidence-title">Bằng chứng chi tiết</div>${html}</div>` : '';
 }
 function parseTags(t) { if (!t) return []; if (Array.isArray(t)) return t; return t.split(/[,;•\n]/).map(s=>s.trim()).filter(Boolean); }
 function esc(s) { const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }

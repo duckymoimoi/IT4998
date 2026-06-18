@@ -1,5 +1,6 @@
 
 import re
+import unicodedata
 from typing import List, Dict, Optional
 
 VIETNAM_CITIES = {
@@ -320,20 +321,27 @@ VIETNAM_CITIES = {
     },
 }
 
-# Build fast lookup dict: alias -> city_data (O(1) instead of O(n))
+def _normalize_location_text(value: str) -> str:
+    """Normalize Vietnamese location text for accent-insensitive matching."""
+    value = unicodedata.normalize("NFD", str(value or "").lower())
+    value = "".join(ch for ch in value if unicodedata.category(ch) != "Mn")
+    return value.replace("đ", "d")
+
+
+# Build fast lookup dict: normalized alias -> city_data.
 _CITY_LOOKUP: Dict[str, Dict] = {}
 for city_name, city_data in VIETNAM_CITIES.items():
     city_info = city_data.copy()
     city_info['name'] = city_name
-    for alias in city_data['aliases']:
-        _CITY_LOOKUP[alias.lower()] = city_info
+    for alias in [city_name, *city_data['aliases']]:
+        _CITY_LOOKUP[_normalize_location_text(alias)] = city_info
 
 
 def get_city_info(location_text: str) -> List[Dict]:
     if not location_text:
         return []
 
-    location_lower = location_text.lower().strip()
+    location_lower = _normalize_location_text(location_text).strip()
     matched_cities = []
 
     # Address keywords that indicate it's NOT a city name
@@ -362,6 +370,8 @@ def get_city_info(location_text: str) -> List[Dict]:
 
             # Check keywords before alias
             for keyword in address_keywords_before:
+                if keyword == 'pho' and prefix.endswith('thanh pho'):
+                    continue
                 if prefix.endswith(keyword) or prefix.endswith(keyword + ' '):
                     is_false_positive = True
                     break
@@ -383,11 +393,11 @@ def get_city_info(location_text: str) -> List[Dict]:
                         'lon': city_info['lon'],
                         'region': city_info['region'],
                         'tier': city_info['tier'],
-                        'population': city_info['population']
+                        'population': city_info.get('population')
                     })
 
     return matched_cities
 
 
 def get_city_by_name(city_name: str) -> Optional[Dict]:
-    return _CITY_LOOKUP.get(city_name.lower())
+    return _CITY_LOOKUP.get(_normalize_location_text(city_name))

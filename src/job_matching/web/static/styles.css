@@ -117,6 +117,14 @@ textarea{min-height:60px;resize:vertical}
 .job-meta b{font-weight:600;color:var(--text)}
 .job-comment{font-size:12px;color:var(--text2);margin-top:6px;font-style:italic;border-left:2px solid var(--primary);padding-left:8px}
 .job-comment span{font-style:normal;font-weight:600;color:var(--text)}
+.evidence-box{margin-top:8px;padding:8px 10px;border:1px solid var(--border);border-radius:6px;background:#fbfcff;font-size:11px;color:var(--text2)}
+.evidence-title{font-weight:600;color:var(--text);margin-bottom:5px}
+.evidence-row{display:grid;grid-template-columns:96px 1fr;gap:8px;margin-top:4px}
+.evidence-row span{font-weight:600;color:var(--text)}
+.evidence-row em{display:inline-block;font-style:normal;margin:0 4px 4px 0;padding:2px 6px;border-radius:9px;background:var(--bg);color:var(--text2)}
+.evidence-row.good em{background:#e6f4ea;color:#137333}
+.evidence-row.bad em{background:#fce8e6;color:#c5221f}
+.evidence-note{margin-top:6px;padding-top:6px;border-top:1px solid var(--border);line-height:1.45}
 .fallback-note{font-size:11px;color:var(--text2);margin-top:6px}
 .meta-action{border:1px solid var(--border);background:var(--surface);color:var(--primary);border-radius:12px;padding:2px 8px;font-size:11px;cursor:pointer;font-family:inherit}
 .meta-action:hover{background:var(--primary-light);border-color:var(--primary)}

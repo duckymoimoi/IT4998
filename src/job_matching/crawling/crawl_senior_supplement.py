@@ -3,9 +3,9 @@ Crawl thêm ~10 jobs senior (4+ năm) cho mỗi ngành.
 Sử dụng lại logic từ crawl_balanced_jobs.py nhưng chỉ crawl tầng senior.
 
 Sử dụng:
-    python src/crawl_senior_supplement.py --dry-run      # Xem URLs trước
-    python src/crawl_senior_supplement.py                # Crawl
-    python src/crawl_senior_supplement.py --categories it telesales  # Chỉ crawl 1 số ngành
+    python -m job_matching.crawling.crawl_senior_supplement --dry-run
+    python -m job_matching.crawling.crawl_senior_supplement
+    python -m job_matching.crawling.crawl_senior_supplement --categories it telesales
 """
 import os
 import time
@@ -16,6 +16,7 @@ import random
 import hashlib
 from datetime import datetime
 from collections import defaultdict
+from pathlib import Path
 
 from job_matching.crawling.crawl_topcv import (
     setup_driver, extract_job_simple, random_delay,
@@ -173,11 +174,13 @@ def crawl_category_jobs(category_info, num_threads=2):
     return all_jobs
 
 # Logging
+_LOG_DIR = Path(__file__).resolve().parents[3] / 'src' / 'logs'
+_LOG_DIR.mkdir(parents=True, exist_ok=True)
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s [%(levelname)-8s] %(message)s',
     handlers=[
-        logging.FileHandler('src/crawl_senior.log', encoding='utf-8'),
+        logging.FileHandler(_LOG_DIR / 'crawl_senior.log', encoding='utf-8'),
         logging.StreamHandler()
     ]
 )
@@ -274,11 +277,10 @@ def main():
     else:
         selected_keys = list(CATEGORIES.keys())
     
-    # Load hashes hiện có để loại trùng
+    _jobs_dir = Path(__file__).resolve().parents[3] / 'data' / 'jobs'
+    # Load hashes từ các file crawl cũ còn lưu trong data/jobs/
     existing_files = [
-        'data/topcv_balanced_650_final.csv',
-        'src/topcv_pipeline_20260424_223554.csv',
-        'src/topcv_pipeline_20260427_170448.csv',
+        str(_jobs_dir / 'topcv_balanced_650_final.csv'),
     ]
     existing_hashes = load_existing_hashes(*existing_files)
     logger.info(f"Loaded {len(existing_hashes)} existing hashes for dedup")
@@ -334,8 +336,10 @@ def main():
         return
     
     # Bước 2: Crawl chi tiết
+    _jobs_dir = Path(__file__).resolve().parents[3] / 'data' / 'jobs'
+    _jobs_dir.mkdir(parents=True, exist_ok=True)
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-    output_file = f'src/topcv_senior_supplement_{timestamp}.csv'
+    output_file = str(_jobs_dir / f'topcv_senior_supplement_{timestamp}.csv')
     
     print(f"\n[2/2] Crawl chi tiết...")
     print(f"  Output: {output_file}")

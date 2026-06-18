@@ -17,10 +17,10 @@ Mapping exp param TopCV:
   Senior  (exp=6,7,8): 4+ năm            → 50 jobs
 
 Sử dụng:
-    python src/crawl_balanced_jobs.py --dry-run           # Xem URLs, không crawl
-    python src/crawl_balanced_jobs.py                     # Crawl toàn bộ
-    python src/crawl_balanced_jobs.py --categories it     # Crawl 1 ngành
-    python src/crawl_balanced_jobs.py --max-pages 5       # Tăng số trang
+    python -m job_matching.crawling.crawl_balanced_jobs --dry-run
+    python -m job_matching.crawling.crawl_balanced_jobs
+    python -m job_matching.crawling.crawl_balanced_jobs --categories it
+    python -m job_matching.crawling.crawl_balanced_jobs --max-pages 5
 """
 import os
 import time
@@ -138,11 +138,13 @@ CATEGORIES = {
 }
 
 # Logging
+_LOG_DIR = Path(__file__).resolve().parents[3] / 'src' / 'logs'
+_LOG_DIR.mkdir(parents=True, exist_ok=True)
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s [%(levelname)-8s] %(message)s',
     handlers=[
-        logging.FileHandler('src/crawl_balanced.log', encoding='utf-8'),
+        logging.FileHandler(_LOG_DIR / 'crawl_balanced.log', encoding='utf-8'),
         logging.StreamHandler()
     ]
 )
@@ -823,7 +825,7 @@ def main():
     print("=" * 60)
 
     # Tạo hoặc tìm file incremental để lưu dần
-    data_dir = str(Path(__file__).resolve().parents[3] / 'data')
+    data_dir = str(Path(__file__).resolve().parents[3] / 'data' / 'jobs')
     os.makedirs(data_dir, exist_ok=True)
     
     if args.output:

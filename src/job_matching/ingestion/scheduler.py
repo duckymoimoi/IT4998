@@ -1,15 +1,12 @@
 """
-Scheduler: Crawl → LLM Clean → Geocode → Upsert ES (all-in-one pipeline)
+Scheduler: Crawl → LLM Clean → Upsert ES (all-in-one pipeline)
 
 Pipeline:
-    Crawl workers (3 threads) → Queue → Clean worker (1 thread) → Geocode → Append CSV → Upsert ES
+    Crawl workers (3 threads) → Queue → Clean worker (1 thread) → Append CSV → Upsert ES
 
 Sử dụng:
     # Chạy 1 lần (local)
     python scheduler.py --once --pages 3
-
-    # Chạy qua Docker
-    docker compose --profile crawl run scheduler
 
     # Chạy theo chu kỳ
     python scheduler.py --interval 60 --pages 5
@@ -31,15 +28,14 @@ import signal
 import argparse
 import threading
 import queue
+import random
 from datetime import datetime, timedelta
 from pathlib import Path
 
 import pandas as pd
 from elasticsearch import Elasticsearch
-from elasticsearch.helpers import bulk
+from elasticsearch.helpers import bulk, scan
 import csv
-import re
-import requests as http_requests
 
 # Suppress UC destructor error on Windows (WinError 6: handle invalid)
 try:
@@ -57,8 +53,19 @@ except Exception:
 # ============= PATHS =============
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 SRC_DIR = PROJECT_ROOT / "src"
+JOBS_DIR = PROJECT_ROOT / "data" / "jobs"
 LOG_DIR = SRC_DIR / "logs"
+if str(SRC_DIR) not in sys.path:
+    sys.path.insert(0, str(SRC_DIR))
+JOBS_DIR.mkdir(parents=True, exist_ok=True)
 LOG_DIR.mkdir(exist_ok=True)
+
+try:
+    from dotenv import load_dotenv
+    load_dotenv(SRC_DIR / ".env")
+    load_dotenv(PROJECT_ROOT / ".env")
+except ImportError:
+    pass
 
 # ============= LOGGING =============
 logging.basicConfig(
@@ -73,79 +80,36 @@ logger = logging.getLogger(__name__)
 
 # ============= CẤU HÌNH =============
 ES_HOST = os.getenv("ES_HOST", "http://localhost:9200")
-ES_INDEX = os.getenv("ES_INDEX", "topcv_jobs")
+ES_INDEX = os.getenv("ES_INDEX", "topcv_jobs_production")
 OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434/api/generate")
 CRAWL_HISTORY_FILE = LOG_DIR / "crawl_history.json"
-
-# Nominatim geocoding (OSM — miễn phí)
-_NOMINATIM_URL = "https://nominatim.openstreetmap.org/search"
-_geo_cache = {}
-
-
-def _nominatim_geocode(address):
-    """Geocode address -> {lat, lng} via OSM Nominatim. Cached."""
-    if not address or address == 'nan':
-        return None
-    if address in _geo_cache:
-        return _geo_cache[address]
-
-    try:
-        time.sleep(1.1)  # Respect Nominatim rate limit (1 req/s)
-        resp = http_requests.get(
-            _NOMINATIM_URL,
-            params={"q": address, "format": "json", "limit": 1, "countrycodes": "vn"},
-            headers={"User-Agent": "HUST-JobMatching-Thesis/1.0"},
-            timeout=10,
-        )
-        if resp.status_code == 200 and resp.json():
-            result = resp.json()[0]
-            coords = {"lat": float(result["lat"]), "lng": float(result["lon"])}
-            _geo_cache[address] = coords
-            return coords
-    except Exception as e:
-        logger.warning(f"Nominatim geocode error for '{address[:50]}': {e}")
-
-    _geo_cache[address] = None
-    return None
-
+AUTO_CLASSIFY_TAXONOMY = os.getenv("AUTO_CLASSIFY_TAXONOMY", "1").strip().lower() in {
+    "1", "true", "yes", "on",
+}
+TAXONOMY_CLASSIFY_THRESHOLD = int(os.getenv("TAXONOMY_CLASSIFY_THRESHOLD", "50"))
+TAXONOMY_BATCH_SIZE = int(os.getenv("TAXONOMY_BATCH_SIZE", "20"))
+TAXONOMY_SLEEP_SEC = float(os.getenv("TAXONOMY_SLEEP_SEC", "10"))
+TAXONOMY_MODEL = os.getenv("TAXONOMY_MODEL", "openai/gpt-oss-120b")
 
 # ============= CSV FIELDS =============
 CSV_FIELDNAMES = [
     'title', 'url', 'company', 'company_address',
-    'company_size', 'company_field',
+    'company_size',
     'job_salary', 'salary_min', 'salary_max', 'salary_type',
     'salary_note', 'has_commission',
-    'job_location', 'experience',
+    'job_location', 'work_location_text', 'experience',
     'education_level', 'education_field',
-    'technical_skills', 'soft_skills', 'languages', 'certificates',
+    'requirements_tags', 'specializations',
+    'technical_skills', 'languages', 'certificates',
     'gender_requirement',
     'job_description', 'job_requirements', 'job_benefits', 'working_time',
-    'latitude', 'longitude',
     'overview', 'content_hash', 'deadline', 'is_expired',
-    'crawled_date', 'category',
+    'crawled_date',
 ]
 
 # Trang listing tổng dùng cho crawl production.
 # TopCV giữ phân trang dạng /viec-lam-tot-nhat?page=N.
 PRODUCTION_LISTING_URL = "https://www.topcv.vn/viec-lam-tot-nhat"
-
-# 13 ngành nghề — URLs listing theo category từ TopCV.
-# Chỉ dùng khi cần crawl theo ngành, ví dụ phục vụ thực nghiệm/cân bằng dữ liệu.
-CATEGORIES = {
-    'nhan-vien-kinh-doanh': {'name': 'Nhân viên kinh doanh', 'base_url': 'https://www.topcv.vn/tim-viec-lam-nhan-vien-kinh-doanh'},
-    'ke-toan': {'name': 'Kế toán', 'base_url': 'https://www.topcv.vn/tim-viec-lam-ke-toan'},
-    'marketing': {'name': 'Marketing', 'base_url': 'https://www.topcv.vn/tim-viec-lam-marketing'},
-    'hanh-chinh-nhan-su': {'name': 'Hành chính nhân sự', 'base_url': 'https://www.topcv.vn/tim-viec-lam-hanh-chinh-nhan-su'},
-    'cham-soc-khach-hang': {'name': 'Chăm sóc khách hàng', 'base_url': 'https://www.topcv.vn/tim-viec-lam-nhan-vien-cham-soc-khach-hang'},
-    'ngan-hang': {'name': 'Ngân hàng', 'base_url': 'https://www.topcv.vn/tim-viec-lam-ngan-hang'},
-    'it': {'name': 'IT', 'base_url': 'https://www.topcv.vn/viec-lam-it'},
-    'lao-dong-pho-thong': {'name': 'Lao động phổ thông', 'base_url': 'https://www.topcv.vn/tim-viec-lam-lao-dong-pho-thong-cr1042'},
-    'ky-su-xay-dung': {'name': 'Kỹ sư xây dựng', 'base_url': 'https://www.topcv.vn/tim-viec-lam-ky-su-xay-dung'},
-    'thiet-ke': {'name': 'Thiết kế đồ họa', 'base_url': 'https://www.topcv.vn/tim-viec-lam-thiet-ke-do-hoa-designer'},
-    'bat-dong-san': {'name': 'Bất động sản', 'base_url': 'https://www.topcv.vn/tim-viec-lam-bat-dong-san'},
-    'giao-duc': {'name': 'Giáo dục', 'base_url': 'https://www.topcv.vn/tim-viec-lam-giao-duc'},
-    'telesales': {'name': 'Telesales', 'base_url': 'https://www.topcv.vn/tim-viec-lam-nhan-vien-telesales'},
-}
 
 # Lock để tránh race condition khi init UC chromedriver
 _driver_init_lock = threading.Lock()
@@ -160,6 +124,7 @@ class CrawlScheduler:
         self.running = True
         self.use_embeddings = use_embeddings
         self.embedding_service = None
+        self.semantic_profile_builder = None
 
         # Connect to ES
         if skip_es:
@@ -195,7 +160,9 @@ class CrawlScheduler:
         if self.use_embeddings:
             try:
                 from job_matching.retrieval.embedding_service import get_embedding_service
+                from job_matching.enrichment.semantic_job_profile import SemanticJobProfileBuilder
                 self.embedding_service = get_embedding_service()
+                self.semantic_profile_builder = SemanticJobProfileBuilder()
                 logger.info("[OK] Embedding service (bge-m3) ready")
             except Exception as e:
                 logger.warning(f"[WARN] Embedding service unavailable: {e}")
@@ -218,41 +185,104 @@ class CrawlScheduler:
         history["runs"] = history["runs"][-100:]
         self._save_history(history)
 
-    # ============= GEOCODE =============
-    def _geocode_job(self, job_data):
-        """Geocode company_address → lat/lng"""
-        address = job_data.get('company_address', '')
-        if not address or address == 'nan':
-            job_data['latitude'] = ''
-            job_data['longitude'] = ''
-            return job_data
-
-        # Nếu nhiều chi nhánh (pipe-separated), lấy chi nhánh đầu
-        first_addr = address.split(' | ')[0].strip() if ' | ' in address else address
-
-        coords = _nominatim_geocode(first_addr)
-        if coords:
-            job_data['latitude'] = coords['lat']
-            job_data['longitude'] = coords['lng']
-            logger.debug(f"  Geocoded: {first_addr[:40]} → {coords['lat']:.4f}, {coords['lng']:.4f}")
-        else:
-            job_data['latitude'] = ''
-            job_data['longitude'] = ''
-
-        return job_data
-
-    # ============= CLEAN + GEOCODE 1 JOB =============
-    def _clean_and_geocode(self, raw_job):
-        """LLM clean 1 job + geocode → cleaned dict"""
+    # ============= CLEAN 1 JOB =============
+    def _clean_job(self, raw_job):
+        """LLM clean one job. Runtime distance uses Goong on demand."""
         if self.cleaner:
             cleaned = self.cleaner.clean_job(raw_job)
             if cleaned:
-                cleaned = self._geocode_job(cleaned)
+                self._collect_pending_taxonomy_terms(cleaned)
                 return cleaned
 
-        # Fallback: no clean, just pass through + geocode
-        raw_job = self._geocode_job(raw_job)
+        # Fallback: no clean, pass through while preserving location text.
+        self._collect_pending_taxonomy_terms(raw_job)
         return raw_job
+
+    def _collect_pending_taxonomy_terms(self, job):
+        """Queue unknown crawl terms for later offline taxonomy classification."""
+        try:
+            from job_matching.enrichment.semantic_job_profile import append_pending_terms
+            count = append_pending_terms(job)
+            if count:
+                logger.info("[TAXONOMY] Queued %s unknown terms", count)
+        except Exception as exc:
+            logger.warning("[TAXONOMY] Cannot queue unknown terms: %s", exc)
+
+    def _backfill_taxonomy_terms(self, terms, batch_size=32):
+        """Refresh semantic profiles for existing jobs affected by new taxonomy terms."""
+        if not self.es or not self.embedding_service or not self.semantic_profile_builder:
+            return {"targeted": 0, "updated": 0, "skipped": "embedding unavailable"}
+
+        from job_matching.enrichment.build_term_taxonomy import split_terms
+
+        target_terms = {
+            str(term).strip().lower()
+            for term in terms
+            if str(term).strip()
+        }
+        if not target_terms:
+            return {"targeted": 0, "updated": 0}
+
+        source_fields = [
+            "title", "technical_skills", "certificates", "languages",
+            "job_description", "job_requirements",
+        ]
+        pending = []
+        targeted = 0
+        updated = 0
+
+        def flush():
+            nonlocal pending, updated
+            if not pending:
+                return
+            profiles = [
+                self.semantic_profile_builder.build(hit["_source"])
+                for hit in pending
+            ]
+            vectors = self.embedding_service.encode(
+                [profile["semantic_text"] for profile in profiles],
+                batch_size=batch_size,
+                show_progress=False,
+            )
+            actions = []
+            for hit, profile, vector in zip(pending, profiles, vectors):
+                profile["embedding"] = vector.tolist()
+                actions.append({
+                    "_op_type": "update",
+                    "_index": self.index_name,
+                    "_id": hit["_id"],
+                    "doc": profile,
+                })
+            success, errors = bulk(self.es, actions, raise_on_error=False)
+            updated += success
+            if errors:
+                logger.warning("[TAXONOMY] Backfill errors: %s", len(errors))
+            pending = []
+
+        for hit in scan(
+            self.es,
+            index=self.index_name,
+            query={
+                "query": {"exists": {"field": "technical_skills"}},
+                "_source": source_fields,
+            },
+            size=200,
+            request_timeout=180,
+        ):
+            job_terms = {
+                term.lower()
+                for term in split_terms(hit["_source"].get("technical_skills", ""))
+            }
+            if not job_terms.intersection(target_terms):
+                continue
+            targeted += 1
+            pending.append(hit)
+            if len(pending) >= batch_size:
+                flush()
+        flush()
+        self.es.indices.refresh(index=self.index_name)
+        logger.info("[TAXONOMY] Backfilled %s/%s affected jobs", updated, targeted)
+        return {"targeted": targeted, "updated": updated}
 
     # ============= COLLECT LISTING URLS =============
     def _build_listing_url(self, base_url, page_num):
@@ -319,14 +349,14 @@ class CrawlScheduler:
                         pass
         return None
 
-    def _collect_general_urls(self, pages=3, base_url=PRODUCTION_LISTING_URL):
+    def _collect_job_urls(self, pages=3, base_url=PRODUCTION_LISTING_URL):
         """
         Thu thap URLs tu trang viec lam tong cho production.
-        Returns: list of (url, category_name)
+        Returns: list of job URLs (deduplicated).
         """
         from job_matching.crawling.crawl_topcv import setup_driver
 
-        url_category_pairs = []
+        urls = []
         seen_urls = set()
         consecutive_failed_pages = 0
         consecutive_empty_pages = 0
@@ -336,34 +366,33 @@ class CrawlScheduler:
             driver = setup_driver()
 
         try:
-            logger.info(f"  [GENERAL] Collecting URLs from {base_url}")
+            logger.info(f"  Collecting URLs from {base_url}")
             for page_num in range(1, pages + 1):
                 page_url = self._build_listing_url(base_url, page_num)
                 page_source = self._load_listing_page(driver, page_url, selector)
 
                 if not page_source:
                     consecutive_failed_pages += 1
-                    logger.warning(f"  [GENERAL] Page {page_num} failed; skip ({consecutive_failed_pages}/3)")
+                    logger.warning(f"  Page {page_num} failed; skip ({consecutive_failed_pages}/3)")
                     if consecutive_failed_pages >= 3:
-                        logger.warning("  [GENERAL] Stop collecting after 3 consecutive failed pages.")
+                        logger.warning("  Stop collecting after 3 consecutive failed pages.")
                         break
                     continue
 
                 consecutive_failed_pages = 0
                 page_urls, valid_link_count = self._extract_listing_urls(page_source, seen_urls)
-                for href in page_urls:
-                    url_category_pairs.append((href, "Tong hop"))
+                urls.extend(page_urls)
 
                 logger.info(
-                    f"  [GENERAL] Page {page_num}: links={valid_link_count}, "
-                    f"new={len(page_urls)} URLs (total: {len(url_category_pairs)})"
+                    f"  Page {page_num}: links={valid_link_count}, "
+                    f"new={len(page_urls)} URLs (total: {len(urls)})"
                 )
 
                 if valid_link_count == 0:
                     consecutive_empty_pages += 1
-                    logger.warning(f"  [GENERAL] Page {page_num} has no valid job links ({consecutive_empty_pages}/3)")
+                    logger.warning(f"  Page {page_num} has no valid job links ({consecutive_empty_pages}/3)")
                     if consecutive_empty_pages >= 3:
-                        logger.warning("  [GENERAL] Stop collecting after 3 consecutive empty pages.")
+                        logger.warning("  Stop collecting after 3 consecutive empty pages.")
                         break
                 else:
                     consecutive_empty_pages = 0
@@ -372,131 +401,56 @@ class CrawlScheduler:
         finally:
             driver.quit()
 
-        return url_category_pairs
-
-    def _collect_category_urls(self, pages=3, categories=None):
-        """
-        Thu thap URLs theo tung category.
-        Returns: list of (url, category_name)
-        """
-        from job_matching.crawling.crawl_topcv import setup_driver
-
-        selected = categories or list(CATEGORIES.keys())
-        url_category_pairs = []  # [(url, category_name), ...]
-        seen_urls = set()
-        selector = 'h3[class*="title"] a, a[href*="/viec-lam/"]'
-
-        with _driver_init_lock:
-            driver = setup_driver()
-
-        try:
-            for cat_key in selected:
-                cat = CATEGORIES.get(cat_key)
-                if not cat:
-                    logger.warning(f"Unknown category: {cat_key}")
-                    continue
-
-                cat_name = cat['name']
-                base_url = cat['base_url']
-                logger.info(f"  [{cat_name}] Collecting URLs...")
-                consecutive_failed_pages = 0
-                consecutive_empty_pages = 0
-
-                for page_num in range(1, pages + 1):
-                    page_url = self._build_listing_url(base_url, page_num)
-                    page_source = self._load_listing_page(driver, page_url, selector)
-
-                    if not page_source:
-                        consecutive_failed_pages += 1
-                        logger.warning(f"  [{cat_name}] Page {page_num} failed; skip ({consecutive_failed_pages}/3)")
-                        if consecutive_failed_pages >= 3:
-                            logger.warning(f"  [{cat_name}] Stop collecting after 3 consecutive failed pages.")
-                            break
-                        continue
-
-                    consecutive_failed_pages = 0
-                    page_urls, valid_link_count = self._extract_listing_urls(page_source, seen_urls)
-                    page_count = len(page_urls)
-                    for href in page_urls:
-                        url_category_pairs.append((href, cat_name))
-
-                    logger.info(
-                        f"  [{cat_name}] Page {page_num}: links={valid_link_count}, "
-                        f"new={page_count} URLs (total: {len(url_category_pairs)})"
-                    )
-
-                    if valid_link_count == 0:
-                        consecutive_empty_pages += 1
-                        logger.warning(f"  [{cat_name}] Page {page_num} has no valid job links ({consecutive_empty_pages}/3)")
-                        if consecutive_empty_pages >= 3:
-                            logger.warning(f"  [{cat_name}] Stop collecting after 3 consecutive empty pages.")
-                            break
-                    else:
-                        consecutive_empty_pages = 0
-
-                    time.sleep(1)
-        finally:
-            driver.quit()
-
-        return url_category_pairs
+        return urls
 
     # ============= PRODUCER-CONSUMER PIPELINE =============
     def run_pipeline(
-        self, pages=5, threads=3, output_file=None, categories=None,
-        source="general", recrawl_after_days=7, force_recrawl_existing=False,
+        self, pages=5, threads=3, output_file=None,
+        recrawl_after_days=7, force_recrawl_existing=False,
     ):
         """
         Full pipeline:
-          Collect URLs → Crawl workers → queue → Clean → geocode → CSV
+          Collect URLs → Crawl workers → queue → Clean → CSV
         """
         from job_matching.crawling.crawl_topcv import setup_driver, extract_job_simple
 
         if output_file is None:
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-            output_file = str(SRC_DIR / f'topcv_pipeline_{timestamp}.csv')
+            output_file = str(JOBS_DIR / f'topcv_pipeline_{timestamp}.csv')
 
         logger.info("=" * 70)
-        logger.info(f"  PIPELINE START — source={source}, pages={pages}, threads={threads}")
-        logger.info(f"  Categories: {categories or 'N/A'}")
+        logger.info(f"  PIPELINE START — pages={pages}, threads={threads}")
         logger.info(f"  Output: {output_file}")
         logger.info(f"  LLM Clean: {'ON' if self.cleaner else 'OFF'}")
         logger.info("=" * 70)
 
         # Phase 1: Collect URLs
-        if categories and source == "general":
-            logger.info("[PHASE 1] Categories provided; switching source to category.")
-            source = "category"
+        logger.info("[PHASE 1] Collecting job URLs from general listing...")
+        urls = self._collect_job_urls(pages=pages)
 
-        if source == "category":
-            logger.info("[PHASE 1] Collecting job URLs by category...")
-            url_pairs = self._collect_category_urls(pages=pages, categories=categories)
-        else:
-            logger.info("[PHASE 1] Collecting job URLs from general listing...")
-            url_pairs = self._collect_general_urls(pages=pages)
-
-        if not url_pairs:
+        if not urls:
             logger.error("[ERROR] No URLs found")
             return None, {"status": "no_urls"}
 
-        logger.info(f"[PHASE 1] Found {len(url_pairs)} URLs")
-        url_pairs, precheck_stats = self._filter_existing_url_pairs(
-            url_pairs,
+        logger.info(f"[PHASE 1] Found {len(urls)} URLs")
+        urls, precheck_stats = self._filter_existing_urls(
+            urls,
             recrawl_after_days=recrawl_after_days,
             force_recrawl_existing=force_recrawl_existing,
         )
 
-        if not url_pairs:
+        if not urls:
             logger.info("[PHASE 1] All URLs already exist and are fresh. Nothing to crawl.")
             return None, {"status": "all_existing_fresh", **precheck_stats}
 
         # Phase 2: Crawl → Queue → Clean → CSV
-        logger.info(f"[PHASE 2] Crawl + Clean pipeline ({len(url_pairs)} jobs)")
+        logger.info(f"[PHASE 2] Crawl + Clean pipeline ({len(urls)} jobs)")
 
         raw_queue = queue.Queue(maxsize=50)
         csv_lock = threading.Lock()
         stats = {
             "crawled": 0, "cleaned": 0, "failed_crawl": 0,
-            "failed_clean": 0, "geocoded": 0,
+            "failed_clean": 0,
             **precheck_stats,
         }
         done_crawling = threading.Event()
@@ -523,7 +477,7 @@ class CrawlScheduler:
                     title = str(raw_job.get('title', ''))[:50]
                     logger.info(f"  [CLEAN] {title}...")
 
-                    cleaned = self._clean_and_geocode(raw_job)
+                    cleaned = self._clean_job(raw_job)
 
                     if cleaned:
                         with csv_lock:
@@ -531,9 +485,6 @@ class CrawlScheduler:
                                 writer = csv.DictWriter(f, fieldnames=CSV_FIELDNAMES, extrasaction='ignore')
                                 writer.writerow(cleaned)
                             stats["cleaned"] += 1
-
-                        if cleaned.get('latitude'):
-                            stats["geocoded"] += 1
 
                         logger.info(f"  [CLEAN] ✓ {title}")
                     else:
@@ -549,10 +500,8 @@ class CrawlScheduler:
         clean_thread.start()
 
         # --- Crawl producer threads ---
-        import random
-
-        def _crawl_producer(pair_chunk, worker_id):
-            """pair_chunk: list of (url, category_name)"""
+        def _crawl_producer(url_chunk, worker_id):
+            """url_chunk: list of job URLs"""
             driver = None
             try:
                 # Stagger driver init to avoid UC race condition
@@ -564,10 +513,10 @@ class CrawlScheduler:
                 try:
                     driver.get("https://www.topcv.vn/")
                     time.sleep(random.uniform(2, 4))
-                except:
+                except Exception:
                     pass
 
-                for i, (url, cat_name) in enumerate(pair_chunk):
+                for i, url in enumerate(url_chunk):
                     if not self.running:
                         break
 
@@ -576,7 +525,7 @@ class CrawlScheduler:
                         logger.info(f"  [W{worker_id}] Restart browser (batch {i // 20 + 1})")
                         try:
                             driver.quit()
-                        except:
+                        except Exception:
                             pass
                         time.sleep(random.uniform(3, 6))
                         with _driver_init_lock:
@@ -584,14 +533,13 @@ class CrawlScheduler:
                         try:
                             driver.get("https://www.topcv.vn/")
                             time.sleep(random.uniform(2, 3))
-                        except:
+                        except Exception:
                             pass
 
-                    logger.info(f"  [W{worker_id}] [{i+1}/{len(pair_chunk)}] [{cat_name}] Crawling...")
+                    logger.info(f"  [W{worker_id}] [{i+1}/{len(url_chunk)}] Crawling...")
                     job_data = extract_job_simple(driver, url)
 
                     if job_data:
-                        job_data['category'] = cat_name  # Gán category từ listing URL
                         raw_queue.put(job_data)
                         stats["crawled"] += 1
                         time.sleep(random.uniform(3, 7))
@@ -605,13 +553,13 @@ class CrawlScheduler:
                 if driver:
                     try:
                         driver.quit()
-                    except:
+                    except Exception:
                         pass
 
-        # Split URL pairs across workers
+        # Split URLs across workers
         chunks = [[] for _ in range(threads)]
-        for i, pair in enumerate(url_pairs):
-            chunks[i % threads].append(pair)
+        for i, url in enumerate(urls):
+            chunks[i % threads].append(url)
 
         crawl_threads = []
         for wid, chunk in enumerate(chunks):
@@ -630,7 +578,7 @@ class CrawlScheduler:
 
         logger.info("=" * 70)
         logger.info("  PIPELINE COMPLETE")
-        logger.info(f"  Crawled: {stats['crawled']} | Cleaned: {stats['cleaned']} | Geocoded: {stats['geocoded']}")
+        logger.info(f"  Crawled: {stats['crawled']} | Cleaned: {stats['cleaned']}")
         logger.info(f"  Failed crawl: {stats['failed_crawl']} | Failed clean: {stats['failed_clean']}")
         logger.info(f"  Output: {output_file}")
         logger.info("=" * 70)
@@ -641,12 +589,12 @@ class CrawlScheduler:
     def _url_to_doc_id(self, url):
         return hashlib.md5(url.encode('utf-8')).hexdigest()
 
-    def _should_recrawl_existing(self, source, recrawl_after_days):
+    def _should_recrawl_existing(self, existing_doc, recrawl_after_days):
         """Return True if an existing ES doc should be crawled again."""
         if recrawl_after_days is None or recrawl_after_days < 0:
             return False
 
-        last_crawled = source.get("last_crawled") or source.get("crawled_date")
+        last_crawled = existing_doc.get("last_crawled") or existing_doc.get("crawled_date")
         if not last_crawled:
             return True
 
@@ -659,20 +607,20 @@ class CrawlScheduler:
         except Exception:
             return True
 
-    def _filter_existing_url_pairs(self, url_pairs, recrawl_after_days=7, force_recrawl_existing=False):
+    def _filter_existing_urls(self, urls, recrawl_after_days=7, force_recrawl_existing=False):
         """
         Skip URLs already present in ES when they were crawled recently.
 
         Existing docs older than recrawl_after_days are kept so the pipeline can
         detect changed content_hash and update the document.
         """
-        stats = {"input": len(url_pairs), "skipped_existing": 0, "recrawl_existing": 0}
-        if not self.es or force_recrawl_existing or not url_pairs:
-            return url_pairs, stats
+        stats = {"input": len(urls), "skipped_existing": 0, "recrawl_existing": 0}
+        if not self.es or force_recrawl_existing or not urls:
+            return urls, stats
 
         filtered = []
         try:
-            ids = [self._url_to_doc_id(url) for url, _ in url_pairs]
+            ids = [self._url_to_doc_id(url) for url in urls]
             existing_by_id = {}
             for start in range(0, len(ids), 500):
                 chunk_ids = ids[start:start + 500]
@@ -685,15 +633,15 @@ class CrawlScheduler:
                     if doc.get("found"):
                         existing_by_id[doc["_id"]] = doc.get("_source", {})
 
-            for url, cat_name in url_pairs:
+            for url in urls:
                 doc_id = self._url_to_doc_id(url)
                 existing = existing_by_id.get(doc_id)
                 if not existing:
-                    filtered.append((url, cat_name))
+                    filtered.append(url)
                     continue
 
                 if self._should_recrawl_existing(existing, recrawl_after_days):
-                    filtered.append((url, cat_name))
+                    filtered.append(url)
                     stats["recrawl_existing"] += 1
                 else:
                     stats["skipped_existing"] += 1
@@ -705,7 +653,7 @@ class CrawlScheduler:
             return filtered, stats
         except Exception as e:
             logger.warning(f"[PRECHECK] Cannot check existing URLs, crawl all URLs: {e}")
-            return url_pairs, stats
+            return urls, stats
 
     def upsert_to_es(self, csv_file):
         """Upsert cleaned CSV vào ES"""
@@ -719,15 +667,23 @@ class CrawlScheduler:
 
         # Embeddings
         all_embeddings = None
+        semantic_profiles = None
         if self.use_embeddings and self.embedding_service:
             logger.info("[EMBED] Generating embeddings (bge-m3)...")
             embed_start = time.time()
-            embed_texts = []
+            semantic_profiles = []
+            semantic_texts = []
             for _, row in df.iterrows():
-                text = self.embedding_service.build_job_text(row.to_dict())
-                embed_texts.append(text)
-            all_embeddings = self.embedding_service.encode(embed_texts, batch_size=32, show_progress=True)
-            logger.info(f"[OK] {len(all_embeddings)} embeddings in {time.time()-embed_start:.1f}s")
+                job = row.to_dict()
+                profile = self.semantic_profile_builder.build(job)
+                semantic_profiles.append(profile)
+                semantic_texts.append(profile["semantic_text"])
+            all_embeddings = self.embedding_service.encode(
+                semantic_texts, batch_size=32, show_progress=True,
+            )
+            logger.info(
+                f"[OK] {len(all_embeddings)} semantic embeddings in {time.time()-embed_start:.1f}s"
+            )
 
         stats = {"new": 0, "updated": 0, "unchanged": 0, "errors": 0}
         actions = []
@@ -757,7 +713,7 @@ class CrawlScheduler:
                 doc[bool_field] = bool(val) if not pd.isna(val) else False
 
             # Numeric fields
-            for num_field in ['salary_min', 'salary_max', 'latitude', 'longitude']:
+            for num_field in ['salary_min', 'salary_max']:
                 val = row.get(num_field)
                 if val and not pd.isna(val):
                     try:
@@ -769,16 +725,11 @@ class CrawlScheduler:
                     except (ValueError, TypeError):
                         pass
 
-            # Geo coordinates
-            lat = doc.get('latitude')
-            lng = doc.get('longitude')
-            if lat and lng and isinstance(lat, float) and isinstance(lng, float):
-                doc['geo_coordinates'] = [{"lat": lat, "lng": lng, "address": doc.get('company_address', '')}]
-
             doc["last_crawled"] = datetime.now().isoformat()
 
             # Embedding
             if all_embeddings is not None:
+                doc.update(semantic_profiles[idx])
                 doc["embedding"] = all_embeddings[idx].tolist()
 
             # Check existing
@@ -789,8 +740,26 @@ class CrawlScheduler:
                     if old_hash == new_hash:
                         existing_source = existing.get('_source', {})
                         update_doc = {"last_crawled": doc["last_crawled"]}
-                        if all_embeddings is not None and not existing_source.get("embedding"):
+                        embedding_updated = False
+                        structured_updated = False
+                        for field in [
+                            "requirements_tags", "specializations", "technical_skills",
+                        ]:
+                            if (
+                                doc.get(field, "")
+                                and doc.get(field, "") != existing_source.get(field, "")
+                            ):
+                                update_doc[field] = doc[field]
+                                structured_updated = True
+                        if all_embeddings is not None and not existing_source.get("semantic_text"):
+                            update_doc.update(semantic_profiles[idx])
                             update_doc["embedding"] = doc["embedding"]
+                            embedding_updated = True
+                        elif all_embeddings is not None and structured_updated:
+                            update_doc.update(semantic_profiles[idx])
+                            update_doc["embedding"] = doc["embedding"]
+                            embedding_updated = True
+                        if embedding_updated or structured_updated:
                             stats["updated"] += 1
                         else:
                             stats["unchanged"] += 1
@@ -897,28 +866,30 @@ class CrawlScheduler:
             else:
                 count = self.es.count(index=self.index_name)['count']
                 logger.info(f"[INDEX] Exists: {self.index_name} ({count:,} docs)")
+                from job_matching.ingestion.backfill_semantic import ensure_mapping
+                ensure_mapping(self.es, self.index_name)
         except Exception as e:
             logger.error(f"[ERROR] Ensure index: {e}")
 
     # ============= FULL CYCLE =============
     def run_cycle(
-        self, pages=5, threads=3, categories=None, source="general",
+        self, pages=5, threads=3,
         recrawl_after_days=7, force_recrawl_existing=False, **kwargs,
     ):
-        """1 chu kỳ: crawl → clean → geocode → upsert → check expired"""
+        """1 chu kỳ: crawl → clean → upsert → check expired"""
         start_time = datetime.now()
         logger.info("=" * 70)
         logger.info(f"[CYCLE] START — {start_time.strftime('%Y-%m-%d %H:%M:%S')}")
         logger.info("=" * 70)
 
-        stats = {"start_time": start_time.isoformat(), "pages": pages, "threads": threads, "source": source}
+        stats = {"start_time": start_time.isoformat(), "pages": pages, "threads": threads}
 
         # 1. Ensure index
         self.ensure_index()
 
-        # 2. Pipeline: crawl + clean + geocode
+        # 2. Pipeline: crawl + clean
         output_file, pipeline_stats = self.run_pipeline(
-            pages, threads, categories=categories, source=source,
+            pages, threads,
             recrawl_after_days=recrawl_after_days,
             force_recrawl_existing=force_recrawl_existing,
         )
@@ -928,6 +899,58 @@ class CrawlScheduler:
             stats["status"] = pipeline_stats.get("status", "pipeline_failed")
             self._log_run(stats)
             return stats
+
+        # Merge terms every cycle. Classify only after enough unrecognized
+        # terms accumulate, so crawl does not create tiny API batches.
+        try:
+            from job_matching.enrichment.build_term_taxonomy import (
+                DEFAULT_PENDING_JSONL,
+                DEFAULT_TERMS_CSV,
+                classify_new_terms,
+                merge_pending_terms,
+            )
+            taxonomy_terms = merge_pending_terms(DEFAULT_TERMS_CSV, DEFAULT_PENDING_JSONL)
+            stats["taxonomy_unique_terms"] = len(taxonomy_terms)
+            logger.info("[TAXONOMY] Candidate list now has %s unique terms", len(taxonomy_terms))
+
+            if AUTO_CLASSIFY_TAXONOMY:
+                taxonomy_result = classify_new_terms(
+                    minimum_terms=TAXONOMY_CLASSIFY_THRESHOLD,
+                    batch_size=TAXONOMY_BATCH_SIZE,
+                    sleep_sec=TAXONOMY_SLEEP_SEC,
+                    model=TAXONOMY_MODEL,
+                )
+                stats["taxonomy"] = taxonomy_result
+                if taxonomy_result["triggered"]:
+                    logger.info(
+                        "[TAXONOMY] Classified %s new terms; taxonomy now has %s rows",
+                        taxonomy_result["classified"],
+                        taxonomy_result["taxonomy_rows"],
+                    )
+                    if self.semantic_profile_builder is not None:
+                        from job_matching.enrichment.semantic_job_profile import (
+                            SemanticJobProfileBuilder,
+                        )
+                        self.semantic_profile_builder = SemanticJobProfileBuilder()
+                    stats["taxonomy_backfill"] = self._backfill_taxonomy_terms(
+                        taxonomy_result.get("classified_terms", [])
+                    )
+                else:
+                    logger.info(
+                        "[TAXONOMY] Waiting: %s/%s unclassified terms",
+                        taxonomy_result["remaining"],
+                        TAXONOMY_CLASSIFY_THRESHOLD,
+                    )
+        except Exception as exc:
+            logger.warning("[TAXONOMY] Maintenance skipped after error: %s", exc)
+
+        # The taxonomy file may have changed outside this scheduler process.
+        # Always reload before building semantic_text for the current crawl batch.
+        if self.semantic_profile_builder is not None:
+            from job_matching.enrichment.semantic_job_profile import (
+                SemanticJobProfileBuilder,
+            )
+            self.semantic_profile_builder = SemanticJobProfileBuilder()
 
         # 3. Upsert to ES
         upsert_stats = self.upsert_to_es(output_file)
@@ -997,13 +1020,6 @@ Ví dụ:
     parser.add_argument('--pages', type=int, default=5, help='Listing pages to crawl')
     parser.add_argument('--threads', type=int, default=3, help='Crawl threads')
     parser.add_argument(
-        '--source',
-        choices=['general', 'category'],
-        default=os.getenv("CRAWL_SOURCE", "general"),
-        help='URL source: general uses https://www.topcv.vn/viec-lam-tot-nhat?page=N; category uses predefined category pages',
-    )
-    parser.add_argument('--categories', nargs='+', help='Category keys to crawl (e.g. it marketing ke-toan)')
-    parser.add_argument(
         '--recrawl-after-days',
         type=int,
         default=int(os.getenv("CRAWL_RECHECK_DAYS", "7")),
@@ -1043,8 +1059,6 @@ Ví dụ:
         scheduler.run_cycle(
             pages=args.pages,
             threads=args.threads,
-            categories=args.categories,
-            source=args.source,
             recrawl_after_days=args.recrawl_after_days,
             force_recrawl_existing=args.force_recrawl_existing,
         )
@@ -1053,8 +1067,6 @@ Ví dụ:
             interval_minutes=args.interval,
             pages=args.pages,
             threads=args.threads,
-            categories=args.categories,
-            source=args.source,
             recrawl_after_days=args.recrawl_after_days,
             force_recrawl_existing=args.force_recrawl_existing,
         )
