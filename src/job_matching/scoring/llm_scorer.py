@@ -4,16 +4,18 @@ LLM Scorer - Đánh giá đa chiều CV-Job bằng LLM (Groq API).
 Pipeline production:
   Hybrid Search (BM25 + kNN + ESCO) → top-N → LLM 6-dim scoring → Final ranking
 
-Batch mode: gửi 1 CV + N jobs trong 1 request → LLM so sánh listwise
-→ ranking tốt hơn scoring từng cặp riêng lẻ.
+Batch mode: gửi 1 CV + N jobs trong 1 request, nhưng yêu cầu LLM chấm từng
+job độc lập, không so sánh thứ hạng giữa các job trong cùng batch.
 """
 
 import os
 import json
 import logging
+import re
 import queue
 import threading
 import time
+import unicodedata
 from typing import Dict, List, Optional
 
 logger = logging.getLogger(__name__)
@@ -27,21 +29,40 @@ def _env_int(name: str, default: int) -> int:
 
 
 DEFAULT_SCORING_MODEL = os.environ.get("GROQ_SCORING_MODEL", "openai/gpt-oss-120b")
+DEFAULT_GROQ_DETAIL_MODEL = os.environ.get("GROQ_DETAIL_MODEL", "llama-3.3-70b-versatile")
 DEFAULT_SCORING_MAX_COMPLETION_TOKENS = _env_int(
     "GROQ_SCORING_MAX_COMPLETION_TOKENS",
     3000,
 )
 DEFAULT_SCORING_PROVIDER = os.environ.get("SCORING_PROVIDER", "groq").strip().lower()
+DEFAULT_DETAIL_SCORING_PROVIDER = os.environ.get(
+    "DETAIL_SCORING_PROVIDER",
+    DEFAULT_SCORING_PROVIDER,
+).strip().lower()
 DEFAULT_COHERE_SCORING_MODEL = os.environ.get("COHERE_SCORING_MODEL", "command-r-08-2024")
 DEFAULT_COHERE_SCORING_MAX_TOKENS = _env_int("COHERE_SCORING_MAX_TOKENS", 2500)
+DEFAULT_AEROLINK_BASE_URL = os.environ.get(
+    "ANTHROPIC_BASE_URL",
+    os.environ.get("AEROLINK_BASE_URL", "https://capi.aerolink.lat"),
+)
+DEFAULT_AEROLINK_SCORING_MODEL = os.environ.get(
+    "AEROLINK_SCORING_MODEL",
+    os.environ.get("CLAUDE_ANNOTATION_MODEL", "claude-sonnet-4-6"),
+)
+DEFAULT_AEROLINK_DETAIL_MODEL = os.environ.get(
+    "AEROLINK_DETAIL_MODEL",
+    os.environ.get("CLAUDE_ANNOTATION_MODEL", DEFAULT_AEROLINK_SCORING_MODEL),
+)
+DEFAULT_AEROLINK_SCORING_MAX_TOKENS = _env_int("AEROLINK_SCORING_MAX_TOKENS", 3000)
+DEFAULT_AEROLINK_DETAIL_MAX_TOKENS = _env_int("AEROLINK_DETAIL_MAX_TOKENS", 5000)
 DEFAULT_DETAIL_MAX_COMPLETION_TOKENS = _env_int("GROQ_DETAIL_MAX_COMPLETION_TOKENS", 5000)
 DEFAULT_COHERE_DETAIL_MAX_TOKENS = _env_int("COHERE_DETAIL_MAX_TOKENS", 4000)
-DEFAULT_SCORING_BATCH_WORKERS = _env_int("SCORING_BATCH_WORKERS", 6)
+DEFAULT_SCORING_BATCH_WORKERS = _env_int("SCORING_BATCH_WORKERS", 0)
 DEFAULT_SCORING_BATCH_SIZE = _env_int("SCORING_BATCH_SIZE", 5)
-DEFAULT_SCORING_TIME_LIMIT_SECONDS = _env_int("SCORING_TIME_LIMIT_SECONDS", 60)
+DEFAULT_SCORING_TIME_LIMIT_SECONDS = _env_int("SCORING_TIME_LIMIT_SECONDS", 30)
 DEFAULT_SCORING_REQUEST_TIMEOUT_SECONDS = _env_int(
     "SCORING_REQUEST_TIMEOUT_SECONDS",
-    45,
+    30,
 )
 
 # Groq API keys (rotation để tránh rate limit)
@@ -49,8 +70,11 @@ _API_KEYS = []
 _current_key_idx = 0
 _COHERE_API_KEYS = []
 _current_cohere_key_idx = 0
+_AEROLINK_API_KEYS = []
+_current_aerolink_key_idx = 0
 _GROQ_KEY_LOCK = threading.RLock()
 _COHERE_KEY_LOCK = threading.RLock()
+_AEROLINK_KEY_LOCK = threading.RLock()
 
 SCORING_DIMENSIONS = [
     "relevance",   # Phù hợp tổng thể
@@ -159,12 +183,55 @@ def _get_cohere_key_pool() -> List[str]:
         return list(_COHERE_API_KEYS)
 
 
+def _load_aerolink_api_keys():
+    """Load Aerolink API keys from environment."""
+    global _AEROLINK_API_KEYS
+    if _AEROLINK_API_KEYS:
+        return
+
+    keys = []
+    for prefix in ("ANTHROPIC_API_KEY", "AEROLINK_API_KEY", "aero_api_key"):
+        for i in range(1, 10):
+            key = os.environ.get(f"{prefix}_{i}")
+            if key and key not in keys:
+                keys.append(key)
+        single = os.environ.get(prefix)
+        if single and single not in keys:
+            keys.append(single)
+
+    _AEROLINK_API_KEYS = keys
+    if keys:
+        logger.info(f"Loaded {len(keys)} Aerolink API key(s)")
+    else:
+        logger.warning("No Aerolink API keys found")
+
+
+def _get_next_aerolink_key():
+    """Round-robin Aerolink key rotation."""
+    global _current_aerolink_key_idx
+    with _AEROLINK_KEY_LOCK:
+        _load_aerolink_api_keys()
+        if not _AEROLINK_API_KEYS:
+            return None
+        key = _AEROLINK_API_KEYS[_current_aerolink_key_idx % len(_AEROLINK_API_KEYS)]
+        _current_aerolink_key_idx += 1
+        return key
+
+
+def _get_aerolink_key_pool() -> List[str]:
+    """Return configured Aerolink keys in stable order."""
+    with _AEROLINK_KEY_LOCK:
+        _load_aerolink_api_keys()
+        return list(_AEROLINK_API_KEYS)
+
+
 def _resolve_provider_config(
     model: Optional[str] = None,
     max_retries: Optional[int] = None,
+    detail: bool = False,
 ) -> tuple[str, str, int]:
     """Resolve the explicitly configured scoring provider and its limits."""
-    provider = DEFAULT_SCORING_PROVIDER
+    provider = DEFAULT_DETAIL_SCORING_PROVIDER if detail else DEFAULT_SCORING_PROVIDER
     if provider == "cohere":
         _load_cohere_api_keys()
         return (
@@ -172,11 +239,18 @@ def _resolve_provider_config(
             model or DEFAULT_COHERE_SCORING_MODEL,
             max_retries if max_retries is not None else max(3, len(_COHERE_API_KEYS) or 1),
         )
+    if provider == "aerolink":
+        _load_aerolink_api_keys()
+        return (
+            provider,
+            model or (DEFAULT_AEROLINK_DETAIL_MODEL if detail else DEFAULT_AEROLINK_SCORING_MODEL),
+            max_retries if max_retries is not None else max(3, len(_AEROLINK_API_KEYS) or 1),
+        )
 
     _load_api_keys()
     return (
         "groq",
-        model or DEFAULT_SCORING_MODEL,
+        model or (DEFAULT_GROQ_DETAIL_MODEL if detail else DEFAULT_SCORING_MODEL),
         max_retries if max_retries is not None else max(3, len(_API_KEYS) or 1),
     )
 
@@ -193,27 +267,109 @@ def _truncate_prompt_text(value, limit: int) -> str:
     return candidate.rstrip() + "..."
 
 
+def _clean_prompt_value(value) -> str:
+    text = str(value or "").strip()
+    return "" if text.lower() in {"none", "nan", "null"} else text
+
+
+def _split_prompt_terms(value) -> List[str]:
+    text = _clean_prompt_value(value)
+    if not text:
+        return []
+    parts = re.split(r"[,;|/]\s*|\n+", text)
+    return [_clean_prompt_value(part) for part in parts if _clean_prompt_value(part)]
+
+
+def _dedupe_prompt_terms(values: List[str], limit: int = 16) -> List[str]:
+    seen = set()
+    result = []
+    for value in values:
+        key = _fold_text(value)
+        if not key or key in seen:
+            continue
+        seen.add(key)
+        result.append(value)
+        if len(result) >= limit:
+            break
+    return result
+
+
+def _has_phrase_evidence(evidence: str, term: str) -> bool:
+    term = _clean_prompt_value(term)
+    if not term:
+        return False
+    pattern = r"(?<!\w)" + re.escape(term).replace(r"\ ", r"\s+") + r"(?!\w)"
+    return bool(re.search(pattern, evidence, flags=re.I | re.UNICODE))
+
+
+def _semantic_requirement_terms(job: dict) -> List[str]:
+    """Use taxonomy-backed semantic profile terms before noisy raw skills."""
+    semantic_text = _clean_prompt_value(job.get("semantic_text"))
+    if not semantic_text:
+        return []
+
+    useful_labels = {
+        "linh vuc",
+        "nghiep vu",
+        "ky nang ky thuat",
+        "cong cu",
+        "ngoai ngu",
+        "chung chi",
+    }
+    terms = []
+    for match in re.finditer(r"(?:^|\.\s+)([^.:]{1,48}):\s*([^.]*)", semantic_text):
+        label = _fold_text(match.group(1))
+        if label in useful_labels:
+            terms.extend(_split_prompt_terms(match.group(2)))
+    return _dedupe_prompt_terms(terms)
+
+
+def _job_requirement_terms_for_prompt(job: dict) -> str:
+    """Prefer curated/evidence-backed job requirements over stale raw skills."""
+    req_tags = _clean_prompt_value(job.get("requirements_tags"))
+    if req_tags:
+        return req_tags
+
+    semantic_terms = _semantic_requirement_terms(job)
+    if semantic_terms:
+        return ", ".join(semantic_terms)
+
+    raw_terms = _split_prompt_terms(job.get("technical_skills"))
+    if not raw_terms:
+        return ""
+
+    evidence = " ".join(
+        _clean_prompt_value(job.get(field))
+        for field in ["title", "job_description", "job_requirements"]
+    )
+    kept = [term for term in raw_terms if _has_phrase_evidence(evidence, term)]
+    return ", ".join(_dedupe_prompt_terms(kept))
+
+
 def _format_job_for_prompt(job: dict, index: int) -> str:
     """Format 1 job thành text ngắn gọn cho LLM prompt."""
-    title = job.get("title", "N/A")
-    company = job.get("company") or job.get("company_name", "N/A")
+    title = _clean_prompt_value(job.get("title")) or "N/A"
+    company = _clean_prompt_value(job.get("company") or job.get("company_name")) or "N/A"
     salary = job.get("job_salary", "Thỏa thuận")
-    location = job.get("job_location", "N/A")
-    experience = job.get("experience") or job.get("job_experience", "N/A")
-    education_req = job.get("education_level") or job.get("job_education", "")
-    education_field = job.get("education_field", "")
+    location = _clean_prompt_value(job.get("job_location")) or "N/A"
+    experience = _clean_prompt_value(job.get("experience") or job.get("job_experience")) or "N/A"
+    education_req = _clean_prompt_value(job.get("education_level") or job.get("job_education"))
+    education_field = _clean_prompt_value(job.get("education_field"))
     requirements = _truncate_prompt_text(job.get("job_requirements", ""), 1200)
     description = _truncate_prompt_text(job.get("job_description", ""), 200)
-    tech_skills = job.get("technical_skills", "")
-    specializations = job.get("specializations", "")
-    req_tags = job.get("requirements_tags", "")
+    requirement_terms = _job_requirement_terms_for_prompt(job)
+    specializations = _clean_prompt_value(job.get("specializations"))
+    languages = _clean_prompt_value(job.get("languages"))
+    certificates = _clean_prompt_value(job.get("certificates"))
 
     return f"""[JOB {index + 1}] {title}
 Công ty: {company}
 Nhóm chuyên môn: {specializations}
 Lương: {salary} | Địa điểm: {location} | Kinh nghiệm yêu cầu: {experience}
 Yêu cầu học vấn: {education_req} {education_field}
-Kỹ năng/yêu cầu chính: {req_tags or tech_skills}
+Kỹ năng/yêu cầu chính: {requirement_terms or "Không nêu rõ"}
+Ngoại ngữ yêu cầu: {languages or "Không nêu rõ"}
+Chứng chỉ yêu cầu: {certificates or "Không nêu rõ"}
 Mô tả công việc: {description}
 Yêu cầu chi tiết: {requirements}"""
 
@@ -285,6 +441,8 @@ def _build_batch_prompt(cv_data: dict, jobs: List[dict]) -> str:
 
 ## Bối cảnh
 Bạn là chuyên gia tuyển dụng Việt Nam (TopCV). Đánh giá 1 ứng viên với {n} vị trí.
+Mỗi JOB phải được chấm độc lập như một cặp CV-JD riêng; không so sánh tương đối,
+không cố cân bằng điểm giữa các JOB trong batch, và không để JOB trước/sau ảnh hưởng đến điểm.
 
 ## THÔNG TIN ỨNG VIÊN
 {cv_text}
@@ -310,6 +468,14 @@ Không chỉ đếm keyword. Phân biệt:
 - Frontend: JS/TS + React/Vue + UI/API integration là lõi.
 Nếu chỉ khớp 1 keyword lớn (VD: Java) nhưng thiếu stack lõi (VD: Spring, backend API, SQL), skills tối đa 5-6.
 
+### Đối chiếu ngoại ngữ và chứng chỉ
+Khi JD yêu cầu ngoại ngữ hoặc chứng chỉ ngoại ngữ, phải đối chiếu theo cùng ngôn ngữ trước khi kết luận thiếu:
+- Tiếng Anh: IELTS, TOEIC, TOEFL, VSTEP, Cambridge đều là bằng chứng năng lực tiếng Anh, nhưng khác hệ quy đổi.
+- Tiếng Nhật: JLPT là bằng chứng năng lực tiếng Nhật.
+- Tiếng Trung: HSK là bằng chứng năng lực tiếng Trung.
+- Tiếng Hàn: TOPIK là bằng chứng năng lực tiếng Hàn.
+Nếu CV có chứng chỉ cùng ngôn ngữ ở mức cao hơn hoặc tương đương, KHÔNG viết là "thiếu chứng chỉ" một cách máy móc. Ví dụ: CV có IELTS 8.5 và JD cần tiếng Anh tốt/TOEIC thì phải ghi là tiếng Anh mạnh; chỉ nêu thiếu TOEIC nếu JD bắt buộc đúng TOEIC và không chấp nhận chứng chỉ tương đương.
+
 ### 3. experience — Kinh nghiệm ĐÚNG VAI TRÒ/DOMAIN
 Không được chấm experience chỉ bằng số năm. Tách 3 yếu tố:
 - Số năm so với JD (40%)
@@ -329,16 +495,17 @@ Nếu JD yêu cầu Bank/Fintech/Onsite Bank, kinh nghiệm ngân hàng là lợ
 KHÔNG chấm location (tính riêng bằng Goong Maps GPS).
 
 ## NHẬN XÉT (comment)
-Viết 2-3 câu tiếng Việt (35-70 từ), có tính hướng dẫn hành động. PHẢI có đủ:
+Viết đúng 1 câu tiếng Việt ngắn, tối đa 30 từ, có tính hướng dẫn hành động. PHẢI có đủ:
 - Khớp gì: kỹ năng/role/domain nào đang khớp.
 - Thiếu/rủi ro gì: kỹ năng lõi, vai trò, domain, số năm đúng vai trò.
 - Nên cải thiện/ứng tuyển thế nào: bổ sung skill/domain nào hoặc phù hợp hơn với loại job nào.
 KHÔNG viết chung chung "phù hợp", "khớp", "KN đạt yêu cầu" nếu không nêu rõ kinh nghiệm thuộc vai trò/domain nào.
+Giữ comment ngắn để JSON không bị cắt cụt khi chấm batch.
 
 ## OUTPUT — CHỈ JSON array, không giải thích
 [
-  {{"job": 1, "relevance": 8, "skills": 8, "experience": 7, "education": 9, "salary": 7, "comment": "Khớp Python, React và Docker với vị trí Fullstack; tổng KN 2 năm gần yêu cầu 3 năm và đúng hướng phát triển web. Nên bổ sung CI/CD và dự án backend API rõ hơn để tăng độ tin cậy."}},
-  {{"job": 2, "relevance": 5, "skills": 5, "experience": 5, "education": 8, "salary": 6, "comment": "Có Java nhưng chưa thấy Spring Boot, backend API, SQL hay kinh nghiệm domain ngân hàng; tổng KN 3 năm không đủ chứng minh là 3 năm Backend Java Bank. Nên bổ sung dự án Java backend/Spring và nghiệp vụ banking/fintech trước khi ưu tiên job này."}}
+  {{"job": 1, "relevance": 8, "skills": 8, "experience": 7, "education": 9, "salary": 7, "comment": "Khớp Python/React, còn nên bổ sung CI/CD và backend API rõ hơn."}},
+  {{"job": 2, "relevance": 5, "skills": 5, "experience": 5, "education": 8, "salary": 6, "comment": "Có Java nhưng thiếu Spring/backend API và kinh nghiệm banking, nên bổ sung dự án đúng domain."}}
 ]"""
 
 
@@ -385,7 +552,8 @@ Mục tiêu là tạo bằng chứng trung gian có cấu trúc trước khi cho
 - Nếu JD yêu cầu domain cụ thể như banking/fintech/viễn thông mà CV không có bằng chứng, phải ghi rõ trong `experience_evidence.gap_note`.
 - Không chấm location; location được hệ thống tính riêng bằng rule.
 - Với salary: nếu lương job cao hơn hoặc nằm trong kỳ vọng của ứng viên thì điểm cao; chỉ chấm thấp khi lương job thấp hơn kỳ vọng đáng kể. Nếu job ghi thỏa thuận/không rõ thì cho điểm trung tính 5-6.
-- Các trường `relevance`, `skills`, `experience`, `education`, `salary` BẮT BUỘC là số nguyên 0-10. Không dùng chữ như "medium", "good", "high".
+- Với ngoại ngữ/chứng chỉ ngoại ngữ, đối chiếu theo cùng ngôn ngữ. IELTS/TOEIC/TOEFL/VSTEP/Cambridge đều là bằng chứng tiếng Anh; JLPT là tiếng Nhật; HSK là tiếng Trung; TOPIK là tiếng Hàn. Không kết luận thiếu TOEIC nếu CV có IELTS cao và JD chỉ yêu cầu tiếng Anh hoặc chấp nhận chứng chỉ tương đương.
+- Không tự chấm điểm. Hệ thống sẽ tính điểm bằng công thức từ evidence bạn trả về.
 
 ## OUTPUT
 Chỉ trả về JSON array có đúng 1 object, không markdown, không giải thích ngoài JSON.
@@ -407,11 +575,6 @@ Object bắt buộc có schema:
     }},
     "education_gap": "đạt/thiếu/vượt yêu cầu học vấn, kèm lý do ngắn",
     "salary_note": "so sánh lương kỳ vọng với lương job",
-    "relevance": 0,
-    "skills": 0,
-    "experience": 0,
-    "education": 0,
-    "salary": 0,
     "comment": "2-3 câu tiếng Việt: khớp gì, thiếu gì, nên cải thiện gì"
   }}
 ]
@@ -470,6 +633,10 @@ def score_batch(
         raw_scores = _call_parallel_batches(
             provider, cv_data, jobs, model, _get_cohere_key_pool(), max_retries
         )
+    elif provider == "aerolink":
+        raw_scores = _call_parallel_batches(
+            provider, cv_data, jobs, model, _get_aerolink_key_pool(), max_retries
+        )
     else:
         raw_scores = _call_parallel_batches(
             provider, cv_data, jobs, model, _get_groq_key_pool(), max_retries
@@ -492,7 +659,7 @@ def score_batch(
         scores = {}
         for dim in SCORING_DIMENSIONS:
             val = s.get(dim, 5)
-            scores[dim] = max(0, min(10, int(val)))
+            scores[dim] = _coerce_score(val)
 
         total = sum(scores[dim] * w.get(dim, 0) for dim in SCORING_DIMENSIONS)
         comment = s.get("comment", "")
@@ -524,7 +691,7 @@ def score_detail_with_evidence(
     because it costs more tokens than fast batch scoring.
     """
     w = weights or DEFAULT_WEIGHTS
-    provider, model, max_retries = _resolve_provider_config(model, max_retries)
+    provider, model, max_retries = _resolve_provider_config(model, max_retries, detail=True)
 
     prompt = _build_detail_evidence_prompt(cv_data, job)
     t0 = time.time()
@@ -532,6 +699,11 @@ def score_detail_with_evidence(
         raw = _call_cohere_prompt(
             prompt, model, max_retries,
             max_tokens=DEFAULT_COHERE_DETAIL_MAX_TOKENS,
+        )
+    elif provider == "aerolink":
+        raw = _call_aerolink_prompt(
+            prompt, model, max_retries,
+            max_tokens=DEFAULT_AEROLINK_DETAIL_MAX_TOKENS,
         )
     else:
         raw = _call_groq_prompt(
@@ -561,12 +733,6 @@ def score_detail_with_evidence(
             result["fallback"] = True
             return result
         return _empty_score(0)
-    scores = {}
-    for dim in ["relevance", "skills", "experience", "education", "salary"]:
-        scores[dim] = _coerce_score(item.get(dim, 5))
-    scores["location"] = 5
-
-    total = sum(scores[dim] * w.get(dim, 0) for dim in SCORING_DIMENSIONS)
     evidence = {
         "required_core_skills": _as_list(item.get("required_core_skills")),
         "matched_exact": _as_list(item.get("matched_exact")),
@@ -577,6 +743,10 @@ def score_detail_with_evidence(
         "education_gap": str(item.get("education_gap", "") or ""),
         "salary_note": str(item.get("salary_note", "") or ""),
     }
+    scores, score_basis = _compute_detail_scores(cv_data, job, evidence)
+    evidence["score_basis"] = score_basis
+
+    total = sum(scores[dim] * w.get(dim, 0) for dim in SCORING_DIMENSIONS)
 
     return {
         "job_index": 0,
@@ -584,6 +754,7 @@ def score_detail_with_evidence(
         "total": round(total, 2),
         "comment": str(item.get("comment", "") or ""),
         "evidence": evidence,
+        "scoring_method": "formula_from_llm_evidence",
         "llm_time": round(llm_elapsed, 1),
     }
 
@@ -603,17 +774,30 @@ def _call_parallel_batches(
     """
     if not key_pool:
         return None
-    if len(key_pool) <= 1 or len(jobs) <= 1:
+    batch_size = max(1, DEFAULT_SCORING_BATCH_SIZE)
+    if len(jobs) <= batch_size:
         if provider == "cohere":
             return _call_cohere_batch(cv_data, jobs, model, max_retries)
+        if provider == "aerolink":
+            return _call_aerolink_batch(cv_data, jobs, model, max_retries)
         return _call_groq_batch(cv_data, jobs, model, max_retries)
 
-    batch_size = max(1, DEFAULT_SCORING_BATCH_SIZE)
     chunks = [
         (offset, jobs[offset:offset + batch_size])
         for offset in range(0, len(jobs), batch_size)
     ]
-    worker_count = min(DEFAULT_SCORING_BATCH_WORKERS, len(key_pool), len(chunks))
+    configured_workers = DEFAULT_SCORING_BATCH_WORKERS or len(key_pool)
+    worker_count = min(configured_workers, len(key_pool), len(chunks))
+    logger.info(
+        "Scoring queue start: provider=%s, jobs=%s, batches=%s, keys=%s, workers=%s, batch_size=%s, limit=%ss",
+        provider,
+        len(jobs),
+        len(chunks),
+        len(key_pool),
+        worker_count,
+        batch_size,
+        DEFAULT_SCORING_TIME_LIMIT_SECONDS,
+    )
     raw_scores: List[dict] = [{} for _ in jobs]
     task_queue: queue.Queue = queue.Queue()
     for chunk in chunks:
@@ -636,6 +820,11 @@ def _call_parallel_batches(
             try:
                 if provider == "cohere":
                     scores = _call_cohere_batch(
+                        cv_data, chunk_jobs, model, max_retries=1,
+                        api_key=api_key, request_timeout=request_timeout,
+                    )
+                elif provider == "aerolink":
+                    scores = _call_aerolink_batch(
                         cv_data, chunk_jobs, model, max_retries=1,
                         api_key=api_key, request_timeout=request_timeout,
                     )
@@ -731,6 +920,7 @@ def _call_groq_batch(
             client = Groq(
                 api_key=selected_key,
                 timeout=request_timeout or DEFAULT_SCORING_REQUEST_TIMEOUT_SECONDS,
+                max_retries=0,
             )
             response = client.chat.completions.create(
                 model=model,
@@ -785,7 +975,7 @@ def _call_groq_prompt(
             return None
 
         try:
-            client = Groq(api_key=selected_key)
+            client = Groq(api_key=selected_key, max_retries=0)
             response = client.chat.completions.create(
                 model=model,
                 messages=[
@@ -962,6 +1152,99 @@ def _call_cohere_prompt(
     return None
 
 
+def _call_aerolink_batch(
+    cv_data: dict,
+    jobs: List[dict],
+    model: str,
+    max_retries: int,
+    api_key: Optional[str] = None,
+    request_timeout: Optional[int] = None,
+) -> Optional[List[dict]]:
+    """Call Claude through Aerolink's Anthropic-compatible endpoint."""
+    prompt = _build_batch_prompt(cv_data, jobs)
+    raw = _call_aerolink_chat(
+        prompt,
+        model,
+        max_retries,
+        max_tokens=DEFAULT_AEROLINK_SCORING_MAX_TOKENS,
+        api_key=api_key,
+        request_timeout=request_timeout,
+    )
+    return _parse_scores_json(raw.strip(), len(jobs)) if raw else None
+
+
+def _call_aerolink_prompt(
+    prompt: str,
+    model: str,
+    max_retries: int,
+    max_tokens: int,
+    api_key: Optional[str] = None,
+) -> Optional[str]:
+    """Call Aerolink with an already-built prompt and return raw text."""
+    return _call_aerolink_chat(
+        prompt,
+        model,
+        max_retries,
+        max_tokens=max_tokens,
+        api_key=api_key,
+        request_timeout=90,
+    )
+
+
+def _call_aerolink_chat(
+    prompt: str,
+    model: str,
+    max_retries: int,
+    max_tokens: int,
+    api_key: Optional[str] = None,
+    request_timeout: Optional[int] = None,
+) -> Optional[str]:
+    """Shared Anthropic-compatible Aerolink call."""
+    try:
+        import anthropic
+    except ImportError:
+        logger.error("anthropic package not installed - pip install anthropic")
+        return None
+
+    for attempt in range(max_retries):
+        selected_key = api_key or _get_next_aerolink_key()
+        if not selected_key:
+            logger.error("No Aerolink API keys available")
+            return None
+
+        try:
+            client = anthropic.Anthropic(
+                api_key=selected_key,
+                base_url=DEFAULT_AEROLINK_BASE_URL,
+                timeout=request_timeout or DEFAULT_SCORING_REQUEST_TIMEOUT_SECONDS,
+            )
+            message = client.messages.create(
+                model=model,
+                max_tokens=max_tokens,
+                thinking={"type": "disabled"},
+                system="Bạn là hệ thống phân tích CV-JD. Chỉ trả về JSON hợp lệ, không markdown.",
+                messages=[{"role": "user", "content": prompt}],
+            )
+            raw = ""
+            for block in (message.content or []):
+                if hasattr(block, "text") and getattr(block, "type", "") != "thinking":
+                    raw += block.text
+            return raw.strip()
+        except Exception as e:
+            err_str = str(e).lower()
+            if "429" in err_str or "rate" in err_str:
+                logger.warning(
+                    "Aerolink rate limit hit; switching key immediately "
+                    f"(attempt {attempt + 1}/{max_retries})"
+                )
+                continue
+            logger.error(f"Aerolink API error: {e}")
+            if attempt < max_retries - 1:
+                time.sleep(2)
+
+    return None
+
+
 def _parse_scores_json(text: str, expected_count: int) -> Optional[List[dict]]:
     """Parse LLM response thành list of score dicts."""
     # Xóa markdown backticks
@@ -1041,6 +1324,240 @@ def _as_list(value) -> List[str]:
     if isinstance(value, str):
         return [part.strip() for part in value.split(",") if part.strip()]
     return [str(value).strip()]
+
+
+def _fold_text(value) -> str:
+    """Lowercase ASCII-ish text for robust Vietnamese keyword checks."""
+    text = unicodedata.normalize("NFKD", str(value or ""))
+    text = "".join(ch for ch in text if not unicodedata.combining(ch))
+    text = text.replace("đ", "d").replace("Đ", "D")
+    return re.sub(r"\s+", " ", text).strip().lower()
+
+
+def _parse_years(value) -> Optional[float]:
+    """Parse common CV/JD experience values to years."""
+    if value is None:
+        return None
+    if isinstance(value, (int, float)):
+        return float(value)
+
+    text = _fold_text(value)
+    if not text:
+        return None
+    code_map = {
+        "no_requirement": 0.0,
+        "under_1": 0.5,
+        "1": 1.0,
+        "2": 2.0,
+        "3": 3.0,
+        "4": 4.0,
+        "5": 5.0,
+        "over_5": 6.0,
+        "all": 0.0,
+    }
+    if text in code_map:
+        return code_map[text]
+    if any(kw in text for kw in ["khong yeu cau", "chua co", "fresher"]):
+        return 0.0
+    if "duoi 1" in text or "under 1" in text:
+        return 0.5
+    if "tren 5" in text or "hon 5" in text or "5+" in text:
+        return 6.0
+
+    numbers = [float(x) for x in re.findall(r"\d+(?:[.,]\d+)?", text.replace(",", "."))]
+    if not numbers:
+        return None
+    return max(numbers)
+
+
+def _education_level(value) -> Optional[int]:
+    """Map education text/code to ordered level."""
+    text = _fold_text(value)
+    if not text:
+        return None
+    if any(kw in text for kw in ["sau dai hoc", "thac si", "tien si", "master", "phd"]):
+        return 5
+    if any(kw in text for kw in ["dai hoc", "cu nhan", "ky su", "bachelor", "dai_hoc"]):
+        return 4
+    if any(kw in text for kw in ["cao dang", "college", "cao_dang"]):
+        return 3
+    if any(kw in text for kw in ["trung cap", "trung_cap"]):
+        return 2
+    if any(kw in text for kw in ["thpt", "trung hoc", "trung_hoc", "pho thong"]):
+        return 1
+    if any(kw in text for kw in ["khong yeu cau", "khong ro", "all"]):
+        return 0
+    return None
+
+
+def _match_factor(value, *, not_required: float = 1.0) -> float:
+    """Convert LLM qualitative match labels to a continuous 0-1 factor."""
+    text = _fold_text(value)
+    if "not_required" in text or "not required" in text or "khong yeu cau" in text:
+        return not_required
+    if "strong" in text or "tot" in text or "dat" in text:
+        return 1.0
+    if "partial" in text or "mot phan" in text or "gan" in text:
+        return 0.65
+    if "weak" in text or "yeu" in text:
+        return 0.35
+    if "none" in text or "khong" in text:
+        return 0.0
+    return 0.5
+
+
+def _score_skills_from_evidence(evidence: dict) -> tuple[float, dict]:
+    required = _as_list(evidence.get("required_core_skills"))
+    exact = _as_list(evidence.get("matched_exact"))
+    related = _as_list(evidence.get("matched_synonym_or_esco"))
+    transferable = _as_list(evidence.get("transferable"))
+    missing = _as_list(evidence.get("missing_core"))
+
+    denominator = len(required) or (len(exact) + len(related) + len(transferable) + len(missing))
+    if denominator <= 0:
+        return 5.0, {"reason": "no_core_skill_evidence"}
+
+    direct_weighted = len(exact) * 1.0 + len(related) * 0.75
+    transferable_credit = min(len(transferable) * 0.35, denominator * 0.20)
+    weighted = direct_weighted + transferable_credit
+    score = max(0.0, min(10.0, 10.0 * weighted / denominator))
+    if not exact and not related:
+        score = min(score, 4.0)
+    elif (len(exact) + len(related)) < max(1, denominator / 2):
+        score = min(score, 6.0)
+    return round(score, 1), {
+        "formula": "10 * (exact*1.0 + related*0.75 + capped_transferable) / required_core",
+        "required_core": denominator,
+        "exact": len(exact),
+        "related": len(related),
+        "transferable": len(transferable),
+        "transferable_credit": round(transferable_credit, 2),
+        "missing": len(missing),
+    }
+
+
+def _score_experience_from_evidence(cv_data: dict, job: dict, evidence: dict) -> tuple[float, dict]:
+    exp_ev = evidence.get("experience_evidence") if isinstance(evidence.get("experience_evidence"), dict) else {}
+    cv_years = (
+        _parse_years(exp_ev.get("cv_total_years"))
+        or _parse_years(cv_data.get("experience"))
+        or 0.0
+    )
+    req_years = (
+        _parse_years(exp_ev.get("jd_required_years"))
+        or _parse_years(job.get("experience"))
+        or _parse_years(job.get("job_experience"))
+        or 0.0
+    )
+
+    role_factor = _match_factor(exp_ev.get("role_match"))
+    domain_factor = _match_factor(exp_ev.get("domain_match"), not_required=1.0)
+
+    if req_years <= 0:
+        year_factor = 1.0 if cv_years <= 1.0 else max(0.35, 1.0 - max(0.0, cv_years - 1.0) * 0.12)
+    else:
+        year_factor = min(1.0, cv_years / req_years)
+        if cv_years > req_years + 3:
+            year_factor *= 0.85
+
+    score = 10.0 * (0.45 * year_factor + 0.40 * role_factor + 0.15 * domain_factor)
+    return round(max(0.0, min(10.0, score)), 1), {
+        "formula": "10 * (0.45*year + 0.40*role + 0.15*domain)",
+        "cv_years": cv_years,
+        "required_years": req_years,
+        "year_factor": round(year_factor, 2),
+        "role_factor": role_factor,
+        "domain_factor": domain_factor,
+    }
+
+
+def _score_education_from_evidence(cv_data: dict, job: dict, evidence: dict) -> tuple[float, dict]:
+    cv_level = _education_level(cv_data.get("education"))
+    req_level = (
+        _education_level(job.get("education_level"))
+        or _education_level(job.get("job_education"))
+        or _education_level(job.get("education"))
+    )
+    gap_text = _fold_text(evidence.get("education_gap"))
+
+    if not req_level:
+        score = 7.0
+    elif cv_level is None:
+        score = 5.0
+    elif cv_level >= req_level:
+        score = 9.0 if cv_level == req_level else 10.0
+    else:
+        score = max(2.0, 10.0 - 3.0 * (req_level - cv_level))
+
+    if any(kw in gap_text for kw in ["thieu", "khong dat", "chua dat"]):
+        score = min(score, 6.0)
+    if any(kw in gap_text for kw in ["dat", "vuot"]):
+        score = max(score, 8.0)
+
+    return round(score, 1), {
+        "formula": "10 if cv>=required else max(2, 10 - 3*gap)",
+        "cv_level": cv_level,
+        "required_level": req_level,
+    }
+
+
+def _score_salary_from_data(cv_data: dict, job: dict) -> tuple[float, dict]:
+    expected_salary = cv_data.get("salary") or cv_data.get("expected_salary")
+    job_salary = job.get("job_salary") or job.get("salary") or ""
+    try:
+        from job_matching.scoring.salary_normalizer import SalaryNormalizer
+        score = SalaryNormalizer().compare_salary(expected_salary, job_salary) / 10.0
+    except Exception as exc:
+        logger.warning("Salary formula failed: %s", exc)
+        score = 5.0
+    return round(max(0.0, min(10.0, score)), 1), {
+        "formula": "SalaryNormalizer.compare_salary / 10",
+        "expected_salary": expected_salary,
+        "job_salary": job_salary,
+    }
+
+
+def _compute_detail_scores(cv_data: dict, job: dict, evidence: dict) -> tuple[dict, dict]:
+    """Compute detail scores from LLM evidence instead of trusting LLM numbers."""
+    skills_score, skills_basis = _score_skills_from_evidence(evidence)
+    experience_score, experience_basis = _score_experience_from_evidence(cv_data, job, evidence)
+    education_score, education_basis = _score_education_from_evidence(cv_data, job, evidence)
+    salary_score, salary_basis = _score_salary_from_data(cv_data, job)
+
+    exp_ev = evidence.get("experience_evidence") if isinstance(evidence.get("experience_evidence"), dict) else {}
+    role_factor = _match_factor(exp_ev.get("role_match"))
+    domain_factor = _match_factor(exp_ev.get("domain_match"), not_required=1.0)
+    relevance_score = round(
+        max(0.0, min(10.0, 10.0 * (
+            0.35 * role_factor +
+            0.25 * domain_factor +
+            0.40 * (skills_score / 10.0)
+        ))),
+        1,
+    )
+
+    scores = {
+        "relevance": relevance_score,
+        "skills": skills_score,
+        "experience": experience_score,
+        "education": education_score,
+        "location": 5,
+        "salary": salary_score,
+    }
+    basis = {
+        "method": "formula_from_llm_evidence",
+        "relevance": {
+            "formula": "10 * (0.35*role + 0.25*domain + 0.40*skills)",
+            "role_factor": role_factor,
+            "domain_factor": domain_factor,
+            "skills_factor": round(skills_score / 10.0, 2),
+        },
+        "skills": skills_basis,
+        "experience": experience_basis,
+        "education": education_basis,
+        "salary": salary_basis,
+    }
+    return scores, basis
 
 
 def _empty_score(index: int) -> dict:

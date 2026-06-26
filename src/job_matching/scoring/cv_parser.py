@@ -1,6 +1,7 @@
 
 import os
 import json
+import re
 from typing import Dict
 from pathlib import Path
 
@@ -38,6 +39,111 @@ DEFAULT_PARSE_SEED = _env_int("GROQ_PARSE_SEED", 42)
 DEFAULT_PARSE_PROVIDER = os.environ.get("CV_PARSE_PROVIDER", "auto").strip().lower()
 DEFAULT_COHERE_PARSE_MODEL = os.environ.get("COHERE_PARSE_MODEL", "command-r-08-2024")
 DEFAULT_COHERE_PARSE_MAX_TOKENS = _env_int("COHERE_PARSE_MAX_TOKENS", 1800)
+
+LANGUAGE_CERT_PATTERN = re.compile(
+    r"(?i)\b(?:"
+    r"IELTS|TOEIC|TOEFL(?:\s*iBT|\s*ITP)?|JLPT|HSK|TOPIK|VSTEP|APTIS|"
+    r"Cambridge|PET|KET|FCE|CAE|CPE"
+    r")\b"
+)
+LANGUAGE_NAMES = [
+    "Tiếng Anh", "Tiếng Nhật", "Tiếng Trung", "Tiếng Hàn", "Tiếng Pháp",
+    "Tiếng Đức", "Tiếng Nga", "Tiếng Tây Ban Nha", "Tiếng Việt",
+]
+
+
+def _split_items(value) -> list[str]:
+    if not value:
+        return []
+    if isinstance(value, list):
+        raw_items = value
+    else:
+        raw_items = re.split(r"[,;\n]", str(value))
+    return [re.sub(r"\s+", " ", str(item)).strip(" .:-") for item in raw_items if str(item).strip()]
+
+
+def _dedupe(items: list[str]) -> list[str]:
+    output, seen = [], set()
+    for item in items:
+        cleaned = re.sub(r"\s+", " ", str(item)).strip(" .:-")
+        key = cleaned.lower()
+        if cleaned and key not in seen:
+            output.append(cleaned)
+            seen.add(key)
+    return output
+
+
+def _language_name_from_text(text: str) -> str:
+    for name in LANGUAGE_NAMES:
+        if name.lower() in str(text).lower():
+            return name
+    return ""
+
+
+def _extract_language_certificate(text: str) -> str:
+    """Return a concise language-certificate label if text contains one."""
+    value = re.sub(r"\s+", " ", str(text or "")).strip()
+    if not value:
+        return ""
+
+    patterns = [
+        r"(?i)\bIELTS\s*\d+(?:[.,]\d+)?\+?\b",
+        r"(?i)\bTOEIC\s*\d+\+?\b",
+        r"(?i)\bTOEFL(?:\s*iBT|\s*ITP)?\s*\d+\+?\b",
+        r"(?i)\bJLPT\s*N?[1-5]\b",
+        r"(?i)\bHSK\s*[1-6]\b",
+        r"(?i)\bTOPIK\s*[1-6]\b",
+        r"(?i)\bVSTEP\s*[A-C][1-2]\b",
+        r"(?i)\bAPTIS\s*[A-C][1-2]\b",
+        r"(?i)\b(?:PET|KET|FCE|CAE|CPE)\b",
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, value)
+        if match:
+            return re.sub(r"\s+", " ", match.group(0)).strip()
+
+    if re.search(r"(?i)\btiếng\s+nhật\b", value):
+        match = re.search(r"(?i)\bN[1-5]\b", value)
+        if match:
+            return f"JLPT {match.group(0).upper()}"
+    if re.search(r"(?i)\btiếng\s+trung\b", value):
+        match = re.search(r"(?i)\bHSK\s*[1-6]\b", value)
+        if match:
+            return re.sub(r"\s+", "", match.group(0).upper())
+    return ""
+
+
+def normalize_language_certificate_fields(data: Dict) -> Dict:
+    """Move language certificates out of languages and into certificates."""
+    languages = []
+    certificates = _split_items(data.get("certificates", ""))
+
+    for item in _split_items(data.get("languages", "")):
+        cert = _extract_language_certificate(item)
+        lang_name = _language_name_from_text(item)
+        if cert:
+            certificates.append(cert)
+            if lang_name:
+                languages.append(lang_name)
+        else:
+            languages.append(item)
+
+    cleaned_certs = []
+    for item in certificates:
+        cert = _extract_language_certificate(item)
+        if cert:
+            cleaned_certs.append(cert)
+            lang_name = _language_name_from_text(item)
+            if lang_name:
+                languages.append(lang_name)
+        elif _language_name_from_text(item) and not LANGUAGE_CERT_PATTERN.search(item):
+            languages.append(item)
+        else:
+            cleaned_certs.append(item)
+
+    data["languages"] = ", ".join(_dedupe(languages))
+    data["certificates"] = ", ".join(_dedupe(cleaned_certs))
+    return data
 
 
 def _load_env_keys(prefix: str, max_index: int = 9):
@@ -115,9 +221,10 @@ class CVParser:
 1. technical_skills: Ngôn ngữ lập trình, framework, database, tools, phần mềm chuyên ngành
    Ví dụ: Python, React, MySQL, Docker, Git, Excel, AutoCAD, SAP, Photoshop, Figma
 2. languages: Ngoại ngữ và trình độ
-   Ví dụ: Tiếng Anh B2, TOEIC 850, Tiếng Nhật N3, Tiếng Trung HSK4
-3. certificates: Chứng chỉ chuyên môn
-   Ví dụ: AWS Solutions Architect, TOEIC 800, PMP, CPA, CCNA
+   Ví dụ: Tiếng Anh B2, Tiếng Nhật, Tiếng Trung
+   KHÔNG đưa chứng chỉ/điểm thi ngoại ngữ vào languages.
+3. certificates: Chứng chỉ chuyên môn và chứng chỉ ngoại ngữ
+   Ví dụ: IELTS 7.0, TOEIC 800, TOEFL iBT 90, JLPT N3, HSK4, AWS Solutions Architect, PMP, CPA, CCNA
 
 **CV TEXT:**
 {cv_text[:10000]}
@@ -128,8 +235,8 @@ class CVParser:
     "core_skills": "Python, Scikit-learn, PyTorch, Pandas, SQL",
     "secondary_skills": "Hadoop, Spark, Docker",
     "technical_skills": "Python, Scikit-learn, PyTorch, React, MySQL, Docker, Git",
-    "languages": "Tiếng Anh B2, TOEIC 800",
-    "certificates": "AWS Solutions Architect, TOEIC 800",
+    "languages": "Tiếng Anh B2",
+    "certificates": "IELTS 7.0, TOEIC 800, AWS Solutions Architect",
     "experience": "3",
     "education": "dai_hoc",
     "gender": "Nam",
@@ -142,6 +249,8 @@ class CVParser:
 - secondary_skills: Tối đa 8 kỹ năng có quan hệ trực tiếp với công việc của target_roles nhưng bằng chứng yếu hơn hoặc chỉ hỗ trợ core_skills. Loại kỹ năng chỉ xuất hiện trong dự án lệch target_roles, kể cả khi đó là kỹ năng kỹ thuật hợp lệ. Không lặp core_skills.
 - Sắp xếp core_skills và secondary_skills theo độ liên quan và độ mạnh bằng chứng giảm dần. Khi không chắc một kỹ năng có hỗ trợ target_roles hay không, chỉ giữ nó trong technical_skills; secondary_skills có thể rỗng.
 - technical_skills: Toàn bộ kỹ năng kỹ thuật có bằng chứng trong CV. Kỹ năng lệch target_roles vẫn có thể nằm ở đây nhưng không được ép vào core_skills/secondary_skills.
+- languages: chỉ ghi tên ngoại ngữ hoặc trình độ ngôn ngữ không gắn với một chứng chỉ cụ thể, ví dụ "Tiếng Anh B2", "Tiếng Nhật".
+- certificates: tất cả chứng chỉ/điểm thi ngoại ngữ như IELTS, TOEIC, TOEFL, JLPT, HSK, TOPIK, VSTEP, APTIS phải nằm ở certificates, không nằm ở languages.
 - experience: Số năm làm việc (1, 2, 3, 4, 5 hoặc "over_5"). Nếu fresher/sinh viên → "under_1"
 - education: "dai_hoc" (đại học), "cao_dang", "trung_cap", "trung_hoc"
 - gender: "Nam", "Nữ", hoặc "both" (nếu không rõ)
@@ -208,8 +317,8 @@ JSON schema:
   "core_skills": "Python, Scikit-learn, Pandas, SQL",
   "secondary_skills": "Hadoop, Spark, Docker",
   "technical_skills": "Python, React, SQL",
-  "languages": "Tiếng Anh B2, TOEIC 800",
-  "certificates": "AWS, PMP",
+  "languages": "Tiếng Anh B2",
+  "certificates": "IELTS 7.0, TOEIC 800, AWS, PMP",
   "experience": "under_1",
   "education": "dai_hoc",
   "gender": "Nam",
@@ -222,6 +331,8 @@ Rules:
 - secondary_skills: tối đa 8 kỹ năng có quan hệ trực tiếp với công việc của target_roles nhưng bằng chứng yếu hơn hoặc chỉ hỗ trợ core_skills; loại kỹ năng chỉ xuất hiện trong dự án lệch target_roles và không lặp core_skills.
 - Sắp xếp core_skills và secondary_skills theo độ liên quan và độ mạnh bằng chứng giảm dần. Khi không chắc, chỉ giữ kỹ năng trong technical_skills; secondary_skills có thể rỗng.
 - technical_skills: toàn bộ ngôn ngữ lập trình, framework, database, tool và phần mềm chuyên ngành; kỹ năng lệch target_roles chỉ nằm ở đây.
+- languages: chỉ ghi tên ngoại ngữ hoặc trình độ không gắn với chứng chỉ cụ thể, ví dụ "Tiếng Anh B2", "Tiếng Nhật".
+- certificates: ghi toàn bộ chứng chỉ/điểm thi ngoại ngữ như IELTS, TOEIC, TOEFL, JLPT, HSK, TOPIK, VSTEP, APTIS; không để các mục này trong languages.
 - languages/certificates: nếu không có thì chuỗi rỗng.
 - experience: một trong "under_1", "1", "2", "3", "4", "5", "over_5".
 - education: một trong "dai_hoc", "cao_dang", "trung_cap", "trung_hoc".
@@ -320,6 +431,8 @@ Rules:
                 "gender": "both",
                 "location": "",
             }
+
+        groq_result = normalize_language_certificate_fields(groq_result)
 
         result = {
             "success": True,

@@ -32,6 +32,104 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+LANGUAGE_CERT_PATTERN = re.compile(
+    r"(?i)\b(?:"
+    r"IELTS|TOEIC|TOEFL(?:\s*iBT|\s*ITP)?|JLPT|HSK|TOPIK|VSTEP|APTIS|"
+    r"Cambridge|PET|KET|FCE|CAE|CPE"
+    r")\b"
+)
+LANGUAGE_NAMES = [
+    "Tiếng Anh", "Tiếng Nhật", "Tiếng Trung", "Tiếng Hàn", "Tiếng Pháp",
+    "Tiếng Đức", "Tiếng Nga", "Tiếng Tây Ban Nha", "Tiếng Việt",
+]
+
+
+def _split_items(value):
+    if not value:
+        return []
+    if isinstance(value, list):
+        raw_items = value
+    else:
+        raw_items = re.split(r"[,;\n]", str(value))
+    return [re.sub(r"\s+", " ", str(item)).strip(" .:-") for item in raw_items if str(item).strip()]
+
+
+def _dedupe(items):
+    output, seen = [], set()
+    for item in items:
+        cleaned = re.sub(r"\s+", " ", str(item)).strip(" .:-")
+        key = cleaned.lower()
+        if cleaned and key not in seen:
+            output.append(cleaned)
+            seen.add(key)
+    return output
+
+
+def _language_name_from_text(text):
+    for name in LANGUAGE_NAMES:
+        if name.lower() in str(text).lower():
+            return name
+    return ""
+
+
+def _extract_language_certificate(text):
+    value = re.sub(r"\s+", " ", str(text or "")).strip()
+    patterns = [
+        r"(?i)\bIELTS\s*\d+(?:[.,]\d+)?\+?\b",
+        r"(?i)\bTOEIC\s*\d+\+?\b",
+        r"(?i)\bTOEFL(?:\s*iBT|\s*ITP)?\s*\d+\+?\b",
+        r"(?i)\bJLPT\s*N?[1-5]\b",
+        r"(?i)\bHSK\s*[1-6]\b",
+        r"(?i)\bTOPIK\s*[1-6]\b",
+        r"(?i)\bVSTEP\s*[A-C][1-2]\b",
+        r"(?i)\bAPTIS\s*[A-C][1-2]\b",
+        r"(?i)\b(?:PET|KET|FCE|CAE|CPE)\b",
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, value)
+        if match:
+            return re.sub(r"\s+", " ", match.group(0)).strip()
+    if re.search(r"(?i)\btiếng\s+nhật\b", value):
+        match = re.search(r"(?i)\bN[1-5]\b", value)
+        if match:
+            return f"JLPT {match.group(0).upper()}"
+    if re.search(r"(?i)\btiếng\s+trung\b", value):
+        match = re.search(r"(?i)\bHSK\s*[1-6]\b", value)
+        if match:
+            return re.sub(r"\s+", "", match.group(0).upper())
+    return ""
+
+
+def normalize_language_certificate_lists(languages, certificates):
+    clean_languages = []
+    clean_certificates = _split_items(certificates)
+
+    for item in _split_items(languages):
+        cert = _extract_language_certificate(item)
+        lang_name = _language_name_from_text(item)
+        if cert:
+            clean_certificates.append(cert)
+            if lang_name:
+                clean_languages.append(lang_name)
+        else:
+            clean_languages.append(item)
+
+    final_certificates = []
+    for item in clean_certificates:
+        cert = _extract_language_certificate(item)
+        if cert:
+            final_certificates.append(cert)
+            lang_name = _language_name_from_text(item)
+            if lang_name:
+                clean_languages.append(lang_name)
+        elif _language_name_from_text(item) and not LANGUAGE_CERT_PATTERN.search(item):
+            clean_languages.append(item)
+        else:
+            final_certificates.append(item)
+
+    return _dedupe(clean_languages), _dedupe(final_certificates)
+
+
 def _env_int(name, default):
     try:
         return int(os.getenv(name, default))
@@ -205,7 +303,9 @@ xử lý.
 Loại các cụm dạng câu như "Có kinh nghiệm...", "Sử dụng các công cụ", các yêu
 cầu học vấn, phúc lợi và đối tượng công việc.
 languages: chỉ lấy khi mô tả hoặc yêu cầu nêu rõ ngoại ngữ cần có.
+languages chỉ chứa tên ngoại ngữ hoặc trình độ không gắn với chứng chỉ cụ thể, ví dụ "Tiếng Anh", "Tiếng Nhật".
 certificates: chỉ lấy chứng chỉ có tên cụ thể được nêu trong mô tả hoặc yêu cầu.
+Các chứng chỉ/điểm thi ngoại ngữ như IELTS, TOEIC, TOEFL, JLPT, HSK, TOPIK, VSTEP, APTIS luôn nằm trong certificates, không nằm trong languages.
 Trước khi trả JSON, với từng technical term hãy hỏi: "Cụm này có thể đứng độc
 lập trong ô kỹ năng tìm kiếm ứng viên không?". Nếu không, phải loại.
 Đối chiếu từng term với JD/JR; không tìm thấy nguyên văn thì loại.
@@ -730,6 +830,7 @@ class LLMCleaner:
             tech  = skills.get('technical', []) or []
             langs = skills.get('languages', [])  or []
             certs = skills.get('certificates', []) or []
+        langs, certs = normalize_language_certificate_lists(langs, certs)
 
         def join_list(lst):
             return ', '.join(lst) if isinstance(lst, list) else str(lst)

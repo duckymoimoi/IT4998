@@ -25,7 +25,7 @@ from flask import Flask, render_template, request, jsonify
 from werkzeug.utils import secure_filename
 
 from job_matching.retrieval.elastic_helper import ElasticHelper
-from job_matching.shared.vietnam_cities_data import get_city_info
+from job_matching.shared.vietnam_cities_data import get_all_city_names, get_city_info
 
 logger = logging.getLogger(__name__)
 
@@ -152,11 +152,18 @@ ENABLE_CITY_PRIORITY = _env_bool("ENABLE_CITY_PRIORITY", default=True)
 ENABLE_JOB_TERM_TAXONOMY = _env_bool("ENABLE_JOB_TERM_TAXONOMY", default=True)
 SCORING_TOP_N = _env_int("SCORING_TOP_N", 30)
 RETRIEVAL_SIZE = _env_int("RETRIEVAL_SIZE", 80)
+RETRIEVAL_FALLBACK_MIN_SCORE = _env_float("RETRIEVAL_FALLBACK_MIN_SCORE", 3.0)
+RETRIEVAL_FALLBACK_MAX_SCORE = _env_float("RETRIEVAL_FALLBACK_MAX_SCORE", 8.0)
+RETRIEVAL_ONLY_MAX_RANKING_SCORE = _env_float(
+    "RETRIEVAL_ONLY_MAX_RANKING_SCORE", 5.5,
+)
 RELAXED_RETRIEVAL_MIN_RESULTS = _env_int("RELAXED_RETRIEVAL_MIN_RESULTS", 12)
 BM25_MIN_SHOULD_MATCH = os.environ.get("BM25_MIN_SHOULD_MATCH", "2")
 BM25_RELAXED_MIN_SHOULD_MATCH = os.environ.get("BM25_RELAXED_MIN_SHOULD_MATCH", "1")
-RRF_BM25_WEIGHT = float(os.environ.get("RRF_BM25_WEIGHT", "1.0"))
-RRF_KNN_WEIGHT = float(os.environ.get("RRF_KNN_WEIGHT", "1.0"))
+RRF_K = _env_int("RRF_K", 10)
+# Production defaults: k=10 + 0.5/0.45 = best NDCG@10 in the production-aligned RRF sweep.
+RRF_BM25_WEIGHT = float(os.environ.get("RRF_BM25_WEIGHT", "0.5"))
+RRF_KNN_WEIGHT = float(os.environ.get("RRF_KNN_WEIGHT", "0.45"))
 KNN_VECTOR_FIELD = os.environ.get("KNN_VECTOR_FIELD", "embedding").strip()
 BM25_CORE_SKILL_LIMIT = _env_int("BM25_CORE_SKILL_LIMIT", 12)
 KNN_SECONDARY_SKILL_LIMIT = _env_int("KNN_SECONDARY_SKILL_LIMIT", 5)
@@ -333,6 +340,94 @@ def _prioritize_same_city(jobs, cv_location):
             others.append(job)
 
     return same_city + others
+
+
+def _linear_retrieval_score(rank, total):
+    """Map retrieval rank to a transparent 0-10-ish fallback score."""
+    min_score = min(RETRIEVAL_FALLBACK_MIN_SCORE, RETRIEVAL_FALLBACK_MAX_SCORE)
+    max_score = max(RETRIEVAL_FALLBACK_MIN_SCORE, RETRIEVAL_FALLBACK_MAX_SCORE)
+    if total <= 1:
+        return round(max_score, 2)
+
+    bounded_rank = min(max(int(rank or 1), 1), total)
+    slope = (max_score - min_score) / (total - 1)
+    return round(max_score - (bounded_rank - 1) * slope, 2)
+
+
+def _retrieval_score_source(job):
+    if job.get("_rrf_score") is not None:
+        return "rrf_bm25_knn"
+    return "bm25"
+
+
+def _annotate_retrieval_scores(jobs):
+    """Attach linear retrieval fallback scores before LLM scoring."""
+    total = len(jobs)
+    for rank, job in enumerate(jobs, start=1):
+        score = _linear_retrieval_score(rank, total)
+        job["retrieval_rank"] = rank
+        job["retrieval_total"] = total
+        job["retrieval_score"] = score
+        job["retrieval_score_detail"] = {
+            "formula": (
+                "max_score - (rank - 1) * "
+                "(max_score - min_score) / (total - 1)"
+            ),
+            "rank": rank,
+            "total": total,
+            "min_score": min(
+                RETRIEVAL_FALLBACK_MIN_SCORE,
+                RETRIEVAL_FALLBACK_MAX_SCORE,
+            ),
+            "max_score": max(
+                RETRIEVAL_FALLBACK_MIN_SCORE,
+                RETRIEVAL_FALLBACK_MAX_SCORE,
+            ),
+            "source": _retrieval_score_source(job),
+            "rrf_score": job.get("_rrf_score"),
+            "bm25_rank": job.get("_bm25_rank"),
+            "knn_rank": job.get("_knn_rank"),
+        }
+    return jobs
+
+
+def _apply_retrieval_only_score(job, reason="not_llm_scored"):
+    raw_score = float(job.get("retrieval_score") or _linear_retrieval_score(1, 1))
+    score = min(raw_score, RETRIEVAL_ONLY_MAX_RANKING_SCORE)
+    score = round(score, 2)
+    job["match_score"] = score
+    job["ranking_score"] = score
+    job["score_breakdown"] = {}
+    job["llm_scored"] = False
+    job["comment"] = ""
+    job["distance_km"] = None
+    job["scoring_method"] = "retrieval_linear"
+    job["retrieval_score_reason"] = reason
+    job["retrieval_raw_score"] = round(raw_score, 2)
+    return job
+
+
+def _ranking_sort_key(job):
+    return (
+        float(job.get("ranking_score", job.get("match_score", 0)) or 0),
+        bool(job.get("llm_scored")),
+    )
+
+
+def _select_llm_scoring_batch(jobs, top_n):
+    """Choose the highest retrieval-ranked jobs for the limited LLM budget."""
+    ranked_jobs = sorted(
+        jobs,
+        key=lambda job: (
+            float(job.get("retrieval_score") or 0),
+            -int(job.get("retrieval_rank") or 0),
+        ),
+        reverse=True,
+    )
+    selected = ranked_jobs[:top_n]
+    selected_ids = {id(job) for job in selected}
+    remaining = [job for job in jobs if id(job) not in selected_ids]
+    return selected, remaining
 
 
 def _as_text_list(value):
@@ -607,10 +702,6 @@ def _build_retrieval_queries(cv_data):
     return query_plan
 
 
-# ============================================================
-# Search Pipeline
-# ============================================================
-
 def search_pipeline(cv_data, top_n=None):
     """
     Full pipeline: taxonomy query planning → hybrid retrieval → LLM scoring.
@@ -678,6 +769,7 @@ def search_pipeline(cv_data, top_n=None):
             categories=None,
             cv_gender=cv_gender, exclude_expired=True,
             bm25_min_should_match=BM25_MIN_SHOULD_MATCH,
+            rrf_k=RRF_K,
             bm25_weight=RRF_BM25_WEIGHT,
             knn_weight=RRF_KNN_WEIGHT,
             vector_field=KNN_VECTOR_FIELD,
@@ -712,6 +804,7 @@ def search_pipeline(cv_data, top_n=None):
                 cv_gender=cv_gender, exclude_expired=True,
                 bm25_min_should_match=BM25_RELAXED_MIN_SHOULD_MATCH,
                 num_candidates=RETRIEVAL_SIZE * 4,
+                rrf_k=RRF_K,
                 bm25_weight=RRF_BM25_WEIGHT,
                 knn_weight=RRF_KNN_WEIGHT,
                 vector_field=KNN_VECTOR_FIELD,
@@ -736,40 +829,26 @@ def search_pipeline(cv_data, top_n=None):
     # retrieval results, but score same-city jobs first when the user provides
     # a desired city/province.
     jobs = _prioritize_same_city(jobs, cv_data.get("location", ""))
+    jobs = _annotate_retrieval_scores(jobs)
 
     # --- Stage 3: LLM 6-dim Scoring (top-N) ---
-    top_jobs = jobs[:top_n]
-    remaining_jobs = jobs[top_n:]
+    top_jobs, remaining_jobs = _select_llm_scoring_batch(jobs, top_n)
 
     scored_jobs = _score_with_llm(cv_data, top_jobs)
 
-    # Remaining jobs lấy score mặc định thấp hơn
-    for i, job in enumerate(remaining_jobs):
-        job["match_score"] = 3.0
-        job["score_breakdown"] = {dim: 3 for dim in
-            ["relevance", "skills", "experience", "education", "location", "salary"]}
-        job["llm_scored"] = False
-        job["comment"] = ""
-        job["distance_km"] = None
+    for job in remaining_jobs:
+        _apply_retrieval_only_score(job, reason="outside_llm_batch")
 
     all_jobs = scored_jobs + remaining_jobs
-    # Rank the partial AI-scored set first. Jobs that missed the scoring time
-    # limit remain in retrieval order through their fallback scores.
-    all_jobs.sort(
-        key=lambda x: (bool(x.get("llm_scored")), x.get("match_score", 0)),
-        reverse=True,
-    )
+    # Use one comparable ranking score. AI-scored jobs use their WSM score;
+    # unscored/fallback jobs keep a linear score derived from retrieval rank.
+    all_jobs.sort(key=_ranking_sort_key, reverse=True)
 
     return all_jobs, search_mode, total
 
 
 def _score_with_llm(cv_data, jobs):
     """Gọi LLM scorer, fallback sang heuristic nếu fail."""
-    def retrieval_fallback_score(rank):
-        # Keep fallback scores clearly below trusted LLM scores, while still
-        # preserving retrieval order when the external scorer is unavailable.
-        return round(max(3.0, 5.0 - rank * 0.12), 2)
-
     try:
         from job_matching.scoring.llm_scorer import score_batch, DEFAULT_WEIGHTS
 
@@ -780,11 +859,7 @@ def _score_with_llm(cv_data, jobs):
             if i < len(results):
                 score_data = results[i]
                 if score_data.get("fallback"):
-                    job["match_score"] = retrieval_fallback_score(i)
-                    job["score_breakdown"] = {}
-                    job["comment"] = ""
-                    job["llm_scored"] = False
-                    job["distance_km"] = None
+                    _apply_retrieval_only_score(job, reason="llm_fallback")
                     continue
 
                 scores = score_data["scores"]
@@ -803,28 +878,22 @@ def _score_with_llm(cv_data, jobs):
                            for dim in scores)
 
                 job["match_score"] = round(total, 2)
+                job["ranking_score"] = job["match_score"]
                 job["score_breakdown"] = scores
                 job["comment"] = score_data.get("comment", "")
                 job["llm_scored"] = True
                 job["llm_time"] = score_data.get("llm_time", 0)
                 job["distance_km"] = round(dist_km, 1) if dist_km is not None else None
+                job["scoring_method"] = score_data.get("scoring_method", "llm_batch")
             else:
-                job["match_score"] = 5.0
-                job["score_breakdown"] = {}
-                job["comment"] = ""
-                job["llm_scored"] = False
-                job["distance_km"] = None
+                _apply_retrieval_only_score(job, reason="missing_llm_result")
 
         return jobs
 
     except Exception as e:
         logger.error(f"LLM scoring failed: {e}, using default scores")
-        for i, job in enumerate(jobs):
-            job["match_score"] = retrieval_fallback_score(i)
-            job["score_breakdown"] = {}
-            job["comment"] = ""
-            job["llm_scored"] = False
-            job["distance_km"] = None
+        for job in jobs:
+            _apply_retrieval_only_score(job, reason="llm_error")
         return jobs
 
 
@@ -834,7 +903,7 @@ def _score_with_llm(cv_data, jobs):
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index.html", location_options=get_all_city_names())
 
 
 @app.route("/api/search", methods=["POST"])
@@ -974,6 +1043,7 @@ def api_job_detail_score():
             "score_breakdown": scores,
             "comment": score_data.get("comment", ""),
             "evidence": score_data.get("evidence", {}),
+            "scoring_method": score_data.get("scoring_method", ""),
             "llm_scored": True,
             "detail_scored": True,
             "llm_time": score_data.get("llm_time", 0),
@@ -1046,4 +1116,3 @@ if __name__ == "__main__":
     _init_services()
     logger.info("Ready!")
     app.run(debug=True, host="0.0.0.0", port=5000)
-

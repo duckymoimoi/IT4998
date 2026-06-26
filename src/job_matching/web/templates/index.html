@@ -97,7 +97,9 @@
                 <h3>Địa điểm</h3>
                 <select id="location" style="margin-bottom:8px">
                     <option value="">-- Tỉnh/thành --</option>
-                    <option value="An Giang">An Giang</option><option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option><option value="Bắc Giang">Bắc Giang</option><option value="Bắc Ninh">Bắc Ninh</option><option value="Bình Dương">Bình Dương</option><option value="Bình Định">Bình Định</option><option value="Cần Thơ">Cần Thơ</option><option value="Đà Nẵng">Đà Nẵng</option><option value="Đắk Lắk">Đắk Lắk</option><option value="Đồng Nai">Đồng Nai</option><option value="Hà Nội">Hà Nội</option><option value="Hà Tĩnh">Hà Tĩnh</option><option value="Hải Dương">Hải Dương</option><option value="Hải Phòng">Hải Phòng</option><option value="Hồ Chí Minh">Hồ Chí Minh</option><option value="Huế">Thừa Thiên Huế</option><option value="Khánh Hòa">Khánh Hòa</option><option value="Lâm Đồng">Lâm Đồng</option><option value="Long An">Long An</option><option value="Nam Định">Nam Định</option><option value="Nghệ An">Nghệ An</option><option value="Quảng Nam">Quảng Nam</option><option value="Quảng Ninh">Quảng Ninh</option><option value="Thanh Hóa">Thanh Hóa</option><option value="Thái Nguyên">Thái Nguyên</option><option value="Tiền Giang">Tiền Giang</option><option value="Vĩnh Phúc">Vĩnh Phúc</option>
+                    {% for location in location_options %}
+                    <option value="{{ location }}">{{ location }}</option>
+                    {% endfor %}
                 </select>
                 <input type="text" id="address" placeholder="Địa chỉ cụ thể (để tính km đến công ty)">
                 <div class="hint">Goong Maps tính khoảng cách lái xe thực tế</div>
@@ -356,7 +358,7 @@ async function searchJobs() {
         }
         allJobs = data.jobs || [];
         displayCount = 5;
-        document.getElementById('modeLabel').textContent = data.search_mode || '';
+        document.getElementById('modeLabel').innerHTML = scoreLegendHtml();
         const timeInfo = [];
         if (data.pipeline_time) timeInfo.push(`Total: ${data.pipeline_time}s`);
         if (data.llm_time) timeInfo.push(`LLM: ${data.llm_time}s`);
@@ -380,6 +382,14 @@ function renderJobs() {
     document.getElementById('loadMore').style.display = displayCount < allJobs.length ? 'block' : 'none';
 }
 function loadMore() { displayCount += 5; renderJobs(); }
+
+function scoreLegendHtml() {
+    return [
+        '<span class="legend-chip retrieval">Sơ bộ: hệ thống gợi ý</span>',
+        '<span class="legend-chip quick">Đánh giá nhanh: AI đã xem</span>',
+        '<span class="legend-chip detail">Đánh giá kỹ: AI xem sâu</span>'
+    ].join('');
+}
 
 function recomputeJobScore(job) {
     const breakdown = job.score_breakdown || {};
@@ -447,14 +457,15 @@ async function scoreJobDetail(idx) {
 }
 
 function jobCard(job, idx) {
-    const score = job.match_score || 0;
+    const score = job.match_score || job.ranking_score || job.retrieval_score || 0;
     const scoreClass = score >= 7 ? 'score-high' : score >= 4 ? 'score-mid' : 'score-low';
     const scoreDisplay = typeof score === 'number' ? score.toFixed(1) : score;
     const tags = parseTags(job.requirements_tags);
     const bd = job.score_breakdown || {};
     const hasBreakdown = DIMS.every(d => bd[d] !== undefined && bd[d] !== null);
-    const llm = job.detail_scored ? '<span class="llm-badge scored">Đã chấm chi tiết</span>' :
-        (job.llm_scored ? '<span class="llm-badge scored">Đã chấm nhanh</span>' : '<span class="llm-badge pending">Theo retrieval</span>');
+    const llm = job.detail_scored ? '<span class="llm-badge scored">Đánh giá kỹ</span>' :
+        (job.llm_scored ? '<span class="llm-badge scored">Đánh giá nhanh</span>' :
+            '<span class="llm-badge pending">Sơ bộ</span>');
     const comment = job.comment ? `<div class="job-comment"><span>Nhận xét:</span> ${esc(job.comment)}</div>` : '';
     const detailLabel = job.detail_loading ? 'Đang chấm...' : (job.detail_scored ? 'Chấm lại chi tiết' : 'Chấm chi tiết');
     const detailBtn = `<button class="detail-score-action" onclick="scoreJobDetail(${idx})" ${job.detail_loading ? 'disabled' : ''}>${detailLabel}</button>`;
@@ -472,7 +483,6 @@ function jobCard(job, idx) {
             barsHtml += `<div class="dim-row"><span class="dim-name">${DIM_LABELS[d]||d}</span><div class="dim-bar"><div class="dim-fill" style="width:${pct}%;background:${color}"></div></div><span class="dim-val">${v}</span></div>`;
         });
     }
-
     return `<div class="job-card">
         <div class="job-top">
             <div>
@@ -498,7 +508,7 @@ function jobCard(job, idx) {
                     <span class="dim-name">Tổng</span><div class="dim-bar"><div class="dim-fill" style="width:${(score/10)*100}%;background:var(--primary)"></div></div><span class="dim-val">${scoreDisplay}</span>
                 </div>
             </div>
-        ` : '<div class="fallback-note">Đang xếp hạng theo retrieval do tầng chấm điểm AI chưa khả dụng.</div>'}
+        ` : ''}
     </div>`;
 }
 function evidenceHtml(ev) {
