@@ -1,0 +1,506 @@
+[
+  {
+    "term": "NET / C#",
+    "type": "technical_skill",
+    "normalized_label": ".NET / C#",
+    "confidence": 0.95,
+    "notes": "Framework .NET và ngôn ngữ C#"
+  },
+  {
+    "term": "FAST",
+    "type": "tool",
+    "normalized_label": "FAST",
+    "confidence": 0.9,
+    "notes": "Phần mềm kế toán/ERP FAST"
+  },
+  {
+    "term": "Bravo",
+    "type": "tool",
+    "normalized_label": "Bravo",
+    "confidence": 0.9,
+    "notes": "Phần mềm quản trị doanh nghiệp/kế toán Bravo"
+  },
+  {
+    "term": "ECUS",
+    "type": "tool",
+    "normalized_label": "ECUS",
+    "confidence": 0.9,
+    "notes": "Phần mềm khai báo hải quan điện tử"
+  },
+  {
+    "term": "G8",
+    "type": "tool",
+    "normalized_label": "G8",
+    "confidence": 0.85,
+    "notes": "Phần mềm dự toán xây dựng G8"
+  },
+  {
+    "term": "Acitt",
+    "type": "tool",
+    "normalized_label": "Acitt",
+    "confidence": 0.85,
+    "notes": "Phần mềm dự toán xây dựng"
+  },
+  {
+    "term": "Diroots",
+    "type": "tool",
+    "normalized_label": "DiRoots",
+    "confidence": 0.85,
+    "notes": "Bộ công cụ/plugin hỗ trợ BIM/Revit"
+  },
+  {
+    "term": "Chaos vantage",
+    "type": "tool",
+    "normalized_label": "Chaos Vantage",
+    "confidence": 0.9,
+    "notes": "Phần mềm realtime rendering của Chaos"
+  },
+  {
+    "term": "Pancake",
+    "type": "tool",
+    "normalized_label": "Pancake",
+    "confidence": 0.85,
+    "notes": "Nền tảng quản lý bán hàng/chat đa kênh"
+  },
+  {
+    "term": "Opitex",
+    "type": "tool",
+    "normalized_label": "Optitex",
+    "confidence": 0.85,
+    "notes": "Phần mềm thiết kế rập/thời trang"
+  },
+  {
+    "term": "Google",
+    "type": "tool",
+    "normalized_label": "Google Workspace/Search",
+    "confidence": 0.75,
+    "notes": "Nền tảng/công cụ Google, term khá chung"
+  },
+  {
+    "term": "OA",
+    "type": "noise",
+    "normalized_label": "OA",
+    "confidence": 0.9,
+    "notes": "Acronym mơ hồ; chỉ Zalo OA đầy đủ mới được xem là tool"
+  },
+  {
+    "term": "TikTok",
+    "type": "tool",
+    "normalized_label": "TikTok",
+    "confidence": 0.9,
+    "notes": "Nền tảng mạng xã hội/video ngắn"
+  },
+  {
+    "term": "PDF",
+    "type": "tool",
+    "normalized_label": "PDF",
+    "confidence": 0.85,
+    "notes": "Định dạng/công cụ tài liệu"
+  },
+  {
+    "term": "Website",
+    "type": "technical_skill",
+    "normalized_label": "Website",
+    "confidence": 0.75,
+    "notes": "Khái niệm web/website, dùng được như tín hiệu kỹ thuật rộng"
+  },
+  {
+    "term": "Project",
+    "type": "professional_skill",
+    "normalized_label": "Project management",
+    "confidence": 0.75,
+    "notes": "Tín hiệu liên quan dự án/quản lý dự án, khá chung"
+  },
+  {
+    "term": "Game",
+    "type": "domain",
+    "normalized_label": "Game",
+    "confidence": 0.85,
+    "notes": "Ngành game"
+  },
+  {
+    "term": "Lao động phổ thông",
+    "type": "role",
+    "normalized_label": "Lao động phổ thông",
+    "confidence": 0.85,
+    "notes": "Nhóm vai trò lao động phổ thông"
+  },
+  {
+    "term": "sự kiện",
+    "type": "domain",
+    "normalized_label": "Sự kiện",
+    "confidence": 0.8,
+    "notes": "Lĩnh vực tổ chức sự kiện"
+  },
+  {
+    "term": "phần mềm bán hàng",
+    "type": "tool",
+    "normalized_label": "Phần mềm bán hàng",
+    "confidence": 0.85,
+    "notes": "Nhóm công cụ/phần mềm quản lý bán hàng"
+  },
+  {
+    "term": "Phần mềm tin học văn phòng",
+    "type": "tool",
+    "normalized_label": "Phần mềm văn phòng",
+    "confidence": 0.85,
+    "notes": "Nhóm công cụ văn phòng như Word, Excel, PowerPoint"
+  },
+  {
+    "term": "cài đặt",
+    "type": "technical_skill",
+    "normalized_label": "Cài đặt phần mềm/hệ thống",
+    "confidence": 0.8,
+    "notes": "Kỹ năng cài đặt, triển khai phần mềm/hệ thống"
+  },
+  {
+    "term": "đấu nối",
+    "type": "technical_skill",
+    "normalized_label": "Đấu nối điện",
+    "confidence": 0.85,
+    "notes": "Kỹ năng đấu nối điện/thiết bị"
+  },
+  {
+    "term": "power unit",
+    "type": "technical_skill",
+    "normalized_label": "Power unit",
+    "confidence": 0.8,
+    "notes": "Kiến thức về bộ nguồn/khối nguồn"
+  },
+  {
+    "term": "core IT services",
+    "type": "professional_skill",
+    "normalized_label": "Core IT services",
+    "confidence": 0.85,
+    "notes": "Nghiệp vụ dịch vụ CNTT lõi"
+  },
+  {
+    "term": "Product-led growth",
+    "type": "professional_skill",
+    "normalized_label": "Product-led growth",
+    "confidence": 0.85,
+    "notes": "Chiến lược tăng trưởng dựa trên sản phẩm"
+  },
+  {
+    "term": "Chứng từ bán hàng online",
+    "type": "professional_skill",
+    "normalized_label": "Chứng từ bán hàng online",
+    "confidence": 0.85,
+    "notes": "Nghiệp vụ xử lý chứng từ bán hàng online"
+  },
+  {
+    "term": "chương trình khuyến mãi",
+    "type": "professional_skill",
+    "normalized_label": "Chương trình khuyến mãi",
+    "confidence": 0.85,
+    "notes": "Lập/triển khai chương trình khuyến mãi"
+  },
+  {
+    "term": "ra mắt sản phẩm",
+    "type": "professional_skill",
+    "normalized_label": "Ra mắt sản phẩm",
+    "confidence": 0.85,
+    "notes": "Nghiệp vụ triển khai product launch"
+  },
+  {
+    "term": "Kinh nghiệm triển khai chiến dịch khai trương",
+    "type": "professional_skill",
+    "normalized_label": "Triển khai chiến dịch khai trương",
+    "confidence": 0.85,
+    "notes": "Nghiệp vụ triển khai chiến dịch khai trương"
+  },
+  {
+    "term": "am hiểu tiêu chuẩn kỹ thuật và quy trình thiết kế",
+    "type": "professional_skill",
+    "normalized_label": "Tiêu chuẩn kỹ thuật và quy trình thiết kế",
+    "confidence": 0.85,
+    "notes": "Kiến thức về tiêu chuẩn kỹ thuật/quy trình thiết kế"
+  },
+  {
+    "term": "hands-on experience in building web applications",
+    "type": "technical_skill",
+    "normalized_label": "Xây dựng ứng dụng web",
+    "confidence": 0.85,
+    "notes": "Kinh nghiệm phát triển ứng dụng web"
+  },
+  {
+    "term": "bachelor’s degree in software engineering",
+    "type": "noise",
+    "normalized_label": "Bachelor's degree in Software Engineering",
+    "confidence": 0.9,
+    "notes": "Thông tin học vấn, không dùng làm term kỹ năng"
+  },
+  {
+    "term": "máy tính",
+    "type": "noise",
+    "normalized_label": "Máy tính",
+    "confidence": 0.9,
+    "notes": "Quá chung, không đủ đặc trưng để search"
+  },
+  {
+    "term": "Theo dõi",
+    "type": "noise",
+    "normalized_label": "Theo dõi",
+    "confidence": 0.9,
+    "notes": "Quá chung, không đủ đặc trưng để search"
+  },
+  {
+    "term": "phụ kiện",
+    "type": "noise",
+    "normalized_label": "Phụ kiện",
+    "confidence": 0.85,
+    "notes": "Quá chung, thiếu domain cụ thể"
+  },
+  {
+    "term": "workshop",
+    "type": "noise",
+    "normalized_label": "Workshop",
+    "confidence": 0.85,
+    "notes": "Quá chung, không dùng làm term search chính"
+  },
+  {
+    "term": "hybrid",
+    "type": "noise",
+    "normalized_label": "Hybrid",
+    "confidence": 0.9,
+    "notes": "Quá chung, không rõ ngữ cảnh"
+  },
+  {
+    "term": "Solid",
+    "type": "noise",
+    "normalized_label": "Solid",
+    "confidence": 0.85,
+    "notes": "Không đủ ngữ cảnh để xác định"
+  },
+  {
+    "term": "Tfas",
+    "type": "noise",
+    "normalized_label": "Tfas",
+    "confidence": 0.85,
+    "notes": "Không xác định, có thể là nhiễu"
+  },
+  {
+    "term": "Rebro",
+    "type": "noise",
+    "normalized_label": "Rebro",
+    "confidence": 0.85,
+    "notes": "Không xác định, có thể là nhiễu"
+  },
+  {
+    "term": "OpenClaw Al",
+    "type": "tool",
+    "normalized_label": "OpenClaw AI",
+    "confidence": 0.9,
+    "notes": "Công cụ/nền tảng AI; term gốc có thể nhầm chữ I thành l"
+  },
+  {
+    "term": "Caligola",
+    "type": "noise",
+    "normalized_label": "Caligola",
+    "confidence": 0.85,
+    "notes": "Không xác định trong ngữ cảnh tuyển dụng"
+  },
+  {
+    "term": "Foso (sản xuất",
+    "type": "noise",
+    "normalized_label": "Foso",
+    "confidence": 0.85,
+    "notes": "Term lỗi cú pháp/thiếu ngữ cảnh"
+  },
+  {
+    "term": "live PC",
+    "type": "noise",
+    "normalized_label": "Live PC",
+    "confidence": 0.85,
+    "notes": "Không đủ ngữ cảnh để xác định"
+  },
+  {
+    "term": "thiết bị và hạng mục công trình",
+    "type": "noise",
+    "normalized_label": "Thiết bị và hạng mục công trình",
+    "confidence": 0.9,
+    "notes": "Cụm quá chung, không phải kỹ năng"
+  },
+  {
+    "term": "D5",
+    "type": "noise",
+    "normalized_label": "D5",
+    "confidence": 0.85,
+    "notes": "Không đủ ngữ cảnh để xác định"
+  },
+  {
+    "term": "FAST FRO",
+    "type": "noise",
+    "normalized_label": "FAST FRO",
+    "confidence": 0.85,
+    "notes": "Không đủ ngữ cảnh, không xác định được tool"
+  },
+  {
+    "term": "phong_hop_trien_khai_chuong_trinh_khen_giai",
+    "type": "noise",
+    "normalized_label": "phong_hop_trien_khai_chuong_trinh_khen_giai",
+    "confidence": 0.9,
+    "notes": "Chuỗi lỗi tách từ, không dùng search"
+  },
+  {
+    "term": "ứng dụng doanh nghiệp",
+    "type": "domain",
+    "normalized_label": "Ứng dụng doanh nghiệp",
+    "confidence": 0.8,
+    "notes": "Domain/phân khúc phần mềm doanh nghiệp"
+  },
+  {
+    "term": "F1",
+    "type": "noise",
+    "normalized_label": "F1",
+    "confidence": 0.85,
+    "notes": "Không đủ ngữ cảnh để xác định"
+  },
+  {
+    "term": "chuyên nghiệp",
+    "type": "noise",
+    "normalized_label": "Chuyên nghiệp",
+    "confidence": 0.9,
+    "notes": "Tính từ quá chung, không dùng làm term search"
+  },
+  {
+    "term": "B2B",
+    "type": "professional_skill",
+    "normalized_label": "Bán hàng B2B",
+    "confidence": 0.99,
+    "notes": "Nghiệp vụ bán hàng cho doanh nghiệp"
+  },
+  {
+    "term": "B2C",
+    "type": "professional_skill",
+    "normalized_label": "Bán hàng B2C",
+    "confidence": 0.99,
+    "notes": "Nghiệp vụ bán hàng cho người tiêu dùng"
+  },
+  {
+    "term": "B2G",
+    "type": "professional_skill",
+    "normalized_label": "Bán hàng B2G",
+    "confidence": 0.99,
+    "notes": "Nghiệp vụ bán hàng cho cơ quan nhà nước"
+  },
+  {
+    "term": "Direct Sales",
+    "type": "professional_skill",
+    "normalized_label": "Bán hàng trực tiếp",
+    "confidence": 0.98,
+    "notes": "Nghiệp vụ bán hàng trực tiếp"
+  },
+  {
+    "term": "Telesales",
+    "type": "professional_skill",
+    "normalized_label": "Telesales",
+    "confidence": 0.98,
+    "notes": "Nghiệp vụ bán hàng qua điện thoại"
+  },
+  {
+    "term": "Online Sales",
+    "type": "professional_skill",
+    "normalized_label": "Bán hàng trực tuyến",
+    "confidence": 0.98,
+    "notes": "Nghiệp vụ bán hàng trực tuyến"
+  },
+  {
+    "term": "Bán hàng online",
+    "type": "professional_skill",
+    "normalized_label": "Bán hàng trực tuyến",
+    "confidence": 0.98,
+    "notes": "Nghiệp vụ bán hàng trực tuyến"
+  },
+  {
+    "term": "Bán hàng tại cửa hàng/showroom",
+    "type": "professional_skill",
+    "normalized_label": "Bán hàng tại cửa hàng",
+    "confidence": 0.97,
+    "notes": "Nghiệp vụ bán hàng tại điểm bán"
+  },
+  {
+    "term": "Sales Bán lẻ/Dịch vụ tiêu dùng khác",
+    "type": "professional_skill",
+    "normalized_label": "Bán hàng bán lẻ",
+    "confidence": 0.95,
+    "notes": "Nghiệp vụ bán hàng bán lẻ"
+  },
+  {
+    "term": "Bán hàng thời trang",
+    "type": "professional_skill",
+    "normalized_label": "Bán hàng thời trang",
+    "confidence": 0.95,
+    "notes": "Nghiệp vụ bán hàng thời trang"
+  },
+  {
+    "term": "Bán hàng điện máy",
+    "type": "professional_skill",
+    "normalized_label": "Bán hàng điện máy",
+    "confidence": 0.95,
+    "notes": "Nghiệp vụ bán hàng điện máy"
+  },
+  {
+    "term": "Sales Tài chính/Ngân hàng/Bảo hiểm khác",
+    "type": "professional_skill",
+    "normalized_label": "Bán hàng tài chính, ngân hàng và bảo hiểm",
+    "confidence": 0.95,
+    "notes": "Nghiệp vụ bán sản phẩm tài chính"
+  },
+  {
+    "term": "Kinh doanh kênh GT",
+    "type": "professional_skill",
+    "normalized_label": "Kinh doanh kênh GT",
+    "confidence": 0.95,
+    "notes": "Nghiệp vụ bán hàng kênh truyền thống"
+  },
+  {
+    "term": "Kinh doanh kênh MT",
+    "type": "professional_skill",
+    "normalized_label": "Kinh doanh kênh MT",
+    "confidence": 0.95,
+    "notes": "Nghiệp vụ bán hàng kênh hiện đại"
+  },
+  {
+    "term": "Bán hàng siêu thị/cửa hàng tiện ích/tiện lợi",
+    "type": "professional_skill",
+    "normalized_label": "Bán hàng siêu thị và cửa hàng tiện lợi",
+    "confidence": 0.96,
+    "notes": "Nghiệp vụ bán hàng bán lẻ"
+  },
+  {
+    "term": "Du lịch B2B B2C",
+    "type": "professional_skill",
+    "normalized_label": "Bán hàng du lịch B2B và B2C",
+    "confidence": 0.95,
+    "notes": "Nghiệp vụ bán sản phẩm du lịch"
+  },
+  {
+    "term": "Social Commerce",
+    "type": "professional_skill",
+    "normalized_label": "Social Commerce",
+    "confidence": 0.95,
+    "notes": "Nghiệp vụ thương mại trên mạng xã hội"
+  },
+  {
+    "term": "Amazon",
+    "type": "tool",
+    "normalized_label": "Amazon",
+    "confidence": 0.98,
+    "notes": "Nền tảng thương mại điện tử"
+  },
+  {
+    "term": "Ebay",
+    "type": "tool",
+    "normalized_label": "eBay",
+    "confidence": 0.98,
+    "notes": "Nền tảng thương mại điện tử"
+  },
+  {
+    "term": "Etsy",
+    "type": "tool",
+    "normalized_label": "Etsy",
+    "confidence": 0.98,
+    "notes": "Nền tảng thương mại điện tử"
+  }
+]

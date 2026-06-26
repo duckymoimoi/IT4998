@@ -1,0 +1,95 @@
+{
+  "jobs_csv": "data\\turn1300_v3_union_final\\topcv_balanced_1300_rebuilt_20260602.csv",
+  "taxonomy_json": "data\\job_term_taxonomy.json",
+  "taxonomy_lookup_entries": 4556,
+  "stats": {
+    "jobs_total": 1300,
+    "jobs_with_any_vocab_evidence": 1298,
+    "jobs_with_technical_skills": 1297,
+    "jobs_with_requirements_tags": 1298,
+    "jobs_with_specializations": 1296,
+    "jobs_with_languages": 375,
+    "jobs_with_certificates": 107
+  },
+  "field_term_counts": {
+    "technical_skills": 15996,
+    "requirements_tags": 18231,
+    "specializations": 13503,
+    "languages": 632,
+    "certificates": 151
+  },
+  "examples": [
+    {
+      "content_hash": "aec1332725743a27f3ad83206c147a7c",
+      "title": "Chuyên Viên/Cộng Tác Viên Kinh Doanh",
+      "extracted": {
+        "technical_skills": "Bán hàng B2C, Bán hàng B2B, Bán hàng trực tiếp, Tư vấn, Bán Hàng, Công nợ, Hợp đồng mua bán, Quản lý hợp đồng, Ký kết hợp đồng, Bất động sản, Tài chính, Bảo hiểm, Kinh doanh, Lĩnh vực kinh doanh",
+        "requirements_tags": "Môi giới bất động sản, Bất động sản, Tài chính, Bảo hiểm, Kinh doanh, Lĩnh vực kinh doanh, Bán hàng B2C, Bán hàng B2B, Bán hàng trực tiếp, Tư vấn, Bán Hàng, Công nợ, Hợp đồng mua bán, Quản lý hợp đồng, Ký kết hợp đồng",
+        "specializations": "Môi giới bất động sản, Bất động sản, Tài chính, Bảo hiểm, Kinh doanh, Lĩnh vực kinh doanh, Bán hàng B2C, Bán hàng B2B, Bán hàng trực tiếp, Tư vấn, Bán Hàng, Công nợ, Hợp đồng mua bán, Quản lý hợp đồng, Ký kết hợp đồng"
+      }
+    },
+    {
+      "content_hash": "9ffbdf538230596381367c97689f8c9c",
+      "title": "Nhân Viên Kinh Doanh/Sales BĐS/Tư Vấn Bán Hàng - Phỏng Vấn Nhân Việc Ngay (Chế Độ Hấp Dẫn)",
+      "extracted": {
+        "technical_skills": "Bán hàng B2B, Bán hàng B2C, Bán hàng trực tiếp, Bán hàng trực tuyến, Chăm sóc khách hàng, Tư vấn, Đào tạo, Tư vấn khách hàng, Bán Hàng, Bất động sản, Kinh doanh",
+        "requirements_tags": "Môi giới bất động sản, Sales, Bất động sản, Kinh doanh, Bán hàng B2B, Bán hàng B2C, Bán hàng trực tiếp, Bán hàng trực tuyến, Chăm sóc khách hàng, Tư vấn, Đào tạo, Tư vấn khách hàng, Bán Hàng",
+        "specializations": "Môi giới bất động sản, Sales, Bất động sản, Kinh doanh, Bán hàng B2B, Bán hàng B2C, Bán hàng trực tiếp, Bán hàng trực tuyến, Chăm sóc khách hàng, Tư vấn, Đào tạo, Tư vấn khách hàng, Bán Hàng"
+      }
+    },
+    {
+      "content_hash": "24470b97617841c1f85862f4c04ce539",
+      "title": "Trưởng Phòng Kinh Doanh Bất Động Sản",
+      "extracted": {
+        "technical_skills": "Bán hàng B2B, Bán hàng trực tiếp, Bán hàng trực tuyến, Telesales, Đào tạo, Bán Hàng, Báo cáo, Quản lý đội nhóm, Báo cáo kết quả kinh doanh, Bất động sản, Xây dựng, Nhân sự, Marketing, Kinh doanh",
+        "requirements_tags": "Sales Director / Giám đốc kinh doanh, Trưởng phòng kinh doanh, Ban lãnh đạo, Bất động sản, Xây dựng, Nhân sự, Marketing, Kinh doanh, Bán hàng B2B, Bán hàng trực tiếp, Bán hàng trực tuyến, Telesales, Đào tạo, Bán Hàng, Báo cáo, Quản lý đội nhóm, Báo cáo kết quả kinh doanh",
+        "specializations": "Sales Director / Giám đốc kinh doanh, Trưởng phòng kinh doanh, Ban lãnh đạo, Bất động sản, Xây dựng, Nhân sự, Marketing, Kinh doanh, Bán hàng B2B, Bán hàng trực tiếp, Bán hàng trực tuyến, Telesales, Đào tạo, Bán Hàng, Báo cáo, Quản lý đội nhóm, Báo cáo kết quả kinh doanh"
+      }
+    },
+    {
+      "content_hash": "fcffde807494f54c3d9b271c1223998b",
+      "title": "Chuyên Viên Phát Triển Dự Án",
+      "extracted": {
+        "technical_skills": "Tin học văn phòng, Báo cáo, PCCC, Kinh tế xây dựng, Nghiệm thu, Đấu nối điện, Phần mềm văn phòng, Xây dựng, Bất động sản, Môi trường, Kinh tế",
+        "requirements_tags": "Kỹ sư xây dựng, Xây dựng, Bất động sản, Môi trường, Kinh tế, Tin học văn phòng, Báo cáo, PCCC, Kinh tế xây dựng, Nghiệm thu, Đấu nối điện, Phần mềm văn phòng",
+        "specializations": "Kỹ sư xây dựng, Xây dựng, Bất động sản, Môi trường, Kinh tế, Tin học văn phòng, Báo cáo, PCCC, Kinh tế xây dựng, Nghiệm thu"
+      }
+    },
+    {
+      "content_hash": "0feeda23a58657fb3da9dd93842f8249",
+      "title": "Sales/Telesales -B2C (Mảng Bất Động Sản, Bảo Hiểm)",
+      "extracted": {
+        "technical_skills": "Bán hàng trực tuyến, Bán hàng B2C, Telesales, Bán Hàng, Điện tử, Bất động sản, Thương mại điện tử, Bảo hiểm, Kinh doanh, Lĩnh vực kinh doanh",
+        "requirements_tags": "Môi giới bất động sản, Sales, Quản lý kinh doanh, Bất động sản, Thương mại điện tử, Bảo hiểm, Kinh doanh, Lĩnh vực kinh doanh, Bán hàng trực tuyến, Bán hàng B2C, Telesales, Bán Hàng, Điện tử",
+        "specializations": "Môi giới bất động sản, Sales, Quản lý kinh doanh, Bất động sản, Thương mại điện tử, Bảo hiểm, Kinh doanh, Lĩnh vực kinh doanh, Bán hàng trực tuyến, Bán hàng B2C, Telesales, Bán Hàng"
+      }
+    },
+    {
+      "content_hash": "1bb0b12dd4d943c2075e123d11c3e361",
+      "title": "Trợ Lý Dự Án/Quản Lý Dự Án Lương Cứng Từ 10 - 15 Triệu + Hoa Hồng (Thu Nhập Không Giới Hạn) Tại Hà Nội Đi Làm Ngay",
+      "extracted": {
+        "technical_skills": "Tin học văn phòng, Quản trị kinh doanh, Microsoft PowerPoint, PowerPoint, Bất động sản, Tài chính, Ngân hàng, Xây dựng, Kinh doanh",
+        "requirements_tags": "Bất động sản, Tài chính, Ngân hàng, Xây dựng, Kinh doanh, Tin học văn phòng, Quản trị kinh doanh, Microsoft PowerPoint, PowerPoint",
+        "specializations": "Bất động sản, Tài chính, Ngân hàng, Xây dựng, Kinh doanh, Tin học văn phòng, Quản trị kinh doanh"
+      }
+    },
+    {
+      "content_hash": "580b0df34954e5d343727d450686f91f",
+      "title": "Nhân Viên Kinh Doanh Bất Động Sản",
+      "extracted": {
+        "technical_skills": "Bán hàng B2C, Bán hàng trực tiếp, Telesales, Bán hàng trực tuyến, Chăm sóc khách hàng, Báo cáo, Quản lý hợp đồng, Báo giá, Database, Email, Điện thoại, Bất động sản, Ngân hàng, Tài chính, Xây dựng, Marketing",
+        "requirements_tags": "Môi giới bất động sản, Sales, Sales & Marketing, Bất động sản, Ngân hàng, Tài chính, Xây dựng, Marketing, Bán hàng B2C, Bán hàng trực tiếp, Telesales, Bán hàng trực tuyến, Chăm sóc khách hàng, Báo cáo, Quản lý hợp đồng, Báo giá, Database, Email, Điện thoại",
+        "specializations": "Môi giới bất động sản, Sales, Sales & Marketing, Bất động sản, Ngân hàng, Tài chính, Xây dựng, Marketing, Bán hàng B2C, Bán hàng trực tiếp, Telesales, Bán hàng trực tuyến, Chăm sóc khách hàng, Báo cáo, Quản lý hợp đồng, Báo giá"
+      }
+    },
+    {
+      "content_hash": "e43ade755d9156bda5212d5e23303442",
+      "title": "Nhân Viên Kinh Doanh/Sales Bất Động Sản/ Nhân Viên Tư Vấn BĐS - Thu Nhập Trên 50 Triệu (Tự Do Thời Gian) - Nguồn Nhà/Nguồn Khách Có Sẵn",
+      "extracted": {
+        "technical_skills": "Bán hàng B2B, Bán hàng B2C, Bán hàng trực tiếp, Tư vấn, Bất động sản, Xây dựng, Kinh doanh, Lĩnh vực kinh doanh",
+        "requirements_tags": "Môi giới bất động sản, Sales, Sales bất động sản, Bất động sản, Xây dựng, Kinh doanh, Lĩnh vực kinh doanh, Bán hàng B2B, Bán hàng B2C, Bán hàng trực tiếp, Tư vấn",
+        "specializations": "Môi giới bất động sản, Sales, Sales bất động sản, Bất động sản, Xây dựng, Kinh doanh, Lĩnh vực kinh doanh, Bán hàng B2B, Bán hàng B2C, Bán hàng trực tiếp, Tư vấn"
+      }
+    }
+  ]
+}

@@ -6,7 +6,7 @@ set -e
 
 ES_HOST="${ES_HOST:-http://elasticsearch:9200}"
 ES_INDEX="${ES_INDEX:-topcv_jobs}"
-CSV_FILE="${CSV_FILE:-data/topcv_balanced_1300.csv}"
+CSV_FILE="${CSV_FILE:-data/jobs/topcv_balanced_1300.csv}"
 AUTO_IMPORT_ON_START="${AUTO_IMPORT_ON_START:-0}"
 
 echo "=========================================="

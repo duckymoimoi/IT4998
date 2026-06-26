@@ -58,7 +58,7 @@ Repo public này tập trung vào **ứng dụng chạy được** và **bộ d�
 
 Repo có thể chứa bộ dữ liệu job đã xử lý trong `data/`, gồm các file như:
 
-- `topcv_balanced_1300.csv`: bộ job chính dùng để import vào Elasticsearch.
+- `data/jobs/topcv_balanced_1300.csv`: bộ job chính dùng để import vào Elasticsearch.
 - `topcv_balanced_650.csv`, `topcv_balanced_650_final.csv`: bộ job nhỏ hơn dùng cho kiểm tra.
 - `skills*.csv`, `data/esco/`: dữ liệu kỹ năng ESCO phục vụ mở rộng truy vấn.
 - `evaluation_cvs_*.json`, `evaluation_pairs*.json`: dữ liệu CV-job phục vụ kiểm thử chất lượng nếu cần.
@@ -100,7 +100,7 @@ docker compose up -d elasticsearch
 Tạo index production từ một CSV có sẵn nếu muốn chạy app ngay trước khi crawl:
 
 ```powershell
-docker compose run --rm --entrypoint "" web python src/import_to_elastic.py --csv data/topcv_balanced_1300.csv --index topcv_jobs_production --es-host http://elasticsearch:9200
+docker compose run --rm --entrypoint "" web python src/import_to_elastic.py --csv data/jobs/topcv_balanced_1300.csv --index topcv_jobs_production --es-host http://elasticsearch:9200
 ```
 
 Web container không tự import CSV khi index rỗng. Nếu muốn bật lại hành vi seed dữ liệu khi khởi động, đặt `AUTO_IMPORT_ON_START=1`.
@@ -160,7 +160,7 @@ docker compose --profile crawl run --rm scheduler python src/scheduler.py --once
 Upsert một file CSV đã có vào Elasticsearch:
 
 ```powershell
-docker compose --profile crawl run --rm -e ES_INDEX=topcv_jobs_production scheduler python src/scheduler.py --upsert-file data/topcv_balanced_1300.csv --es-host http://elasticsearch:9200 --no-embedding
+docker compose --profile crawl run --rm -e ES_INDEX=topcv_jobs_production scheduler python src/scheduler.py --upsert-file data/jobs/topcv_balanced_1300.csv --es-host http://elasticsearch:9200 --no-embedding
 ```
 
 Lưu ý: crawler phụ thuộc vào giao diện TopCV và cơ chế chống bot của trình duyệt, nên có thể cần điều chỉnh Chrome/driver hoặc giảm số luồng nếu website thay đổi hoặc chặn request.

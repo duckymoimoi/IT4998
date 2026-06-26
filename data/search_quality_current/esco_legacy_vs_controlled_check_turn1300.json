@@ -1,0 +1,2353 @@
+{
+  "summary": {
+    "n_cvs": 130,
+    "seed_avg": 6.746,
+    "legacy_expanded_avg": 18.715,
+    "legacy_added_avg": 11.969,
+    "legacy_cvs_affected": 130,
+    "max_added": 21
+  },
+  "rows": [
+    {
+      "cv_id": "bds_L1",
+      "seed_n": 4,
+      "expanded_n": 13,
+      "added_n": 9,
+      "added": [
+        "advocate auction sales",
+        "market auction sales",
+        "DB2 Connect",
+        "DB2 for Linux",
+        "UNIX and Windows",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "bds_L2",
+      "seed_n": 6,
+      "expanded_n": 19,
+      "added_n": 13,
+      "added": [
+        "advocate auction sales",
+        "market auction sales",
+        "DB2 Connect",
+        "DB2 for Linux",
+        "UNIX and Windows",
+        "lead customers to merchandise",
+        "guide customers to merchandise",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks",
+        "cope with pressures"
+      ]
+    },
+    {
+      "cv_id": "bds_L3",
+      "seed_n": 8,
+      "expanded_n": 25,
+      "added_n": 17,
+      "added": [
+        "advocate auction sales",
+        "market auction sales",
+        "DB2 Connect",
+        "DB2 for Linux",
+        "UNIX and Windows",
+        "lead customers to merchandise",
+        "guide customers to merchandise",
+        "supervise estate development projects",
+        "supervise plot development projects",
+        "correspondence",
+        "interaction",
+        "working in teams"
+      ]
+    },
+    {
+      "cv_id": "bds_L4",
+      "seed_n": 10,
+      "expanded_n": 29,
+      "added_n": 19,
+      "added": [
+        "advocate auction sales",
+        "market auction sales",
+        "DB2 Connect",
+        "DB2 for Linux",
+        "UNIX and Windows",
+        "lead customers to merchandise",
+        "guide customers to merchandise",
+        "supervise estate development projects",
+        "supervise plot development projects",
+        "correspondence",
+        "interaction",
+        "working in teams"
+      ]
+    },
+    {
+      "cv_id": "bds_P",
+      "seed_n": 6,
+      "expanded_n": 18,
+      "added_n": 12,
+      "added": [
+        "Python3000",
+        "Python prog",
+        "Javax",
+        "Java Posse",
+        "JavaScript 1.7",
+        "JavaScript 1.6",
+        "working in teams",
+        "foster social networks",
+        "cope with pressures",
+        "handle pressure",
+        "schedule",
+        "prioritise tasks"
+      ]
+    },
+    {
+      "cv_id": "bds_L1b",
+      "seed_n": 4,
+      "expanded_n": 12,
+      "added_n": 8,
+      "added": [
+        "selling products",
+        "promote and sell a product",
+        "web marketing techniques",
+        "online marketing techniques",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "bds_L2b",
+      "seed_n": 7,
+      "expanded_n": 22,
+      "added_n": 15,
+      "added": [
+        "DB2 Connect",
+        "DB2 for Linux",
+        "UNIX and Windows",
+        "telephone soliciting",
+        "cold-calling",
+        "lead customers to merchandise",
+        "guide customers to merchandise",
+        "supervise estate development projects",
+        "supervise plot development projects",
+        "resolve conflict",
+        "influence decision-making processes",
+        "working in teams"
+      ]
+    },
+    {
+      "cv_id": "bds_L3b",
+      "seed_n": 10,
+      "expanded_n": 29,
+      "added_n": 19,
+      "added": [
+        "supervise estate development projects",
+        "supervise plot development projects",
+        "DB2 Connect",
+        "DB2 for Linux",
+        "UNIX and Windows",
+        "telephone soliciting",
+        "cold-calling",
+        "lead customers to merchandise",
+        "guide customers to merchandise",
+        "undertaking energy audit of facilities",
+        "carrying out energy audit of facilities",
+        "correspondence"
+      ]
+    },
+    {
+      "cv_id": "bds_L4b",
+      "seed_n": 13,
+      "expanded_n": 31,
+      "added_n": 18,
+      "added": [
+        "supervise estate development projects",
+        "supervise plot development projects",
+        "DB2 Connect",
+        "DB2 for Linux",
+        "UNIX and Windows",
+        "telephone soliciting",
+        "cold-calling",
+        "lead customers to merchandise",
+        "guide customers to merchandise",
+        "undertaking energy audit of facilities",
+        "carrying out energy audit of facilities",
+        "insurance legislation"
+      ]
+    },
+    {
+      "cv_id": "bds_P2",
+      "seed_n": 4,
+      "expanded_n": 12,
+      "added_n": 8,
+      "added": [
+        "manage storage and movement of warehouse goods",
+        "oversee inventory of warehouse",
+        "customer well being",
+        "customer services",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "cskh_L1",
+      "seed_n": 4,
+      "expanded_n": 10,
+      "added_n": 6,
+      "added": [
+        "Informix 4GL/SQL",
+        "SEQUEL",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "cskh_L2",
+      "seed_n": 6,
+      "expanded_n": 16,
+      "added_n": 10,
+      "added": [
+        "Informix 4GL/SQL",
+        "SEQUEL",
+        "call-centre operations",
+        "call-centres technology",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks",
+        "cope with pressures",
+        "handle pressure"
+      ]
+    },
+    {
+      "cv_id": "cskh_L3",
+      "seed_n": 8,
+      "expanded_n": 23,
+      "added_n": 15,
+      "added": [
+        "Informix 4GL/SQL",
+        "SEQUEL",
+        "call-centre operations",
+        "call-centres technology",
+        "customer well being",
+        "customer services",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks",
+        "cope with pressures",
+        "handle pressure"
+      ]
+    },
+    {
+      "cv_id": "cskh_L4",
+      "seed_n": 10,
+      "expanded_n": 28,
+      "added_n": 18,
+      "added": [
+        "Informix 4GL/SQL",
+        "SEQUEL",
+        "call-centre operations",
+        "call-centres technology",
+        "customer well being",
+        "customer services",
+        "transport",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks",
+        "cope with pressures"
+      ]
+    },
+    {
+      "cv_id": "cskh_P",
+      "seed_n": 4,
+      "expanded_n": 12,
+      "added_n": 8,
+      "added": [
+        "Javax",
+        "Java Posse",
+        "Python3000",
+        "Python prog",
+        "working in teams",
+        "foster social networks",
+        "cope with pressures",
+        "handle pressure"
+      ]
+    },
+    {
+      "cv_id": "cskh_L1b",
+      "seed_n": 4,
+      "expanded_n": 10,
+      "added_n": 6,
+      "added": [
+        "Informix 4GL/SQL",
+        "SEQUEL",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "cskh_L2b",
+      "seed_n": 7,
+      "expanded_n": 19,
+      "added_n": 12,
+      "added": [
+        "Informix 4GL/SQL",
+        "SEQUEL",
+        "call-centre operations",
+        "call-centres technology",
+        "customer well being",
+        "customer services",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks",
+        "cope with pressures",
+        "handle pressure"
+      ]
+    },
+    {
+      "cv_id": "cskh_L3b",
+      "seed_n": 10,
+      "expanded_n": 29,
+      "added_n": 19,
+      "added": [
+        "Informix 4GL/SQL",
+        "SEQUEL",
+        "call-centre operations",
+        "call-centres technology",
+        "customer well being",
+        "customer services",
+        "logistic",
+        "transport",
+        "global trade",
+        "international commerce",
+        "correspondence",
+        "interaction"
+      ]
+    },
+    {
+      "cv_id": "cskh_L4b",
+      "seed_n": 12,
+      "expanded_n": 31,
+      "added_n": 19,
+      "added": [
+        "Informix 4GL/SQL",
+        "SEQUEL",
+        "call-centre operations",
+        "call-centres technology",
+        "customer well being",
+        "customer services",
+        "logistic",
+        "transport",
+        "global trade",
+        "international commerce",
+        "correspondence",
+        "interaction"
+      ]
+    },
+    {
+      "cv_id": "cskh_P2",
+      "seed_n": 4,
+      "expanded_n": 10,
+      "added_n": 6,
+      "added": [
+        "make AutoCAD drawings",
+        "creating AutoCAD drawings",
+        "working in teams",
+        "foster social networks",
+        "cope with pressures",
+        "handle pressure"
+      ]
+    },
+    {
+      "cv_id": "gd_L1",
+      "seed_n": 4,
+      "expanded_n": 12,
+      "added_n": 8,
+      "added": [
+        "produce electronic presentations",
+        "apply presentation software",
+        "Informix 4GL/SQL",
+        "SEQUEL",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "gd_L2",
+      "seed_n": 6,
+      "expanded_n": 18,
+      "added_n": 12,
+      "added": [
+        "produce electronic presentations",
+        "apply presentation software",
+        "Informix 4GL/SQL",
+        "SEQUEL",
+        "iPhone OS",
+        "IPod Touch OS",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks",
+        "cope with pressures",
+        "handle pressure"
+      ]
+    },
+    {
+      "cv_id": "gd_L3",
+      "seed_n": 8,
+      "expanded_n": 25,
+      "added_n": 17,
+      "added": [
+        "produce electronic presentations",
+        "apply presentation software",
+        "Informix 4GL/SQL",
+        "SEQUEL",
+        "iPhone OS",
+        "IPod Touch OS",
+        "sales operations",
+        "sales strategies",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "gd_L4",
+      "seed_n": 10,
+      "expanded_n": 31,
+      "added_n": 21,
+      "added": [
+        "produce electronic presentations",
+        "apply presentation software",
+        "Informix 4GL/SQL",
+        "SEQUEL",
+        "iPhone OS",
+        "IPod Touch OS",
+        "sales operations",
+        "sales strategies",
+        "providing information on study programmes",
+        "supply information on study programmes",
+        "correspondence",
+        "interaction"
+      ]
+    },
+    {
+      "cv_id": "gd_P",
+      "seed_n": 5,
+      "expanded_n": 15,
+      "added_n": 10,
+      "added": [
+        "Python3000",
+        "Python prog",
+        "Javax",
+        "Java Posse",
+        "JavaScript 1.7",
+        "JavaScript 1.6",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "gd_L1b",
+      "seed_n": 4,
+      "expanded_n": 12,
+      "added_n": 8,
+      "added": [
+        "Informix 4GL/SQL",
+        "SEQUEL",
+        "produce electronic presentations",
+        "apply presentation software",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "gd_L2b",
+      "seed_n": 7,
+      "expanded_n": 22,
+      "added_n": 15,
+      "added": [
+        "Informix 4GL/SQL",
+        "SEQUEL",
+        "produce electronic presentations",
+        "apply presentation software",
+        "DB2 Connect",
+        "DB2 for Linux",
+        "UNIX and Windows",
+        "iPhone OS",
+        "IPod Touch OS",
+        "correspondence",
+        "interaction",
+        "working in teams"
+      ]
+    },
+    {
+      "cv_id": "gd_L3b",
+      "seed_n": 9,
+      "expanded_n": 27,
+      "added_n": 18,
+      "added": [
+        "Informix 4GL/SQL",
+        "SEQUEL",
+        "produce electronic presentations",
+        "apply presentation software",
+        "DB2 Connect",
+        "DB2 for Linux",
+        "UNIX and Windows",
+        "iPhone OS",
+        "IPod Touch OS",
+        "correspondence",
+        "interaction",
+        "working in teams"
+      ]
+    },
+    {
+      "cv_id": "gd_L4b",
+      "seed_n": 11,
+      "expanded_n": 32,
+      "added_n": 21,
+      "added": [
+        "Informix 4GL/SQL",
+        "SEQUEL",
+        "produce electronic presentations",
+        "apply presentation software",
+        "DB2 Connect",
+        "DB2 for Linux",
+        "UNIX and Windows",
+        "iPhone OS",
+        "IPod Touch OS",
+        "lead customers to merchandise",
+        "guide customers to merchandise",
+        "correspondence"
+      ]
+    },
+    {
+      "cv_id": "gd_P2",
+      "seed_n": 4,
+      "expanded_n": 12,
+      "added_n": 8,
+      "added": [
+        "Informix 4GL/SQL",
+        "SEQUEL",
+        "human resource oversight",
+        "personnel oversight",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "hcns_L1",
+      "seed_n": 4,
+      "expanded_n": 12,
+      "added_n": 8,
+      "added": [
+        "utilise microsoft office software",
+        "be a proficient microsoft office user",
+        "produce electronic presentations",
+        "apply presentation software",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "hcns_L2",
+      "seed_n": 6,
+      "expanded_n": 18,
+      "added_n": 12,
+      "added": [
+        "utilise microsoft office software",
+        "be a proficient microsoft office user",
+        "produce electronic presentations",
+        "apply presentation software",
+        "oversee payroll",
+        "handle payroll",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks",
+        "cope with pressures",
+        "handle pressure"
+      ]
+    },
+    {
+      "cv_id": "hcns_L3",
+      "seed_n": 8,
+      "expanded_n": 24,
+      "added_n": 16,
+      "added": [
+        "utilise microsoft office software",
+        "be a proficient microsoft office user",
+        "produce electronic presentations",
+        "apply presentation software",
+        "oversee payroll",
+        "handle payroll",
+        "produce paperwork",
+        "ensure completion of relevant paperwork",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "hcns_L4",
+      "seed_n": 10,
+      "expanded_n": 30,
+      "added_n": 20,
+      "added": [
+        "utilise microsoft office software",
+        "be a proficient microsoft office user",
+        "produce electronic presentations",
+        "apply presentation software",
+        "oversee payroll",
+        "handle payroll",
+        "produce paperwork",
+        "ensure completion of relevant paperwork",
+        "human resource oversight",
+        "personnel oversight",
+        "correspondence",
+        "interaction"
+      ]
+    },
+    {
+      "cv_id": "hcns_P",
+      "seed_n": 4,
+      "expanded_n": 12,
+      "added_n": 8,
+      "added": [
+        "supervise a warehouse management system",
+        "managing a warehouse management system",
+        "office IT software",
+        "office operating system",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "hcns_L1b",
+      "seed_n": 4,
+      "expanded_n": 12,
+      "added_n": 8,
+      "added": [
+        "produce electronic presentations",
+        "apply presentation software",
+        "utilise microsoft office software",
+        "be a proficient microsoft office user",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "hcns_L2b",
+      "seed_n": 6,
+      "expanded_n": 18,
+      "added_n": 12,
+      "added": [
+        "produce electronic presentations",
+        "apply presentation software",
+        "utilise microsoft office software",
+        "be a proficient microsoft office user",
+        "oversee payroll",
+        "handle payroll",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks",
+        "schedule",
+        "prioritise tasks"
+      ]
+    },
+    {
+      "cv_id": "hcns_L3b",
+      "seed_n": 8,
+      "expanded_n": 24,
+      "added_n": 16,
+      "added": [
+        "produce electronic presentations",
+        "apply presentation software",
+        "utilise microsoft office software",
+        "be a proficient microsoft office user",
+        "oversee payroll",
+        "handle payroll",
+        "produce paperwork",
+        "ensure completion of relevant paperwork",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "hcns_L4b",
+      "seed_n": 10,
+      "expanded_n": 30,
+      "added_n": 20,
+      "added": [
+        "produce electronic presentations",
+        "apply presentation software",
+        "utilise microsoft office software",
+        "be a proficient microsoft office user",
+        "oversee payroll",
+        "handle payroll",
+        "produce paperwork",
+        "ensure completion of relevant paperwork",
+        "human resource oversight",
+        "personnel oversight",
+        "correspondence",
+        "interaction"
+      ]
+    },
+    {
+      "cv_id": "hcns_P2",
+      "seed_n": 4,
+      "expanded_n": 12,
+      "added_n": 8,
+      "added": [
+        "supervise a warehouse management system",
+        "managing a warehouse management system",
+        "office IT software",
+        "office operating system",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "it_L1",
+      "seed_n": 4,
+      "expanded_n": 8,
+      "added_n": 4,
+      "added": [
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "it_L2",
+      "seed_n": 6,
+      "expanded_n": 17,
+      "added_n": 11,
+      "added": [
+        "stay watchful",
+        "ensure alertness while performing work activities",
+        "embedded systems software architectures",
+        "source control",
+        "tools for software version control",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks",
+        "cope with pressures",
+        "handle pressure"
+      ]
+    },
+    {
+      "cv_id": "it_L3",
+      "seed_n": 7,
+      "expanded_n": 18,
+      "added_n": 11,
+      "added": [
+        "business analyses",
+        "analysis of businesses",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks",
+        "cope with pressures",
+        "handle pressure",
+        "management of resources",
+        "coordinating people",
+        "machinery and equipment"
+      ]
+    },
+    {
+      "cv_id": "it_L4",
+      "seed_n": 9,
+      "expanded_n": 25,
+      "added_n": 16,
+      "added": [
+        "ASP+",
+        "Aspx",
+        "embedded systems software architectures",
+        "source control",
+        "tools for software version control",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks",
+        "cope with pressures",
+        "handle pressure",
+        "management of resources"
+      ]
+    },
+    {
+      "cv_id": "it_P",
+      "seed_n": 4,
+      "expanded_n": 10,
+      "added_n": 6,
+      "added": [
+        "Informix 4GL/SQL",
+        "SEQUEL",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "it_L1b",
+      "seed_n": 4,
+      "expanded_n": 10,
+      "added_n": 6,
+      "added": [
+        "stay watchful",
+        "ensure alertness while performing work activities",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "it_L2b",
+      "seed_n": 7,
+      "expanded_n": 15,
+      "added_n": 8,
+      "added": [
+        "tools for test automation",
+        "test automation tools",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks",
+        "cope with pressures",
+        "handle pressure"
+      ]
+    },
+    {
+      "cv_id": "it_L3b",
+      "seed_n": 11,
+      "expanded_n": 27,
+      "added_n": 16,
+      "added": [
+        "ASP+",
+        "Aspx",
+        "business analyses",
+        "analysis of businesses",
+        "embedded systems software architectures",
+        "markup programming",
+        "Jenkins CI",
+        "Jenkins Continuous Integration server",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "it_L4b",
+      "seed_n": 14,
+      "expanded_n": 30,
+      "added_n": 16,
+      "added": [
+        "ASP+",
+        "Aspx",
+        "business analyses",
+        "analysis of businesses",
+        "embedded systems software architectures",
+        "markup programming",
+        "Jenkins CI",
+        "Jenkins Continuous Integration server",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "it_P2",
+      "seed_n": 4,
+      "expanded_n": 10,
+      "added_n": 6,
+      "added": [
+        "Informix 4GL/SQL",
+        "SEQUEL",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "kt_L1",
+      "seed_n": 4,
+      "expanded_n": 11,
+      "added_n": 7,
+      "added": [
+        "bookkeeping",
+        "office IT software",
+        "office operating system",
+        "demonstrate a professional civic duty",
+        "showing professional responsibility",
+        "correspondence",
+        "interaction"
+      ]
+    },
+    {
+      "cv_id": "kt_L2",
+      "seed_n": 6,
+      "expanded_n": 18,
+      "added_n": 12,
+      "added": [
+        "internal audits",
+        "internal probes",
+        "internal investigations",
+        "bookkeeping",
+        "drive fast",
+        "drive at high velocity",
+        "demonstrate a professional civic duty",
+        "showing professional responsibility",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "kt_L3",
+      "seed_n": 9,
+      "expanded_n": 24,
+      "added_n": 15,
+      "added": [
+        "bookkeeping",
+        "office IT software",
+        "office operating system",
+        "act of communion",
+        "plea",
+        "service",
+        "devotion",
+        "demonstrate a professional civic duty",
+        "showing professional responsibility",
+        "correspondence",
+        "interaction",
+        "working in teams"
+      ]
+    },
+    {
+      "cv_id": "kt_L4",
+      "seed_n": 11,
+      "expanded_n": 28,
+      "added_n": 17,
+      "added": [
+        "bookkeeping",
+        "office IT software",
+        "office operating system",
+        "act of communion",
+        "plea",
+        "service",
+        "devotion",
+        "demonstrate a professional civic duty",
+        "showing professional responsibility",
+        "correspondence",
+        "interaction",
+        "working in teams"
+      ]
+    },
+    {
+      "cv_id": "kt_P",
+      "seed_n": 4,
+      "expanded_n": 12,
+      "added_n": 8,
+      "added": [
+        "manage storage and movement of warehouse goods",
+        "oversee inventory of warehouse",
+        "employ information technology tools",
+        "use information technology",
+        "demonstrate a professional civic duty",
+        "showing professional responsibility",
+        "correspondence",
+        "interaction"
+      ]
+    },
+    {
+      "cv_id": "kt_L1b",
+      "seed_n": 4,
+      "expanded_n": 12,
+      "added_n": 8,
+      "added": [
+        "Informix 4GL/SQL",
+        "SEQUEL",
+        "office IT software",
+        "office operating system",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "kt_L2b",
+      "seed_n": 7,
+      "expanded_n": 20,
+      "added_n": 13,
+      "added": [
+        "drive fast",
+        "drive at high velocity",
+        "act of communion",
+        "plea",
+        "service",
+        "devotion",
+        "bookkeeping",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks",
+        "cope with pressures"
+      ]
+    },
+    {
+      "cv_id": "kt_L3b",
+      "seed_n": 10,
+      "expanded_n": 30,
+      "added_n": 20,
+      "added": [
+        "bookkeeping",
+        "internal audits",
+        "internal probes",
+        "internal investigations",
+        "fiscal rules",
+        "fiscal regulations",
+        "drive fast",
+        "drive at high velocity",
+        "act of communion",
+        "plea",
+        "service",
+        "devotion"
+      ]
+    },
+    {
+      "cv_id": "kt_L4b",
+      "seed_n": 13,
+      "expanded_n": 33,
+      "added_n": 20,
+      "added": [
+        "bookkeeping",
+        "internal audits",
+        "internal probes",
+        "internal investigations",
+        "fiscal rules",
+        "fiscal regulations",
+        "drive fast",
+        "drive at high velocity",
+        "act of communion",
+        "plea",
+        "service",
+        "devotion"
+      ]
+    },
+    {
+      "cv_id": "kt_P2",
+      "seed_n": 4,
+      "expanded_n": 12,
+      "added_n": 8,
+      "added": [
+        "Informix 4GL/SQL",
+        "SEQUEL",
+        "use forecasting softwares for sales",
+        "using sales forecasting softwares",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "ksxd_L1",
+      "seed_n": 4,
+      "expanded_n": 12,
+      "added_n": 8,
+      "added": [
+        "tack and staple brands",
+        "rivet categories",
+        "global principles of social accountability",
+        "SA8000 criteria",
+        "working independently",
+        "work without supervision",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "ksxd_L2",
+      "seed_n": 6,
+      "expanded_n": 16,
+      "added_n": 10,
+      "added": [
+        "tack and staple brands",
+        "rivet categories",
+        "global principles of social accountability",
+        "SA8000 criteria",
+        "working independently",
+        "work without supervision",
+        "working in teams",
+        "foster social networks",
+        "cope with pressures",
+        "handle pressure"
+      ]
+    },
+    {
+      "cv_id": "ksxd_L3",
+      "seed_n": 8,
+      "expanded_n": 20,
+      "added_n": 12,
+      "added": [
+        "tack and staple brands",
+        "rivet categories",
+        "global principles of social accountability",
+        "SA8000 criteria",
+        "working independently",
+        "work without supervision",
+        "working in teams",
+        "foster social networks",
+        "cope with pressures",
+        "handle pressure",
+        "think ahead",
+        "think actively"
+      ]
+    },
+    {
+      "cv_id": "ksxd_L4",
+      "seed_n": 10,
+      "expanded_n": 26,
+      "added_n": 16,
+      "added": [
+        "tack and staple brands",
+        "rivet categories",
+        "global principles of social accountability",
+        "SA8000 criteria",
+        "office control",
+        "office organisation",
+        "working independently",
+        "work without supervision",
+        "working in teams",
+        "foster social networks",
+        "cope with pressures",
+        "handle pressure"
+      ]
+    },
+    {
+      "cv_id": "ksxd_P",
+      "seed_n": 4,
+      "expanded_n": 10,
+      "added_n": 6,
+      "added": [
+        "Informix 4GL/SQL",
+        "SEQUEL",
+        "working independently",
+        "work without supervision",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "ksxd_L1b",
+      "seed_n": 4,
+      "expanded_n": 12,
+      "added_n": 8,
+      "added": [
+        "global principles of social accountability",
+        "SA8000 criteria",
+        "tack and staple brands",
+        "rivet categories",
+        "working in teams",
+        "foster social networks",
+        "cope with pressures",
+        "handle pressure"
+      ]
+    },
+    {
+      "cv_id": "ksxd_L2b",
+      "seed_n": 7,
+      "expanded_n": 17,
+      "added_n": 10,
+      "added": [
+        "global principles of social accountability",
+        "SA8000 criteria",
+        "office control",
+        "office organisation",
+        "working independently",
+        "work without supervision",
+        "working in teams",
+        "foster social networks",
+        "cope with pressures",
+        "handle pressure"
+      ]
+    },
+    {
+      "cv_id": "ksxd_L3b",
+      "seed_n": 9,
+      "expanded_n": 23,
+      "added_n": 14,
+      "added": [
+        "global principles of social accountability",
+        "SA8000 criteria",
+        "tack and staple brands",
+        "rivet categories",
+        "natural gas",
+        "fossil fuel",
+        "working independently",
+        "work without supervision",
+        "working in teams",
+        "foster social networks",
+        "cope with pressures",
+        "handle pressure"
+      ]
+    },
+    {
+      "cv_id": "ksxd_L4b",
+      "seed_n": 11,
+      "expanded_n": 29,
+      "added_n": 18,
+      "added": [
+        "global principles of social accountability",
+        "SA8000 criteria",
+        "tack and staple brands",
+        "rivet categories",
+        "natural gas",
+        "fossil fuel",
+        "architectural plan",
+        "architecture design",
+        "working independently",
+        "work without supervision",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "ksxd_P2",
+      "seed_n": 4,
+      "expanded_n": 12,
+      "added_n": 8,
+      "added": [
+        "Informix 4GL/SQL",
+        "SEQUEL",
+        "use text processing program",
+        "using word processor",
+        "working independently",
+        "work without supervision",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "ldpt_L1",
+      "seed_n": 4,
+      "expanded_n": 12,
+      "added_n": 8,
+      "added": [
+        "labour markets",
+        "job market",
+        "customer well being",
+        "customer services",
+        "use active listening techniques",
+        "maintain active listening",
+        "correspondence",
+        "interaction"
+      ]
+    },
+    {
+      "cv_id": "ldpt_L2",
+      "seed_n": 5,
+      "expanded_n": 13,
+      "added_n": 8,
+      "added": [
+        "labour markets",
+        "job market",
+        "selling products",
+        "promote and sell a product",
+        "serve cocktails",
+        "prepare a mix of beverages",
+        "utilise managerial skills",
+        "utilise management skills"
+      ]
+    },
+    {
+      "cv_id": "ldpt_L3",
+      "seed_n": 7,
+      "expanded_n": 21,
+      "added_n": 14,
+      "added": [
+        "labour markets",
+        "job market",
+        "prepare fish recipies",
+        "cooking fish",
+        "customer well being",
+        "customer services",
+        "stockpile goods",
+        "pack goods",
+        "handle customers' complaints",
+        "deal with client's negative feedback",
+        "cope with pressures",
+        "handle pressure"
+      ]
+    },
+    {
+      "cv_id": "ldpt_L4",
+      "seed_n": 7,
+      "expanded_n": 20,
+      "added_n": 13,
+      "added": [
+        "labour markets",
+        "job market",
+        "food and drinks on the menu",
+        "menu of food and beverage",
+        "park  vehicle of guests",
+        "drive customers' cars and manoeuvre into a parking lot",
+        "maintenance",
+        "repair and operations",
+        "maintenance and repairs",
+        "utilise managerial skills",
+        "utilise management skills",
+        "handle customers' complaints"
+      ]
+    },
+    {
+      "cv_id": "ldpt_P",
+      "seed_n": 5,
+      "expanded_n": 13,
+      "added_n": 8,
+      "added": [
+        "Python3000",
+        "Python prog",
+        "Javax",
+        "Java Posse",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "ldpt_L1b",
+      "seed_n": 4,
+      "expanded_n": 12,
+      "added_n": 8,
+      "added": [
+        "serve cocktails",
+        "prepare a mix of beverages",
+        "selling products",
+        "promote and sell a product",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "ldpt_L2b",
+      "seed_n": 5,
+      "expanded_n": 15,
+      "added_n": 10,
+      "added": [
+        "prepare fish recipies",
+        "cooking fish",
+        "serve cocktails",
+        "prepare a mix of beverages",
+        "production analysis",
+        "production measures",
+        "schedule",
+        "prioritise tasks",
+        "working independently",
+        "work without supervision"
+      ]
+    },
+    {
+      "cv_id": "ldpt_L3b",
+      "seed_n": 6,
+      "expanded_n": 19,
+      "added_n": 13,
+      "added": [
+        "stockpile goods",
+        "pack goods",
+        "maintenance",
+        "repair and operations",
+        "maintenance and repairs",
+        "park  vehicle of guests",
+        "drive customers' cars and manoeuvre into a parking lot",
+        "direct a team",
+        "supervise a team",
+        "working independently",
+        "work without supervision",
+        "correspondence"
+      ]
+    },
+    {
+      "cv_id": "ldpt_L4b",
+      "seed_n": 8,
+      "expanded_n": 24,
+      "added_n": 16,
+      "added": [
+        "food and drinks on the menu",
+        "menu of food and beverage",
+        "prepare fish recipies",
+        "cooking fish",
+        "serve cocktails",
+        "prepare a mix of beverages",
+        "park  vehicle of guests",
+        "drive customers' cars and manoeuvre into a parking lot",
+        "direct a team",
+        "supervise a team",
+        "working independently",
+        "work without supervision"
+      ]
+    },
+    {
+      "cv_id": "ldpt_P2",
+      "seed_n": 4,
+      "expanded_n": 12,
+      "added_n": 8,
+      "added": [
+        "Python3000",
+        "Python prog",
+        "Javax",
+        "Java Posse",
+        "working independently",
+        "work without supervision",
+        "correspondence",
+        "interaction"
+      ]
+    },
+    {
+      "cv_id": "mkt_L1",
+      "seed_n": 4,
+      "expanded_n": 12,
+      "added_n": 8,
+      "added": [
+        "Google",
+        "Yahoo",
+        "Search marketing",
+        "search engine marketing",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "mkt_L2",
+      "seed_n": 5,
+      "expanded_n": 15,
+      "added_n": 10,
+      "added": [
+        "web marketing techniques",
+        "online marketing techniques",
+        "content marketing blueprint",
+        "content marketing proposal",
+        "creating advertisements",
+        "develop advertisements",
+        "working independently",
+        "work without supervision",
+        "schedule",
+        "prioritise tasks"
+      ]
+    },
+    {
+      "cv_id": "mkt_L3",
+      "seed_n": 7,
+      "expanded_n": 18,
+      "added_n": 11,
+      "added": [
+        "make strategic business decision",
+        "make business decisions",
+        "brand marketing skills",
+        "a brand marketing technique",
+        "creating advertisements",
+        "develop advertisements",
+        "direct a team",
+        "supervise a group of people",
+        "supervise a team",
+        "hold points of view  persuasively",
+        "hold  arguments persuasively"
+      ]
+    },
+    {
+      "cv_id": "mkt_L4",
+      "seed_n": 10,
+      "expanded_n": 27,
+      "added_n": 17,
+      "added": [
+        "web marketing techniques",
+        "online marketing techniques",
+        "content marketing blueprint",
+        "content marketing proposal",
+        "Search marketing",
+        "search engine marketing",
+        "creating advertisements",
+        "develop advertisements",
+        "Google",
+        "Yahoo",
+        "direct a team",
+        "supervise a group of people"
+      ]
+    },
+    {
+      "cv_id": "mkt_P",
+      "seed_n": 4,
+      "expanded_n": 10,
+      "added_n": 6,
+      "added": [
+        "make AutoCAD drawings",
+        "creating AutoCAD drawings",
+        "working independently",
+        "work without supervision",
+        "schedule",
+        "prioritise tasks"
+      ]
+    },
+    {
+      "cv_id": "mkt_L1b",
+      "seed_n": 4,
+      "expanded_n": 12,
+      "added_n": 8,
+      "added": [
+        "Google",
+        "Yahoo",
+        "Search marketing",
+        "search engine marketing",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "mkt_L2b",
+      "seed_n": 7,
+      "expanded_n": 19,
+      "added_n": 12,
+      "added": [
+        "web marketing techniques",
+        "online marketing techniques",
+        "content marketing blueprint",
+        "content marketing proposal",
+        "creating advertisements",
+        "develop advertisements",
+        "working independently",
+        "work without supervision",
+        "schedule",
+        "prioritise tasks",
+        "correspondence",
+        "interaction"
+      ]
+    },
+    {
+      "cv_id": "mkt_L3b",
+      "seed_n": 11,
+      "expanded_n": 29,
+      "added_n": 18,
+      "added": [
+        "web marketing techniques",
+        "online marketing techniques",
+        "content marketing blueprint",
+        "content marketing proposal",
+        "Search marketing",
+        "search engine marketing",
+        "Google",
+        "Yahoo",
+        "creating advertisements",
+        "develop advertisements",
+        "direct a team",
+        "supervise a group of people"
+      ]
+    },
+    {
+      "cv_id": "mkt_L4b",
+      "seed_n": 14,
+      "expanded_n": 30,
+      "added_n": 16,
+      "added": [
+        "web marketing techniques",
+        "online marketing techniques",
+        "content marketing blueprint",
+        "content marketing proposal",
+        "Search marketing",
+        "search engine marketing",
+        "Google",
+        "Yahoo",
+        "creating advertisements",
+        "develop advertisements",
+        "brand marketing skills",
+        "a brand marketing technique"
+      ]
+    },
+    {
+      "cv_id": "mkt_P2",
+      "seed_n": 4,
+      "expanded_n": 10,
+      "added_n": 6,
+      "added": [
+        "utilise microsoft office software",
+        "be a proficient microsoft office user",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "nh_L1",
+      "seed_n": 4,
+      "expanded_n": 11,
+      "added_n": 7,
+      "added": [
+        "Rdb",
+        "Oracle Rdb",
+        "bookkeeping",
+        "stress positive behaviour",
+        "bolster encouraging behaviour",
+        "correspondence",
+        "interaction"
+      ]
+    },
+    {
+      "cv_id": "nh_L2",
+      "seed_n": 6,
+      "expanded_n": 17,
+      "added_n": 11,
+      "added": [
+        "banking activity",
+        "create an economic plan",
+        "create a business plan",
+        "collect money in exchange for services",
+        "accept payment for services",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks",
+        "demonstrate confidence",
+        "reveal confidence"
+      ]
+    },
+    {
+      "cv_id": "nh_L3",
+      "seed_n": 9,
+      "expanded_n": 21,
+      "added_n": 12,
+      "added": [
+        "give recommendations on financial matters",
+        "advising on financial matters",
+        "banking activity",
+        "bookkeeping",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks",
+        "demonstrate confidence",
+        "reveal confidence",
+        "perform a technical task with great care",
+        "complete technical tasks with great care"
+      ]
+    },
+    {
+      "cv_id": "nh_L4",
+      "seed_n": 13,
+      "expanded_n": 30,
+      "added_n": 17,
+      "added": [
+        "banking activity",
+        "create an economic plan",
+        "create a business plan",
+        "collect money in exchange for services",
+        "accept payment for services",
+        "bookkeeping",
+        "Rdb",
+        "Oracle Rdb",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "nh_P",
+      "seed_n": 4,
+      "expanded_n": 10,
+      "added_n": 6,
+      "added": [
+        "make AutoCAD drawings",
+        "creating AutoCAD drawings",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "nh_L1b",
+      "seed_n": 4,
+      "expanded_n": 10,
+      "added_n": 6,
+      "added": [
+        "give recommendations on financial matters",
+        "advising on financial matters",
+        "correspondence",
+        "interaction",
+        "working efficiently",
+        "labor efficiently"
+      ]
+    },
+    {
+      "cv_id": "nh_L2b",
+      "seed_n": 7,
+      "expanded_n": 17,
+      "added_n": 10,
+      "added": [
+        "give recommendations on financial matters",
+        "advising on financial matters",
+        "Rdb",
+        "Oracle Rdb",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks",
+        "demonstrate confidence",
+        "reveal confidence"
+      ]
+    },
+    {
+      "cv_id": "nh_L3b",
+      "seed_n": 9,
+      "expanded_n": 21,
+      "added_n": 12,
+      "added": [
+        "give recommendations on financial matters",
+        "advising on financial matters",
+        "Rdb",
+        "Oracle Rdb",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks",
+        "demonstrate confidence",
+        "reveal confidence",
+        "working efficiently",
+        "labor efficiently"
+      ]
+    },
+    {
+      "cv_id": "nh_L4b",
+      "seed_n": 12,
+      "expanded_n": 29,
+      "added_n": 17,
+      "added": [
+        "give recommendations on financial matters",
+        "advising on financial matters",
+        "Rdb",
+        "Oracle Rdb",
+        "banking activity",
+        "create an economic plan",
+        "create a business plan",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks",
+        "demonstrate confidence"
+      ]
+    },
+    {
+      "cv_id": "nh_P2",
+      "seed_n": 4,
+      "expanded_n": 10,
+      "added_n": 6,
+      "added": [
+        "make AutoCAD drawings",
+        "creating AutoCAD drawings",
+        "correspondence",
+        "interaction",
+        "working efficiently",
+        "labor efficiently"
+      ]
+    },
+    {
+      "cv_id": "nvkd_L1",
+      "seed_n": 4,
+      "expanded_n": 13,
+      "added_n": 9,
+      "added": [
+        "DB2 Connect",
+        "DB2 for Linux",
+        "UNIX and Windows",
+        "lead customers to merchandise",
+        "guide customers to merchandise",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "nvkd_L2",
+      "seed_n": 6,
+      "expanded_n": 19,
+      "added_n": 13,
+      "added": [
+        "DB2 Connect",
+        "DB2 for Linux",
+        "UNIX and Windows",
+        "lead customers to merchandise",
+        "guide customers to merchandise",
+        "make strategic business decision",
+        "make business decisions",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks",
+        "cope with pressures"
+      ]
+    },
+    {
+      "cv_id": "nvkd_L3",
+      "seed_n": 8,
+      "expanded_n": 25,
+      "added_n": 17,
+      "added": [
+        "DB2 Connect",
+        "DB2 for Linux",
+        "UNIX and Windows",
+        "lead customers to merchandise",
+        "guide customers to merchandise",
+        "make strategic business decision",
+        "make business decisions",
+        "sell a software product",
+        "trade software products",
+        "correspondence",
+        "interaction",
+        "working in teams"
+      ]
+    },
+    {
+      "cv_id": "nvkd_L4",
+      "seed_n": 10,
+      "expanded_n": 30,
+      "added_n": 20,
+      "added": [
+        "DB2 Connect",
+        "DB2 for Linux",
+        "UNIX and Windows",
+        "lead customers to merchandise",
+        "guide customers to merchandise",
+        "make strategic business decision",
+        "make business decisions",
+        "sell a software product",
+        "trade software products",
+        "transport",
+        "correspondence",
+        "interaction"
+      ]
+    },
+    {
+      "cv_id": "nvkd_P",
+      "seed_n": 4,
+      "expanded_n": 10,
+      "added_n": 6,
+      "added": [
+        "make AutoCAD drawings",
+        "creating AutoCAD drawings",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "nvkd_L1b",
+      "seed_n": 4,
+      "expanded_n": 13,
+      "added_n": 9,
+      "added": [
+        "DB2 Connect",
+        "DB2 for Linux",
+        "UNIX and Windows",
+        "make strategic business decision",
+        "make business decisions",
+        "implement technical communication skills",
+        "application of technical communication skills",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "nvkd_L2b",
+      "seed_n": 5,
+      "expanded_n": 16,
+      "added_n": 11,
+      "added": [
+        "DB2 Connect",
+        "DB2 for Linux",
+        "UNIX and Windows",
+        "lead customers to merchandise",
+        "guide customers to merchandise",
+        "sell a software product",
+        "trade software products",
+        "breathing and speaking techniques",
+        "history of speech",
+        "resolve conflict",
+        "influence decision-making processes"
+      ]
+    },
+    {
+      "cv_id": "nvkd_L3b",
+      "seed_n": 7,
+      "expanded_n": 22,
+      "added_n": 15,
+      "added": [
+        "DB2 Connect",
+        "DB2 for Linux",
+        "UNIX and Windows",
+        "make strategic business decision",
+        "make business decisions",
+        "sell a software product",
+        "trade software products",
+        "logistic",
+        "transport",
+        "utilise managerial skills",
+        "utilise management skills",
+        "human resource oversight"
+      ]
+    },
+    {
+      "cv_id": "nvkd_L4b",
+      "seed_n": 9,
+      "expanded_n": 28,
+      "added_n": 19,
+      "added": [
+        "DB2 Connect",
+        "DB2 for Linux",
+        "UNIX and Windows",
+        "lead customers to merchandise",
+        "guide customers to merchandise",
+        "sell a software product",
+        "trade software products",
+        "logistic",
+        "transport",
+        "sales operations",
+        "sales strategies",
+        "utilise managerial skills"
+      ]
+    },
+    {
+      "cv_id": "nvkd_P2",
+      "seed_n": 4,
+      "expanded_n": 12,
+      "added_n": 8,
+      "added": [
+        "manage customer orders",
+        "deal with customer orders",
+        "customer well being",
+        "customer services",
+        "implement technical communication skills",
+        "application of technical communication skills",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "ts_L1",
+      "seed_n": 3,
+      "expanded_n": 10,
+      "added_n": 7,
+      "added": [
+        "DB2 Connect",
+        "DB2 for Linux",
+        "UNIX and Windows",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "ts_L2",
+      "seed_n": 6,
+      "expanded_n": 17,
+      "added_n": 11,
+      "added": [
+        "DB2 Connect",
+        "DB2 for Linux",
+        "UNIX and Windows",
+        "lead customers to merchandise",
+        "guide customers to merchandise",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks",
+        "cope with pressures",
+        "handle pressure"
+      ]
+    },
+    {
+      "cv_id": "ts_L3",
+      "seed_n": 9,
+      "expanded_n": 26,
+      "added_n": 17,
+      "added": [
+        "telephone soliciting",
+        "cold-calling",
+        "DB2 Connect",
+        "DB2 for Linux",
+        "UNIX and Windows",
+        "lead customers to merchandise",
+        "guide customers to merchandise",
+        "logistic",
+        "transport",
+        "correspondence",
+        "interaction",
+        "working in teams"
+      ]
+    },
+    {
+      "cv_id": "ts_L4",
+      "seed_n": 12,
+      "expanded_n": 31,
+      "added_n": 19,
+      "added": [
+        "telephone soliciting",
+        "cold-calling",
+        "DB2 Connect",
+        "DB2 for Linux",
+        "UNIX and Windows",
+        "lead customers to merchandise",
+        "guide customers to merchandise",
+        "logistic",
+        "transport",
+        "global trade",
+        "international commerce",
+        "correspondence"
+      ]
+    },
+    {
+      "cv_id": "ts_P",
+      "seed_n": 4,
+      "expanded_n": 12,
+      "added_n": 8,
+      "added": [
+        "Python3000",
+        "Python prog",
+        "Javax",
+        "Java Posse",
+        "working in teams",
+        "foster social networks",
+        "cope with pressures",
+        "handle pressure"
+      ]
+    },
+    {
+      "cv_id": "ts_L1b",
+      "seed_n": 4,
+      "expanded_n": 13,
+      "added_n": 9,
+      "added": [
+        "DB2 Connect",
+        "DB2 for Linux",
+        "UNIX and Windows",
+        "lead customers to merchandise",
+        "guide customers to merchandise",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "ts_L2b",
+      "seed_n": 6,
+      "expanded_n": 19,
+      "added_n": 13,
+      "added": [
+        "DB2 Connect",
+        "DB2 for Linux",
+        "UNIX and Windows",
+        "logistic",
+        "transport",
+        "establish online sales business plan",
+        "evaluate online sales business plan",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks",
+        "cope with pressures"
+      ]
+    },
+    {
+      "cv_id": "ts_L3b",
+      "seed_n": 8,
+      "expanded_n": 23,
+      "added_n": 15,
+      "added": [
+        "DB2 Connect",
+        "DB2 for Linux",
+        "UNIX and Windows",
+        "logistic",
+        "transport",
+        "lead customers to merchandise",
+        "guide customers to merchandise",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks",
+        "cope with pressures"
+      ]
+    },
+    {
+      "cv_id": "ts_L4b",
+      "seed_n": 10,
+      "expanded_n": 29,
+      "added_n": 19,
+      "added": [
+        "DB2 Connect",
+        "DB2 for Linux",
+        "UNIX and Windows",
+        "logistic",
+        "transport",
+        "lead customers to merchandise",
+        "guide customers to merchandise",
+        "give recommendations on financial matters",
+        "advising on financial matters",
+        "correspondence",
+        "interaction",
+        "working in teams"
+      ]
+    },
+    {
+      "cv_id": "ts_P2",
+      "seed_n": 4,
+      "expanded_n": 12,
+      "added_n": 8,
+      "added": [
+        "manage operations of warehouse",
+        "execute warehouse management activities",
+        "human resource oversight",
+        "personnel oversight",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "tkdh_L1",
+      "seed_n": 4,
+      "expanded_n": 12,
+      "added_n": 8,
+      "added": [
+        "Adobe Illustrator CS6",
+        "Adobe Illustrator CS4",
+        "Adobe Photoshop CC",
+        "Adobe Photoshop CS5",
+        "working in teams",
+        "foster social networks",
+        "correspondence",
+        "interaction"
+      ]
+    },
+    {
+      "cv_id": "tkdh_L2",
+      "seed_n": 6,
+      "expanded_n": 18,
+      "added_n": 12,
+      "added": [
+        "Adobe Illustrator CS6",
+        "Adobe Illustrator CS4",
+        "Adobe Photoshop CC",
+        "Adobe Photoshop CS5",
+        "graphic designs",
+        "visual design",
+        "working in teams",
+        "foster social networks",
+        "correspondence",
+        "interaction",
+        "cope with pressures",
+        "handle pressure"
+      ]
+    },
+    {
+      "cv_id": "tkdh_L3",
+      "seed_n": 9,
+      "expanded_n": 23,
+      "added_n": 14,
+      "added": [
+        "Adobe Illustrator CS6",
+        "Adobe Illustrator CS4",
+        "Adobe Photoshop CC",
+        "Adobe Photoshop CS5",
+        "graphic designs",
+        "visual design",
+        "working in teams",
+        "foster social networks",
+        "correspondence",
+        "interaction",
+        "cope with pressures",
+        "handle pressure"
+      ]
+    },
+    {
+      "cv_id": "tkdh_L4",
+      "seed_n": 11,
+      "expanded_n": 27,
+      "added_n": 16,
+      "added": [
+        "Adobe Illustrator CS6",
+        "Adobe Illustrator CS4",
+        "Adobe Photoshop CC",
+        "Adobe Photoshop CS5",
+        "graphic designs",
+        "visual design",
+        "working in teams",
+        "foster social networks",
+        "correspondence",
+        "interaction",
+        "cope with pressures",
+        "handle pressure"
+      ]
+    },
+    {
+      "cv_id": "tkdh_P",
+      "seed_n": 4,
+      "expanded_n": 10,
+      "added_n": 6,
+      "added": [
+        "Informix 4GL/SQL",
+        "SEQUEL",
+        "working in teams",
+        "foster social networks",
+        "correspondence",
+        "interaction"
+      ]
+    },
+    {
+      "cv_id": "tkdh_L1b",
+      "seed_n": 4,
+      "expanded_n": 12,
+      "added_n": 8,
+      "added": [
+        "Adobe Illustrator CS6",
+        "Adobe Illustrator CS4",
+        "Adobe Photoshop CC",
+        "Adobe Photoshop CS5",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "tkdh_L2b",
+      "seed_n": 7,
+      "expanded_n": 19,
+      "added_n": 12,
+      "added": [
+        "Adobe Illustrator CS6",
+        "Adobe Illustrator CS4",
+        "Adobe Photoshop CC",
+        "Adobe Photoshop CS5",
+        "graphic designs",
+        "visual design",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks",
+        "cope with pressures",
+        "handle pressure"
+      ]
+    },
+    {
+      "cv_id": "tkdh_L3b",
+      "seed_n": 10,
+      "expanded_n": 27,
+      "added_n": 17,
+      "added": [
+        "Adobe Illustrator CS6",
+        "Adobe Illustrator CS4",
+        "Adobe Photoshop CC",
+        "Adobe Photoshop CS5",
+        "graphic designs",
+        "visual design",
+        "SketchBook",
+        "Autodesk SketchBook Pro",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "tkdh_L4b",
+      "seed_n": 12,
+      "expanded_n": 31,
+      "added_n": 19,
+      "added": [
+        "Adobe Illustrator CS6",
+        "Adobe Illustrator CS4",
+        "Adobe Photoshop CC",
+        "Adobe Photoshop CS5",
+        "graphic designs",
+        "visual design",
+        "SketchBook",
+        "Autodesk SketchBook Pro",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    },
+    {
+      "cv_id": "tkdh_P2",
+      "seed_n": 4,
+      "expanded_n": 12,
+      "added_n": 8,
+      "added": [
+        "Informix 4GL/SQL",
+        "SEQUEL",
+        "use text processing program",
+        "using word processor",
+        "correspondence",
+        "interaction",
+        "working in teams",
+        "foster social networks"
+      ]
+    }
+  ]
+}

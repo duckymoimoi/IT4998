@@ -1,0 +1,285 @@
+{
+  "metadata": {
+    "name": "turn1300_v3_union_final",
+    "created_by": "Codex local merge",
+    "pair_file": "data\\evaluation_pairs_1300_v3_union_pooling_trial_top10_E1_E2_E3_E2t_E3t.json",
+    "jobs_file": "data\\jobs\\topcv_balanced_1300_rebuilt_20260602.csv",
+    "cvs_file": "data\\evaluation_cvs_130_llm.json",
+    "total_pairs": 2450,
+    "unique_pair_keys": 2450,
+    "total_cvs": 130,
+    "unique_jobs": 675,
+    "models": [
+      "claude",
+      "cohere",
+      "gptoss",
+      "llama"
+    ],
+    "no_cohere_models": [
+      "claude",
+      "gptoss",
+      "llama"
+    ],
+    "annotation_source_counts": {
+      "claude": {
+        "annotations_130_v3_union": 2450
+      },
+      "cohere": {
+        "annotations_130_v3_union": 1824,
+        "annotations_130_reused": 621,
+        "annotations_130_v3_rebuilt_reused": 5
+      },
+      "gptoss": {
+        "annotations_130_v3_union": 1824,
+        "annotations_130_reused": 621,
+        "annotations_130_v3_rebuilt_reused": 5
+      },
+      "llama": {
+        "annotations_130_v3_union": 1824,
+        "annotations_130_reused": 621,
+        "annotations_130_v3_rebuilt_reused": 5
+      }
+    },
+    "recommended_label": "consensus_4model.relevance_score.median",
+    "relevant_threshold": 5
+  },
+  "model_means": {
+    "claude": {
+      "relevance_score": 4.6404,
+      "skills_match": 4.742,
+      "experience_match": 5.3645,
+      "education_match": 8.1971
+    },
+    "cohere": {
+      "relevance_score": 5.7996,
+      "skills_match": 5.3984,
+      "experience_match": 6.7857,
+      "education_match": 7.2727
+    },
+    "gptoss": {
+      "relevance_score": 5.7792,
+      "skills_match": 5.4257,
+      "experience_match": 5.6294,
+      "education_match": 8.4392
+    },
+    "llama": {
+      "relevance_score": 5.2176,
+      "skills_match": 5.02,
+      "experience_match": 5.6755,
+      "education_match": 7.6559
+    }
+  },
+  "agreement_4model": {
+    "relevance_score": {
+      "models": [
+        "claude",
+        "cohere",
+        "gptoss",
+        "llama"
+      ],
+      "n": 2450,
+      "mean_label": 5.3592,
+      "median_label_mean": 5.3833,
+      "avg_range": 2.2563,
+      "median_range": 2.0,
+      "range_gt4": 92,
+      "range_gt4_pct": 3.76,
+      "max_range": 7.0
+    },
+    "skills_match": {
+      "models": [
+        "claude",
+        "cohere",
+        "gptoss",
+        "llama"
+      ],
+      "n": 2450,
+      "mean_label": 5.1465,
+      "median_label_mean": 5.1184,
+      "avg_range": 2.6041,
+      "median_range": 2.0,
+      "range_gt4": 248,
+      "range_gt4_pct": 10.12,
+      "max_range": 9.0
+    },
+    "experience_match": {
+      "models": [
+        "claude",
+        "cohere",
+        "gptoss",
+        "llama"
+      ],
+      "n": 2450,
+      "mean_label": 5.8638,
+      "median_label_mean": 5.8751,
+      "avg_range": 2.9931,
+      "median_range": 3.0,
+      "range_gt4": 473,
+      "range_gt4_pct": 19.31,
+      "max_range": 10.0
+    },
+    "education_match": {
+      "models": [
+        "claude",
+        "cohere",
+        "gptoss",
+        "llama"
+      ],
+      "n": 2450,
+      "mean_label": 7.8912,
+      "median_label_mean": 7.9594,
+      "avg_range": 2.5302,
+      "median_range": 2.0,
+      "range_gt4": 245,
+      "range_gt4_pct": 10.0,
+      "max_range": 9.0
+    }
+  },
+  "agreement_no_cohere": {
+    "relevance_score": {
+      "models": [
+        "claude",
+        "gptoss",
+        "llama"
+      ],
+      "n": 2450,
+      "mean_label": 5.2124,
+      "median_label_mean": 5.1935,
+      "avg_range": 1.9457,
+      "median_range": 2.0,
+      "range_gt4": 44,
+      "range_gt4_pct": 1.8,
+      "max_range": 7.0
+    },
+    "skills_match": {
+      "models": [
+        "claude",
+        "gptoss",
+        "llama"
+      ],
+      "n": 2450,
+      "mean_label": 5.0626,
+      "median_label_mean": 5.0004,
+      "avg_range": 2.2363,
+      "median_range": 2.0,
+      "range_gt4": 168,
+      "range_gt4_pct": 6.86,
+      "max_range": 9.0
+    },
+    "experience_match": {
+      "models": [
+        "claude",
+        "gptoss",
+        "llama"
+      ],
+      "n": 2450,
+      "mean_label": 5.5565,
+      "median_label_mean": 5.5388,
+      "avg_range": 2.2604,
+      "median_range": 2.0,
+      "range_gt4": 240,
+      "range_gt4_pct": 9.8,
+      "max_range": 10.0
+    },
+    "education_match": {
+      "models": [
+        "claude",
+        "gptoss",
+        "llama"
+      ],
+      "n": 2450,
+      "mean_label": 8.0974,
+      "median_label_mean": 8.2224,
+      "avg_range": 1.9563,
+      "median_range": 2.0,
+      "range_gt4": 113,
+      "range_gt4_pct": 4.61,
+      "max_range": 9.0
+    }
+  },
+  "pairwise_4model": {
+    "claude_vs_cohere": {
+      "MAE": 1.5107,
+      "within1_pct": 59.04,
+      "within2_pct": 82.31,
+      "gap_gt4_cells": 350,
+      "pearson": 0.6914,
+      "spearman": 0.6656,
+      "weighted_kappa": 0.6106
+    },
+    "claude_vs_gptoss": {
+      "MAE": 1.2301,
+      "within1_pct": 65.99,
+      "within2_pct": 88.98,
+      "gap_gt4_cells": 58,
+      "pearson": 0.7609,
+      "spearman": 0.7014,
+      "weighted_kappa": 0.7166
+    },
+    "claude_vs_llama": {
+      "MAE": 1.4179,
+      "within1_pct": 62.52,
+      "within2_pct": 83.65,
+      "gap_gt4_cells": 295,
+      "pearson": 0.637,
+      "spearman": 0.6152,
+      "weighted_kappa": 0.6132
+    },
+    "cohere_vs_gptoss": {
+      "MAE": 1.5084,
+      "within1_pct": 59.8,
+      "within2_pct": 80.98,
+      "gap_gt4_cells": 365,
+      "pearson": 0.6455,
+      "spearman": 0.6351,
+      "weighted_kappa": 0.6071
+    },
+    "cohere_vs_llama": {
+      "MAE": 1.3594,
+      "within1_pct": 65.82,
+      "within2_pct": 83.76,
+      "gap_gt4_cells": 408,
+      "pearson": 0.6856,
+      "spearman": 0.7012,
+      "weighted_kappa": 0.6591
+    },
+    "gptoss_vs_llama": {
+      "MAE": 1.5514,
+      "within1_pct": 58.19,
+      "within2_pct": 78.99,
+      "gap_gt4_cells": 397,
+      "pearson": 0.6071,
+      "spearman": 0.6106,
+      "weighted_kappa": 0.5821
+    }
+  },
+  "pairwise_no_cohere": {
+    "claude_vs_gptoss": {
+      "MAE": 1.2301,
+      "within1_pct": 65.99,
+      "within2_pct": 88.98,
+      "gap_gt4_cells": 58,
+      "pearson": 0.7609,
+      "spearman": 0.7014,
+      "weighted_kappa": 0.7166
+    },
+    "claude_vs_llama": {
+      "MAE": 1.4179,
+      "within1_pct": 62.52,
+      "within2_pct": 83.65,
+      "gap_gt4_cells": 295,
+      "pearson": 0.637,
+      "spearman": 0.6152,
+      "weighted_kappa": 0.6132
+    },
+    "gptoss_vs_llama": {
+      "MAE": 1.5514,
+      "within1_pct": 58.19,
+      "within2_pct": 78.99,
+      "gap_gt4_cells": 397,
+      "pearson": 0.6071,
+      "spearman": 0.6106,
+      "weighted_kappa": 0.5821
+    }
+  }
+}

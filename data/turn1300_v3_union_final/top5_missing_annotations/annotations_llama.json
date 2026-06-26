@@ -1,0 +1,1323 @@
+{
+  "metadata": {
+    "annotator": "llama",
+    "total_annotations": 57,
+    "new_in_this_run": 57,
+    "errors": 0,
+    "elapsed_seconds": 235.0,
+    "timestamp": "2026-06-26 00:04:18"
+  },
+  "annotations": [
+    {
+      "cv_id": "bds_L2",
+      "cv_level": "L2",
+      "cv_category": "Bất động sản",
+      "job_id": "7243afb581fd22c24505033e696ac19a",
+      "job_title": "Chuyên Viên Thủ Tục - Sale Admin Bất Động Sản (Lương Cứng 12- 15 Triệu + Thưởng)",
+      "rank": 4,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E3t_top5": 4
+      },
+      "relevance_score": 6,
+      "skills_match": 7,
+      "experience_match": 8,
+      "education_match": 8,
+      "justification": "Ứng viên có kỹ năng bán hàng và kinh nghiệm trong lĩnh vực bất động sản, nhưng không hoàn toàn phù hợp với yêu cầu công việc về quản trị kinh doanh và kế toán",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:00:25"
+    },
+    {
+      "cv_id": "bds_L2b",
+      "cv_level": "L2b",
+      "cv_category": "Bất động sản",
+      "job_id": "bedc5974e891ff9f9922f75b435f0fae",
+      "job_title": "Chuyên Viên Kinh Doanh Dự Án BĐS Cao Cấp - Lương Cứng Tới 15 Triệu - Hà Nội, Hồ Chí Minh",
+      "rank": 3,
+      "es_score": 46.068985,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 3,
+      "method_ranks": {
+        "E3t_top5": 3
+      },
+      "relevance_score": 8,
+      "skills_match": 9,
+      "experience_match": 9,
+      "education_match": 8,
+      "justification": "Ứng viên có kỹ năng bán hàng và kinh nghiệm trong lĩnh vực bất động sản, phù hợp với yêu cầu công việc về kinh doanh dự án và tư vấn khách hàng",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:00:25"
+    },
+    {
+      "cv_id": "bds_P2",
+      "cv_level": "P2",
+      "cv_category": "Bất động sản",
+      "job_id": "e7dab3031ab1fbf67ca9d9e3fb0c21ae",
+      "job_title": "Giám Sát Ca",
+      "rank": 1,
+      "es_score": 31.947918,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 1,
+      "method_ranks": {
+        "E3t_top5": 1
+      },
+      "relevance_score": 2,
+      "skills_match": 2,
+      "experience_match": 2,
+      "education_match": 6,
+      "justification": "Ứng viên không có kỹ năng và kinh nghiệm phù hợp với yêu cầu công việc về quản lý cửa hàng và phục vụ khách hàng trong lĩnh vực F&B",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:00:25"
+    },
+    {
+      "cv_id": "cskh_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "d67111eb08651ad8a3a982cde26c2fd6",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng",
+      "rank": 4,
+      "es_score": 7.4286275,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E3t_top5": 4
+      },
+      "relevance_score": 8,
+      "skills_match": 7,
+      "experience_match": 9,
+      "education_match": 8,
+      "justification": "Ứng viên có kỹ năng và kinh nghiệm phù hợp với yêu cầu công việc, nhưng bằng cấp cao hơn yêu cầu",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:00:38"
+    },
+    {
+      "cv_id": "cskh_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "190bbd0a789a668dbd4f0bdf9b5215f3",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng - Tuyển Nữ (Biết Tiếng Trung HSK4 Trở Lên) - Thu Nhập Upto 21 Triệu Tại Hà Nội",
+      "rank": 5,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E3t_top5": 5
+      },
+      "relevance_score": 2,
+      "skills_match": 2,
+      "experience_match": 5,
+      "education_match": 10,
+      "justification": "Ứng viên không có kỹ năng tiếng Trung yêu cầu, không phù hợp với yêu cầu công việc",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:00:38"
+    },
+    {
+      "cv_id": "cskh_L2",
+      "cv_level": "L2",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "2a94bee6ff276c64f91ac5aee80c32a3",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng Tiếng Trung– Không Yêu Cầu Kinh Nghiệm – Thu Nhập 14–17 Triệu – Hà Nội",
+      "rank": 5,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E3t_top5": 5
+      },
+      "relevance_score": 3,
+      "skills_match": 3,
+      "experience_match": 5,
+      "education_match": 10,
+      "justification": "Ứng viên không có kỹ năng tiếng Trung yêu cầu, không phù hợp với yêu cầu công việc",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:00:38"
+    },
+    {
+      "cv_id": "cskh_L2b",
+      "cv_level": "L2b",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "190bbd0a789a668dbd4f0bdf9b5215f3",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng - Tuyển Nữ (Biết Tiếng Trung HSK4 Trở Lên) - Thu Nhập Upto 21 Triệu Tại Hà Nội",
+      "rank": 4,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E3t_top5": 4
+      },
+      "relevance_score": 4,
+      "skills_match": 6,
+      "experience_match": 8,
+      "education_match": 8,
+      "justification": "Ứng viên có kỹ năng chăm sóc khách hàng, tiếng Anh và Excel, nhưng thiếu kỹ năng tiếng Trung yêu cầu",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:00:51"
+    },
+    {
+      "cv_id": "cskh_L3",
+      "cv_level": "L3",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "6adc264b3b156541a570497528c5b9e3",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng",
+      "rank": 4,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E3t_top5": 4
+      },
+      "relevance_score": 8,
+      "skills_match": 8,
+      "experience_match": 9,
+      "education_match": 6,
+      "justification": "Ứng viên có kỹ năng chăm sóc khách hàng, tiếng Anh và kinh nghiệm quản lý, phù hợp với yêu cầu công việc",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:00:51"
+    },
+    {
+      "cv_id": "cskh_P",
+      "cv_level": "P",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "6ab62df42ffa0205400bb950ba3b7ab6",
+      "job_title": "Lập Trình Viên Java (Product Domain Bank, Fintech)",
+      "rank": 4,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E3t_top5": 4
+      },
+      "relevance_score": 1,
+      "skills_match": 2,
+      "experience_match": 2,
+      "education_match": 8,
+      "justification": "Ứng viên không có kỹ năng lập trình Java và kinh nghiệm phát triển phần mềm ngân hàng, không phù hợp với yêu cầu công việc",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:00:51"
+    },
+    {
+      "cv_id": "cskh_P",
+      "cv_level": "P",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "75d11738b9d995332ac711379c7da803",
+      "job_title": "IT System Administrator Leader",
+      "rank": 5,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E3t_top5": 5
+      },
+      "relevance_score": 2,
+      "skills_match": 2,
+      "experience_match": 2,
+      "education_match": 8,
+      "justification": "Ứng viên có kỹ năng Python nhưng không có kinh nghiệm quản trị hệ thống, không phù hợp với yêu cầu công việc",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:01:04"
+    },
+    {
+      "cv_id": "cskh_P2",
+      "cv_level": "P2",
+      "cv_category": "Chăm sóc khách hàng",
+      "job_id": "f8e1500c69139e3b128ed5d934a22177",
+      "job_title": "Kỹ Sư Thiết Kế Hạ Tầng Giao Thông (Lương 15 - 25 Triệu)",
+      "rank": 5,
+      "es_score": 10.547045,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E3t_top5": 5
+      },
+      "relevance_score": 4,
+      "skills_match": 6,
+      "experience_match": 2,
+      "education_match": 2,
+      "justification": "Ứng viên có kỹ năng AutoCAD nhưng không có kinh nghiệm thiết kế hạ tầng, không phù hợp với yêu cầu công việc",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:01:04"
+    },
+    {
+      "cv_id": "gd_L1",
+      "cv_level": "L1",
+      "cv_category": "Giáo dục",
+      "job_id": "c85e94e3597a495fba4c9574b7af46e8",
+      "job_title": "Trưởng Phòng Nhân Sự (Lĩnh Vực Du Học - Định Cư)",
+      "rank": 2,
+      "es_score": 23.091915,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 2,
+      "method_ranks": {
+        "E3t_top5": 2
+      },
+      "relevance_score": 1,
+      "skills_match": 2,
+      "experience_match": 1,
+      "education_match": 8,
+      "justification": "Ứng viên mới tốt nghiệp, không có kinh nghiệm quản lý nhân sự, không phù hợp với yêu cầu công việc",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:01:04"
+    },
+    {
+      "cv_id": "gd_L1",
+      "cv_level": "L1",
+      "cv_category": "Giáo dục",
+      "job_id": "8045efd00334d886ecbe25a704821fd1",
+      "job_title": "Nhân Viên Kế Toán - Không Yêu Cầu Kinh Nghiệm, Được Đào Tạo (Hồ Chí Minh)",
+      "rank": 4,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E3t_top5": 4
+      },
+      "relevance_score": 2,
+      "skills_match": 2,
+      "experience_match": 8,
+      "education_match": 2,
+      "justification": "Ứng viên không có kỹ năng kế toán, không phù hợp với yêu cầu công việc",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:01:17"
+    },
+    {
+      "cv_id": "gd_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Giáo dục",
+      "job_id": "c85e94e3597a495fba4c9574b7af46e8",
+      "job_title": "Trưởng Phòng Nhân Sự (Lĩnh Vực Du Học - Định Cư)",
+      "rank": 2,
+      "es_score": 23.091915,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 2,
+      "method_ranks": {
+        "E3t_top5": 2
+      },
+      "relevance_score": 1,
+      "skills_match": 1,
+      "experience_match": 2,
+      "education_match": 4,
+      "justification": "Ứng viên không có kinh nghiệm quản lý, không phù hợp với yêu cầu công việc",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:01:17"
+    },
+    {
+      "cv_id": "gd_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Giáo dục",
+      "job_id": "8045efd00334d886ecbe25a704821fd1",
+      "job_title": "Nhân Viên Kế Toán - Không Yêu Cầu Kinh Nghiệm, Được Đào Tạo (Hồ Chí Minh)",
+      "rank": 4,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E3t_top5": 4
+      },
+      "relevance_score": 3,
+      "skills_match": 2,
+      "experience_match": 8,
+      "education_match": 2,
+      "justification": "Ứng viên không có kỹ năng kế toán, nhưng có thể được đào tạo, phù hợp với yêu cầu không cần kinh nghiệm",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:01:17"
+    },
+    {
+      "cv_id": "gd_L2",
+      "cv_level": "L2",
+      "cv_category": "Giáo dục",
+      "job_id": "c85e94e3597a495fba4c9574b7af46e8",
+      "job_title": "Trưởng Phòng Nhân Sự (Lĩnh Vực Du Học - Định Cư)",
+      "rank": 5,
+      "es_score": 23.091915,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E3t_top5": 5
+      },
+      "relevance_score": 2,
+      "skills_match": 2,
+      "experience_match": 5,
+      "education_match": 10,
+      "justification": "Ứng viên không có kỹ năng quản lý nhân sự, không phù hợp với yêu cầu công việc",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:01:30"
+    },
+    {
+      "cv_id": "gd_L2b",
+      "cv_level": "L2b",
+      "cv_category": "Giáo dục",
+      "job_id": "370d7a3065590352c712f630620ff77f",
+      "job_title": "Giám Đốc Kinh Doanh",
+      "rank": 2,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 2,
+      "method_ranks": {
+        "E3t_top5": 2
+      },
+      "relevance_score": 4,
+      "skills_match": 6,
+      "experience_match": 2,
+      "education_match": 8,
+      "justification": "Ứng viên có kỹ năng bán hàng B2B, nhưng thiếu kinh nghiệm quản lý và kỹ năng đàm phán",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:01:30"
+    },
+    {
+      "cv_id": "gd_L2b",
+      "cv_level": "L2b",
+      "cv_category": "Giáo dục",
+      "job_id": "c85e94e3597a495fba4c9574b7af46e8",
+      "job_title": "Trưởng Phòng Nhân Sự (Lĩnh Vực Du Học - Định Cư)",
+      "rank": 4,
+      "es_score": 23.091915,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E3t_top5": 4
+      },
+      "relevance_score": 3,
+      "skills_match": 4,
+      "experience_match": 5,
+      "education_match": 8,
+      "justification": "Ứng viên có kỹ năng giảng dạy, nhưng không phù hợp với yêu cầu quản lý nhân sự và thiếu kinh nghiệm trong lĩnh vực du học/định cư",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:01:30"
+    },
+    {
+      "cv_id": "hcns_L1",
+      "cv_level": "L1",
+      "cv_category": "Hành chính nhân sự",
+      "job_id": "d86f2b2ce48e883dc93c00a2bcde320d",
+      "job_title": "Nhân Viên Văn Phòng",
+      "rank": 4,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E3t_top5": 4
+      },
+      "relevance_score": 2,
+      "skills_match": 2,
+      "experience_match": 2,
+      "education_match": 8,
+      "justification": "Ứng viên mới ra trường, thiếu kinh nghiệm và kỹ năng phù hợp với yêu cầu công việc",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:01:43"
+    },
+    {
+      "cv_id": "hcns_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Hành chính nhân sự",
+      "job_id": "d86f2b2ce48e883dc93c00a2bcde320d",
+      "job_title": "Nhân Viên Văn Phòng",
+      "rank": 4,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E3t_top5": 4
+      },
+      "relevance_score": 4,
+      "skills_match": 4,
+      "experience_match": 5,
+      "education_match": 6,
+      "justification": "Ứng viên có kinh nghiệm làm trợ lý hành chính, nhưng thiếu kỹ năng chăm sóc khách hàng và máy vi tính",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:01:43"
+    },
+    {
+      "cv_id": "hcns_L2",
+      "cv_level": "L2",
+      "cv_category": "Hành chính nhân sự",
+      "job_id": "d86f2b2ce48e883dc93c00a2bcde320d",
+      "job_title": "Nhân Viên Văn Phòng",
+      "rank": 2,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 2,
+      "method_ranks": {
+        "E3t_top5": 2
+      },
+      "relevance_score": 6,
+      "skills_match": 7,
+      "experience_match": 6,
+      "education_match": 9,
+      "justification": "Ứng viên có kinh nghiệm làm nhân viên hành chính, kỹ năng MS Office và Powerpoint phù hợp, nhưng thiếu kinh nghiệm chăm sóc khách hàng",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:01:43"
+    },
+    {
+      "cv_id": "hcns_L2b",
+      "cv_level": "L2b",
+      "cv_category": "Hành chính nhân sự",
+      "job_id": "d86f2b2ce48e883dc93c00a2bcde320d",
+      "job_title": "Nhân Viên Văn Phòng",
+      "rank": 2,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 2,
+      "method_ranks": {
+        "E3t_top5": 2
+      },
+      "relevance_score": 8,
+      "skills_match": 6,
+      "experience_match": 8,
+      "education_match": 9,
+      "justification": "Ứng viên có kinh nghiệm nhân sự, kỹ năng phù hợp và trình độ học vấn cao",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:01:56"
+    },
+    {
+      "cv_id": "hcns_P",
+      "cv_level": "P",
+      "cv_category": "Hành chính nhân sự",
+      "job_id": "d86f2b2ce48e883dc93c00a2bcde320d",
+      "job_title": "Nhân Viên Văn Phòng",
+      "rank": 3,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 3,
+      "method_ranks": {
+        "E3t_top5": 3
+      },
+      "relevance_score": 4,
+      "skills_match": 2,
+      "experience_match": 4,
+      "education_match": 7,
+      "justification": "Ứng viên không có kinh nghiệm nhân sự, kỹ năng không phù hợp hoàn toàn",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:01:56"
+    },
+    {
+      "cv_id": "hcns_P2",
+      "cv_level": "P2",
+      "cv_category": "Hành chính nhân sự",
+      "job_id": "d86f2b2ce48e883dc93c00a2bcde320d",
+      "job_title": "Nhân Viên Văn Phòng",
+      "rank": 3,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 3,
+      "method_ranks": {
+        "E3t_top5": 3
+      },
+      "relevance_score": 3,
+      "skills_match": 2,
+      "experience_match": 4,
+      "education_match": 2,
+      "justification": "Ứng viên không có kinh nghiệm nhân sự, kỹ năng không phù hợp và trình độ học vấn thấp",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:01:56"
+    },
+    {
+      "cv_id": "it_L4b",
+      "cv_level": "L4b",
+      "cv_category": "IT",
+      "job_id": "570e5488efdf34f3acdb39b05f192ca1",
+      "job_title": "Business Analyst (BA)",
+      "rank": 4,
+      "es_score": 70.00953,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E3t_top5": 4
+      },
+      "relevance_score": 2,
+      "skills_match": 4,
+      "experience_match": 2,
+      "education_match": 10,
+      "justification": "Ứng viên có kinh nghiệm và kỹ năng phù hợp nhưng không đủ để đáp ứng yêu cầu công việc do yêu cầu kinh nghiệm dưới 1 năm",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:02:09"
+    },
+    {
+      "cv_id": "it_P",
+      "cv_level": "P",
+      "cv_category": "IT",
+      "job_id": "c85e94e3597a495fba4c9574b7af46e8",
+      "job_title": "Trưởng Phòng Nhân Sự (Lĩnh Vực Du Học - Định Cư)",
+      "rank": 4,
+      "es_score": 23.091915,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E3t_top5": 4
+      },
+      "relevance_score": 1,
+      "skills_match": 2,
+      "experience_match": 5,
+      "education_match": 10,
+      "justification": "Ứng viên không có kỹ năng và kinh nghiệm phù hợp với yêu cầu công việc về lĩnh vực nhân sự và du học",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:02:09"
+    },
+    {
+      "cv_id": "it_P",
+      "cv_level": "P",
+      "cv_category": "IT",
+      "job_id": "a14efffed91b4228968e104139c08cdd",
+      "job_title": "Nhân Viên Hệ Thống Tại Hồ Chí Minh (Lương 9tr - 12tr)",
+      "rank": 5,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E3t_top5": 5
+      },
+      "relevance_score": 4,
+      "skills_match": 6,
+      "experience_match": 8,
+      "education_match": 8,
+      "justification": "Ứng viên có kỹ năng và kinh nghiệm phù hợp với yêu cầu công việc về lĩnh vực IT và quản lý hệ thống",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:02:09"
+    },
+    {
+      "cv_id": "it_P2",
+      "cv_level": "P2",
+      "cv_category": "IT",
+      "job_id": "a14efffed91b4228968e104139c08cdd",
+      "job_title": "Nhân Viên Hệ Thống Tại Hồ Chí Minh (Lương 9tr - 12tr)",
+      "rank": 4,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E3t_top5": 4
+      },
+      "relevance_score": 4,
+      "skills_match": 6,
+      "experience_match": 8,
+      "education_match": 8,
+      "justification": "Ứng viên có kỹ năng Excel phù hợp với yêu cầu công việc, nhưng kinh nghiệm và học vấn không hoàn toàn phù hợp với lĩnh vực IT",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:02:22"
+    },
+    {
+      "cv_id": "it_P2",
+      "cv_level": "P2",
+      "cv_category": "IT",
+      "job_id": "c85e94e3597a495fba4c9574b7af46e8",
+      "job_title": "Trưởng Phòng Nhân Sự (Lĩnh Vực Du Học - Định Cư)",
+      "rank": 5,
+      "es_score": 23.091915,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E3t_top5": 5
+      },
+      "relevance_score": 2,
+      "skills_match": 4,
+      "experience_match": 6,
+      "education_match": 8,
+      "justification": "Ứng viên không có kinh nghiệm quản lý và kỹ năng phù hợp với yêu cầu công việc trưởng phòng nhân sự",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:02:22"
+    },
+    {
+      "cv_id": "ksxd_L3",
+      "cv_level": "L3",
+      "cv_category": "Kỹ sư xây dựng",
+      "job_id": "5533fc4e0d7e5a03755d2c37ae815523",
+      "job_title": "Trưởng Nhóm Cấp Thoát Nước",
+      "rank": 5,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E3t_top5": 5
+      },
+      "relevance_score": 6,
+      "skills_match": 8,
+      "experience_match": 4,
+      "education_match": 10,
+      "justification": "Ứng viên có kỹ năng và học vấn phù hợp với yêu cầu công việc, nhưng thiếu kinh nghiệm quản lý và thời gian làm việc trong lĩnh vực cấp thoát nước",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:02:22"
+    },
+    {
+      "cv_id": "ksxd_P",
+      "cv_level": "P",
+      "cv_category": "Kỹ sư xây dựng",
+      "job_id": "c85e94e3597a495fba4c9574b7af46e8",
+      "job_title": "Trưởng Phòng Nhân Sự (Lĩnh Vực Du Học - Định Cư)",
+      "rank": 4,
+      "es_score": 22.49973,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E3t_top5": 4
+      },
+      "relevance_score": 2,
+      "skills_match": 1,
+      "experience_match": 2,
+      "education_match": 8,
+      "justification": "Ứng viên không có kỹ năng phù hợp với yêu cầu công việc, kinh nghiệm không liên quan đến lĩnh vực nhân sự",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:02:35"
+    },
+    {
+      "cv_id": "ksxd_P2",
+      "cv_level": "P2",
+      "cv_category": "Kỹ sư xây dựng",
+      "job_id": "c85e94e3597a495fba4c9574b7af46e8",
+      "job_title": "Trưởng Phòng Nhân Sự (Lĩnh Vực Du Học - Định Cư)",
+      "rank": 3,
+      "es_score": 22.49973,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 3,
+      "method_ranks": {
+        "E3t_top5": 3
+      },
+      "relevance_score": 2,
+      "skills_match": 1,
+      "experience_match": 2,
+      "education_match": 8,
+      "justification": "Ứng viên không có kỹ năng phù hợp với yêu cầu công việc, kinh nghiệm không liên quan đến lĩnh vực nhân sự",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:02:35"
+    },
+    {
+      "cv_id": "ksxd_P2",
+      "cv_level": "P2",
+      "cv_category": "Kỹ sư xây dựng",
+      "job_id": "75d11738b9d995332ac711379c7da803",
+      "job_title": "IT System Administrator Leader",
+      "rank": 4,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E3t_top5": 4
+      },
+      "relevance_score": 1,
+      "skills_match": 0,
+      "experience_match": 2,
+      "education_match": 2,
+      "justification": "Ứng viên không có kỹ năng phù hợp với yêu cầu công việc, kinh nghiệm và trình độ học vấn không phù hợp với yêu cầu công việc IT",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:02:35"
+    },
+    {
+      "cv_id": "kt_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Kế toán",
+      "job_id": "603d54c42c08985d58dfde8b28686f19",
+      "job_title": "Kế Toán Tổng Hợp",
+      "rank": 5,
+      "es_score": 30.860249,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E3t_top5": 5
+      },
+      "relevance_score": 2,
+      "skills_match": 6,
+      "experience_match": 2,
+      "education_match": 8,
+      "justification": "Ứng viên có kỹ năng kế toán nhưng thiếu kinh nghiệm và không phù hợp với yêu cầu công việc",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:02:47"
+    },
+    {
+      "cv_id": "kt_L2b",
+      "cv_level": "L2b",
+      "cv_category": "Kế toán",
+      "job_id": "18bdcf4faef4416e497e8c464e3d049c",
+      "job_title": "Kế Toán Tổng Hợp - Lương Upto 20 Triệu/ Tháng - Quận 1, Đi Làm Ngay",
+      "rank": 4,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E3t_top5": 4
+      },
+      "relevance_score": 8,
+      "skills_match": 9,
+      "experience_match": 4,
+      "education_match": 10,
+      "justification": "Ứng viên có kỹ năng và kinh nghiệm phù hợp với yêu cầu công việc, nhưng thiếu một năm kinh nghiệm",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:02:47"
+    },
+    {
+      "cv_id": "kt_P",
+      "cv_level": "P",
+      "cv_category": "Kế toán",
+      "job_id": "029d35a017920cc193a156ae13f40e11",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng (Ca Đêm) - Lương 15 Triệu ++ (Nữ)",
+      "rank": 1,
+      "es_score": 40.787872,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 1,
+      "method_ranks": {
+        "E3t_top5": 1
+      },
+      "relevance_score": 1,
+      "skills_match": 2,
+      "experience_match": 2,
+      "education_match": 4,
+      "justification": "Ứng viên không có kỹ năng và kinh nghiệm phù hợp với yêu cầu công việc, và ngành học không liên quan",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:02:47"
+    },
+    {
+      "cv_id": "kt_P",
+      "cv_level": "P",
+      "cv_category": "Kế toán",
+      "job_id": "ec63d7fbdab665fb41b041cd4d347449",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng",
+      "rank": 4,
+      "es_score": 36.16148,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E3t_top5": 4
+      },
+      "relevance_score": 2,
+      "skills_match": 2,
+      "experience_match": 4,
+      "education_match": 6,
+      "justification": "Ứng viên không có kỹ năng phù hợp với yêu cầu công việc, kinh nghiệm không liên quan đến chăm sóc khách hàng",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:03:00"
+    },
+    {
+      "cv_id": "kt_P",
+      "cv_level": "P",
+      "cv_category": "Kế toán",
+      "job_id": "d86f2b2ce48e883dc93c00a2bcde320d",
+      "job_title": "Nhân Viên Văn Phòng",
+      "rank": 5,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E3t_top5": 5
+      },
+      "relevance_score": 4,
+      "skills_match": 4,
+      "experience_match": 6,
+      "education_match": 8,
+      "justification": "Ứng viên có kỹ năng sử dụng máy tính, giao tiếp tốt, nhưng không có kinh nghiệm trực tiếp trong lĩnh vực hành chính nhân sự",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:03:00"
+    },
+    {
+      "cv_id": "kt_P2",
+      "cv_level": "P2",
+      "cv_category": "Kế toán",
+      "job_id": "d7f45977a37e3c4b10df596212239cb8",
+      "job_title": "Kế Toán Đối Soát Doanh Thu TMĐT (E-Commerce Accountant) - Lương Upto 15 Triệu",
+      "rank": 3,
+      "es_score": 28.330904,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 3,
+      "method_ranks": {
+        "E3t_top5": 3
+      },
+      "relevance_score": 8,
+      "skills_match": 9,
+      "experience_match": 7,
+      "education_match": 9,
+      "justification": "Ứng viên có kỹ năng phù hợp với yêu cầu công việc, kinh nghiệm liên quan đến bán hàng và quản lý đơn hàng, trình độ học vấn phù hợp",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:03:00"
+    },
+    {
+      "cv_id": "ldpt_L2",
+      "cv_level": "L2",
+      "cv_category": "Lao động phổ thông",
+      "job_id": "dc2037e6159637b350fa55a0af887ddf",
+      "job_title": "Nhân Viên Bán Hàng / Sales / Kinh Doanh - Nam ( Hà Nội)",
+      "rank": 5,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E3t_top5": 5
+      },
+      "relevance_score": 6,
+      "skills_match": 7,
+      "experience_match": 6,
+      "education_match": 8,
+      "justification": "Ứng viên có kỹ năng bán hàng siêu thị và kinh doanh, nhưng thiếu kinh nghiệm và không đáp ứng yêu cầu về trình độ học vấn",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:03:13"
+    },
+    {
+      "cv_id": "mkt_P",
+      "cv_level": "P",
+      "cv_category": "Marketing",
+      "job_id": "6bf6731f822a8d93d3eedeaf46eb4e77",
+      "job_title": "Graphic Design Manager",
+      "rank": 4,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E3t_top5": 4
+      },
+      "relevance_score": 2,
+      "skills_match": 2,
+      "experience_match": 2,
+      "education_match": 4,
+      "justification": "Ứng viên không có kỹ năng thiết kế đồ họa và không có kinh nghiệm trong lĩnh vực này",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:03:13"
+    },
+    {
+      "cv_id": "nh_P",
+      "cv_level": "P",
+      "cv_category": "Ngân hàng",
+      "job_id": "4e3a89f12416500f1cda3d79e927d88c",
+      "job_title": "Graphic Designer",
+      "rank": 4,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E3t_top5": 4
+      },
+      "relevance_score": 3,
+      "skills_match": 2,
+      "experience_match": 4,
+      "education_match": 6,
+      "justification": "Ứng viên không có kỹ năng thiết kế đồ họa và không có kinh nghiệm trong lĩnh vực này, nhưng có trình độ học vấn cao",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:03:13"
+    },
+    {
+      "cv_id": "nvkd_L2",
+      "cv_level": "L2",
+      "cv_category": "Nhân viên kinh doanh",
+      "job_id": "5087aec7609fa5428e2d53c27882b92c",
+      "job_title": "Nhân Viên Kinh Doanh",
+      "rank": 5,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E3t_top5": 5
+      },
+      "relevance_score": 4,
+      "skills_match": 6,
+      "experience_match": 2,
+      "education_match": 8,
+      "justification": "Ứng viên có kỹ năng bán hàng B2B phù hợp, nhưng thiếu kinh nghiệm và không đáp ứng yêu cầu 5 năm kinh nghiệm",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:03:26"
+    },
+    {
+      "cv_id": "nvkd_P",
+      "cv_level": "P",
+      "cv_category": "Nhân viên kinh doanh",
+      "job_id": "4e3a89f12416500f1cda3d79e927d88c",
+      "job_title": "Graphic Designer",
+      "rank": 4,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E3t_top5": 4
+      },
+      "relevance_score": 1,
+      "skills_match": 1,
+      "experience_match": 2,
+      "education_match": 6,
+      "justification": "Ứng viên không có kỹ năng thiết kế đồ họa, không phù hợp với yêu cầu công việc",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:03:26"
+    },
+    {
+      "cv_id": "nvkd_P2",
+      "cv_level": "P2",
+      "cv_category": "Nhân viên kinh doanh",
+      "job_id": "5a850eb3a29b3a7f4f19c88f7401e503",
+      "job_title": "Phó Giám Đốc Chi Nhánh – Phụ Trách Vận Hành",
+      "rank": 1,
+      "es_score": 28.716524,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 1,
+      "method_ranks": {
+        "E3t_top5": 1
+      },
+      "relevance_score": 1,
+      "skills_match": 2,
+      "experience_match": 2,
+      "education_match": 4,
+      "justification": "Ứng viên không có kinh nghiệm quản lý, không phù hợp với yêu cầu công việc Phó Giám Đốc Chi Nhánh",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:03:26"
+    },
+    {
+      "cv_id": "nvkd_P2",
+      "cv_level": "P2",
+      "cv_category": "Nhân viên kinh doanh",
+      "job_id": "8b66d5f347292912c56ea3a07c519889",
+      "job_title": "Nhân Viên Hành Chính - Lễ Tân",
+      "rank": 4,
+      "es_score": 26.62423,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E3t_top5": 4
+      },
+      "relevance_score": 2,
+      "skills_match": 1,
+      "experience_match": 2,
+      "education_match": 2,
+      "justification": "Ứng viên không có kỹ năng phù hợp với yêu cầu công việc, kinh nghiệm không liên quan và trình độ học vấn không đáp ứng yêu cầu.",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:03:39"
+    },
+    {
+      "cv_id": "nvkd_P2",
+      "cv_level": "P2",
+      "cv_category": "Nhân viên kinh doanh",
+      "job_id": "27bd943f0a3c8b51fbd229368d1a16fb",
+      "job_title": "Nhân Viên Chăm Sóc Khách Hàng (Tổng Đài Viên), Thu Nhập 7-9 Triệu/Tháng",
+      "rank": 5,
+      "es_score": 26.539978,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E3t_top5": 5
+      },
+      "relevance_score": 4,
+      "skills_match": 3,
+      "experience_match": 6,
+      "education_match": 4,
+      "justification": "Ứng viên có một số kỹ năng phù hợp với yêu cầu công việc, kinh nghiệm có liên quan nhưng không đủ để đáp ứng yêu cầu, trình độ học vấn không đáp ứng yêu cầu.",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:03:39"
+    },
+    {
+      "cv_id": "tkdh_L1",
+      "cv_level": "L1",
+      "cv_category": "Thiết kế đồ họa",
+      "job_id": "5e7f9de79451d576f2b732d8fe744ac4",
+      "job_title": "Nhân Viên Thiết Kế 3D (3D Artist)",
+      "rank": 5,
+      "es_score": 17.037006,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E3t_top5": 5
+      },
+      "relevance_score": 1,
+      "skills_match": 2,
+      "experience_match": 1,
+      "education_match": 8,
+      "justification": "Ứng viên mới ra trường, không có kinh nghiệm làm việc, kỹ năng không phù hợp với yêu cầu công việc nhưng có trình độ học vấn phù hợp.",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:03:39"
+    },
+    {
+      "cv_id": "tkdh_L3",
+      "cv_level": "L3",
+      "cv_category": "Thiết kế đồ họa",
+      "job_id": "20285ca7c269c57dc7ded392d0b11bcf",
+      "job_title": "Nhân Viên Thiết Kế - Designer (Thu Nhập Cơ Bản 15 Triệu+ )",
+      "rank": 4,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E3t_top5": 4
+      },
+      "relevance_score": 8,
+      "skills_match": 8,
+      "experience_match": 8,
+      "education_match": 10,
+      "justification": "Ứng viên có kỹ năng thiết kế đồ họa phù hợp, kinh nghiệm 3 năm và bằng cấp đại học về thiết kế đồ họa",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:03:52"
+    },
+    {
+      "cv_id": "tkdh_L4",
+      "cv_level": "L4",
+      "cv_category": "Thiết kế đồ họa",
+      "job_id": "c54946191946ae63d2eaacdb7eb13c6a",
+      "job_title": "Chuyên Gia Thiết Kế UI/UX",
+      "rank": 5,
+      "es_score": 60.53019,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E3t_top5": 5
+      },
+      "relevance_score": 6,
+      "skills_match": 7,
+      "experience_match": 4,
+      "education_match": 10,
+      "justification": "Ứng viên có kỹ năng thiết kế đồ họa và UI/UX phù hợp, nhưng kinh nghiệm 6 năm có thể là quá nhiều so với yêu cầu",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:03:52"
+    },
+    {
+      "cv_id": "tkdh_L4b",
+      "cv_level": "L4b",
+      "cv_category": "Thiết kế đồ họa",
+      "job_id": "20285ca7c269c57dc7ded392d0b11bcf",
+      "job_title": "Nhân Viên Thiết Kế - Designer (Thu Nhập Cơ Bản 15 Triệu+ )",
+      "rank": 4,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E3t_top5": 4
+      },
+      "relevance_score": 2,
+      "skills_match": 6,
+      "experience_match": 2,
+      "education_match": 10,
+      "justification": "Ứng viên có kỹ năng thiết kế đồ họa phù hợp, nhưng kinh nghiệm 7 năm và vị trí giám đốc sáng tạo có thể không phù hợp với vị trí nhân viên thiết kế",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:03:52"
+    },
+    {
+      "cv_id": "tkdh_P",
+      "cv_level": "P",
+      "cv_category": "Thiết kế đồ họa",
+      "job_id": "c85e94e3597a495fba4c9574b7af46e8",
+      "job_title": "Trưởng Phòng Nhân Sự (Lĩnh Vực Du Học - Định Cư)",
+      "rank": 4,
+      "es_score": 23.091915,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E3t_top5": 4
+      },
+      "relevance_score": 2,
+      "skills_match": 2,
+      "experience_match": 5,
+      "education_match": 10,
+      "justification": "Ứng viên không có kỹ năng phù hợp với yêu cầu công việc, kinh nghiệm không liên quan đến lĩnh vực nhân sự",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:04:05"
+    },
+    {
+      "cv_id": "tkdh_P",
+      "cv_level": "P",
+      "cv_category": "Thiết kế đồ họa",
+      "job_id": "a14efffed91b4228968e104139c08cdd",
+      "job_title": "Nhân Viên Hệ Thống Tại Hồ Chí Minh (Lương 9tr - 12tr)",
+      "rank": 5,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E3t_top5": 5
+      },
+      "relevance_score": 4,
+      "skills_match": 6,
+      "experience_match": 8,
+      "education_match": 8,
+      "justification": "Ứng viên có kỹ năng Excel phù hợp, nhưng kinh nghiệm và trình độ học vấn không hoàn toàn phù hợp với yêu cầu công việc",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:04:05"
+    },
+    {
+      "cv_id": "tkdh_P2",
+      "cv_level": "P2",
+      "cv_category": "Thiết kế đồ họa",
+      "job_id": "c85e94e3597a495fba4c9574b7af46e8",
+      "job_title": "Trưởng Phòng Nhân Sự (Lĩnh Vực Du Học - Định Cư)",
+      "rank": 5,
+      "es_score": 23.091915,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E3t_top5": 5
+      },
+      "relevance_score": 2,
+      "skills_match": 2,
+      "experience_match": 5,
+      "education_match": 10,
+      "justification": "Ứng viên không có kỹ năng phù hợp với yêu cầu công việc, kinh nghiệm không liên quan đến lĩnh vực nhân sự, nhưng có trình độ học vấn phù hợp",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:04:05"
+    },
+    {
+      "cv_id": "ts_L1b",
+      "cv_level": "L1b",
+      "cv_category": "Telesales",
+      "job_id": "804884abcb7846563a91849368ff4286",
+      "job_title": "Chuyên Viên Phát Triển Kinh Doanh (Business Development) / Từ 2 Năm Kinh Nghiệm / Lương Cứng 13 Triệu / Tại Quận 1 (Cũ), HCM",
+      "rank": 4,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 4,
+      "method_ranks": {
+        "E3t_top5": 4
+      },
+      "relevance_score": 4,
+      "skills_match": 6,
+      "experience_match": 4,
+      "education_match": 8,
+      "justification": "Ứng viên có kỹ năng bán hàng B2C, Direct Sales phù hợp với yêu cầu công việc, nhưng thiếu kinh nghiệm và kỹ năng phát triển kinh doanh",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:04:18"
+    },
+    {
+      "cv_id": "ts_L2",
+      "cv_level": "L2",
+      "cv_category": "Telesales",
+      "job_id": "804884abcb7846563a91849368ff4286",
+      "job_title": "Chuyên Viên Phát Triển Kinh Doanh (Business Development) / Từ 2 Năm Kinh Nghiệm / Lương Cứng 13 Triệu / Tại Quận 1 (Cũ), HCM",
+      "rank": 5,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E3t_top5": 5
+      },
+      "relevance_score": 4,
+      "skills_match": 7,
+      "experience_match": 4,
+      "education_match": 8,
+      "justification": "Ứng viên có kỹ năng bán hàng B2B, B2C, Direct Sales phù hợp với yêu cầu công việc, nhưng thiếu kinh nghiệm và kỹ năng phát triển kinh doanh",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:04:18"
+    },
+    {
+      "cv_id": "ts_P",
+      "cv_level": "P",
+      "cv_category": "Telesales",
+      "job_id": "75d11738b9d995332ac711379c7da803",
+      "job_title": "IT System Administrator Leader",
+      "rank": 5,
+      "es_score": 0,
+      "pool_methods": [
+        "E3t_top5"
+      ],
+      "best_pool_rank": 5,
+      "method_ranks": {
+        "E3t_top5": 5
+      },
+      "relevance_score": 2,
+      "skills_match": 8,
+      "experience_match": 6,
+      "education_match": 9,
+      "justification": "Ứng viên có kỹ năng lập trình Python, Java phù hợp với yêu cầu công việc, nhưng không có kinh nghiệm trong lĩnh vực IT System Administrator",
+      "annotator": "llama",
+      "timestamp": "2026-06-26 00:04:18"
+    }
+  ]
+}

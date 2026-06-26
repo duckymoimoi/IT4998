@@ -4,12 +4,11 @@ Thu muc nay chua du lieu da xu ly cho thuc nghiem CV-job matching.
 
 ## Du lieu nen commit
 
-- `topcv_balanced_650.csv`, `topcv_balanced_650_final.csv`: bo job cu dung cho so sanh.
-- `topcv_balanced_1300.csv`: bo job chinh dung de danh gia search.
-- `evaluation_cvs_*.json`: CV sinh/tong hop dung trong danh gia.
-- `evaluation_pairs*.json`: cap CV-job va nhan danh gia.
+- `jobs/topcv_balanced_1300.csv`: bo job chinh dung cho import Elasticsearch.
+- `turn1300_v3_union_final/`: bo du lieu thuc nghiem cuoi dung trong chuong 4.
+- `search_quality_current/`: ket qua sweep va production-aligned duoc dua vao bao cao.
 - `skills*.csv`: du lieu ESCO da tai va lam giau phuc vu expansion.
-- `skill_profiles_1300.json`: profile ky nang da trich cho bo 1300.
+- `job_term_taxonomy*.json`, `job_terms_unique.csv`: bo tu vung noi bo va cac file kiem soat.
 
 ## Du lieu khong nen commit
 

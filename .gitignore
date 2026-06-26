@@ -43,6 +43,7 @@ docs/
 GraduationThesisTemplate-main/
 scripts/
 src/experiments/
+tests/
 data/scoring_prompt_tests/
 data/search_quality_current/
 data/turn_1/
