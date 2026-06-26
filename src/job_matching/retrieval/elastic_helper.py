@@ -7,6 +7,13 @@ logger = logging.getLogger(__name__)
 VECTOR_SOURCE_EXCLUDES = ["embedding"]
 
 
+def _env_float(name, default):
+    try:
+        return float(os.environ.get(name, default))
+    except (TypeError, ValueError):
+        return float(default)
+
+
 class ElasticHelper:
     def __init__(self, es_host=None, index_name=None):
         self.es_host = es_host or os.environ.get("ES_HOST", "http://localhost:9200")
@@ -147,16 +154,16 @@ class ElasticHelper:
             return []
 
         fields = [
-            "semantic_title^5.0",
-            "semantic_text^2.5",
-            "title^3.0",
-            "specializations^2.0",
-            "requirements_tags^0.5",
-            "technical_skills^1.0",
-            "certificates^1.5",
-            "languages^0.75",
-            "job_requirements^0.3",
-            "job_description^0.15",
+            f"semantic_title^{_env_float('BM25_SEMANTIC_TITLE_BOOST', 5.0)}",
+            f"semantic_text^{_env_float('BM25_SEMANTIC_TEXT_BOOST', 2.5)}",
+            f"title^{_env_float('BM25_TITLE_BOOST', 3.0)}",
+            f"specializations^{_env_float('BM25_SPECIALIZATIONS_BOOST', 2.0)}",
+            f"requirements_tags^{_env_float('BM25_REQUIREMENTS_TAGS_BOOST', 0.5)}",
+            f"technical_skills^{_env_float('BM25_TECHNICAL_SKILLS_BOOST', 0.2)}",
+            f"certificates^{_env_float('BM25_CERTIFICATES_BOOST', 1.5)}",
+            f"languages^{_env_float('BM25_LANGUAGES_BOOST', 0.75)}",
+            f"job_requirements^{_env_float('BM25_JOB_REQUIREMENTS_BOOST', 0.3)}",
+            f"job_description^{_env_float('BM25_JOB_DESCRIPTION_BOOST', 0.15)}",
         ]
         role_fields = [
             "semantic_title^5.0",
@@ -460,7 +467,8 @@ class ElasticHelper:
                         "title^4",
                         "company^2",
                         "job_location^2",
-                        "technical_skills^2",
+                        "semantic_text^2",
+                        "technical_skills^0.2",
                         "requirements_tags",
                         "specializations",
                         "job_requirements",

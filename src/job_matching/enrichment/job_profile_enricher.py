@@ -1,10 +1,9 @@
-"""Experimental: derive structured job profile fields from ESCO/O*NET files.
+"""Derive structured job profile fields from ESCO/O*NET files.
 
 This module is intentionally data-driven: it does not hard-code role families
 such as "AI/Data" or "Backend". It maps job text to ESCO skill concepts, then
 uses the ESCO occupation-skill graph and O*NET crosswalk already present in the
-project to infer occupations and related tools. It is not used by the
-production ingestion or online retrieval pipeline.
+project to infer occupations and related tools.
 """
 
 from __future__ import annotations
@@ -24,7 +23,7 @@ SKILLS_WITH_NAMES = DATA_DIR / "skills_with_names.csv"
 
 
 TECH_ALIASES = {
-    # Tool names in TopCV are often shorter than ESCO preferred labels.
+
     "react.js": "React",
     "reactjs": "React",
     "node.js": "Node.js",
@@ -240,8 +239,7 @@ class JobProfileEnricher:
         confidence = 0.0
         if matched and occupations:
             top_score = occupations[0]["score"]
-            # More supporting skill matches should not reduce confidence.
-            confidence = min(1.0, top_score / max(3.0, len(matched)))
+            confidence = min(1.0, top_score / max(3.0, len(matched) * 1.5))
 
         return {
             "normalized_skills": [

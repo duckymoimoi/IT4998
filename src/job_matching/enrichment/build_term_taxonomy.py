@@ -1,8 +1,14 @@
-"""Build a lightweight taxonomy from job technical_skills terms.
+"""Build a lightweight taxonomy from job skill/language/certificate terms.
 
-The current TopCV production index stores mixed role/domain/tool terms in
-technical_skills. This script extracts unique terms from Elasticsearch and can
+The TopCV production index stores mixed role/domain/tool terms in
+technical_skills, plus language and certificate terms in their own fields. This
+script extracts unique terms from Elasticsearch across those fields and can
 classify them with an LLM into a stable schema used by query planning.
+
+Note: in production new terms reach the taxonomy through the pending queue
+(``append_pending_terms`` in ``semantic_job_profile``), which already inspects
+``technical_skills``, ``certificates`` and ``languages``. The ``--extract``
+bootstrap below mirrors that same set of source fields for consistency.
 """
 
 from __future__ import annotations
@@ -26,6 +32,11 @@ DEFAULT_TERMS_CSV = PROJECT_ROOT / "data" / "job_terms_unique.csv"
 DEFAULT_TAXONOMY_JSON = PROJECT_ROOT / "data" / "job_term_taxonomy.json"
 DEFAULT_OVERRIDES_JSON = PROJECT_ROOT / "data" / "job_term_taxonomy_overrides.json"
 DEFAULT_PENDING_JSONL = PROJECT_ROOT / "data" / "job_term_taxonomy_pending.jsonl"
+
+# Source fields mined for taxonomy terms. Kept in sync with
+# ``semantic_job_profile._typed_terms`` so the bootstrap extraction and the
+# production pending queue draw terms from the same fields.
+DEFAULT_SOURCE_FIELDS = ["technical_skills", "languages", "certificates"]
 
 TERM_TYPES = [
     "role",
@@ -53,35 +64,42 @@ def split_terms(text: str) -> List[str]:
     return terms
 
 
-def extract_terms(es_host: str, index: str, field: str = "technical_skills") -> List[Dict]:
+def extract_terms(es_host: str, index: str, fields: List[str] | None = None) -> List[Dict]:
+    """Extract unique terms across one or more source fields.
+
+    ``fields`` defaults to :data:`DEFAULT_SOURCE_FIELDS` so language and
+    certificate terms are mined alongside ``technical_skills``.
+    """
+    fields = list(fields) if fields else list(DEFAULT_SOURCE_FIELDS)
     es = Elasticsearch(es_host)
     counter: Counter = Counter()
     examples: Dict[str, str] = {}
 
-    page = es.search(
-        index=index,
-        body={
-            "query": {"exists": {"field": field}},
-            "_source": [field, "title"],
-            "size": 500,
-            "sort": ["_doc"],
-        },
-        scroll="2m",
-    )
+    for field in fields:
+        page = es.search(
+            index=index,
+            body={
+                "query": {"exists": {"field": field}},
+                "_source": [field, "title"],
+                "size": 500,
+                "sort": ["_doc"],
+            },
+            scroll="2m",
+        )
 
-    scroll_id = page.get("_scroll_id")
-    while True:
-        hits = page["hits"]["hits"]
-        if not hits:
-            break
-        for hit in hits:
-            src = hit["_source"]
-            for term in split_terms(src.get(field, "")):
-                key = term.lower()
-                counter[key] += 1
-                examples.setdefault(key, term)
-        page = es.scroll(scroll_id=scroll_id, scroll="2m")
         scroll_id = page.get("_scroll_id")
+        while True:
+            hits = page["hits"]["hits"]
+            if not hits:
+                break
+            for hit in hits:
+                src = hit["_source"]
+                for term in split_terms(src.get(field, "")):
+                    key = term.lower()
+                    counter[key] += 1
+                    examples.setdefault(key, term)
+            page = es.scroll(scroll_id=scroll_id, scroll="2m")
+            scroll_id = page.get("_scroll_id")
 
     rows = [
         {"term": examples[key], "frequency": freq}
@@ -176,7 +194,7 @@ def build_prompt(rows: List[Dict]) -> str:
     compact_rows = [{"term": row["term"]} for row in rows]
     return f"""Bạn là chuyên gia chuẩn hóa taxonomy tuyển dụng Việt Nam.
 
-Nhiệm vụ: phân loại từng term trích từ field technical_skills của job TopCV.
+Nhiệm vụ: phân loại từng term trích từ các field kỹ năng, ngoại ngữ và chứng chỉ của job TopCV.
 Không cần biết toàn bộ job; chỉ phân loại ý nghĩa chính của term.
 
 Schema type bắt buộc, chọn đúng 1:
@@ -440,10 +458,17 @@ def classify_new_terms(
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Build job term taxonomy from technical_skills")
+    parser = argparse.ArgumentParser(description="Build job term taxonomy from skill/language/certificate fields")
     parser.add_argument("--es-host", default=os.environ.get("ES_HOST", "http://localhost:9200"))
     parser.add_argument("--index", default=os.environ.get("ES_INDEX", "topcv_jobs_production"))
-    parser.add_argument("--field", default="technical_skills")
+    parser.add_argument(
+        "--fields", nargs="+", default=None,
+        help="Source fields to mine (default: technical_skills languages certificates)",
+    )
+    parser.add_argument(
+        "--field", default=None,
+        help="Deprecated: single source field. Use --fields instead.",
+    )
     parser.add_argument("--terms-csv", type=Path, default=DEFAULT_TERMS_CSV)
     parser.add_argument("--taxonomy-json", type=Path, default=DEFAULT_TAXONOMY_JSON)
     parser.add_argument("--overrides-json", type=Path, default=DEFAULT_OVERRIDES_JSON)
@@ -460,9 +485,17 @@ def main() -> None:
     args = parser.parse_args()
 
     if args.extract:
-        rows = extract_terms(args.es_host, args.index, args.field)
+        if args.fields:
+            source_fields = args.fields
+        elif args.field:
+            source_fields = [args.field]
+        else:
+            source_fields = DEFAULT_SOURCE_FIELDS
+        rows = extract_terms(args.es_host, args.index, source_fields)
         write_terms_csv(rows, args.terms_csv)
-        print(f"wrote {len(rows)} unique terms to {args.terms_csv}")
+        print(
+            f"wrote {len(rows)} unique terms from {source_fields} to {args.terms_csv}"
+        )
 
     if args.merge_pending:
         rows = merge_pending_terms(args.terms_csv, args.pending_jsonl)

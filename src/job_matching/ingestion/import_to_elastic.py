@@ -275,7 +275,7 @@ class ElasticImporter:
                 semantic_texts = []
                 for _, row in df.iterrows():
                     job = row.to_dict()
-                    profile = semantic_builder.build(job)
+                    profile = semantic_builder.build(job, include_searchable_fields=True)
                     semantic_profiles.append(profile)
                     semantic_texts.append(profile["semantic_text"])
 

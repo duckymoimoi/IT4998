@@ -236,7 +236,7 @@ class CrawlScheduler:
             if not pending:
                 return
             profiles = [
-                self.semantic_profile_builder.build(hit["_source"])
+                self.semantic_profile_builder.build(hit["_source"], include_searchable_fields=True)
                 for hit in pending
             ]
             vectors = self.embedding_service.encode(
@@ -675,7 +675,7 @@ class CrawlScheduler:
             semantic_texts = []
             for _, row in df.iterrows():
                 job = row.to_dict()
-                profile = self.semantic_profile_builder.build(job)
+                profile = self.semantic_profile_builder.build(job, include_searchable_fields=True)
                 semantic_profiles.append(profile)
                 semantic_texts.append(profile["semantic_text"])
             all_embeddings = self.embedding_service.encode(
@@ -744,6 +744,7 @@ class CrawlScheduler:
                         structured_updated = False
                         for field in [
                             "requirements_tags", "specializations", "technical_skills",
+                            "languages", "certificates",
                         ]:
                             if (
                                 doc.get(field, "")

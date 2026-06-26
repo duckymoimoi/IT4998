@@ -5,6 +5,13 @@ from __future__ import annotations
 import argparse
 import math
 import os
+import sys
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
+SRC_ROOT = PROJECT_ROOT / "src"
+if str(SRC_ROOT) not in sys.path:
+    sys.path.insert(0, str(SRC_ROOT))
 
 from elasticsearch import Elasticsearch
 from elasticsearch.helpers import bulk, scan
@@ -43,12 +50,22 @@ def main():
     parser.add_argument("--index", default=os.getenv("ES_INDEX", "topcv_jobs_production"))
     parser.add_argument("--batch-size", type=int, default=16)
     parser.add_argument("--encode-batch-size", type=int, default=4)
+    parser.add_argument("--taxonomy-path", default=os.getenv("JOB_TERM_TAXONOMY_PATH"))
     parser.add_argument("--overwrite", action="store_true")
+    parser.add_argument(
+        "--update-searchable-fields",
+        action="store_true",
+        help="Also update BM25 fields from taxonomy terms that have JD/JR evidence.",
+    )
     args = parser.parse_args()
 
     es = Elasticsearch(args.es_host, request_timeout=180)
     ensure_mapping(es, args.index)
-    builder = SemanticJobProfileBuilder()
+    builder = (
+        SemanticJobProfileBuilder(args.taxonomy_path)
+        if args.taxonomy_path
+        else SemanticJobProfileBuilder()
+    )
     embed = get_embedding_service(device="cpu")
     query = {"match_all": {}} if args.overwrite else {
         "bool": {
@@ -68,7 +85,13 @@ def main():
 
     def flush():
         nonlocal pending, updated
-        profiles = [builder.build(hit["_source"]) for hit in pending]
+        profiles = [
+            builder.build(
+                hit["_source"],
+                include_searchable_fields=args.update_searchable_fields,
+            )
+            for hit in pending
+        ]
         vectors = embed.encode(
             [profile["semantic_text"] for profile in profiles],
             batch_size=args.encode_batch_size,

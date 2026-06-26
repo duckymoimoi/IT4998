@@ -38,8 +38,8 @@ class ESCOExpander:
         top_k=1,
         min_sim=0.6,
         max_total_terms=30,
-        controlled_min_sim=0.82,
-        controlled_min_margin=0.03,
+        controlled_min_sim=0.75,
+        controlled_min_margin=0.01,
         controlled_max_terms=6,
     ):
         """
@@ -412,21 +412,3 @@ def get_esco_expander(embedding_service=None, **kwargs):
             _esco_instance = ESCOExpander(embedding_service=embedding_service, **kwargs)
     return _esco_instance
 
-
-if __name__ == "__main__":
-    # Quick test
-    logging.basicConfig(level=logging.INFO)
-
-    expander = ESCOExpander()
-
-    test_skills = [
-        "Python, quản lý dự án, Excel",
-        "lập trình web, React, Node.js",
-        "kế toán tổng hợp, thuế, kiểm toán",
-        "chăm sóc khách hàng, telesales",
-    ]
-
-    for skills in test_skills:
-        expanded = expander.expand_skills(skills)
-        print(f"\n  Input:    {skills}")
-        print(f"  Expanded: {expanded}")

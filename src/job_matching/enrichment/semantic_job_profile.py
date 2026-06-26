@@ -75,12 +75,12 @@ class SemanticJobProfileBuilder:
         return lookup
 
     def _build_evidence_candidates(self):
-        """Compile high-precision taxonomy terms that can be recovered from JD."""
+        """Compile high-precision taxonomy terms that can be recovered from JD/JR."""
         candidates = []
         seen = set()
         for item in self.taxonomy.values():
             term_type = item.get("type")
-            if term_type not in {"technical_skill", "tool"}:
+            if term_type not in BM25_TYPES:
                 continue
             try:
                 confidence = float(item.get("confidence") or 0)
@@ -97,19 +97,23 @@ class SemanticJobProfileBuilder:
 
             safe_surfaces = []
             for surface in surfaces:
-                # Vietnamese single-word technical terms are often ambiguous
-                # in prose (for example "mạng"). Multi-word terms and
-                # ASCII technology names are much safer exact matches.
-                if term_type == "technical_skill" and " " not in surface:
+                # Vietnamese single-word terms are often ambiguous in prose.
+                # Multi-word terms and ASCII identifiers are safer exact
+                # matches for vocabulary-backed evidence extraction.
+                if " " not in surface:
                     try:
                         surface.encode("ascii")
                     except UnicodeEncodeError:
                         continue
-                if len(surface) >= 3:
+                if len(surface) >= 3 or term_type in {"language", "certification"}:
                     safe_surfaces.append(surface)
             if not safe_surfaces:
                 continue
 
+            needles = [
+                re.sub(r"\s+", " ", surface).lower()
+                for surface in safe_surfaces
+            ]
             patterns = [
                 re.compile(
                     r"(?<!\w)" + re.escape(surface).replace(r"\ ", r"\s+") + r"(?!\w)",
@@ -117,7 +121,7 @@ class SemanticJobProfileBuilder:
                 )
                 for surface in safe_surfaces
             ]
-            candidates.append((term_type, label, patterns))
+            candidates.append((term_type, label, needles, patterns))
             seen.add(key)
         return candidates
 
@@ -201,10 +205,12 @@ class SemanticJobProfileBuilder:
                 if term_type in BM25_TYPES:
                     grouped[term_type].append(label)
 
-        # Recover known skills/tools that the small cleaner model missed.
-        # This is exact taxonomy matching only: no ESCO and no semantic guess.
-        for term_type, label, patterns in self.evidence_candidates:
-            if any(pattern.search(evidence) for pattern in patterns):
+        # Recover known taxonomy terms that the small cleaner model missed.
+        # This is exact evidence matching only: no ESCO and no semantic guess.
+        for term_type, label, needles, patterns in self.evidence_candidates:
+            if any(needle in evidence for needle in needles) and any(
+                pattern.search(evidence) for pattern in patterns
+            ):
                 grouped[term_type].append(label)
 
         return {
@@ -212,7 +218,38 @@ class SemanticJobProfileBuilder:
             for key, values in grouped.items()
         }, self._dedupe(unknown)
 
-    def build(self, job: dict) -> dict:
+    def build_searchable_fields(self, job: dict) -> dict[str, str]:
+        """Build normalized BM25 fields from taxonomy terms with text evidence."""
+        typed, _ = self._typed_terms(job)
+        technical = []
+        for term_type in ["professional_skill", "technical_skill", "tool", "domain"]:
+            technical.extend(typed.get(term_type, []))
+
+        requirements = []
+        for term_type in [
+            "role", "domain", "professional_skill", "technical_skill",
+            "tool", "language", "certification",
+        ]:
+            requirements.extend(typed.get(term_type, []))
+
+        specializations = []
+        for term_type in ["role", "domain", "professional_skill"]:
+            specializations.extend(typed.get(term_type, []))
+
+        fields = {
+            "technical_skills": self._dedupe(technical, 32),
+            "requirements_tags": self._dedupe(requirements, 40),
+            "specializations": self._dedupe(specializations, 24),
+            "languages": self._dedupe(typed.get("language", []), 8),
+            "certificates": self._dedupe(typed.get("certification", []), 10),
+        }
+        return {
+            field: ", ".join(values)
+            for field, values in fields.items()
+            if values
+        }
+
+    def build(self, job: dict, include_searchable_fields: bool = False) -> dict:
         typed, unknown = self._typed_terms(job)
         title = self.clean_title(job.get("title", ""))
         task_summary = self._task_summary(job.get("job_description", ""))
@@ -238,7 +275,7 @@ class SemanticJobProfileBuilder:
         if title:
             lines.append(f"Vai trò: {title}.")
         if source_specializations:
-            lines.append(f"Chuyên môn TopCV: {', '.join(source_specializations)}.")
+            lines.append(f"Chuyên môn: {', '.join(source_specializations)}.")
         labels = [
             ("Lĩnh vực", "domain"),
             ("Nghiệp vụ", "professional_skill"),
@@ -259,10 +296,13 @@ class SemanticJobProfileBuilder:
         if unknown:
             lines.append(f"Thuật ngữ chưa chuẩn hóa: {', '.join(unknown[:6])}.")
 
-        return {
+        profile = {
             "semantic_text": " ".join(lines).strip(),
             "semantic_title": title,
         }
+        if include_searchable_fields:
+            profile.update(self.build_searchable_fields(job))
+        return profile
 
 
 def append_pending_terms(
