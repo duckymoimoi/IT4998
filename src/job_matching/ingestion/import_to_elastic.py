@@ -8,9 +8,13 @@ from elasticsearch import Elasticsearch
 from elasticsearch.helpers import bulk
 import logging
 import time
-import os
-import requests
 
+from job_matching.ingestion.document_utils import (
+    boolean_value,
+    clean_text,
+    salary_millions,
+    text_fields,
+)
 from job_matching.scoring.salary_normalizer import SalaryNormalizer
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
@@ -45,7 +49,7 @@ class ElasticImporter:
         try:
             if self.es.ping():
                 info = self.es.info()
-                logger.info(f"Elasticsearch is running")
+                logger.info("Elasticsearch is running")
                 logger.info(f"   Version: {info['version']['number']}")
                 logger.info(f"   Cluster: {info['cluster_name']}")
                 return True
@@ -175,8 +179,6 @@ class ElasticImporter:
 
     def prepare_document(self, row):
         """Chuan bi document voi salary normalization"""
-        doc = {}
-
         include_fields = [
             "title", "url", "company", "company_address",
             "company_size",
@@ -190,23 +192,9 @@ class ElasticImporter:
             "salary_note", "content_hash",
         ]
 
-        for field in include_fields:
-            value = row.get(field, "")
-            if pd.isna(value) or value is None:
-                doc[field] = ""
-            else:
-                doc[field] = str(value).strip()
-
-        # Boolean fields
-        is_expired = row.get("is_expired", False)
-        if isinstance(is_expired, str):
-            is_expired = is_expired.lower() in ("true", "1", "yes")
-        doc["is_expired"] = bool(is_expired) if not pd.isna(is_expired) else False
-
-        has_commission = row.get("has_commission", False)
-        if isinstance(has_commission, str):
-            has_commission = has_commission.lower() in ("true", "1", "yes")
-        doc["has_commission"] = bool(has_commission) if not pd.isna(has_commission) else False
+        doc = text_fields(row, include_fields)
+        doc["is_expired"] = boolean_value(row.get("is_expired", False))
+        doc["has_commission"] = boolean_value(row.get("has_commission", False))
 
         # Salary normalization
         salary_text = row.get("job_salary", "")
@@ -223,28 +211,15 @@ class ElasticImporter:
         csv_sal_max = row.get("salary_max")
         csv_sal_type = row.get("salary_type")
 
-        if csv_sal_min and not pd.isna(csv_sal_min):
-            try:
-                val = float(csv_sal_min)
-                if val > 1000:
-                    doc["salary_min"] = val / 1_000_000
-                else:
-                    doc["salary_min"] = val
-            except (ValueError, TypeError):
-                pass
-
-        if csv_sal_max and not pd.isna(csv_sal_max):
-            try:
-                val = float(csv_sal_max)
-                if val > 1000:
-                    doc["salary_max"] = val / 1_000_000
-                else:
-                    doc["salary_max"] = val
-            except (ValueError, TypeError):
-                pass
+        csv_min = salary_millions(csv_sal_min)
+        csv_max = salary_millions(csv_sal_max)
+        if csv_min is not None:
+            doc["salary_min"] = csv_min
+        if csv_max is not None:
+            doc["salary_max"] = csv_max
 
         if csv_sal_type and not pd.isna(csv_sal_type):
-            doc["salary_type"] = str(csv_sal_type).strip()
+            doc["salary_type"] = clean_text(csv_sal_type)
 
         # Sanitize: ES rejects NaN in JSON - convert to None/empty
         import math

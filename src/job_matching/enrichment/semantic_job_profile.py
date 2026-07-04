@@ -11,6 +11,7 @@ from pathlib import Path
 from typing import Dict, Iterable, List
 
 from job_matching.enrichment.build_term_taxonomy import split_terms
+from job_matching.enrichment.term_taxonomy import load_taxonomy_lookup
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
@@ -61,17 +62,7 @@ class SemanticJobProfileBuilder:
         self.evidence_candidates = self._build_evidence_candidates()
 
     def _load_taxonomy(self) -> Dict[str, Dict]:
-        if not self.taxonomy_path.exists():
-            return {}
-        rows = json.loads(self.taxonomy_path.read_text(encoding="utf-8"))
-        lookup = {}
-        for row in rows:
-            term = str(row.get("term", "")).strip()
-            label = str(row.get("normalized_label", "")).strip()
-            if term:
-                lookup.setdefault(term.lower(), row)
-            if label:
-                lookup.setdefault(label.lower(), row)
+        lookup, _ = load_taxonomy_lookup(self.taxonomy_path)
         return lookup
 
     def _build_evidence_candidates(self):
@@ -188,7 +179,12 @@ class SemanticJobProfileBuilder:
         grouped = defaultdict(list)
         unknown = []
         evidence = self._evidence_text(job)
-        fields = ["technical_skills", "certificates", "languages"]
+        fields = [
+            "specializations",
+            "technical_skills",
+            "certificates",
+            "languages",
+        ]
         for field in fields:
             for term in split_terms(job.get(field, "")):
                 item = self.taxonomy.get(term.lower())

@@ -3,9 +3,7 @@ Embedding Service - bge-m3 model cho Semantic Search
 Cung cap API encode text thanh vector 1024 chieu
 """
 
-import os
 import logging
-import numpy as np
 from sentence_transformers import SentenceTransformer
 
 logger = logging.getLogger(__name__)

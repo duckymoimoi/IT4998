@@ -28,18 +28,25 @@ PAGE_LOAD_TIMEOUT = 35
 MAX_RETRIES = 2
 DELAY_BETWEEN_REQUESTS = (3, 7)
 
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler('crawl_topcv.log', encoding='utf-8'),
-        logging.StreamHandler()
-    ]
-)
 logger = logging.getLogger(__name__)
 
 # Lock để tránh race condition khi nhiều thread cùng khởi tạo undetected_chromedriver
 DRIVER_LOCK = threading.Lock()
+
+
+def _configure_cli_logging():
+    """Configure logging only when this module is run as a standalone crawler."""
+    if logging.getLogger().handlers:
+        return
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s - %(levelname)s - %(message)s",
+        handlers=[
+            logging.FileHandler("crawl_topcv.log", encoding="utf-8"),
+            logging.StreamHandler(),
+        ],
+    )
+
 
 def _detect_chrome_major_version():
     """Return installed Chrome major version, or None if detection fails."""
@@ -275,7 +282,7 @@ def extract_job_simple(driver, job_url, retry_count=0):
                     random_delay(3, 6)  # Delay lâu hơn khi timeout
                     return extract_job_simple(driver, job_url, retry_count + 1)
                 else:
-                    logger.warning(f"  Max retries reached, skipping...")
+                    logger.warning("  Max retries reached, skipping...")
                     return None
 
         time.sleep(1.5)
@@ -800,7 +807,7 @@ def crawl_jobs(all_job_urls, output_file=None, max_workers=MAX_WORKERS):
     try:
         with open(output_file, 'r', encoding='utf-8-sig'):
             file_exists = True
-    except:
+    except Exception:
         pass
 
     csv_lock = threading.Lock()
@@ -824,7 +831,7 @@ def crawl_jobs(all_job_urls, output_file=None, max_workers=MAX_WORKERS):
             try:
                 driver.get("https://www.topcv.vn/")
                 random_delay(2, 4)
-            except:
+            except Exception:
                 pass
 
             for i, job_url in enumerate(url_chunk):
@@ -833,14 +840,14 @@ def crawl_jobs(all_job_urls, output_file=None, max_workers=MAX_WORKERS):
                     logger.info(f"  [W{worker_id}] Restart browser (batch {i // BATCH_SIZE + 1})...")
                     try:
                         driver.quit()
-                    except:
+                    except Exception:
                         pass
                     random_delay(3, 6)
                     driver = setup_driver()
                     try:
                         driver.get("https://www.topcv.vn/")
                         random_delay(2, 3)
-                    except:
+                    except Exception:
                         pass
 
                 logger.info(f"  [W{worker_id}] [{i + 1}/{len(url_chunk)}] Crawling...")
@@ -866,7 +873,7 @@ def crawl_jobs(all_job_urls, output_file=None, max_workers=MAX_WORKERS):
             if driver:
                 try:
                     driver.quit()
-                except:
+                except Exception:
                     pass
 
         logger.info(f"  [W{worker_id}] Done: {local_count}/{len(url_chunk)} jobs")
@@ -908,6 +915,7 @@ def crawl_jobs(all_job_urls, output_file=None, max_workers=MAX_WORKERS):
 
 def main():
     """Main function"""
+    _configure_cli_logging()
     args = sys.argv[1:]
     _jobs_dir = Path(__file__).resolve().parents[3] / 'data' / 'jobs'
     _jobs_dir.mkdir(parents=True, exist_ok=True)

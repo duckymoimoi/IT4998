@@ -15,17 +15,23 @@ import tempfile
 import logging
 from pathlib import Path
 
+import requests as http_requests
 from dotenv import load_dotenv
+from flask import Flask, jsonify, render_template, request
+from werkzeug.utils import secure_filename
+
+from job_matching.enrichment.term_taxonomy import load_taxonomy_lookup
+from job_matching.retrieval.elastic_helper import ElasticHelper
+from job_matching.shared.config import env_bool, env_float, env_int
+from job_matching.shared.vietnam_cities_data import (
+    get_all_city_names,
+    get_city_info,
+    sort_provinces_by_distance,
+)
 
 SRC_ENV_PATH = Path(__file__).resolve().parents[2] / ".env"
 load_dotenv(SRC_ENV_PATH)
 load_dotenv()  # Fallback for project-root .env if present.
-
-from flask import Flask, render_template, request, jsonify
-from werkzeug.utils import secure_filename
-
-from job_matching.retrieval.elastic_helper import ElasticHelper
-from job_matching.shared.vietnam_cities_data import get_all_city_names, get_city_info
 
 logger = logging.getLogger(__name__)
 
@@ -73,27 +79,6 @@ _job_term_taxonomy_rows = 0
 _job_term_taxonomy_mtime_ns = None
 
 
-def _env_bool(name, default=False):
-    val = os.environ.get(name)
-    if val is None:
-        return default
-    return val.strip().lower() in {"1", "true", "yes", "on"}
-
-
-def _env_int(name, default):
-    try:
-        return int(os.environ.get(name, default))
-    except (TypeError, ValueError):
-        return default
-
-
-def _env_float(name, default):
-    try:
-        return float(os.environ.get(name, default))
-    except (TypeError, ValueError):
-        return default
-
-
 def _init_services():
     """Initialize embedding + ESCO + SkillGraph services (chỉ gọi 1 lần)."""
     global _embedding_service, _esco_expander, _skill_graph, _use_hybrid
@@ -101,9 +86,8 @@ def _init_services():
     if _embedding_service is not None:
         return
 
-    # Skill Knowledge Graph is an opt-in enrichment. Experiments selected
-    # ESCO-only hybrid search as the stable production default.
-    if _env_bool("ENABLE_SKILL_GRAPH", default=False):
+    # Load optional enrichers only when their query path is active.
+    if ENABLE_SKILL_GRAPH_EXPANSION:
         try:
             from job_matching.enrichment.skill_graph import get_skill_graph
             _skill_graph = get_skill_graph()
@@ -111,7 +95,10 @@ def _init_services():
         except Exception as e:
             logger.warning(f"SkillGraph not available: {e}")
     else:
-        logger.info("Skill Knowledge Graph disabled (set ENABLE_SKILL_GRAPH=1 to enable)")
+        logger.info(
+            "Skill Knowledge Graph disabled "
+            "(set ENABLE_SKILL_GRAPH_EXPANSION=1 to enable)"
+        )
 
     try:
         if es_helper.has_usable_embeddings(KNN_VECTOR_FIELD):
@@ -120,18 +107,18 @@ def _init_services():
             _use_hybrid = True
             logger.info("Hybrid search (BM25 + kNN) enabled")
 
-            # ESCO expander
-            try:
-                from job_matching.enrichment.esco_expander import get_esco_expander
-                _esco_expander = get_esco_expander(
-                    embedding_service=_embedding_service,
-                    controlled_min_sim=ESCO_CONTROLLED_MIN_SIM,
-                    controlled_min_margin=ESCO_CONTROLLED_MIN_MARGIN,
-                    controlled_max_terms=ESCO_CONTROLLED_MAX_TERMS,
-                )
-                logger.info("ESCO skill expansion enabled")
-            except Exception as e:
-                logger.warning(f"ESCO not available: {e}")
+            if ENABLE_ESCO_EXPANSION:
+                try:
+                    from job_matching.enrichment.esco_expander import get_esco_expander
+                    _esco_expander = get_esco_expander(
+                        embedding_service=_embedding_service,
+                        controlled_min_sim=ESCO_CONTROLLED_MIN_SIM,
+                        controlled_min_margin=ESCO_CONTROLLED_MIN_MARGIN,
+                        controlled_max_terms=ESCO_CONTROLLED_MAX_TERMS,
+                    )
+                    logger.info("ESCO skill expansion enabled")
+                except Exception as e:
+                    logger.warning(f"ESCO not available: {e}")
         else:
             logger.info("No usable embeddings - BM25-only mode")
     except Exception as e:
@@ -143,41 +130,37 @@ def _init_services():
 # Location Scoring (city default, detailed distance optional)
 # ============================================================
 
-import requests as http_requests
-
 _goong_api_key = os.environ.get("GOONG_API_KEY", "")
 _geocode_cache = {}
 LOCATION_SCORE_MODE = os.environ.get("LOCATION_SCORE_MODE", "city").strip().lower()
-ENABLE_CITY_PRIORITY = _env_bool("ENABLE_CITY_PRIORITY", default=True)
-ENABLE_JOB_TERM_TAXONOMY = _env_bool("ENABLE_JOB_TERM_TAXONOMY", default=True)
-SCORING_TOP_N = _env_int("SCORING_TOP_N", 30)
-RETRIEVAL_SIZE = _env_int("RETRIEVAL_SIZE", 80)
-RETRIEVAL_FALLBACK_MIN_SCORE = _env_float("RETRIEVAL_FALLBACK_MIN_SCORE", 3.0)
-RETRIEVAL_FALLBACK_MAX_SCORE = _env_float("RETRIEVAL_FALLBACK_MAX_SCORE", 8.0)
-RETRIEVAL_ONLY_MAX_RANKING_SCORE = _env_float(
-    "RETRIEVAL_ONLY_MAX_RANKING_SCORE", 5.5,
-)
-RELAXED_RETRIEVAL_MIN_RESULTS = _env_int("RELAXED_RETRIEVAL_MIN_RESULTS", 12)
+LOCATION_DISTANCE_DECAY_KM = env_float("LOCATION_DISTANCE_DECAY_KM", 30.0)
+LOCATION_SCORE_FLOOR = env_float("LOCATION_SCORE_FLOOR", 1.5)
+ENABLE_CITY_PRIORITY = env_bool("ENABLE_CITY_PRIORITY", default=True)
+ENABLE_JOB_TERM_TAXONOMY = env_bool("ENABLE_JOB_TERM_TAXONOMY", default=True)
+SCORING_TOP_N = env_int("SCORING_TOP_N", 50)
+RETRIEVAL_SIZE = env_int("RETRIEVAL_SIZE", 100)
+RETRIEVAL_FALLBACK_MIN_SCORE = env_float("RETRIEVAL_FALLBACK_MIN_SCORE", 1.0)
+RETRIEVAL_FALLBACK_MAX_SCORE = env_float("RETRIEVAL_FALLBACK_MAX_SCORE", 5.0)
+RELAXED_RETRIEVAL_MIN_RESULTS = env_int("RELAXED_RETRIEVAL_MIN_RESULTS", 12)
 BM25_MIN_SHOULD_MATCH = os.environ.get("BM25_MIN_SHOULD_MATCH", "2")
 BM25_RELAXED_MIN_SHOULD_MATCH = os.environ.get("BM25_RELAXED_MIN_SHOULD_MATCH", "1")
-RRF_K = _env_int("RRF_K", 10)
+RRF_K = env_int("RRF_K", 10)
 # Production defaults: k=10 + 0.5/0.45 = best NDCG@10 in the production-aligned RRF sweep.
-RRF_BM25_WEIGHT = float(os.environ.get("RRF_BM25_WEIGHT", "0.5"))
-RRF_KNN_WEIGHT = float(os.environ.get("RRF_KNN_WEIGHT", "0.45"))
+RRF_BM25_WEIGHT = env_float("RRF_BM25_WEIGHT", 0.5)
+RRF_KNN_WEIGHT = env_float("RRF_KNN_WEIGHT", 0.45)
 KNN_VECTOR_FIELD = os.environ.get("KNN_VECTOR_FIELD", "embedding").strip()
-BM25_CORE_SKILL_LIMIT = _env_int("BM25_CORE_SKILL_LIMIT", 12)
-KNN_SECONDARY_SKILL_LIMIT = _env_int("KNN_SECONDARY_SKILL_LIMIT", 5)
-KNN_EXPANSION_TERM_LIMIT = _env_int("KNN_EXPANSION_TERM_LIMIT", 12)
-ENABLE_QUERY_EXPANSION = _env_bool("ENABLE_QUERY_EXPANSION", default=False)
-ENABLE_ESCO_EXPANSION = _env_bool(
+BM25_QUERY_TERM_LIMIT = env_int("BM25_QUERY_TERM_LIMIT", 30)
+KNN_EXPANSION_TERM_LIMIT = env_int("KNN_EXPANSION_TERM_LIMIT", 12)
+ENABLE_QUERY_EXPANSION = env_bool("ENABLE_QUERY_EXPANSION", default=False)
+ENABLE_ESCO_EXPANSION = env_bool(
     "ENABLE_ESCO_EXPANSION", default=ENABLE_QUERY_EXPANSION,
 )
-ENABLE_SKILL_GRAPH_EXPANSION = _env_bool(
+ENABLE_SKILL_GRAPH_EXPANSION = env_bool(
     "ENABLE_SKILL_GRAPH_EXPANSION", default=ENABLE_QUERY_EXPANSION,
 )
-ESCO_CONTROLLED_MIN_SIM = _env_float("ESCO_CONTROLLED_MIN_SIM", 0.75)
-ESCO_CONTROLLED_MIN_MARGIN = _env_float("ESCO_CONTROLLED_MIN_MARGIN", 0.01)
-ESCO_CONTROLLED_MAX_TERMS = _env_int("ESCO_CONTROLLED_MAX_TERMS", 6)
+ESCO_CONTROLLED_MIN_SIM = env_float("ESCO_CONTROLLED_MIN_SIM", 0.75)
+ESCO_CONTROLLED_MIN_MARGIN = env_float("ESCO_CONTROLLED_MIN_MARGIN", 0.01)
+ESCO_CONTROLLED_MAX_TERMS = env_int("ESCO_CONTROLLED_MAX_TERMS", 6)
 
 
 def _goong_geocode(address):
@@ -248,6 +231,107 @@ def _is_same_city(cv_location, job_location):
     return bool(cv_cities and job_cities and cv_cities.intersection(job_cities))
 
 
+def _extract_work_location_candidates(value):
+    """Parse TopCV work-location blocks into address/province candidates."""
+    if not value:
+        return []
+
+    candidates = []
+    current_city_label = ""
+    current_province = ""
+    for raw_line in str(value).splitlines():
+        line = re.sub(r"^[\s\-✓•]+", "", raw_line).strip()
+        if not line:
+            continue
+
+        lowered = line.casefold()
+        if lowered == "thu gọn" or lowered.startswith("...và"):
+            continue
+
+        if ":" in line:
+            prefix, detail = (part.strip() for part in line.split(":", 1))
+            city_matches = get_city_info(prefix)
+            if city_matches:
+                current_city_label = prefix
+                current_province = city_matches[0]["name"]
+                line = detail
+                if not line:
+                    continue
+
+        if current_city_label:
+            if "tất cả phường" in line.casefold() or "tất cả xã" in line.casefold():
+                address = current_city_label
+            elif current_city_label.casefold() in line.casefold():
+                address = line
+            else:
+                address = f"{line}, {current_city_label}"
+        else:
+            address = line
+            city_matches = get_city_info(line)
+            current_province = city_matches[0]["name"] if city_matches else ""
+
+        candidate = {"address": address, "province": current_province}
+        if address and candidate not in candidates:
+            candidates.append(candidate)
+
+    return candidates
+
+
+def _extract_work_location_addresses(value):
+    return [
+        candidate["address"]
+        for candidate in _extract_work_location_candidates(value)
+    ]
+
+
+def _work_location_groups(cv_location, candidates):
+    """Group addresses by province, ordered by the province distance graph."""
+    by_province = {}
+    without_province = []
+    for candidate in candidates:
+        province = candidate.get("province")
+        if province:
+            by_province.setdefault(province, []).append(candidate["address"])
+        else:
+            without_province.append(candidate["address"])
+
+    ordered_provinces = sort_provinces_by_distance(
+        cv_location,
+        list(by_province),
+    )
+    groups = [by_province[province] for province in ordered_provinces]
+    if without_province:
+        groups.append(without_province)
+    return groups
+
+
+def _geocode_first_available(groups):
+    """Geocode all candidates in the first group that yields any coordinates."""
+    for candidates in groups:
+        coordinates = []
+        for address in candidates:
+            coords = _goong_geocode(address)
+            if coords and coords not in coordinates:
+                coordinates.append(coords)
+        if coordinates:
+            return coordinates
+    return []
+
+
+def _cv_location_text(cv_data):
+    """Combine the live street address with its province for matching/geocoding."""
+    address = str(cv_data.get("address") or "").strip()
+    location = str(cv_data.get("location") or "").strip()
+    if address and location:
+        if any(
+            city["name"] in _extract_city_names(address)
+            for city in get_city_info(location)
+        ):
+            return address
+        return f"{address}, {location}"
+    return address or location
+
+
 def calculate_location_score(cv_address, job, detailed=None):
     """Location score.
 
@@ -258,8 +342,6 @@ def calculate_location_score(cv_address, job, detailed=None):
     if detailed is None:
         detailed = LOCATION_SCORE_MODE == "detailed"
 
-    LAMBDA = 30
-    FLOOR = 1.5
     job_location = job.get("job_location", "") if isinstance(job, dict) else str(job)
 
     if not cv_address:
@@ -272,25 +354,21 @@ def calculate_location_score(cv_address, job, detailed=None):
     if not cv_coords:
         return _city_fallback_score(cv_address, job_location), None
 
-    # Collect job coordinates — prefer pre-geocoded from ES
     job_coord_list = []
     if isinstance(job, dict):
-        geo = job.get("geo_coordinates", [])
-        if geo and isinstance(geo, list):
-            for g in geo:
-                if g.get("lat") and g.get("lng"):
-                    job_coord_list.append((g["lat"], g["lng"]))
-        if not job_coord_list:
-            company_addr = job.get("company_address", "")
-            if company_addr:
-                coords = _goong_geocode(company_addr)
-                if coords:
-                    job_coord_list.append(coords)
-    if not job_coord_list and job_location:
-        for loc in str(job_location).split(","):
-            coords = _goong_geocode(loc.strip())
-            if coords:
-                job_coord_list.append(coords)
+        work_candidates = _extract_work_location_candidates(
+            job.get("work_location_text", "")
+        )
+        work_groups = _work_location_groups(cv_address, work_candidates)
+        city_names = [
+            city["name"]
+            for city in get_city_info(job_location)
+        ]
+        ordered_cities = sort_provinces_by_distance(cv_address, city_names)
+        job_coord_list = _geocode_first_available([
+            *work_groups,
+            *[[city] for city in ordered_cities],
+        ])
 
     if not job_coord_list:
         return _city_fallback_score(cv_address, job_location), None
@@ -301,12 +379,20 @@ def calculate_location_score(cv_address, job, detailed=None):
         if dist is None:
             from geopy.distance import geodesic
             dist = geodesic(cv_coords, job_coords).km
-        score = max(FLOOR, 10 * math.exp(-dist / LAMBDA))
+        score = _distance_location_score(dist)
         if score > best_score:
             best_score = score
             best_dist = dist
 
     return round(best_score, 1) if best_score > 0 else 5, best_dist
+
+
+def _distance_location_score(distance_km):
+    """Map travel distance to 1.5-10 with a 30 km exponential decay scale."""
+    distance = max(0.0, float(distance_km))
+    decay = max(0.001, LOCATION_DISTANCE_DECAY_KM)
+    floor = max(0.0, min(10.0, LOCATION_SCORE_FLOOR))
+    return max(floor, 10.0 * math.exp(-distance / decay))
 
 
 def _city_fallback_score(cv_location, job_location):
@@ -392,9 +478,10 @@ def _annotate_retrieval_scores(jobs):
 
 
 def _apply_retrieval_only_score(job, reason="not_llm_scored"):
-    raw_score = float(job.get("retrieval_score") or _linear_retrieval_score(1, 1))
-    score = min(raw_score, RETRIEVAL_ONLY_MAX_RANKING_SCORE)
-    score = round(score, 2)
+    score = round(
+        float(job.get("retrieval_score") or _linear_retrieval_score(1, 1)),
+        2,
+    )
     job["match_score"] = score
     job["ranking_score"] = score
     job["score_breakdown"] = {}
@@ -403,7 +490,7 @@ def _apply_retrieval_only_score(job, reason="not_llm_scored"):
     job["distance_km"] = None
     job["scoring_method"] = "retrieval_linear"
     job["retrieval_score_reason"] = reason
-    job["retrieval_raw_score"] = round(raw_score, 2)
+    job["retrieval_raw_score"] = score
     return job
 
 
@@ -459,18 +546,8 @@ def _load_job_term_taxonomy():
     taxonomy = {}
     row_count = 0
     try:
-        import json
-
         if JOB_TERM_TAXONOMY_PATH.exists():
-            rows = json.loads(JOB_TERM_TAXONOMY_PATH.read_text(encoding="utf-8"))
-            row_count = len(rows)
-            for row in rows:
-                term = str(row.get("term", "")).strip()
-                label = str(row.get("normalized_label", "")).strip()
-                if term:
-                    taxonomy.setdefault(term.lower(), row)
-                if label:
-                    taxonomy.setdefault(label.lower(), row)
+            taxonomy, row_count = load_taxonomy_lookup(JOB_TERM_TAXONOMY_PATH)
             logger.info("Loaded %s job term taxonomy rows", row_count)
         else:
             logger.warning("Job term taxonomy not found: %s", JOB_TERM_TAXONOMY_PATH)
@@ -562,7 +639,7 @@ def _split_terms_by_taxonomy(terms):
 
 
 def _confirmed_expansion_terms(terms):
-    """Keep only taxonomy-confirmed semantic terms as enrichment seeds."""
+    """Keep taxonomy-confirmed terms as input to semantic enrichment."""
     taxonomy = _load_job_term_taxonomy()
     accepted_types = {"domain", "technical_skill", "tool", "professional_skill"}
     output = []
@@ -571,11 +648,11 @@ def _confirmed_expansion_terms(terms):
         if not item or item.get("type") not in accepted_types:
             continue
         output.extend(_taxonomy_surfaces(term, item))
-    return _dedupe_terms(output, limit=20)
+    return _dedupe_terms(output)
 
 
-def _expansion_seed_types(terms):
-    """Return normalized seed -> controlled-vocabulary type for ESCO guards."""
+def _expansion_input_types(terms):
+    """Return normalized input term -> vocabulary type for ESCO guards."""
     taxonomy = _load_job_term_taxonomy()
     output = {}
     for term in terms:
@@ -593,7 +670,7 @@ def _build_cv_semantic_profile(query_plan, expansion_terms=None):
     lines = []
     roles = query_plan.get("target_roles", [])
     core = query_plan.get("core_skills", [])
-    secondary = query_plan.get("secondary_skills", [])[:KNN_SECONDARY_SKILL_LIMIT]
+    secondary = query_plan.get("secondary_skills", [])
     languages = query_plan.get("languages", [])
     certificates = query_plan.get("certificates", [])
 
@@ -645,27 +722,43 @@ def _build_retrieval_queries(cv_data):
         explicit_core_bm25, explicit_core_supporting, explicit_core_ignored = (
             _split_terms_by_taxonomy(explicit_core)
         )
-        core_skills = _dedupe_terms(
-            explicit_core_bm25, explicit_core_supporting,
-            limit=BM25_CORE_SKILL_LIMIT,
-        )
+        core_skills = _dedupe_terms(explicit_core_bm25, explicit_core_supporting)
         explicit_secondary_bm25, explicit_secondary_supporting, explicit_secondary_ignored = (
             _split_terms_by_taxonomy(explicit_secondary)
         )
-        secondary_skills = _dedupe_terms(
+        ranked_secondary = _dedupe_terms(
             explicit_secondary_bm25,
             explicit_secondary_supporting,
+            semantic_skills,
         )
+        core_keys = {term.lower() for term in core_skills}
+        secondary_skills = [
+            term for term in ranked_secondary if term.lower() not in core_keys
+        ]
     else:
         explicit_core_ignored, explicit_secondary_ignored = [], []
-        core_skills = semantic_skills[:BM25_CORE_SKILL_LIMIT]
-        secondary_skills = semantic_skills[BM25_CORE_SKILL_LIMIT:]
-    core_bm25, core_supporting, core_ignored = _split_terms_by_taxonomy(core_skills)
+        core_skills = semantic_skills
+        secondary_skills = []
+    # Keep every extracted core skill eligible for BM25. The final query budget
+    # is applied only after core terms are placed first.
+    bm25_core_skills = core_skills
+    core_bm25, core_supporting, core_ignored = _split_terms_by_taxonomy(
+        bm25_core_skills
+    )
 
     bm25_terms = _dedupe_terms(
-        role_bm25, core_bm25, cert_bm25, lang_bm25,
-        limit=24,
+        core_bm25, role_bm25, cert_bm25, lang_bm25,
+        limit=BM25_QUERY_TERM_LIMIT,
     )
+    selected_bm25_keys = {term.lower() for term in bm25_terms}
+    bm25_roles = [
+        term for term in _dedupe_terms(role_bm25, role_supporting)
+        if term.lower() in selected_bm25_keys
+    ]
+    bm25_evidence_terms = [
+        term for term in _dedupe_terms(core_bm25, cert_bm25, lang_bm25)
+        if term.lower() in selected_bm25_keys
+    ]
     knn_terms = _dedupe_terms(
         role_bm25,
         role_supporting,
@@ -675,7 +768,6 @@ def _build_retrieval_queries(cv_data):
         cert_supporting,
         lang_bm25,
         lang_supporting,
-        limit=64,
     )
 
     bm25_text = _join_terms(bm25_terms)
@@ -684,11 +776,12 @@ def _build_retrieval_queries(cv_data):
         "primary_skills": primary_skills,
         "core_skills": core_skills,
         "secondary_skills": secondary_skills,
+        "bm25_core_skills": bm25_core_skills,
         "languages": languages,
         "certificates": certificates,
         "bm25_text": bm25_text,
-        "bm25_roles": _dedupe_terms(role_bm25, role_supporting),
-        "bm25_evidence_terms": _dedupe_terms(core_bm25, cert_bm25, lang_bm25),
+        "bm25_roles": bm25_roles,
+        "bm25_evidence_terms": bm25_evidence_terms,
         "knn_terms": knn_terms,
         "expansion_terms": _confirmed_expansion_terms(core_skills),
         "ignored_query_terms": _dedupe_terms(
@@ -700,6 +793,38 @@ def _build_retrieval_queries(cv_data):
     query_plan["expansion_text"] = _join_terms(query_plan["expansion_terms"])
     query_plan["knn_text"] = _build_cv_semantic_profile(query_plan)
     return query_plan
+
+
+def _retrieve_jobs(
+    query_plan,
+    cv_gender,
+    minimum_should_match,
+    query_vector=None,
+    num_candidates=None,
+):
+    """Run the configured retrieval mode with one shared set of parameters."""
+    common = {
+        "size": RETRIEVAL_SIZE,
+        "categories": None,
+        "cv_gender": cv_gender,
+        "exclude_expired": True,
+        "bm25_min_should_match": minimum_should_match,
+        "role_terms": query_plan["bm25_roles"],
+        "evidence_terms": query_plan["bm25_evidence_terms"],
+    }
+    if query_vector is None:
+        return es_helper.search_jobs_by_profile(query_plan["bm25_text"], **common)
+
+    return es_helper.search_jobs_hybrid(
+        query_plan["bm25_text"],
+        query_vector,
+        num_candidates=num_candidates,
+        rrf_k=RRF_K,
+        bm25_weight=RRF_BM25_WEIGHT,
+        knn_weight=RRF_KNN_WEIGHT,
+        vector_field=KNN_VECTOR_FIELD,
+        **common,
+    )
 
 
 def search_pipeline(cv_data, top_n=None):
@@ -724,28 +849,28 @@ def search_pipeline(cv_data, top_n=None):
     cv_gender = cv_data.get("gender", "both")
     # BM25 remains taxonomy-clean. ESCO and SkillGraph enrich only the semantic
     # query used to create the kNN vector.
-    expansion_seed_text = query_plan["expansion_text"]
+    expansion_input_text = query_plan["expansion_text"]
     esco_terms = []
     graph_terms = []
-    if ENABLE_ESCO_EXPANSION and expansion_seed_text and _esco_expander:
+    if ENABLE_ESCO_EXPANSION and expansion_input_text and _esco_expander:
         esco_terms = _esco_expander.expand_terms_controlled(
             query_plan["expansion_terms"],
-            term_types=_expansion_seed_types(query_plan["expansion_terms"]),
+            term_types=_expansion_input_types(query_plan["expansion_terms"]),
         )
 
-    if ENABLE_SKILL_GRAPH_EXPANSION and expansion_seed_text and _skill_graph:
+    if ENABLE_SKILL_GRAPH_EXPANSION and expansion_input_text and _skill_graph:
         graph_text = _skill_graph.expand_skills_text(
-            expansion_seed_text, max_terms=KNN_EXPANSION_TERM_LIMIT,
+            expansion_input_text, max_terms=KNN_EXPANSION_TERM_LIMIT,
         )
         graph_terms.extend(_as_text_list(graph_text))
 
-    seed_keys = {term.lower() for term in query_plan["expansion_terms"]}
+    input_keys = {term.lower() for term in query_plan["expansion_terms"]}
     # ESCO labels are trusted only after passing the expander's strict
     # similarity/margin/type guards. Graph terms still need confirmation by
     # the internal vocabulary because graph traversal is broader by design.
     confirmed_graph_terms = [
         term for term in _confirmed_expansion_terms(graph_terms)
-        if term.lower() not in seed_keys
+        if term.lower() not in input_keys
     ]
     expansion_terms = _dedupe_terms(
         esco_terms,
@@ -756,7 +881,7 @@ def search_pipeline(cv_data, top_n=None):
     logger.info(
         "Structured kNN query: %s core, %s secondary, %s expansion terms",
         len(query_plan["core_skills"]),
-        min(len(query_plan["secondary_skills"]), KNN_SECONDARY_SKILL_LIMIT),
+        len(query_plan["secondary_skills"]),
         len(expansion_terms),
     )
 
@@ -764,17 +889,11 @@ def search_pipeline(cv_data, top_n=None):
     if _use_hybrid and _embedding_service:
         cv_text = _embedding_service.build_cv_text({"skills": semantic_query_text})
         query_vector = _embedding_service.encode_single(cv_text)
-        jobs, total = es_helper.search_jobs_hybrid(
-            bm25_text, query_vector, size=RETRIEVAL_SIZE,
-            categories=None,
-            cv_gender=cv_gender, exclude_expired=True,
-            bm25_min_should_match=BM25_MIN_SHOULD_MATCH,
-            rrf_k=RRF_K,
-            bm25_weight=RRF_BM25_WEIGHT,
-            knn_weight=RRF_KNN_WEIGHT,
-            vector_field=KNN_VECTOR_FIELD,
-            role_terms=query_plan["bm25_roles"],
-            evidence_terms=query_plan["bm25_evidence_terms"],
+        jobs, total = _retrieve_jobs(
+            query_plan,
+            cv_gender,
+            BM25_MIN_SHOULD_MATCH,
+            query_vector=query_vector,
         )
         search_mode = "hybrid"
         if ENABLE_ESCO_EXPANSION and _esco_expander:
@@ -782,13 +901,10 @@ def search_pipeline(cv_data, top_n=None):
         if ENABLE_SKILL_GRAPH_EXPANSION and _skill_graph:
             search_mode += "+graph"
     else:
-        jobs, total = es_helper.search_jobs_by_profile(
-            bm25_text, size=RETRIEVAL_SIZE,
-            categories=None,
-            cv_gender=cv_gender, exclude_expired=True,
-            bm25_min_should_match=BM25_MIN_SHOULD_MATCH,
-            role_terms=query_plan["bm25_roles"],
-            evidence_terms=query_plan["bm25_evidence_terms"],
+        jobs, total = _retrieve_jobs(
+            query_plan,
+            cv_gender,
+            BM25_MIN_SHOULD_MATCH,
         )
         search_mode = "bm25"
 
@@ -797,39 +913,27 @@ def search_pipeline(cv_data, top_n=None):
             "Relaxing retrieval: %s results < %s",
             len(jobs), RELAXED_RETRIEVAL_MIN_RESULTS,
         )
-        if _use_hybrid and _embedding_service:
-            jobs, total = es_helper.search_jobs_hybrid(
-                bm25_text, query_vector, size=RETRIEVAL_SIZE,
-                categories=None,
-                cv_gender=cv_gender, exclude_expired=True,
-                bm25_min_should_match=BM25_RELAXED_MIN_SHOULD_MATCH,
-                num_candidates=RETRIEVAL_SIZE * 4,
-                rrf_k=RRF_K,
-                bm25_weight=RRF_BM25_WEIGHT,
-                knn_weight=RRF_KNN_WEIGHT,
-                vector_field=KNN_VECTOR_FIELD,
-                role_terms=query_plan["bm25_roles"],
-                evidence_terms=query_plan["bm25_evidence_terms"],
-            )
-        else:
-            jobs, total = es_helper.search_jobs_by_profile(
-                bm25_text, size=RETRIEVAL_SIZE,
-                categories=None,
-                cv_gender=cv_gender, exclude_expired=True,
-                bm25_min_should_match=BM25_RELAXED_MIN_SHOULD_MATCH,
-                role_terms=query_plan["bm25_roles"],
-                evidence_terms=query_plan["bm25_evidence_terms"],
-            )
+        query_vector = query_vector if _use_hybrid and _embedding_service else None
+        jobs, total = _retrieve_jobs(
+            query_plan,
+            cv_gender,
+            BM25_RELAXED_MIN_SHOULD_MATCH,
+            query_vector=query_vector,
+            num_candidates=RETRIEVAL_SIZE * 4 if query_vector is not None else None,
+        )
         search_mode += "+relaxed"
 
     if not jobs:
         return [], search_mode, 0
 
-    # Location is a lightweight preference at retrieval time: keep semantic
-    # retrieval results, but score same-city jobs first when the user provides
-    # a desired city/province.
-    jobs = _prioritize_same_city(jobs, cv_data.get("location", ""))
+    # Annotate retrieval scores on the TRUE retrieval order first, so the
+    # limited LLM scoring budget is spent on the jobs that are most relevant by
+    # retrieval. City preference stays a lightweight signal: it is expressed
+    # through the location scoring dimension and the final display ordering, and
+    # must not decide which jobs get scored. Otherwise same-city but off-target
+    # jobs would starve relevant out-of-city jobs of the scoring budget.
     jobs = _annotate_retrieval_scores(jobs)
+    jobs = _prioritize_same_city(jobs, cv_data.get("location", ""))
 
     # --- Stage 3: LLM 6-dim Scoring (top-N) ---
     top_jobs, remaining_jobs = _select_llm_scoring_batch(jobs, top_n)
@@ -850,7 +954,12 @@ def search_pipeline(cv_data, top_n=None):
 def _score_with_llm(cv_data, jobs):
     """Gọi LLM scorer, fallback sang heuristic nếu fail."""
     try:
-        from job_matching.scoring.llm_scorer import score_batch, DEFAULT_WEIGHTS
+        from job_matching.scoring.llm_scorer import (
+            DEFAULT_WEIGHTS,
+            score_batch,
+            score_salary_from_data,
+            weighted_score,
+        )
 
         weights = cv_data.get("weights", DEFAULT_WEIGHTS)
         results = score_batch(cv_data, jobs, weights=weights)
@@ -866,16 +975,19 @@ def _score_with_llm(cv_data, jobs):
 
                 # Override location outside the LLM. Default is city/province
                 # match; detailed kilometer distance is opt-in via env.
-                cv_addr = cv_data.get("address") or cv_data.get("location", "")
+                cv_addr = _cv_location_text(cv_data)
                 goong_score, dist_km = calculate_location_score(
                     cv_addr, job,
                 )
                 scores["location"] = goong_score
+                scores["salary"], _salary_basis = score_salary_from_data(
+                    cv_data,
+                    job,
+                )
 
                 # Tính lại WSM total
                 w = weights
-                total = sum(scores[dim] * w.get(dim, 0)
-                           for dim in scores)
+                total = weighted_score(scores, w)
 
                 job["match_score"] = round(total, 2)
                 job["ranking_score"] = job["match_score"]
@@ -925,7 +1037,7 @@ def api_search():
         ai_scored_count = sum(bool(job.get("llm_scored")) for job in jobs)
 
         return jsonify({
-            "jobs": jobs[:50],
+            "jobs": jobs,
             "total": len(jobs),
             "ai_scored_count": ai_scored_count,
             "retrieval_only_count": len(jobs) - ai_scored_count,
@@ -934,8 +1046,9 @@ def api_search():
             "llm_time": llm_time,
             "message": (
                 f"Tìm thấy {len(jobs)} công việc phù hợp; "
-                f"AI đã chấm nhanh {ai_scored_count} job "
-                f"({search_mode}) — {pipeline_time}s"
+                f"AI chấm nhanh {ai_scored_count} công việc, "
+                f"còn lại {len(jobs) - ai_scored_count} công việc "
+                f"({search_mode}), {pipeline_time}s"
             ),
         })
 
@@ -967,9 +1080,7 @@ def api_jobs():
         size = request.args.get("size", 20, type=int)
         query = request.args.get("q", "", type=str).strip()
 
-        data = es_helper.list_jobs(page=page, size=size, query=query)
-        data["index_name"] = es_helper.index_name
-        return jsonify(data)
+        return jsonify(es_helper.list_jobs(page=page, size=size, query=query))
     except Exception as e:
         logger.error(f"List jobs error: {e}", exc_info=True)
         return jsonify({"error": str(e)}), 500
@@ -989,7 +1100,7 @@ def api_job_distance():
         if not job:
             return jsonify({"error": "Không tìm thấy thông tin công việc"}), 400
 
-        cv_addr = cv_data.get("address") or cv_data.get("location", "")
+        cv_addr = _cv_location_text(cv_data)
         if not cv_addr:
             return jsonify({"error": "Thiếu địa điểm ứng viên"}), 400
 
@@ -1020,7 +1131,11 @@ def api_job_detail_score():
         if not job:
             return jsonify({"error": "Không tìm thấy thông tin công việc"}), 400
 
-        from job_matching.scoring.llm_scorer import score_detail_with_evidence, DEFAULT_WEIGHTS
+        from job_matching.scoring.llm_scorer import (
+            DEFAULT_WEIGHTS,
+            score_detail_with_evidence,
+            weighted_score,
+        )
 
         weights = cv_data.get("weights", DEFAULT_WEIGHTS)
         score_data = score_detail_with_evidence(cv_data, job, weights=weights)
@@ -1029,13 +1144,14 @@ def api_job_detail_score():
 
         scores = score_data.get("scores", {})
 
-        cv_addr = cv_data.get("address") or cv_data.get("location", "")
+        cv_addr = _cv_location_text(cv_data)
         goong_score, dist_km = calculate_location_score(cv_addr, job)
         scores["location"] = goong_score
 
-        total = sum(
-            float(scores.get(dim, 0)) * float(weights.get(dim, 0))
-            for dim in ["relevance", "skills", "experience", "education", "location", "salary"]
+        total = weighted_score(
+            scores,
+            weights,
+            ["relevance", "skills", "experience", "education", "location", "salary"],
         )
 
         return jsonify({
@@ -1072,7 +1188,12 @@ def api_parse_cv():
             }), 400
 
         filename = secure_filename(file.filename)
-        temp_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
+        with tempfile.NamedTemporaryFile(
+            dir=app.config["UPLOAD_FOLDER"],
+            suffix=Path(filename).suffix,
+            delete=False,
+        ) as temp_file:
+            temp_path = temp_file.name
         file.save(temp_path)
 
         try:
@@ -1108,11 +1229,21 @@ def api_parse_cv():
         return jsonify({"error": f"Lỗi xử lý CV: {str(e)}"}), 500
 
 
+def create_app():
+    """Initialize heavy retrieval services once for the production server."""
+    _init_services()
+    return app
+
+
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO,
                        format="%(asctime)s [%(name)s] %(levelname)s %(message)s")
     # Preload model on startup → no cold-start latency
     logger.info("Preloading embedding model...")
-    _init_services()
+    create_app()
     logger.info("Ready!")
-    app.run(debug=True, host="0.0.0.0", port=5000)
+    app.run(
+        debug=env_bool("FLASK_DEBUG", default=False),
+        host="0.0.0.0",
+        port=5000,
+    )

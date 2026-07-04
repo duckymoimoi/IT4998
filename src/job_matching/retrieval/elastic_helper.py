@@ -3,15 +3,11 @@ from elasticsearch import Elasticsearch
 import logging
 import os
 
+from job_matching.shared.config import env_float, env_int
+
 logger = logging.getLogger(__name__)
 VECTOR_SOURCE_EXCLUDES = ["embedding"]
-
-
-def _env_float(name, default):
-    try:
-        return float(os.environ.get(name, default))
-    except (TypeError, ValueError):
-        return float(default)
+BM25_QUERY_TERM_LIMIT = env_int("BM25_QUERY_TERM_LIMIT", 30)
 
 
 class ElasticHelper:
@@ -148,22 +144,22 @@ class ElasticHelper:
             if cleaned and key not in seen:
                 terms.append(cleaned)
                 seen.add(key)
-            if len(terms) >= 40:
+            if len(terms) >= BM25_QUERY_TERM_LIMIT:
                 break
         if not terms:
             return []
 
         fields = [
-            f"semantic_title^{_env_float('BM25_SEMANTIC_TITLE_BOOST', 5.0)}",
-            f"semantic_text^{_env_float('BM25_SEMANTIC_TEXT_BOOST', 2.5)}",
-            f"title^{_env_float('BM25_TITLE_BOOST', 3.0)}",
-            f"specializations^{_env_float('BM25_SPECIALIZATIONS_BOOST', 2.0)}",
-            f"requirements_tags^{_env_float('BM25_REQUIREMENTS_TAGS_BOOST', 0.5)}",
-            f"technical_skills^{_env_float('BM25_TECHNICAL_SKILLS_BOOST', 0.2)}",
-            f"certificates^{_env_float('BM25_CERTIFICATES_BOOST', 1.5)}",
-            f"languages^{_env_float('BM25_LANGUAGES_BOOST', 0.75)}",
-            f"job_requirements^{_env_float('BM25_JOB_REQUIREMENTS_BOOST', 0.3)}",
-            f"job_description^{_env_float('BM25_JOB_DESCRIPTION_BOOST', 0.15)}",
+            f"semantic_title^{env_float('BM25_SEMANTIC_TITLE_BOOST', 5.0)}",
+            f"semantic_text^{env_float('BM25_SEMANTIC_TEXT_BOOST', 2.5)}",
+            f"title^{env_float('BM25_TITLE_BOOST', 3.0)}",
+            f"specializations^{env_float('BM25_SPECIALIZATIONS_BOOST', 2.0)}",
+            f"requirements_tags^{env_float('BM25_REQUIREMENTS_TAGS_BOOST', 0.5)}",
+            f"technical_skills^{env_float('BM25_TECHNICAL_SKILLS_BOOST', 0.2)}",
+            f"certificates^{env_float('BM25_CERTIFICATES_BOOST', 1.5)}",
+            f"languages^{env_float('BM25_LANGUAGES_BOOST', 0.75)}",
+            f"job_requirements^{env_float('BM25_JOB_REQUIREMENTS_BOOST', 0.3)}",
+            f"job_description^{env_float('BM25_JOB_DESCRIPTION_BOOST', 0.15)}",
         ]
         role_fields = [
             "semantic_title^5.0",
@@ -185,8 +181,15 @@ class ElasticHelper:
 
         term_queries = build_term_queries(terms)
 
-        role_terms = self._dedupe_query_terms(role_terms)
-        evidence_terms = self._dedupe_query_terms(evidence_terms)
+        # Evidence contains core skills first. Spend the shared query budget on
+        # those terms before adding role surfaces.
+        evidence_terms = self._dedupe_query_terms(
+            evidence_terms, limit=BM25_QUERY_TERM_LIMIT,
+        )
+        role_terms = self._dedupe_query_terms(
+            role_terms,
+            limit=max(0, BM25_QUERY_TERM_LIMIT - len(evidence_terms)),
+        )
         if role_terms or evidence_terms:
             route_queries = []
             if role_terms:
@@ -252,7 +255,7 @@ class ElasticHelper:
             return []
 
     @staticmethod
-    def _dedupe_query_terms(values):
+    def _dedupe_query_terms(values, limit=BM25_QUERY_TERM_LIMIT):
         if not values:
             return []
         if isinstance(values, str):
@@ -264,7 +267,7 @@ class ElasticHelper:
             if cleaned and key not in seen:
                 output.append(cleaned)
                 seen.add(key)
-        return output[:40]
+        return output[:max(0, limit)]
 
     @staticmethod
     def _resolve_minimum_should_match(value, term_count):

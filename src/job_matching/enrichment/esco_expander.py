@@ -1,11 +1,8 @@
-"""
-ESCO Skill Expander - Mo rong CV skills bang ESCO alt_labels.
+"""Map confirmed CV terms to high-confidence ESCO preferred labels.
 
-Khi ung vien viet "lap trinh web", ESCO giup bo sung:
-  "web programming, web development, HTML/CSS/JavaScript"
-=> BM25 tim duoc nhieu jobs hon, kNN cung co query vector phong phu hon.
-
-Su dung cache embedding tu data/cache/ (da tao boi test_esco_bridge.py)
+The production path adds only accepted preferred labels to the kNN semantic
+query. It does not add related skills or modify the BM25 query. Legacy methods
+that expand alternative labels are retained for reproducible experiments.
 """
 import os
 import csv
@@ -411,4 +408,3 @@ def get_esco_expander(embedding_service=None, **kwargs):
         if _esco_instance is None:
             _esco_instance = ESCOExpander(embedding_service=embedding_service, **kwargs)
     return _esco_instance
-

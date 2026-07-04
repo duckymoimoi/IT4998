@@ -65,102 +65,30 @@ Repo có thể chứa bộ dữ liệu job đã xử lý trong `data/`, gồm c�
 
 Các file local như API key, cache embedding, model weight, log và CV cá nhân đã được đưa vào `.gitignore`.
 
-## Cài đặt
+## Cài đặt nhanh
 
-Yêu cầu:
-
-- Docker Desktop.
-- GPU NVIDIA là khuyến nghị nếu chạy embedding/LLM local nặng; vẫn có thể tùy chỉnh để chạy CPU nhưng sẽ chậm hơn.
-- API key cho các dịch vụ được dùng trong app, tối thiểu là Groq nếu muốn dùng trích xuất CV và scoring bằng LLM.
-
-Tạo file cấu hình local:
+Hướng dẫn đầy đủ về cấu hình API, khởi tạo chỉ mục, chạy web, crawl và xử lý lỗi
+nằm tại [docs/HUONG_DAN_CAI_DAT_VA_SU_DUNG.md](docs/HUONG_DAN_CAI_DAT_VA_SU_DUNG.md).
 
 ```powershell
 Copy-Item src\.env.example src\.env
+docker compose up -d elasticsearch web
 ```
 
-Điền các key cần dùng vào `src/.env`:
+Sau khi điền khóa Groq trong `src\.env`, mở `http://localhost:5000`.
 
-```env
-GROQ_API_KEY=
-GOONG_API_KEY=
-ES_HOST=http://localhost:9200
-ES_INDEX=topcv_jobs_production
-ENABLE_SKILL_GRAPH=0
-ENABLE_CITY_PRIORITY=1
-LOCATION_SCORE_MODE=city
-```
-
-Khởi động Elasticsearch:
+Nếu chỉ mục chưa có dữ liệu:
 
 ```powershell
-docker compose up -d elasticsearch
+docker compose run --rm --entrypoint "" web `
+  python -m job_matching.ingestion.import_to_elastic `
+  --csv data/jobs/topcv_balanced_1300.csv `
+  --index topcv_jobs_production `
+  --es-host http://elasticsearch:9200
 ```
 
-Tạo index production từ một CSV có sẵn nếu muốn chạy app ngay trước khi crawl:
-
-```powershell
-docker compose run --rm --entrypoint "" web python src/import_to_elastic.py --csv data/jobs/topcv_balanced_1300.csv --index topcv_jobs_production --es-host http://elasticsearch:9200
-```
-
-Web container không tự import CSV khi index rỗng. Nếu muốn bật lại hành vi seed dữ liệu khi khởi động, đặt `AUTO_IMPORT_ON_START=1`.
-
-Chạy ứng dụng:
-
-```powershell
-docker compose up web
-```
-
-Mở trình duyệt tại:
-
-```text
-http://localhost:5000
-```
-
-## Crawl job mới
-
-Crawler được tách thành Docker profile riêng để không tự chạy khi chỉ mở app. Luồng production crawl từ trang việc làm tổng của TopCV (`https://www.topcv.vn/viec-lam-tot-nhat?page=N`), không chia ngành hay cân bằng cấp bậc. Các script crawl cân bằng theo ngành/cấp bậc chỉ phục vụ xây dựng bộ thực nghiệm.
-
-Chạy crawl production một lần, lấy 3 trang từ listing tổng và upsert vào Elasticsearch:
+Crawler production thuộc profile riêng:
 
 ```powershell
 docker compose --profile crawl run --rm scheduler
 ```
-
-Chạy crawl với tham số tùy chỉnh:
-
-```powershell
-docker compose --profile crawl run --rm scheduler python src/scheduler.py --once --source general --pages 5 --threads 2 --no-embedding
-```
-
-Mặc định crawler bỏ qua các URL đã có trong Elasticsearch nếu job đó được crawl trong 7 ngày gần nhất. Nếu muốn ép kiểm tra/crawl lại toàn bộ URL đã có:
-
-```powershell
-python src\scheduler.py --once --source general --pages 20 --threads 1 --force-recrawl-existing
-```
-
-Nếu muốn bỏ qua mọi URL đã có trong index, không quan tâm ngày crawl:
-
-```powershell
-python src\scheduler.py --once --source general --pages 20 --threads 1 --recrawl-after-days -1
-```
-
-Chạy crawl theo ngành khi cần kiểm tra hoặc tạo dữ liệu thực nghiệm:
-
-```powershell
-docker compose --profile crawl run --rm scheduler python src/scheduler.py --once --source category --pages 3 --threads 2 --categories it marketing ke-toan --no-embedding
-```
-
-Chỉ crawl và ghi CSV, không upsert Elasticsearch:
-
-```powershell
-docker compose --profile crawl run --rm scheduler python src/scheduler.py --once --source general --pages 3 --threads 1 --no-es
-```
-
-Upsert một file CSV đã có vào Elasticsearch:
-
-```powershell
-docker compose --profile crawl run --rm -e ES_INDEX=topcv_jobs_production scheduler python src/scheduler.py --upsert-file data/jobs/topcv_balanced_1300.csv --es-host http://elasticsearch:9200 --no-embedding
-```
-
-Lưu ý: crawler phụ thuộc vào giao diện TopCV và cơ chế chống bot của trình duyệt, nên có thể cần điều chỉnh Chrome/driver hoặc giảm số luồng nếu website thay đổi hoặc chặn request.

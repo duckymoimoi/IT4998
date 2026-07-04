@@ -1,9 +1,26 @@
 
 import re
-from typing import Dict, Optional, Union
+from typing import Dict, Union
 import logging
 
+from job_matching.shared.config import env_float
+
 logger = logging.getLogger(__name__)
+
+USD_TO_VND_RATE = env_float("USD_TO_VND_RATE", 25_000)
+
+
+def normalize_expected_salary_vnd(value):
+    """Accept either million-VND UI values or canonical VND amounts."""
+    if value is None or value == "":
+        return value
+    try:
+        numeric = float(str(value).replace(",", "").strip())
+    except (TypeError, ValueError):
+        return value
+    if 0 < numeric < 10_000:
+        numeric *= 1_000_000
+    return numeric
 
 
 class SalaryNormalizer:
@@ -12,7 +29,7 @@ class SalaryNormalizer:
         # Conversion rates
         self.HOURS_PER_MONTH = 160  # ~8h/day * 20 days
         self.DAYS_PER_MONTH = 22
-        self.USD_TO_VND = 24000
+        self.USD_TO_VND = USD_TO_VND_RATE
 
     def normalize_salary(self, salary_text: Union[str, int, float]) -> Dict:
 
@@ -209,7 +226,9 @@ class SalaryNormalizer:
             job_salary: Union[str, int, float, Dict]
     ) -> float:
         # Normalize both salaries
-        expected = self.normalize_salary(expected_salary)
+        expected = self.normalize_salary(
+            normalize_expected_salary_vnd(expected_salary)
+        )
 
         # Handle dict input for job_salary
         if isinstance(job_salary, dict):

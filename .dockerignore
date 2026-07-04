@@ -43,10 +43,12 @@ src/enrich_esco_skills.py
 src/fetch_esco_labels.py
 
 # Large/generated data artifacts
-data/raw/
-data/cache/
-data/*.pdf
+data/
 *.zip
+
+# Source and tests are bind-mounted at runtime, not copied into either image.
+src/
+tests/
 
 # Model weights are mounted locally, not copied into the app image.
 models/

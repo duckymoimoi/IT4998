@@ -50,20 +50,6 @@ def extract_preferred_label_heuristic(description):
     # Pattern: Bat dau tu mot chu in hoa, tiep theo la tu + dau cham hoac dau phay
     # Mo ta thuong bat dau = "The ...", "A ...", "An ...", etc.
     
-    desc_start_patterns = [
-        # "The techniques and principles..."
-        r'(?:^|\s)(The\s+[a-z])',
-        # "A plan-based business..."
-        r'(?:^|\s)(A\s+[a-z])',
-        # "An integrated approach..."
-        r'(?:^|\s)(An\s+[a-z])',
-        # "Various techniques..."
-        r'(?:^|\s)(Various\s+[a-z])',
-        # Bat dau bang dong tu + object (imperative): "Assign and manage...", "Identify oppression..."
-        # => Tim cau dai bat dau bang chu in hoa
-        # General: Sentence starting with uppercase, followed by lowercase words
-    ]
-    
     # Strategy 1: Tim sentence bat dau bang capital letter co van phong mo ta
     # Mo ta thuong o cuoi, sau tat ca labels
     
@@ -75,7 +61,6 @@ def extract_preferred_label_heuristic(description):
     
     if len(sentences) <= 1:
         # Khong co dau cham => toan bo la labels, label dau la preferred
-        words = text.split()
         # Tim nhom tu dau tien = preferred label
         # Labels thuong phan cach boi cung pattern lap lai
         preferred = _extract_first_label(text)

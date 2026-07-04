@@ -45,15 +45,14 @@
         <!-- MIDDLE: Results -->
         <div class="results" id="resultsPanel">
             <div class="main-tabs">
-                <button class="tab-btn active" id="tabSearch" onclick="switchMainTab('search')">Tìm việc</button>
-                <button class="tab-btn" id="tabJobs" onclick="switchMainTab('jobs')">Kho job</button>
+                <button class="tab-btn active" id="tabSearch" onclick="switchMainTab('search')">Gợi ý việc làm</button>
+                <button class="tab-btn" id="tabJobs" onclick="switchMainTab('jobs')">Tất cả việc làm</button>
             </div>
 
             <div id="searchView">
                 <div class="empty-state" id="emptyState">
                     <h3>Chào mừng bạn!</h3>
                     <p>Tải CV lên, bổ sung địa điểm và lương mong muốn, rồi nhấn "Tìm việc phù hợp".</p>
-                    <p style="margin-top:8px;font-size:12px">Hybrid Search + ESCO + LLM Scoring</p>
                 </div>
                 <div id="resultsContent" style="display:none">
                     <div class="results-header">
@@ -62,6 +61,14 @@
                             <span class="results-count" id="resultsCount"></span>
                         </div>
                         <span class="search-mode" id="modeLabel"></span>
+                    </div>
+                    <div class="result-tabs" role="tablist" aria-label="Nhóm kết quả">
+                        <button class="result-tab active" id="resultTabAi" onclick="switchResultTab('ai')">
+                            AI chấm nhanh <span id="resultTabAiCount">0</span>
+                        </button>
+                        <button class="result-tab" id="resultTabRetrieval" onclick="switchResultTab('retrieval')">
+                            Kết quả còn lại <span id="resultTabRetrievalCount">0</span>
+                        </button>
                     </div>
                     <div id="jobsList"></div>
                     <div id="loadMore" style="display:none;text-align:center;margin-top:12px">
@@ -73,10 +80,9 @@
             <div id="jobsBrowserView" style="display:none">
                 <div class="results-header">
                     <div>
-                        <h2>Kho job hiện có</h2>
+                        <h2>Tất cả việc làm</h2>
                         <span class="results-count" id="jobBrowserCount"></span>
                     </div>
-                    <span class="search-mode" id="jobBrowserIndex"></span>
                 </div>
                 <div class="job-browser-tools">
                     <input type="text" id="jobBrowserQuery" placeholder="Tìm theo tiêu đề, công ty, kỹ năng, địa điểm">
@@ -128,16 +134,18 @@
 
 <script>
 // ===== STATE =====
-let allJobs = [], displayCount = 5, extractedData = null, lastCvData = null;
+let allJobs = [], extractedData = null, lastCvData = null;
+let activeResultTab = 'ai';
+let resultDisplayCounts = {ai: 5, retrieval: 5};
 let jobBrowserLoaded = false, jobBrowserPage = 1, jobBrowserTotal = 0, jobBrowserSize = 20;
 const DIMS = ['relevance','skills','experience','education','location','salary'];
 const DIM_LABELS = {relevance:'Phù hợp',skills:'Kỹ năng',experience:'Kinh nghiệm',education:'Học vấn',location:'Địa điểm',salary:'Lương'};
 
 function getWeights() {
     return {
-        relevance: 0.25,
-        skills: 0.30,
-        experience: 0.15,
+        relevance: 0.50,
+        skills: 0.10,
+        experience: 0.10,
         education: 0.10,
         location: 0.10,
         salary: 0.10,
@@ -179,7 +187,6 @@ async function loadJobBrowser(page) {
         jobBrowserLoaded = true;
         jobBrowserPage = data.page || page;
         jobBrowserTotal = data.total || 0;
-        document.getElementById('jobBrowserIndex').textContent = data.index_name || '';
         document.getElementById('jobBrowserCount').textContent = `${jobBrowserTotal} job`;
         renderJobBrowser(data.jobs || []);
     } catch (e) {
@@ -190,7 +197,7 @@ async function loadJobBrowser(page) {
 function renderJobBrowser(jobs) {
     const list = document.getElementById('jobBrowserList');
     if (!jobs.length) {
-        list.innerHTML = '<div class="empty-state"><h3>Chưa có job</h3><p>Index hiện tại chưa có dữ liệu hoặc không khớp từ khóa tìm kiếm.</p></div>';
+        list.innerHTML = '<div class="empty-state"><h3>Chưa có job</h3><p>Kho việc làm chưa có dữ liệu hoặc không khớp từ khóa tìm kiếm.</p></div>';
     } else {
         list.innerHTML = jobs.map(jobBrowserCard).join('');
     }
@@ -357,12 +364,18 @@ async function searchJobs() {
             return;
         }
         allJobs = data.jobs || [];
-        displayCount = 5;
+        activeResultTab = 'ai';
+        resultDisplayCounts = {ai: 5, retrieval: 5};
         document.getElementById('modeLabel').innerHTML = scoreLegendHtml();
         const timeInfo = [];
         if (data.pipeline_time) timeInfo.push(`Total: ${data.pipeline_time}s`);
         if (data.llm_time) timeInfo.push(`LLM: ${data.llm_time}s`);
-        if (data.ai_scored_count !== undefined) timeInfo.push(`AI: ${data.ai_scored_count}/${data.total}`);
+        if (data.ai_scored_count !== undefined) {
+            timeInfo.push(`AI chấm nhanh: ${data.ai_scored_count}`);
+        }
+        if (data.retrieval_only_count !== undefined) {
+            timeInfo.push(`Còn lại: ${data.retrieval_only_count}`);
+        }
         document.getElementById('resultsCount').innerHTML = allJobs.length + ' công việc' + 
             (timeInfo.length ? ' <span style="color:var(--text2);font-size:11px">(' + timeInfo.join(' | ') + ')</span>' : '');
         renderJobs();
@@ -373,21 +386,55 @@ async function searchJobs() {
 
 function renderJobs() {
     const list = document.getElementById('jobsList');
+    document.getElementById('resultTabAi').classList.toggle('active', activeResultTab === 'ai');
+    document.getElementById('resultTabRetrieval').classList.toggle('active', activeResultTab === 'retrieval');
+    const aiJobs = allJobs.filter(job => job.llm_scored);
+    const retrievalJobs = allJobs.filter(job => !job.llm_scored);
+    document.getElementById('resultTabAiCount').textContent = aiJobs.length;
+    document.getElementById('resultTabRetrievalCount').textContent = retrievalJobs.length;
+
     if (!allJobs.length) {
         list.innerHTML = '<div class="empty-state"><h3>Không tìm thấy kết quả</h3><p>Thử điều chỉnh kỹ năng hoặc địa điểm mong muốn</p></div>';
         document.getElementById('loadMore').style.display = 'none';
         return;
     }
-    list.innerHTML = allJobs.slice(0, displayCount).map((j,i) => jobCard(j,i)).join('');
-    document.getElementById('loadMore').style.display = displayCount < allJobs.length ? 'block' : 'none';
+
+    const visibleJobs = activeResultTab === 'ai' ? aiJobs : retrievalJobs;
+    const displayCount = resultDisplayCounts[activeResultTab];
+    if (!visibleJobs.length) {
+        const message = activeResultTab === 'ai'
+            ? 'Chưa có công việc nào được AI chấm nhanh.'
+            : 'Không có công việc nào trong nhóm kết quả còn lại.';
+        list.innerHTML = `<div class="empty-state result-empty"><h3>Chưa có kết quả</h3><p>${message}</p></div>`;
+        document.getElementById('loadMore').style.display = 'none';
+        return;
+    }
+
+    list.innerHTML = visibleJobs
+        .slice(0, displayCount)
+        .map(job => jobCard(job, allJobs.indexOf(job)))
+        .join('');
+    document.getElementById('loadMore').style.display =
+        displayCount < visibleJobs.length ? 'block' : 'none';
 }
-function loadMore() { displayCount += 5; renderJobs(); }
+
+function switchResultTab(tab) {
+    activeResultTab = tab === 'retrieval' ? 'retrieval' : 'ai';
+    document.getElementById('resultTabAi').classList.toggle('active', activeResultTab === 'ai');
+    document.getElementById('resultTabRetrieval').classList.toggle('active', activeResultTab === 'retrieval');
+    renderJobs();
+}
+
+function loadMore() {
+    resultDisplayCounts[activeResultTab] += 5;
+    renderJobs();
+}
 
 function scoreLegendHtml() {
     return [
-        '<span class="legend-chip retrieval">Sơ bộ: hệ thống gợi ý</span>',
-        '<span class="legend-chip quick">Đánh giá nhanh: AI đã xem</span>',
-        '<span class="legend-chip detail">Đánh giá kỹ: AI xem sâu</span>'
+        '<span class="legend-chip retrieval">Xếp hạng truy xuất</span>',
+        '<span class="legend-chip quick">AI chấm nhanh</span>',
+        '<span class="legend-chip detail">Phân tích chi tiết</span>'
     ].join('');
 }
 
@@ -405,14 +452,37 @@ function recomputeJobScore(job) {
     return true;
 }
 
+function getLatestCvData() {
+    if (!lastCvData) return null;
+    const selectedLocation = document.getElementById('location').value;
+    const address = document.getElementById('address').value.trim();
+    const salaryValue = document.getElementById('salary').value;
+    return {
+        ...lastCvData,
+        location: selectedLocation || lastCvData.location || (extractedData && extractedData.location) || '',
+        address,
+        salary: salaryValue ? parseFloat(salaryValue) : lastCvData.salary,
+        weights: getWeights()
+    };
+}
+
 async function fetchDistance(idx) {
     const job = allJobs[idx];
-    if (!job || !lastCvData) return;
+    const cvData = getLatestCvData();
+    if (!job || !cvData) return;
+    if (!cvData.address && !cvData.location) {
+        alert('Hãy nhập địa chỉ cụ thể hoặc chọn tỉnh/thành trước khi tính khoảng cách.');
+        document.getElementById('address').focus();
+        return;
+    }
+    lastCvData = cvData;
+    job.distance_loading = true;
+    renderJobs();
     try {
         const res = await fetch('/api/job-distance', {
             method: 'POST',
             headers: {'Content-Type':'application/json'},
-            body: JSON.stringify({cv_data: lastCvData, job})
+            body: JSON.stringify({cv_data: cvData, job})
         });
         const data = await res.json();
         if (!res.ok || data.error) {
@@ -424,9 +494,11 @@ async function fetchDistance(idx) {
             allJobs[idx].score_breakdown.location = data.location_score;
             recomputeJobScore(allJobs[idx]);
         }
-        renderJobs();
     } catch (e) {
         alert('Lỗi tính khoảng cách: ' + e.message);
+    } finally {
+        if (allJobs[idx]) allJobs[idx].distance_loading = false;
+        renderJobs();
     }
 }
 
@@ -448,6 +520,7 @@ async function scoreJobDetail(idx) {
         }
         Object.assign(allJobs[idx], data);
         allJobs[idx].detail_scored = true;
+        activeResultTab = 'ai';
     } catch (e) {
         alert('Lỗi chấm chi tiết: ' + e.message);
     } finally {
@@ -463,15 +536,22 @@ function jobCard(job, idx) {
     const tags = parseTags(job.requirements_tags);
     const bd = job.score_breakdown || {};
     const hasBreakdown = DIMS.every(d => bd[d] !== undefined && bd[d] !== null);
-    const llm = job.detail_scored ? '<span class="llm-badge scored">Đánh giá kỹ</span>' :
-        (job.llm_scored ? '<span class="llm-badge scored">Đánh giá nhanh</span>' :
-            '<span class="llm-badge pending">Sơ bộ</span>');
+    const llm = job.detail_scored ? '<span class="llm-badge scored">Phân tích chi tiết</span>' :
+        (job.llm_scored ? '<span class="llm-badge scored">AI chấm nhanh</span>' :
+            '<span class="llm-badge pending">Theo truy xuất</span>');
     const comment = job.comment ? `<div class="job-comment"><span>Nhận xét:</span> ${esc(job.comment)}</div>` : '';
-    const detailLabel = job.detail_loading ? 'Đang chấm...' : (job.detail_scored ? 'Chấm lại chi tiết' : 'Chấm chi tiết');
+    const detailLabel = job.detail_loading
+        ? 'Đang phân tích...'
+        : (job.detail_scored ? 'Phân tích lại' : 'Phân tích chi tiết');
     const detailBtn = `<button class="detail-score-action" onclick="scoreJobDetail(${idx})" ${job.detail_loading ? 'disabled' : ''}>${detailLabel}</button>`;
-    const canCalcDistance = lastCvData && (lastCvData.address || lastCvData.location);
-    const distInfo = job.distance_km ? `<span class="distance-chip">Khoảng cách: ${job.distance_km} km</span>` :
-        (canCalcDistance ? `<button class="distance-action" onclick="fetchDistance(${idx})">Xem khoảng cách</button>` : '');
+    const distanceChip = job.distance_km !== undefined && job.distance_km !== null
+        ? `<span class="distance-chip">Khoảng cách: ${job.distance_km} km</span>`
+        : '';
+    const distanceLabel = job.distance_loading ? 'Đang tính...' : 'Khoảng cách';
+    const distanceAction = lastCvData
+        ? `<button class="distance-action" onclick="fetchDistance(${idx})" ${job.distance_loading ? 'disabled' : ''}>${distanceLabel}</button>`
+        : '';
+    const distInfo = distanceChip + distanceAction;
     const addrInfo = job.company_address ? `<span title="${esc(job.company_address)}"><b>Địa chỉ:</b> ${esc(job.company_address.substring(0,40))}${job.company_address.length>40?'...':''}</span>` : '';
 
     let barsHtml = '';

@@ -9,7 +9,7 @@ Sử dụng:
     python scheduler.py --once --pages 3
 
     # Chạy theo chu kỳ
-    python scheduler.py --interval 60 --pages 5
+    python scheduler.py --interval 60 --start-page 6 --pages 5
 
     # Chỉ upsert file CSV có sẵn
     python scheduler.py --upsert-file topcv_jobs_cleaned.csv
@@ -32,10 +32,22 @@ import random
 from datetime import datetime, timedelta
 from pathlib import Path
 
+# Support both direct execution and ``python -m job_matching.ingestion.scheduler``.
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
+SRC_DIR = PROJECT_ROOT / "src"
+if str(SRC_DIR) not in sys.path:
+    sys.path.insert(0, str(SRC_DIR))
+
 import pandas as pd
 from elasticsearch import Elasticsearch
 from elasticsearch.helpers import bulk, scan
 import csv
+
+from job_matching.ingestion.document_utils import (
+    boolean_value,
+    salary_millions,
+    text_fields,
+)
 
 # Suppress UC destructor error on Windows (WinError 6: handle invalid)
 try:
@@ -51,12 +63,8 @@ except Exception:
     pass
 
 # ============= PATHS =============
-PROJECT_ROOT = Path(__file__).resolve().parents[3]
-SRC_DIR = PROJECT_ROOT / "src"
 JOBS_DIR = PROJECT_ROOT / "data" / "jobs"
 LOG_DIR = SRC_DIR / "logs"
-if str(SRC_DIR) not in sys.path:
-    sys.path.insert(0, str(SRC_DIR))
 JOBS_DIR.mkdir(parents=True, exist_ok=True)
 LOG_DIR.mkdir(exist_ok=True)
 
@@ -171,8 +179,14 @@ class CrawlScheduler:
     # ============= HISTORY =============
     def _load_history(self):
         if CRAWL_HISTORY_FILE.exists():
-            with open(CRAWL_HISTORY_FILE, 'r', encoding='utf-8') as f:
-                return json.load(f)
+            try:
+                with open(CRAWL_HISTORY_FILE, 'r', encoding='utf-8') as f:
+                    history = json.load(f)
+                if isinstance(history, dict) and isinstance(history.get("runs"), list):
+                    return history
+                logger.warning("[HISTORY] Invalid structure, starting a new history")
+            except (OSError, json.JSONDecodeError) as exc:
+                logger.warning("[HISTORY] Cannot read crawl history: %s", exc)
         return {"runs": []}
 
     def _save_history(self, history):
@@ -349,11 +363,21 @@ class CrawlScheduler:
                         pass
         return None
 
-    def _collect_job_urls(self, pages=3, base_url=PRODUCTION_LISTING_URL):
+    def _collect_job_urls(
+        self,
+        pages=3,
+        base_url=PRODUCTION_LISTING_URL,
+        start_page=1,
+    ):
         """
         Thu thap URLs tu trang viec lam tong cho production.
         Returns: list of job URLs (deduplicated).
         """
+        if pages < 1:
+            raise ValueError("pages must be at least 1")
+        if start_page < 1:
+            raise ValueError("start_page must be at least 1")
+
         from job_matching.crawling.crawl_topcv import setup_driver
 
         urls = []
@@ -366,8 +390,12 @@ class CrawlScheduler:
             driver = setup_driver()
 
         try:
-            logger.info(f"  Collecting URLs from {base_url}")
-            for page_num in range(1, pages + 1):
+            end_page = start_page + pages - 1
+            logger.info(
+                f"  Collecting URLs from {base_url} "
+                f"(pages {start_page}-{end_page})"
+            )
+            for page_num in range(start_page, end_page + 1):
                 page_url = self._build_listing_url(base_url, page_num)
                 page_source = self._load_listing_page(driver, page_url, selector)
 
@@ -406,12 +434,15 @@ class CrawlScheduler:
     # ============= PRODUCER-CONSUMER PIPELINE =============
     def run_pipeline(
         self, pages=5, threads=3, output_file=None,
-        recrawl_after_days=7, force_recrawl_existing=False,
+        recrawl_after_days=7, force_recrawl_existing=False, start_page=1,
     ):
         """
         Full pipeline:
           Collect URLs → Crawl workers → queue → Clean → CSV
         """
+        if threads < 1:
+            raise ValueError("threads must be at least 1")
+
         from job_matching.crawling.crawl_topcv import setup_driver, extract_job_simple
 
         if output_file is None:
@@ -419,14 +450,17 @@ class CrawlScheduler:
             output_file = str(JOBS_DIR / f'topcv_pipeline_{timestamp}.csv')
 
         logger.info("=" * 70)
-        logger.info(f"  PIPELINE START — pages={pages}, threads={threads}")
+        logger.info(
+            f"  PIPELINE START — start_page={start_page}, "
+            f"pages={pages}, threads={threads}"
+        )
         logger.info(f"  Output: {output_file}")
         logger.info(f"  LLM Clean: {'ON' if self.cleaner else 'OFF'}")
         logger.info("=" * 70)
 
         # Phase 1: Collect URLs
         logger.info("[PHASE 1] Collecting job URLs from general listing...")
-        urls = self._collect_job_urls(pages=pages)
+        urls = self._collect_job_urls(pages=pages, start_page=start_page)
 
         if not urls:
             logger.error("[ERROR] No URLs found")
@@ -655,6 +689,108 @@ class CrawlScheduler:
             logger.warning(f"[PRECHECK] Cannot check existing URLs, crawl all URLs: {e}")
             return urls, stats
 
+    def _build_semantic_profiles(self, df):
+        if not self.use_embeddings or not self.embedding_service:
+            return None, None
+
+        logger.info("[EMBED] Generating embeddings (bge-m3)...")
+        started = time.time()
+        profiles = [
+            self.semantic_profile_builder.build(
+                row.to_dict(),
+                include_searchable_fields=True,
+            )
+            for _, row in df.iterrows()
+        ]
+        embeddings = self.embedding_service.encode(
+            [profile["semantic_text"] for profile in profiles],
+            batch_size=32,
+            show_progress=True,
+        )
+        logger.info(
+            "[OK] %s semantic embeddings in %.1fs",
+            len(embeddings),
+            time.time() - started,
+        )
+        return profiles, embeddings
+
+    @staticmethod
+    def _row_to_document(row, columns, profile=None, embedding=None):
+        doc = text_fields(row, columns)
+        for field in ("is_expired", "has_commission"):
+            doc[field] = boolean_value(row.get(field, False))
+        for field in ("salary_min", "salary_max"):
+            value = salary_millions(row.get(field))
+            if value is not None:
+                doc[field] = value
+
+        doc["last_crawled"] = datetime.now().isoformat()
+        if profile is not None and embedding is not None:
+            doc.update(profile)
+            doc["embedding"] = embedding.tolist()
+        return doc
+
+    def _build_upsert_action(self, doc_id, doc, new_hash, profile=None):
+        try:
+            existing = self.es.get(index=self.index_name, id=doc_id, ignore=[404])
+        except Exception:
+            existing = None
+
+        if not existing or not existing.get("found"):
+            return {
+                "_op_type": "index",
+                "_index": self.index_name,
+                "_id": doc_id,
+                "_source": doc,
+            }, "new"
+
+        existing_source = existing.get("_source", {})
+        if existing_source.get("content_hash", "") != new_hash:
+            return {
+                "_op_type": "update",
+                "_index": self.index_name,
+                "_id": doc_id,
+                "doc": doc,
+            }, "updated"
+
+        update_doc = {"last_crawled": doc["last_crawled"]}
+        structured_updated = False
+        for field in (
+            "requirements_tags",
+            "specializations",
+            "technical_skills",
+            "languages",
+            "certificates",
+        ):
+            if doc.get(field, "") and doc.get(field, "") != existing_source.get(field, ""):
+                update_doc[field] = doc[field]
+                structured_updated = True
+
+        embedding_updated = False
+        if profile is not None and (
+            not existing_source.get("semantic_text") or structured_updated
+        ):
+            update_doc.update(profile)
+            update_doc["embedding"] = doc["embedding"]
+            embedding_updated = True
+
+        return {
+            "_op_type": "update",
+            "_index": self.index_name,
+            "_id": doc_id,
+            "doc": update_doc,
+        }, "updated" if embedding_updated or structured_updated else "unchanged"
+
+    def _flush_bulk_actions(self, actions):
+        if not actions:
+            return 0
+        try:
+            _, errors = bulk(self.es, actions, raise_on_error=False)
+            return len(errors) if errors else 0
+        except Exception as exc:
+            logger.error("  Bulk error: %s", exc)
+            return len(actions)
+
     def upsert_to_es(self, csv_file):
         """Upsert cleaned CSV vào ES"""
         if not self.es:
@@ -665,25 +801,7 @@ class CrawlScheduler:
         df = pd.read_csv(csv_file, encoding='utf-8-sig')
         logger.info(f"   Records: {len(df):,}")
 
-        # Embeddings
-        all_embeddings = None
-        semantic_profiles = None
-        if self.use_embeddings and self.embedding_service:
-            logger.info("[EMBED] Generating embeddings (bge-m3)...")
-            embed_start = time.time()
-            semantic_profiles = []
-            semantic_texts = []
-            for _, row in df.iterrows():
-                job = row.to_dict()
-                profile = self.semantic_profile_builder.build(job, include_searchable_fields=True)
-                semantic_profiles.append(profile)
-                semantic_texts.append(profile["semantic_text"])
-            all_embeddings = self.embedding_service.encode(
-                semantic_texts, batch_size=32, show_progress=True,
-            )
-            logger.info(
-                f"[OK] {len(all_embeddings)} semantic embeddings in {time.time()-embed_start:.1f}s"
-            )
+        semantic_profiles, all_embeddings = self._build_semantic_profiles(df)
 
         stats = {"new": 0, "updated": 0, "unchanged": 0, "errors": 0}
         actions = []
@@ -696,116 +814,23 @@ class CrawlScheduler:
             doc_id = self._url_to_doc_id(url)
             new_hash = str(row.get("content_hash", ""))
 
-            # Build document
-            doc = {}
-            for col in df.columns:
-                val = row.get(col, "")
-                if pd.isna(val) or val is None:
-                    doc[col] = ""
-                else:
-                    doc[col] = str(val).strip()
-
-            # Boolean fields
-            for bool_field in ['is_expired', 'has_commission']:
-                val = row.get(bool_field, False)
-                if isinstance(val, str):
-                    val = val.lower() in ("true", "1", "yes")
-                doc[bool_field] = bool(val) if not pd.isna(val) else False
-
-            # Numeric fields
-            for num_field in ['salary_min', 'salary_max']:
-                val = row.get(num_field)
-                if val and not pd.isna(val):
-                    try:
-                        fval = float(val)
-                        # salary: convert VND to triệu
-                        if num_field.startswith('salary') and fval > 1000:
-                            fval = fval / 1_000_000
-                        doc[num_field] = fval
-                    except (ValueError, TypeError):
-                        pass
-
-            doc["last_crawled"] = datetime.now().isoformat()
-
-            # Embedding
-            if all_embeddings is not None:
-                doc.update(semantic_profiles[idx])
-                doc["embedding"] = all_embeddings[idx].tolist()
-
-            # Check existing
-            try:
-                existing = self.es.get(index=self.index_name, id=doc_id, ignore=[404])
-                if existing and existing.get('found'):
-                    old_hash = existing['_source'].get('content_hash', '')
-                    if old_hash == new_hash:
-                        existing_source = existing.get('_source', {})
-                        update_doc = {"last_crawled": doc["last_crawled"]}
-                        embedding_updated = False
-                        structured_updated = False
-                        for field in [
-                            "requirements_tags", "specializations", "technical_skills",
-                            "languages", "certificates",
-                        ]:
-                            if (
-                                doc.get(field, "")
-                                and doc.get(field, "") != existing_source.get(field, "")
-                            ):
-                                update_doc[field] = doc[field]
-                                structured_updated = True
-                        if all_embeddings is not None and not existing_source.get("semantic_text"):
-                            update_doc.update(semantic_profiles[idx])
-                            update_doc["embedding"] = doc["embedding"]
-                            embedding_updated = True
-                        elif all_embeddings is not None and structured_updated:
-                            update_doc.update(semantic_profiles[idx])
-                            update_doc["embedding"] = doc["embedding"]
-                            embedding_updated = True
-                        if embedding_updated or structured_updated:
-                            stats["updated"] += 1
-                        else:
-                            stats["unchanged"] += 1
-                        actions.append({
-                            "_op_type": "update", "_index": self.index_name,
-                            "_id": doc_id, "doc": update_doc
-                        })
-                        continue
-                    else:
-                        stats["updated"] += 1
-                        actions.append({
-                            "_op_type": "update", "_index": self.index_name,
-                            "_id": doc_id, "doc": doc
-                        })
-                else:
-                    stats["new"] += 1
-                    actions.append({
-                        "_op_type": "index", "_index": self.index_name,
-                        "_id": doc_id, "_source": doc
-                    })
-            except Exception:
-                stats["new"] += 1
-                actions.append({
-                    "_op_type": "index", "_index": self.index_name,
-                    "_id": doc_id, "_source": doc
-                })
+            profile = semantic_profiles[idx] if semantic_profiles is not None else None
+            embedding = all_embeddings[idx] if all_embeddings is not None else None
+            doc = self._row_to_document(row, df.columns, profile, embedding)
+            action, status = self._build_upsert_action(
+                doc_id,
+                doc,
+                new_hash,
+                profile,
+            )
+            stats[status] += 1
+            actions.append(action)
 
             if len(actions) >= 500:
-                try:
-                    success, errors = bulk(self.es, actions, raise_on_error=False)
-                    if errors:
-                        stats["errors"] += len(errors)
-                except Exception as e:
-                    logger.error(f"  Bulk error: {e}")
-                    stats["errors"] += len(actions)
+                stats["errors"] += self._flush_bulk_actions(actions)
                 actions = []
 
-        if actions:
-            try:
-                success, errors = bulk(self.es, actions, raise_on_error=False)
-                if errors:
-                    stats["errors"] += len(errors)
-            except Exception as e:
-                logger.error(f"  Bulk error: {e}")
-                stats["errors"] += len(actions)
+        stats["errors"] += self._flush_bulk_actions(actions)
 
         logger.info(f"[UPSERT] Done: {stats}")
         return stats
@@ -875,7 +900,8 @@ class CrawlScheduler:
     # ============= FULL CYCLE =============
     def run_cycle(
         self, pages=5, threads=3,
-        recrawl_after_days=7, force_recrawl_existing=False, **kwargs,
+        recrawl_after_days=7, force_recrawl_existing=False,
+        start_page=1, **kwargs,
     ):
         """1 chu kỳ: crawl → clean → upsert → check expired"""
         start_time = datetime.now()
@@ -883,14 +909,21 @@ class CrawlScheduler:
         logger.info(f"[CYCLE] START — {start_time.strftime('%Y-%m-%d %H:%M:%S')}")
         logger.info("=" * 70)
 
-        stats = {"start_time": start_time.isoformat(), "pages": pages, "threads": threads}
+        stats = {
+            "start_time": start_time.isoformat(),
+            "start_page": start_page,
+            "pages": pages,
+            "threads": threads,
+        }
 
         # 1. Ensure index
         self.ensure_index()
 
         # 2. Pipeline: crawl + clean
         output_file, pipeline_stats = self.run_pipeline(
-            pages, threads,
+            pages=pages,
+            threads=threads,
+            start_page=start_page,
             recrawl_after_days=recrawl_after_days,
             force_recrawl_existing=force_recrawl_existing,
         )
@@ -977,7 +1010,7 @@ class CrawlScheduler:
     def run_periodic(self, interval_minutes=60, **kwargs):
         logger.info(f"[TIMER] Running every {interval_minutes} min (Ctrl+C to stop)")
 
-        def signal_handler(sig, frame):
+        def signal_handler(_sig, _frame):
             logger.info("\n[STOP] Stopping scheduler...")
             self.running = False
         signal.signal(signal.SIGINT, signal_handler)
@@ -1010,7 +1043,7 @@ def main():
         epilog="""
 Ví dụ:
   python scheduler.py --once --pages 3
-  python scheduler.py --interval 60 --pages 5
+  python scheduler.py --interval 60 --start-page 6 --pages 5
   python scheduler.py --check-expired-only
   python scheduler.py --upsert-file topcv_jobs_cleaned.csv
         """
@@ -1018,7 +1051,18 @@ Ví dụ:
 
     parser.add_argument('--once', action='store_true', help='Run once')
     parser.add_argument('--interval', type=int, default=60, help='Cycle interval (minutes)')
-    parser.add_argument('--pages', type=int, default=5, help='Listing pages to crawl')
+    parser.add_argument(
+        '--start-page',
+        type=int,
+        default=1,
+        help='First listing page to crawl (default: 1)',
+    )
+    parser.add_argument(
+        '--pages',
+        type=int,
+        default=5,
+        help='Number of listing pages to crawl',
+    )
     parser.add_argument('--threads', type=int, default=3, help='Crawl threads')
     parser.add_argument(
         '--recrawl-after-days',
@@ -1038,6 +1082,12 @@ Ví dụ:
     parser.add_argument('--no-es', action='store_true', help='Skip ES entirely (crawl + clean + CSV only)')
 
     args = parser.parse_args()
+    if args.start_page < 1:
+        parser.error('--start-page must be at least 1')
+    if args.pages < 1:
+        parser.error('--pages must be at least 1')
+    if args.threads < 1:
+        parser.error('--threads must be at least 1')
 
     scheduler = CrawlScheduler(
         es_host=args.es_host,
@@ -1058,6 +1108,7 @@ Ví dụ:
 
     if args.once:
         scheduler.run_cycle(
+            start_page=args.start_page,
             pages=args.pages,
             threads=args.threads,
             recrawl_after_days=args.recrawl_after_days,
@@ -1066,6 +1117,7 @@ Ví dụ:
     else:
         scheduler.run_periodic(
             interval_minutes=args.interval,
+            start_page=args.start_page,
             pages=args.pages,
             threads=args.threads,
             recrawl_after_days=args.recrawl_after_days,

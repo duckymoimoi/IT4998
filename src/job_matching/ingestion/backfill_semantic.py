@@ -13,11 +13,11 @@ SRC_ROOT = PROJECT_ROOT / "src"
 if str(SRC_ROOT) not in sys.path:
     sys.path.insert(0, str(SRC_ROOT))
 
-from elasticsearch import Elasticsearch
-from elasticsearch.helpers import bulk, scan
+from elasticsearch import Elasticsearch  # noqa: E402
+from elasticsearch.helpers import bulk, scan  # noqa: E402
 
-from job_matching.enrichment.semantic_job_profile import SemanticJobProfileBuilder
-from job_matching.retrieval.embedding_service import get_embedding_service
+from job_matching.enrichment.semantic_job_profile import SemanticJobProfileBuilder  # noqa: E402
+from job_matching.retrieval.embedding_service import get_embedding_service  # noqa: E402
 
 
 SOURCE_FIELDS = [

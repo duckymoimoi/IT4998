@@ -8,9 +8,6 @@ Data sources:
   - data/esco/skill_broader_relations.csv   (ESCO skill hierarchy)
   - data/esco/occupation_skills.csv          (ESCO occupation → skills)
 
-The optional O*NET technology-tool layer is experimental and disabled by
-default. It can be enabled explicitly for evaluation.
-
 Usage:
   from job_matching.enrichment.skill_graph import get_skill_graph
   graph = get_skill_graph()
@@ -37,12 +34,11 @@ _graph_instance_lock = threading.Lock()
 class SkillGraph:
     """In-memory graph for ESCO skills and occupations."""
 
-    def __init__(self, data_dir=None, enable_onet_tools=False):
+    def __init__(self, data_dir=None):
         self.data_dir = data_dir or DATA_DIR
-        self.enable_onet_tools = enable_onet_tools
 
         # Node storage: uri -> {title, type}
-        #   type: "SKILL" | "OCCUPATION" | "TOOL"
+        #   type: "SKILL" | "OCCUPATION"
         self.nodes = {}
 
         # ESCO adjacency lists
@@ -52,14 +48,6 @@ class SkillGraph:
         self.occ_optional = defaultdict(set)  # occupation -> optional skill URIs
         self.skill_to_occs = defaultdict(set) # skill -> occupation URIs
 
-        # O*NET adjacency lists
-        self.occ_tools = defaultdict(set)     # occupation_uri -> tool URIs
-        self.tool_to_occs = defaultdict(set)  # tool_uri -> occupation URIs
-
-        # ESCO ↔ O*NET crosswalk: esco_occ_uri -> onet_code
-        self.esco_to_onet = {}
-        self.onet_to_esco = defaultdict(set)
-
         # Title-based index (lowercase → URI)
         self.title_to_uri = {}
 
@@ -67,7 +55,7 @@ class SkillGraph:
         self._loaded = False
 
     def load(self):
-        """Load ESCO graph data and optionally the experimental O*NET layer."""
+        """Load ESCO graph data."""
         if self._loaded:
             return
 
@@ -132,120 +120,28 @@ class SkillGraph:
                     self.skill_to_occs[skill_uri].add(occ_uri)
                     o_count += 1
 
-        # Experimental layer. Production search leaves this disabled until an
-        # evaluation demonstrates that tool expansion improves retrieval.
-        t_count = 0
-        if self.enable_onet_tools:
-            crosswalk_file = os.path.join(self.data_dir, "onet", "ESCO_to_ONET-SOC.xlsx")
-            tech_skills_file = os.path.join(self.data_dir, "onet", "Technology_Skills.xlsx")
-            t_count = self._load_onet_tools(crosswalk_file, tech_skills_file)
-
         elapsed = time.perf_counter() - t0
         skills = sum(1 for n in self.nodes.values() if n["type"] == "SKILL")
         occs = sum(1 for n in self.nodes.values() if n["type"] == "OCCUPATION")
-        tools = sum(1 for n in self.nodes.values() if n["type"] == "TOOL")
 
         logger.info(
-            f"SkillGraph loaded: {skills} skills, {occs} occupations, {tools} tools, "
-            f"{h_count} hierarchy + {o_count} occ-skill + {t_count} occ-tool edges "
+            f"SkillGraph loaded: {skills} skills, {occs} occupations, "
+            f"{h_count} hierarchy + {o_count} occ-skill edges "
             f"in {elapsed:.2f}s"
         )
         self._loaded = True
 
-    def _load_onet_tools(self, crosswalk_file, tech_skills_file):
-        """Load O*NET Technology Tools and link to ESCO occupations via crosswalk."""
-        if not os.path.exists(crosswalk_file) or not os.path.exists(tech_skills_file):
-            logger.info("O*NET files not found, skipping technology tools layer")
-            return 0
-
-        try:
-            import openpyxl
-        except ImportError:
-            logger.warning("openpyxl not installed, skipping O*NET integration")
-            return 0
-
-        # Step 1: Build crosswalk — ESCO occupation title → O*NET SOC code
-        occ_title_to_onet = {}  # esco_occ_title(lower) -> onet_code
-        wb = openpyxl.load_workbook(crosswalk_file, read_only=True)
-        ws = wb.active
-        for row in ws.iter_rows(min_row=5, values_only=True):  # Skip header rows
-            if row[0] and row[2]:
-                esco_title = str(row[1]).strip().lower() if row[1] else ""
-                onet_code = str(row[2]).strip()
-                if esco_title:
-                    occ_title_to_onet[esco_title] = onet_code
-        wb.close()
-
-        # Map ESCO occupation URIs to O*NET codes
-        for uri, node in self.nodes.items():
-            if node["type"] == "OCCUPATION":
-                onet_code = occ_title_to_onet.get(node["title"].lower())
-                if onet_code:
-                    self.esco_to_onet[uri] = onet_code
-                    self.onet_to_esco[onet_code].add(uri)
-
-        # Step 2: Load technology tools and link to mapped occupations
-        #   Build O*NET code → set of tool names
-        onet_code_tools = defaultdict(set)  # onet_code -> {tool_name, ...}
-        wb = openpyxl.load_workbook(tech_skills_file, read_only=True)
-        ws = wb.active
-        for row in ws.iter_rows(min_row=2, values_only=True):  # Skip header
-            onet_code = str(row[0]).strip() if row[0] else ""
-            tool_name = str(row[2]).strip() if row[2] else ""
-            if onet_code and tool_name:
-                onet_code_tools[onet_code].add(tool_name)
-        wb.close()
-
-        # Step 3: Create TOOL nodes and occ→tool edges
-        t_count = 0
-        for esco_uri, onet_code in self.esco_to_onet.items():
-            for tool_name in onet_code_tools.get(onet_code, set()):
-                tool_uri = f"onet:tool:{tool_name.lower().replace(' ', '_')}"
-
-                if tool_uri not in self.nodes:
-                    self.nodes[tool_uri] = {"title": tool_name, "type": "TOOL"}
-                    # Only index in title_to_uri if no SKILL/OCCUPATION already uses this name
-                    key = tool_name.lower()
-                    existing_uri = self.title_to_uri.get(key)
-                    if not existing_uri or self.nodes.get(existing_uri, {}).get("type") == "TOOL":
-                        self.title_to_uri[key] = tool_uri
-
-                self.occ_tools[esco_uri].add(tool_uri)
-                self.tool_to_occs[tool_uri].add(esco_uri)
-                t_count += 1
-
-        crosswalk_count = len(self.esco_to_onet)
-        logger.info(
-            f"  O*NET layer: {crosswalk_count} occupations crosswalked, "
-            f"{sum(1 for n in self.nodes.values() if n['type'] == 'TOOL')} tools loaded"
-        )
-        return t_count
-
-    def find_uri(self, title, prefer_skill=True):
-        """Find URI by title (case-insensitive, exact match).
-        When prefer_skill=True, prioritizes SKILL/OCCUPATION over TOOL nodes."""
+    def find_uri(self, title):
+        """Find an ESCO URI by title using a case-insensitive exact match."""
         key = title.lower().strip()
 
-        # Try with common ESCO suffixes first (to prioritize SKILL over TOOL)
+        # Try common ESCO suffixes before direct lookup.
         for suffix in ["(computer programming)", "(software)"]:
             variant = f"{key} {suffix}"
             if variant in self.title_to_uri:
                 return self.title_to_uri[variant]
 
-        # Direct lookup
-        if key in self.title_to_uri:
-            uri = self.title_to_uri[key]
-            # If we prefer skills and found a TOOL, check if there's also a SKILL
-            if prefer_skill and self.nodes.get(uri, {}).get("type") == "TOOL":
-                # Search for a SKILL node with same base name
-                for suffix in ["(computer programming)", "(software)", ""]:
-                    variant = f"{key} {suffix}".strip() if suffix else key
-                    candidate = self.title_to_uri.get(variant)
-                    if candidate and self.nodes.get(candidate, {}).get("type") == "SKILL":
-                        return candidate
-            return uri
-
-        return None
+        return self.title_to_uri.get(key)
 
     def get_siblings(self, skill_uri, max_count=10):
         """Get sibling skills (same broader parent), limited to max_count."""
@@ -295,24 +191,10 @@ class SkillGraph:
                             return co_skills
         return co_skills
 
-    def get_technology_tools(self, skill_uri, max_count=10):
-        """Get O*NET technology tools related to a skill via occupations.
-
-        Path: skill → occupations (ESCO) → O*NET code (crosswalk) → tools
-        """
-        tools = set()
-        for occ_uri in self.skill_to_occs.get(skill_uri, set()):
-            for tool_uri in self.occ_tools.get(occ_uri, set()):
-                tools.add(tool_uri)
-                if len(tools) >= max_count:
-                    return tools
-        return tools
-
     def expand_query_terms(self, skill_names, max_terms=20,
                            include_siblings=True,
                            include_broader=True,
-                           include_co_occurring=False,
-                           include_tools=False):
+                           include_co_occurring=False):
         """
         Core method: Expand a list of skill names using graph knowledge.
 
@@ -322,7 +204,6 @@ class SkillGraph:
             include_siblings: add sibling skills (same parent category)
             include_broader: add broader category names
             include_co_occurring: add co-occurring skills from occupations
-            include_tools: add O*NET technology tools from occupations
 
         Returns:
             list[str] - expanded skill name strings
@@ -365,16 +246,6 @@ class SkillGraph:
                     if len(expanded) >= max_terms:
                         return list(expanded)
 
-            # 4. O*NET technology tools via occupations
-            if include_tools:
-                tool_uris = self.get_technology_tools(uri, max_count=5)
-                for t_uri in tool_uris:
-                    node = self.nodes.get(t_uri)
-                    if node:
-                        expanded.add(node["title"])
-                    if len(expanded) >= max_terms:
-                        return list(expanded)
-
         return list(expanded)
 
     def expand_skills_text(self, skills_text, max_terms=15):
@@ -410,15 +281,12 @@ class SkillGraph:
         return ", ".join(result)
 
 
-def get_skill_graph(data_dir=None, enable_onet_tools=False):
+def get_skill_graph(data_dir=None):
     """Singleton getter — loads graph on first call."""
     global _graph_instance
     with _graph_instance_lock:
         if _graph_instance is None:
-            _graph_instance = SkillGraph(
-                data_dir=data_dir,
-                enable_onet_tools=enable_onet_tools,
-            )
+            _graph_instance = SkillGraph(data_dir=data_dir)
             _graph_instance.load()
     return _graph_instance
 

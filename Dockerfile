@@ -29,6 +29,7 @@ WORKDIR /app
 # Install pip dependencies first (cached layer)
 COPY requirements.docker.txt .
 RUN pip install --no-cache-dir --break-system-packages -r requirements.docker.txt
+RUN pip install --no-cache-dir --break-system-packages "gunicorn>=22.0.0"
 
 # Copy entrypoint script
 COPY docker-entrypoint.sh /app/docker-entrypoint.sh

@@ -88,6 +88,12 @@ textarea{min-height:60px;resize:vertical}
 .results-header h2{font-size:16px}
 .results-count{font-size:12px;color:var(--text2)}
 .search-mode{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:4px;max-width:420px}
+.result-tabs{display:flex;gap:18px;margin-bottom:12px;border-bottom:1px solid var(--border)}
+.result-tab{display:flex;align-items:center;gap:6px;border:0;border-bottom:2px solid transparent;background:transparent;color:var(--text2);padding:7px 2px 8px;font-family:inherit;font-size:12px;font-weight:600;cursor:pointer}
+.result-tab:hover{color:var(--primary)}
+.result-tab.active{color:var(--primary);border-bottom-color:var(--primary)}
+.result-tab span{min-width:20px;padding:1px 6px;border-radius:9px;background:var(--bg);color:inherit;font-size:10px;text-align:center}
+.result-tab.active span{background:var(--primary-light)}
 .legend-chip{font-size:10px;padding:2px 7px;border-radius:10px;font-weight:500;white-space:nowrap}
 .legend-chip.retrieval{background:#fef7e0;color:#b06000}
 .legend-chip.quick,.legend-chip.detail{background:#e6f4ea;color:#137333}
@@ -150,6 +156,7 @@ textarea{min-height:60px;resize:vertical}
 .skeleton{background:linear-gradient(90deg,var(--border) 25%,#e8e8e8 50%,var(--border) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:4px;height:16px;margin-bottom:8px}
 @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
 .empty-state{text-align:center;padding:60px 20px;color:var(--text2)}
+.empty-state.result-empty{padding:36px 20px}
 .empty-state h3{color:var(--text);margin-bottom:8px}
 /* Overlay */
 .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:100;align-items:center;justify-content:center}

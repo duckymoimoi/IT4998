@@ -93,7 +93,7 @@ def fetch_skill_info(uri, max_retries=3):
                 return {"preferred_label": "", "alt_labels": "", "skill_type": "", "description_en": ""}
             else:
                 time.sleep(1)
-        except Exception as e:
+        except Exception:
             time.sleep(1)
     
     return None
@@ -139,7 +139,7 @@ def fetch_all_skills(input_csv, output_csv):
                         completed += 1
                     else:
                         errors += 1
-                except Exception as e:
+                except Exception:
                     errors += 1
                 
                 # Progress
@@ -180,7 +180,7 @@ def fetch_all_skills(input_csv, output_csv):
     result_df.to_csv(output_csv, index=False, encoding="utf-8-sig")
     print(f"\nDa luu: {output_csv}")
     print(f"Columns: {list(result_df.columns)}")
-    print(f"Sample:")
+    print("Sample:")
     for i in [0, 7, 100, 500, 1000]:
         if i < len(result_df):
             r = result_df.iloc[i]

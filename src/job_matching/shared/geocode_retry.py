@@ -13,7 +13,6 @@ Sử dụng:
 
 import pandas as pd
 import re
-import sys
 import time
 import logging
 import argparse

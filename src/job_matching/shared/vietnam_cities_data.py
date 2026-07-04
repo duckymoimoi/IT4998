@@ -1,5 +1,6 @@
 import re
 import unicodedata
+from math import asin, cos, radians, sin, sqrt
 from typing import Dict, List, Optional
 
 
@@ -246,6 +247,7 @@ VIETNAM_CITIES = {
         "aliases": [
             "ho chi minh",
             "hcm",
+            "hcmc",
             "tp hcm",
             "tphcm",
             "sai gon",
@@ -350,6 +352,31 @@ def _build_city_lookup() -> Dict[str, Dict]:
 _CITY_LOOKUP = _build_city_lookup()
 
 
+def _haversine_km(origin: Dict, destination: Dict) -> float:
+    lat1, lon1 = radians(origin["lat"]), radians(origin["lon"])
+    lat2, lon2 = radians(destination["lat"]), radians(destination["lon"])
+    delta_lat = lat2 - lat1
+    delta_lon = lon2 - lon1
+    value = (
+        sin(delta_lat / 2) ** 2
+        + cos(lat1) * cos(lat2) * sin(delta_lon / 2) ** 2
+    )
+    return 6371.0 * 2 * asin(sqrt(value))
+
+
+def _build_province_distance_graph() -> Dict[str, Dict[str, float]]:
+    graph: Dict[str, Dict[str, float]] = {}
+    for origin_name, origin in VIETNAM_CITIES.items():
+        graph[origin_name] = {
+            destination_name: _haversine_km(origin, destination)
+            for destination_name, destination in VIETNAM_CITIES.items()
+        }
+    return graph
+
+
+PROVINCE_DISTANCE_GRAPH = _build_province_distance_graph()
+
+
 def get_city_info(location_text: str) -> List[Dict]:
     if not location_text:
         return []
@@ -437,3 +464,22 @@ def get_city_by_name(city_name: str) -> Optional[Dict]:
 
 def get_all_city_names() -> List[str]:
     return list(VIETNAM_CITIES.keys())
+
+
+def sort_provinces_by_distance(origin_text: str, province_names: List[str]) -> List[str]:
+    """Order canonical province names by distance from the first origin match."""
+    origin_matches = get_city_info(origin_text)
+    if not origin_matches:
+        return list(dict.fromkeys(province_names))
+
+    origin_name = origin_matches[0]["name"]
+    canonical_names = []
+    for name in province_names:
+        city = get_city_by_name(name)
+        if city and city["name"] not in canonical_names:
+            canonical_names.append(city["name"])
+
+    return sorted(
+        canonical_names,
+        key=lambda name: PROVINCE_DISTANCE_GRAPH[origin_name][name],
+    )
